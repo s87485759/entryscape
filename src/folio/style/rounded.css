@@ -1,0 +1,75 @@
+.Rounded {
+ 	position:relative;
+ 	margin:0px auto;
+ 	min-width: 10px;
+	max-width:1000px;
+ 	z-index:1;
+ 	margin-left:5px;
+ 	margin-top: 1px;
+}
+ 
+.Rounded .RoundedContent,
+.Rounded .RoundedTop,
+.Rounded .RoundedBottom,
+.Rounded .RoundedBottom div {
+ 	background:transparent url('roundedbg.gif') no-repeat top right;
+}
+
+.selected .Rounded .RoundedContent,
+.selected .Rounded .RoundedTop,
+.selected .Rounded .RoundedBottom,
+.selected .Rounded .RoundedBottom div {
+ 	background:transparent url('RoundedBgSelected.gif') no-repeat top right;
+}
+
+.selected .Rounded .RoundedTop {
+ 	background-position:top left;
+}
+
+.selected .Rounded .RoundedBottom {
+ 	background-position:bottom right;
+}
+
+.selected .Rounded .RoundedBottom div {
+ 	background-position:bottom left;
+}
+ 
+.Rounded .RoundedContent {
+ 	position:relative;
+ 	zoom:1;
+ 	padding:5px 10px 2px 5px;
+}
+ 
+.Rounded .RoundedTop {
+	position:absolute;
+ 	left:0px;
+ 	top:0px;
+ 	width:5px; 
+ 	margin-left:-5px;
+ 	height:100%;
+ 	background-position:top left;
+}
+ 
+.Rounded .RoundedBottom,
+.Rounded .RoundedBottom div {
+ 	height:7px;
+ 	font-size:1px;
+}
+ 
+.Rounded .RoundedBottom {
+ 	background-position:bottom right;
+ 	position:relative;
+ 	width:100%;
+ 	clear: both;
+ 	margin-left: 0px;
+ 	margin-right: 0px;
+ 	padding: 0;
+	display: table;
+}
+ 
+.Rounded .RoundedBottom div {
+ 	position:relative;
+ 	width:5px;
+ 	margin-left:-5px;
+ 	background-position:bottom left;
+}

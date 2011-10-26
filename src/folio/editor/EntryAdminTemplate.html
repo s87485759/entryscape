@@ -1,0 +1,60 @@
+<div>
+      <div dojoAttachPoint="URLChangePane" style="display: none">
+      	<!--Here is the URL Pane!-->
+		<table style="width: 80%;"  border="0"><tbody>
+	   	<!-- Label and TextField for changing URL-->
+		<tr><td style="width: 20%">
+	   		<label for="URL"><span dojoAttachPoint="linkDestinationTextNode"></span></label>
+		</td>
+	   	<td style="width: 80%"><input style="width:100%" type="text" name="URL" value="http://"
+                dojoType="dijit.form.ValidationTextBox"
+				required="true"
+                dojoAttachPoint="ChangeURL"
+                trim="true"/></td></tr>
+		<!-- Label and dropdown for changing MIME type (Not possible to change for links) -->
+		<!--tr><td><label dojoAttachPoint="ChangeFormatLabel">&nbsp;&nbsp;<span dojoAttachPoint="changeFormatLabelText"></span>:</label></td>
+    	    <td><input dojoType="dijit.form.FilteringSelect"
+                	searchAttr="en"
+	                name="mimeType"
+					dojoAttachPoint="changeMimeType" disabled="true"/></td>
+    	            </tr-->
+		<tr><td></td><td align="left"><div dojoAttachPoint="updateLinkButton" style="float:left" dojoType="dojox.form.BusyButton" dojoAttachEvent="onClick: onChangeURLClick" disabled="true"></div></td></tr>
+		<tr><td></td><td><div style="float:left;padding:5px 5px 0 0" dojoType="dijit.layout.ContentPane" dojoAttachPoint="changeLinkMessageArea"><div></div></div></td></tr>
+		</tbody>
+		</table>
+		<hr>
+	  </div>
+	  
+	  <!-- Here is the File Change Pane -->
+	  <div dojoAttachPoint="FileChangePane" style="display: none">
+	  	<table style="width: 80%;"  border="0"><tbody>
+	   	<tr height="auto"><td style="width: 20%"><label><span dojoAttachPoint="fileUploadChangeLabel"></span><span dojoAttachPoint="replaceFileTextNode"></span></label></td>
+	   	<td style="width: 80%;padding-bottom: 3px"><div dojoAttachPoint="fileUploadChangeArea" name="inputFile"/></td></tr>
+		<tr><td><label for="create"><span dojoAttachPoint="changeFileMimeTypeLabel"></span><span dojoAttachPoint="typeOfFileTextNode"></span></label></td>
+		    <td><input dojoType="dijit.form.FilteringSelect"
+	            	searchAttr="en"
+	                name="mimeType"
+					dojoAttachPoint="changeFileMimeType" disabled="true"
+		            dojoAttachEvent="onChange: fileMimeTypeChanged"/></td>
+		            </tr>
+		<tr><td></td><td align="right"><div dojoAttachPoint="fileSaveButton" style="float:left" dojoType="dojox.form.BusyButton" disabled="true" dojoAttachEvent="onClick: changeUploadedFile"></div></td></tr>
+		<tr><td></td><td><div style="float:left;padding:5px 5px 0 0" dojoType="dijit.layout.ContentPane" dojoAttachPoint="changeFileMessageArea"> </div></td></tr>
+		</tbody>
+		</table>
+		<br/>
+		<hr>
+	  </div>
+	  <div>
+	     <div dojoAttachPoint="aclContenPane" dojoType="dijit.layout.ContentPane" style="overflow: auto"></div>
+		 <div><div dojoAttachEvent="onClick: onACLSaveButtonClicked" dojoType="dojox.form.BusyButton" busyLabel="" dojoAttachPoint="saveacl"></div>
+		   <span style="display:none" dojoAttachPoint="divForRecursiveACL">
+             <input id="setACLRecursivelyCheck" disabled="false" name="setACLRecursivelyCheck" dojoAttachPoint="setACLRecursiveForList" dojoType="dijit.form.CheckBox" dojoAttachEvent="onChange: toggleRecursiveWarning" checked="false"></input>
+             <label for="setACLRecursivelyCheck" style="color:black" dojoAttachPoint="setACLRecursiveLabel"></label>
+           </span>
+		 </div>
+		 <div dojoAttachPoint="recursiveWarningDiv" style="display:none">
+		 </div>
+	  </div>
+	  <hr>
+	  <div dojoAttachPoint="aclSaveButton" style="float:right" dojoType="dijit.form.Button" dojoAttachEvent="onClick: onFinish"></div>
+</div>

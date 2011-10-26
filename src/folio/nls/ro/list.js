@@ -1,0 +1,22 @@
+({
+  "details": "Detalii",
+  "comment": "Comentariu",
+  "edit": "Editare",
+  "admin": "Administrare",
+  "remove": "Mutare",
+  "empty": "Neocupat",
+  "copy": "Copiere",
+  "cut": "Taiere",
+  "paste": "Lipire",
+  "pasteInto": "Lipire in",
+  "add": "Adauga",
+  "modified": "Modificat",
+  "items": "Items",
+  "addedToContactsMessage": "Aceasta persoana a fost adaugata la \"Contacte\".",
+  "sortLabel": "Sortare dupa",
+  "sortByNone": "Lista pentru",
+  "sortByTitle": "Titlu",
+  "sortByTitleReverse": "Reinversare titlu",
+  "sortByModified": "Modificat",
+  "sortByModifiedReverse": "Reinversare modificare"
+})

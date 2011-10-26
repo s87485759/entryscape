@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>External libraries README</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>General principles</h1>
+In this folder (the Confolio-install/lib) all external libraries should be placed. 
+Each library <b>X</b> may end up in three distinct places, 
+for convenience we normalize the naming and describe what we expect of them:
+<table cellpadding="3" cellspacing="0" border="1">
+<tr>
+	<td><b>lib/X-src/</b></td>
+	<td>the original library</td>
+</tr>
+<tr>
+	<td><b>lib/X/</b></td>
+	<td>a version of the library suitable for running and debugging</td>
+</tr>
+<tr>
+	<td><b>build/release/X/</b></td>
+	<td>a compressed/built version of the library suitable for a production evironment,
+	only libraries built using the dojo package mechanism will end up here</td>
+</tr>
+</table>
+<h1>Libraries upon which Confolio depends</h1>
+<h2>dojo - The Dojo tookit</h2>
+We currently rely on version 1.2.3 of the Dojo toolkit. You can download from:<br>
+<a href="http://download.dojotoolkit.org/release-1.2.3/">http://download.dojotoolkit.org/release-1.2.3/</a><br>
+As the releases since 1.2 does not include debugging variants (not compressed with Shrinksafe) 
+the stock release is in itself not sufficient.
+Instead we recommend that you download the source (dojo-release-1.2.3-src.tar.gz) and unpack to dojo-src/ 
+and then produce the debugging environment via the buildscripts. To produce the running/debugging version:<br>
+<br>
+<code>$ cd dojo-src/util/buildscripts/<br>
+$ build.sh profile=standard action=release releaseDir=../../../dojo/<br></code>
+<br>
+You can also run the script INSTALL-dojo.sh, it will download and build everything for you.
+<h2>SHAME - A library for metadata authoring, the javascript part</h2>
+See the <a href="http://kmr.nada.kth.se/shame">homepage</a> for more information on how SHAME works.<br>
+Currently there is a few deviations from the regular SHAME release, hence it is provided in SVN directly 
+as 'shame-src'. 
+</body>
+</html>

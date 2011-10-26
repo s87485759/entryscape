@@ -1,0 +1,143 @@
+/* Brownish style uses the following colours:
+   white - as background
+   dark brown (#A68253) - the skelleton of the application.
+   light brown (#BF9F73) - current folder, some labels etc.
+   vaguely brown (#E1D9CD) - selections.
+*/ 
+
+/*Logo should be < 240x60*/
+.navigationBar .logo {
+	background:transparent url('AustrianSchools.png') no-repeat top left;
+}
+
+/*Skelleton*/
+.simpleFolio, .applicationContainer {
+	/*background: #30AF9A;*/
+	/*background: #b2d6b0;*/
+	background: white;
+}
+
+.tundra .dijitSplitterV {
+	background: black;
+	width: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.tundra .dijitSplitterH {
+	background: black;
+	height: 3px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+/*Background*/
+.innerApplicationContainer, 
+.navigationBar,
+.shamePresentationMode .shameValue {
+	/*background: #D8EBD7;*/
+	/*background: #b2d6b0;*/ /* color from AGROASIS website */
+	background: white;
+}
+
+
+.shamePresentationMode .shameValue {
+	background: white;
+}
+
+/*Selection and background of editors*/
+.tundra .annotationprofileeditor.dijitDialog .dijitDialogPaneContent,
+.cleanList.listView .listEntry.selected,
+.folioTreeLabelSelected,
+.shameGroup, .shameRoot {
+	background: white;
+}
+
+.shameGroup, .shameRoot {
+	background: white;
+}
+
+/* Borders*/
+.listView *,
+.details *,
+.listView .butsCls *,
+.folioTreeLabelSelected,
+.featuredFolder {
+	/*border-color: #30AF9A;*/
+	border-color: black;
+	border-style: solid;
+	border-width: 0px;
+}
+
+.shameRoot {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;	
+}
+
+.listView .listHead,
+.listView .listControls,
+.details .center .extInfoPane > div:FIRST-CHILD, 
+.details .center .locInfoPane > div:FIRST-CHILD,
+.details .top .resourceSpace,
+.details .top .url,
+.details .center .bottom {
+	/* background: lightgrey; */
+	/*background: #b2d6b0;*/
+	background: white;
+}
+
+.featuredFolder {
+	margin: 5px;
+	border-width: 2px;
+	padding-left:6px;
+	padding-right: 6px;
+	padding-bottom: 2px;
+	background-color: white;
+}
+
+.featuredFolder h3{
+	margin-top: inherit;
+	font-size: medium;
+}
+
+.featuredFolder .iconCls {
+	width: 18px;
+	height: 18px;
+	padding-right: 5px;
+	float: left;
+}
+.featuredFolder .listEntry {
+	min-height: 18px;
+	border: 1px solid white;
+}
+
+.featuredFolder div.listEntry.selected,
+.featuredFolder div.listEntry.selected:hover {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+
+.featuredFolder div.listEntry:hover {
+	/* background: lightgrey; */
+	/*background: #b2d6b0;*/
+	background: lightgrey;
+	border: 1px solid lightgrey;
+}
+
+.innerApplicationContainer {
+	margin: 0px;
+	margin-top: 5px;
+}
+
+.details {
+	margin: 5px;
+	/* border: 3px solid #30AF9A; */
+	border: 2px solid black;
+	background-color: white;
+}
+
+.cleanList.listView .clickable .titleCls, .cleanList.listView .butsCls span:hover {
+	cursor: pointer;
+	text-decoration: none;
+}

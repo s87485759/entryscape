@@ -1,0 +1,22 @@
+({
+  "details": "Detaljer",
+  "comment": "Kommenter",
+  "edit": "Endre",
+  "admin": "Administrer",
+  "remove": "Fjern",
+  "empty": "Tøm",
+  "copy": "Kopier",
+  "cut": "Klipp ut",
+  "paste": "Lim inn",
+  "pasteInto": "Lim inn i",
+  "add": "Legg til kontakt",
+  "modified": "Endret",
+  "items": "Elementer",
+  "addedToContactsMessage": "Denne personen ble lagt til dine kontakter.",
+  "sortLabel": "Sorter etter",
+  "sortByNone": "Listens rekkefølge",
+  "sortByTitle": "Tittel",
+  "sortByTitleReverse": "Tittel (baklengs)",
+  "sortByModified": "Endret",
+  "sortByModifiedReverse": "Endret (baklengs)"
+})

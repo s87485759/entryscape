@@ -1,0 +1,201 @@
+/* Brownish style uses the following colours:
+   white - as background
+   dark brown (#A68253) - the skelleton of the application.
+   light brown (#BF9F73) - current folder, some labels etc.
+   vaguely brown (#E1D9CD) - selections.
+*/ 
+
+/*Logo should be < 240x60*/
+.navigationBar .logo {
+	background:transparent url('banner.jpg') no-repeat top left;
+	width: 660px;
+	height: 64px;
+	margin-bottom: 0px;
+}
+
+/* Generic approach for themes*/
+.confolio .distinctBackground {
+	background: lightgray;
+}
+.confolio .thinBorder {
+	border-color: gray;
+	border-width: 1px;
+}
+.confolio .thickBorder {
+	border-color: #8996bb;
+}
+/* Generic approach end*/
+
+.navigationBar .label, .navigationBar .link {
+	color: white;
+}
+.navigationBar .dijit {
+	color: black;
+}
+.viewController, .confolio {
+	background: #cc4548;
+}
+/* Overwriting the declaration done in clean.css */
+.confolio .roundHeader {
+	background: #E55451;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+/* Loading icon used in splash*/
+.loadingIcon {	
+	width: 126px;height: 126px;
+	background:transparent url('progress.gif') no-repeat top left;
+}
+
+/*Skelleton*/
+.tundra .dijitSplitterV, .tundra .dijitSplitterH,
+.confolioPanel {
+	background: #cc4548;
+}
+
+/*Background*/
+.mainPanel,
+.shamePresentationMode .shameValue {
+	background: white;
+}
+
+/*Selection*/
+.cleanList.listView .selected,
+.folioTreeLabelSelected,
+.iconOverview a.selected,
+.breadcrumbs .crumb .label.selected,
+.breadcrumbs .listMode.selected,
+.breadcrumbs .crumb .choices.pressed,
+.listChildren .iconView.selected {
+	background: #f1e6e6;
+}
+
+/* Borders*/
+.iconOverview a.selected,
+.annotationprofileeditor .editTab,
+.annotationprofileeditor .editTabEditStateButtons,
+.breadcrumbs .crumb,
+.breadcrumbs .listMode,
+.breadcrumbs,
+.listChildren .iconView.selected {
+	border-color: #cc4548;	
+}
+
+.listView *,
+.details *,
+.listView .butsCls *,
+.folioTreeLabelSelected,
+.shameRoot {
+	border-color: gray;
+	border-style: solid;
+	border-width: 0px;
+}
+
+.listView .listHead,
+.listView .listControls,
+.details .top .resourceSpace,
+.details .top .url,
+.details .center .bottom {
+	background: lightgrey;
+}
+
+.details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/
+.details .center .locInfoPane > div:first-child {
+	background: #d8dee5;
+}
+
+
+.editStateColor .missing .shameLabel,
+.missing>.shameLabel {
+	background: red;	
+}
+
+.editStateColor .mandatory>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .mandatory {
+	background: #A68253;
+}
+
+.editStateColor .recommended>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .recommended {
+	background: #BF9F73;
+}
+
+.editStateColor .optional>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .optional {
+	background: #E1D9CD;
+}
+
+div.commentPane {
+	position: relative;
+	overflow: auto;
+	max-height: 300px;
+	width: 100%;
+}
+/* Overwriting some styling in clean.css, 
+ * for the start-, profile-, group- and start-page*/
+.start .greeting {
+	margin-left: 5px;
+	margin-right: 0px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.start .latestMaterial{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.start .search {
+	margin-left: 5px;
+	margin-right: 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.confolio.userProfile .profile{
+	margin-left: 5px;
+	margin-right: 0px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.confolio.userProfile .rights{
+	margin-left: 5px;
+	margin-right: 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.confolio.userProfile .latestMaterial{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.confolio.search .searchForm{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	width: 50%;
+}
+.confolio .roundPane.noLeftMargin {
+    margin-left:0;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}

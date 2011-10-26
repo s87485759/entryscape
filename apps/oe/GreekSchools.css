@@ -1,0 +1,108 @@
+/* Brownish style uses the following colours:
+   white - as background
+   dark brown (#A68253) - the skelleton of the application.
+   light brown (#BF9F73) - current folder, some labels etc.
+   vaguely brown (#E1D9CD) - selections.
+*/ 
+
+/*Logo should be < 240x60*/
+.navigationBar .logo {
+	background:transparent url('GreekSchools.png') no-repeat top left;
+}
+
+/*Skelleton*/
+.tundra .dijitSplitterV, .tundra .dijitSplitterH,
+.simpleFolio, .applicationContainer {
+	background: #B2D6B0;
+}
+
+/*Background*/
+.navigationBar {
+	background: #D8EBD7;
+}
+
+/*Selection and background of editors*/
+.tundra .annotationprofileeditor.dijitDialog .dijitDialogPaneContent,
+.cleanList.listView .listEntry.selected,
+.folioTreeLabelSelected {
+	background: url(1lightgrey.png) repeat 0px 0px;
+}
+
+/* Borders*/
+.listView *,
+.details *,
+.listView .butsCls *,
+.folioTreeLabelSelected,
+.shameRoot,
+.featuredFolder {
+	border-color: #30AF9A;
+	border-style: solid;
+	border-width: 0px;
+}
+
+.listView .listHead,
+.listView .listControls,
+.details .center .extInfoPane > div:FIRST-CHILD, 
+.details .center .locInfoPane > div:FIRST-CHILD,
+.details .top .resourceSpace,
+.details .top .url,
+.details .center .bottom {
+	background: lightgrey;
+}
+
+.featuredFolder {
+	margin: 5px;
+	border-width: 0px;
+	padding-left:6px;
+	padding-right: 6px;
+	padding-bottom: 2px;
+	background: url(1lightgrey.png) repeat 0px 0px;
+}
+
+.featuredFolder h3{
+	margin-top: inherit;
+	font-size: medium;
+}
+
+.featuredFolder .iconCls {
+	width: 18px;
+	height: 18px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+.featuredFolder .listEntry {
+	min-height: 18px;
+	border: 1px solid transparent;
+}
+
+.featuredFolder div.listEntry.selected,
+.featuredFolder div.listEntry.selected:hover {
+	border: 1px solid grey;
+	background: lightgrey;
+}
+
+.featuredFolder div.listEntry:hover {
+	background: lightgrey;
+	border: 1px solid lightgrey;
+}
+
+.innerApplicationContainer {
+	margin: 0px;
+	margin-top: 5px;
+	background: #f1f3e9 url(../themes/oe/background.jpg) repeat 0px 0px;
+}
+
+.expandableHeaderContent {
+	border-bottom: 1px solid lightgrey;
+	background: url(1grey.png) repeat 0px 0px;
+}
+
+.expandableHeader {
+	margin-top: 5px;
+}
+
+.details {
+	margin: 5px;
+	border: 3px solid #30AF9A;
+	background-color: white;
+}

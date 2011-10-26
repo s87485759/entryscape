@@ -1,0 +1,18 @@
+<div style="overflow: hidden" class="confolio">
+	<div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="bc" region="center" gutters="false" class="confolioPanel">
+		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="mainPanel">
+			<div dojoType="folio.navigation.Breadcrumbs" region="top"></div>
+			<!-- Set folders view -->
+			<div dojoType="folio.tree.Tree" region="center" dojoAttachPoint="treeDijit">
+				<!-- Set listed folder view -->
+				<div dojoType="folio.list.ListView"></div>
+			</div>
+			<!-- Set the content view --> <!-- Set the details view -->
+			<div dojoType="folio.entry.DetailsView" region="right" dojoAttachPoint="detailsDijit" splitter="true" style="width: 50%"></div>
+		</div>
+	</div>
+  <div dojoType="folio.create.CreateWizardDialog"></div>
+  <div dojoType="folio.editor.RFormsEditorDialog"></div>
+  <div dojoType="folio.util.MessageDialog"></div>
+  <div dojoType="folio.editor.EntryAdminEditorDialog"></div>
+</div>

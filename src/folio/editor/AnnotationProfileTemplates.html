@@ -1,0 +1,33 @@
+<div>
+   <div dojoAttachPoint="dialog" class="annotationprofileeditor" dojoType="dijit.Dialog">
+      <div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="bc" style="width: 600px;height: 400px;" gutters="false">        
+      	 <div dojoType="dijit.layout.ContentPane" dojoAttachPoint="externalMD" region='left' style="width: 0%;" splitter="true">
+	        <div  dojoAttachPoint="shameFormExternal"></div></td>
+		 </div>
+      	<div dojoType="dijit.layout.BorderContainer" class="editTab" region="center" gutters="false">
+	      	 <div dojoType="dijit.layout.ContentPane" class="editTabEditStateButtons" region='top' style="height: 1.7em;">
+				<span style="float: right;"><input type="text" name="optional" dojoType="dijit.form.CheckBox"
+					dojoAttachEvent="onChange:editStateColorChange"/>&nbsp;<span dojoAttachPoint="colorLabelNode"></span>&nbsp;</span>
+				&nbsp;&nbsp;&nbsp;<input type="text" name="mandatory" checked="true" disabled="true" 
+					dojoType="dijit.form.CheckBox"/>&nbsp;<span dojoAttachPoint="mandatoryLabelNode" class="mandatory"></span>&nbsp;&nbsp;&nbsp;
+				&nbsp;<input type="text" name="mandatory" checked="true" dojoType="dijit.form.CheckBox" 
+					dojoAttachPoint="recommendedCheckBox" dojoAttachEvent="onChange:recommendedChange"/>&nbsp;<span dojoAttachPoint="recommendedLabelNode" class="recommended"></span>&nbsp;&nbsp;&nbsp;
+				&nbsp;<input type="text" name="optional" dojoType="dijit.form.CheckBox" 
+					dojoAttachPoint="optionalCheckBox" dojoAttachEvent="onChange:optionalChange"/>&nbsp;<span dojoAttachPoint="optionalLabelNode" class="optional"></span>
+      		</div>
+		 	<div dojoType="dijit.layout.ContentPane" dojoAttachPoint="shameCP" region='center' style='overflow: auto'>
+			   <div dojoAttachPoint="shameMessageNode"></div>
+			   <div dojoAttachPoint="shameFormDiv"></div>
+		 	</div>
+		 </div>
+      	 <div dojoType="dijit.layout.ContentPane" region='bottom'>
+      	 	<div style="margin-top: 4px;">
+      	 		<input style="float:left" id="validationCB" dojoAttachPoint="validationReady" dojoType="dijit.form.CheckBox"></input><label for="validationCB" dojoAttachPoint="validationReadyLabelNode"></label> 
+				<div style="float:right" dojoAttachEvent="onClick: donePressed" dojoType="dojox.form.BusyButton" busyLabel="" dojoAttachPoint="dialogDone"></div>
+				<div style="float:right" dojoAttachEvent="onClick: cancelPressed" dojoType="dijit.form.Button" dojoAttachPoint="dialogCancel"></div>
+				<div style="float:right;padding:5px 5px 0 0" dojoType="dijit.layout.ContentPane" dojoAttachPoint="warningArea"> </div>	
+			</div>
+      	 </div>
+      </div>
+   </div>
+</div> 

@@ -1,0 +1,14 @@
+<div style="overflow: hidden" class="confolio">
+ 	<div dojoType="dijit.layout.BorderContainer"  dojoAttachPoint="bc" region="center" gutters="false" class="applicationContainer" style="width: 100%;height:100%">
+ 		<div dojoType="folio.simple.NavigationBar" id="navigationBarView" showHelp="false" showAbout="false" region="top" style="width: 100%;"></div>
+		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="innerApplicationContainer" style="width: 100%;height:100%">
+			<div dojoType="dijit.layout.ContentPane" gutters="false" style="width:24em" region="left">
+				<div dojoType="folio.simple.Overview" id="overView" style="width: 100%;"></div>
+			</div>
+				<div dojoType="folio.main.Aggregate" region="center" splitter="true" id="aggregateView"></div>
+			<div dojoType="dijit.layout.ContentPane" gutters="false" style="width:24em" region="right">
+				<div dojoType="folio.simple.Overview" id="feedView" startEntry="_feeds" style="width: 100%;"></div>
+			</div>
+		</div>
+  	</div>
+</div>

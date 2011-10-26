@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>se.kmr.confolio</groupId>
+		<artifactId>confolio</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<groupId>se.kmr.confolio</groupId>
+	<version>1.0-SNAPSHOT</version>
+	<artifactId>confolio-dojo</artifactId>
+	<packaging>pom</packaging>
+	<name>Dojo</name>
+	<description>
+		Dojo build for CONFOLIO.
+	</description>
+	<properties>
+		<dojo.version>1.5.0</dojo.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>dojo-prepare</id>
+						<configuration>
+							<tasks>
+								<property name="project.build.directory"
+									value="${project.build.directory}"/>
+								<property name="dojo.version"
+									value="${dojo.version}"/>
+								<mkdir dir="${project.build.directory}" />
+								<ant antfile="${basedir}/build.xml"
+									target="dojo.prepare" inheritAll="true"
+									inheritRefs="true" />
+							</tasks>
+						</configuration>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<executable>${java.home}/bin/java</executable>
+					<workingDirectory>${project.build.directory}/dojo-src/util/buildscripts</workingDirectory>
+					<arguments>
+						<argument>-classpath</argument>
+						<argument>../shrinksafe/js.jar:../shrinksafe/shrinksafe.jar</argument>
+						<argument>org.mozilla.javascript.tools.shell.Main</argument>
+						<argument>build.js</argument>
+						<argument>profileFile=${basedir}/confolio.profile.js</argument>
+						<argument>action=clean,release</argument>
+						<argument>version=${project.version}</argument>
+						<argument>releaseName=release</argument>
+						<argument>releaseDir=../../../../../../build/</argument>
+						<argument>localeList=en,en-us,de,el,es,et,hu,no-nb,pt,ro,sv</argument>
+						<argument>optimize=shrinksafe</argument>
+						<argument>layerOptimize=shrinksafe</argument>
+						<argument>internStrings=true</argument>
+					</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<id>dojo-custom-build</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

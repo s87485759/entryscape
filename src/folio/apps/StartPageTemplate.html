@@ -1,0 +1,37 @@
+<div style="overflow: hidden" class="confolio start">
+	<div dojoType="dijit.layout.BorderContainer" gutters="false" style="height: 100%" dojoAttachPoint="bc" design="sidebar">
+		<div dojoType="dijit.layout.ContentPane" region="top" class="greeting" splitter="false">
+			<h1 class="center" dojoAttachPoint="welcomeHeaderNode"></h1>
+			<p dojoAttachPoint="welcomeMessageNode"></p>
+			<div style="display: none" class="startButtons" dojoAttachPoint="startButtonsNode"></div>
+		</div>
+		<div dojoType="dijit.layout.BorderContainer" class="search" region="center" gutters="false">
+			<div dojoType="dijit.layout.ContentPane" class="roundHeader" region="top">
+				<div class="inputblock1">
+					<span class="largerText invertedText" dojoAttachPoint="searchLabelNode"></span>
+					<div class="largerText searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="search"></div>
+					<span class="includes">
+						<span dojoType="dijit.form.CheckBox" id="${id}_i_port" dojoAttachEvent="onChange:_includePortfoliosChange" checked="true"></span>
+						<label class="invertedText" for="${id}_i_port" dojoAttachPoint="includePortfoliosLabelNode"></label>
+						<span dojoType="dijit.form.CheckBox" id="${id}_i_user" dojoAttachEvent="onChange:_includeUsersChange" checked="true"></span>
+						<label class="invertedText" for="${id}_i_user" dojoAttachPoint="includeUsersLabelNode"></label>
+						<span dojoType="dijit.form.CheckBox" id="${id}_i_group" dojoAttachEvent="onChange:_includeGroupsChange" checked="true"></span>
+						<label class="invertedText" for="${id}_i_group" dojoAttachPoint="includeGroupsLabelNode"></label>
+					</span>
+				</div>
+				<div class="inputblock2"></div>
+			</div>
+			<div dojoType="dijit.layout.ContentPane" class="search-inner roundBody" region="center">
+				<div class="result" dojoAttachPoint="listNode"></div>
+			</div>
+		</div>
+		<div  dojoType="dijit.layout.BorderContainer" class="latestMaterial" region="right" gutters="false">
+			<div  dojoType="dijit.layout.ContentPane" region="top" class="roundHeader">
+				<div class="largerText invertedText" dojoAttachPoint="latestMaterialNode"></div>
+			</div>
+			<div  dojoType="dijit.layout.ContentPane" region="center" class="roundBody">
+				<div dojoType="folio.list.SearchList" dojoAttachPoint="simpleSearchList"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="../themes/favicon16.ico">
+	<title>Hematology Confolio</title>
+	<script type="text/javascript" src="../bootstrap.js"></script>
+	<!--style type="text/css">
+		@import "../../src/folio/apps/clean.css";
+		@import "../themes/greenish.css";
+    </style-->
+	<!--script type='text/javascript' 
+        src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script-->
+  </head>
+	<!-- Create a SimpleFolio in view.
+	<!-- Uses simple/SimpleFolioTemplate for the view -->
+	<!-- Set startEntry to base directory -->
+	<!-- Make sure testdata/namespaces is set to the correct entry, namespaces shortens long url:s -->
+  <body class="tundra">
+  	<div id="javascriptRequired">
+		<h1>Error: JavaScript Not Enabled</h1>
+		<p>Confolio requires a modern web browser with JavaScript enabled.</p>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("javascriptRequired").style.display = "none";
+		__confolio.relocate("hematologynet");
+	</script>
+	<!--div id="splash"> 
+		<div class="loadingIcon"></div>
+		<h1>&nbsp;Loading Confolio</h1>
+	</div>
+    <script type="text/javascript" src="../../lib/dojo/dojo/dojo.js.uncompressed.js"
+		djConfig="isDebug: true, debugAtAllCosts: true, parseOnLoad: true, usePlainJson: true"></script>
+    <script type="text/javascript" src="../../lib/dojo/dojox/grid/DataGrid.js.uncompressed.js"></script>
+	<script type="text/javascript" src="../../lib/swfobject/swfobject.js"></script>
+	<script type="text/javascript" src="../../lib/audio/audio-player.js"></script>
+    <script type="text/javascript" src="../../lib/dojo/dojo/back.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAaDCpG2c3yJi5SlxArXvVDhSV5qw27O0gn9BURoQ2KaJTWQaAChTfk5ZLElKi-O85Zm-9C9Z0mj6xww"></script>
+	<script type="text/javascript">
+		dojo.addOnLoad(function() {
+    		dojo.style(dojo.byId("splash"), "display", "none");
+		});
+		dojo.registerModulePath("folio","../../../src/folio");
+		dojo.registerModulePath("hnetfolio","../../../vendor-src/hematologynet/folio");
+		dojo.registerModulePath("jdil","../../../src/jdil");
+		dojo.registerModulePath("shame", "../../shame-src"); 
+		dojo.require("hnetfolio.apps.DefaultFolio");
+		dojo.require("dojo.back");
+	</script>
+	<script type="text/javascript">dojo.back.init();</script>
+	<div dojoType="hnetfolio.apps.DefaultFolio" id="Folio" dataDir="../../data/" 
+  		  repository="http://localhost:8080/scam/" startContext="1"></div-->
+  </body>
+</html>

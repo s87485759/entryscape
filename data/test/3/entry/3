@@ -1,0 +1,13 @@
+{entryId: "3",
+   mmd: {"@id": "test:md/3", 
+	 "dc:created": "20080430", 
+	 "dc:modified": "20080430", 
+	 "*sc:referredIn": "test:data/1",
+	 "*dc:creator": "pr:3",
+	 "*sc:read": "pr:2"},
+   md: {"@id": "test:data/3", 
+	 "dc:title": "Crete", 
+	 "dc:description": "A nice picture from Crete", 
+ 	 "dc:format": "image/jpeg",
+	 "dc:extent": 51175}
+}

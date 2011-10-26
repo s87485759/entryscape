@@ -1,0 +1,75 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Confolio 3-pane work view</title>
+	<style type="text/css">
+		@import "../src/folio/apps/clean.css";
+		@import "themes/greenish.css";
+    </style>
+	<!--script type='text/javascript' 
+        src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script-->
+  </head>
+	<!-- Create a SimpleFolio in view.
+	<!-- Uses simple/SimpleFolioTemplate for the view -->
+	<!-- Set startEntry to base directory -->
+	<!-- Make sure testdata/namespaces is set to the correct entry, namespaces shortens long url:s -->
+  <body class="tundra">
+	<div id="splash"> 
+		<div class="loadingIcon"></div>
+		<h1>&nbsp;Loading Confolio</h1>
+	</div>
+    <script type="text/javascript" src="../lib/dojo/dojo/dojo.js"
+		djConfig="isDebug: false, debugAtAllCosts: false, parseOnLoad: true, usePlainJson: true"></script>
+    <script type="text/javascript" src="../lib/dojo/dojox/grid/DataGrid.js"></script>
+	<script type="text/javascript" src="../lib/swfobject/swfobject.js"></script>
+	<script type="text/javascript" src="../lib/audio/audio-player.js"></script>
+    <script type="text/javascript" src="../lib/dojo/dojo/back.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAaDCpG2c3yJi5SlxArXvVDhSV5qw27O0gn9BURoQ2KaJTWQaAChTfk5ZLElKi-O85Zm-9C9Z0mj6xww"></script>
+	<script type="text/javascript">
+		dojo.addOnLoad(function() {
+    		dojo.style(dojo.byId("splash"), "display", "none");
+		});
+		dojo.registerModulePath("folio","../../../src/folio");
+		dojo.registerModulePath("jdil","../../../src/jdil");
+		dojo.registerModulePath("shame", "../../shame-src"); 
+		dojo.require("dojo.back");
+		dojo.require("folio.WidgetApplication");
+dojo.require("folio.TreeModel");
+dojo.require("folio.simple.List");
+dojo.require("folio.simple.ThickList");
+dojo.require("folio.simple.Tree");
+dojo.require("folio.simple.Overview");
+dojo.require("folio.simple.Details");
+dojo.require("folio.simple.Content");
+dojo.require("folio.simple.Message");
+dojo.require("folio.simple.NavigationBar");
+dojo.require("dijit.layout.BorderContainer");
+dojo.require("folio.create.CreateWizard");
+dojo.require("folio.editor.ResourceEditor");
+dojo.require("folio.editor.AnnotationProfileEditor");
+		
+	</script>
+	<script type="text/javascript">dojo.back.init();</script>
+	<div dojoType="folio.WidgetApplication"  dataDir="../data/" 
+  		  repository="http://localhost:8080/scam/" startContext="1"  id="Folio">
+	<div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="bc" region="center" gutters="false" class="applicationContainer">
+		<div dojoType="folio.simple.NavigationBar" id="navigationBarView" region="top" style="width: 100%;"></div>
+		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="innerApplicationContainer">
+			<!-- Set folders view -->
+			<div dojoType="folio.simple.ExpandoTabbedOverview" id="overView" region="left" splitter="true"
+					style="height: 100%;width: 150px;">
+			</div>
+			<!-- Set listed folder view -->
+			<div dojoType="folio.simple.List" id="listView" region="center"></div>
+			<!-- Set the content view --> <!-- Set the details view -->
+			<div dojoType="folio.simple.Details" id="detailsView" region="right" style="width: 340px;" splitter="true"></div>
+		</div>
+	</div>
+	 <div dojoType="folio.create.CreateWizardDialog" id="createDialog"></div>
+  <div dojoType="folio.editor.ResourceEditorDialog" id="resourceDialog"></div>
+  <div dojoType="folio.editor.AnnotationProfileEditorDialog" id="editDialog"></div>
+  <div dojoType="folio.simple.MessageDialog" id="messageDialog"></div>
+  <div dojoType="folio.simple.ContentViewSwitcher" id="contentView"></div>
+	</div>
+  </body>
+</html>

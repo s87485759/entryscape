@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>ashame: AJAX based SHAME</title>
+	<style type="text/css">
+        	@import "../../dojo/dojo/resources/dojo.css";
+            @import "../../dojo/dijit/themes/soria/soria.css";
+			@import "../../dojo/dojox/grid/resources/Grid.css";
+			@import "../../dojo/dojox/grid/resources/soriaGrid.css";
+			@import "../shame.css";
+			
+			.heading {
+				font-weight: bold;
+				padding-bottom: 0.25em;
+			}
+					
+			.soria .dojoxGridRowOver.dojoxGridRowEditing .dojoxGridCellFocus {
+				color:black;
+			}
+    </style>
+	<script type="text/javascript" src="../../../lib/dojo/dojo/dojo.js.uncompressed.js"
+		djConfig="isDebug: true, debugAtAllCosts: true, parseOnLoad: false, usePlainJson: true"></script>
+	<script type="text/javascript" src="../../dojo/dojox/grid/DataGrid.js.uncompressed.js"></script>
+	<script type="text/javascript">
+		dojo.registerModulePath("shame", "../../../src/shame"); 
+		dojo.registerModulePath("jdil", "../../../src/jdil"); 
+		dojo.require("shame.Loader");
+		dojo.require("dijit.form.Button");
+		dojo.require("dojox.grid.DataGrid");
+		loader = null;
+		var init = function() {
+			loader = new shame.Loader({useFormulatorService: false, formModelURL: "fmodel.js", 
+			formTemplateURL: "ftemplate.js"});
+		}
+		dojo.addOnLoad(init);
+	</script>
+  </head>  
+
+  <body id="body1" class="soria">
+	<div id="shameForm"></div>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+({
+  "aclDialogTitle": "Droits d'accès"
+})

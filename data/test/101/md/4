@@ -1,0 +1,5 @@
+{"@id": "http://dn.se/",
+ "dc:title": "Dagens Nyheter", 
+ "dc:description": "A widely spread morning newspaper in sweden.", 
+ "dc:format": "text/html"
+}

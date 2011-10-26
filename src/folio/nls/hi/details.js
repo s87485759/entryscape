@@ -1,0 +1,1 @@
+({  "extInformationText": "संसाधन के बारे में बाह्य सूचना",  "locInformationText": "संसाधन के बारे में स्थानीय  सूचना",  "creatorText": "रचयिता ",  "modifiedText": "परिवर्तित ",  "createdText": "रचित "})

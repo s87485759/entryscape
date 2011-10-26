@@ -1,0 +1,20 @@
+({
+  "saveDialogRecommend": "Spara ändringar? (Annars kommer ändringarna att förloras)",
+  "saveDialogSaveLabel": "Spara",
+  "saveDialogDiscardLabel": "Spara inte",
+  "saveDialogCancelLabel": "Avbryt",
+  "dialogTitle": "Ändra metadata för ",
+  "mandatoryLabel": "Obligatorisk",
+  "recommendedLabel": "Rekommenderad",
+  "colorLabel": "Färga fältnamn",
+  "shameMessageLabel": "Formulär konstrueras, var god vänta.",
+  "readyForValidationLabel": "Redo för validering",
+  "optionalLabel": "Valfri",
+  "dialogCancelLabel": "Avbryt",
+  "dialogDoneLabel": "Klar",
+  "dialogDoneBusyLabel": "Sparar",
+  "mandatoryElementsMissing": "Alla obligatoriska fält är ej ifyllda",
+  "changeToLinkReference": "Du har inte tillräckliga rättigheter för att ändra entryns karaktär så att den får ha egen metadata förutom den refererade.",
+  "failedSavingUnsufficientMDRights": "Du har inte tillräckliga rättigheter för att spara metadatan.",
+  "modifiedPreviouslyOnServer": "Fel: Kunde inte spara dina ändringar, eftersom någon annan har ändrat innan du hann spara"
+})

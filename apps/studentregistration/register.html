@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Registrera konto</title>
+    <style type="text/css">
+        @import "../../lib/dojo/dijit/themes/tundra/tundra.css";
+        @import "../../lib/dojo/dojo/resources/dojo.css"
+        
+        
+    </style>
+    <style>
+
+	body {
+		font-family:sans-serif;
+	}
+	
+	h1 {
+		font-family:arial;
+		font-style:bold; 
+	}
+	
+	#container {
+		width:625px;	
+		padding-left: 10px;  
+		background-color: #fff;
+		color: #333;
+		border: 1px solid #ddd;
+		margin:20px 20px 20px 20px;
+		display: block;
+    	margin-left: auto;
+   		margin-right: auto; 
+	}
+    </style>
+    <script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+    
+   <script type="text/javascript" src="../../lib/dojo/dojo/dojo.js"
+        djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript">
+       dojo.require("dojo.parser"); 
+       dojo.require("dijit.form.Form");
+       dojo.require("dijit.form.Button");
+       dojo.require("dijit.form.ValidationTextBox"); 
+       dojo.require("dijit.form.ComboBox");
+       dojo.require("dijit.Dialog");
+       
+
+ 		dojo.addOnLoad(function() {
+          Recaptcha.create("6Lcz8gYAAAAAADD5bzAooblcZ1_Diq2urOfxG0i1", "recaptcha_div", {
+            theme: "clean", 
+            callback: Recaptcha.focus_response_field});
+            }); 
+            
+		function confirmPassword(value, constraints) {
+    		var isValid = false;
+    		if(constraints && constraints.other)  {
+        		var otherInput =  dijit.byId(constraints.other);
+		        if(otherInput) {
+        	        var otherValue = otherInput.focusNode.value; 
+            	    console.log("%s == %s ?", value, otherValue);
+                	isValid = (value == otherValue);
+	        	}
+    		}
+    		return isValid;
+		}
+
+		function beforeSubmit(element) {
+			//alert('Attempting to submit form w/values:\n'+dojo.toJson(element.getValues(),true));
+			
+			if(element.isValid()){
+				var d = new dijit.Dialog(); 
+				d.setContent("Bra jobbat"); 
+				return true;
+			} else { 
+				var d = new dijit.Dialog(); 
+				d.setContent("Formuläret är inte korrekt ifyllt. Var snäll fyll i all information"); 
+				d.show(); 
+				return false;
+			}
+		}
+		
+		 function setVal1(value) {
+           console.debug("Selected "+value);
+         }
+         
+     </script>
+</head>
+
+<body class="tundra">
+	<div style="padding-left:150px;">
+	<div id="container">
+		<form dojoType="dijit.form.Form" execute="beforeSubmit(this);" name="regForm" id="regForm" action="../../../scam/register" method="post" >
+   			<h1>Registrering av portfoliokonto</h1>
+   			<table>
+				<tr>
+    				<td class="label">Användarnamn:</td>
+				    <td><input type="text"
+    						dojoType="dijit.form.ValidationTextBox"
+     						name="username"
+    						id="username"
+    						required="true"
+    						trim="true"
+						    intermediateChanges=false
+    						invalidMessage="Var vänlig, ange ett användarnamn." /></td>
+				</tr>
+   				<tr>
+    				<td class="label">Namn:</td>
+				    <td><input type="text"
+    						dojoType="dijit.form.ValidationTextBox"
+     						name="name"
+    						id="name"
+    						required="true"
+    						trim="true"
+						    intermediateChanges=false
+    						invalidMessage="Var vänlig, ange ditt namn." /></td>
+				</tr>
+				<tr>
+    				<td class="label">E-mail:</td>
+				    <td><input type="text"
+							dojotype="dijit.form.ValidationTextBox"
+    						required="true" 
+    						regexp="[a-zA-Z0-9_\x2D\x2E]+@[a-zA-Z0-9_\x2D\x2E]+\x2E[a-zA-Z]+"
+     						name="email"
+    						id="email"
+						    intermediateChanges=false
+    						invalidMessage="Var vänlig, ange din email-adress." /></td>
+				</tr>
+			
+    			<tr>
+    				<td class="label">Lösenord:</td>
+				    <td><input type="password"
+    						dojoType="dijit.form.ValidationTextBox"
+     						name="password1"
+    						id="password1"
+    						required="true"
+    						trim="true"
+    						regExp="[A-Za-z0-9]{8,64}"
+						    intermediateChanges=false
+    						invalidMessage="Var vänlig att välj ett lösenord med minst 8 tecken." /></td>
+				</tr>
+				<tr>
+					<td class="label">Upprepa lösenord: </td>
+					<td><input type="password"
+    						name="password2"
+    						id="password2"
+    						dojoType="dijit.form.ValidationTextBox"
+    						required="true"
+    						constraints="{'other': 'password1'}"
+    						regExp="[A-Za-z0-9]{8,64}"
+    						validator=confirmPassword
+    						intermediateChanges=false
+    						trim="true"
+    						invalidMessage="Detta lösenord överensstömmer inte med det fregående" /></td>
+    			</tr>
+    				<tr>
+					<td class="label">Välj grupptillhörighet: </td>
+					<td><select name="group"
+                			dojoType="dijit.form.ComboBox"
+                			autocomplete="false"
+                			value="Grupp A"
+                			onChange="setVal1">
+                				<option selected="selected">Grupp A</option>
+                				<option >Grupp B</option>
+                				<option >Grupp C</option>
+                				<option >Grupp D</option>
+                				<option >Grupp Ö-vik</option>
+        				</select></td>
+    			</tr>
+    			<tr>
+    			<td></td>
+    			<td><p class="label">Verifierar genom att skriva samma sak som står skrivet i bilden.</p></td>
+    			</tr>
+    			<tr>
+    				<td class="label">Verifiera:</td>
+    				<td>
+    				<div id="recaptcha_div"/>
+  				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td></td>
+    				<td><button dojoType=dijit.form.Button type="submit" id="submitButton" name="submitButton">Skapa konto
+    				</button></td>
+   				</tr>
+   			</table>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

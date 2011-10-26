@@ -1,0 +1,20 @@
+({
+  "saveDialogRecommend": "Änderungen speichern?",
+  "saveDialogSaveLabel": "Speichern",
+  "saveDialogDiscardLabel": "Änderungen verwerfen",
+  "saveDialogCancelLabel": "Abbrechen",
+  "dialogTitle": "Metadaten editieren für",
+  "mandatoryLabel": "Erforderlich",
+  "recommendedLabel": "Empfohlen",
+  "colorLabel": "Farbliche Hervorhebung",
+  "shameMessageLabel": "Das Formular wird erstellt",
+  "readyForValidationLabel": "Zur Validierung freigegeben",
+  "optionalLabel": "Optional",
+  "dialogCancelLabel": "Abbrechen",
+  "dialogDoneLabel": "Fertig",
+  "dialogDoneBusyLabel": "Speichern",
+  "mandatoryElementsMissing": "Es fehlen erforderliche Elemente",
+  "changeToLinkReference": "Sie haben nicht die erforderlichen Rechte um diese Ressource zu beschreiben",
+  "failedSavingUnsufficientMDRights": "Sie haben nicht die erforderlichen Rechte um die Metadaten zu speichern",
+  "modifiedPreviouslyOnServer": "Ihre Änderungen wurden verworfen da die Ressource zwischenzeitlich von einem anderen Anwender editiert wurde"
+})

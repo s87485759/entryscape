@@ -1,0 +1,410 @@
+{
+ "id": "EHACurriculumV2Part4",
+ "label": {
+  "en": "Default Base formlet in compound formlets",
+  "sv": "Default formulet bas i sammansatta formuletter"
+ },
+ "description": {
+  "en": "This is the formlet used as base in compound formlets by default. The formlets consists of a query with only a base variable and a minimal form specification. If the base formlet is not loaded (i.e. the containing formlet set) many compound formlets will break.",
+  "sv": "Denna formuletten används som bas i många sammansatta formuletter som default. Formuletten består av en fråga med endast en basvariabel samt en minimal formulärspecifikation. Om denna basformulett inte är laddad (egentligen den omgivande formulett mängden) så kommer många sammansatta formuletter inte att fungera."
+ },
+ "root": {
+  "nodetype": "RESOURCE",
+  "label": {
+   "de": "Ressource",
+   "en": "Resource",
+   "sv": "Resurs"
+  },
+  "@type": "group",
+  "content": [
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "4. Clinical hematology: stem cell transplantation and special therapy"},
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "description": {"en": "Training within the field of stem cell transplantation should ideally be done at a JACIE accredited uni"},
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "4A: STEM CELL TRANSPLANTATION"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AA",
+        "label": {"en": "a) Indications, risks and benefits of autologous and allogeneic transplants"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AB",
+        "label": {"en": "b) Criteria for selection of myeloablative or reduced dose preparative regimens "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AC",
+        "label": {"en": "c) Administration of high-dose therapy"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AD",
+        "label": {"en": "d) Identification and selection of HPC source"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AE",
+        "label": {"en": "e) Acute and chronic graft versus host disease"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AF",
+        "label": {"en": "f) Pulmonary complications, veno-occlusive disease of the liver, and hemorrhagic cystitis"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AG",
+        "label": {"en": "g) Evaluation of chimerism "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4AH",
+        "label": {"en": "h) Mobilization, collection and manipulation of hemopoeitic stem cells"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#StemCellTransplantation"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "4B: CELL AND GENE THERAPY"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4BA",
+        "label": {"en": "a) Clinical potential and limits of embryonic and adult stem cell therapy. Ethical considerations "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4BB",
+        "label": {"en": "b) Clinical potential and limits of gene therapy"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4BC",
+        "label": {"": "c) Mesenchymal cells and NK cell therapy"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4BD",
+        "label": {"": "d) Tumor vaccines "}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#CellAndGeneTherapy"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "4C: TREATMENT OF HEMATOLOGICAL DISORDERS"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4CA",
+        "label": {"en": "a) Drug therapy including targeted drugs: mechanisms of action, pharmacology and drug resistance"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4CB",
+        "label": {"en": "b) Administration of standard chemotherapy"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4CC",
+        "label": {"en": "c) Short and long term complications of chemotherapy and radiotherapy (including infertility and secondary neoplasias)"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4CD",
+        "label": {"en": "d) Administration of immunosuppressive agents and growth factors"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4CE",
+        "label": {"en": "e) Hematological malignancies in pregnancy"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#TreatmentOfHematologicalDisorders"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "4D: INFECTIOUS COMPLICATIONS"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4DA",
+        "label": {"en": "a) Neutropenic fever "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4DB",
+        "label": {"en": "b) Bacterial disease "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4DC",
+        "label": {"en": "c) Fungal disease"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4DD",
+        "label": {"en": "d) Cytomegalovirus (CMV) infection"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4DE",
+        "label": {"en": "e) Other viral infections in immunocompromised hosts"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#InfectiousComplications"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "4E: SUPPORTIVE AND EMERGENCY CARE"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EA",
+        "label": {"en": "a) Hyperleukocytosis, hyperviscosity, and tumor lysis syndrome"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EB",
+        "label": {"en": "b) Spinal cord compression "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EC",
+        "label": {"en": "c) Superior vena cava syndrome"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4ED",
+        "label": {"en": "d) Mucositis, vomiting, and pain"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EE",
+        "label": {"en": "e) Neurological and psychiatric disturbances "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EF",
+        "label": {"en": "f) Venous access management"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item4EG",
+        "label": {"en": "g) Nutrition"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#SupportiveAndEmergencyCare"}
+   }
+  ]
+ }
+}

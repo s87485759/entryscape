@@ -1,0 +1,1 @@
+({  "createTypeLabel": "प्रकार "})

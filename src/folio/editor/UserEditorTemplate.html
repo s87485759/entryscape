@@ -1,0 +1,43 @@
+<div style="width:100%; height: 100%">
+	<div style="width:100%; height: 100%" dojoAttachPoint="bc" dojoType="dijit.layout.BorderContainer" gutters="false">
+	  <div dojoType="dijit.layout.TabContainer" region="center" dojoAttachPoint="UserProfileTabs">
+  		<div dojoType="dijit.layout.ContentPane" title="Account" selected="true" dojoAttachPoint="UserProfileContentPane">
+		<table style="width: 100%" border="0"><tbody>
+		<tr class="userRow"><td  style="width: 20%"><label dojoAttachPoint="userName"><span dojoAttachPoint="userNameLabel"></span>: </label></td>
+			<td  style="width: 80%"><input type="text" style="width: 100%" 
+			name="userName" dojoAttachPoint="userNameField" dojoType="dijit.form.TextBox" 
+			trim="true" disabled="true" propercase="false"/></td>
+		</tr>
+		<tr class="passwdRow"><td  style="width: 20%"><label dojoAttachPoint="passwd"><span dojoAttachPoint="passwdLabel"></span>: </label></td>
+			<td  style="width: 80%"><input type="password" style="width: 100%" 
+			name="passwd" dojoAttachPoint="passwdField" dojoType="dijit.form.TextBox" 
+			propercase="false"/></td>
+		</tr>
+		<tr class="passwdRow2"><td  style="width: 20%"><label dojoAttachPoint="passwd2"><span dojoAttachPoint="passwd2Label"></span>: </label></td>
+			<td  style="width: 80%"><input type="password" style="width: 100%" 
+			name="passwd2" dojoAttachPoint="passwdField2" dojoType="dijit.form.TextBox" 
+			propercase="false"/></td>
+		</tr>
+		<tr class="languageRow">
+			<td style="width: 20%"><label dojoAttachPoint="language"><span dojoAttachPoint="languageLabel"></span>: </label></td>
+			<td style="width: 80%"><input dojoType="dijit.form.FilteringSelect" dojoAttachPoint="languageSelect"></input></td>
+		</tr>
+		<tr class="messageRow"><td  colspan="2" dojoAttachPoint="userMessage" style="width: 20%"></td>
+		</tr>
+		</tbody></table>
+  	    </div>
+  	    <div dojoType="dijit.layout.ContentPane" title="Profile" dojoAttachPoint="FOAFAPContentPane">
+   				<!--The metadataeditor goes here -->
+  	    </div>
+	    <!--div dojoType="dijit.layout.ContentPane" title="EHA Curriculum Passport" dojoAttachPoint="CPContentPane">
+    		Loading Profile...
+  	    </div-->
+	  </div>
+  	  <div dojoType="dijit.layout.ContentPane" region="bottom">
+		<div style="float:right;white-space: nowrap;">
+			<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:changeClicked" dojoAttachPoint="changeSettingsButton"></div>
+			<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelClicked" dojoAttachPoint="cancelButton"></div>
+		</div>
+	  </div>
+	</div>
+</div>

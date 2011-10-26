@@ -1,0 +1,26 @@
+{"entryId": "1",
+   "info": {"@id": "test:md/1", 
+     "*sc:builtinType": "sc:List", 
+     "dc:created": "20080430", 
+     "dc:modified": "20080430",
+     "*dc:creator": "pr:3",
+     "*sc:read": "pr:2"},
+   "md": {"@id": "test:data/1",
+     "dc:title": {"@value": "Folder 1", "@language": "en"},
+     "dc:description": {"@value": "A top level folder", "@language": "en"}, 
+     "dc:subject": "mainfolder"},
+   "resource": {
+     "children": [
+       {"entryId": "2",
+          "md_stub": {"@id": "test:data/2", "dc:title": "Folder 2", "dc:description": "Another folder 1_stub"}, 
+          info_stub: {"@id": "test:md/2", "*sc:builtinType": "sc:List"}},
+       {"entryId": "3",
+          "md_stub": {"@id": "test:data/3", "dc:title": "Crete", "dc:description": "A nice picture from Crete 1_stub", "dc:format": "image/jpeg"},
+          "info_stub": {"@id": "test:md/3"}},
+       {"entryId": "4", 
+          "md_stub": {"@id": "http://dn.se/", "dc:title": "Dagens Nyheter", "dc:description": "A widely spread morning newspaper in sweden. 1_stub", 
+                  "dc:format": "text/html"}, 
+		  "info_stub": {"@id": "test:md/4", "*sc:referenceType": "sc:Link"}}           
+     ]}
+}
+

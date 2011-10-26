@@ -1,0 +1,3 @@
+({
+  "aclDialogTitle": "Hozzáférési jogosultságok"
+})

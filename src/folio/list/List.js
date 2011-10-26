@@ -1,0 +1,741 @@
+/*
+ * Copyright (c) 2007-2010
+ *
+ * This file is part of Confolio.
+ *
+ * Confolio is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Confolio is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+dojo.provide("folio.list.List");
+dojo.require("folio.list.AbstractList");
+dojo.require("dijit._Widget");
+dojo.require("dijit._Templated");
+dojo.require("dijit.layout._LayoutWidget");
+dojo.require("folio.data.Entry");
+dojo.require("folio.list.EditBar");
+dojo.require("folio.list.Pagination");
+dojo.require("dojo.fx");
+dojo.require("folio.entry.Details");
+
+
+dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWidget, dijit._Templated], {
+	//=================================================== 
+	// Public Attributes 
+	//===================================================
+	fadeDuration: 150,
+	listNodes: [],
+	headLess: false,
+	controlsLess: false,
+	includeDetailsButton: false,
+	rounded: false,
+	isPasteDisabled: true,
+	isPasteIntoDisabled: true,
+	titleClickFirstExpands: false,
+	floatingExpand: true,
+	selectionExpands: false,
+	childAnimationDuration: 40,
+	useAnimations: false,
+	detailsLink: false,
+
+	//=================================================== 
+	// Inherited Attributes 
+	//===================================================
+	region: "",
+	widgetsInTemplate: true,
+	templatePath: dojo.moduleUrl("folio.list", "ListTemplate.html"),
+
+	//=================================================== 
+	// Private Attributes 
+	//===================================================
+	_entry2Icon: {"_top": "folder_home", "_contacts": "contact", "_featured": "spread", "_feeds": "rss", "_trash": "trashcan_full"},
+
+	//=================================================== 
+	// Public API
+	//===================================================
+	setPasteDisabled: function(disabled) {
+		this.isPasteDisabled = disabled;
+		var pasteElt = dojo.query(".paste", this.listHeadDijit.containerNode);
+		if (disabled) {
+		    pasteElt.addClass("disabledEntryButton");
+		} else {
+		    pasteElt.removeClass("disabledEntryButton");
+		}
+	},
+	setPasteIntoDisabled: function(disabled) {
+		this.isPasteIntoDisabled = disabled;
+		var pasteElts = dojo.query(".paste", this.listChildrenDijit.containerNode);
+		if (disabled) {
+		    pasteElts.addClass("disabledEntryButton");
+		} else {
+		    pasteElts.removeClass("disabledEntryButton");
+		}
+	},
+
+	//=================================================== 
+	// Inherited methods 
+	//===================================================
+	constructor: function() {
+		this.editBar = new folio.list.EditBar({list: this});
+		this.pagination = new folio.list.Pagination({list: this});
+	},
+	postCreate: function() {
+		this.inherited("postCreate", arguments);
+		if (this.headLess) {
+			this.borderContainerDijit.removeChild(this.listHeadDijit);
+		}
+		if (this.controlsLess) {
+			dojo.style(this.listControlsDijit.domNode, "display", "none");
+		}
+		
+		dojo.connect(dojo.doc, "keypress", dojo.hitch(this, this.handleKeyPress));
+		dojo.addClass(this.listControlsNode, "editBar");
+		this.listControlsNode.appendChild(this.editBar.domNode);
+		this.listPaginationNode.appendChild(this.pagination.domNode);
+		if (this.rounded) {
+			dojo.addClass(this.domNode, "roundedList");
+		} else {
+			dojo.addClass(this.domNode, "cleanList");			
+		}
+		if (this.floatingExpand) {
+			dojo.addClass(this.domNode, "floatingExpand");
+		}
+		dojo.connect(this.listChildrenDijit, "onClick", dojo.hitch(this, this.handleEvent, -1));
+		dojo.connect(this.listChildrenDijit, "onMouseMove", dojo.hitch(this, function(ev) {
+			if (dojo.hasClass(ev.target, "iconCls") && !this.iconMode) {
+				var parent = ev.target.parentNode;
+				while (parent != null && !dojo.hasClass(parent, "listEntry")) {
+					parent = parent.parentNode;					
+				}
+				var k=0, e=parent;
+				while (e) {
+					e = e.previousSibling
+					k=k+1;
+				}
+				this.handleEvent(k-1, ev);
+			}
+		}));
+	},
+	startup: function() {
+		this.inherited("startup", arguments);
+	},
+	getChildren: function() {
+		return [this.borderContainerDijit];
+	},
+	resize: function(size) {
+		this.inherited("resize", arguments);
+		if (this.borderContainerDijit != null) {
+			this.borderContainerDijit.resize();			
+		}
+	},
+	showList: function(folderEntry, page, callback) {
+		this.inherited("showList", arguments);
+		this.editBar.setActiveFolder(folderEntry);
+		this.selectedIndex = -1;
+		this.faded = false;
+		this.newChildren = null;
+		folio.data.getList(folderEntry, dojo.hitch(this, function(list) {
+			//The if-case is to cover up when the list-entry is actually is a reference to a list-Entry
+			//which means that the folder/list in the UI is entered via a reference and therefore some adjustments have to be made
+			if(folio.data.isReference(folderEntry) && this.application.repository && folderEntry.getExternalMetadataUri().indexOf(this.application.repository,0)>-1){
+				this.list = list.entry;
+			}
+			this.editBar.setActiveFolder(this.list);
+			var p = page != undefined ? page : 0;
+			this.currentPage = p;
+			list.getPage(p, 0, dojo.hitch(this, function(children) {
+			this.pagination.update(list, p);
+				this.newChildren = children;
+				if (this.faded) {
+					this._rebuildList();
+					if (callback) {
+						callback();
+					}
+				}
+			this.editBar.updateButtons();
+			}));
+		}));
+		dojo.fadeOut({
+				node: this.listChildrenDijit.domNode,
+				duration: this.fadeDuration,
+				onEnd: dojo.hitch(this, function() {
+					this.faded = true;
+					if (this.newChildren) {
+						this._rebuildList();
+						if (callback) {
+							callback();
+						}
+					}
+				})
+			}).play();
+	},
+	/**
+	 * Extracts the className for the tag (but only for spans) firing the event
+	 * Only takes the first class 
+	 * (so the returned value for tags will only be the first class 
+	 * even if there are several classes)
+	 * @param {Object} event
+	 */
+	extractActionFromEvent: function(event) {
+		if (event.target.tagName == "SPAN" || event.target.tagName == "IMG") {
+			var action, spaceIndex = event.target.className.indexOf(" ");
+			if (spaceIndex != -1) {
+				action = event.target.className.slice(0, spaceIndex);
+			} else {
+				action = event.target.className;
+			}
+			if (dojo.indexOf(this._acceptedActions, action) != -1) {			
+				return action;
+			}
+		}
+	},
+	changeFocus: function(index, dontPublish) {
+		if (this.focusBlock) {
+			return;
+		}
+		if (!this.useAnimations || this.iconMode || this.selectionExpands === false) {
+			if (this.selectedIndex != -1) {
+				var hideNode = this.listNodes[this.selectedIndex];
+				dojo.removeClass(hideNode, "selected");
+				if (!this.iconMode && this.selectionExpands !== false) {
+					var hideExpandNode = dojo.query(".expandCls", hideNode)[0];
+					dojo.style(hideExpandNode, "display", "none");
+					dojo.style(hideExpandNode, "height", "0px");
+				}
+			}
+			this.doChangeFocus(index, dontPublish);
+			if (index != -1) {
+				var showNode = this.listNodes[index];
+				dojo.addClass(showNode, "selected");
+				if (!this.iconMode  && this.selectionExpands !== false) {
+					var showExpandNode = dojo.query(".expandCls", showNode)[0];
+					dojo.style(showExpandNode, "display", "");
+					dojo.style(showExpandNode, "height", "70px");
+				}
+			}
+		} else {
+			this.focusBlock = true;
+			if (index != -1) {
+				var showNode = this.listNodes[index];
+				var showExpandNode = dojo.query(".expandCls", showNode)[0];
+				var showAnim = dojo.animateProperty({
+						node:showExpandNode,
+					duration: this.childAnimationDuration,
+						properties: {
+							height: 70
+						},
+					beforeBegin: dojo.hitch(this, function() {
+						dojo.addClass(showNode, "selected");
+						dojo.style(showExpandNode, "display", "");
+					}),
+					onEnd: dojo.hitch(this, function() {
+						this.focusBlock = false;
+						this.doChangeFocus(index, dontPublish);
+					})
+				});
+			}
+			if (this.selectedIndex != -1) {
+				var hideNode = this.listNodes[this.selectedIndex];
+				var hideExpandNode = dojo.query(".expandCls", hideNode)[0];
+				var hideAnim = dojo.animateProperty({
+						node:hideExpandNode,
+					duration: this.childAnimationDuration,
+						properties: {
+		  				height: 0
+						},
+					onEnd: dojo.hitch(this, function() {
+						dojo.removeClass(hideNode, "selected");
+						dojo.style(hideExpandNode, "display", "none");
+						if (index == -1) {
+							this.focusBlock = false;
+							this.doChangeFocus(index, dontPublish);
+						}
+					})
+				});
+			}
+			
+			if (index != -1 && this.selectedIndex != -1) {
+				if (this.floatingExpand) {
+	//				dojo.fx.combine([hideAnim, showAnim]).play();				
+					dojo.fx.chain([hideAnim, showAnim]).play();
+				} else {
+					dojo.fx.combine([hideAnim, showAnim]).play();				
+				}
+			} else if (index != -1) {
+				showAnim.play();
+			} else if (this.selectedIndex != -1){
+				hideAnim.play();
+			}
+		}
+	},	
+	isFocus: function (entry) {
+		if (this.selectedIndex == -1 || this.listChildren == null) {
+			return false;
+		}
+		return this.listChildren[this.selectedIndex].getId() === entry.getId(); 
+	},
+	focus: function(folder, entry) {
+		//This only works when there is only one page or the focused entry is on the first page.
+		var page = this.currentPage != null ? this.currentPage : 0;
+		var f = dojo.hitch(this, function() {
+			var index = 0;
+			for (var i=0;i<this.listChildren.length;i++) {
+				if (entry === this.listChildren[i]) {
+					index = i;
+					break;
+				}
+			}
+			if (!this.isFocus(entry)) {
+				this.changeFocus(index, true);
+			}	
+		});
+		if (folder !== this.list || this.currentPage != page) {
+			this.showList(folder, page, f);
+		} else {
+			f();
+		}
+	},
+	showDetails: function(detailsNode, entry) {
+		folio.util.launchToolKitDialog(detailsNode, function(innerNode, onReady) {
+			var viewport = dijit.getViewport();
+			dojo.style(innerNode, {
+										width: Math.floor((viewport.w < 600 ? viewport.w: 600 ) * 0.70)+"px",
+                                        height: Math.floor((viewport.h < 700 ? viewport.h: 700) * 0.70) +"px",
+                                        overflow: "auto",
+                                        position: "relative"    // workaround IE bug moving scrollbar or dragging dialog
+				});
+
+			dojo.addClass(innerNode, "confolio");
+			dojo.addClass(innerNode, "mainPanel");
+			var details = new folio.entry.Details({
+					application: __confolio.application,
+					style: {"width": "100%", "height": "100%"},
+					doFade: false
+				}, dojo.create("div", {}, innerNode));
+			details.startup();
+			if (folio.data.isListLike(entry)) {
+				details._parentListUrl = entry.getUri();
+			} else 	if (folio.data.isContext(entry)) {
+				details._parentListUrl = entry.getContext().getBaseURI()+entry.getId() +"/entry/_systemEntries";
+			}
+			details.editContentButtonDijit.set("label", "Edit");
+			details.update(entry);
+			details.contentViewDijit.show(entry);
+			//Make sure that someDijit is finished rendering, or at least has some realistic size before making the following calls.
+			dijit.focus(details.domNode);
+			onReady();
+			details.resize();
+		}, {orient: {"TL":"BR", "BL": "TR"}});
+	},
+	showMenu: function(entry, index, event) {
+		console.log("launch menu");
+		var self = this, menu = new dijit.Menu({});
+		this._getEditActions(entry, function(eas) {
+			dojo.forEach(eas, function(ea) {
+				 menu.addChild(new dijit.MenuItem({
+                    label: ea.label,
+					disabled: !ea.enabled,
+					onClick: function() {
+						self["_handle_"+ea.action](entry, index, event);
+					}
+                }));
+			});
+			menu.startup();
+			dojo.stopEvent(event);
+
+			//WARNING, using private method in Menu, since there is no public menthod available.
+			menu._scheduleOpen(event.target, null, {x: event.pageX, y: event.pageY});
+			if (self.selectedIndex != index) {
+				self.changeFocus(index);
+			}
+		});
+	},
+	//=================================================== 
+	// Private methods
+	//===================================================
+	_rebuildList: function() {
+		this.listChildren = this.newChildren;
+		this.listNodes = [];
+		var headContainer = dojo.create("div");
+		if (!this.headLess) {
+			if (this.list.getId() == "_systemEntries") {
+				this.list.getContext().getOwnEntry(dojo.hitch(this, this._insertHead, headContainer));
+			} else {
+				this._insertHead(headContainer);
+			}
+		}
+
+		this.listHeadDijit.set("content", headContainer);
+		var childrenContainer = dojo.doc.createElement("div");
+
+		if (this.titleClickFirstExpands) {
+			dojo.addClass(childrenContainer, "titleClickFirstExpands");
+		}
+		for (var i=0; i<this.listChildren.length; i++) {
+			if (this.listChildren[i] && this.listChildren[i].needRefresh()) {
+				var tmpi = i;
+				this.listChildren[tmpi].refresh(dojo.hitch(this,function(refreshedEntry){
+					this._insertChild(childrenContainer,refreshedEntry, tmpi);
+				}));
+			
+			}
+			else {
+				this._insertChild(childrenContainer, this.listChildren[i], i);
+			}
+		}
+		this.listChildrenDijit.set("content", childrenContainer);
+		if (!this.user) {
+			dojo.style(this.editBar.domNode, "display", "none");
+		} else {
+			dojo.style(this.editBar.domNode, "display", "");
+		}
+		this.resize();
+			
+		dojo.fadeIn({
+				node: this.listChildrenDijit.domNode,
+				duration: this.fadeDuration
+		}).play();
+	},
+
+	//=================================================== 
+	// Private methods for generating the head
+
+	_insertHead: function(headContainer, mdEntry) {
+		var mde = mdEntry || this.list;
+		
+		dojo.create("img", {"class": "iconCls", "src": folio.data.getIconPath(mde)}, headContainer);
+
+		//Head Metadata
+		var nr = folio.data.getChildCount(this.list);
+		var childCount = this.resourceBundle.items+":&nbsp;"+(nr != undefined ? nr : "?");
+		var mod = this.list.getModificationDate();
+		mod = mod ? mod : this.list.getCreationDate();
+		mod = mod ? mod.slice(0,10) : "";
+		mod = this.resourceBundle.modified + ":&nbsp;"+mod;
+		dojo.create("div", {"class": "expandTopCls", "innerHTML": childCount+"&nbsp;&nbsp;&nbsp;"+mod}, headContainer);
+		
+		//Title
+		dojo.create("div", {"class": "titleCls", "innerHTML": folio.data.getLabel(mde)}, headContainer);
+
+		//Description
+		dojo.create("div", {"class": "descCls", "innerHTML": folio.data.getDescription(mde).replace(/(\r\n|\r|\n)/g, "<br/>")}, headContainer);
+
+
+		//Buttons
+		var buts = dojo.create("div", {"class": "butsCls"}, headContainer);
+		if (this.includeDetails) {
+			dojo.create("span", {"class": "details", "innerHTML": this.resourceBundle.details}, buts);
+		}
+		if (this.user) {			
+			//Comment
+			if (__confolio.config["possibleToCommentEntry"] === "true") {
+				var isNotSystemEntry = !(this.list instanceof folio.data.SystemEntry) ? "" : "disabledEntryButton";
+				dojo.create("span", {
+					"class": "comment link " + isNotSystemEntry,
+					"innerHTML": this.resourceBundle.comment
+				}, buts);
+			}	
+			//Edit
+			var listMDModifiable = this.list.isMetadataModifiable() ? "": "disabledEntryButton";
+			dojo.create("span", {"class": "edit link "+listMDModifiable, "innerHTML": this.resourceBundle.edit}, buts);
+			
+			//Admin
+			var hasListAdminRights = this.list.possibleToAdmin() ? "" : "disabledEntryButton";
+			dojo.create("span", {"class": "admin link "+hasListAdminRights, "innerHTML": this.resourceBundle.admin}, buts);
+			
+			//Empty trash
+			if (this.list.getId() == "_trash") {
+				var removeNode = dojo.create("span", {"class": "remove link disabledEntryButton", "innerHTML": this.resourceBundle.empty}, buts);
+				this.list.getContext().getOwnEntry(dojo.hitch(this,function(contextEntry){
+					if(contextEntry.possibleToAdmin() && folio.data.getChildCount(this.list) !== 0) {
+						//Only allowed if owner of context and there is something to empty.
+						dojo.removeClass(removeNode, "disabledEntryButton");
+					}
+				}));
+			}
+			
+			//Copy
+			var listMDAndResAccessible = (this.list.isMetadataAccessible() && this.list.isResourceAccessible()) ? "": "disabledEntryButton";
+			dojo.create("span", {"class": "copy link "+listMDAndResAccessible, "innerHTML": this.resourceBundle.copy}, buts);
+			
+			//Cut
+			var hasListAdminRightsAndNotSystemEntry = this.list.possibleToAdmin() && !(this.list instanceof folio.data.SystemEntry)? "" : "disabledEntryButton";
+			dojo.create("span", {"class": "cut link "+hasListAdminRightsAndNotSystemEntry, "innerHTML": this.resourceBundle.cut}, buts);
+
+			//Paste			
+			var pasteAllowed = this.isPasteDisabled && this.list.isResourceModifiable() ? "disabledEntryButton" : "";
+			dojo.create("span", {"class": "paste link "+pasteAllowed, "innerHTML": this.resourceBundle.paste}, buts);
+		}
+
+		//Sorter and Refresher
+		var listControls = dojo.create("div", {"class": "expandCls"}, headContainer);
+		this._insertSorter(dojo.create("div", {"class": "sortCls"}, listControls));
+		this._insertRefreshButton(dojo.create("div", {"class": "refreshBtnCls"}, listControls));
+
+		dojo.connect(headContainer, "onclick", dojo.hitch(this, this.handleEvent, -1));
+	},
+	_insertSorter : function(sortNode) {
+		dojo.create("span", {style: {"verticalAlign": "middle"}, innerHTML: this.resourceBundle.sortLabel+":&nbsp;"}, sortNode);
+		this.orderChanger = new dijit.form.FilteringSelect({name: "orderChanger", searchAttr: "label", autocomplete: true, style: "width:8em;vertical-align: middle"}, 
+			dojo.create("select", null, sortNode));
+					
+		if (this.orderConnector) {
+			dojo.disconnect(this.orderConnector);
+		} else {
+			this.order = "title"			
+		}
+		this.orderChanger.set("store", new dojo.data.ItemFileReadStore({
+            data: {identifier: "value", items: [{value:"none", label: this.resourceBundle.sortByNone},
+						   {value:"title", label: this.resourceBundle.sortByTitle},
+						   {value:"titleD", label: this.resourceBundle.sortByTitleReverse},
+						   {value:"modified", label: this.resourceBundle.sortByModified},
+						   {value:"modifiedD", label: this.resourceBundle.sortByModifiedReverse}]}
+        }));
+		this.orderChanger.set("value", this.order);
+		this.orderConnector = dojo.connect(this.orderChanger, "onChange", this, this._changeOrderClicked);
+	},
+	_changeOrderClicked: function() {
+		if (this.order == this.orderChanger.get("value")) {
+			return;
+		}
+		this.order = this.orderChanger.get("value");
+		switch(this.order) {
+			case "title":
+				this.application.getCommunicator().setSort({sortBy: "title", prio: "List"});
+				break;
+			case "modified":
+				this.application.getCommunicator().setSort({sortBy: "modified", prio: "List"});
+				break;
+			case "titleD":
+				this.application.getCommunicator().setSort({sortBy: "title", prio: "List", descending: true});
+				break;
+			case "modifiedD":
+				this.application.getCommunicator().setSort({sortBy: "modified", prio: "List", descending: true});
+				break;
+			case "none":
+				this.application.getCommunicator().setSort({});
+		}
+		dojo.publish("/confolio/orderChange", [{}]);
+	},
+
+	_insertRefreshButton: function(refreshNode){
+		new dijit.form.Button({showLabel: false, iconClass: "refreshBtn", title:"Press to refresh list", onClick: dojo.hitch(this, function() {
+			this.list.setRefreshNeeded();
+			this.refresh();
+		})}, dojo.create("div", {style: {"width": "8em", "verticalAlign": "middle"}}, refreshNode));
+	},
+	
+	//=================================================== 
+	// Private methods for generating a child starts here
+	
+	_insertChild: function(container, child, number) {
+		var childNode = dojo.create("div");
+		this.listNodes[number] = childNode;
+		if (this.iconMode) {
+			this._insertEntryAsIcon(child, childNode, number);
+			dojo.place(childNode, container);
+		} else {
+			this._insertIcon(child, childNode);
+			var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
+			if (this.selectionExpands === true) {
+				var expandable = dojo.create("div", {"class": "expandCls selected"}, childNode); //Adding the selected class since not right background otherwise when in floating mode
+				this._insertDescription(child, expandable);
+				var bottomInfo = dojo.create("div", {"class": "bottomInfo selected"}, expandable);
+				this._insertChildCountIfList(child, bottomInfo);
+				this._insertModifiedDate(child, bottomInfo);
+				this._insertEditButtons(child, expandable);
+			}
+			
+			// The child is set to refresh (i.e. info.graph is removed) in method this._insertTitle 
+			//and therefor has to be performed last. 
+			this._insertTitle(child, rowNode); 
+			dojo.toggleClass(childNode, "listEntry");
+			dojo.toggleClass(childNode, "evenRow", number%2 != 0); //First row is 0, hence we mark number 1 as even.
+			dojo.place(childNode, container);
+		}
+		dojo.connect(childNode, "onclick", dojo.hitch(this, this.handleEvent, number));
+		dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
+	},
+	_insertIcon: function(child, childNode) {
+		dojo.create("img", {"class": "iconCls", "src": folio.data.getIconPath(child)}, childNode);
+		if (folio.data.isLinkLike(child)) {
+			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, childNode);
+		}
+	},
+	_insertModifiedDate: function(child, childNode) {
+		var mod = child.getModificationDate() || child.getCreationDate();
+		mod = mod ? mod.slice(0,10) : "";
+		dojo.create("div", {
+				"class": "modCls", 
+				"innerHTML": "<span class=\"modified\">" + this.resourceBundle.modified + "</span>:&nbsp;"+mod
+			}, childNode);
+	},
+	_insertChildCountIfList: function(child, childNode) {
+		if (folio.data.isListLike(child)) {
+			var nr = folio.data.getChildCount(child);
+			dojo.create("div", {
+				"class": "modCls",
+				"innerHTML": "<span class=\"modified\">" + this.resourceBundle.items + "</span>:&nbsp;"+(nr != undefined ? nr : "?")+"&nbsp;&nbsp;&nbsp;"
+				}, childNode);
+		}
+	},
+	_insertTitle: function(child, childNode, noDownload) {
+		if (!this.selectionExpands) {
+			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/1downarrow.png"), "style": {"vertical-align": "middle"}, "class": "menu operation"}, childNode);
+		}
+		if (this.detailsLink) {
+			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/information.png"), "style": {"vertical-align": "middle"}, "class": "details operation"}, childNode);
+		}
+		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
+			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
+			if (folio.data.isWebContent(child) && !this.iconMode) {
+				var linkArrow = dojo.create("a", {"target": "_blank", "class": "operation"}, childNode);
+				dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons/external_16x16.png"), "style": {"vertical-align": "middle"}}, linkArrow);
+			}
+		    if (noDownload == null && (child.getLocationType() == folio.data.LocationType.LOCAL && 
+			  child.getBuiltinType() == folio.data.BuiltinType.NONE)  && !this.iconMode) {
+				  var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "class": "operation"}, childNode);
+				  dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/down.png"), "style": {"vertical-align": "middle"}}, download);
+		    }
+
+
+			var aNode = dojo.create("a", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+			if (this.titleClickFirstExpands) {
+				var sNode = dojo.create("span", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+			}
+
+
+			this.getHrefForEntry(child, dojo.hitch(this, function(hrefObj) {
+				dojo.attr(aNode, "href", hrefObj.href);
+				if (folio.data.isWebContent(child) && !this.iconMode) {
+					dojo.attr(linkArrow, "href", hrefObj.href);
+				}
+				if (hrefObj.blankTarget) {
+					dojo.attr(aNode, "target", "_blank");
+					if (folio.data.isWebContent(child) && !this.iconMode) {
+						dojo.attr(linkArrow, "target", "_blank");
+					}
+				}
+			}));
+		} else {
+			dojo.create("span", {"class": "titleCls disabledTitleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+		}
+	},
+	_insertDescription: function(child, childNode) {
+		dojo.create("div", {"class": "descCls", "innerHTML": folio.data.getDescription(child).replace(/(\r\n|\r|\n)/g, "<br/>")}, childNode);
+	},
+	_getEditActions: function(child, callback) {
+		var o = [];
+		if (!this.user) {
+			callback(o);
+		}
+
+		if (this.includeDetails) {
+			o.push({action: "details", enabled: true, label: this.resourceBundle.details});
+		}
+
+		if (__confolio.config["possibleToCommentEntry"] === "true") {
+			o.push({action: "comment", enabled: !(child instanceof folio.data.SystemEntry), label: this.resourceBundle.comment}); //is not a system entry
+		}
+		o.push({action: "edit", enabled: child.isMetadataModifiable(), label: this.resourceBundle.edit});
+		o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});
+		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: this.resourceBundle.remove});
+		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible()), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible
+		o.push({action: "cut", enabled: child.possibleToAdmin() && !(child instanceof folio.data.SystemEntry), label: this.resourceBundle.cut}); //entry admin rights + not system entry
+		if (child.getBuiltinType() == folio.data.BuiltinType.LIST && !this.isPasteIntoDisabled) {
+			o.push({action: "paste", enabled: child.isResourceModifiable(), label: this.resourceBundle.pasteInto});
+		}
+
+		//add to contacts is possible, remains to check if user is already in contacts (requires asynchrous call).
+		if (child.getBuiltinType() == folio.data.BuiltinType.USER && this.user.homecontext) {
+		    var homeContext = this.application.getStore().getContext(this.application.repository+this.user.homecontext);
+			homeContext.loadEntryFromId("_contacts", {}, dojo.hitch(this, function (result) {
+				//TODO, this check needs to be rewritten, depends on specific jdil format.
+				if (result && result.resource && result.resource.children) {
+					var userResUri = user.getResourceUri();
+					var childList=result.resource.children;
+					for (var iter=0; iter<childList.length; iter++) {
+						var mdStub=childList[iter].info["sc:resource"];
+						if(mdStub&&mdStub["@id"] === childResUri){
+							var isInContacts = true;
+							break;
+						}
+					}
+					o.push({action: "add", enabled: !isInContacts, label: this.resourceBundle.add});
+				} else {
+					o.push({action: "add", enabled: true, label: this.resourceBundle.add});
+				}
+				callback(o);
+			}));
+		} else {
+			callback(o);
+		}
+	},
+	_insertEditButtons: function(child, childNode) {
+		var buts = dojo.create("div", {"class": "butsCls selected"}, childNode);
+		this._getEditActions(child, function(eas) {
+			dojo.forEach(eas, function(ea) {
+				dojo.create("span", {"class": ea.action+" link "+(ea.enabled ?  "" : "disabledEntryButton"), "innerHTML": ea.label}, buts);
+			});
+		});
+	},
+
+	_insertEntryAsIcon: function(child, childNode, number) {
+		var iconStr;
+		if (this.list.getId() == "_systemEntries") {
+			iconStr = this._entry2Icon[child.getId()];
+			if (iconStr) {
+				iconStr = ""+dojo.moduleUrl("folio", "icons_oxygen/"+ iconStr +".png");
+			} else {
+				iconStr = folio.data.getIconPath(child);					
+			}
+		} else {
+			iconStr = folio.data.getIconPath(child);
+		}
+		if (iconStr) {
+			dojo.addClass(childNode, "iconView");
+			dojo.connect(childNode,"ondblclick", dojo.hitch(this.application, function() {
+					this.application.publish("showEntry", {entry: child});
+				}));
+			
+			var label = folio.data.getLabel(child);
+			dojo.create("img", {src: iconStr}, childNode);
+			if (folio.data.isLinkLike(child)) {
+				dojo.create("img", {"class": 'iconCls', "style": {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, childNode);
+			}
+			this._insertTitle(child, childNode, true);
+//			dojo.create("div", {"class": "entryLabel", "innerHTML": label}, childNode);
+		}
+	},
+	_insertIcons: function() {
+		folio.data.getAllChildren(this.systemEntries, dojo.hitch(this, function(children) {
+			this.icons.innerHTML = "";
+			for (var i=0;i<children.length;i++) {
+				var entry = children[i];
+				var iconStr = this._entry2Icon[entry.getId()];
+				if (iconStr) {
+					var div = document.createElement("div");
+					if (this.selectedEntryId == entry.getId()) {
+						dojo.toggleClass(div, "selected");
+						this.selectedDiv = div;
+					}
+					dojo.connect(div, "onclick", dojo.hitch(this, this.select, div, entry));
+					var src = ""+dojo.moduleUrl("folio", "icons_oxygen/"+ iconStr +".png");
+					var label = folio.data.getLabel(entry);
+					div.innerHTML="<img src='"+src+"'/><br/><center>"+label+"</center>";
+					this.icons.appendChild(div);
+				}
+			}
+		}));
+	}
+});

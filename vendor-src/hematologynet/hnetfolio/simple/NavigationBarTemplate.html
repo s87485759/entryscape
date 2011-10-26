@@ -1,0 +1,31 @@
+<div class="navigationBar">
+	<a href="#view=start" class="logo"></a>
+	<div class="area1"><div style="display: table-cell;">
+			<span dojoAttachPoint="userBlock">
+				<span class="label" dojoAttachPoint="greetingNode"></span>&nbsp;
+				<a class="link user" dojoAttachPoint="userFieldNode"></a>|
+			</span>
+			<span dojoAttachPoint="homeLinkNodeWrapper" style="display: none"><a class="link" dojoAttachPoint="homeLinkNode"></a>|</span>
+			<span dojoAttachPoint="settingsLinkNodeWrapper" style="display: none"><span class="link" dojoAttachPoint="settingsNode" dojoAttachEvent=" onclick:_settingsClicked"></span>|</span>
+			<span class="block label"><span dojoAttachPoint="languageLabelNode"></span>:
+			<select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" name="localeChanger" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeChanger"></select></span>
+			<span style="display: none" dojoAttachPoint="helpLinkSpan">|<a class="link" dojoAttachPoint="helpLinkNode"></a></span>
+			<span style="display: none" dojoAttachPoint="aboutLinkSpan">|<a class="link" dojoAttachPoint="aboutLinkNode"></a></span>
+			<span class="link" dojoAttachPoint="loginStatusNode" dojoAttachEvent="onclick:_loginLinkClicked"></span>
+	</div></div>
+	<div class="area2"><div style="display: table-cell;">
+		<div id="testBar" style='width:200px;position: absolute;display:none;margin-top:4px' dojoAttachPoint="progress" indeterminate="true" dojoType="dijit.ProgressBar" annotate="true" maximum="12" duration="2000"></div>
+		<span class="link" dojoAttachPoint="competenceSearch" class = "link" dojoAttachEvent="onclick:_competenceSearchClicked">Competence-based search</span>
+		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>&nbsp;&nbsp;<div
+		dojoType="dijit.form.ComboButton" dojoAttachPoint="searchButton" dojoAttachEvent="onClick:_searchClicked" style="vertical-align: middle; margin: 1px;"><div
+			      dojoType="dijit.Menu" toggle="fade" style="display: none;">
+                <div dojoType="dijit.CheckedMenuItem" dojoAttachPoint="searchFolderCheck" dojoAttachEvent="onChange:_searchFolderClicked"></div>
+                <div dojoType="dijit.CheckedMenuItem" dojoAttachPoint="searchAllCheck" dojoAttachEvent="onChange:_searchAllFoldersClicked"></div>
+                <div dojoType="dijit.CheckedMenuItem" dojoAttachPoint="searchToBeAnnotatedCheck"></div>
+				<div dojoType="dijit.CheckedMenuItem" dojoAttachPoint="searchUserCheck"></div>
+            </div>
+        </div>
+	</div></div>
+	<div class="area3">
+	</div>
+</div>

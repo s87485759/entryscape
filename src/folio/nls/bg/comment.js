@@ -1,0 +1,1 @@
+({  "commentDialogTitle": "Коментарии за:",  "finishButtonLabel": "Прати",  "cancelButtonLabel": "Отмяна",  "busyButtonLabel": "Обработка",  "defaultTextAreaText": "запишете коментара си тук...",  "sendErrorLabel": "Грешка: не може да бъдат пратени коментар"})

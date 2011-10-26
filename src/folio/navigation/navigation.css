@@ -1,0 +1,160 @@
+/*----------- NavigationBar ---------------*/
+.navigationBar .logo {
+	float: left;	
+	width: 240px;
+	height: 60px;
+	margin-bottom: 4px;
+}
+
+.navigationBar .area1 {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
+
+.navigationBar .area2 {
+	position: absolute;
+	bottom: 4px;
+	right: 1em;
+}
+
+.navigationBar.minimal .logo {
+	display:hidden;
+	height: 2em;
+	margin-bottom: 4px;
+	background: none;	
+}
+.navigationBar.minimal .languageSelector,
+.navigationBar.minimal .area2 {
+	display: none;
+}
+
+.navigationBar .area3 {
+	position: absolute;
+	bottom: 4px;
+	left: 240px;
+}
+
+.navigationBar .searchField {
+	width:200px;
+	font-size: larger;
+	vertical-align: middle;
+}
+
+.navigationBar .link.user {
+	font-style: italic;
+	margin-left: 0px;
+}
+
+.navigationBar .contextLabel {
+	margin-left: 1em;
+}
+
+.navigationBar .link {
+	text-decoration: none;	
+}
+
+.navigationBar .link,
+.navigationBar span.block{
+	margin-right: 0.7em;
+	margin-left: 0.7em;
+}
+
+.navigationBar .link:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+/*----------- Breadcrumbs -----------*/
+.breadcrumbs {
+	line-height: 2em;
+	padding-left: 0.5em;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+}
+
+.breadcrumbs .bcNode>.dijitButton,
+.breadcrumbs .crumb {
+	margin-left: 6px;
+	float: left;
+	display: inline-block;
+}
+
+.breadcrumbs .crumb {
+	margin-left: 6px;
+}
+
+.breadcrumbs .crumb .label,
+.breadcrumbs .crumb .choices{
+	border-width: 2px;
+	border-style: outset;
+	padding-left: 2px;
+	padding-right: 2px;
+	cursor: pointer;
+}
+.breadcrumbs .crumb .choices {
+	margin-right: 6px;
+}
+
+.breadcrumbs .crumb .choices.pressed {
+	border-style: inset;
+	cursor: auto;
+}
+
+.breadcrumbs .crumb .choices .choiceslabel {
+	font-size: xx-small;
+}
+.breadcrumbs .listMode {
+	border-width: 2px;
+	border-style: outset;
+	cursor: pointer;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.breadcrumbs .listMode.CLI {
+	float:right;
+	margin-right: 0.3em;
+}
+.breadcrumbs .crumb .label.selected,
+.breadcrumbs .listMode.selected {
+	border-style: inset;
+	cursor: auto;
+}
+
+.breadcrumbs .crumb .label.select {
+	border-right: 1x solid black;
+}
+
+.breadcrumbs .contextSelect {
+	width: 8em;
+}
+.breadcrumbs>.bcNode>* {
+	vertical-align: middle;
+}
+
+.breadcrumbsChoicesDialog div.choice:hover {
+	color: white;
+	background: blue;
+}
+
+.breadcrumbs .toggleTreeViewVisible {
+	background-image: url(../../folio/icons_oxygen/22x22/view_tree.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 22px;
+}
+
+.breadcrumbs .showListLikeList {
+	background-image: url(../../folio/icons_oxygen/22x22/view_list.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 22px;
+}
+
+.breadcrumbs .showListLikeIcons {
+	background-image: url(../../folio/icons_oxygen/22x22/view_icon.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 22px;
+}

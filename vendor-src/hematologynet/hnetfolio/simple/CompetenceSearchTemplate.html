@@ -1,0 +1,40 @@
+<div>
+   <div dojoType="dijit.Dialog" dojoAttachPoint="compSearchDialog"> 
+    <div dojoType="dijit.layout.AccordionContainer" style="height: 100%; width: 100%">
+      <div dojoType="dijit.layout.ContentPane" title="Search">
+	  <div dojoType="dijit.layout.ContentPane" region='top'>
+      	<div dojoType="dijit.layout.ContentPane" region='top' style="width: 400px;">
+      	Here it is possible to search the Hematology Confolio by making use of the <b>EHA Curriculum passport</b>. 
+		Clicking on the <b>"Browse"</b>-button below will open up a structure from where you can choose an item 
+		from the CV-passport and when clicking on search all resources that has been "tagged" that it is 
+		related to this item will appear </br>
+		For more information and help with this search-functionality, click <b>"Information and help"</b> below.
+		<hr/>
+	  	</div>
+		<div style="margin-top: 4px;">
+		   <div style="float:right" dojoAttachEvent="onClick: addRow" dojoType="dijit.form.Button" dojoAttachPoint="dialogAddRow">Add row</div>	
+		</div>
+	  </div>
+      <div dojoType = "dijit.layout.ContentPane" dojoAttachPoint="compSearchMainPane">
+	     <table id="competenceTable">
+	  	    <tbody id="competenceTableBody">
+      	       <!--tr><div dojoType="dijit.form.DropDownButton" width="100%">
+		          <span>Browse</span>
+                  <div dojoType="dijit.TooltipDialog"></div>
+                </div></tr--> 
+             </tbody>
+		 </table>
+	  </div>
+	  <div dojoType="dijit.layout.ContentPane" region='bottom'>
+	  	<div style="margin-top: 4px;">
+			<div style="float:right" dojoAttachEvent="onClick: performSearch" dojoType="dojox.form.BusyButton" busyLabel="" dojoAttachPoint="dialogSearch">Search</div>
+			<div style="float:right" dojoAttachEvent="onClick: onFinish" dojoType="dijit.form.Button" dojoAttachPoint="dialogCancel">Close</div>	
+		</div>
+	  </div>
+	  </div>
+	  <div dojoType="dijit.layout.ContentPane" title ="Information and help">
+	 	This section is not yet complete...
+	 </div>
+	 </div>	
+   </div>
+</div>

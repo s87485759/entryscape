@@ -1,0 +1,58 @@
+<div>
+	<div class="infodisplay">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>Portfolio Export</div></td></tr>
+			<tr class="inforow">
+				<td><div>Export portfolio</div> <div>(Will open in new window)</div></td>
+				<td>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:_exportPortfolio">Export</div>
+					</div>
+					<div style="margin:0.2em">
+						<input id="${id}_onlyMDCheckbox"dojoAttachPoint="onlyMDCheckboxDijit" dojoType="dijit.form.CheckBox" id=></input>
+						<label for="${id}_onlyMDCheckbox">Only export the metadata</label>
+					</div>
+				</td>
+			</tr>
+			
+			<tr class="infoheader"><td colspan="2"><div>Portfolio Import</div></td></tr>
+			<tr class="inforow">
+				<td colspan="2"><div>Make sure to read the documentation before using the import function.</div></td></tr>
+				<td>Import</td>
+				<td>
+					<div dojoAttachPoint="fileUploadChangeArea" name="inputFile"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>	
+					<div dojoAttachPoint="fileSaveButton" style="float:left" dojoType="dojox.form.BusyButton" disabled="true" dojoAttachEvent="onClick: changeUploadedFile">Submit</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>	
+					<div dojoAttachPoint="importMsgAreaNode"></div>
+				</td>
+			</tr>
+			<tr class="infoheader"><td colspan="2"><div>Portfolio Delete</div></td></tr>
+			<tr class="inforow">
+				<td>Delete</td>
+				<td>
+					<div dojoAttachPoint="removeButton" dojoType="dijit.form.Button" dojoAttachEvent="onClick:_showRemoveDialog">Delete this context</div>
+				</td>
+			</tr>
+			<tr>
+				<div dojoAttachPoint="deleteMsgAreaNode"></div>
+			</tr>			
+		</table>
+	</div>
+	<div>
+	 	<div dojoType="dijit.Dialog" id="formDialog" dojoAttachPoint="RMDialog" title="WARNING: Really remove this Portfolio/Context?">
+		  <button dojoType="dijit.form.Button" dojoAttachEvent="onClick:_removeContext">OK</button>
+		  <button dojoType="dijit.form.Button" dojoAttachEvent="onClick:_closeRMDialog">Cancel</button>
+		</div>	
+	</div>
+</div>

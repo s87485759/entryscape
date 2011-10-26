@@ -1,0 +1,50 @@
+<div>
+	<div dojoAttachPoint='errorDialog' dojoType='dijit.Dialog'>
+		<div dojoType="dijit.layout.ContentPane" dojoAttachPoint="errorDialogMessage"></div>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='errorDialogOk'>Ok</div>
+	</div>
+	<div dojoAttachPoint='deleteDialog' dojoType='dijit.Dialog'>
+		<p>Really delete edited/opened resource?<p>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='deleteDialogCancel'>Cancel</div>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='deleteDialogOk'>Ok</div>
+	</div>
+	<div dojoAttachPoint='saveDialog' dojoType='dijit.Dialog'>
+		<p>Save resource before continuing?<p>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='saveDialogSave'>Save</div>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='saveDialogDiscard'>Discard Changes</div>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='saveDialogCancel'>Cancel</div>
+	</div>
+	<div dojoAttachPoint='aboutDialog' dojoType='dijit.Dialog'>
+		<br>Meditor is built on top of the SHAME code-library that is licensed under LGPL</br>
+		<br><a href=http://kmr.nada.kth.se/shame>http://kmr.nada.kth.se/shame</a></br>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='aboutDialogOK'>OK</div>
+	</div>
+	<div dojoAttachPoint='clearDialog' dojoType='dijit.Dialog'>
+		<br>Really clear all the fields in the current form?</br>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='clearDialogYes'>Yes</div>
+		<div dojoType='dijit.form.Button' dojoAttachPoint='clearDialogNo'>No</div>
+	</div>
+	<div dojoAttachPoint='loadingDialog' dojoType='dijit.Dialog'>
+	    <div dojoType="dijit.layout.ContentPane" dojoAttachPoint="progressLabel" align="left"></div>
+		<div dojoType="dijit.ProgressBar" style="width:300px" dojoAttachPoint="progBar"></div>
+	</div>
+	
+	<div dojoType="dijit.layout.BorderContainer" class="shameLC">
+    	<div dojoType="dijit.Toolbar" region="top">
+			<div dojoType="dijit.form.Button" dojoAttachPoint="newButton"><b>New</b></div>
+			<div dojoType="dijit.form.Button" dojoAttachPoint="deleteButton">Delete</div>
+			<div dojoType="dijit.form.Button" dojoAttachPoint="clearButton">Clear</div>
+			<div dojoType="dijit.form.Button" dojoAttachPoint="reloadButton">Reload</div>
+			<div dojoType="dijit.form.Button" dojoAttachPoint="saveButton"><b>Save</b></div>
+			<div dojoType="dijit.form.Button" dojoAttachPoint="aboutButton">About Meditor</div>
+			<!--div dojoType="dijit.form.Button" dojoAttachPoint="EmptyProfileButton" disabled="true">  Select Profile:</div>
+			<div dojoType="dijit.form.FilteringSelect" dojoAttachPoint="APSelect"></div-->		    		
+		</div>
+		<div dojoType="dijit.layout.BorderContainer" region="center">
+			<div dojoType="dijit.layout.ContentPane" region="left" style="width: 20em" splitter="true">
+				<div dojoType="shame.meditor.ResourceList" dojoAttachPoint="resourceList"></div>
+			</div>
+			<div dojoType="dijit.layout.ContentPane" dojoAttachPoint="formCP" region="center" splitter="true"></div>
+		</div>
+	</div>
+</div>

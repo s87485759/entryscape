@@ -1,0 +1,66 @@
+<div>
+	<div class="infodisplay">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>Portfolio quota</div></td></tr>
+			<tr class="inforow">
+				<td>Quota given: </td>
+				<td>
+					<input 
+						disabled=true
+						type="text" 
+						dojoType="dijit.form.NumberTextBox"
+						dojoAttachPoint="quotaFieldDijit"
+						dojoAttachEvent="onKeyUp:quotaFieldChanged"
+						trim="true"
+						invalidMessage="Only numeric value allowed!">
+					</input>
+				</td>	
+			</tr>
+			<tr class="inforow">
+				<td>Quota Unit: </td>
+				<td>
+					<select disabled=true
+						dojoType="dijit.form.FilteringSelect"
+						dojoAttachPoint="quotaUnitSelectDijit"
+						dojoAttachEvent="onChange:quotaUnitChanged">
+						<option value=""></option>
+						<option value="B">
+        					Bytes
+    					</option>
+						<option value="kB">
+        					kiloBytes
+    					</option>
+						<option value="MB">
+        					MegaBytes
+    					</option>
+						<option value="GB">
+        					GigaBytes
+    					</option>
+						<option value="TB">
+        					TeraBytes
+    					</option>
+						<option value="PB">
+        					PetaBytes
+    					</option>
+					</select>
+				</td>	
+			</tr>
+			<tr class="inforow">
+				<td>Default: </td>
+				<td dojoAttachPoint="quotaDefaultTDNode"></td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty -->&nbsp;</td>
+				<td>
+					<div class="error" dojoAttachPoint="portfolioQuotaErrorNode" style="display: none;"><span dojoAttachPoint="portfolioQuotaErrorMessageNode"></span><!--<span> more information </span>--></div>
+					<div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeQuotaClicked" dojoAttachPoint="changeQuotaBtn" disabled="true">Save Quota</button>
+					</div>
+					<div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Setting to Default..." dojoAttachEvent="onClick:changeToDefaultQuotaClicked" dojoAttachPoint="changeToDefaultQuotaBtn" disabled="true">Set default quota</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

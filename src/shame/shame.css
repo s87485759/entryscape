@@ -1,0 +1,115 @@
+.shameRoot {
+	width: 100%;
+}
+
+/* Removes borders and padding in general. */
+.shameTable {
+  border-collapse: collapse;
+  border-width: 0px;
+  padding: 0px;
+}
+
+.shameGroup {
+  border-width: 0px;
+  padding: 0px;
+  border-spacing: 0 0;
+  padding-bottom: 7px;
+}
+
+.shameCell {
+	padding: 0px;
+	margin: 0px;
+}
+
+.shameGroup {
+	width: 100%;
+}
+
+.shamePresentationMode .shameGroup .shameGroupLevel .shameLabel {
+	padding-top: 7px;
+}
+
+.shamePresentationMode .shameGroup .shamePop .shameLabel
+.shamePresentationMode .shameGroup .shamePop .shameValue,
+.shamePresentationMode .shameGroup tr:first-child .shameValue, 
+.shamePresentationMode .shameGroup tr:first-child .shameLabel{
+	border-top-width: 0px;	
+}
+
+.shamePresentationMode .shameGroup .shameLevel .shameValue, 
+.shamePresentationMode .shameGroup .shameLevel .shameLabel {
+	border-top-width: 0px;
+	border-top-style: solid;
+	/*border-top-color: #BF9F73;*/
+}
+
+.shameLabel {
+	text-transform: none;
+	font-weight: bold;
+	font-style: normal;
+	padding-right: 4px;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.shameMult {
+	width: 66px;
+}
+
+.shameText input, .shameText, .shameValue, .shameValuePresentation{
+	width: 100%;
+	padding-right: 3px;
+	padding-left: 2px;
+}
+
+.shamePresentationMode .shameValue {
+	/*background-color: white;*/
+}
+
+.shameLangCell, .shameLangCell .dijitComboBox {
+	width: 8em;
+}
+
+.minusButton {
+	top: 0px;
+   left: 3px;
+   background:url("images/minus.png") no-repeat top left;
+	width:16px;
+	height:16px;
+}
+.plusButton {
+	top: 0px;
+	left: 3px;
+	background:url("images/plus.png") no-repeat top left;
+	width:16px;
+	height:16px;
+}
+
+.infoIcon {
+	height:16px;
+	padding-left: 4px;
+	vertical-align: middle;
+}
+
+.shameIndent {
+  padding: 0px;
+  padding-left: 1.5em;            /*The indentation used for groupings*/
+}
+
+.shameGroup {
+  border-width: 0px;              /*Width of internal borders in the editor*/
+  border-right-width: 0px;        /*No right-side internal borders*/
+  border-style: solid;            /*Style of internal borders in the editor*/
+}
+
+.shameRoot {
+  border-width: 0px;              /*Width of internal borders in the editor*/
+  border-style: solid;            /*Style of internal borders in the editor*/
+}
+
+.notselectable {
+  /*color: #BCD5F0;*/
+}
+.currentselection {
+  color: red;
+}

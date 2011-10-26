@@ -1,0 +1,35 @@
+<div style="overflow: hidden" class="confolio userProfile">
+	<div dojoType="dijit.layout.BorderContainer" gutters="false" style="height: 100%" dojoAttachPoint="bc" design="sidebar">
+		<div dojoType="dijit.layout.BorderContainer" region="center" class="profile" gutters="false">
+			<div dojoType="dijit.layout.ContentPane" region="top">
+				<div class="profilePicture" dojoAttachPoint="profilePictureNode"></div>
+				<div class="profileInfo">
+					<h1 class="center"><span dojoAttachPoint="principalLabelNode"></span>&nbsp;&nbsp;<span dojoAttachPoint="principalNode"></span></h1>
+					<table class="fixedProfileInfo thinBorder">
+						<tr><td dojoAttachPoint="principalNameLabelNode"><div dojoAttachPoint="principalNameLabelNode"></td><td dojoAttachPoint="principalNameNode"></td></tr>
+						<tr dojoAttachPoint="homeContextRowNode"><td><div class="homeContextImage" dojoAttachPoint="homeContextLabelNode"></div></td><td><a dojoAttachPoint="homeContextNode"></a><span dojoAttachPoint="homeContextQuotaNode"></span></td></tr>
+					</table>
+				</div>
+			</div>
+			<div dojoType="dijit.layout.TabContainer" nested="true" dojoAttachPoint="tabContainerDijit" region="center">
+		    	<div dojoType="dijit.layout.ContentPane" splitter="false" dojoAttachPoint="generalProfilePaneDijit">
+						<div class="roundHeader largerText invertedText" dojoAttachPoint="memberHeaderNode"></div>
+			       		<div class="roundBody" dojoAttachPoint="memberNode"></div>
+			       		<div class="roundHeader largerText invertedText" dojoAttachPoint="rightsHeaderNode"></div>
+			       		<div class="roundBody" dojoAttachPoint="rightsNode"></div>
+		    	</div>
+		    	<div dojoType="dijit.layout.ContentPane" title="Profile" splitter="false" dojoAttachPoint="profileProfilePaneDijit">
+					<div dojoType="folio.editor.RFormsPresenter" dojoAttachPoint="profileMDInfoDijit"></div>
+		    	</div>
+			</div>
+		</div>
+		<div  dojoType="dijit.layout.BorderContainer" class="latestMaterial" region="right" gutters="false">
+			<div  dojoType="dijit.layout.ContentPane" region="top" class="roundHeader">
+				<div class="largerText invertedText" dojoAttachPoint="latestMaterialNode"></div>
+			</div>
+			<div class="roundBody" dojoType="dijit.layout.ContentPane" region="center">
+				<div dojoType="folio.list.SearchList" dojoAttachPoint="simpleSearchList"></div>
+			</div>
+		</div>
+	</div>
+</div>

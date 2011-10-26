@@ -1,0 +1,13 @@
+{entryId: "4",
+   mmd: {"@id": "test:md/4", 
+	 "dc:created": "20080430", 
+	 "dc:modified": "20080430", 
+	 "*sc:referredIn": "test:data/1",
+	 "*sc:referenceType": "sc:Link",
+	 "*dc:creator": "pr:3",
+	 "*sc:read": "pr:2"},
+   md: {"@id": "http://dn.se/",
+	 "dc:title": "Dagens Nyheter", 
+	 "dc:description": "A widely spread morning newspaper in sweden.",
+	 "dc:format": "text/html"}
+}

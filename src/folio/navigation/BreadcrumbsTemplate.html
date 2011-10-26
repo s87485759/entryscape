@@ -1,0 +1,15 @@
+<div class="breadcrumbs">
+  <div dojoAttachPoint="bcNode" class="bcNode">
+	<div class="listMode" dojoAttachPoint="showTreeNode"></div>
+	<div class="listMode" dojoAttachPoint="listListModeNode"></div>
+	<div class="listMode" dojoAttachPoint="iconListModeNode"></div>
+	<div class="listMode CLI" style="display: none;" dojoAttachPoint="CLIModeNode"></div>
+	<span dojoAttachPoint="breadcrumbs"></span>
+	<div dojoType="dijit.TooltipDialog" dojoAttachPoint="choicesDialogDijit" style="display:none;" class="breadcrumbsChoicesDialog" autofocus="false">
+		<div style="display:none;width: 6em;" dojoAttachPoint="typeAhedBoxDijit" dojoType="dijit.form.TextBox"></div>
+		<div dojoAttachPoint="choicesNode">
+		</div>
+	</div>
+  </div>
+  <div dojoType="folio.navigation.CommandLine" region="center" dojoAttachPoint="CLIDijit" style="display: none;width:100%"></div>
+</div>

@@ -1,0 +1,414 @@
+{
+ "id": "EHACurriculumV2Part7",
+ "label": {
+  "en": "Default Base formlet in compound formlets",
+  "sv": "Default formulet bas i sammansatta formuletter"
+ },
+ "description": {
+  "en": "This is the formlet used as base in compound formlets by default. The formlets consists of a query with only a base variable and a minimal form specification. If the base formlet is not loaded (i.e. the containing formlet set) many compound formlets will break.",
+  "sv": "Denna formuletten används som bas i många sammansatta formuletter som default. Formuletten består av en fråga med endast en basvariabel samt en minimal formulärspecifikation. Om denna basformulett inte är laddad (egentligen den omgivande formulett mängden) så kommer många sammansatta formuletter inte att fungera."
+ },
+ "root": {
+  "nodetype": "RESOURCE",
+  "label": {
+   "de": "Ressource",
+   "en": "Resource",
+   "sv": "Resurs"
+  },
+  "@type": "group",
+  "content": [
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "7 TRANSFUSION MEDICINE"},
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "7A: BLOOD DONATION"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7AA",
+        "label": {"en": "a) Council of Europe and other relevant regulations for donor eligibility "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7AB",
+        "label": {"en": "b) Epidemiology of infectious diseases in the area "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7AC",
+        "label": {"en": "c) Donor preparation; venesection, donation screening, donation associated adverse events"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7AD",
+        "label": {"en": "d) Preparation and preservation of standard and special blood components (Whole Blood; Red cells; Plasma; Platelets. Cryoprecipitate; irradiated; leukocyte depleted; washed; pathogen reduced; Pediatric Units)"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#BloodDonation"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "7B: IMMUNOHEMATOLOGY"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7BA",
+        "label": {"en": "a) Cross matching, direct and indirect antiglobulin (Coombs) tests, ABO and Rh typing of red blood cells"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7BB",
+        "label": {"en": "b) HLA typing and anti-HLA antibody detection"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7BC",
+        "label": {"": "c) Minor red cell antigens and antibodies "}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#Immunohematology"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "7C: GUIDELINES AND REGULATIONS FOR USE OF BLOOD AND BLOOD COMPONENTS"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7CA",
+        "label": {"en": "a) Red Cells, Platelets, Plasma"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7CB",
+        "label": {"en": "b) Granulocytes"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7CC",
+        "label": {"en": "c) Blood derivatives (incl. immunoglobulins) "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7CD",
+        "label": {"en": "d) Alternatives to allogeneic blood transfusion (autologous blood; use of r-huEPO, iron etc)"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7CE",
+        "label": {"en": "e) Massive transfusion (in surgery, trauma, pregnancy, etc)"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#GuidelinesAndRegulationsForUseOfBloodAndBloodComponents"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": ""},
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "7D: ADMINISTRATION OF TRANSFUSION AND MANAGEMENT OF COMPLICATIONS"},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DA",
+        "label": {"en": "a) Information to the patient"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DB",
+        "label": {"en": "b) Routine vs. emergency transfusions"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DC",
+        "label": {"en": "c) Proper identification of the unit and recipient "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DD",
+        "label": {"en": "d) Rate and conditions of administration and monitoring"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DE",
+        "label": {"en": "e) Fetal, neonatal and pediatric transfusion"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DF",
+        "label": {"en": "f) Transfusion reactions and complications (non-hemolytic, hemolytic, allergic, transfusion-related acute lung injury TRALI, transfusion associated GvHD)"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7DG",
+        "label": {"en": "g) Hemovigilance programs"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#AdministrationOfTransfusionAndManagementOfComplications"}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "@type": "group",
+    "cls": ["rformsTable","rformsFirstcolumnfixedtable"],"property": "http://scam.sf.net/schema#hasCompetence",
+    "content": [
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"": "7E: MANAGEMENT OF SPECIAL CONDITIONS "},
+      "@type": "choice",
+      "cls":["rformsNoneditable"],"property": "http://scam.sf.net/schema#competencyDefinition",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EA",
+        "label": {"en": "a) Hemolytic disease of the newborn"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EB",
+        "label": {"en": "b) Neonatal thrombocytopenia and neutropenia "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EC",
+        "label": {"en": "c) Laboratory work-up of immune hemolytic anemias "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7ED",
+        "label": {"en": "d) Plasmapheresis "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EE",
+        "label": {"en": "e) Red cell exchange"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EF",
+        "label": {"en": "f) Plateletpheresis"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EG",
+        "label": {"en": "g) Leukapheresis (therapeutic)"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EH",
+        "label": {"en": "h) Donation by apheresis "}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EI",
+        "label": {"en": "i) Multi-component collection"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EJ",
+        "label": {"en": "j) Performing therapeutic phlebotomy"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#Item7EK",
+        "label": {"en": "k) Special components (Leukoreduced, CMV safe, washed, gamma irradiated, pathogen reduced, cryopreserved)"}
+       }
+      ]
+     },
+     {
+      "styles": ["ChoiceFormItem"],
+      "nodetype": "URI",
+      "cardinality": {
+       "min": 0,
+       "pref": 1,
+       "max": 1
+      },
+      "label": {"en": "Level"},
+      "@type": "choice",
+      "property": "http://scam.sf.net/schema#competenceLevel",
+      "choices": [
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel2",
+        "label": {"en": "2"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel1",
+        "label": {"en": "1"}
+       },
+       {
+        "value": "http://www.ehaweb.org/rdf/2011-passport#CompetenceLevel3",
+        "label": {"en": "3"}
+       }
+      ]
+     }
+    ],
+    "constraints": {"http://purl.org/dc/terms/type": "http://www.ehaweb.org/rdf/2011-passport#ManagementOfSpecialConditions"}
+   }
+  ]
+ }
+}

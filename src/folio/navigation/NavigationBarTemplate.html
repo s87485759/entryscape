@@ -1,0 +1,24 @@
+<div class="navigationBar minimal">
+	<a href="#view=start" class="logo"></a>
+	<div class="area1"><div style="display: table-cell;">
+			<span dojoAttachPoint="userBlock">
+				<span class="label" dojoAttachPoint="greetingNode"></span>&nbsp;
+				<a class="link user" dojoAttachPoint="userFieldNode"></a>
+			</span>|
+			<span class="link" dojoAttachPoint="loginStatusNode" dojoAttachEvent="onclick:_loginLinkClicked"></span>
+			<span dojoAttachPoint="homeLinkNodeWrapper" style="display: none">|<a class="link" dojoAttachPoint="homeLinkNode"></a></span>
+			<span dojoAttachPoint="settingsLinkNodeWrapper" style="display: none">|<span class="link" dojoAttachPoint="settingsNode" dojoAttachEvent=" onclick:_settingsClicked"></span></span>
+			<span class="languageSelector">|<span class="block label"><span dojoAttachPoint="languageLabelNode"></span>:
+			<select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" name="localeChanger" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeChanger"></select></span></span>
+			<span style="display: none" dojoAttachPoint="helpLinkSpan">|<a class="link" dojoAttachPoint="helpLinkNode"></a></span>
+			<span style="display: none" dojoAttachPoint="aboutLinkSpan">|<a class="link" dojoAttachPoint="aboutLinkNode"></a></span>
+	</div></div>
+	<div class="area2"><div style="display: table-cell;">
+		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>&nbsp;&nbsp;<div
+		dojoType="dijit.form.Button" dojoAttachPoint="searchButton" dojoAttachEvent="onClick:_searchClicked" style="vertical-align: middle; margin: 1px;">
+        </div>
+	</div></div>
+	<div class="area3">
+	</div>
+	<div dojoType="folio.editor.ResourceEditorDialog"></div>
+</div>

@@ -1,0 +1,36 @@
+<div class="searchDetails">
+	<div class="roundBody">
+		<div style="display: none" class="group thinBorder">
+			<div class="groupHeader"><span dojoAttachPoint="searchAgainstLabelNode"></span>:</div>
+		</div>
+	</div>
+
+	<div class="groupHeader"><span dojoAttachPoint="includeTypeLabelNode"></span>:</div>
+	<div class="group thinBorder">
+		<span dojoType="dijit.form.CheckBox" id="${id}_t_image" dojoAttachPoint="includeTIMAGEDijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
+		<label for="${id}_t_image" dojoAttachPoint="includeTImageLabelNode"></label><br>
+		<span dojoType="dijit.form.CheckBox" id="${id}_t_text" dojoAttachPoint="includeTTEXTDijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
+		<label for="${id}_t_text" dojoAttachPoint="includeTTextLabelNode"></label><br>
+		<span dojoType="dijit.form.CheckBox" id="${id}_t_video" dojoAttachPoint="includeTVIDEODijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
+		<label for="${id}_bt_video" dojoAttachPoint="includeTVideoLabelNode"></label><br>
+		<span dojoType="dijit.form.CheckBox" id="${id}_t_sound" dojoAttachPoint="includeTSOUNDDijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
+		<label for="${id}_t_sound" dojoAttachPoint="includeTSoundLabelNode"></label><br>
+	</div>
+	
+	<div style="display: none">
+		<div class="groupHeader"><span dojoAttachPoint="sortByLabelNode"></span>:</div>
+		<div class="group thinBorder">
+				<label for="${id}_sortChanger" dojoAttachPoint="sortChangerLabelNode"></label>:&nbsp;
+				<select dojoType="dijit.form.FilteringSelect" searchAttr="label"
+				style="width: 10em;font-size: smaller;vertical-align: middle;" autocomplete="true" dojoAttachPoint="sortChangerDijit" id="${id}_sortChanger"></select><br>
+				<div dojoType="dijit.form.RadioButton" id="${id}_ascending" dojoAttachPoint="ascendingDijit" name="${id}_sortingOrder" dojoAttachEvent="onChange:onChange" checked="true"></div>
+				<label for="${id}_ascending" dojoAttachPoint="ascendingLabelNode"></label>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div dojoType="dijit.form.RadioButton" id="${id}_descending" dojoAttachPoint="descendingDijit" name="${id}_sortingOrder" dojoAttachEvent="onChange:onChange"></div>
+				<label for="${id}_descending" dojoAttachPoint="descendingLabelNode"></label>						
+		</div>
+	</div>
+	<div class="searchLogo">
+		<img src="http://www.europeana.eu/portal/images/europeana-logo-small.jpg"></img>
+		<img src="http://www.europeana.eu/portal/images/think_culture_en_small.gif"></img>
+	</div>
+</div>

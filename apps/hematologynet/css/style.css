@@ -1,0 +1,254 @@
+/* Additional Style CSS Document ================================================================================ */
+
+
+/*HEADER CONTENT*/
+.logo-wrapper {
+	float:left;
+	width:393px;
+}
+/*MAIN CONTENT*/
+.content-wrapper {
+	width:905px;
+	background:#ffffff;
+	margin:0 auto;
+	overflow:hidden;
+	padding:27px 30px 0 25px;
+}
+.welcome-text {
+	margin:0;
+	padding:5px 0 0 0;
+}
+.welcome-text h2 {
+	font-size:24px;
+	color:#666666;
+	font-weight:bold;
+}
+.welcome-text p {
+	font-size:15px;
+	color:#666666;
+	margin:20px 0 0 0;
+	line-height:20px;
+}
+.categories {
+	margin:25px 0 0 0;
+	overflow:hidden;
+}
+.categories ul li {
+	background:url(../images/bullet.gif) no-repeat 0 7px;
+	float:left;
+	padding:0 14px 0 12px;
+	width:229px;
+	font-size:13px;
+	color:#003366;
+	font-weight:bold;
+}
+.preview {
+	float:right;
+	margin:30px 108px 0 0;
+	width:auto;
+}
+.preview a {
+	background:url(../images/preview-left-img.gif) no-repeat left top;
+	height:32px;
+	float:right;
+	padding:0 0 0 20px;
+	display:block;
+	text-decoration:none;
+	cursor:pointer;
+}
+.preview a span {
+	background:url(../images/preview-right-img.gif) no-repeat right top;
+	height:32px;
+	display:block;
+	font-size:15px;
+	font-weight:bold;
+	color:#fcfcfc;
+	padding:0 49px 0 0;
+	line-height:32px;
+	float:left;
+}
+.form-wrapper {
+	padding:0;
+	margin:35px 0 0 0;
+	width:471px;
+}
+.form-mid {
+	background:url(../images/form-bg-rep.gif) repeat-y 0 0;
+	width:471px;
+	padding:10px 0 28px 0;
+}
+.form-mid form div {
+	padding:1px 0 0 5px;
+	overflow:hidden;
+}
+.form-mid form div label {
+	width:94px;
+	float:left;
+	text-align:right;
+	padding:0;
+	margin:2px 0 0 0;
+}
+.form-mid form div input {
+	padding:0;
+	margin:0 0 0 5px;
+	width:238px;
+	height:16px;
+	border:1px solid #999999;
+	padding:2px;
+	line-height:16px;
+}
+.form-mid form div.checkbox {
+	padding:0 0 0 143px;
+	margin:5px 0 0 0;
+}
+.form-mid form div.checkbox input {
+	float:left;
+	margin:0;
+	padding:0;
+	width:16px;
+	margin:5px 0 0 0;
+	border:0px;
+}
+.form-mid form div.checkbox label {
+	width:178px;
+	float:left;
+	color:#666666;
+	margin:4px 0 0 0;
+}
+.form-mid form div.checkbox label a {
+	color:#666666;
+}
+.form-mid form div.buttons {
+	margin:10px 0 0;
+	padding:0 0 0 143px;
+	overflow:hidden;
+	clear:both;
+}
+.form-mid form div.buttons button {
+	border:0px;
+	background:none;
+	float:left;
+	margin:0 0 0 22px;
+	padding:0;
+	cursor:pointer;
+}
+.form-mid form div.buttons span {
+	background:url(../images/button-left.gif) no-repeat 0 0;
+	height:25px;
+	padding:0 0 0 14px;
+	display:block;
+}
+.form-mid form div.buttons span span {
+	background:url(../images/button-right.gif) no-repeat 100% 0;
+	height:25px;
+	padding:0 39px 0 25px;
+	display:block;
+	line-height:25px;
+	font-weight:bold;
+	color:#606060;
+	font-size:11px;
+}
+.form-mid form div.buttons a {
+	float:left;
+	margin:0 0 0 0;
+	color:#666666;
+	margin:3px 0 0 0;
+}
+#video {
+	margin:0 0 70px 0;
+}
+.right-content {
+	margin:0;
+	padding:10px 0 0 0;
+}
+.right-content h2 {
+	font-size:12px;
+	font-weight:bold;
+	color:#999999;
+	margin:0;
+}
+.right-content p {
+	font-size:12px;
+	font-weight:normal;
+	color:#999999;
+	line-height:15px;
+}
+.right-content-buttons {
+	display:block;
+	float:right;
+	margin:10px 20px 0 0;
+	padding:0;
+}
+.right-content-buttons ul {
+	width:auto;
+	margin:0;
+}
+.right-content-buttons ul li {
+	float:left;
+	padding:0 11px;
+	width:auto;
+}
+.right-content-buttons a {
+	background:url(../images/button-left.gif) no-repeat left top;
+	height:25px;
+	display:block;
+	float:left;
+	padding:0 0 0 22px;
+	text-decoration:none;
+	cursor:pointer;
+}
+.right-content-buttons a span {
+	background:url(../images/button-right.gif) no-repeat right top;
+	height:25px;
+	display:block;
+	padding:0 22px 0 0px;
+	line-height:22px;
+	font-size:12px;
+	font-weight:bold;
+	color:#5f5f5f;
+	float:left;
+}
+.footer-top {
+	background:url(../images/footer-bg-rep.gif) repeat-y 0 0;
+	margin:0 auto;
+	width:960px;
+	padding:6px 0;
+	overflow:hidden;
+}
+.footer-left {
+	float:left;
+	width:auto;
+}
+.footer-left ul li {
+	float:left;
+	padding:0 19px 0 0;
+}
+.footer-text {
+	float:left;
+	margin:0 auto;
+	padding:0 0 0 20px;
+	width:600px;
+}
+.footer-text p {
+	margin:0;
+	padding:0;
+	font-size:11px;
+	font-weight:normal;
+	color:#fcfcfc;
+	line-height:13px;
+	text-align:center;
+}
+.footer-right {
+	float:right;
+	width:auto;
+}
+.footer-bottom {
+	margin:0 auto;
+	width:960px;
+	padding:10px 0;
+}
+.footer-bottom span {
+	text-decoration:none;
+	font-size:10px;
+	color:#999999;
+}

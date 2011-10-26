@@ -1,0 +1,22 @@
+({
+  "details": "Detaljer",
+  "comment": "Kommentera",
+  "edit": "Ändra",
+  "admin": "Administrera",
+  "remove": "Ta bort",
+  "empty": "Töm",
+  "copy": "Kopiera",
+  "cut": "Klipp ut",
+  "paste": "Klistra in",
+  "pasteInto": "Klistra in i folder",
+  "add": "Lägg till kontakt",
+  "modified": "Ändrad",
+  "items": "Element",
+  "addedToContactsMessage": "Denna person lades till dina kontakter.",
+  "sortLabel": "Sortera på",
+  "sortByNone": "Listans ordning",
+  "sortByTitle": "Titel",
+  "sortByTitleReverse": "Titel nedifrån",
+  "sortByModified": "Ändrad",
+  "sortByModifiedReverse": "Ändrad nedifrån"
+})

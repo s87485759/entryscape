@@ -1,0 +1,22 @@
+({
+  "details": "Λεπτομέρειες",
+  "comment": "Σχόλιο",
+  "edit": "Επεξεργασία",
+  "admin": "Διαχείριση",
+  "remove": "Αφαίρεση",
+  "empty": "’δειο",
+  "copy": "Αντιγραφή",
+  "cut": "Αποκοπή",
+  "paste": "Επικόλληση",
+  "pasteInto": "Επικόλληση σε",
+  "add": "Προσθήκη",
+  "modified": "Τροποποιήθηκε",
+  "items": "Αντικείμενα",
+  "addedToContactsMessage": "Αυτό το πρόσωπο προστέθηκε στις επαφές σας.",
+  "sortLabel": "Ταξινόμηση κατά",
+  "sortByNone": "Σειρά ταξινόμησης",
+  "sortByTitle": "Τίτλος",
+  "sortByTitleReverse": "Τίτλος αντίστροφα",
+  "sortByModified": "Τροποποίηση",
+  "sortByModifiedReverse": "Τροποποίηση αντίστροφα"
+})

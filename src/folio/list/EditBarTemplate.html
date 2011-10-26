@@ -1,0 +1,15 @@
+<div class="editBar" style="width: 100%;display:none">
+	<div style="float: left;"><div style="display: table-cell;">
+		<div style="display: none; vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="copyButton" dojoAttachEvent="onClick:copyClicked"></div>
+		<div style="display: none; vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="pasteButton" dojoAttachEvent="onClick:pasteClicked"></div>
+	</div></div>
+	<div style="float: right;"><div style="display: table-cell;">
+		<strong><span dojoAttachPoint="createNewTextNode"></span>&nbsp;&nbsp;</strong>
+		<div style="vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="uploadButton" dojoAttachEvent="onClick:uploadClicked"></div>
+		<div style="vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="linkButton" dojoAttachEvent="onClick:linkClicked"></div>
+		<!--Button below is not yet to be used, at least not for the users we currently have and it is therefor removed at the moment -->
+		<div style="display:none;"><div style="vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="createButton" dojoAttachEvent="onClick:createClicked"></div></div>
+		<div style="vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="textButton" dojoAttachEvent="onClick:textClicked"></div>
+		<div style="vertical-align: middle;" dojoType="dijit.form.Button" dojoAttachPoint="folderButton" dojoAttachEvent="onClick:folderClicked"></div>
+	</div></div>
+</div>

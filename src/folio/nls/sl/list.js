@@ -1,0 +1,22 @@
+﻿({
+  "details": "Podrobnosti",
+  "comment": "Pripomba",
+  "edit": "Uredi",
+  "admin": "Upravljanje",
+  "remove": "Odstrani",
+  "empty": "Prazno",
+  "copy": "Kopiraj",
+  "cut": "Izreži",
+  "paste": "Prilepi",
+  "pasteInto": "Prilepi informacije",
+  "add": "Dodaj",
+  "modified": "Prirejeno",
+  "items": "Predmeti",
+  "addedToContactsMessage": "Oseba je bila dodana med vaše kontakte.",
+  "sortLabel": "Uredi po",
+  "sortByNone": "Vrstni red",
+  "sortByTitle": "Naslov",
+  "sortByTitleReverse": "Obratno po naslovu",
+  "sortByModified": "Prirejeno",
+  "sortByModifiedReverse": "Obratno po prirejenem"
+})

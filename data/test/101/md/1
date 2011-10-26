@@ -1,0 +1,5 @@
+{"@id": "test:data/1",
+   "dc:title": {"@value": "Folder 1", "@language": "en"},
+   "dc:description": {"@value": "A top level folder", "@language": "en"}, 
+   "dc:subject": "mainfolder"
+}

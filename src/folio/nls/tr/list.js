@@ -1,0 +1,22 @@
+({
+  "details": "Ayrýntýlar",
+  "comment": "Açýklama",
+  "edit": "Düzenle",
+  "admin": "Yönetici",
+  "remove": "Kaldýr",
+  "empty": "Boþ",
+  "copy": "Kopyala",
+  "cut": "Kes",
+  "paste": "Yapýþtýr",
+  "pasteInto": "þuna yapýþtýr:",
+  "add": "Ekle",
+  "modified": "Deðiþiklik ",
+  "items": "Elemanlar",
+  "addedToContactsMessage": "Bu kiþi, iletiþim bilgileri listenize eklendi",
+  "sortLabel": "Þunlara göre sýralý:",
+  "sortByNone": "Sýralý listele",
+  "sortByTitle": "Baþlýk",
+  "sortByTitleReverse": "Baþlýk (ters sýrada)",
+  "sortByModified": "Deðiþiklik ",
+  "sortByModifiedReverse": "Deðiþiklik (ters sýrada)"
+})

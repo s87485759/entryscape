@@ -1,0 +1,152 @@
+<div>
+	<div class="infodisplay">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>User details</div></td></tr>
+			<tr class="inforow">
+				<td><label for="${id}_firstNameField">Firstname: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_firstNameField"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="firstnameField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="${id}_surnameField">Surname: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_surnameField"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="surnameField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="${id}_nameField">Name: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_nameField" 
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="nameField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="${id}_emailField">Email: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_emailField"
+						dojoType="dijit.form.ValidationTextBox"
+						required="false"
+						regExpGen="dojox.validate.regexp.emailAddress"
+						dojoAttachPoint="emailField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true"
+						invalidMessage="Invalid email address">
+					</input>
+				</td>
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty --></td>
+				<td>
+					<div class="error" dojoAttachPoint="userDetailsError" style="display: none;"><span dojoAttachPoint="userDetailsErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelChangeDetailsClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeDetailsClicked" dojoAttachPoint="changeDetailsBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+
+			<tr class="infoheader"><td colspan="2"><div>Account information</div></td></tr>
+			<tr class="inforow">
+				<td><label for="${id}_userNameField">Username: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_userNameField"
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="userNameField"
+						dojoAttachEvent="onKeyUp:accountFieldsChanged"
+						trim="true"
+						invalidMessage="Username can not be empty.">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="${id}_passwordField">Password: </label></td>
+				<td>
+					<input
+						type="password"
+						id="${id}_passwordField"
+						dojoType="dijit.form.ValidationTextBox" 
+						required="false"
+						dojoAttachPoint="passwordField"
+						dojoAttachEvent="onKeyUp:accountFieldsChanged">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="${id}_confirmField">Confirm password: </label></td>
+				<td>
+					<input
+						type="password"
+						id="${id}_confirmField"
+						dojoType="dijit.form.ValidationTextBox"
+						required="false"
+						dojoAttachPoint="confirmField"
+						dojoAttachEvent="onKeyUp:accountFieldsChanged"
+						invalidMessage="Password mismatch">
+					</input>
+				</td>
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty --></td>
+				<td>
+					<div class="error" dojoAttachPoint="userAccountError" style="display: none;"><span dojoAttachPoint="userAccountErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelChangeAccountInformationClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeAccountInformationClicked" dojoAttachPoint="changeAccountInformationBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+
+			<tr class="infoheader"><td colspan="2"><div>Default portfolio</div></td></tr>
+			<tr class="inforow">
+				<td><label for="${id}_homeContextField">Portfolio: </label></td>
+				<td>
+					<input
+						type="text"
+						id="${id}_homeContextField"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="homeContextField"
+						readonly="readonly">
+					</input>
+				</td>
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- nothing in here --></td>
+				<td>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:displayChangeHomeContextClicked">Change</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="select">
+	</div>
+	<div dojoType="dijit.Dialog" dojoAttachPoint="portfolioDialog"><div dojoType="folio.admin.portfolioList" dojoAttachPoint="portfolioList"></div></div>
+</div>

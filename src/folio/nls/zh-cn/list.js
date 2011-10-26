@@ -1,0 +1,22 @@
+({
+  "details": "具体内容",
+  "comment": "备注",
+  "edit": "编辑",
+  "admin": "管理员",
+  "remove": "消除",
+  "empty": "清空",
+  "copy": "复制",
+  "cut": "剪切",
+  "paste": "粘贴",
+  "pasteInto": "粘贴到",
+  "add": "添加",
+  "modified": "修改日期",
+  "items": "项目",
+  "addedToContactsMessage": "这个人已被添加到你的联系人中。",
+  "sortLabel": "排序",
+  "sortByNone": "排序依据",
+  "sortByTitle": "按标题",
+  "sortByTitleReverse": "按标题反向",
+  "sortByModified": "按修改日期",
+  "sortByModifiedReverse": "按修改日期反向"
+})

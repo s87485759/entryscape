@@ -1,0 +1,35 @@
+<div>
+	<div class="infodisplay edit">
+		<table>
+			<tr>
+				<td><div class="infoheader">Add users</div></td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<span class="groupmbr">os</span><span> = already member of group</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td><div dojoType="folio.admin.FolderSelect" dojoAttachPoint="folderSelect"></div></td>
+			</tr>
+			<tr>
+				<td>
+					<div dojoAttachPoint="usersPane"></div>
+				</td>
+			</tr>
+			<tr>
+				<td><div><span dojoAttachPoint="nrSelectedInUsersList">0</span><span>&nbsp;users selected</span></div></td>
+			</tr>
+			<tr class="buttonrow">
+				<td>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:addGroupMembersClicked" dojoAttachPoint="doneBtn">Add</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

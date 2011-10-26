@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+.form-mid form div.buttons button
+{
+*overflow:visible!important;
+}

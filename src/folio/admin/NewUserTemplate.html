@@ -1,0 +1,167 @@
+<div>
+	<div class="createpopup">
+		<div><span class="reqfield">*</span> = required field</div>
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>User details</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.firstnameField">Firstname: </label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="firstnameField"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.surnameField">Surname: </label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="surnameField"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.nameField">Name: </label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="nameField"
+						trim="true">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.emailField">Email: </label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.ValidationTextBox"
+						required="false"
+						regExpGen="dojox.validate.regexp.emailAddress"
+						dojoAttachPoint="emailField"
+						dojoAttachEvent="onKeyUp:checkValidFields"
+						intermediateChanges="false"
+						trim="true"
+						invalidMessage="Invalid email address">
+					</input>
+				</td>
+			</tr>
+			<tr class="infoheader"><td colspan="2"><div>Account information</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.userNameField">Username: <span class="reqfield">*</span></label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="userNameField"
+						dojoAttachEvent="onKeyUp:checkValidFields"
+						trim="true"
+						invalidMessage="Username can not be empty.">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.passwordField">Password: <span class="reqfield">*</span></label></td>
+				<td>
+					<input
+						type="password"
+						dojoType="dijit.form.ValidationTextBox" 
+						required="true"
+						dojoAttachPoint="passwordField"
+						dojoAttachEvent="onKeyUp:checkValidFields">
+					</input>
+				</td>
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewUserTemplate.confirmField">Confirm password: <span class="reqfield">*</span></label></td>
+				<td>
+					<input
+						type="password"
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="confirmField"
+						dojoAttachEvent="onKeyUp:checkValidFields"
+						invalidMessage="Password mismatch">
+					</input>
+				</td>
+			</tr>
+			<tr class="infoheader"><td colspan="2"><div>Home portfolio</div></td></tr>
+			<tr class="inforow">
+				<td colspan="2">
+					<input
+						type="checkbox"
+						dojotype="dijit.form.CheckBox"
+						dojoAttachPoint="createHomePortfolioCheckBox"
+						dojoAttachEvent="onClick:checkValidFields"
+						checked="checked">
+    				</inpt>
+					<label for="folio.simple.admin.NewUserTemplate.createHomePortfolioCheckBox"> Create home portfolio </label> 
+				</td>
+			</tr>
+			<tr class="inforow" dojoAttachPoint="portfolioLocationRow">
+				<td>Location:</td>
+				<td>
+					<div
+						dojoType="folio.admin.FolderSelect"
+						dojoAttachPoint="folderSelect">
+					</div>
+				</td>
+			</tr>
+			
+			<tr class="inforow" dojoAttachPoint="portfolioNameRow">
+				<td><label for="folio.simple.admin.NewUserTemplate.portfolioNameField">Name: </label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="portfolioNameField"
+						trim="true">
+					</input>
+				</td>	
+			</tr>
+			<tr class="inforow" dojoAttachPoint="portfolioDescriptionRow">
+				<td><label for="folio.simple.admin.NewUserTemplate.portfolioDescriptionField">Description: </label></td>
+				<td>
+					<textarea
+						type="text"
+						dojoType="dijit.form.Textarea"
+						style="width:180px"
+						dojoAttachPoint="portfolioDescriptionField"
+						trim="true">
+					</textarea>
+				</td>	
+			</tr>
+			<tr class="inforow" dojoAttachPoint="portfolioAliasRow">
+				<td><label for="folio.simple.admin.NewUserTemplate.portfolioAliasField">Alias: <span class="reqfield">*</span></label></td>
+				<td>
+					<input
+						type="text"
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="portfolioAliasField"
+						dojoAttachEvent="onKeyUp:checkValidFields"
+						trim="true"
+						invalidMessage="Alias can not be empty.">
+					</input>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty -->&nbsp;</td>
+				<td>
+					<div class="error" dojoAttachPoint="createUserError" style="display: none;"><span dojoAttachPoint="createUserErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelCreateUserClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Creating..." dojoAttachEvent="onClick:createUserClicked" dojoAttachPoint="createUserBtn">Create user</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

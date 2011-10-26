@@ -1,0 +1,22 @@
+({
+  "details": "Details",
+  "comment": "Comment",
+  "edit": "Ändern",
+  "admin": "Administrieren",
+  "remove": "Entfernen",
+  "empty": "Empty",
+  "copy": "Kopieren",
+  "cut": "Ausschneiden",
+  "paste": "Einfügen",
+  "pasteInto": "In Verzeichnis einfügen",
+  "add": "Hinzufügen",
+  "modified": "Geändert",
+  "items": "Elemente",
+  "addedToContactsMessage": "Diese Person wurde zu ihren Kontakten hinzugefügt",
+  "sortLabel": "Sortieren nach",
+  "sortByNone": "Ursprünglich",
+  "sortByTitle": "Titel",
+  "sortByTitleReverse": "Titel (absteigend)",
+  "sortByModified": "Modifiziert",
+  "sortByModifiedReverse": "Modifiziert (absteigend)"
+})

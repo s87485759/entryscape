@@ -1,0 +1,67 @@
+<div>
+	<div class="infodisplay">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>Group details</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.GroupDetailsTemplate.titleField">Name: </label></td>
+				<td>
+					<input 
+						type="text" 
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="titleField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</input>
+				</td>	
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.GroupDetailsTemplate.descriptionField">Description: </label></td>
+				<td>
+					<textarea
+						type="text" 
+						dojoType="dijit.form.Textarea"
+						style="width:173px"
+						dojoAttachPoint="descriptionField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged">
+					</textarea>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty --></td>
+				<td>
+					<div class="error" dojoAttachPoint="groupDetailsError" style="display: none;"><span dojoAttachPoint="groupDetailsErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelChangeDetailsClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeDetailsClicked" dojoAttachPoint="changeDetailsBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+			<tr class="infoheader"><td colspan="2"><div>Group Alias</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.GroupDetailsTemplate.aliasField">Alias: </label></td>
+				<td>
+				    <input
+						type="text"
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="groupAliasField"
+						dojoAttachEvent="onKeyUp:groupAliasFieldChanged"
+						trim="true"
+						invalidMessage="Alias can not be an empty string.">
+					</input>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty --></td>
+				<td>
+					<div class="error" dojoAttachPoint="groupAliasError" style="display: none;"><span dojoAttachPoint="groupAliasErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelGroupAliasClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeGroupAliasClicked" dojoAttachPoint="changeGroupAliasBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+

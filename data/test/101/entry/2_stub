@@ -1,0 +1,22 @@
+{entryId: "2",
+   info: {"@id": "test:md/2", 
+ 	 "*sc:builtinType": "sc:List", 
+ 	 "dc:created": "20080430", 
+ 	 "dc:modified": "20080430", 
+ 	 "*sc:referredIn": "test:data/1",
+	 "*dc:creator": "pr:3",
+ 	 "*sc:read": "pr:2"},
+   md: {"@id": "test:data/2",
+	 "dc:title": {"@value": "Folder 2", "@language": "en"},
+	 "dc:description": {"@value": "A sub folder", "@language": "en"}, 
+	 "dc:subject": "people"},
+   resource: {
+     children: [
+       {entryId: "5",
+          md_stub: {"@id": "test:data/5", "foaf:name": "Matthias Palmer", "dc:description": "A nice fellow", "*rdf:type": "foaf:Person"}, 
+          info_stub: {"@id": "test:md/5", "*sc:representationType": "sc:NamedResource"}},
+       {entryId: "6", 
+          md_stub: {"@id": "test2:data/47", "foaf:name": "Hannes Ebner", "dc:description": "A nice fellow", "*rdf:type": "foaf:Person"},
+          info_stub: {"@id": "test2:md/47", "sc:cache": "test:md/6", "*sc:representationType": "sc:NamedResource", "*sc:referenceType": "sc:Reference"}}
+     ]}
+}

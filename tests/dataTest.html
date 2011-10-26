@@ -1,0 +1,79 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>JDIL test</title>
+    <script type="text/javascript" src="lib/dojo/dojo.js.uncompressed.js"
+		djConfig="isDebug: true, debugAtAllCosts: true"></script>
+	<script type="text/javascript">
+		dojo.registerModulePath("jdil","../../web/jdil");
+		dojo.registerModulePath("folio","../../web/folio");
+		dojo.require("folio.data.Store");
+		dojo.require("folio.data.Communicator");
+		dojo.require("jdil.Namespaces");
+		
+		init = function() {
+			var com = new folio.data.Communicator();
+			var nss = new jdil.Namespaces({url: "testdata/namespaces", namespaces: {rest: "rest/3/"}});
+			var store = new folio.data.Store({communicator: com, namespaces: nss}); <!-- Create storage for context -->
+			<!--console.dir(store)-->
+			store.loadEntry("/rest/3/entry/1", function(entry) {
+				console.log("Loaded entry with id: "+entry.getId() + " and title: " + entry.getLabel());
+				if (entry.isList()) { //Check if startentry is list
+					console.log("entry " + entry.getId() + " has builtIn type " + entry.getBuildinType());
+					console.log("entry " + entry.getId() + " has resourceUri " + entry.getResourceURI());
+					console.dir(entry.resource);
+					var numberOfChildren = entry.getResource().length;
+					for (i = 0; i < numberOfChildren; ++i) {
+						entry.context.loadEntryFromId(entry.getResource()[i], function(entry2){
+							console.log("--------------------------------------------------------------");
+							console.log("loaded entry with id: " + entry2.getId()+ " and title: " +entry2.getLabel());
+							if (entry2.isMetadataStub()) {
+								console.log("entry " + entry2.getId() + " has builtIn type " + entry2.getBuildinType());
+								console.log("entry " + entry2.getId() + " has resourceUri " + entry2.getResourceURI());
+								entry2.loadMetadata(function(){
+									console.log("success in loading metadata for entry " + entry2.getId());
+								}, function(){
+									console.log("failed in loading metadata for entry " + entry2.getId());
+								});
+							}
+						});
+					}
+					/*entry.context.loadEntryFromId(entry.getResource()[1], function (entry3) {
+						console.log("--------------------------------------------------------------");
+						console.log("loaded entry with id: "+entry3.getId());
+						if (entry3.isMetadataStub()) {
+							//console.log("entry " + entry3.getId() +" is metadataStub");
+							//console.log("entry " + entry3.getId() + " has resourceUri " + entry3.getResourceURI());
+							entry3.loadMetadata(function() {
+									console.log("success in loading metadata for entry " + entry3.getId() );
+								}, 
+								function() {
+									console.log("failed in loading metadata for entry " + entry3.getId());
+								}
+							);
+						}
+						
+					// Test delete ----------------
+						
+						//console.dir(entry.getResource());
+						//console.log("Trying to remove entry 3");
+						//entry3.deleteEntry()
+						//console.dir(entry.getResource());
+						//---------------
+					});*/
+				}
+				else {
+				alert("Is Not list")
+				}
+			}, function(error) {
+				alert("Some error");
+			});
+		}
+		
+		dojo.addOnLoad(init);
+	</script>
+  </head>
+  <body class="tundra">
+  tjabba
+  </body>
+</html>

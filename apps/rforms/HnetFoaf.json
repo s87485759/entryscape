@@ -1,0 +1,97 @@
+{
+ "id":"hnetPersonFoaf",
+ "label": {
+  "en": "Default Base formlet in compound formlets",
+  "sv": "Default formulet bas i sammansatta formuletter"
+ },
+ "description": {
+  "en": "This is the formlet used as base in compound formlets by default. The formlets consists of a query with only a base variable and a minimal form specification. If the base formlet is not loaded (i.e. the containing formlet set) many compound formlets will break.",
+  "sv": "Denna formuletten används som bas i många sammansatta formuletter som default. Formuletten består av en fråga med endast en basvariabel samt en minimal formulärspecifikation. Om denna basformulett inte är laddad (egentligen den omgivande formulett mängden) så kommer många sammansatta formuletter inte att fungera."
+ },
+ "root": {
+  "nodetype": "RESOURCE",
+  "label": {
+   "de": "Ressource",
+   "en": "Resource",
+   "sv": "Resurs"
+  },
+  "@type": "group",
+  "content": [
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "Title"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/title",
+    "description": {"en": "The approriate values for foaf:title are not formally constrained, and will vary across community and context. Values such as 'Mr', 'Mrs', 'Ms', 'Dr' etc. are expected."}
+   },
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "First name"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/firstName"
+   },
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "Surname"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/surname"
+   },
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "Full name"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/name",
+    "description": {"en": ""}
+   },
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1
+    },
+    "label": {"en": "E-mail"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/mbox",
+    "description": {"en": "The foaf:mbox property is a relationship between the owner of a mailbox and a mailbox. These are typically identified using the mailto: URI scheme (see RFC 2368).\nE.g. mailto:test@example.com"}
+   },
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "Profile picture"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/img",
+    "description": {"en": "Provide a webadress to a picture of you"}
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+<div>
+  <div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="mainBorderContainer" style="width:100%;height:100%">
+    <div dojoType="dijit.layout.ContentPane" region="top">
+    <div dojoType="dijit.Toolbar" region="top">
+      <div dojoType="dijit.form.Button" dojoAttachPoint="deleteButton" dojoAttachEvent="onClick:_deleteOntology" label="Delete" title="Delete this ontology."></div>
+      <div dojoType="dijit.form.Button" dojoAttachPoint="saveButton" dojoAttachEvent="onClick:_saveOntology" label="Save" title="Save new ontology content."></div>
+      <div dojoType="dijit.form.Button" dojoAttachPoint="revertButton" dojoAttachEvent="onClick:_revertOntology" label="Revert" title="Revert ontology content to the way it is currently stored on the server."></div>
+    </div>
+    </div>
+    <div dojoType="dijit.layout.ContentPane" region="center">
+      <h1 dojoAttachPoint="ontologyNameHeader">Ontology: </h1>
+      <div dojoAttachPoint="errorDiv"></div>
+      <div dojoType="shame.formulator.ACLBox" dojoAttachPoint="aclBox"></div>
+      <textarea dojoAttachPoint="ontologyContent" style="width:100%;height:50%;border-width:1pt;border-color:black;border-style:solid"></textarea>
+      </input>
+    </div>
+  </div>
+</div>

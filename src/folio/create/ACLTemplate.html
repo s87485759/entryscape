@@ -1,0 +1,85 @@
+<div style="width: 100%;">
+	<div dojoType="dijit.TitlePane" dojoAttachPoint="titlePaneDijit" title="Access control" open="${open}">
+	<div style="float: left;" dojoAttachPoint="headLabel"></div>
+	<div style="text-align: right;">
+		<div dojoType="dijit.form.Button" name="advanced"
+		    dojoAttachEvent="onClick: toggleAdvancedMode" disabled="true" dojoAttachPoint="advancedButton"></div>
+		<div dojoType="dijit.form.Button" dojoAttachPoint="overrideContextButton" 
+		    dojoAttachEvent="onClick: toggleOverride"></div>
+	</div>
+<div dojoAttachPoint="ownerNoteNode" style="display:none"></div>
+<table dojoType="dojox.grid.DataGrid"
+	dojoAttachPoint="aclGrid"
+    rowsPerPage="10"
+    clientSort="true"
+    selectionMode="none"
+    style="width: 100%"
+	autoHeight="${autoHeight}">
+    <thead>
+        <tr>
+            <th width="auto"
+                editable="false"
+                field="label">${forUserGroup}</span></th>
+            <th width="60px"
+                field="read"
+                cellType="folio.create.Bool"
+				alwaysEditing="true"
+                editable="true">${read}</th>
+            <th width="60px"
+                field="write"
+                cellType="folio.create.Bool"
+				alwaysEditing="true"
+                editable="true">${write}</th>
+            <th hidden="true"
+		width="60px"
+                field="read"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${read}</th>
+            <th hidden="true"
+		width="60px"
+                field="write"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${write}</th>
+            <th hidden="true"
+            	width="60px"
+                field="rread"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${readResource}</th>
+            <th hidden="true"
+            	width="60px"
+                field="mread"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${readMetadata}</th>
+            <th hidden="true"
+            	width="60px"
+                field="rwrite"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${writeResource}</th>
+            <th hidden="true"
+            	width="60px"
+                field="mwrite"
+                cellType="folio.create.BoolCheck"
+				alwaysEditing="true"
+                editable="true">${writeMetadata}</th>
+            <th hidden="true"
+            	width="60px"
+                field="admin"
+				alwaysEditing="true"
+                cellType="folio.create.BoolCheck"
+                editable="true">${admin}</th>
+        </tr>
+    </thead>
+</table>
+   <div dojoAttachPoint="controllsDiv" style="display:none">
+	<div class="principalSelect" dojoType="dijit.form.FilteringSelect" dojoAttachPoint="principalSelect" 
+		required="false" query="{present: false}" searchAttr="label" dojoAttachEvent="onChange: principalChoosen"></div>
+	<div dojoType="dijit.form.Button" dojoAttachPoint="addContactButton" dojoAttachEvent="onClick: addContactClicked" disabled="true">${addContact}</div>
+	<div dojoType="dijit.form.Button" disabled="true" dojoAttachPoint="removeButton" dojoAttachEvent="onClick: removeRow">${removeContact}</div>
+  </div>
+  </div>
+</div>

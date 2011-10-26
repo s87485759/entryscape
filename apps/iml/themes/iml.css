@@ -1,0 +1,116 @@
+/* Brownish style uses the following colours:
+   white - as background
+   dark green (#30AF9A) - the skelleton of the application.
+   light green (#BF9F73) - current folder, some labels etc.
+   vaguely brown (lightgrey) - selections.
+   
+   #005BA6
+   	#557996
+   
+   #358BD3
+   	#89ADCB
+   	
+   #5F9DE3
+   	#9BB5CB
+   
+   (lightgrey)
+   #E7F2FF
+*/ 
+
+/*Logo should be < 240x60*/
+.navigationBar .logo {
+	background:transparent url('UMU_pos3.png') no-repeat top left;
+	margin-bottom: 0px;
+}
+
+/* Loading icon used in splash*/
+.loadingIcon {
+	width: 32px;height: 32px;
+	background:transparent url('blueish.gif') no-repeat top left;	
+}
+
+/*Skelleton*/
+.tundra .dijitSplitterV, .tundra .dijitSplitterH,
+.simpleFolio, .applicationContainer {
+	/*background: #30AF9A;*/
+	background: #557996;
+}
+
+/*Background*/
+.innerApplicationContainer,
+.navigationBar,
+.shamePresentationMode .shameValue {
+	background: white;
+}
+
+/*Selection and background of editors*/
+.tundra .annotationprofileeditor.dijitDialog .dijitDialogPaneContent,
+.cleanList.listView .listEntry.selected,
+.folioTreeLabelSelected,
+.iconOverview div.selected {
+	/*background: lightgrey;*/
+	background: #E3E3E3;
+}
+
+/* Borders*/
+.iconOverview div.selected,
+.annotationprofileeditor .editTab,
+.annotationprofileeditor .editTabEditStateButtons {
+	/*border-color: #30AF9A;*/
+	border-color: #557996;
+}
+
+.listView *,
+.details *,
+.listView .butsCls *,
+.folioTreeLabelSelected,
+.shameRoot {
+	/*border-color: #30AF9A;*/
+	border-color: #557996;
+	border-style: solid;
+	border-width: 0px;
+}
+
+.listView .listHead,
+.listView .listControls,
+.details .top .resourceSpace,
+.details .top .url,
+.details .center .bottom {
+	/*background: #D8EBD7;*/
+	background: #9BB5CB;
+}
+
+// Hide images, link, mimetype and size in details view
+.details .resourceSpace {
+	display: none;
+}
+
+.details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/
+.details .center .locInfoPane > div:first-child {
+	/*background: #D8EBD7;*/
+	background: #9BB5CB;
+}
+
+.editStateColor .mandatory.missing .shameLabel,
+.mandatory.missing>.shameLabel {
+	background: red;	
+}
+
+.editStateColor .mandatory>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .mandatory {
+	background: #A68253;
+}
+
+.editStateColor .recommended>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .recommended {
+	background: #BF9F73;
+}
+
+.editStateColor .optional>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .optional {
+	background: #E1D9CD;
+}
+
+span.link {
+	cursor: pointer;
+}

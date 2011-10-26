@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Confolio README</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>Confolio overview</h1>
+Confolio is a javascript library from which it is easy to build a range of webapplications that communicates with a SCAM4 installation. A few webapplications are also prebuilt to show how it is done, for example the "apps/default.html" application. In the following when we refer to Confolio we mean the default or a similar webapplication. 
+
+<h1>Library dependencies</h1>
+See the <a href="lib/README.html">lib/README.html</a>.
+<h1>Setting up SCAM</h1>
+See information on <a href="http://confluence.iml.umu.se/display/SCAM/SCAM+Documentation+Home">SCAM homepage</a> for how to download and compile SCAM. Note, some of the documentation can be somewhat confusing at times, the most reliable instructions are the <a href="http://confluence.iml.umu.se/display/SCAM/Building+SCAM+From+Source">Building SCAM from source</a> page.
+<h1>Deploying SCAM4 and Confolio together</h1>
+For Confolio to work it is neccessary to have a SCAM4 installation running. Due to cross site scripting restrictions in modern browsers the Confolio javascripts are not allowed to communicate anything not residing on the same server and port. (Unless you only require read access or provide a proxy on the same server and port.)<br>
+Hence, we reccommend that you deploy both Confolio and SCAM4 in a servlet engine, for instance tomcat. In the following we examplify in unix style. In tomcat5.5 the easiest approach is to provide two configurations in <code>tomcat_home/conf/Catalinga/localhost</code>. First the <code>scam.xml</code> points to a exploded war file:<br>
+<pre>
+&lt;Context 
+    path="/scam"
+    docBase="/home/user/scam_home/trunk/modules/rest/target/scam-rest-module-4.0-SNAPSHOT/"
+           debug="2" 
+    privileged="true" 
+    reloadable="true"&gt;
+&lt;/Context&gt;
+</pre>
+Second the <code>Confolio.xml</code> points to the Confolio SVN directory:<br>
+<pre>
+&lt;Context
+    path="/confolio"
+    docBase="/home/user/confolio_home/"
+           debug="2"
+    privileged="true" 
+    reloadable="true"&gt;
+&lt;/Context&gt;
+</pre>
+Now, there is two more configurations to do, you have to tell both SCAM4 and Confolio base URL to use to communicate with SCAM4. We assume the base URL to be <code>http://example.com/scam/</code>, we assume the port is 80.<br>
+<p>In the file <code>/home/user/scam_home/trunk/modules/rest/target/scam-rest-module-4.0-SNAPSHOT/WEB-INF/classes/scam.properties</code> it should be written as:<br>
+<pre>scam.baseurl.folder=http://example.com/scam/</pre>
+Note that there should not be any whitespace around the equal sign and the baseurl should end with a slash.<br>
+Note also that the path to scam.properties above is to the exploded war file, which will be overwritten on each "mvn install" command. To make it stick, you have to change in the SVN directly in <code>/home/user/scam_home/trunk/modules/rest/src/main/resources/scam.properties</code>.</p>
+<p>In Confolio the baseurl only have to be set in the <code>/home/user/confolio_home/apps/default.html</code>. It is a parameter within the only div inside of the body, it should look like:
+<pre>&lt;div dojoType="folio.apps.DefaultFolio" id="Folio" nsURL="../data/namespaces" 
+        repository="http://example.com/scam/" startContext="1"&gt;</div></pre></p>
+<h1>Running Confolio</h1>
+Make sure tomcat is restarted and have enought permissions (policy stuff). Then simply point your browser to (replace with appropriate servername):<br>
+<b>http://example.com/Confolio/apps/Default.html</b><br>
+Enjoy!
+</body>
+</html>

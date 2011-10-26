@@ -1,0 +1,1 @@
+({  "URLLabel": "URL",  "linkTypeLabel": "प्रकार ",  "advancedButtonLabelMoreDetails": "अधिक वर्णन ",  "advancedButtonLabelLessDetails": " कम वर्णन",  "downloadableLabel": "डाउनलोड करने के योग्य ",  "formatLabel": "प्रारूप ",  "externalInfoLabel": "बाह्य सूचना ",  "mdInfoLabel": "सूचना देनेवाला  URL"})

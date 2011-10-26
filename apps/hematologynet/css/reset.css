@@ -1,0 +1,89 @@
+/* Reset CSS Document ================================================================================ */
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	background:none;
+	color:#2f2f2f;
+	font:12px/1.55 Arial, Helvetica, sans-serif;
+}
+img {
+	border:0;
+	vertical-align:top;
+}
+a {
+	color:#1e7ec8;
+	text-decoration:underline;
+}
+a:hover {text-decoration:none;}
+:focus {outline:0;}
+
+/* Headings ================================================================================ */
+h1, h2, h3, h4, h5, h6 {
+	color:#0a263c;
+	line-height:1.35;
+	margin:0 0 5px;
+}
+h1 {
+	font-size:20px;
+	font-weight:normal;
+}
+h2 {
+	font-size:18px;
+	font-weight:normal;
+}
+h3 {
+	font-size:16px;
+	font-weight:bold;
+}
+h4 {
+	font-size:14px;
+	font-weight:bold;
+}
+h5 {
+	font-size:12px;
+	font-weight:bold;
+}
+h6 {
+	font-size:11px;
+	font-weight:bold;
+}
+
+/* Forms ================================================================================ */
+form {display:inline;}
+fieldset {border:0;}
+legend {display:none;}
+
+/* Table ================================================================================ */
+table {
+	border:0;
+	border-spacing:0;
+	empty-cells:show;
+	font-size:100%;
+}
+
+caption, th, td {
+	font-weight:normal;
+	text-align:left;
+	vertical-align:top;
+}
+
+/* Content ================================================================================ */
+p {	margin:0 0 10px;}
+strong {font-weight:bold;}
+address {
+	font-style:normal;
+	line-height:1.35;
+}
+cite {font-style:normal;}
+q, blockquote {	quotes:none;}
+q:before, q:after {	content:'';}
+small, big {font-size:1em;}
+sup {
+	font-size:1em;
+	vertical-align:top;
+}
+
+/* Lists ================================================================================ */
+ul, ol {list-style:none;}

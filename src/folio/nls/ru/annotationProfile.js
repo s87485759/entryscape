@@ -1,0 +1,20 @@
+({
+  "saveDialogRecommend": " Прежде чем продолжить, желаете сохранить изменения? (Иначе изменения будут потеряны)",
+  "saveDialogSaveLabel": "Запомнить",
+  "saveDialogDiscardLabel": "Отменить изменения",
+  "saveDialogCancelLabel": "Отменить",
+  "dialogTitle": "Редактировать данные",
+  "mandatoryLabel": "Обязательный",
+  "recommendedLabel": "Рекомендованный",
+  "colorLabel": "Цвет маркировки",
+  "shameMessageLabel": "Пожалуйста, подождите, создаётся форма ",
+  "readyForValidationLabel": "Готов к проверке",
+  "optionalLabel": "Необязательный",
+  "dialogCancelLabel": "Отменить",
+  "dialogDoneLabel": "Совершить",
+  "dialogDoneBusyLabel": "Запомнить",
+  "mandatoryElementsMissing": "Обязательных элементов достаточно!",
+  "changeToLinkReference": "У вас нет достаточных прав для изменения этого элемента, так что он может содержать дополнительные данные.",
+  "failedSavingUnsufficientMDRights": "Вы не обладаете достаточными правами для сохранения данных.",
+  "modifiedPreviouslyOnServer": "ОШИБКА: ресурс был изменен на сервере, Ваши изменения НЕ БЫЛИ сохранены."
+})

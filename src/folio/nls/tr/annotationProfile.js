@@ -1,0 +1,20 @@
+({
+  "saveDialogRecommend": "Devam etmeden önce yaptýðýnýz deðiþiklikleri kaydetmek ister misiniz? (Bunu yapmazsýnýz yaptýklarýnýz silinecektir)",
+  "saveDialogSaveLabel": "Kaydet",
+  "saveDialogDiscardLabel": "Deðiþiklikleri iptal et",
+  "saveDialogCancelLabel": "Vazgeç",
+  "dialogTitle": "Þunlar için üstveriyi düzelt:",
+  "mandatoryLabel": "Zorunlu",
+  "recommendedLabel": "Önerilir",
+  "colorLabel": "Renk etiketleri",
+  "shameMessageLabel": "Form oluþturuyor, lütfen bekleyiniz",
+  "readyForValidationLabel": "Doðrulama için hazýr",
+  "optionalLabel": "Opsiyonel",
+  "dialogCancelLabel": "Vazgeç",
+  "dialogDoneLabel": "Tamamlandý",
+  "dialogDoneBusyLabel": "Kaydediyor",
+  "mandatoryElementsMissing": "Zorunlu elemanlarý eksik!",
+  "changeToLinkReference": "Bu kaydý deðiþtirmek için gerekli hakka sahip deðilsiniz. Bu yüzden bu baþvurulan üstveriye ilaveten yerel üstveri içerebilir",
+  "failedSavingUnsufficientMDRights": "Üstveriyi kaydetmek için yeterli haklara sahip deðilsiniz.",
+  "modifiedPreviouslyOnServer": "HATA: Sunucu üzerindeki kaynak deðiþtirilmiþtir, yaptýðýnýz deðiþiklikler KAYDEDÝLMEMÝÞTÝR."
+})

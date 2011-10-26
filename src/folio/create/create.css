@@ -1,0 +1,14 @@
+.folioACLTable .folioACLChoice {
+	text-align: center;
+	width: 3em;
+}
+
+.grayedOut {
+	color: grey;
+}
+
+.createWidgetCP {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}

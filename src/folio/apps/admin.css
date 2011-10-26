@@ -1,0 +1,79 @@
+@import "../../../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */	
+@import "../../../lib/dojo/dojo/resources/dojo.css";
+@import "../../../lib/shame-src/shame.css";
+@import "../../../lib/dojo/dojox/image/resources/image.css"; /*some problem in this css file*/
+@import "../../../lib/dojo/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
+@import "../../../lib/dojo/dojox/layout/resources/ExpandoPane.css"; 
+@import "../../../lib/dojo/dojox/form/resources/BusyButton.css";
+@import "../../../lib/dojo/dojox/grid/resources/tundraGrid.css";
+@import "../create/create.css";
+@import "../admin/admin.css";
+
+.simpleFolio {
+	width: 100%;
+	height: 100%;
+}
+
+.innerApplicationContainer {
+	margin: 7px;	
+}
+.applicationContainer {
+	width: 100%;
+	height: 100%;
+}
+
+/********* FilteredSelection *****************/
+
+/* folio.admin.FolderSelect */
+
+.folderselect {
+	padding: 3px;
+}
+
+/* folio.admin.FolderView */
+
+.folderview .listEntry {
+	height: auto;
+	background: #d8dee5;
+	padding: 3px;
+	border-bottom: 1px solid #8cb6e5;
+}
+
+
+
+.folderview div.listEntry:hover {
+	background: #E1D9CD;
+}
+
+
+.folderview .selected {
+	background: #BF9F73;
+}
+
+.folderview div.selected:hover {
+	background: #BF9F73;
+}
+
+.folderview .listEntry img {
+	width: 18px;
+	height: 18px;
+	padding-right: 5px;
+}
+
+.folderview .listEntry .titleCls {
+	cursor: default;
+	text-decoration: underline;
+}
+
+/* folio.admin.SimpleFolderPagination */
+.pagination {
+	background: #d8dee5;
+}
+
+.pagination .paginator {
+	cursor: default;
+}
+
+.pagination span.paginator:hover {
+	background: #BF9F73;
+}

@@ -1,0 +1,159 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Confolio Translation Editor</title>
+	<style type="text/css">
+	@import "../lib/dojo/dojo/resources/dojo.css";		/* required */
+	@import "../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */
+		td input {
+			width: 100%;
+			height: 100%;
+		}
+		table {
+			border-spacing: 0 0;
+			border-width: 0px;
+			border-left: 1px solid grey;
+			border-top: 1px solid grey;
+		}
+		th {
+			font-weight: bold;
+		}
+		th, td {
+			border-bottom: 1px solid grey;
+			border-right: 1px solid grey;
+			padding: 2px;
+		}
+		.transform {
+			margin: 10px;
+		}
+    </style>    
+    <script type="text/javascript" src="../lib/dojo/dojo/dojo.js"
+		djConfig="parseOnLoad: true, usePlainJson: true"></script> 
+    <script type="text/javascript" src="../lib/dojo/dojo/back.js"></script>	
+	<script type="text/javascript">
+		dojo.registerModulePath("folio","../../../src/folio");
+		set="";
+		lang="";
+		resourceBundle={};
+		dojo.addOnLoad(function() {
+			var select = dojo.byId("setSelect");
+			var options =  ["acl",
+			    			"aclDialog",
+			    			"aggregate",
+							"annotationProfile", 
+							"changeAlias",
+							"comment",
+							"common",
+							"context",
+							"create",
+							"createWizard",
+							"details",
+							"editBar",
+							"entryAdminEditor",
+							"linkTo",
+							"list",
+							"loginDialog",
+							// "message",
+							"minimalMetadata",
+							"navigationBar",
+							"overview",
+							"remove",
+							"shame-common",
+							"standardDialog",
+							// "systemFolderMetadata",
+							"upload",
+							"userEditor"];
+			for(var i = 0; i<options.length;i++) {
+			 	var o = document.createElement('option');
+			    o.text = options[i];
+    			o.value = options[i];
+//			 	o.selected = options[i] == "navigationBar";
+				select.add(o, null);
+			}
+			
+			change("navigationBar", "sv");
+			updateFile();
+		});
+		function change(newSet, newLang) {
+			set=newSet;
+			lang=newLang;
+			dojo.byId("col3").innerHTML=lang;
+			dojo.requireLocalization("folio", set, "en");
+			dojo.requireLocalization("folio", set, lang);
+			resourceBundle = dojo.i18n.getLocalization("folio", set, "en");
+			if (lang) {
+				fillInForm(dojo.i18n.getLocalization("folio", set, lang));
+			} else {
+				fillInForm();
+			}
+			var res = dojo.byId("result");
+			res.innerHTML="";
+		}
+		function fillInForm(bundle) {
+			var tbody = dojo.byId("list");
+			while (tbody.rows.length > 0) {
+				tbody.deleteRow(0);
+			}
+			for (var key in resourceBundle) {
+				var row=tbody.insertRow(-1);
+				var cell1 = row.insertCell(-1);
+				var cell2 = row.insertCell(-1);
+				var cell3 = row.insertCell(-1);
+				dojo.addClass(cell3,"inp");
+				cell1.innerHTML=key;
+				cell2.innerHTML=resourceBundle[key];
+				if (bundle) {
+					cell3.innerHTML="<input type=\"tex\" value=\""+bundle[key]+"\"></input>";					
+				} else {
+					cell3.innerHTML="<input type=\"tex\"></input>";
+				}
+			}
+		};
+		function transformToJSON() {
+			var res = dojo.byId("result");
+			var tbody = dojo.byId("list");
+			var arr =[];
+			for (var ind=0;ind<tbody.rows.length;ind++) {
+				var row = tbody.rows[ind];
+				var key = row.cells[0].innerHTML;
+				if (dojo.isString(resourceBundle[key])) {
+					arr.push("  \""+key+"\": \""+row.cells[2].firstChild.value+"\"");					
+				} else {
+					arr.push("  \""+key+"\": "+row.cells[2].firstChild.value);					
+				}
+			}
+			res.innerHTML="({\n"+arr.join(",\n")+"\n})";
+		}
+		function transformToForm() {
+			var res = dojo.byId("result");
+			fillInForm(dojo.fromJson(res.value));
+		}
+		function updateLang() {
+			var newLang = dojo.byId("langSelect").value;
+			change(set, newLang);
+			updateFile();
+		}
+		function updateSet() {
+			var select = dojo.byId("setSelect");
+			var opt = select.options[select.selectedIndex].value;
+			change(opt, lang);
+			updateFile();
+		}
+		function updateFile() {
+			var fileNode = dojo.byId("file");
+			fileNode.innerHTML=lang+"/"+set+".js";
+		}
+	</script>
+  </head>
+  <body class="tundra" style="margin: 10px">
+  	Language: <input type="text" id="langSelect" value="sv"></input> <input type="button" onclick="javascript: updateLang()" value="Change"></input> In the form of a language code, en, en-us, de etc. If no translation is found for the language, it will default to english.<br>
+  	Localization Set: <select id="setSelect"></select> <input type="button" onclick="javascript: updateSet()" value="Change"></input><br><br>
+  	<table style="width: 100%"><thead><th style="width: 20%">Key</th><th style="width: 20%">English</th><th style="width: 60%">Values for language: <span id="col3"></span>&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript: fillInForm()" value="Clear the values"></input></th><thead>
+  		<tbody id="list"></tbody>
+  	</table>
+	<center><input class="transform" type="button" onclick="javascript: transformToJSON()" value="Generate localization code below"></input>
+	<input class="transform" type="button" onclick="javascript: transformToForm()" value="Fill in form above"></input></center><br>
+	Localization code: (Copy into a plain text file, <b><span id="file"></span></b>, use wordpad or similar not microsoft word.<br>
+	<textarea id="result" style="height: 20em;width: 100%">result</textarea>
+  </body>
+</html>

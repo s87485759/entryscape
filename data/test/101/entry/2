@@ -1,0 +1,9 @@
+{entryId: "2",
+   info: {"@id": "test:md/2", 
+ 	"*sc:builtinType": "sc:List", 
+ 	"dc:created": "20080430", 
+ 	"dc:modified": "20080430", 
+ 	"*sc:referredIn": "test:data/1",
+	"*dc:creator": "pr:3",
+ 	"*sc:read": "pr:2"}
+}

@@ -1,0 +1,19 @@
+.viewMap .inline {
+	display: inline-block;
+}
+
+.viewMap .breadCrumbs .view {
+	text-decoration: underline;
+	cursor: default;
+}
+.viewMap .breadCrumbs .view.current {
+	text-decoration: none;
+}
+.viewMap .breadCrumbs .separator {
+	padding-right: 0.3em;
+	padding-left: 0.3em;
+}
+
+.viewMap.fullscreen {
+	height: 100%;
+}

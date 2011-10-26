@@ -1,0 +1,22 @@
+({
+  "details": "Детали",
+  "comment": "Комментарий",
+  "edit": "Редактор",
+  "admin": "Администрировать",
+  "remove": "Перемещать",
+  "empty": "Пустой",
+  "copy": "Копировать",
+  "cut": "Вырезать",
+  "paste": "Вставлять",
+  "pasteInto": "Вставлять в",
+  "add": "Ввести",
+  "modified": "Изменения",
+  "items": "Статьи",
+  "addedToContactsMessage": "Эта статья введена в Ваши контакты.",
+  "sortLabel": "Сортировать по",
+  "sortByNone": "Список",
+  "sortByTitle": "Название",
+  "sortByTitleReverse": "Назад к названию",
+  "sortByModified": "Изменения",
+  "sortByModifiedReverse": "Назад к изменениям"
+})

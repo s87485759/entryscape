@@ -1,0 +1,344 @@
+{
+    "identifier" : "d",
+    "label" : "l",
+    "items": [
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#PsychosocialIssues",
+            "l": "5E) Psychosocial Issues" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SectionGeneralSkills",
+            "l": "5) General Skills",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#ClinicalTrialsGoodClinicalPractice" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#PsychosocialIssues" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#CommunicationSkills" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#EvidenceBasedMedicineCriticalAppraisal" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Ethics" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Pharmacovigilance" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#EndOfLife" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Morphology",
+            "l": "2A) Morphology" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SpecialPatients",
+            "l": "4I) Special Patients" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#AcquiredBleedingDisorders",
+            "l": "3B) Acquired Bleeding Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Immunohematology",
+            "l": "2C) Immunohematology" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#StemCellTransplantation",
+            "l": "1E) Stem Cell Transplantation" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#BloodDonation",
+            "l": "4A) Blood Donation" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#GeneticsAndMolecularBiology",
+            "l": "2E) Genetics And Molecular Biology" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#CompatibilityTesting",
+            "l": "4B) Compatibility Testing" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#AdministrationOfTheTransfusion",
+            "l": "4G) Administration Of the Transfusion" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#TreatmentOfHematologicalDisorders",
+            "l": "1G) Treatment of Hematological Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#ThrombophiliaThrombosis",
+            "l": "3E) Thrombophilia/Thrombosis" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#AdverseReactions",
+            "l": "4H) Adverse Reactions" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#HematologicalNeoplasticDisorders",
+            "l": "1D) Hematological Neoplastic Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#EvidenceBasedMedicineCriticalAppraisal",
+            "l": "5C) Evidence Based Medicine / Critical Appraisal" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfSpeciallyProcessedBloodComponentsAndDerivatives",
+            "l": "4F) Guidelines and National Laws for the use of Specially Processed Blood Components and Derivatives" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SupportAndEmergencyCare",
+            "l": "1H) Support and Emergency Care" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Anti-Thrombotics",
+            "l": "3F) Anti-Thrombotics" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#ClinicalTrialsGoodClinicalPractice",
+            "l": "5A) Clinical Trials / Good Clinical Practice" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#ClinicalMiscellaneous",
+            "l": "1I) Miscellaneous" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#HematologyPassport",
+            "top": true,
+            "l": "Hematology Curriculum Passport",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SectionDiagnosis" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SectionTransfusionMedicine" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SectionGeneralSkills" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SectionClinicalHematology" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SectionThrombosisAndHemostasis" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#PlateletDisordersTAH",
+            "l": "3D) Platelet Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Histo-CompatibilityAndTheHL-ASystem",
+            "l": "4J) Histo-Compatibility and the HL-A System" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#CommunicationSkills",
+            "l": "5D) Communication Skills" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Ethics",
+            "l": "5F) Ethics" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#NonMalignantWhiteBloodCellDisorders",
+            "l": "1C) NonMalignant White Blood Cell Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#PlateletDisorders",
+            "l": "1F) Platelet Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForUseOfBloodAndBloodComponents",
+            "l": "4C) Guidelines and National Laws for use of Blood and Blood Components" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#CongenitalBleedingDisorders",
+            "l": "3C) Congenital Bleeding Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfPlasma",
+            "l": "4E) Guidelines and National Laws for the use of Plasma" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SectionDiagnosis",
+            "l": "2) Diagnosis",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#GeneticsAndMolecularBiology" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Morphology" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#RedBloodCellLaboratoryTechniques" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#ImmunoPhenotypingByFlowCytometry" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Immunohematology" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SectionTransfusionMedicine",
+            "l": "4) Transfusion Medicine",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfPlasma" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#CompatibilityTesting" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#AdministrationOfTheTransfusion" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfPlatelets" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Histo-CompatibilityAndTheHL-ASystem" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#AdverseReactions" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SpecialPatients" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfSpeciallyProcessedBloodComponentsAndDerivatives" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForUseOfBloodAndBloodComponents" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#BloodDonation" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#StemCellCollection" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#TherapeuticPhlebotomy" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#GuidelinesAndNationalLawsForTheUseOfPlatelets",
+            "l": "4D) Guidelines and National Laws for the use of Platelets" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#PediatricsForGeneralHematologists",
+            "l": "1J) Pediatrics for General Hematologists" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SectionClinicalHematology",
+            "l": "1) Clinical Hematology",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#ClinicalMiscellaneous" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#TreatmentOfHematologicalDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#PediatricsForGeneralHematologists" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#BoneMarrowFailure" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#HematologicalNeoplasticDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#RedCellDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#NonMalignantWhiteBloodCellDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#StemCellTransplantation" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#PlateletDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#SupportAndEmergencyCare" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#SectionThrombosisAndHemostasis",
+            "l": "3) Thrombosis and Hemostasis",
+            "children": [
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#ThrombophiliaThrombosis" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#PlateletDisordersTAH" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#AcquiredBleedingDisorders" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#Anti-Thrombotics" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#LaboratoryManagement" 
+                },
+                {
+                    "_reference": "http://www.ehaweb.org/rdf/passport#CongenitalBleedingDisorders" 
+                } 
+            ],
+            "selectable": false 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#RedBloodCellLaboratoryTechniques",
+            "l": "2B) Red Blood Cell Laboratory Techniques" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#BoneMarrowFailure",
+            "l": "1B) Bone Marrow Failure" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#RedCellDisorders",
+            "l": "1A) Red Cell Disorders" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#ImmunoPhenotypingByFlowCytometry",
+            "l": "2D) Immunophenotyping By Flow Cytometry" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#LaboratoryManagement",
+            "l": "3A) Laboratory Management" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#EndOfLife",
+            "l": "5G) End Of Life" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#Pharmacovigilance",
+            "l": "5B) Pharmacovigilance" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#TherapeuticPhlebotomy",
+            "l": "4L) Therapeutic Phlebotomy" 
+        },
+        {
+            "d": "http://www.ehaweb.org/rdf/passport#StemCellCollection",
+            "l": "4K) Stem Cell Collection" 
+        }
+    ]
+} 

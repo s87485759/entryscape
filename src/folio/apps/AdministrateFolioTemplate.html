@@ -1,0 +1,42 @@
+<div class="confolio">
+	<div dojoType="dijit.layout.BorderContainer" gutters="false" class="confolioPanel" dojoAttachPoint="applicationContainer" >
+		<div dojoType="dijit.layout.ContentPane" id="navigationBarView" region="top"class="navigationBar"> 
+			<span dojoAttachPoint="userField" style="float:right; padding-right: 8px;">Not logged in</span>
+			<span>Confolio administrate page. Please select your desired view: </span>
+			<input
+				dojoType="dijit.form.RadioButton"
+				dojoAttachPoint="portfolioRadio"
+				dojoAttachEvent="onClick:selectView"
+				id="folio.apps.AdministrateFolio.portfolioRadio"
+				checked="checked"
+				value="portfolios"
+				type="radio">
+			</input>
+			<label for="folio.apps.AdministrateFolio.portfolioRadio"> Portfolios </label> 
+			<input
+				dojoType="dijit.form.RadioButton"
+				dojoAttachPoint="userGroupRadio"
+				dojoAttachEvent="onClick:selectView"
+				id="folio.apps.AdministrateFolio.userGroupRadio"
+				value="users_groups"
+				type="radio">
+			</input>
+			<label for="folio.apps.AdministrateFolio.userGroupRadio"> Users/Groups </label>
+			
+		</div>
+		
+		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="mainPanel">
+			
+			<div dojoType="dijit.layout.BorderContainer" gutters="false" region="left" splitter="true" style="width: 190px;">
+				<div dojoType="dijit.layout.ContentPane" region="top" splitter="false"><div dojoType="folio.admin.FolderSelect" dojoAttachPoint="folderSelect" viewId="folio.apps.AdministrateFolio.folderSelect"></div></div>
+				<div dojoType="dijit.layout.ContentPane" region="center"><div dojoType="folio.admin.FolderView" dojoAttachPoint="folderView" viewId="folio.apps.AdministrateFolio.folderView"></div></div>
+				<div dojoType="dijit.layout.ContentPane" region="bottom" splitter="false">
+					<!--<div dojoType="folio.admin.SimpleFolderPagination" ></div>-->
+					<div dojoAttachPoint="createArea" style="height: 28px;"></div>
+				</div>
+			</div>
+			<div dojoType="dijit.layout.TabContainer" region="center" dojoAttachPoint='tabContainer' style='width:100%;height:100%;'></div>
+		</div>
+	</div>
+	<!--<div dojoType="dijit.Dialog" dojoAttachPoint="createDialog"></div>-->
+</div>

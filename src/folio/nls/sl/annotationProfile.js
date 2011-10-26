@@ -1,0 +1,20 @@
+﻿({
+  "saveDialogRecommend": "Shranim spremembe pred nadaljevanjem? (Sicer bodo spremembe izgubljene)",
+  "saveDialogSaveLabel": "Shrani",
+  "saveDialogDiscardLabel": "Prezri spremembe",
+  "saveDialogCancelLabel": "Prekliči",
+  "dialogTitle": "Uredi metapodatke za",
+  "mandatoryLabel": "Obvezno",
+  "recommendedLabel": "Priporočeno",
+  "colorLabel": "Barvna oznaka",
+  "shameMessageLabel": "Oblika je v delu, prosimo počakajte.",
+  "readyForValidationLabel": "Pripravljeno za potrjevanje",
+  "optionalLabel": "Izbirno",
+  "dialogCancelLabel": "Prekliči",
+  "dialogDoneLabel": "Končano",
+  "dialogDoneBusyLabel": "Shranjevanje",
+  "mandatoryElementsMissing": "Obvezni elementi manjkajo!",
+  "changeToLinkReference": "Nimate ustreznih pravic za spreminjanje tega vpisa, da bi lahko vseboval lokalne metapodatke poleg referenčnih metapodatkov.",
+  "failedSavingUnsufficientMDRights": "Nimate ustreznih pravic za shranjevanje metapodatkov.",
+  "modifiedPreviouslyOnServer": "NAPAKA: Vir je bil spremenjen na strežniku, vaše spremembe niso shranjene."
+})

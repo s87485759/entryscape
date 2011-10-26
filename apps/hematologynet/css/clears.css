@@ -1,0 +1,17 @@
+/* Clears  CSS Document ================================================================================ */
+.clearer, 
+.header-container, 
+.header,  
+.nav-container,
+.navigation, 
+.main-container, 
+.main,
+.footer-container,
+.footer,  
+.col-main, 
+.col2-set, 
+.col3-set, 
+.col4-set,  
+.block .block-content {
+	overflow:hidden;
+}

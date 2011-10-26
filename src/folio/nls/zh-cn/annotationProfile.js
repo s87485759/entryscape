@@ -1,0 +1,20 @@
+({
+  "saveDialogRecommend": "继续前保存更改？（否则更改将丢失）",
+  "saveDialogSaveLabel": "保存",
+  "saveDialogDiscardLabel": "放弃更改",
+  "saveDialogCancelLabel": "取消",
+  "dialogTitle": "为...编辑元数据",
+  "mandatoryLabel": "强制性",
+  "recommendedLabel": "推荐的",
+  "colorLabel": "颜色标签",
+  "shameMessageLabel": "表格正在构设中，请稍候。",
+  "readyForValidationLabel": "准备验证",
+  "optionalLabel": "可选的",
+  "dialogCancelLabel": "取消",
+  "dialogDoneLabel": "完成",
+  "dialogDoneBusyLabel": "正在保存",
+  "mandatoryElementsMissing": "强制性内容丢失！",
+  "changeToLinkReference": "您没有足够的权限来更改“是否不仅包含引用元数据，还包含本地元数据”。",
+  "failedSavingUnsufficientMDRights": "您没有足够的权限保存元数据。",
+  "modifiedPreviouslyOnServer": "错误：资源已被在服务器上更改，您的更改无法被保存。"
+})

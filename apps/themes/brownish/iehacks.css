@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+/* ---------------------------
+ * Fixes for Internet Explorer
+ * ---------------------------
+ */
+span.link {
+	cursor: pointer;
+}
+
+div.commentPane {
+	height: expression( this.scrollHeight > 299 ? "300px" : "auto" ); /* max-height for IE */
+}
+
+.cleanList.listView .listEntry {
+	height: 23px;
+}
+.cleanList.listView .listEntry.selected {
+	height: auto;
+}

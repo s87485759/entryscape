@@ -1,0 +1,1 @@
+({  "labelLabel": "заглавие",  "descriptionLabel": "Описание",  "uploadFile": "Натоварван файл",  "cancel": "Отмяна",  "done": "Готово"})

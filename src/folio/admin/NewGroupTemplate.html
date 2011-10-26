@@ -1,0 +1,39 @@
+<div>
+	<div class="createpopup">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>New group details</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewGroupTemplate.titleField">Title: </label></td>
+				<td>
+					<input 
+						type="text" 
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="titleField"
+						trim="true">
+					</input>
+				</td>	
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.NewGroupTemplate.descriptionField">Description: </label></td>
+				<td>
+					<textarea
+						type="text" 
+						dojoType="dijit.form.Textarea"
+						style="width:175px"
+						dojoAttachPoint="descriptionField">
+					</textarea>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty -->&nbsp;</td>
+				<td>
+					<div class="error" dojoAttachPoint="createGroupError" style="display: none;"><span dojoAttachPoint="createGroupErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelCreateGroupClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Creating..." dojoAttachEvent="onClick:createGroupClicked" dojoAttachPoint="createGroupBtn">Create group</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

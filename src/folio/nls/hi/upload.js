@@ -1,0 +1,1 @@
+({  "fileUploadLabel": "द्स्तावेज ",  "mimeTypeLabel": "प्रारुप",  "uploadTypeLabel": "प्रकार ",  "browseButtonLabel": "ब्राउज़…",  "cancelButtonLabel": "रद्द करना"})

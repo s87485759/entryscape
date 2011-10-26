@@ -1,0 +1,110 @@
+/* The center part */
+.infodisplay {
+	padding: 40px 20px 20px 20px;
+	/*float: left;*/
+}
+
+.infodisplay .infoheader {
+	padding: 3px;
+	font-size:1.3em;
+	background: #d8dee5;
+}
+
+.infodisplay .infoheader td {
+	padding: 3px;
+}
+	
+.infodisplay .inforow td {
+	padding: 1px;	
+}
+
+.infodisplay .buttonrow td {
+	padding-bottom: 6px;
+}
+
+.infodisplay .error {
+	font-size: 0.8em;
+	color: red;
+}
+
+/* The popup */
+.createpopup {
+	padding: 10px 10px 10px 10px;
+}
+
+.createpopup .reqfield {
+	color: red;	
+}
+
+.createpopup .infoheader {
+	padding: 3px;
+	font-size:1.3em;
+	background: #d8dee5;
+}
+
+.createpopup .infoheader td {
+	padding: 3px;
+}
+	
+.createpopup .inforow td {
+	padding: 1px;	
+}
+
+.createpopup .buttonrow td {
+	padding-bottom: 6px;
+}
+
+.createpopup .error {
+	font-size: 0.8em;
+	color: red;
+}
+
+.select {
+	float: right;
+}
+
+/* Group member pagination */
+.gm_pagination {
+	text-align: center;
+	padding-bottom: 2px;
+}
+
+.gm_pagination .paginator {
+	padding: 1px 4px 1px 4px;
+}
+
+.gm_pagination .selected {
+	cursor: default;
+}
+
+.gm_pagination .selectable {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+/* Group member edit display */
+
+.edit .list{
+	cursor: default;
+	text-decoration: underline;
+}
+
+.edit .listentry {
+	border-bottom: 1px solid #8cb6e5;
+}
+/*
+.edit div.listentry:hover {
+	background: #E1D9CD;
+}
+
+.edit .selected {
+	background: #BF9F73;
+}
+
+.edit div.selected:hover {
+	background: #BF9F73;
+}
+*/
+.edit .groupmbr {
+	background: #73BF9F;
+}

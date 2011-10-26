@@ -1,0 +1,273 @@
+/*-----------Common css to both head and child-----------------*/
+.listView .butsCls {
+	position: absolute;
+	bottom: 0px;
+	overflow: hidden;
+	width: 100%;
+}
+.listView .bottomInfo {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	padding-right: 0.4em;
+	padding-left: 0.4em;
+	z-index: 100;
+	min-height: 1.2em;
+}
+.listView .butsCls span:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.listView .butsCls .disabledEntryButton,
+.listView .butsCls .disabledEntryButton:hover {
+	cursor: not-allowed !important;
+	text-decoration: none !important;
+}
+.listView .butsCls .disabledEntryButton {
+	color: gray; /*opacity:0.5;*/
+}
+.listView .butsCls span{
+	border-top-width: 1px;
+	padding-right: 0.4em;
+	padding-left: 0.4em;
+	font-size: smaller;
+	border-right-width: 1px;
+	bottom: 0px;
+	left: 0px;
+	position: relative;
+	white-space: nowrap;
+}
+
+.listView .childCountCls {
+	font-size: smaller;
+}
+
+.listView .modCls {
+	font-size: smaller;
+	border: none;
+	bottom: 0px;
+	right: 0px;
+}
+
+
+/*-----------List Head-----------------*/
+.listView .listHead {
+	height: 67px;
+	border-bottom-width: 1px;
+
+	/* Prevent scrollbars from appearing, which shouldn't be needed
+	 anyway (Opera likes to show a scrollbar for the list head) */
+	overflow: hidden;
+}
+
+.listView .listHead .sortCls,
+.listView .listHead .refreshBtnCls {
+	font-size: smaller;
+	display: inline-block;
+}
+
+.listView .listHead .iconCls {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	width: 32px;
+	height: 32px;
+}
+
+.listView .listHead .titleCls {
+	font-weight: bold;
+	margin-top: 3px;
+	margin-left: 38px;
+}
+
+.listView .listHead .descCls{
+	height: 2.5em;
+	overflow: hidden;
+}
+
+.listView .listHead .descCls {
+	margin-left: 38px;
+}
+.listView .listHead .butsCls {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+.listView .listHead .expandTopCls {
+	font-size: smaller;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	width: 100%;
+	text-align: right;
+}
+.listView .listHead .expandCls {
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+	text-align: right;
+}
+
+/*-----------List Child Regular-----------------*/
+.listView .listEntry {
+	height: 1.8em;
+	padding-top: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+	border-bottom-width: 1px;
+	overflow: hidden;
+}
+
+.listView .listEntry .singleLine {
+	height: 1.8em;
+	overflow: hidden;
+	padding-right: 0.5em;
+	white-space: nowrap;
+}
+
+.listView .listEntry .titleCls {
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.listView .listEntry .singleLine .operation {
+	float: right;
+}
+
+.listView .listEntry .iconCls{
+	float: left;
+	width: 18px;
+	height: 18px;
+	padding-right: 5px;
+}
+
+.listView .listEntry .disabledTitleCls {
+	color: gray;
+}
+
+.listView .listEntry .expandCls{
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	display: none;
+}
+
+.listView .listEntry .descCls{
+	height: 2.5em;
+	overflow: hidden;
+}
+
+/*-----------List Child Regular selected---------*/
+.listView .listEntry.selected {
+	height: auto;
+}
+
+.listView .listEntry.selected .expandCls {
+	display: block;
+}
+
+/*--- floating expand override----- */
+.listView.floatingExpand .listEntry .expandCls {
+	position: absolute;
+	left: 10em;
+	right: 0em;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	-moz-border-radius-bottomleft:5px;
+	-khtml-border-radius-bottomleft:5px;
+	behavior: url(../../../lib/border-radius.htc);
+	border-bottom-left-radius:5px;
+}
+
+.listView.floatingExpand .listEntry.selected {
+	overflow: visible;
+}
+
+.listView.floatingExpand .listEntry .descCls{
+	margin-left: 0.5em;
+	overflow: hidden;
+}
+.listView .listEntry .descCls{
+	height: auto;
+}
+
+/*--- Title click first gives expand----- */
+.listView .titleClickFirstExpands a.titleCls {
+	display: none;
+}
+.listView .titleClickFirstExpands span.titleCls {
+	cursor: default;
+	display: inherit;
+}
+
+.listView .titleClickFirstExpands .selected span.titleCls {
+	display: none;
+}
+.listView .titleClickFirstExpands .selected span.titleCls.disabledTitleCls {
+	display: inherit;
+}
+
+.listView .titleClickFirstExpands .selected a.titleCls {
+	display: inherit;
+}
+
+/*----------- List child icon view ---------*/
+.listView .iconView {
+	float:left;
+	margin-left: 5px;
+	margin-top: 5px;
+	border: 1px solid transparent;
+	padding-top: 3px;
+	position: relative;
+	height: 100px;
+	width: 100px;
+}
+
+.listView .iconView img {
+	width: 60px;
+	height: 60px;
+	margin-left: 20px;
+}
+.listView .iconView img.iconCls {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-right: 5px;
+	width: 60px;
+	height: 60px;
+}
+
+.listView .iconView .titleCls {
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	overflow: hidden;
+	display: block;
+}
+
+/*--- list controls----- */
+.cleanList.listView .listControls {
+	border-top-width: 1px;
+}
+
+
+.confolio .simpleSearchList .preview {
+	float: right;
+	background-image: url(../../folio/icons_oxygen/16x16/document_preview.png);
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-right: 0.3em;
+}
+
+.confolio .simpleSearchList .add {
+	float: right;
+	background-image: url(../../folio/icons_oxygen/16x16/bookmark_add.png);
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-right: 0.3em;
+}

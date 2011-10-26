@@ -1,0 +1,1 @@
+({  "cancelButtonLabel": "Отменяне",  "nextButtonLabel": "Следващо",  "finishButtonLabel": "Край",  "busyButtonLabel": "Изпращане",  "uploadFileTitle": "Натоварване на файла",  "createObjectTitle": "Създаване на обект",  "linkToWebResourceTitle": "Връзка с уеб ресурс",  "conditionText": "Този ресурс е препроверен според правилата на Organic.Edunet project"})

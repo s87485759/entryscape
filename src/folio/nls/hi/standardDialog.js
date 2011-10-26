@@ -1,0 +1,1 @@
+({  "cancelButtonLabel": "रद्द करना ",  "nextButtonLabel": "आगामी",  "finishButtonLabel": "ओके ",  "busyButtonLabel": "प्रेषित करना …"})

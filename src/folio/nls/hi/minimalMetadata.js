@@ -1,0 +1,1 @@
+({  "labelLabel": "शीर्षक ",  "descriptionLabel": "व्याख्यान ",  "uploadFile": "द्स्तावेज को अपलोड़ करना ",  "cancel": "रद्द करना ",  "done": "किया "})

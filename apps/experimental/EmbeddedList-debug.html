@@ -1,0 +1,34 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Embedded List</title>
+	<style type="text/css">
+	@import "../lib/dojo/dojo/resources/dojo.css";		/* required */
+	@import "../lib/dojo/dojox/image/resources/image.css";
+	@import "../lib/shame-src/shame.css";
+	@import "../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */
+	@import "../lib/dojo/dojox/form/resources/FileInput.css";
+	@import "../src/folio/apps/default.css";
+	@import "../src/folio/create/create.css";
+	@import "../src/folio/style/rounded.css";
+	
+    </style>    
+    <script type="text/javascript" src="../lib/dojo/dojo/dojo.js.uncompressed.js"
+		djConfig="isDebug: true, debugAtAllCosts: true, parseOnLoad: true, usePlainJson: true"></script> 
+    <script type="text/javascript" src="../lib/dojo/dojo/back.js"></script>	
+	<script type="text/javascript">
+		dojo.registerModulePath("folio","../../../src/folio");
+		dojo.registerModulePath("jdil","../../../src/jdil");
+		dojo.registerModulePath("shame", "../../shame-src"); 
+		dojo.require("folio.apps.EmbeddedList");
+		dojo.require("dojo.back");
+	</script>
+  </head>
+
+  <body class="tundra" style="width: 500px">
+  	<h1>Donald Duck and Daisy Ducks Portfolio</h1>
+  	The following folder is the _top in the testsuite of SCAM4 dealing with disney characters. Do notice the Phooey nephew, he is fun.
+  	<div style="height: 500px;margin-left: 40px;border: 3px solid black"><div dojoType="folio.apps.EmbeddedList" dataDir="../data/" 
+  	repository="http://localhost:8080/scam/" startContext="1"></div></div>
+  </body>
+</html>

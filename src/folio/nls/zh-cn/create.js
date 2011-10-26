@@ -1,0 +1,3 @@
+({
+  "createTypeLabel": "类型"
+})

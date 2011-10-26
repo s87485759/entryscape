@@ -1,0 +1,130 @@
+/* Brownish style uses the following colours:
+   white - as background
+   dark brown (#A68253) - the skelleton of the application.
+   light brown (#BF9F73) - current folder, some labels etc.
+   vaguely brown (#E1D9CD) - selections.
+*/ 
+
+/*Logo should be < 240x60*/
+.navigationBar .logo {
+	background:transparent url('logo.png') no-repeat top left;
+	width: 660px;
+	height: 64px;
+	margin-bottom: 0px;
+}
+
+/* Generic approach for themes*/
+.confolio .distinctBackground {
+	background: #d8dee5;
+}
+.confolio .thinBorder {
+	border-color: #8cb6e5;
+	border-width: 1px;
+}
+.confolio .thickBorder {
+	border-color: #8996bb;
+}
+/* Generic approach end*/
+
+.navigationBar .label, .navigationBar .link {
+	color: black;
+}
+.navigationBar .dijit {
+	color: black;
+}
+.viewController, .confolio {
+	background: #8996bb;
+}
+
+/* Loading icon used in splash*/
+.loadingIcon {	
+	width: 32px;height: 32px;
+	background:transparent url('../blueish.gif') no-repeat top left;
+}
+
+/*Skelleton*/
+.tundra .dijitSplitterV, .tundra .dijitSplitterH,
+.confolioPanel {
+	background: #8996bb;
+}
+
+/*Background*/
+.mainPanel,
+.dijitAlignTop,
+.shamePresentationMode .shameValue {
+	background: white;
+}
+
+/*Selection*/
+.cleanList.listView .selected,
+.folioTreeLabelSelected,
+.iconOverview a.selected,
+.breadcrumbs .crumb .label.selected,
+.breadcrumbs .listMode.selected,
+.breadcrumbs .crumb .choices.pressed,
+.listChildren .iconView.selected,
+.confolio .rforms .topLevel {
+	background: #EDEDED;
+}
+
+/* Borders*/
+.iconOverview a.selected,
+.annotationprofileeditor .editTab,
+.annotationprofileeditor .editTabEditStateButtons,
+.breadcrumbs .crumb,
+.breadcrumbs .listMode,
+.breadcrumbs,
+.listChildren .iconView.selected {
+	border-color: #8996bb;	
+}
+
+.listView *,
+.details *,
+.listView .butsCls *,
+.folioTreeLabelSelected,
+.shameRoot {
+	border-color: #8cb6e5;
+	border-style: solid;
+	border-width: 0px;
+}
+
+.listView .listHead,
+.listView .listControls,
+.details .top .resourceSpace,
+.details .top .url,
+.details .center .bottom {
+	background: #d8dee5;
+}
+
+.details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/
+.details .center .locInfoPane > div:first-child {
+	background: #d8dee5;
+}
+
+
+.editStateColor .missing .shameLabel,
+.missing>.shameLabel {
+	background: red;	
+}
+
+.editStateColor .mandatory>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .mandatory {
+	background: #A68253;
+}
+
+.editStateColor .recommended>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .recommended {
+	background: #BF9F73;
+}
+
+.editStateColor .optional>.shameLabel,
+.annotationprofileeditor .editStateColor .editTabEditStateButtons .optional {
+	background: #E1D9CD;
+}
+
+div.commentPane {
+	position: relative;
+	overflow: auto;
+	max-height: 300px;
+	width: 100%;
+}

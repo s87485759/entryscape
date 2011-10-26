@@ -1,0 +1,74 @@
+{
+ "id":"hnetGroupFoaf",
+ "label": {
+  "en": "Default Base formlet in compound formlets",
+  "sv": "Default formulet bas i sammansatta formuletter"
+ },
+ "description": {
+  "en": "This is the formlet used as base in compound formlets by default. The formlets consists of a query with only a base variable and a minimal form specification. If the base formlet is not loaded (i.e. the containing formlet set) many compound formlets will break.",
+  "sv": "Denna formuletten används som bas i många sammansatta formuletter som default. Formuletten består av en fråga med endast en basvariabel samt en minimal formulärspecifikation. Om denna basformulett inte är laddad (egentligen den omgivande formulett mängden) så kommer många sammansatta formuletter inte att fungera."
+ },
+ "root": {
+  "nodetype": "RESOURCE",
+  "label": {
+   "de": "Ressource",
+   "en": "Resource",
+   "sv": "Resurs"
+  },
+  "@type": "group",
+  "content": [
+   {
+    "styles": ["TextFormItem"],
+    "nodetype": "LITERAL",
+    "cardinality": {
+     "min": 0,
+     "pref": 1,
+     "max": 1
+    },
+    "label": {"en": "Full name"},
+    "@type": "text",
+    "property": "http://xmlns.com/foaf/0.1/name",
+    "description": {"en": ""}
+   },
+   {
+    "styles": ["GroupFormItem"],
+    "nodetype": "BLANK",
+    "cardinality": {
+     "min": 1,
+     "pref": 1
+    },
+    "label": {
+     "hu": "Leírás",
+     "et": "Kirjeldus",
+     "de": "Beschreibung",
+     "ro": "Descriere",
+     "el": "Περιγραφή",
+     "es": "Descripción",
+     "en": "Description",
+     "sv": "Beskrivning",
+     "ru": "Описание"
+    },
+    "@type": "group",
+    "property": "http://purl.org/dc/terms/description",
+    "description": {"en": "Provide one paragraph describing the content of this resource"},
+    "content": [{
+     "styles": [
+      "MultiLine",
+      "TextFormItem",
+      "LanguageControlled"
+     ],
+     "nodetype": "LANGUAGE_LITERAL",
+     "cardinality": {
+      "min": 1,
+      "pref": 1
+     },
+     "label": {"en": ""},
+     "@type": "text",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "description": {"en": ""}
+    }]
+   }
+  ]
+ }
+}
+

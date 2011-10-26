@@ -1,0 +1,79 @@
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="../themes/oe/favicon.ico">
+	<title>Greek Rural Schools Community Portal</title>
+	<style type="text/css">
+	@import "../../lib/dojo/dojo/resources/dojo.css";		/* required */
+	@import "../../lib/dojo/dojox/image/resources/image.css";
+	@import "../../lib/shame-src/shame.css";
+	@import "../../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */
+	@import "../../lib/dojo/dojox/form/resources/FileInput.css";
+	@import "../../src/folio/apps/clean.css";
+	@import "GreekSchools.css";
+	@import "../../src/folio/create/create.css";
+	@import "../../lib/dojo/dojox/form/resources/BusyButton.css";
+    @import "../../lib/dojo/dojox/grid/resources/tundraGrid.css";
+	@import "../../lib/dojo/dojox/layout/resources/ExpandoPane.css"; 
+	@import "../../lib/dojo/dojox/layout/resources/FloatingPane.css"; 
+	
+	.dojoxExpandoClosed .dojoxExpandoTitleNode {
+    	display: inline !important;
+	}
+	
+    </style>
+    <script type="text/javascript" src="../../lib/dojo/dojo/dojo.js.uncompressed.js"
+		djConfig="isDebug: false, debugAtAllCosts: false, parseOnLoad: true, usePlainJson: true"></script>
+	<script type="text/javascript" src="../../lib/audio/audio-player.js"></script>
+    <script type="text/javascript" src="../../lib/dojo/dojox/grid/DataGrid.js"></script>
+	<script type="text/javascript" src="../../lib/swfobject/swfobject.js"></script>
+    <script type="text/javascript" src="../../lib/dojo/dojo/back.js"></script>	
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAaDCpG2c3yJi5SlxArXvVDhSV5qw27O0gn9BURoQ2KaJTWQaAChTfk5ZLElKi-O85Zm-9C9Z0mj6xww"></script>
+	<script type="text/javascript">
+		google.load("feeds", "1");
+		dojo.registerModulePath("folio","../../../src/folio");
+		dojo.registerModulePath("jdil","../../../src/jdil");
+		dojo.registerModulePath("shame", "../../shame-src"); 
+		dojo.require("folio.WidgetApplication");
+		dojo.require("folio.simple.NavigationBar");
+		dojo.require("folio.simple.Overview");
+		dojo.require("folio.main.Aggregate");
+		dojo.require("dijit.layout.ContentPane");
+		dojo.require("dijit.layout.BorderContainer");
+		dojo.require("dojo.back");
+	</script>
+	
+	<!-- Google Analytics Start -->
+	<!--
+	<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-11881572-4']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+	</script>
+	-->
+	<!-- Google Analytics End -->
+
+  </head>
+  <body class="tundra">
+  <script type="text/javascript">dojo.back.init();</script>
+	<div dojoType="folio.WidgetApplication" class="subportalarea" dataDir="../../data/"
+  	repository="http://oe.confolio.org/scam/" startContext="33">
+ 	<div dojoType="dijit.layout.BorderContainer" region="center" gutters="false" class="applicationContainer">
+ 		<div dojoType="folio.simple.NavigationBar" id="navigationBarView"  showHelp="false" showAbout="false" region="top" style="width: 100%;"></div>
+		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="innerApplicationContainer">
+			<div dojoType="dijit.layout.ContentPane" gutters="false" style="width:24em" region="left">
+				<div dojoType="folio.simple.Overview" id="overView" style="width: 100%;"></div>
+			</div>
+				<div dojoType="folio.main.Aggregate" region="center" splitter="true" id="aggregateView"></div>
+			<div dojoType="dijit.layout.ContentPane" gutters="false" style="width:24em" region="right">
+				<div dojoType="folio.simple.Overview" id="feedView" startEntry="_feeds" style="width: 100%;"></div>
+			</div>
+		</div>
+  	</div>
+  </body>
+</html>

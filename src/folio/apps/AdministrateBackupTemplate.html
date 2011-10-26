@@ -1,0 +1,124 @@
+<div>
+	<div dojoType="dijit.layout.BorderContainer" style="margin-top:25px;margin-left:25px;width:35%;background-color:lightgrey" gutters="false" >
+		<h1 style="margin-top:10px">Administrate Backup</h1>
+		<div style="margin-left:25px">
+        	<input "type="radio" dojoType="dijit.form.RadioButton" 
+			 	 name="viewButtons" id="periodicBackup" value="periodicBackup" dojoAttachPoint="periodicBackupDijit"/>
+			<label for="periodicBackup">
+        		Periodic backup
+    		</label>
+			<input "type="radio" dojoType="dijit.form.RadioButton" 
+				name="viewButtons" id="oneTimeBackup" value="oneTimeBackup" dojoAttachPoint="oneTimeBackupDijit" dojoAttachEvent="onChange:_editorUpdate"/>
+			<label for="oneTimeBackup">
+        		One time backup
+    		</label>
+        </div>
+	</div>
+	<div dojoType="dijit.layout.BorderContainer" style="display:none;margin-top:10px;margin-left:25px;width:35%;background-color:lightgrey" gutters="false" dojoAttachPoint="oneTimeBackupEditorDijit">
+		<div style="margin-top:10px">The purpose of this view is to configure a scheduled one time backup <br/>
+		NOTE: Saving this configuration will remove any existing periodic backup configuration!<br/>
+		Note also that the backup will be compressed as gzip</div>
+		<div style="margin-top:10px">Set the day and time for when this backup should take place <br/></div>
+		<div style="margin-left:25px">
+			Date: <span dojoType="dijit.form.DateTextBox" dojoAttachPoint="oneTimeBackupDateDijit"></span>
+			at: <span dojoType="dijit.form.TimeTextBox" dojoAttachPoint="oneTimeBackupTimeDijit"></span>
+		</div>
+	</div>
+	<div dojoType="dijit.layout.BorderContainer" style="display:block;margin-top:10px;margin-left:25px;width:35%;background-color:lightgrey" gutters="false" dojoAttachPoint="periodicEditorDijit">
+        <div style="margin-top:10px">The purpose of this view is to configure periodic backups. How often and when they should be created as well as  
+		how many days a backup should be saved is possible to configure </div>
+		<div style="margin-top:10px">Give the period and time for when the backup should be performed</div>
+		<div style="margin-left:25px">
+			<select dojoType="dijit.form.FilteringSelect" dojoAttachPoint="PeriodDijit" id="PeriodDijit" name="PeriodDijit" dojoAttachEvent="onChange:_periodChange">
+				<option value=""></option>
+				<option value="Daily">
+        			Daily
+    			</option>
+				<option value="Weekly">
+        			Weekly
+    			</option>
+				<option value="Monthly">
+        			Monthly
+    			</option>
+			</select> at
+			<span dojoType="dijit.form.TimeTextBox" dojoAttachPoint="backupTimeDijit"></span>
+		</div>
+		<div style="display:none" dojoAttachPoint="dayOftheMonthNode">
+			Day of the month: 
+			<div style="margin-left:25px"> 
+				<div dojoType="dijit.form.NumberSpinner" dojoAttachPoint="dayOftheMonthDijit" constraints="{min:1,max:31,places:0}"></div>
+			</div> 
+		</div>
+		<div style="display:none" dojoAttachPoint="dayOftheWeekNode">
+			Day of the week:
+			<div style="margin-left:25px"> 
+				<select dojoType="dijit.form.FilteringSelect" dojoAttachPoint="dayOftheWeekDijit">
+					<option value=""></option>
+					<option value="0">
+        				Sunday
+    				</option>
+					<option value="1">
+	        			Monday
+    				</option>
+					<option value="2">
+        				Tuesday
+    				</option>
+					<option value="3">
+    	    			Wednesday
+    				</option>
+					<option value="4">
+        				Thursday
+	    			</option>
+					<option value="5">
+        				Friday
+    				</option>
+					<option value="6">
+        				Saturday
+	    			</option>
+				</select>
+			</div>
+		</div>
+		<div style="margin-top:10px">Store backups compressed (GZIP):</div>
+		<div style="margin-left:25px">
+        	<input "type="radio" dojoType="dijit.form.RadioButton" 
+				name="gzip" id="gziplabel1" value="true" dojoAttachPoint="gziplabel1Dijit"/>
+			<label for="gziplabel">
+        		Yes
+    		</label>
+			<input "type="radio" dojoType="dijit.form.RadioButton" 
+				name="gzip" id="gziplabel2" value="false" dojoAttachPoint="gziplabel2Dijit"/>
+			<label for="gziplabel2">
+        		No
+    		</label>
+        </div>
+        <div style="margin-top:10px">Perform maintenance:</div>
+		<div style="margin-left:25px">
+        	<input "type="radio" dojoType="dijit.form.RadioButton" 
+				name="maint" id="maintlabel1" value="true" dojoAttachPoint="maintlabel1Dijit"/>
+			<label for="maintlabel1">
+        		Yes
+    		</label>
+			<input "type="radio" dojoType="dijit.form.RadioButton" 
+				name="maint" id="maintlabel2" value="false" dojoAttachPoint="maintlabel2Dijit"/>
+			<label for="maintlabel2">
+        		No
+    		</label>
+        </div>
+		<div style="margin-top:10px">Number of days to save back up files: </div>
+		<div style="margin-left:25px" dojoType="dijit.form.NumberSpinner" 
+			constraints="{min:1,max:1000,places:0}" id="deleteSpinner" name="someNumber" dojoAttachPoint="deleteSpinnerDijit"></div>
+		<div style="margin-top:10px">Minimum number of backups:</div>
+		<div style="margin-left:25px" dojoType="dijit.form.NumberSpinner"
+			constraints="{min:1,max:1000,places:0}" id="minSpinner" name="someNumber" dojoAttachPoint="minSpinnerDijit"></div>
+		<div style="margin-top:10px">Maximum number of backups:</div>
+        <div style="margin-left:25px" dojoType="dijit.form.NumberSpinner"
+			constraints="{min:2,max:1000,places:0}" id="maxSpinner" name="someNumber" dojoAttachPoint="maxSpinnerDijit"></div>
+	</div>
+	<div dojoType="dijit.layout.BorderContainer" style="margin-left:25px;width:35%;background-color:lightgrey" gutters="false">
+		<div style="float:right" dojoType="dojox.form.BusyButton" dojoAttachEvent="onClick:_saveClicked" dojoAttachPoint="saveButtonDijit" busylabel="Saving...">Save</div>
+	</div>
+	<div dojoType="dijit.layout.BorderContainer" style="margin:25px;width:35%;background-color:lightgrey" gutters="false">
+		<div dojoAttachPoint="msgZoneNode" style="display:none;margin:5px;padding:5px"></div>
+	</div>
+</div>
+	

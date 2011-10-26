@@ -1,0 +1,22 @@
+({
+  "details": "Részletek",
+  "comment": "Hozzászólás",
+  "edit": "Szerkeszt",
+  "admin": "Adminisztrátor",
+  "remove": "Eltávolít",
+  "empty": "Üres",
+  "copy": "Másol",
+  "cut": "Kivág",
+  "paste": "Beilleszt",
+  "pasteInto": "Beilleszt ide",
+  "add": "Hozzáad",
+  "modified": "Módosítva",
+  "items": "Tételek",
+  "addedToContactsMessage": "A személy hozzáadva a parterlistához",
+  "sortLabel": "Sorbarendezés",
+  "sortByNone": "Rendezési sorrend",
+  "sortByTitle": "Cím szerint",
+  "sortByTitleReverse": "CÍm szerint fordítva",
+  "sortByModified": "Módosítás szerint",
+  "sortByModifiedReverse": "Módosítás szerint fordítva"
+})

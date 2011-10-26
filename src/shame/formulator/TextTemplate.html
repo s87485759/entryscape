@@ -1,0 +1,80 @@
+<div>
+	<div dojoType="shame.formulator.ToolbarTitlePane" dojoAttachPoint="toolbarTitle" title="Text formitem">
+		<div dojoType="dijit.layout.BorderContainer">
+			<div dojoType="dijit.layout.ContentPane">
+			  <div dojoType="dijit.form.Form" dojoAttachPoint="configuration">
+	   			<table>
+	   				<tr>
+			        <td><label for="label">Label:</label></td>
+			        <td><input dojoType=dijit.form.TextBox type="text" name="label" style="width: 100%"></td>
+			        <td><label for="llanguage">&nbsp;&nbsp;in language:</label></td>
+			        <td style="width: 6em">
+			          <select dojoType=dijit.form.FilteringSelect name="llanguage" hasDownArrow="true" style="width: 10em">
+			            <option value="sv">Swedish</option>
+			            <option value="en">English</option>
+			            <option value="de">German</option>
+			            <option value="fr">French</option>
+			          </select>
+					</td>
+			      </tr>
+			      <tr>
+			        <td><label for="description">Description:</label></td>
+			        <td><textarea dojoType=dijit.form.Textarea name="description"></textarea></td>
+			        <td><label for="dlanguage">&nbsp;&nbsp;in language:</label></td>
+			        <td style="width: 6em">
+			          <select dojoType=dijit.form.FilteringSelect name="dlanguage" hasDownArrow="true" style="width: 10em">
+			            <option value="sv">Swedish</option>
+			            <option value="en">English</option>
+			            <option value="de">German</option>
+			            <option value="fr">French</option>
+			          </select>
+					</td>
+			      </tr>
+			      <tr>
+			        <td><label for="property">Property:</label></td>
+			        <td><input dojoType=dijit.form.TextBox type="text" name="property" style="width: 100%"></td>
+					<td><label for="reuseVariable">&nbsp;&nbsp;or, reuse:</label></td>
+					<td style="width: 6em">
+			          <select dojoType=dijit.form.FilteringSelect name="reuseVariable" hasDownArrow="true" style="width: 10em">
+			            <option value="none"></option>
+			            <option value="predicateAbove">Property above</option>
+			            <option value="objectAbove">Object above</option>
+			          </select>		  
+					</td>
+			      </tr>
+			      <tr>
+			       <tr>
+			        <td><label for="constraint">Constraint:</label></td>
+			        <td><input dojoType=dijit.form.TextBox type="text" name="constraint" style="width: 100%"></td>
+					<td><label for="nodeType">&nbsp;&nbsp;Node restriction:</label></td>
+			        <td>
+					  <select dojoType=dijit.form.FilteringSelect name="nodeType" hasDownArrow="true" style="width: 10em">
+			            <option value="default">Default</option>
+			            <option value="LL">String + Lang</option>
+			            <option value="OL">String</option>
+			            <option value="PL">String opt. Lang)</option>
+			            <option value="UR">URI Resource</option>
+			          </select>
+					</td>
+			      </tr>
+			      <tr>
+			        <td colspan="4">
+						<input type="checkbox" dojoType="dijit.form.CheckBox" name="hidden"><label for="hidden">Hidden&nbsp;&nbsp;&nbsp;</label>
+			 			<input type="checkbox" dojoType="dijit.form.CheckBox" name="hasLanguage"/><label for="hasLanguage">Has language&nbsp;&nbsp;&nbsp;</label>
+			 			<input type="checkbox" dojoType="dijit.form.CheckBox" name="multiLine"/><label for="multiLine">Multiple lines&nbsp;&nbsp;&nbsp;</label>
+			 			<input type="checkbox" dojoType="dijit.form.CheckBox" name="editable" checked="editable"/><label for="frame">Editable&nbsp;&nbsp;&nbsp;</label>
+			        </td>
+			      </tr>
+			      </tr>
+			        <td colspan="4">
+						<label for="min">Minimum cardinality:</label><input dojoType=dijit.form.NumberSpinner style="width: 60px" name="min">&nbsp;&nbsp;&nbsp;
+						<label for="pref">Preferred cardinality:</label><input dojoType=dijit.form.NumberSpinner style="width: 60px" name="pref">&nbsp;&nbsp;&nbsp;
+				      	<label for="max">Maximum cardinality:</label><input dojoType=dijit.form.NumberSpinner style="width: 60px" name="max">&nbsp;&nbsp;&nbsp;
+					</td>
+			      </tr>
+   				</table>
+			  <div>
+			</div>
+		</div>
+	</div>
+</div>

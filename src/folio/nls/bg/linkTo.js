@@ -1,0 +1,1 @@
+({  "URLLabel": "Унифициран указател на ибнформационния ресурс URL",  "linkTypeLabel": "Тип",  "advancedButtonLabelMoreDetails": "Повече подробности",  "advancedButtonLabelLessDetails": "По-малко подробности",  "downloadableLabel": "Натоварвани",  "formatLabel": "Формат",  "externalInfoLabel": "Външна информация",  "mdInfoLabel": "Информационен URL"})

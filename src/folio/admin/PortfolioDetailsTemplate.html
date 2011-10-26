@@ -1,0 +1,67 @@
+<div>
+	<div class="infodisplay">
+		<table>
+			<tr class="infoheader"><td colspan="2"><div>Portfolio Details</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.PortfolioDetailsTemplate.nameField">Name: </label></td>
+				<td>
+					<input 
+						type="text" 
+						dojoType="dijit.form.TextBox"
+						dojoAttachPoint="nameField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</input>
+				</td>	
+			</tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.PortfolioDetailsTemplate.descriptionField">Description: </label></td>
+				<td>
+					<textarea
+						type="text" 
+						dojoType="dijit.form.Textarea"
+						style="width:175px"
+						dojoAttachPoint="descriptionField"
+						dojoAttachEvent="onKeyUp:detailsFieldsChanged"
+						trim="true">
+					</textarea>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty -->&nbsp;</td>
+				<td>
+					<div class="error" dojoAttachPoint="portfolioDetailsError" style="display: none;"><span dojoAttachPoint="portfolioDetailsErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelChangeDetailsClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeDetailsClicked" dojoAttachPoint="changeDetailsBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+			<tr class="infoheader"><td colspan="2"><div>Portfolio Alias</div></td></tr>
+			<tr class="inforow">
+				<td><label for="folio.simple.admin.PortfolioDetailsTemplate.aliasField">Alias: </label></td>
+				<td>
+					<input 
+						type="text" 
+						dojoType="dijit.form.ValidationTextBox"
+						required="true"
+						dojoAttachPoint="aliasField"
+						dojoAttachEvent="onKeyUp:aliasFieldsChanged"
+						trim="true"
+						invalidMessage="Alias can not be empty.">
+					</input>
+				</td>	
+			</tr>
+			<tr class="buttonrow">
+				<td><!-- empty -->&nbsp;</td>
+				<td>
+					<div class="error" dojoAttachPoint="portfolioAliasError" style="display: none;"><span dojoAttachPoint="portfolioAliasErrorMessage"></span><!--<span> more information </span>--></div>
+					<div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick:cancelChangeAliasClicked">Cancel</div>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Saving..." dojoAttachEvent="onClick:changeAliasClicked" dojoAttachPoint="changeAliasBtn">Save changes</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

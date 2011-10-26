@@ -1,0 +1,3 @@
+({
+  "createTypeLabel": "Вид"
+})
