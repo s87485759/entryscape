@@ -34,6 +34,11 @@ dojo.require("folio.editor.RFormsPresenter");
  */
 dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated], {
 	//===================================================
+	// Public Attributes
+	//===================================================
+	twoColumn: true,
+
+	//===================================================
 	// Inherited Attributes
 	//===================================================
 	templatePath: dojo.moduleUrl("folio.apps", "ProfileTemplate.html"),
@@ -64,6 +69,10 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 	postCreate: function() {
 		this.application = __confolio.application;
 		this.inherited("postCreate", arguments);
+		if (!this.twoColumn) {
+			dojo.style(this.latestMaterialDijit.domNode, "display", "none");
+		}
+
 		dojo.subscribe("/confolio/localeChange", dojo.hitch(this, this._localize));
 		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
 		this._localize();
@@ -98,7 +107,9 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 				this._showGroups();
 				this._showRights();
 				//TODO: Perhaps also add Link_Reference to the query.
-				this.simpleSearchList.show({term: "(creator:"+this.entryUri+"+OR+contributors:"+this.entryUri+")", builtinType: ["None"], locationType: ["Local", "Link"], sort: "modified+desc", queryType: "solr"});
+				if (this.twoColumn) {
+					this.simpleSearchList.show({term: "(creator:"+this.entryUri+"+OR+contributors:"+this.entryUri+")", builtinType: ["None"], locationType: ["Local", "Link"], sort: "modified+desc", queryType: "solr"});
+				}
 			} else {
 				dojo.attr(this.principalLabelNode, "innerHTML", this.groupLabel);
 //				dojo.attr(this.principalNameLabelNode, "innerHTML", this.groupNameLabel);
@@ -106,29 +117,31 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 				dojo.style(this.homeContextRowNode, "display", "none");
 				this._showMembers();
 				this._showRights(dojo.hitch(this, function() {
-					var context = this.accessToContexts.length > 0 ? this.accessToContexts[0].getId() : null;
-					//TODO: Perhaps also add Link_Reference to the query
-					if (context) {
-						console.log("Soker med 1: "+context);
-						var baseURIForContext = this.entry.getContext().getBaseURI();
-						context = baseURIForContext.replace(/:/g, "\\%3A") + context;
-						console.log("Soker med 2: "+context);
-						this.simpleSearchList.show({
-							term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+"+OR+context:"+ context+")",
-							builtinType: ["None"],
-							locationType: ["Local", "Link"],
-							sort: "modified+desc",
-							queryType: "solr"
-						});
-					} else {
-						this.simpleSearchList.show({
-							term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+")",
-							builtinType: ["None"],
-							locationType: ["Local", "Link"],
-							sort: "modified+desc",
-							queryType: "solr"
-						});
-					}										
+					if (this.twoColumn) {
+						var context = this.accessToContexts.length > 0 ? this.accessToContexts[0].getId() : null;
+						//TODO: Perhaps also add Link_Reference to the query
+						if (context) {
+							console.log("Soker med 1: "+context);
+							var baseURIForContext = this.entry.getContext().getBaseURI();
+							context = baseURIForContext.replace(/:/g, "\\%3A") + context;
+							console.log("Soker med 2: "+context);
+							this.simpleSearchList.show({
+								term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+"+OR+context:"+ context+")",
+								builtinType: ["None"],
+								locationType: ["Local", "Link"],
+								sort: "modified+desc",
+								queryType: "solr"
+							});
+						} else {
+							this.simpleSearchList.show({
+								term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+")",
+								builtinType: ["None"],
+								locationType: ["Local", "Link"],
+								sort: "modified+desc",
+								queryType: "solr"
+							});
+						}
+					}									
 				}));
 			}
 		});

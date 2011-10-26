@@ -28,6 +28,9 @@ dojo.declare("folio.list.ListView", [dijit._Widget, folio.ApplicationView], {
 	// Public Attributes 
 	//===================================================
 	iconMode: false,
+	includeDetailsButton: false,
+	detailsLink: false,
+	
 	//=================================================== 
 	// Public Attributes 
 	//===================================================
@@ -52,7 +55,7 @@ dojo.declare("folio.list.ListView", [dijit._Widget, folio.ApplicationView], {
 	},
 	buildRendering: function() {
 		this._list = new folio.list.List(
-								{application: this.application, iconMode: this.iconMode}, 
+								{application: this.application, iconMode: this.iconMode, includeDetailsButton: this.includeDetailsButton, detailsLink: this.detailsLink}, 
 								this.srcNodeRef);
 	},
 	

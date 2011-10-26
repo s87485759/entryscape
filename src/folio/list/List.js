@@ -590,10 +590,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 	},
 	_insertTitle: function(child, childNode, noDownload) {
-		if (!this.selectionExpands) {
+		if (!this.selectionExpands && !this.iconMode) {
 			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/1downarrow.png"), "style": {"vertical-align": "middle"}, "class": "menu operation"}, childNode);
 		}
-		if (this.detailsLink) {
+		if (this.detailsLink && !this.iconMode) {
 			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/information.png"), "style": {"vertical-align": "middle"}, "class": "details operation"}, childNode);
 		}
 		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 

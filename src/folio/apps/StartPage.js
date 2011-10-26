@@ -32,11 +32,17 @@ dojo.require("folio.list.SearchList");
  */
 dojo.declare("folio.apps.StartPage", [dijit._Widget, dijit._Templated], {
 	//===================================================
+	// Public Attributes
+	//===================================================
+	twoColumn: true,
+
+	//===================================================
 	// Private Attributes
 	//===================================================
 	_includePortfolios: true,
 	_includeUsers: true,
 	_includeGroups: true,
+	
 
 	//===================================================
 	// Inherited Attributes
@@ -70,6 +76,9 @@ dojo.declare("folio.apps.StartPage", [dijit._Widget, dijit._Templated], {
 	postCreate: function() {
 		this.application = __confolio.application;
 		this.inherited("postCreate", arguments);
+		if (!this.twoColumn) {
+			dojo.style(this.latestMaterialDijit.domNode, "display", "none");
+		}
 		dojo.connect(this.search, "onKeyUp", this, this._delayedUpdateList);
 		dojo.subscribe("/confolio/localeChange", dojo.hitch(this, this._localize));
 		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
@@ -108,7 +117,9 @@ dojo.declare("folio.apps.StartPage", [dijit._Widget, dijit._Templated], {
 	},
 	show: function(params) {
 		this._populateList();
-		this.simpleSearchList.show({builtinType: ["None"], locationType: ["Local", "Link"], sort: "modified+desc", queryType: "solr"});
+		if (this.twoColumn) {
+			this.simpleSearchList.show({builtinType: ["None"], locationType: ["Local", "Link"], sort: "modified+desc", queryType: "solr"});
+		}
 		this.user = this.application.getUser();
 		if (this.user == null && __confolio.config.startButtons === "true") {
 			dojo.style(this.startButtonsNode, "display", "");	

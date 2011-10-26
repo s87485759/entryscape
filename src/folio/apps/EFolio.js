@@ -20,7 +20,7 @@
 dojo.provide("folio.apps.EFolio");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
-dojo.require("folio.list.List");
+dojo.require("folio.list.ListView");
 dojo.require("folio.tree.Tree");
 dojo.require("folio.util.Message");
 dojo.require("dijit.layout.BorderContainer");
