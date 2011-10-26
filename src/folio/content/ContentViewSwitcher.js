@@ -143,7 +143,6 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  
 //		}), 1);
 	},
 	resizeContent: function() {
-		console.log("resizeContent");
 		var bb = dojo.contentBox(this.domNode);
 		if (this.contentNode && this.doResize) {
 			var width = this.origWidth;
@@ -166,7 +165,6 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  
 			} else {
 				dojo.style(this.contentNode, "marginTop", 0);
 			}
-		console.log("resizing!!!");
 		}
 	},
 
