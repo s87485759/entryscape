@@ -139,22 +139,22 @@
 }
 
 .breadcrumbs .toggleTreeViewVisible {
-	background-image: url(../../folio/icons_oxygen/22x22/view_tree.png);
+	background-image: url(../../folio/icons_oxygen/16x16/view_tree.png);
 	background-repeat: no-repeat;
-	height: 22px;
-	width: 22px;
+	height: 16px;
+	width: 16px;
 }
 
 .breadcrumbs .showListLikeList {
-	background-image: url(../../folio/icons_oxygen/22x22/view_list.png);
+	background-image: url(../../folio/icons_oxygen/16x16/view_list.png);
 	background-repeat: no-repeat;
-	height: 22px;
-	width: 22px;
+	height: 16px;
+	width: 16px;
 }
 
 .breadcrumbs .showListLikeIcons {
-	background-image: url(../../folio/icons_oxygen/22x22/view_icon.png);
+	background-image: url(../../folio/icons_oxygen/16x16/view_icon.png);
 	background-repeat: no-repeat;
-	height: 22px;
-	width: 22px;
+	height: 16px;
+	width: 16px;
 }
