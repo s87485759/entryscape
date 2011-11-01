@@ -12,7 +12,9 @@
 	"sv": {"sv": "Svenska", "en": "Swedish", "de": "Swedish", "fr": "Suédois", "es": "Sueco", "it": "Svedese", "gr": "Σουηδικά"}
   },
   "namespaces": {
-	"telmap": "http://purl.org/telmap/"
+	"telmap": "http://purl.org/telmap/",
+	"oelrt": "http://organic-edunet.eu/LOM/rdf/voc#LearningResourceType-",
+	"rev": "http://purl.org/stuff/rev#"
   },
   "applicationTypes-NR": {
   },
@@ -52,6 +54,39 @@
     "video/ogg": {"en": "Video: OGG"},
     "video/quicktime": {"en": "Video: Quicktime"},
     "video/x-ms-wmv": {"en": "Video: WMV"}
+  },
+  "specialIcons": {
+  	"link": {"base": "themes/icons/oxygen/", "filename": "link.png"},
+	"RSS":  {"base": "themes/icons/oxygen/", "filename": "RSS.png", "16x16": true},
+	"portfolio": {"base": "themes/icons/oxygen/", "filename": "book.png"},
+	"folder": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+	"user": {"base": "themes/icons/oxygen/", "filename": "user.png"},
+	"group": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+	"user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
+	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"}
+  },
+  "icons": {
+  	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},
+	"BT": {
+		"CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book.png", "16x16": true},
+		"SYSTEM_CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book2.png"},
+		"USER": {"base": "themes/icons/oxygen/", "filename": "user.png", "16x16": true},
+		"GROUP": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+		"LIST": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+		"RESULT_LIST": {"base": "themes/icons/oxygen/", "filename": "find.png"}
+	},
+	"AT": {
+		"http://purl.org/stuff/rev#Review": {"base": "themes/icons/dkit/", "filename": "chat_bubble.png", "16x16": true}
+	},
+	"MT": {
+		"video": 		{"base": "themes/icons/oxygen/", "filename": "video.png"},
+		"presentation": {"base": "themes/icons/oxygen/", "filename": "presentation.png"},
+		"image": 		{"base": "themes/icons/oxygen/", "filename": "image.png"},
+		"images": 		{"base": "themes/icons/oxygen/", "filename": "images.png"},
+		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
+		"text": 		{"base": "themes/icons/oxygen/", "filename": "text.png"},
+		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
+	}
   },
   "MPLanguages": [{"value": "", label:{"en":"", "sv":""}},
 		{"value": "en", label:{"en":"English", "sv":"Engelska"}},
