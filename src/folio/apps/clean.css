@@ -36,7 +36,7 @@ html, body {
 }
 
 .mainPanel {
-	margin: 7px;
+	margin: 5px;
 }
 .confolioPanel {
 	width: 100%;
@@ -276,14 +276,6 @@ a:hover, .link:hover {
 .confolioPanel {
 	float: left;
 }
-
-.refreshBtn{
-	background-image: url(../../folio/icons_oxygen/16x16/view-refresh.png);
-	background-repeat: no-repeat;
-	height: 16px;
-	width: 16px;
-}
-
 
 /* Entry/Details */
 

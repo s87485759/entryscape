@@ -412,8 +412,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 
 	_insertHead: function(headContainer, mdEntry) {
 		var mde = mdEntry || this.list;
+		var config = this.application.getConfig();
 		
-		dojo.create("img", {"class": "iconCls", "src": folio.data.getIconPath(mde)}, headContainer);
+		dojo.create("img", {"class": "iconCls", "src": config.getIcon(mde)}, headContainer);
 
 		//Head Metadata
 		var nr = folio.data.getChildCount(this.list);
@@ -567,9 +568,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
 	},
 	_insertIcon: function(child, childNode) {
-		dojo.create("img", {"class": "iconCls", "src": folio.data.getIconPath(child)}, childNode);
+		var config = this.application.getConfig();
+		dojo.create("img", {"class": "iconCls", "src": config.getIcon(child, "16x16")}, childNode);
 		if (folio.data.isLinkLike(child)) {
-			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, childNode);
+			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": 5}, "src": ""+config.getIcon("link", "16x16")}, childNode);
 		}
 	},
 	_insertModifiedDate: function(child, childNode) {
@@ -591,21 +593,24 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	_insertTitle: function(child, childNode, noDownload) {
 		if (!this.selectionExpands && !this.iconMode) {
-			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/1downarrow.png"), "style": {"vertical-align": "middle"}, "class": "menu operation"}, childNode);
+			dojo.create("span", {"class": "menu operation icon"}, childNode);
 		}
 		if (this.detailsLink && !this.iconMode) {
-			dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/information.png"), "style": {"vertical-align": "middle"}, "class": "details operation"}, childNode);
+			dojo.create("span", {"class": "details operation icon"}, childNode);
 		}
+		var comments = child.getComments();
+		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comments operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
+
 		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
 			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
 			if (folio.data.isWebContent(child) && !this.iconMode) {
 				var linkArrow = dojo.create("a", {"target": "_blank", "class": "operation"}, childNode);
-				dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons/external_16x16.png"), "style": {"vertical-align": "middle"}}, linkArrow);
+				dojo.create("span", {"class": "external operation icon"}, linkArrow);
 			}
 		    if (noDownload == null && (child.getLocationType() == folio.data.LocationType.LOCAL && 
 			  child.getBuiltinType() == folio.data.BuiltinType.NONE)  && !this.iconMode) {
-				  var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "class": "operation"}, childNode);
-				  dojo.create("img", {"src": ""+dojo.moduleUrl("folio", "icons_oxygen/16x16/down.png"), "style": {"vertical-align": "middle"}}, download);
+				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "class": "operation"}, childNode);
+				dojo.create("span", {"class": "download operation icon"}, download);
 		    }
 
 
@@ -692,15 +697,16 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 
 	_insertEntryAsIcon: function(child, childNode, number) {
 		var iconStr;
+		var config = this.application.getConfig();
 		if (this.list.getId() == "_systemEntries") {
 			iconStr = this._entry2Icon[child.getId()];
 			if (iconStr) {
 				iconStr = ""+dojo.moduleUrl("folio", "icons_oxygen/"+ iconStr +".png");
 			} else {
-				iconStr = folio.data.getIconPath(child);					
+				iconStr = config.getIcon(child);					
 			}
 		} else {
-			iconStr = folio.data.getIconPath(child);
+			iconStr = config.getIcon(child);
 		}
 		if (iconStr) {
 			dojo.addClass(childNode, "iconView");

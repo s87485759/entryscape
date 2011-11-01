@@ -109,7 +109,7 @@ dojo.declare("folio.list.SimpleSearchList", dijit._Widget, {
 		var row = dojo.create("div", {"class": "contentRow thinBorder"}, this.domNode);
 		
 		//Icon
-		dojo.create("img", {"class": "iconCls", "src": folio.data.getIconPath(entry)}, row);
+		dojo.create("img", {"class": "iconCls", "src": this.application.getConfig().getIcon(entry)}, row);
 		if (folio.data.isLinkLike(entry)) {
 			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, row);
 		}
@@ -134,7 +134,7 @@ dojo.declare("folio.list.SimpleSearchList", dijit._Widget, {
 				}),
 				dojo.hitch(this, function (){
 					dojo.create("div", {
-					innerHTML: "Not able to find this item",
+					innerHTML: "Not able to find this item"
 				}, row);
 				}));
 				
@@ -155,7 +155,7 @@ dojo.declare("folio.list.SimpleSearchList", dijit._Widget, {
 				}),
 				dojo.hitch(this, function (){
 					dojo.create("div", {
-					innerHTML: "Not able to find this item",
+					innerHTML: "Not able to find this item"
 				}, row);
 				})
 				);

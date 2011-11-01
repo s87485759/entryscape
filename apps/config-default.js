@@ -11,14 +11,14 @@ __confolio.addConfig({
 "password": "donalddonald",
 "showLogin": "true",
 "unloadDialog": "true",
-"CLI": true,
+"CLI": "false",
 "possibleToCommentEntry": "true",
 "helpUrl": "http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": "../info/about-my.html",
 "scamPath": "scam",   /*This is default, can be left out*/
 "definitionsPath": "definitions",
 "startButtons": "true",
-"theme": "blueberry",
+"theme": "default",
 
 supportedLanguageMap: {
 		"de":"Deutsch",

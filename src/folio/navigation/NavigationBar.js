@@ -67,6 +67,7 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
         userField: {node: "userFieldNode", type: "innerHTML"},
         homeLink: {node: "homeLinkNode", type: "innerHTML"},
         settings: {node: "settingsNode", type: "innerHTML"},
+        searchLabel: {node: "searchButtonNode", type: "attribute", attribute: "title"},
         languageLabel: {node: "languageLabelNode", type: "innerHTML"}
 	}),
 	supportedLanguageMap: __confolio.config["supportedLanguageMap"],
@@ -264,10 +265,6 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 	//===================================================
 	// Apply Locale on template dijit
 	//===================================================
-	_setSearchLabelAttr: function(value) {
-		this.searchButton.set("label", value);
-		this.searchLabel = value;
-	},
 	_setSearchFieldMessageAttr: function(value) {
 		this.searchField.set("value", value);
 		this.searchFieldMessage = value;

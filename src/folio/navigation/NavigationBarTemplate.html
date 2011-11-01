@@ -1,5 +1,7 @@
 <div class="navigationBar minimal">
 	<a href="#view=start" class="logo"></a>
+	<div class="appName" dojoAttachPoint="appNameNode"></div>
+	<div class="appSentence" dojoAttachPoint="appSentenceNode"></div>
 	<div class="area1"><div style="display: table-cell;">
 			<span dojoAttachPoint="userBlock">
 				<span class="label" dojoAttachPoint="greetingNode"></span>&nbsp;
@@ -14,9 +16,9 @@
 			<span style="display: none" dojoAttachPoint="aboutLinkSpan">|<a class="link" dojoAttachPoint="aboutLinkNode"></a></span>
 	</div></div>
 	<div class="area2"><div style="display: table-cell;">
-		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>&nbsp;&nbsp;<div
-		dojoType="dijit.form.Button" dojoAttachPoint="searchButton" dojoAttachEvent="onClick:_searchClicked" style="vertical-align: middle; margin: 1px;">
-        </div>
+		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>&nbsp;&nbsp;<span
+		 class="search icon" dojoAttachPoint="searchButtonNode" dojoAttachEvent="onclick:_searchClicked" style="vertical-align: middle; margin: 1px;">
+        </span>
 	</div></div>
 	<div class="area3">
 	</div>

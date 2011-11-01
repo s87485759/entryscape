@@ -114,7 +114,7 @@
 .listView .listEntry {
 	height: 1.8em;
 	padding-top: 3px;
-	padding-left: 3px;
+	padding-left: 8px;
 	padding-right: 3px;
 	border-bottom-width: 1px;
 	overflow: hidden;

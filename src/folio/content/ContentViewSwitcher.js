@@ -265,7 +265,8 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  
 	},
 	_showIcon: function(entry) {
 		var node = dojo.create("div", {"class": "contentIcon"}, this.domNode);
-		var extIcon = false, iconSrc = folio.data.getIconPath(entry);
+		var config = this.application.getConfig();
+		var extIcon = false, iconSrc = config.getIcon(entry);
 		if (entry.getExternalMetadata != null) {
 			var graph = entry.getExternalMetadata();
 			if (graph) {
@@ -278,7 +279,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  
 		}
 		dojo.create("img", {"class": "iconCls", "src": iconSrc || ""}, node);
 		if (folio.data.isLinkLike(entry) && !extIcon) {
-			dojo.create("img", {style: {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, node);
+			dojo.create("img", {style: {"position": "absolute", "left": 0}, "src": ""+config.getIcon("link")}, node);
 		}
 	}
 });

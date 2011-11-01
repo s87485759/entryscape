@@ -1,23 +1,34 @@
 @import url("../icons.css");
 
-/* Brownish style uses the following colours:
-   white - as background
-   dark brown (#A68253) - the skelleton of the application.
-   light brown (#BF9F73) - current folder, some labels etc.
-   vaguely brown (#E1D9CD) - selections.
-*/ 
-
 /*Logo should be < 240x60*/
 .navigationBar .logo {
-	background:transparent url('../blueberry/banner.png') no-repeat top left;
-	width: 660px;
+	background:transparent url('logo.png') no-repeat top left;
 	height: 64px;
 	margin-bottom: 0px;
 }
 
+.navigationBar .appName {
+	position: absolute;
+	left: 65px;
+	top: 5px;
+	font-size: xx-large;
+}
+.navigationBar .appSentence {
+	position: absolute;
+	left: 65px;
+	top: 40px;
+}
+.navigationBar .appName:after {
+	content: "EntryScape";
+}
+
+.navigationBar .appSentence:after {
+	content: "Organize and share your online content";
+}
+
 /* Generic approach for themes*/
 .confolio .distinctBackground {
-	background: #d8dee5;
+	background: lightgrey;
 }
 .confolio .thinBorder {
 	border-color: #8cb6e5;
@@ -29,13 +40,13 @@
 /* Generic approach end*/
 
 .navigationBar .label, .navigationBar .link {
-	color: white;
+	color: grey;
 }
 .navigationBar .dijit {
 	color: black;
 }
 .viewController, .confolio {
-	background: #8996bb;
+	background: white;
 }
 
 /* Loading icon used in splash*/
@@ -47,7 +58,18 @@
 /*Skelleton*/
 .tundra .dijitSplitterV, .tundra .dijitSplitterH,
 .confolioPanel {
-	background: #8996bb;
+	background: lightgrey;
+}
+
+/* Borders*/
+.iconOverview a.selected,
+.annotationprofileeditor .editTab,
+.annotationprofileeditor .editTabEditStateButtons,
+.breadcrumbs .crumb,
+.breadcrumbs .listMode,
+.breadcrumbs,
+.listChildren .iconView.selected {
+	border-color: lightgrey;	
 }
 
 /*Background*/
@@ -55,6 +77,7 @@
 .shamePresentationMode .shameValue {
 	background: white;
 }
+
 
 /*Selection*/
 .cleanList.listView .selected,
@@ -68,16 +91,6 @@
 	background: #EDEDED;
 }
 
-/* Borders*/
-.iconOverview a.selected,
-.annotationprofileeditor .editTab,
-.annotationprofileeditor .editTabEditStateButtons,
-.breadcrumbs .crumb,
-.breadcrumbs .listMode,
-.breadcrumbs,
-.listChildren .iconView.selected {
-	border-color: #8996bb;	
-}
 
 .listView *,
 .details *,
@@ -94,7 +107,7 @@
 .details .top .resourceSpace,
 .details .top .url,
 .details .center .bottom {
-	background: #d8dee5;
+	background: lightgrey;
 }
 
 .details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/

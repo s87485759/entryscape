@@ -45,7 +45,20 @@ dojo.declare("folio.Config", null, {
 
 	//=================================================== 
 	// Public API 
-	//===================================================	 
+	//===================================================
+	getIcon: function(entry, resolution) {
+		if (dojo.isString(entry)) {
+			return this._resolveIconResolution(this.definitions.specialIcons[entry], resolution);
+		} else {
+			var alts = this.definitions.icons;
+			return this._resolveIconResolution(
+					this._getFromBT(alts, entry)
+					 || this._getFromAT(alts, entry)
+					 || this._getFromMT(alts, entry)
+					 || alts["defaultIcon"], resolution);
+		}
+	},
+	 
 	/**
 	 * Uses the definitions part of the config to look up a suitable 
 	 * MetadataProfile for presenting the local metadata of the given entry.
@@ -63,9 +76,9 @@ dojo.declare("folio.Config", null, {
 	getMPForLocalMD: function(entry) {
 		var alts = this.definitions["MPMap-localMetadata"];
 		return this._resolveMPName(
-				 this._getMPFromBT(alts, entry.getBuiltinType())
-				 || this._getMPFromServices(alts, entry)
-				 || this._getMPFromAT(alts, entry)
+				 this._getFromBT(alts, entry)
+				 || this._getFromServices(alts, entry)
+				 || this._getFromAT(alts, entry)
 				 || alts["defaultMP"]);
 	},
 	
@@ -116,12 +129,12 @@ dojo.declare("folio.Config", null, {
 		}
 		
 		return this._resolveMPName(
-				this._getMPFromBT(altsExternal, entry.getBuiltinType())
-				 || this._getMPFromBT(altsLocal, entry.getBuiltinType())
-				 || this._getMPFromServices(altsExternal, entry)
-				 || this._getMPFromServices(altsLocal, entry)
-				 || this._getMPFromAT(altsExternal, entry)
-				 || this._getMPFromAT(altsLocal, entry)
+				this._getFromBT(altsExternal, entry.getBuiltinType())
+				 || this._getFromBT(altsLocal, entry.getBuiltinType())
+				 || this._getFromServices(altsExternal, entry)
+				 || this._getFromServices(altsLocal, entry)
+				 || this._getFromAT(altsExternal, entry)
+				 || this._getFromAT(altsLocal, entry)
 				 || altsExternal["defaultMP"]
 				 || altsLocal["defaultMP"]);
 	},
@@ -143,28 +156,49 @@ dojo.declare("folio.Config", null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================	 
+	_resolveIconResolution: function(iconStruct, resolution) {
+		if (resolution != null && iconStruct[resolution]) {
+			return iconStruct.base+resolution+"/"+iconStruct.filename;			
+		}
+		return iconStruct.base+iconStruct.filename;
+	},
 	_resolveMPName: function(mPName) {
 		return this.definitions["MPName2Id"][mPName];
 	},
-	_getMPFromServices: function(services2MP, entry) {
+	_getFromServices: function(services2values, entry) {
 	},
-	_getMPFromBT: function(types2MPs, bt) {
+	_getFromBT: function(types2values, entry) {
+		var bt = entry.getBuiltinType();
 		if (bt !== folio.data.BuiltinType.NONE &&
-			types2MPs["BT"]) {
+			types2values["BT"]) {
 			for (var key in folio.data.BuiltinType) {
 				if (folio.data.BuiltinType[key] === bt) {
-					return types2MPs["BT"][key] || defaultMP;
+					return types2values["BT"][key];
 				}
 			}
 		}
 	},
+	_getFromMT: function(types2values, entry) {
+		var mt = entry.getMimeType();
+		var alts = types2values["MT"];
+		if (alts == null || mt == null) {
+			return;
+		}
+		var val = alts[mt];
+		if (val != null) {
+			return val;
+		}
+		if (mt.indexOf("/")) {
+			return alts[mt.substring(0,mt.indexOf("/"))];
+		}
+	},
 
-	_getMPFromAT: function(types2MPs, entry) {
-		if (!types2MPs["AT"]) {
+	_getFromAT: function(types2values, entry) {
+		if (!types2values["AT"]) {
 			return;
 		}
 		var statements = entry.getMetadata().find(entry.getResourceUri(), folio.data.RDFSchema.TYPE);
-		var atMap = types2MPs["AT"]
+		var atMap = types2values["AT"]
 		for (var i=0;i<statements.length;i++) {
 			if (atMap[statements[i].getValue()]) {
 				return atMap[statements[i].getValue()];

@@ -257,7 +257,7 @@ dojo.declare("folio.entry.Details", [dijit._Widget, dijit._Templated], {
 		}
 		
 		if (folio.data.isListLike(entry)) {
-			var rssImg = "<img src= \""+ dojo.moduleUrl("folio", "icons_oxygen/RSS_little.png") +"\"/>";
+			var rssImg = "<img src= \""+ this.application.getConfig().getIcon("RSS", "16x16") +"\"/>";
 			dojo.style(this.rssWrapperNode, "display", "");
 			if (folio.data.isFeed(entry)) {
 				dojo.attr(this.rssNode, "innerHTML", "<a href=\""+entry.getResourceUri()+"\">"+rssImg+"</a>");

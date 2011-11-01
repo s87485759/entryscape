@@ -282,7 +282,7 @@ dojo.declare("folio.admin.FolderView", [dijit._Widget, dijit._Templated, folio.A
 		dojo.place(child, this.childContainer);
 	},
 	getIconHtml: function(entry) {
-		return "<img class='iconCls' src= '"+folio.data.getIconPath(entry) +"'></img>";
+		return "<img class='iconCls' src= '"+this.application.getConfig().getIcon(entry) +"'></img>";
 	},
 	getTitleHtml: function(entry) {
 		var title = folio.data.getLabel(entry);

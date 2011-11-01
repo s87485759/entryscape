@@ -112,7 +112,7 @@ dojo.declare("folio.main.Aggregate", [dijit.layout._LayoutWidget, dijit._Templat
 	},
 	_replaceDetails: function(entry) {		
 		// Get the type of the entry corresponding to the icon
-		var entryPath = folio.data.getIconPath(entry);
+		var entryPath = this.application.getConfig().getIcon(entry);
 		//Set the details titlefield
 		var title = folio.data.getLabel(entry);
 		this.labelPane.titleNode.innerHTML="<b>"+title+"<b>";		

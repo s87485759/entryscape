@@ -109,7 +109,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 							this.apPlain = new folio.editor.RFormsEditorPlain({},node);
 							this.apPlain.setIncludeLevel("recommended");
 							//this.FOAFAPContentPane.set('content', this.apPlain);
-							this.apPlain.show(this.entry.getLocalMetadata().exportRDFJSON(), this.entry, this.entry.getResourceUri());
+							this.apPlain.show(new rdfjson.Graph(this.entry.getLocalMetadata().exportRDFJSON()), this.entry, this.entry.getResourceUri());
 		}));
 		//this.apPlain.setGraph(this.entry.getLocalMetadata(), userAP);//'http://tomcat.knowware.nada.kth.se/formulator/formlet/oefoaf');
 	},

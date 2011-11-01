@@ -165,6 +165,9 @@ dojo.declare("folio.data.Entry", null, {
 	getReferrents: function() {
 		return this.getLists();
 	},
+	getComments: function() {
+		return folio.data.getEntriesRelatedToEntry(this, "http://ontologi.es/like#regarding");		
+	},
 	/**
 	 * @return {Array} of Strings that are entryUris to all groups where this user is a member.
 	 */

@@ -191,24 +191,25 @@ dojo.declare("folio.apps.StartPage", [dijit._Widget, dijit._Templated], {
 			return;
 		}
 		var name = folio.data.getLabelRaw(child) || child.name || child.alias || child.getId();
+		var config = this.application.getConfig();
 		if (search === "" || name.toLowerCase().indexOf(search) !== -1) {
 			if (folio.data.isContext(child)) {
 				if (this._includePortfolios) {
 					var row = dojo.create("div", {"class": "iconTitleRow"}, this.listNode);
-					dojo.create("img", {src: ""+dojo.moduleUrl("folio", "icons_oxygen/book.png")}, row);
+					dojo.create("img", {src: ""+config.getIcon("portfolio")}, row);
 					dojo.create("a", {innerHTML: name, href: this.application.getHref(this.application.getRepository()+child.getId()+"/entry/_top", "default")}, row);					
 					return true;
 				}
 			} else if (folio.data.isUser(child)) {
 				if (this._includeUsers) {
 					var row = dojo.create("div", {"class": "iconTitleRow"}, this.listNode);
-					dojo.create("img", {src: ""+dojo.moduleUrl("folio", "icons_oxygen/user.png")}, row);
+					dojo.create("img", {src: ""+config.getIcon("user")}, row);
 					dojo.create("a", {innerHTML: name, href: this.application.getHref(child.getUri(), "profile")}, row);					
 					return true;
 				}
 			} else if (this._includeGroups){
 				var row = dojo.create("div", {"class": "iconTitleRow"}, this.listNode);
-				dojo.create("img", {src: ""+dojo.moduleUrl("folio", "icons_oxygen/users2.png")}, row);
+				dojo.create("img", {src: ""+config.getIcon("group")}, row);
 				dojo.create("a", {innerHTML: name, href: this.application.getHref(child.getUri(), "profile")}, row);				
 				return true;
 			}

@@ -178,7 +178,8 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 	_showProfilePicture: function() {
 		dojo.attr(this.profilePictureNode, "innerHTML", "");
 		var imageUrl = folio.data.getFromMD(this.entry, folio.data.FOAFSchema.IMAGE);
-		var backup = folio.data.isUser(this.entry) ? ""+dojo.moduleUrl("folio", "icons_oxygen/picture_frame.png") : ""+dojo.moduleUrl("folio", "icons_oxygen/picture_frame_users.png")
+		var config = this.application.getConfig();
+		var backup = folio.data.isUser(this.entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame")
 		dojo.create("img", {src: imageUrl || backup, style: {width: "100px"}}, this.profilePictureNode);
 		//"http://www.northern-pine.com/songs/images/cookie.gif"
 	},
@@ -236,7 +237,7 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 		dojo.attr(this.memberNode, "innerHTML", "");
 		var addGroup = dojo.hitch(this, function(groupEntry) {
 			var groupDiv = dojo.create("div", {"class": "iconTitleRow"}, this.memberNode);
-			dojo.create("img", {src: ""+dojo.moduleUrl("folio", "icons_oxygen/users2.png")}, groupDiv);
+			dojo.create("img", {src: ""+this.application.getConfig().getIcon("group")}, groupDiv);
 			var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
 			dojo.create("a", {href: this.application.getHref(groupEntry, "profile"), "innerHTML": name}, groupDiv);
 		});
@@ -249,7 +250,7 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 		folio.data.getAllChildren(this.entry, dojo.hitch(this, function(children) {
 			dojo.forEach(children, function(child) {
 				var userDiv = dojo.create("div", {"class": "iconTitleRow"}, this.memberNode);
-				dojo.create("img", {src: ""+dojo.moduleUrl("folio", "icons_oxygen/user.png")}, userDiv);
+				dojo.create("img", {src: ""+this.application.getConfig().getIcon("user")}, userDiv);
 				var name = folio.data.getLabelRaw(child) || child.name || child.getId();
 				dojo.create("a", {href: this.application.getHref(child, "profile"), "innerHTML": name}, userDiv);				
 			}, this);
@@ -282,18 +283,19 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 		});
 	},
 	_addRightsEntry: function(entry) {
+		var config = this.application.getConfig();
 		if (folio.data.isList(entry)) {
 			var title = folio.data.getLabelRaw(entry);
 			if (title) {
 				var row = dojo.create("div", {"class": "iconTitleRow"}, this.rightsNode);
-				dojo.create("img", {"class": "context", src: ""+dojo.moduleUrl("folio", "icons_oxygen/folder.png")}, row);
+				dojo.create("img", {"class": "context", src: ""+config.getIcon("folder")}, row);
 				dojo.create("a", {innerHTML: title, href: this.application.getHref(entry.getUri(), "default")}, row);
 				return true;
 			}			
 		} else {
 			var title = folio.data.getLabelRaw(entry) || entry.getId();
 			var row = dojo.create("div", {"class": "iconTitleRow"}, this.rightsNode);
-			dojo.create("img", {"class": "context", src: ""+dojo.moduleUrl("folio", "icons_oxygen/book.png")}, row);
+			dojo.create("img", {"class": "context", src: ""+config.getIcon("portfolio")}, row);
 			dojo.create("a", {innerHTML: title, href: this.application.getHref(this.application.getRepository()+entry.getId()+"/entry/_top", "default")}, row);
 			this.accessToContexts.push(entry);
 		}
