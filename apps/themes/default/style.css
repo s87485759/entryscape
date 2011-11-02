@@ -9,13 +9,13 @@
 
 .navigationBar .appName {
 	position: absolute;
-	left: 65px;
+	left: 85px;
 	top: 5px;
 	font-size: xx-large;
 }
 .navigationBar .appSentence {
 	position: absolute;
-	left: 65px;
+	left: 85px;
 	top: 40px;
 }
 .navigationBar .appName:after {
