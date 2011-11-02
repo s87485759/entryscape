@@ -1,9 +1,4 @@
-/* Brownish style uses the following colours:
-   white - as background
-   dark brown (#A68253) - the skelleton of the application.
-   light brown (#BF9F73) - current folder, some labels etc.
-   vaguely brown (#E1D9CD) - selections.
-*/ 
+@import url("../icons.css");
 
 /*Logo should be < 240x60*/
 .navigationBar .logo {
