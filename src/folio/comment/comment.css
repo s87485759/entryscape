@@ -8,7 +8,7 @@
 }
 .commentPane .textRow {
 	padding: 0.3em;
-	margin-bottom: 0.5em;
+	margin-bottom: 1.5em;
 }
 
 .commentPane .textRow>*{
@@ -18,6 +18,11 @@
 .commentPane .metaRow .metaPane,
 .commentPane .metaRow .adminPane {
 	display:table-cell;
+}
+
+.commentPane .metaRow .adminPane {
+	border-left: 0.1em solid white;
+	padding-left: 0.3em;
 }
 
 .commentPane .metaRow .adminPane>div {

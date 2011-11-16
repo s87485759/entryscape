@@ -40,7 +40,7 @@ dojo.require("folio.editor.RFormsPresenter");
  * If the entry is a LinkedReference the metadata are is divided into two areas with 
  * external metadata below local metadata, headings above each section tells the difference.
  */
-dojo.declare("folio.entry.Details", [dijit._Widget, dijit._Templated], {
+dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Templated], {
 	
 	//===================================================
 	// Public Attributes
@@ -115,9 +115,11 @@ dojo.declare("folio.entry.Details", [dijit._Widget, dijit._Templated], {
 	getChildren: function() {
 		return [this.detailsLayoutDijit];
 	},
-	resize: function(size) {
+	resize: function(a, b, c) {
 		this.inherited("resize", arguments);
-		this.detailsLayoutDijit.resize(size);
+		if (this.detailsLayoutDijit && this.detailsLayoutDijit.resize) {
+			this.detailsLayoutDijit.resize(a, b, c);
+		}
 	},
 	startup: function() {
 		this.inherited("startup", arguments);

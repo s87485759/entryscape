@@ -115,7 +115,7 @@
 		"image": 		{"base": "themes/icons/oxygen/", "filename": "image.png"},
 		"images": 		{"base": "themes/icons/oxygen/", "filename": "images.png"},
 		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
-		"text": 		{"base": "themes/icons/oxygen/", "filename": "text.png"},
+		"text": 		{"base": "themes/icons/oxygen/", "filename": "text_plain.png"},
 		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
 	},
 	"LT": {

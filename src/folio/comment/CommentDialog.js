@@ -87,12 +87,17 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 		this.homeContext = this.application.getStore().getContextById(home);
 		this.helpObj = folio.data.createNewEntryHelperObj(this.homeContext);
 		this.resourceURI= this.helpObj.resURI;
-				
+		
+		this.init();
+		this.showComments();
+	},
+	init: function() {
 		this.application.getItemStore(dojo.hitch(this, function(itemStore) {
 			this.graph = new rdfjson.Graph({});
 			var config = this.application.getConfig();
 			var commentStyle = config.getComments()[0];
 			this.graph.create(this.resourceURI, commentStyle["property"], {value: this.entry.getUri(), "type": "uri"});
+			this.graph.create(this.resourceURI, folio.data.RDFSchema.TYPE, {value: commentStyle["class"], "type": "uri"});
 
 			var template = itemStore.detectTemplate(this.graph, this.resourceURI, config.getMPForType(commentStyle["class"]).items);
 			var langs = config.getMPLanguages();
@@ -100,8 +105,8 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 			var node = dojo.create("div");
 			this.mdEditorContainer.set("content", node);
 			this.mdEditor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
-		}));
-		this.showComments();
+			this.contentEditorDijit.set("value", "");
+		}));		
 	},
 	
 	onPost: function() {
@@ -115,6 +120,12 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 				params: {locationType: "local",
 						representationType: "informationresource",
 						builtinType: "none"}};
+		var onError = dojo.hitch(this, function() {
+        	//TODO Message.
+			this.postDijit.cancel();
+			this.cancelDijit.set("disabled", false);
+        });
+
 		this.homeContext.createEntry(args, dojo.hitch(this, function(entry) {
 			var str = this.contentEditorDijit.get("value");
 			var putArgs = {
@@ -123,16 +134,18 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
                     headers: {"Content-Type": "text/html"},
                     handleAs: "text",
                     load: dojo.hitch(this, function() {
+                    	this.init();
             			this.entry.setRefreshNeeded();
             			this.entry.refresh(dojo.hitch(this, function(entry) {
             				this.postDijit.cancel();
+            				this.cancelDijit.set("disabled", false);
             				this.showComments();
-            			}));                    	
-                    })
+            			}), onError);
+                    }),
+                    error: onError
             };
             dojo.xhrPut(__confolio.application.getCommunicator().insertAuthArgs(putArgs));
-		}), function(mesg) {
-		});		
+		}), onError);		
 	},
 	
 	/**
@@ -234,6 +247,7 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 
 		var commentDijits = [], container = this.commentsNode;
 		dojo.attr(container, "innerHTML", "");
+		comments.sort(); //The entry id is incremented, later posts has higher numbers... hence this works.
 		dojo.forEach(comments, function(comment) {
 			this.application.getStore().loadEntry(comment, {}, function(entry) {
 				commentDijits.push(new folio.comment.Comment({entry:entry}, dojo.create("div", null, container)));

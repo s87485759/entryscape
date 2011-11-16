@@ -40,7 +40,7 @@
 /* Generic approach end*/
 
 .navigationBar .label, .navigationBar .link {
-	color: lightgrey;
+	color: grey;
 }
 .navigationBar .dijit {
 	color: black;
