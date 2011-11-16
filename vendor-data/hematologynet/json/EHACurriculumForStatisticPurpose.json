@@ -1,7 +1,8 @@
 {
     "id":"",
     "label":"EHA Hematology Curriculum",
-    "children":[{
+    "children":[
+	{
             "id":"http://www.ehaweb.org/rdf/2011-passport#SectionClinicalHematologyBenign",
             "label":"1) Clinical Hematology: Benign",
             "children":[{
@@ -708,27 +709,27 @@
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BA",
                             "label":"6BA"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BB",
                             "label":"6BB"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BC",
                             "label":"6BC"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BD",
                             "label":"6BD"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BE",
                             "label":"6BE"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BF",
                             "label":"6BF"
                         },
-						
+						{
                             "id":"http://www.ehaweb.org/rdf/2011-passport#Item6BG",
                             "label":"6BG"
                         }
