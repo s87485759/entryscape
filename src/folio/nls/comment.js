@@ -18,8 +18,8 @@
  */
 
 ({"commentDialogTitle": "Comments for:",
-  "finishButtonLabel": "Send",
-  "cancelButtonLabel": "Cancel",
+  "finishButtonLabel": "Post",
+  "cancelButtonLabel": "Close",
   "busyButtonLabel": "Working",
   "defaultTextAreaText": "Type your comment here...",
   "sendErrorLabel": "Error: could not send comment"

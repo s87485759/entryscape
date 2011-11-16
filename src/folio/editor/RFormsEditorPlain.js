@@ -32,6 +32,12 @@ dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
 		this.domNode = this.srcNodeRef || dojo.create("div");
 		this.rformsEditorPlainNode = dojo.create("div", null, this.domNode);
 	},
+	/**
+	 * @param graph {rdfjson.Graph} the rdf to edit.
+	 * @param entry {folio.data.Entry} the entry to edit, may be left out if the template is provided.
+	 * @param uri {String} the resource to edit as a URI
+	 * @param template {rforms.template.Template} the RForms-template to use for editing, if left out the entry must be provided.
+	 */
 	show: function(graph, entry, uri, template) {
 		if (this.editor != null) {
 			this.editor.destroy();

@@ -91,7 +91,7 @@ dojo.declare("folio.entry.Details", [dijit._Widget, dijit._Templated], {
 				node: this.domNode,
 				duration:150,
 				onEnd: dojo.hitch(this, this._replace, entry)
-			}).play();			
+			}).play();	
 		} else {
 			this._replace(entry);
 		}
@@ -174,6 +174,7 @@ dojo.declare("folio.entry.Details", [dijit._Widget, dijit._Templated], {
 		}
 	},
 	_replace: function(entry) {
+		this.contentViewDijit.show(entry);
 		this._replaceURL(entry);
 		this._replaceMetadata(entry);
 		//this._replaceContent(entry);

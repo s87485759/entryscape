@@ -1,0 +1,40 @@
+.commentPane .rformsTopLevel.commentOn {
+	display:none;
+}
+
+.commentPane .metaRow {
+	display: table;
+	width: 100%;
+}
+.commentPane .textRow {
+	padding: 0.3em;
+	margin-bottom: 0.5em;
+}
+
+.commentPane .textRow>*{
+	background: white;
+}
+
+.commentPane .metaRow .metaPane,
+.commentPane .metaRow .adminPane {
+	display:table-cell;
+}
+
+.commentPane .metaRow .adminPane>div {
+	display: table-row;
+}
+
+.commentPane .metaRow .adminPane>div>* {
+	display: table-cell;
+	font-style: italic;
+}
+
+.commentPane .metaRow .adminPane label {
+	font-weight:  normal;
+	padding-right: 0.5em;
+}
+
+.commentPane .commentMetadata>.rformsEditor{
+	height: 100%;
+	overflow-y: auto;
+}

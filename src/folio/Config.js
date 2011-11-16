@@ -55,6 +55,7 @@ dojo.declare("folio.Config", null, {
 					this._getFromBT(alts, entry)
 					 || this._getFromAT(alts, entry)
 					 || this._getFromMT(alts, entry)
+					 || this._getFromLT(alts, entry)
 					 || alts["defaultIcon"], resolution);
 		}
 	},
@@ -79,6 +80,7 @@ dojo.declare("folio.Config", null, {
 				 this._getFromBT(alts, entry)
 				 || this._getFromServices(alts, entry)
 				 || this._getFromAT(alts, entry)
+				 || this._getFromLT(alts, entry)
 				 || alts["defaultMP"]);
 	},
 	
@@ -129,12 +131,14 @@ dojo.declare("folio.Config", null, {
 		}
 		
 		return this._resolveMPName(
-				this._getFromBT(altsExternal, entry.getBuiltinType())
-				 || this._getFromBT(altsLocal, entry.getBuiltinType())
+				this._getFromBT(altsExternal, entry)
+				 || this._getFromBT(altsLocal, entry)
 				 || this._getFromServices(altsExternal, entry)
 				 || this._getFromServices(altsLocal, entry)
 				 || this._getFromAT(altsExternal, entry)
 				 || this._getFromAT(altsLocal, entry)
+				 || this._getFromLT(altsExternal, entry)
+				 || this._getFromLT(altsLocal, entry)
 				 || altsExternal["defaultMP"]
 				 || altsLocal["defaultMP"]);
 	},
@@ -143,6 +147,17 @@ dojo.declare("folio.Config", null, {
 		if (this.definitions.MPLanguages) {
 			return this.definitions.MPLanguages;
 		}
+	},
+	
+	getMPForType: function(type) {
+		var alts = this.definitions["MPMap-localMetadata"];
+		if (alts.AT == null) {
+			return this._resolveMPName(alts["defaultMP"]);
+		}
+		return this._resolveMPName(alts.AT[type] || alts["defaultMP"]);
+	},
+	getComments: function() {
+		return this.definitions.comments;
 	},
 
 	//=================================================== 
@@ -174,6 +189,16 @@ dojo.declare("folio.Config", null, {
 			for (var key in folio.data.BuiltinType) {
 				if (folio.data.BuiltinType[key] === bt) {
 					return types2values["BT"][key];
+				}
+			}
+		}
+	},
+	_getFromLT: function(types2values, entry) {
+		var lt = entry.getLocationType();
+		if (types2values["LT"]) {
+			for (var key in folio.data.LocationType) {
+				if (folio.data.LocationType[key] === lt) {
+					return types2values["LT"][key];
 				}
 			}
 		}

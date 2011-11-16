@@ -1,11 +1,18 @@
-<div "style="height: 100%; width: 100%;">
-	<div style="height: 100%; width: 50%; float: left;">
-		<b>${name}</b>
+<div "style="width: 100%;">
+	<div class="metaRow distinctBackground">
+		<div class="metaPane">
+			<div dojoType="folio.editor.RFormsPresenter" dojoAttachPoint="presenterDijit" compact="true"></div>
+		</div>
+		<div class="adminPane" style="width:300px">
+			<div>
+				<span dojoAttachPoint="creatorNode"></span>
+			</div>
+			<div>
+				<span dojoAttachPoint="timeNode"></span>
+			</div>
+		</div>
 	</div>
-	<div style="height: 100%; width: 50%; float: left; text-align: right;">
-		(${date} - ${time})
+	<div class="textRow distinctBackground" dojoAttachPoint="contentNode">
+		<div dojoType="folio.content.ContentViewSwitcher" style="height: 50%" region="top" splitter="true" class="contentViewSwitcher" dojoAttachPoint="contentViewDijit"></div>
 	</div>
-	<br/>
-	<div dojoAttachPoint="contentArea"></div>
-	<hr>
 </div>

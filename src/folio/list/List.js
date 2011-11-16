@@ -599,7 +599,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			dojo.create("span", {"class": "details operation icon"}, childNode);
 		}
 		var comments = child.getComments();
-		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comments operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
+		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
 
 		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
 			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {

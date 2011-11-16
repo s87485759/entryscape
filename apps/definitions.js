@@ -117,8 +117,14 @@
 		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
 		"text": 		{"base": "themes/icons/oxygen/", "filename": "text.png"},
 		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
+	},
+	"LT": {
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
 	}
   },
+  "comments": [{"class": "http://purl.org/stuff/rev#Review", "property": "http://ontologi.es/like#regarding"}],
   "MPLanguages": [{"value": "", label:{"en":"", "sv":""}},
 		            {"value": "en", label:{"en":"English", "sv":"Engelska"}},
 		            {"value": "de", label:{"en":"German", "sv":"Tyska"}},
@@ -139,7 +145,7 @@
 		"http://purl.org/stuff/rev#Review": "Review"
 	},
 	"MT": {
-	}		
+	}
   },
   "MPMap-externalMetadata": {
   	"internalReferenceMP": "LOM_OEv1",

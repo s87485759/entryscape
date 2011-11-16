@@ -27,20 +27,20 @@
 }
 
 /* Generic approach for themes*/
-.confolio .distinctBackground {
-	background: lightgrey;
+.distinctBackground {
+	background: #E6E6E6;
 }
-.confolio .thinBorder {
-	border-color: #8cb6e5;
+.thinBorder {
+	border-color: lightgrey;
 	border-width: 1px;
 }
-.confolio .thickBorder {
-	border-color: #8996bb;
+.thickBorder {
+	border-color: lightgrey;
 }
 /* Generic approach end*/
 
 .navigationBar .label, .navigationBar .link {
-	color: grey;
+	color: lightgrey;
 }
 .navigationBar .dijit {
 	color: black;
@@ -58,7 +58,7 @@
 /*Skelleton*/
 .tundra .dijitSplitterV, .tundra .dijitSplitterH,
 .confolioPanel {
-	background: lightgrey;
+	background: #E6E6E6;
 }
 
 /* Borders*/
@@ -69,7 +69,7 @@
 .breadcrumbs .listMode,
 .breadcrumbs,
 .listChildren .iconView.selected {
-	border-color: lightgrey;	
+	border-color: #E6E6E6;	
 }
 
 /*Background*/
@@ -88,7 +88,7 @@
 .breadcrumbs .crumb .choices.pressed,
 .listChildren .iconView.selected,
 .confolio .rforms .topLevel {
-	background: #EDEDED;
+	background: #FAFAD2; /*lightGoldenrodYellow*/
 }
 
 
@@ -97,7 +97,7 @@
 .listView .butsCls *,
 .folioTreeLabelSelected,
 .shameRoot {
-	border-color: #8cb6e5;
+	border-color: lightgrey;
 	border-style: solid;
 	border-width: 0px;
 }
@@ -107,12 +107,12 @@
 .details .top .resourceSpace,
 .details .top .url,
 .details .center .bottom {
-	background: lightgrey;
+	background: #E6E6E6;
 }
 
 .details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/
 .details .center .locInfoPane > div:first-child {
-	background: #d8dee5;
+	background: lightgrey;
 }
 
 
@@ -134,11 +134,4 @@
 .editStateColor .optional>.shameLabel,
 .annotationprofileeditor .editStateColor .editTabEditStateButtons .optional {
 	background: #E1D9CD;
-}
-
-div.commentPane {
-	position: relative;
-	overflow: auto;
-	max-height: 300px;
-	width: 100%;
 }

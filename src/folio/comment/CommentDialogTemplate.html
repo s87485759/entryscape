@@ -1,13 +1,24 @@
-<div style="height: 100%; width: 37em;">
-		<div dojoType="dijit.layout.ContentPane" dojoAttachPoint="textPane" region="center">
-			<!--<textarea dojoType="dijit.form.SimpleTextarea" dojoAttachPoint="textArea" style="width: 100%;">${defaultTextAreaText}</textarea>-->
+<div>
+	<div dojoType="dijit.Dialog" dojoAttachPoint="popupDijit">
+		<div dojoAttachPoint="bc" dojoType="dijit.layout.BorderContainer" gutters="false" class="commentPane">
+			<div dojoType="dijit.layout.ContentPane" region="center">
+				<div dojoAttachPoint="commentsNode"></div>
+			</div>
+			<div dojoType="dijit.layout.BorderContainer" gutters="false" region="bottom" style="height:180px" splitter="true">
+			    <div dojoType="dijit.layout.ContentPane" region="left" splitter="true" style="width: 300px" dojoAttachPoint="mdEditorContainer" class="distinctBackground"></div>
+    			<div dojoType="dijit.layout.ContentPane" region="center">
+					<div dojoType="dijit.Editor"
+						dojoAttachPoint="contentEditorDijit" 
+						plugins="['bold', 'italic', 'underline', 'strikethrough', 'insertOrderedList', 'insertUnorderedList','createLink', 'insertImage','formatBlock', 'foreColor', 'hiliteColor']"></div>
+				</div>
+				<div dojoType="dijit.layout.ContentPane" style="height: 2em;" region="bottom">
+					<div jsId="jsErrorArea" dojoType="dijit.layout.ContentPane" style="color:red"></div>
+					<div style="float:right" dojoAttachPoint="buttonArea">
+						<div dojoType="dojox.form.BusyButton" dojoAttachEvent="onClick: onPost" dojoAttachPoint="postDijit"></div>
+						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick: hide" dojoAttachPoint="cancelDijit"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div dojoType="dijit.layout.ContentPane" style="width: 100%" region="center">
-			<div jsId="jsErrorArea" dojoType="dijit.layout.ContentPane" style="color:red"></div>
-			<div style="float:right" dojoAttachPoint="buttonArea"></div>
-		</div>
-		<hr>
-		<div jsId="jsComments" dojoType="dijit.layout.ContentPane" class="commentPane" region="bottom">
-			<!--<div dojoAttachPoint="commentsArea"></div>-->
-		</div>
+	</div>
 </div>

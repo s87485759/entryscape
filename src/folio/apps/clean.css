@@ -17,6 +17,7 @@
 @import "../../../lib/dojo/dojox/editor/plugins/resources/css/FindReplace.css";
 
 @import "../list/list.css";
+@import "../comment/comment.css";
 @import "../navigation/navigation.css";
 
 html, body {

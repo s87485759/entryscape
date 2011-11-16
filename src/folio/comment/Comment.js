@@ -18,10 +18,14 @@
  */
 
 dojo.provide("folio.comment.Comment");
+dojo.require("folio.editor.RFormsPresenter");
+dojo.require("dijit.Editor");
+
 
 dojo.declare("folio.comment.Comment", [dijit._Widget, dijit._Templated], {
 	widgetsInTemplate: true,
 	templatePath: dojo.moduleUrl("folio.comment", "CommentTemplate.html"),
+	entry: null,
 
 	/**
  	* Constructor. 
@@ -35,6 +39,26 @@ dojo.declare("folio.comment.Comment", [dijit._Widget, dijit._Templated], {
 		this.name = args.name;
 		this.date = args.date;
 		this.time = args.time;
+		this.application = __confolio.application;
 		//this.content = args.content;
+	},
+	postCreate: function() {
+		this.inherited("postCreate", arguments);
+		this.presenterDijit.show(this.entry, false);
+		var cre = this.entry.getCreationDate();
+		if (cre != null) {
+			dojo.attr(this.timeNode, "innerHTML", cre);
+		}
+		var creator = this.entry.getCreator();
+		if (creator != null) {
+			this.application.getStore().loadEntry(creator, {}, dojo.hitch(this, function(ent) {
+				dojo.attr(this.creatorNode, "innerHTML", folio.data.getLabel(ent));
+			}),dojo.hitch(this, function(mesg) {
+				dojo.attr(this.creatorNode, "innerHTML", "Unknown");
+			}));
+		} else {
+			dojo.attr(this.creatorNode, "innerHTML", "Unknown");
+		}
+		this.contentViewDijit.show(this.entry);
 	}
 });

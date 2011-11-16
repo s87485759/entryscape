@@ -5,7 +5,7 @@ dojo.require("dijit.layout._LayoutWidget");
 /**
  * 
  */
-dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  folio.ApplicationView], {
+dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], {
 	//===================================================
 	// Public Attributes
 	//===================================================
@@ -41,18 +41,16 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget,  
 	// Inherited methods
 	//===================================================	
 	constructor: function(args) {
+		this.application = __confolio.application;
 	},
 	buildRendering: function() {
 		this.domNode = this.srcNodeRef || dojo.create("div");
-	},
-	getSupportedActions: function() {
-		return ["showEntry", "focusOn"];
-	},
-	focusOn: function(event) {
-		this.showEntry(event);
-	},
-	showEntry: function(event) {
-		this.show(event.entry);
+		dojo.connect(this.domNode, "onclick", function(evt) {
+			if (event.target.href != null) {
+				evt.preventDefault();
+				window.open(evt.target.href, "_blank");				
+			}
+		});
 	},
 	show: function(entry) {
 		dojo.attr(this.domNode, "innerHTML", "");
