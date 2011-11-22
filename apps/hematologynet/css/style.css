@@ -1,6 +1,8 @@
 /* Additional Style CSS Document ================================================================================ */
 
-
+.confolio .invertedText{
+	color:white;
+}
 /*HEADER CONTENT*/
 .logo-wrapper {
 	float:left;
