@@ -18,6 +18,7 @@ __confolio.addConfig({
 "theme":                "HematologyNewTheme",
 "showTextButton": 		"false",
 "possibleToCommentEntry": "false",
+"floatingExpand": true,
 
 "search.type.default":  "simple",
 "search.scope.default": "context", //Not implemented... Directs the default-scope for the search  
@@ -60,6 +61,7 @@ __confolio.addConfig({
 					  {"name": "disclaimer", "class": "hnetfolio.apps.Disclaimer"},
 					  {"name": "HNETPartners", "class": "hnetfolio.apps.HNETPartners"},
 					  {"name": "UserTerms", "class": "hnetfolio.apps.UserTerms"},
+					  {"name": "CompetenceStatistics", "class": "hnetfolio.apps.CompetenceStatistics"},
 					  {"name": "help", "class": "folio.apps.Help", "constructorParams": {"initialHelpPage": "intro"}}]
 		}
 });
