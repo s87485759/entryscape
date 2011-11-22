@@ -148,6 +148,9 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 				searchURI += (hasTerm ? "+AND+" : "")+"context:"+base.replace(/:/g, "\\%3A")+parameters.context;
 				hasTerm = true;
 			}
+			if(parameters.resource){
+				searchURI += (hasTerm ? "+AND+" : "")+"resource:"+encodeURIComponent(parameters.resource.replace(/:/g,"\\:"));
+			}
 			
 			if (parameters.sort) {
 				searchURI += "&sort="+parameters.sort;
