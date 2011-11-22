@@ -96,7 +96,7 @@ dojo.declare("folio.Application", null, {
 		}
 		
 		dojo.locale = dojo.i18n.normalizeLocale(locale);
-		if (__confolio.isBuild()) {
+		if (!__confolio.isBuild()) {
 			dojo["require"]("folio.nls.folio"+"_"+dojo.locale);
 		}		
 
