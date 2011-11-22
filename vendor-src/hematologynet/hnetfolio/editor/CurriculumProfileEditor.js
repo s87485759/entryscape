@@ -48,7 +48,7 @@ dojo.declare("hnetfolio.editor.CurriculumProfileEditor", [dijit._Widget, dijit._
 			this.CurriculumContentDijit.setIncludeLevel("recommended");
 			this.application.getItemStore(dojo.hitch(this, function(itemStore) {
 				var ap = itemStore.getTemplate(this.currentCompAP || "EHACurriculumV2Part1");
-				this.CurriculumContentDijit.show(loadedEntry.getLocalMetadata().exportRDFJSON(), this.compEntry.getResourceUri(), ap);
+				this.CurriculumContentDijit.show(loadedEntry.getLocalMetadata(), this.compEntry, this.compEntry.getResourceUri(), ap);
 			}));
 			dojo.style(this.createPane.domNode, "display", "none");
 			dojo.style(this.curriculumCP.domNode, "display", "block");
