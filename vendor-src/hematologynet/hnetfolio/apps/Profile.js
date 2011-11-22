@@ -35,16 +35,85 @@ dojo.declare("hnetfolio.apps.Profile", [folio.apps.Profile], {
 	//===================================================
 	show: function() {
 		this.inherited("show", arguments);
-		
-		//Only display CV-passport editor if the user visits her/his profile
+	},	
+	showEntry: function(entry){	
+		this.inherited("showEntry", arguments);
 		var currentUser = this.application.getUser();
-		if(!currentUser || currentUser.id !== this.entryId){
-			if (this.tabContainerDijit.getIndexOfChild(this.rformsCompetenceEditorPane) > 0) {
-				this.tabContainerDijit.removeChild(this.rformsCompetenceEditorPane);
+		if (currentUser) {
+			//Only display CV-passport editor if the user visits her/his profile
+			if (currentUser.id === this.entryId) {
+				this._removeContactButton();
+				this._addCompetenceTab(this.entry);
+			} else { 
+			    //Remove the CV-passport
+				this._removeCompetenceTab(); 
+				//Show add button
+				if (currentUser.homecontext && 
+						this.entry.getBuiltinType() === folio.data.BuiltinType.USER ) {
+					this._addContactButton(this.entry);
+				} else if (this.entry.getBuiltinType() === folio.data.BuiltinType.GROUP){
+					//TODO: Perhaps add a "Join group"-button
+				}
 			}
-			return;
+		} else if (!currentUser){
+			this._removeContactButton();
+			this._removeCompetenceTab();
 		}
+	},
+	/*
+	 * See superclass for documentations
+	 */
+	addToContactList: function(){
+		console.log("AddToContactsClicked");
+		var d = new dojo.Deferred();
+		var application = this.application;
+		var home = application.getUser().homecontext;
+		var contextURI = application.repository+home;
 		
+		/*
+		 * Function that is called after the contacts-list has been loaded.
+		 */
+		var entryLoaded = function(contacts) {		    
+			/*
+			 * Function called after a successful creation of a new reference-entry to 
+			 * the contacts-list
+			 */
+			var updateEntry = function(entry) {
+				folio.data.getList(contacts, dojo.hitch(this, function(list) {
+					list.entry.setRefreshNeeded();
+					this._removeContactButton();
+				}));
+			};
+			
+			var builtinTypeString = "";
+			if(this.entry.getBuiltinType() === folio.data.BuiltinType.USER){
+				builtinTypeString = "user";
+			} else if (this.entry.getBuiltinType() === folio.data.BuiltinType.GROUP){
+				builtinTypeString = "group";
+			}
+			var linkEntry = {
+				context: contacts.getContext(),
+				parentList: contacts,
+				params: {
+					representationType: "informationresource",
+					locationType: "reference",
+					builtinType: builtinTypeString,//entry.getBuiltinType(),
+					"cached-external-metadata": this.entry.getLocationType() === folio.data.LocationType.LOCAL ? this.entry.getLocalMetadataUri(): this.entry.getExternalMetadataUri(),
+					resource: this.entry.getResourceUri()}};
+			contacts.getContext().createEntry(linkEntry, dojo.hitch(this, updateEntry), dojo.hitch(d, d.errback));
+		};
+		
+		application.getStore().getContext(contextURI).loadEntryFromId("_contacts", {}, dojo.hitch(this, entryLoaded), dojo.hitch(d, d.errback));
+	},
+	//===================================================
+	// Private methods
+	//===================================================
+	/*
+	 * Adds a tab to the left in the profile where the EHA Hematology Curriculum is 
+	 * added. Input variable "userEntry" is the entry of the user. The entry that 
+	 * will be edited is found by the method. 
+	 */
+	_addCompetenceTab: function(userEntry){
 		if (!this.rformsCompetenceEditorPane) {
 			this.rformsCompetenceEditorPane = new dijit.layout.ContentPane({
 				title: "EHA Curriculum",
@@ -58,23 +127,56 @@ dojo.declare("hnetfolio.apps.Profile", [folio.apps.Profile], {
 		if (this.tabContainerDijit.getIndexOfChild(this.rformsCompetenceEditorPane) < 0) {
 			this.tabContainerDijit.addChild(this.rformsCompetenceEditorPane);
 		}
-		var loadedEntryFunction = dojo.hitch(this,function(loadedEntry){
-			this.competenceEditor.setUserEntry(loadedEntry);
-			this.competenceEditor.show();
-		});
+		this.competenceEditor.setUserEntry(userEntry);
+		this.competenceEditor.show();
+	},
+	/*
+	 * Removes the tab that is added by the method _addCompetenceTab. This tab is only displayed
+	 * when the logged in user visits his/her own profile. And, since we reuse the profile-instance
+	 * this needs to be removed when another profile is visited.
+	 */
+	_removeCompetenceTab: function() {
+		if (this.tabContainerDijit.getIndexOfChild(this.rformsCompetenceEditorPane) > 0) {
+			this.tabContainerDijit.removeChild(this.rformsCompetenceEditorPane);
+		}
+	},
+	/*
+	 * Displays the "Add to contacts"-button if the following conditions are met:
+	 * 1) The current (logged in) user has a home-portfolio
+	 * 2) The user which profiles is displayed is not already in the list _contacts
+	 *  in the current users home portfolio
+	 */
+	_addContactButton: function(loadedEntry){
+		//Check so that loadedEntry is not a group. TODO: Should we skip this check and add a button labeled "Join group" instead?
+		if(!loadedEntry || loadedEntry.getBuiltinType()===folio.data.BuiltinType.GROUP){
+			this._removeContactButton();
+			return;
+		}		
+		//Find out if the user is already in contacts
+		var currentUser = this.application.getUser();
+		var homeContext = this.application.getStore().getContext(this.application.repository + currentUser.homecontext);
 		
-		this.application.getStore().loadEntry({base: this.application.getRepository(), 
-		                 contextId: "_principals", 
-						 entryId: this.entryId}, 
-						 {},
-						 function(entry) {
-							if (entry.resource == null) {
-								entry.setRefreshNeeded();
-								entry.refresh(loadedEntryFunction);
-							} else {
-								loadedEntryFunction(entry);
-							}
-						 }
-			);
+		var searchParams = {
+			queryType:"solr",
+			folders:[this.application.repository + currentUser.homecontext+"/resource/_contacts"], //The contact-list of the logged in user
+			resource:this.application.repository+"_principals/resource/"+this.entryId, //The "resource" of the user which profile is the visited one
+			onSuccess: dojo.hitch(this, function(entryResult) {
+				if (entryResult && entryResult.resource &&
+				entryResult.resource.children &&
+				entryResult.resource.children.length < 1) {
+					dojo.style(this.addToContactsButtonDijit.domNode, "display", "block");
+				} else {
+					dojo.style(this.addToContactsButtonDijit.domNode, "display", "none");
+				}
+			})
+		};
+		
+		var context = this.application.getStore().getContext(this.application.repository+"_search");
+		context.search(searchParams);
+	},/*
+	 * Removes the button "Add to contacts". Called when this button needs to be hidden.
+	 */
+	_removeContactButton: function(){
+		dojo.style(this.addToContactsButtonDijit.domNode, "display", "none");
 	}
 });
