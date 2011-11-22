@@ -95,55 +95,7 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 		this.entryUri = this.application.getRepository().replace(/:/g, "\\%3A")+"_principals/resource/"+this.entryId;
 
 		var f = dojo.hitch(this, function(entry){
-			this.entry = entry;
-			this._showProfilePicture();
-			this._showProfileInfo();
-			this.generalProfilePaneDijit.set("title", this.generalProfile);
-			if (folio.data.isUser(this.entry)) {
-				dojo.attr(this.principalLabelNode, "innerHTML", this.userLabel);
-//				dojo.attr(this.principalNameLabelNode, "innerHTML", this.userNameLabel);
-				dojo.attr(this.memberHeaderNode, "innerHTML", this.memberOfHeader);
-				dojo.style(this.homeContextRowNode, "display", "");
-				this._showGroups();
-				this._showRights();
-				//TODO: Perhaps also add Link_Reference to the query.
-				if (this.twoColumn) {
-					this.simpleSearchList.show({term: "(creator:"+this.entryUri+"+OR+contributors:"+this.entryUri+")", builtinType: ["None"], locationType: ["Local", "Link"], sort: "modified+desc", queryType: "solr"});
-				}
-			} else {
-				dojo.attr(this.principalLabelNode, "innerHTML", this.groupLabel);
-//				dojo.attr(this.principalNameLabelNode, "innerHTML", this.groupNameLabel);
-				dojo.attr(this.memberHeaderNode, "innerHTML", this.membershipHeader);
-				dojo.style(this.homeContextRowNode, "display", "none");
-				this._showMembers();
-				this._showRights(dojo.hitch(this, function() {
-					if (this.twoColumn) {
-						var context = this.accessToContexts.length > 0 ? this.accessToContexts[0].getId() : null;
-						//TODO: Perhaps also add Link_Reference to the query
-						if (context) {
-							console.log("Soker med 1: "+context);
-							var baseURIForContext = this.entry.getContext().getBaseURI();
-							context = baseURIForContext.replace(/:/g, "\\%3A") + context;
-							console.log("Soker med 2: "+context);
-							this.simpleSearchList.show({
-								term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+"+OR+context:"+ context+")",
-								builtinType: ["None"],
-								locationType: ["Local", "Link"],
-								sort: "modified+desc",
-								queryType: "solr"
-							});
-						} else {
-							this.simpleSearchList.show({
-								term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+")",
-								builtinType: ["None"],
-								locationType: ["Local", "Link"],
-								sort: "modified+desc",
-								queryType: "solr"
-							});
-						}
-					}									
-				}));
-			}
+			this.showEntry(entry);
 		});
 
 		this.application.getStore().loadEntry({base: this.application.getRepository(), 
@@ -159,6 +111,63 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 							}
 						 }
 			);
+	},
+	/*This method is called when the new entry has been loaded. Since the entry is loaded asynchronously
+	 *this method can be extended in classes that inherits this one. In that way you can be certain that
+	 *the entry has been loaded (and the variable this.entry has been properly set).
+	*/
+	showEntry: function(entry){
+		this.entry = entry;
+		this._showProfilePicture();
+		this._showProfileInfo();
+		this.generalProfilePaneDijit.set("title", this.generalProfile);
+		if (folio.data.isUser(this.entry)) {
+			dojo.attr(this.principalLabelNode, "innerHTML", this.userLabel);
+			//				dojo.attr(this.principalNameLabelNode, "innerHTML", this.userNameLabel);
+			dojo.attr(this.memberHeaderNode, "innerHTML", this.memberOfHeader);
+			dojo.style(this.homeContextRowNode, "display", "");
+			this._showGroups();
+			this._showRights();
+			//TODO: Perhaps also add Link_Reference to the query.
+			this.simpleSearchList.show({
+				term: "(creator:" + this.entryUri + "+OR+contributors:" + this.entryUri + ")",
+				builtinType: ["None"],
+				locationType: ["Local", "Link"],
+				sort: "modified+desc",
+				queryType: "solr"
+			});
+		} else {
+			dojo.attr(this.principalLabelNode, "innerHTML", this.groupLabel);
+			//				dojo.attr(this.principalNameLabelNode, "innerHTML", this.groupNameLabel);
+			dojo.attr(this.memberHeaderNode, "innerHTML", this.membershipHeader);
+			dojo.style(this.homeContextRowNode, "display", "none");
+			this._showMembers();
+			this._showRights(dojo.hitch(this, function(){
+				var context = this.accessToContexts.length > 0 ? this.accessToContexts[0].getId() : null;
+				//TODO: Perhaps also add Link_Reference to the query
+				if (context) {
+					console.log("Soker med 1: " + context);
+					var baseURIForContext = this.entry.getContext().getBaseURI();
+					context = baseURIForContext.replace(/:/g, "\\%3A") + context;
+					console.log("Soker med 2: " + context);
+					this.simpleSearchList.show({
+						term: "(resource.rw:" + this.entryUri + "+OR+admin:" + this.entryUri + "+OR+context:" + context + ")",
+						builtinType: ["None"],
+						locationType: ["Local", "Link"],
+						sort: "modified+desc",
+						queryType: "solr"
+					});
+				} else {
+					this.simpleSearchList.show({
+						term: "(resource.rw:" + this.entryUri + "+OR+admin:" + this.entryUri + ")",
+						builtinType: ["None"],
+						locationType: ["Local", "Link"],
+						sort: "modified+desc",
+						queryType: "solr"
+					});
+				}
+			}));
+		}
 	},
 
 	//===================================================
