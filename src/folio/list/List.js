@@ -571,7 +571,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		var config = this.application.getConfig();
 		dojo.create("img", {"class": "iconCls", "src": config.getIcon(child, "16x16")}, childNode);
 		if (folio.data.isLinkLike(child)) {
-			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": 5}, "src": ""+config.getIcon("link", "16x16")}, childNode);
+			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": "5px"}, "src": ""+config.getIcon("link", "16x16")}, childNode);
 		}
 	},
 	_insertModifiedDate: function(child, childNode) {
