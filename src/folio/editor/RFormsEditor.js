@@ -24,7 +24,7 @@ dojo.require("folio.Application");
 dojo.require("rforms.view.Editor");
 
 dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Templated], {
-	compact: false,
+	compact: true,
 	dialogTitle: "",
 	dialogCancelLabel: "",
 	dialogDoneLabel: "",
