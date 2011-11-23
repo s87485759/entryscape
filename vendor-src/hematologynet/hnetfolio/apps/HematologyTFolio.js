@@ -24,7 +24,7 @@ dojo.require("folio.tree.TreeModel");
 dojo.require("folio.list.ListView");
 dojo.require("folio.tree.Tree");
 dojo.require("folio.editor.RFormsEditorDialog");
-dojo.require("folio.entry.Details");
+dojo.require("folio.entry.DetailsView");
 dojo.require("folio.util.Message");
 dojo.require("dijit.layout.BorderContainer");
 dojo.require("folio.create.CreateWizard");
