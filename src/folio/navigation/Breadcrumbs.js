@@ -117,28 +117,6 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 		}),
 		null);
 		this._localize();
-		
-		//Show tree button
-		new dijit.form.Button({showLabel: false, 
-								iconClass: "toggleTreeViewVisible",
-								title:"Toggle tree visible", 
-								onClick: dojo.hitch(this,this._toggleTree)}, 
-							   this.showTreeNode);
-
-		//Show list as list button
-		new dijit.form.Button({showLabel: false, 
-								iconClass: "showListLikeList",
-								title:"Switch to list view", 
-								onClick: dojo.hitch(this,this._showListLikeList)}, 
-							   this.listListModeNode);
-
-		//Show list as icons button
-		new dijit.form.Button({showLabel: false, 
-								iconClass: "showListLikeIcons",
-								title:"Switch to icon view", 
-								onClick: dojo.hitch(this,this._showListLikeIcons)}, 
-							   this.iconListModeNode);
-
 		this._listListMode = true;
 		dojo.toggleClass(this.listListModeNode, "selected");
 
@@ -171,7 +149,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 	//===================================================	
 	_toggleTree: function() {
 		this.treeVisible = !this.treeVisible;
-		dojo.toggleClass(this.showTreeNode, "selected");
+		dojo.toggleClass(this.showTreeNode, "distinctBackground");
 		if (this.treeVisible) {
 			this.application.publish("viewState", {treeVisible: true});
 		} else {
@@ -183,8 +161,8 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			return;
 		}
 		this._listListMode = true;
-		dojo.toggleClass(this.listListModeNode, "selected");
-		dojo.toggleClass(this.iconListModeNode, "selected");
+		dojo.toggleClass(this.listListModeNode, "distinctBackground");
+		dojo.toggleClass(this.iconListModeNode, "distinctBackground");
 		this.application.publish("viewState", {listViewMode: "list"});
 	},
 	_showListLikeIcons: function() {
@@ -192,8 +170,8 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			return;
 		}
 		this._listListMode = false;
-		dojo.toggleClass(this.listListModeNode, "selected");
-		dojo.toggleClass(this.iconListModeNode, "selected");
+		dojo.toggleClass(this.listListModeNode, "distinctBackground");
+		dojo.toggleClass(this.iconListModeNode, "distinctBackground");
 		this.application.publish("viewState", {listViewMode: "icon"});
 	},
 	_toggleCLIMode: function() {
@@ -283,10 +261,8 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			var label = index == 0 ? this._getContextLabel(crumb): folio.data.getLabel(crumb);
 			var cls = crumb == this.current ? "label selected" : "label";
 			var crumbNode = dojo.create("div", {"class": "crumb"}, this.breadcrumbs);
-			this.crumbDijits.push(new dijit.form.Button({showLabel: false, 
-								iconClass: "dijitArrowButtonInner",
-								style: {"fontSize": "xx-small"},
-								onClick: dojo.hitch(this,this._showChoicesDialog, crumbNode)},dojo.create("div", null, crumbNode)));			
+			var sep = dojo.create("span", {"class": "icon menu"}, crumbNode);
+			dojo.connect(sep, "onclick", dojo.hitch(this,this._showChoicesDialog, crumbNode));
 			if (crumb == this.current) {
 				dojo.create("span", {innerHTML: label}, crumbNode);
 			} else {

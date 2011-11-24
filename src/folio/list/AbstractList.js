@@ -76,7 +76,9 @@ dojo.declare("folio.list.AbstractList", null, {
 	},
 	
 	handleEvent: function(index, event) {
-		if (event.target.nodeName === "A") { //Do not handle events when a link was clicked.
+		//Do not handle events when a link (or icon inside of a link) was clicked.
+		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls"))) {
+			event.stopPropagation();
 			return;
 		}
 		var action = this.extractActionFromEvent(event);
@@ -89,7 +91,7 @@ dojo.declare("folio.list.AbstractList", null, {
 		if (this.selectedIndex != index) {
 			this.changeFocus(index);
 		}
-		event.stopPropagation();
+		dojo.stopEvent(event);
 	},
 	
 	handleKeyPress: function(event) {

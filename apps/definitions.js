@@ -94,7 +94,9 @@
 	"user": {"base": "themes/icons/oxygen/", "filename": "user.png"},
 	"group": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
 	"user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
-	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"}
+	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"},
+	"pushpin": {"base": "themes/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
+	"pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true},
   },
   "icons": {
   	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},

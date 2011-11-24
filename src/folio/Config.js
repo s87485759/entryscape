@@ -222,11 +222,14 @@ dojo.declare("folio.Config", null, {
 		if (!types2values["AT"]) {
 			return;
 		}
-		var statements = entry.getMetadata().find(entry.getResourceUri(), folio.data.RDFSchema.TYPE);
-		var atMap = types2values["AT"]
-		for (var i=0;i<statements.length;i++) {
-			if (atMap[statements[i].getValue()]) {
-				return atMap[statements[i].getValue()];
+		var md = entry.getMetadata();
+		if (md != null) {
+			var statements = md.find(entry.getResourceUri(), folio.data.RDFSchema.TYPE);
+			var atMap = types2values["AT"]
+			for (var i=0;i<statements.length;i++) {
+				if (atMap[statements[i].getValue()]) {
+					return atMap[statements[i].getValue()];
+				}
 			}
 		}
 	},

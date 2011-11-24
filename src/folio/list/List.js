@@ -553,34 +553,51 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	
 	_insertChild: function(container, child, number) {
 		var childNode = dojo.create("div");
-		this.listNodes[number] = childNode;
-		if (this.iconMode) {
-			this._insertEntryAsIcon(child, childNode, number);
-			dojo.place(childNode, container);
-		} else {
-			this._insertIcon(child, childNode);
-			var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
-			if (this.selectionExpands === true) {
-				var expandable = dojo.create("div", {"class": "expandCls selected"}, childNode); //Adding the selected class since not right background otherwise when in floating mode
-				this._insertDescription(child, expandable);
-				var bottomInfo = dojo.create("div", {"class": "bottomInfo selected"}, expandable);
-				this._insertChildCountIfList(child, bottomInfo);
-				this._insertModifiedDate(child, bottomInfo);
-				this._insertEditButtons(child, expandable);
-			}
-			
-			// The child is set to refresh (i.e. info.graph is removed) in method this._insertTitle 
-			//and therefor has to be performed last. 
-			this._insertTitle(child, rowNode); 
-			dojo.toggleClass(childNode, "listEntry");
-			dojo.toggleClass(childNode, "evenRow", number%2 != 0); //First row is 0, hence we mark number 1 as even.
-			dojo.place(childNode, container);
-		}
 		dojo.connect(childNode, "onclick", dojo.hitch(this, this.handleEvent, number));
 		dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
+		dojo.place(childNode, container);
+		
+		var f = dojo.hitch(this, function(hrefObj) {
+			this.listNodes[number] = childNode;
+			if (this.iconMode) {
+				this._insertEntryAsIcon(child, childNode, number);
+				dojo.place(childNode, container);
+			} else {
+				this._insertIcon(child, childNode, hrefObj);
+				var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
+				if (this.selectionExpands === true) {
+					var expandable = dojo.create("div", {"class": "expandCls selected"}, childNode); //Adding the selected class since not right background otherwise when in floating mode
+					this._insertDescription(child, expandable);
+					var bottomInfo = dojo.create("div", {"class": "bottomInfo selected"}, expandable);
+					this._insertChildCountIfList(child, bottomInfo);
+					this._insertModifiedDate(child, bottomInfo);
+					this._insertEditButtons(child, expandable);
+				}
+				
+				// The child is set to refresh (i.e. info.graph is removed) in method this._insertTitle 
+				//and therefor has to be performed last. 
+				this._insertTitle(child, rowNode, null, hrefObj);
+				dojo.toggleClass(childNode, "listEntry");
+				dojo.toggleClass(childNode, "evenRow", number%2 != 0); //First row is 0, hence we mark number 1 as even.
+			}
+		});
+
+		//Preparing the hrefObj for the child.
+		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
+			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
+			this.getHrefForEntry(child, f);
+		} else {
+			f();
+		}
 	},
-	_insertIcon: function(child, childNode) {
+	_insertIcon: function(child, childNode, hrefObj) {
 		var config = this.application.getConfig();
+		if (hrefObj != null) {
+			childNode = dojo.create("a", {"class": "iconCls", "href": hrefObj.href}, childNode);
+			if (hrefObj.blankTarget) {
+				dojo.attr(childNode, "target", "_blank");
+			}
+		}
 		dojo.create("img", {"class": "iconCls", "src": config.getIcon(child, "16x16")}, childNode);
 		if (folio.data.isLinkLike(child)) {
 			dojo.create("img", {"class": "iconCls", style: {"position": "absolute", "left": "5px"}, "src": ""+config.getIcon("link", "16x16")}, childNode);
@@ -603,7 +620,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				}, childNode);
 		}
 	},
-	_insertTitle: function(child, childNode, noDownload) {
+	_insertTitle: function(child, childNode, noDownload, hrefObj) {
 		if (!this.selectionExpands && !this.iconMode) {
 			dojo.create("span", {"class": "menu operation icon", "title": "Open menu"}, childNode);
 		}
@@ -617,9 +634,8 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (this.openFolderLink && !this.iconMode) {
 			dojo.create("span", {"class": "openfolder operation icon", "title": "Show in folder"}, childNode);
 		}
-
-		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
-			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
+		
+		if (hrefObj != null) {
 			if (folio.data.isWebContent(child) && !this.iconMode) {
 				var linkArrow = dojo.create("a", {"target": "_blank", "title": "Open in new window or tab", "class": "operation"}, childNode);
 				dojo.create("span", {"class": "external operation icon"}, linkArrow);
@@ -637,18 +653,16 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 
 
-			this.getHrefForEntry(child, dojo.hitch(this, function(hrefObj) {
-				dojo.attr(aNode, "href", hrefObj.href);
+			dojo.attr(aNode, "href", hrefObj.href);
+			if (folio.data.isWebContent(child) && !this.iconMode) {
+				dojo.attr(linkArrow, "href", hrefObj.href);
+			}
+			if (hrefObj.blankTarget) {
+				dojo.attr(aNode, "target", "_blank");
 				if (folio.data.isWebContent(child) && !this.iconMode) {
-					dojo.attr(linkArrow, "href", hrefObj.href);
+					dojo.attr(linkArrow, "target", "_blank");
 				}
-				if (hrefObj.blankTarget) {
-					dojo.attr(aNode, "target", "_blank");
-					if (folio.data.isWebContent(child) && !this.iconMode) {
-						dojo.attr(linkArrow, "target", "_blank");
-					}
-				}
-			}));
+			}
 		} else {
 			dojo.create("span", {"class": "titleCls disabledTitleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
 		}
@@ -733,8 +747,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			
 			var label = folio.data.getLabel(child);
 			dojo.create("img", {src: iconStr}, childNode);
+
 			if (folio.data.isLinkLike(child)) {
-				dojo.create("img", {"class": 'iconCls', "style": {"position": "absolute", "left": 0}, "src": ""+dojo.moduleUrl("folio", "icons_oxygen/link.png")}, childNode);
+				dojo.create("img", {"class": 'iconCls', "style": {"position": "absolute", "left": 0}, "src": ""+config.getIcon("link", "16x16")}, childNode);
 			}
 			this._insertTitle(child, childNode, true);
 //			dojo.create("div", {"class": "entryLabel", "innerHTML": label}, childNode);

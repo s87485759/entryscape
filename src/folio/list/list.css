@@ -145,8 +145,10 @@
 
 .listView .listEntry .titleCls {
 	font-weight: bold;
+	text-decoration: none;
 	white-space: nowrap;
 	overflow: hidden;
+	cursor: default;
 }
 
 .listView .listEntry .singleLine .operation {
@@ -177,6 +179,11 @@
 }
 
 /*-----------List Child Regular selected---------*/
+.listView .listEntry.selected a.titleCls {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .listView .listEntry.selected {
 	height: auto;
 }

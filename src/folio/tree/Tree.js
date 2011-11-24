@@ -149,7 +149,8 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		dojo.place(this.movableBlockNode, this.floatingTreeNode, "first");
 		dojo.style(this.floatingTreeNode, "display", "");
 		this.pinned = false;
-		dojo.attr(this.pushpinNode, "src", ""+dojo.moduleUrl("folio", "icons_oxygen/22x22/pushpin.png"));
+		var config = this.application.getConfig();
+		dojo.attr(this.pushpinNode, "src", config.getIcon("pushpin", "22x22"));
 		this._resizeFloatingTree();
 	},
 	pinTree: function() {
@@ -161,7 +162,8 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		dojo.place(this.movableBlockNode, div, "first");
 		dojo.style(this.floatingTreeNode, "display", "none");
 		this.pinned = true;
-		dojo.attr(this.pushpinNode, "src", ""+dojo.moduleUrl("folio", "icons_oxygen/22x22/pushpin-pressed.png"));
+		var config = this.application.getConfig();
+		dojo.attr(this.pushpinNode, "src", config.getIcon("pushpin_pressed", "22x22"));
 	},
 	expandToNode: function(entry, callback) {
 		var expand = dojo.hitch(this, function(branch, index) {
@@ -215,7 +217,8 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		this.inherited("postCreate", arguments);
 		dojo.style(this.floatingTreeNode, "opacity","0.90");
 		dojo.style(this.floatingTreeNode, "left", "-400px");
-		dojo.attr(this.pushpinNode, "src", ""+dojo.moduleUrl("folio", "icons_oxygen/22x22/pushpin.png"));
+		var config = this.application.getConfig();
+		dojo.attr(this.pushpinNode, "src", config.getIcon("pushpin", "22x22"));
 		dojo.connect(this.pushpinNode, "onclick", this, this.togglePinTree);
 	},
 	_resizeFloatingTree: function() {

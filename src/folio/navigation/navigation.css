@@ -67,21 +67,40 @@
 
 /*----------- Breadcrumbs -----------*/
 .breadcrumbs {
-	line-height: 2em;
 	padding-left: 0.5em;
 	border-bottom-width: 5px;
 	border-bottom-style: solid;
 }
 
-.breadcrumbs .bcNode>.dijitButton,
+.breadcrumbs .bicon {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=65)";
+    filter:alpha(opacity=65);
+    zoom:1;
+    cursor: pointer;
+    padding-right: 0.2em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    margin-top: 1px;
+}
+
 .breadcrumbs .crumb {
 	margin-left: 6px;
 	float: left;
 	display: inline-block;
 }
 
-.breadcrumbs .crumb {
-	margin-left: 6px;
+.breadcrumbs .crumb span {
+	vertical-align: middle;
+}
+
+.breadcrumbs .crumb span.icon {
+	margin-left: 1em;
+	margin-right: 0.3em;
 }
 
 .breadcrumbs .crumb .label,

@@ -8,13 +8,14 @@
     filter:alpha(opacity=65);
     zoom:1;
     margin-left: 0.2em;
+    cursor: pointer;
 }
 
 .viewMap .icon.inactive {
     opacity:0.14;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=14)";
     filter:alpha(opacity=14);
-    zoom:1
+    zoom:1;
 }
 
 .viewMap .icon:hover {
