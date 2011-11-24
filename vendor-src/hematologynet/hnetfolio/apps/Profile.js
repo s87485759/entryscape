@@ -60,51 +60,7 @@ dojo.declare("hnetfolio.apps.Profile", [folio.apps.Profile], {
 			this._removeCompetenceTab();
 		}
 	},
-	/*
-	 * See superclass for documentations
-	 */
-	addToContactList: function(){
-		console.log("AddToContactsClicked");
-		var d = new dojo.Deferred();
-		var application = this.application;
-		var home = application.getUser().homecontext;
-		var contextURI = application.repository+home;
-		
-		/*
-		 * Function that is called after the contacts-list has been loaded.
-		 */
-		var entryLoaded = function(contacts) {		    
-			/*
-			 * Function called after a successful creation of a new reference-entry to 
-			 * the contacts-list
-			 */
-			var updateEntry = function(entry) {
-				folio.data.getList(contacts, dojo.hitch(this, function(list) {
-					list.entry.setRefreshNeeded();
-					this._removeContactButton();
-				}));
-			};
-			
-			var builtinTypeString = "";
-			if(this.entry.getBuiltinType() === folio.data.BuiltinType.USER){
-				builtinTypeString = "user";
-			} else if (this.entry.getBuiltinType() === folio.data.BuiltinType.GROUP){
-				builtinTypeString = "group";
-			}
-			var linkEntry = {
-				context: contacts.getContext(),
-				parentList: contacts,
-				params: {
-					representationType: "informationresource",
-					locationType: "reference",
-					builtinType: builtinTypeString,//entry.getBuiltinType(),
-					"cached-external-metadata": this.entry.getLocationType() === folio.data.LocationType.LOCAL ? this.entry.getLocalMetadataUri(): this.entry.getExternalMetadataUri(),
-					resource: this.entry.getResourceUri()}};
-			contacts.getContext().createEntry(linkEntry, dojo.hitch(this, updateEntry), dojo.hitch(d, d.errback));
-		};
-		
-		application.getStore().getContext(contextURI).loadEntryFromId("_contacts", {}, dojo.hitch(this, entryLoaded), dojo.hitch(d, d.errback));
-	},
+	
 	//===================================================
 	// Private methods
 	//===================================================
@@ -178,5 +134,50 @@ dojo.declare("hnetfolio.apps.Profile", [folio.apps.Profile], {
 	 */
 	_removeContactButton: function(){
 		dojo.style(this.addToContactsButtonDijit.domNode, "display", "none");
+	},
+	/*
+	 * See superclass for documentations
+	 */
+	_addToContactList: function(){
+		console.log("AddToContactsClicked");
+		var d = new dojo.Deferred();
+		var application = this.application;
+		var home = application.getUser().homecontext;
+		var contextURI = application.repository+home;
+		
+		/*
+		 * Function that is called after the contacts-list has been loaded.
+		 */
+		var entryLoaded = function(contacts) {		    
+			/*
+			 * Function called after a successful creation of a new reference-entry to 
+			 * the contacts-list
+			 */
+			var updateEntry = function(entry) {
+				folio.data.getList(contacts, dojo.hitch(this, function(list) {
+					list.entry.setRefreshNeeded();
+					this._removeContactButton();
+				}));
+			};
+			
+			var builtinTypeString = "";
+			if(this.entry.getBuiltinType() === folio.data.BuiltinType.USER){
+				builtinTypeString = "user";
+			} else if (this.entry.getBuiltinType() === folio.data.BuiltinType.GROUP){
+				builtinTypeString = "group";
+			}
+			var linkEntry = {
+				context: contacts.getContext(),
+				parentList: contacts,
+				params: {
+					representationType: "informationresource",
+					locationType: "reference",
+					builtinType: builtinTypeString,//entry.getBuiltinType(),
+					"cached-external-metadata": this.entry.getLocationType() === folio.data.LocationType.LOCAL ? this.entry.getLocalMetadataUri(): this.entry.getExternalMetadataUri(),
+					resource: this.entry.getResourceUri()}};
+			contacts.getContext().createEntry(linkEntry, dojo.hitch(this, updateEntry), dojo.hitch(d, d.errback));
+		};
+		
+		application.getStore().getContext(contextURI).loadEntryFromId("_contacts", {}, dojo.hitch(this, entryLoaded), dojo.hitch(d, d.errback));
 	}
 });
