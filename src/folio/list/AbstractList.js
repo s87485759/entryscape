@@ -226,7 +226,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================		
-	_acceptedActions: ["details", "comment", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu"],
+	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu"],
 	_handleAction: function(action, index, event) {
 		var entry;
 		if (index == -1) {
@@ -239,6 +239,12 @@ dojo.declare("folio.list.AbstractList", null, {
 	_handle_menu: function(entry, index, event) {
 		console.log("MenuClicked");
 		this.showMenu(entry, index, event);
+	},
+	_handle_openfolder: function(entry, index, event) {
+		var refs = entry.getReferrents();
+		if (refs.length > 0) {
+			this.application.openEntry(entry.getUri(), "default", refs[0]);			
+		}
 	},
 	_handle_details: function(entry, index, event) {
 		console.log("DetailsClicked");

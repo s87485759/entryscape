@@ -52,6 +52,7 @@ dojo.declare("folio.list.SearchList", dijit._Widget, {
 						 headLess: true,
 						 controlsLess: true,
 						 detailsLink: true,
+						 openFolderLink: true,
 						 publishFocusEvents: false}, 
 						this.srcNodeRef);
 		dojo.style(this._list.domNode.parentNode, "height", "100%");

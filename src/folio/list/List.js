@@ -38,6 +38,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	headLess: false,
 	controlsLess: false,
 	includeDetailsButton: false,
+	openFolderLink: false,
 	rounded: false,
 	isPasteDisabled: true,
 	isPasteIntoDisabled: true,
@@ -415,74 +416,84 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		var config = this.application.getConfig();
 		
 		dojo.create("img", {"class": "iconCls", "src": config.getIcon(mde)}, headContainer);
-
-		//Head Metadata
-		var nr = folio.data.getChildCount(this.list);
-		var childCount = this.resourceBundle.items+":&nbsp;"+(nr != undefined ? nr : "?");
-		var mod = this.list.getModificationDate();
-		mod = mod ? mod : this.list.getCreationDate();
-		mod = mod ? mod.slice(0,10) : "";
-		mod = this.resourceBundle.modified + ":&nbsp;"+mod;
-		dojo.create("div", {"class": "expandTopCls", "innerHTML": childCount+"&nbsp;&nbsp;&nbsp;"+mod}, headContainer);
+		
+		var desc = folio.data.getDescription(mde);
 		
 		//Title
-		dojo.create("div", {"class": "titleCls", "innerHTML": folio.data.getLabel(mde)}, headContainer);
-
-		//Description
-		dojo.create("div", {"class": "descCls", "innerHTML": folio.data.getDescription(mde).replace(/(\r\n|\r|\n)/g, "<br/>")}, headContainer);
+		dojo.create("div", {"class": "titleCls", "title": desc, "innerHTML": folio.data.getLabel(mde)}, headContainer);
 
 
-		//Buttons
-		var buts = dojo.create("div", {"class": "butsCls"}, headContainer);
-		if (this.includeDetails) {
-			dojo.create("span", {"class": "details", "innerHTML": this.resourceBundle.details}, buts);
-		}
-		if (this.user) {			
-			//Comment
-			if (__confolio.config["possibleToCommentEntry"] === "true") {
-				var isNotSystemEntry = !(this.list instanceof folio.data.SystemEntry) ? "" : "disabledEntryButton";
-				dojo.create("span", {
-					"class": "comment link " + isNotSystemEntry,
-					"innerHTML": this.resourceBundle.comment
-				}, buts);
-			}	
-			//Edit
-			var listMDModifiable = this.list.isMetadataModifiable() ? "": "disabledEntryButton";
-			dojo.create("span", {"class": "edit link "+listMDModifiable, "innerHTML": this.resourceBundle.edit}, buts);
+		//Buttons and description (include when children has buttons on expand)
+		if (this.selectionExpands === true) {
+			//Description
+			dojo.create("div", {"class": "descCls", "innerHTML": desc.replace(/(\r\n|\r|\n)/g, "<br/>")}, headContainer);
 			
-			//Admin
-			var hasListAdminRights = this.list.possibleToAdmin() ? "" : "disabledEntryButton";
-			dojo.create("span", {"class": "admin link "+hasListAdminRights, "innerHTML": this.resourceBundle.admin}, buts);
-			
-			//Empty trash
-			if (this.list.getId() == "_trash") {
-				var removeNode = dojo.create("span", {"class": "remove link disabledEntryButton", "innerHTML": this.resourceBundle.empty}, buts);
-				this.list.getContext().getOwnEntry(dojo.hitch(this,function(contextEntry){
-					if(contextEntry.possibleToAdmin() && folio.data.getChildCount(this.list) !== 0) {
-						//Only allowed if owner of context and there is something to empty.
-						dojo.removeClass(removeNode, "disabledEntryButton");
-					}
-				}));
+			var buts = dojo.create("div", {"class": "butsCls"}, headContainer);
+			if (this.includeDetails) {
+				dojo.create("span", {"class": "details", "innerHTML": this.resourceBundle.details}, buts);
 			}
-			
-			//Copy
-			var listMDAndResAccessible = (this.list.isMetadataAccessible() && this.list.isResourceAccessible()) ? "": "disabledEntryButton";
-			dojo.create("span", {"class": "copy link "+listMDAndResAccessible, "innerHTML": this.resourceBundle.copy}, buts);
-			
-			//Cut
-			var hasListAdminRightsAndNotSystemEntry = this.list.possibleToAdmin() && !(this.list instanceof folio.data.SystemEntry)? "" : "disabledEntryButton";
-			dojo.create("span", {"class": "cut link "+hasListAdminRightsAndNotSystemEntry, "innerHTML": this.resourceBundle.cut}, buts);
-
-			//Paste			
-			var pasteAllowed = this.isPasteDisabled && this.list.isResourceModifiable() ? "disabledEntryButton" : "";
-			dojo.create("span", {"class": "paste link "+pasteAllowed, "innerHTML": this.resourceBundle.paste}, buts);
+			if (this.user) {			
+				//Comment
+				if (__confolio.config["possibleToCommentEntry"] === "true") {
+					var isNotSystemEntry = !(this.list instanceof folio.data.SystemEntry) ? "" : "disabledEntryButton";
+					dojo.create("span", {
+						"class": "comment link " + isNotSystemEntry,
+						"innerHTML": this.resourceBundle.comment
+					}, buts);
+				}	
+				//Edit
+				var listMDModifiable = this.list.isMetadataModifiable() ? "": "disabledEntryButton";
+				dojo.create("span", {"class": "edit link "+listMDModifiable, "innerHTML": this.resourceBundle.edit}, buts);
+				
+				//Admin
+				var hasListAdminRights = this.list.possibleToAdmin() ? "" : "disabledEntryButton";
+				dojo.create("span", {"class": "admin link "+hasListAdminRights, "innerHTML": this.resourceBundle.admin}, buts);
+				
+				//Empty trash
+				if (this.list.getId() == "_trash") {
+					var removeNode = dojo.create("span", {"class": "remove link disabledEntryButton", "innerHTML": this.resourceBundle.empty}, buts);
+					this.list.getContext().getOwnEntry(dojo.hitch(this,function(contextEntry){
+						if(contextEntry.possibleToAdmin() && folio.data.getChildCount(this.list) !== 0) {
+							//Only allowed if owner of context and there is something to empty.
+							dojo.removeClass(removeNode, "disabledEntryButton");
+						}
+					}));
+				}
+				
+				//Copy
+				var listMDAndResAccessible = (this.list.isMetadataAccessible() && this.list.isResourceAccessible()) ? "": "disabledEntryButton";
+				dojo.create("span", {"class": "copy link "+listMDAndResAccessible, "innerHTML": this.resourceBundle.copy}, buts);
+				
+				//Cut
+				var hasListAdminRightsAndNotSystemEntry = this.list.possibleToAdmin() && !(this.list instanceof folio.data.SystemEntry)? "" : "disabledEntryButton";
+				dojo.create("span", {"class": "cut link "+hasListAdminRightsAndNotSystemEntry, "innerHTML": this.resourceBundle.cut}, buts);
+	
+				//Paste			
+				var pasteAllowed = this.isPasteDisabled && this.list.isResourceModifiable() ? "disabledEntryButton" : "";
+				dojo.create("span", {"class": "paste link "+pasteAllowed, "innerHTML": this.resourceBundle.paste}, buts);
+			}
 		}
 
 		//Sorter and Refresher
 		var listControls = dojo.create("div", {"class": "expandCls"}, headContainer);
+		//Head Metadata
+		var nr = folio.data.getChildCount(this.list);
+		var childCount = this.resourceBundle.items+":&nbsp;"+(nr != undefined ? nr : "?");
+/*		var mod = this.list.getModificationDate();
+		mod = mod ? mod : this.list.getCreationDate();
+		mod = mod ? mod.slice(0,10) : "";
+		mod = this.resourceBundle.modified + ":&nbsp;"+mod;*/
+//		dojo.create("div", {"class": "expandTopCls", "innerHTML": childCount+"&nbsp;&nbsp;&nbsp;"+mod}, headContainer);
+		dojo.create("span", {"class": "sortCls", style: {"verticalAlign": "middle", "margin-right": "1em"}, "innerHTML": childCount}, listControls);
+		
 		this._insertSorter(dojo.create("div", {"class": "sortCls"}, listControls));
-		this._insertRefreshButton(dojo.create("div", {"class": "refreshBtnCls"}, listControls));
+		this._insertRefreshButton(dojo.create("span", {"class": "icon refresh"}, listControls));
+		
+		var comments = mde.getComments();
+		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, listControls);
+		dojo.create("span", {"class": "menu operation icon"}, listControls);		
 
+		dojo.connect(headContainer, "oncontextmenu", dojo.hitch(this, this.showMenu, mde, -1));
 		dojo.connect(headContainer, "onclick", dojo.hitch(this, this.handleEvent, -1));
 	},
 	_insertSorter : function(sortNode) {
@@ -530,10 +541,11 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 
 	_insertRefreshButton: function(refreshNode){
-		new dijit.form.Button({showLabel: false, iconClass: "refreshBtn", title:"Press to refresh list", onClick: dojo.hitch(this, function() {
+		dojo.attr(refreshNode, "title", "Press to refresh list");
+		dojo.connect(refreshNode, "onclick", dojo.hitch(this, function() {
 			this.list.setRefreshNeeded();
 			this.refresh();
-		})}, dojo.create("div", {style: {"width": "8em", "verticalAlign": "middle"}}, refreshNode));
+		}));
 	},
 	
 	//=================================================== 
@@ -593,23 +605,28 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	_insertTitle: function(child, childNode, noDownload) {
 		if (!this.selectionExpands && !this.iconMode) {
-			dojo.create("span", {"class": "menu operation icon"}, childNode);
+			dojo.create("span", {"class": "menu operation icon", "title": "Open menu"}, childNode);
 		}
 		if (this.detailsLink && !this.iconMode) {
-			dojo.create("span", {"class": "details operation icon"}, childNode);
+			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, childNode);
 		}
-		var comments = child.getComments();
-		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
+		if (!this.iconMode) {
+			var comments = child.getComments();
+			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
+		}
+		if (this.openFolderLink && !this.iconMode) {
+			dojo.create("span", {"class": "openfolder operation icon", "title": "Show in folder"}, childNode);
+		}
 
 		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
 			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
 			if (folio.data.isWebContent(child) && !this.iconMode) {
-				var linkArrow = dojo.create("a", {"target": "_blank", "class": "operation"}, childNode);
+				var linkArrow = dojo.create("a", {"target": "_blank", "title": "Open in new window or tab", "class": "operation"}, childNode);
 				dojo.create("span", {"class": "external operation icon"}, linkArrow);
 			}
 		    if (noDownload == null && (child.getLocationType() == folio.data.LocationType.LOCAL && 
 			  child.getBuiltinType() == folio.data.BuiltinType.NONE)  && !this.iconMode) {
-				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "class": "operation"}, childNode);
+				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "title": "Download", "class": "operation"}, childNode);
 				dojo.create("span", {"class": "download operation icon"}, download);
 		    }
 
@@ -649,10 +666,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			o.push({action: "details", enabled: true, label: this.resourceBundle.details});
 		}
 
-		if (__confolio.config["possibleToCommentEntry"] === "true") {
-			o.push({action: "comment", enabled: !(child instanceof folio.data.SystemEntry), label: this.resourceBundle.comment}); //is not a system entry
-		}
 		o.push({action: "edit", enabled: child.isMetadataModifiable(), label: this.resourceBundle.edit});
+		if (__confolio.config["possibleToCommentEntry"] === "true") {
+			o.push({action: "comment", enabled: true, label: this.resourceBundle.comment}); //is not a system entry
+		}
 		o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});
 		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: this.resourceBundle.remove});
 		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible()), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible

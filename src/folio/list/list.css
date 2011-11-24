@@ -53,7 +53,7 @@
 
 /*-----------List Head-----------------*/
 .listView .listHead {
-	height: 67px;
+	height: 33px;
 	border-bottom-width: 1px;
 
 	/* Prevent scrollbars from appearing, which shouldn't be needed
@@ -61,23 +61,35 @@
 	overflow: hidden;
 }
 
-.listView .listHead .sortCls,
-.listView .listHead .refreshBtnCls {
+.listView .listHead .expandCls {
+	margin-right: 0.5em;
+}
+
+.listView .listHead .icon {
+	vertical-align: middle;
+}
+
+.listView .listHead .icon.refresh {
+	margin-right: 0.7em;
+	}
+
+.listView .listHead .sortCls {
 	font-size: smaller;
 	display: inline-block;
+	margin-right: 0.3em;
 }
 
 .listView .listHead .iconCls {
 	position: absolute;
 	left: 3px;
-	top: 3px;
+	top: 0px;
 	width: 32px;
 	height: 32px;
 }
 
 .listView .listHead .titleCls {
 	font-weight: bold;
-	margin-top: 3px;
+	margin-top: 0px;
 	margin-left: 38px;
 }
 

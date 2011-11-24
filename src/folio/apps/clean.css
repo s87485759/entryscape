@@ -295,10 +295,11 @@ a:hover, .link:hover {
 	padding-bottom: 2px;
 	padding-top: 2px;
 	padding-left: 2px;
+	height: 29px;
 }
 
 .entryDetails .header img {
-	vertical-align:text-bottom;
+	vertical-align:middle;
 }
 
 .entryDetails .resizableContent {
