@@ -308,5 +308,8 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 			dojo.create("a", {innerHTML: title, href: this.application.getHref(this.application.getRepository()+entry.getId()+"/entry/_top", "default")}, row);
 			this.accessToContexts.push(entry);
 		}
+	},
+	_addToContactList: function(){
+		//Leave empty by default
 	}
 });
