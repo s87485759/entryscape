@@ -610,7 +610,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (this.detailsLink && !this.iconMode) {
 			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, childNode);
 		}
-		if (!this.iconMode) {
+		if (!this.iconMode && __confolio.config["possibleToCommentEntry"] === "true") {
 			var comments = child.getComments();
 			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
 		}

@@ -153,10 +153,14 @@ dojo.declare("folio.list.AbstractList", null, {
 	focusedEntry: function(entry) {
 	},
 	doChangeFocus: function(index, dontPublish) {
-		this.focusedEntry(this.listChildren[index]);
+		var entry = this.list, list;
+		if (index !== -1 ) {
+			entry = this.listChildren[index];
+			list = this.list;
+		}
 		this.selectedIndex = index;
-		if (index != -1 && dontPublish !== true && this.publishFocusEvents) {
-			this.application.publish("showEntry", {entry: this.listChildren[index], list: this.list});
+		if (dontPublish !== true && this.publishFocusEvents) {
+			this.application.publish("showEntry", {entry: entry, list: list});
 //			window.location = __confolio.viewMap.getHashUrl("default", {"context": entry.getContext().getId(), "entry": entry.getId(), "list": this.list.getId()});
 		}
 	},

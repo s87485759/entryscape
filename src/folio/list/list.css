@@ -61,6 +61,10 @@
 	overflow: hidden;
 }
 
+.listView .listHead>div {
+	height: 100%;
+}
+
 .listView .listHead .expandCls {
 	margin-right: 0.5em;
 }
