@@ -134,7 +134,7 @@ dojo.declare("hnetfolio.apps.CompetenceStatistics", [dijit._Widget, dijit._Templ
 						
 						var toPrint = item.label;
 						toPrint += "<table style=\"border:1px solid black;padding:2px;margin:0px 0px 0px 10px;\"><tbody>";
-						toPrint += "<tr><td>No value given &nbsp;</td><td style=\"text-align:right\">&nbsp;"+ level0Percentage+"% </td><td style=\"text-align:right\">&nbsp;("+level0Data+") </td></tr>";
+						toPrint += "<tr><td>Level 0 (No value given) &nbsp;</td><td style=\"text-align:right\">&nbsp;"+ level0Percentage+"% </td><td style=\"text-align:right\">&nbsp;("+level0Data+") </td></tr>";
 						toPrint += "<tr><td>Level 1 </td><td style=\"text-align:right\">&nbsp;"+ level1Percentage+"% </td><td style=\"text-align:right\">&nbsp;("+level1Data+") </td></tr>";
 						toPrint += "<tr><td>Level 2 </td><td style=\"text-align:right\">&nbsp;"+ level2Percentage+"% </td><td style=\"text-align:right\">&nbsp;("+level2Data+") </td></tr>";
 						toPrint += "<tr><td>Level 3 </td><td style=\"text-align:right\">&nbsp;"+ level3Percentage+"% </td><td style=\"text-align:right\">&nbsp;("+level3Data+") </td></tr>";
