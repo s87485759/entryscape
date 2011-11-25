@@ -152,6 +152,11 @@
 	text-decoration: none;
 	white-space: nowrap;
 	overflow: hidden;
+	vertical-align: middle;
+	display:inline-block;
+	*display: inline;
+    zoom:1;
+    height: 1.8em;
 }
 .listView .listEntry .singleLine .rowOperations {
 	float: right;
