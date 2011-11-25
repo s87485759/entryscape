@@ -208,8 +208,9 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 //						this.application.openEntry(entry);
 					}),
 					onLoad: dojo.hitch(this, this._resizeFloatingTree)
-				}, this.treeNode);
+				}, dojo.create("div", null, this.treeNode));
 		this.tree.startup();
+		alert("inited tree");
 	},
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
