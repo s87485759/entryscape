@@ -157,7 +157,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		var width = dojo.marginBox(this.floatingTreeNode).w+dojox.html.metrics.getScrollbar().w;
 		this.ePane = new dijit.layout.ContentPane({splitter: true, style: "width: "+width+"px", region: "left"});
 		this.pinnedTreeDijit.addChild(this.ePane);
-		var div = document.createElement("div");
+		var div = dojo.create("div", {"class": "pinnedNode"});
 		this.ePane.attr("content", div);
 		dojo.place(this.movableBlockNode, div, "first");
 		dojo.style(this.floatingTreeNode, "display", "none");
@@ -191,8 +191,6 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		this.initialized = true;
 		this.contextId = contextId;
 		this.context = this.application.getStore().getContextFor({base: this.application.getRepository(), contextId: contextId, entryId: "_top"});
-		var node = document.createElement("div");
-		dojo.place(node, this.movableBlockNode, "last");
 		var treeModel = new folio.tree.TreeModel({store: this.store, application: this.application, onlyLists: true, 
 			context: this.context,root: null});
 		if (this.tree != null) {
@@ -210,7 +208,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 //						this.application.openEntry(entry);
 					}),
 					onLoad: dojo.hitch(this, this._resizeFloatingTree)
-				}, node);
+				}, this.treeNode);
 		this.tree.startup();
 	},
 	postCreate: function() {
@@ -230,7 +228,8 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		var treeBox = dojo.marginBox(this.floatingTreeNode);
 
 //		if (treeBox.h > containerBox.h) {
-			dojo.marginBox(this.floatingTreeNode, {h: containerBox.h, w: treeBox.w+dojox.html.metrics.getScrollbar().w});
+//			dojo.marginBox(this.floatingTreeNode, {h: containerBox.h, w: treeBox.w+dojox.html.metrics.getScrollbar().w});
+		dojo.marginBox(this.floatingTreeNode, {h: containerBox.h});
 //		} else {
 	//		dojo.marginBox(this.floatingTreeNode, {h: containerBox.h});
 		//}
