@@ -631,25 +631,17 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		    }
 
 
-			var aNode = dojo.create("a", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+			var aNode = dojo.create("a", {"href": hrefObj.href, "class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+			if (hrefObj.blankTarget) {
+				dojo.attr(aNode, "target", "_blank");
+			}
+
 			if (this.titleClickFirstExpands) {
 				var sNode = dojo.create("span", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
 			}
-			if (folio.data.isWebContent(child) && !this.iconMode) {
-				var linkArrow = dojo.create("a", {"target": "_blank", "title": "Open in new window or tab", "class": "externalLink"}, childNode);
+			if (hrefObj.blankTarget && !this.iconMode) {
+				var linkArrow = dojo.create("a", {"href": hrefObj.href, "target": "_blank", "title": "Open in new window or tab", "class": "externalLink"}, childNode);
 				dojo.create("span", {"class": "external operation icon"}, linkArrow);
-			}
-
-
-			dojo.attr(aNode, "href", hrefObj.href);
-			if (folio.data.isWebContent(child) && !this.iconMode) {
-				dojo.attr(linkArrow, "href", hrefObj.href);
-			}
-			if (hrefObj.blankTarget) {
-				dojo.attr(aNode, "target", "_blank");
-				if (folio.data.isWebContent(child) && !this.iconMode) {
-					dojo.attr(linkArrow, "target", "_blank");
-				}
 			}
 		} else {
 			dojo.create("span", {"class": "titleCls disabledTitleCls", "innerHTML": folio.data.getLabel(child)}, childNode);

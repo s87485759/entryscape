@@ -77,7 +77,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	
 	handleEvent: function(index, event) {
 		//Do not handle events when a link (or icon inside of a link) was clicked.
-		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls"))) {
+		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls") || dojo.hasClass(event.target, "external"))) {
 			event.stopPropagation();
 			return;
 		}
