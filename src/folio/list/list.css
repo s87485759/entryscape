@@ -150,8 +150,7 @@
 	overflow: hidden;
 	cursor: default;
 }
-
-.listView .listEntry .singleLine .operation {
+.listView .listEntry .singleLine .rowOperations {
 	float: right;
 }
 
@@ -178,10 +177,20 @@
 	overflow: hidden;
 }
 
+.listView .listEntry .externalLink{
+	display:none;
+}
+
 /*-----------List Child Regular selected---------*/
 .listView .listEntry.selected a.titleCls {
 	text-decoration: underline;
 	cursor: pointer;
+}
+.listView .listEntry.selected .externalLink{
+	display:inline-block;
+	*display: inline;
+    zoom:1;
+    vertical-align: middle;
 }
 
 .listView .listEntry.selected {

@@ -621,28 +621,12 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 	},
 	_insertTitle: function(child, childNode, noDownload, hrefObj) {
-		if (!this.selectionExpands && !this.iconMode) {
-			dojo.create("span", {"class": "menu operation icon", "title": "Open menu"}, childNode);
-		}
-		if (this.detailsLink && !this.iconMode) {
-			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, childNode);
-		}
-		if (!this.iconMode && __confolio.config["possibleToCommentEntry"] === "true") {
-			var comments = child.getComments();
-			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, childNode);
-		}
-		if (this.openFolderLink && !this.iconMode) {
-			dojo.create("span", {"class": "openfolder operation icon", "title": "Show in folder"}, childNode);
-		}
+		var rowOperations = dojo.create("div",  {"class": "rowOperations"}, childNode);
 		
 		if (hrefObj != null) {
-			if (folio.data.isWebContent(child) && !this.iconMode) {
-				var linkArrow = dojo.create("a", {"target": "_blank", "title": "Open in new window or tab", "class": "operation"}, childNode);
-				dojo.create("span", {"class": "external operation icon"}, linkArrow);
-			}
 		    if (noDownload == null && (child.getLocationType() == folio.data.LocationType.LOCAL && 
 			  child.getBuiltinType() == folio.data.BuiltinType.NONE)  && !this.iconMode) {
-				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "title": "Download", "class": "operation"}, childNode);
+				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "title": "Download", "class": "operation"}, rowOperations);
 				dojo.create("span", {"class": "download operation icon"}, download);
 		    }
 
@@ -650,6 +634,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			var aNode = dojo.create("a", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
 			if (this.titleClickFirstExpands) {
 				var sNode = dojo.create("span", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+			}
+			if (folio.data.isWebContent(child) && !this.iconMode) {
+				var linkArrow = dojo.create("a", {"target": "_blank", "title": "Open in new window or tab", "class": "externalLink"}, childNode);
+				dojo.create("span", {"class": "external operation icon"}, linkArrow);
 			}
 
 
@@ -665,6 +653,19 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 		} else {
 			dojo.create("span", {"class": "titleCls disabledTitleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
+		}
+		if (this.openFolderLink && !this.iconMode) {
+			dojo.create("span", {"class": "openfolder operation icon", "title": "Show in folder"}, rowOperations);
+		}
+		if (!this.iconMode && __confolio.config["possibleToCommentEntry"] === "true") {
+			var comments = child.getComments();
+			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, rowOperations);
+		}
+		if (this.detailsLink && !this.iconMode) {
+			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, rowOperations);
+		}
+		if (!this.selectionExpands && !this.iconMode) {
+			dojo.create("span", {"class": "menu operation icon", "title": "Open menu"}, rowOperations);
 		}
 	},
 	_insertDescription: function(child, childNode) {
