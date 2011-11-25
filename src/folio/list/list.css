@@ -89,12 +89,15 @@
 	top: 0px;
 	width: 32px;
 	height: 32px;
+	cursor: pointer;
 }
 
 .listView .listHead .titleCls {
 	font-weight: bold;
 	margin-top: 0px;
 	margin-left: 38px;
+	cursor: pointer;
+	display:inline;
 }
 
 .listView .listHead .descCls{
