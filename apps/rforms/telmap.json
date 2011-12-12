@@ -713,7 +713,7 @@
 			]
   		},
   		{
-			"id":"telmap:Organization",
+			"id":"http://purl.org/telmap/Organization",
 			"type":"group",
 			"label":{"en":"Organization"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
