@@ -207,7 +207,7 @@
 	  			"en": "Partner"
 	  		},
 			"cardinality": {"pref": 1},
-			"constraints": {"http://www.w3.org/TR/rdf-schema/type": "http://purl.org/telmap/Organization"},
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice",
 			"nodetype": "URI"
   		},
