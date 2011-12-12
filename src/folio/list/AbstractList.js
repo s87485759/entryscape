@@ -162,7 +162,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			list = this.list;
 		}
 		this.selectedIndex = index;
-		focusedEntry(entry);
+		this.focusedEntry(entry);
 		if (dontPublish !== true && this.publishFocusEvents) {
 			this.application.publish("showEntry", {entry: entry, list: list});
 //			window.location = __confolio.viewMap.getHashUrl("default", {"context": entry.getContext().getId(), "entry": entry.getId(), "list": this.list.getId()});
