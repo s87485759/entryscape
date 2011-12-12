@@ -142,6 +142,7 @@
 	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
 	  {url: "rforms/LOM-hnet.json", type: "sirff"},
 	  {url: "rforms/Europeana.json", type: "sirff"},
-	  {url: "rforms/FolderRform.json", type: "sirff"}
+	  {url: "rforms/FolderRform.json", type: "sirff"},
+	  {url: "rforms/Review.json", type: "sirff"}
   ]
 }
