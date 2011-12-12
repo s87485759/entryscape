@@ -20,7 +20,8 @@
   },
   "applicationTypes-IR": {
 	"telmap:ProjectAspects": {"en":"TEL-Map Project Aspects"},
-	"telmap:Organization": {"en":"TEL-Map Organization"}
+	"telmap:Organization": {"en":"TEL-Map Organization"},
+	"rev:Review": {"en": "Review"}
   },
   "mimeTypes": {
 	"application/x-shockwave-flash": {"en": "Application: Flash"},
