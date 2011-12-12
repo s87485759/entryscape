@@ -40,7 +40,7 @@ dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
 			var v = search.get("value");
 			if (v != null && v.length > 2) {
 				var constraints = this.binding.getItem().getConstraints();
-				if (constraints[folio.data.RDFSchema.TYPE] != null) {
+				if (constraints != null && constraints[folio.data.RDFSchema.TYPE] != null) {
 					v += "+AND+rdftype:"+(encodeURIComponent(constraints[folio.data.RDFSchema.TYPE].replace(/:/g,"\\:")));
 				} else {
 					results.show({term: v});					
