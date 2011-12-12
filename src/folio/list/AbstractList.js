@@ -1,3 +1,5 @@
+/* global dojo, dijit */
+
 /*
  * Copyright (c) 2007-2010
  *
@@ -25,7 +27,6 @@ dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.data.Entry");
 dojo.require("folio.list.Remove");
 dojo.require("folio.comment.CommentDialog");
-
 
 dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
@@ -161,6 +162,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			list = this.list;
 		}
 		this.selectedIndex = index;
+		focusedEntry(entry);
 		if (dontPublish !== true && this.publishFocusEvents) {
 			this.application.publish("showEntry", {entry: entry, list: list});
 //			window.location = __confolio.viewMap.getHashUrl("default", {"context": entry.getContext().getId(), "entry": entry.getId(), "list": this.list.getId()});
