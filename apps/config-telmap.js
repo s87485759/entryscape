@@ -11,10 +11,11 @@ __confolio.addConfig({
 "CLI": false,
 "build": true,
 "scamPath": "scam",   /*This is default, can be left out*/
-"definitionsPath": "definitions",
+"definitionsPath": "definitions-TELMAP",
 "startButtons": "false",
 "theme": "telmap",
-"showTextButton": 		"false",
+"showTextButton": "false",
+"possibleToCommentEntry": "true",
 
 supportedLanguageMap: {
 		"de":"Deutsch",
