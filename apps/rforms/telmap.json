@@ -40,6 +40,7 @@
 				{"id": "telmap:cordis:dateEnd"},
 				{"id": "telmap:cordis:coordinator#literal"},
 				{"id": "telmap:cordis:partner#literal"},
+				{"id": "telmap:cordis:partner#uri"},
 				{"id": "telmap:cordis:url"},
 				{"id": "telmap:cordis:rcn"}
 			]
@@ -206,8 +207,8 @@
 	  			"en": "Partner"
 	  		},
 			"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
-	  		"type": "choice", 
+			"constraints": {"http://www.w3.org/TR/rdf-schema/type": "http://purl.org/telmap/Organization"},
+	  		"type": "choice",
 			"nodetype": "URI"
   		},
 		{
