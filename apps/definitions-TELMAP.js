@@ -64,7 +64,9 @@
 	"user": {"base": "themes/icons/oxygen/", "filename": "user.png"},
 	"group": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
 	"user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
-	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"}
+	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"},
+	"pushpin": {"base": "themes/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
+	"pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true}
   },
   "icons": {
   	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},
@@ -85,10 +87,16 @@
 		"image": 		{"base": "themes/icons/oxygen/", "filename": "image.png"},
 		"images": 		{"base": "themes/icons/oxygen/", "filename": "images.png"},
 		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
-		"text": 		{"base": "themes/icons/oxygen/", "filename": "text.png"},
+		"text": 		{"base": "themes/icons/oxygen/", "filename": "text_plain.png"},
 		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
+	},
+	"LT": {
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
 	}
   },
+  "comments": [{"class": "http://purl.org/stuff/rev#Review", "property": "http://ontologi.es/like#regarding"}],
   "MPLanguages": [{"value": "", label:{"en":"", "sv":""}},
 		{"value": "en", label:{"en":"English", "sv":"Engelska"}},
 		{"value": "de", label:{"en":"German", "sv":"Tyska"}},
@@ -107,7 +115,8 @@
 	},
 	"AT": {
 		"http://purl.org/telmap/ProjectAspects": "TELMAP_PA_v1",
-		"http://purl.org/telmap/Organization": "TELMAP_ORG"
+		"http://purl.org/telmap/Organization": "TELMAP_ORG",
+		"http://purl.org/stuff/rev#Review": "Review"
 	},
 	"MT": {
 	}		
@@ -116,14 +125,7 @@
   	"internalReferenceMP": "rformForFolders",
   	"defaultMP": "DC_Simple"
   },
-/*  "MPName2Id" :{
-	"LOM_OEv1": {"id": "http://rforms.confolio.org/formulator/formlet/OELOM", "mandatoryFields": true},
-	"FOAF_Group": {"url": "http://rforms.confolio.org/formulator/formlet/SCAMFOAFGroup"},
-	"FOAF_User": {"url": "http://rforms.confolio.org/formulator/formlet/myfoaf"},
-	"DCTerms_Minimal": {"url": "http://rforms.confolio.org/formulator/formlet/FolderAP"},
-	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]}
-  },*/
-   "MPName2Id" :{
+  "MPName2Id" :{
 	"LOM_OEv1": {"items": ["LOM-hnet", "http://xmlns.com/foaf/0.1/gender"]},
 	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
@@ -131,7 +133,8 @@
 	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"TELMAP_PA_v1": {"items": ["http://purl.org/telmap/ProjectAspects"]},
 	"TELMAP_ORG": {"items": ["http://purl.org/telmap/Organization"]},
-	"rformForFolders": {"items": ["rformForFolders"]}
+	"rformForFolders": {"items": ["rformForFolders"]},
+	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
   },
   "rformItems": [
       {url: "rforms/telmap.json", type: "sirff"},
