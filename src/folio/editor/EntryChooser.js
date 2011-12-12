@@ -36,7 +36,7 @@ dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
 			this._selectChoice({value: entry.getUri(), label: {en: folio.data.getLabel(entry)}, description: {en: folio.data.getDescription(entry)}});
 		});
 		var t;
-		var doSearch = function() {
+		var doSearch = dojo.hitch(this, function() {
 			var v = search.get("value");
 			if (v != null && v.length > 2) {
 				var constraints = this.binding.getItem().getConstraints();
@@ -46,7 +46,7 @@ dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
 					results.show({term: v});					
 				}
 			}
-		};
+		});
 		dojo.connect(search, "onKeyUp", this, function() {
 			if (t != null) {
 				clearTimeout(t);
