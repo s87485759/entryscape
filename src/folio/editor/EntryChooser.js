@@ -41,9 +41,9 @@ dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
 			if (v != null && v.length > 2) {
 				var constraints = this.binding.getItem().getConstraints();
 				if (constraints != null && constraints[folio.data.RDFSchema.TYPE] != null) {
-					v += "+AND+rdfType:"+(encodeURIComponent(constraints[folio.data.RDFSchema.TYPE].replace(/:/g,"\\:")));
+					v = "literal:" + encodeURIComponent(v.replace(/:/g,"\\:")) + "+AND+rdfType:" + (encodeURIComponent(constraints[folio.data.RDFSchema.TYPE].replace(/:/g,"\\:")));
 				}
-				results.show({term: v, queryType: "solr"});					
+				results.show({term: v, queryType: "solr"});
 			}
 		});
 		dojo.connect(search, "onKeyUp", this, function() {
