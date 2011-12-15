@@ -39,6 +39,7 @@
 				{"id": "telmap:cordis:dateStart"},
 				{"id": "telmap:cordis:dateEnd"},
 				{"id": "telmap:cordis:coordinator#literal"},
+				{"id": "telmap:cordis:coordinator#uri"},
 				{"id": "telmap:cordis:partner#literal"},
 				{"id": "telmap:cordis:partner#uri"},
 				{"id": "telmap:cordis:url"},
@@ -54,12 +55,16 @@
 			"cls": ["expandable"],
 			"content":[
 				{"id": "telmap:stakeholder#literal"},
+				{"id": "telmap:stakeholder#uri"},
 				{"id": "telmap:supportedBy"},
 				{"id": "telmap:contradictedBy"},
 				{"id": "telmap:dcterms:relation#Context"},
 				{"id": "telmap:collaborator#literal"},
+				{"id": "telmap:collaborator#uri"},
 				{"id": "telmap:predecessor#literal"},
-				{"id": "telmap:successor#literal"}
+				{"id": "telmap:predecessor#uri"},
+				{"id": "telmap:successor#literal"},
+				{"id": "telmap:successor#uri"}
 			]
 		},
 		{
@@ -100,6 +105,7 @@
 				{"id": "telmap:outcome"},
 				{"id": "telmap:impact"},
 				{"id": "telmap:usedBy#literal"},
+				{"id": "telmap:usedBy#uri"},
 				{"id": "telmap:influences#Impact"}
 			]
 		},
@@ -123,7 +129,7 @@
 	  			"en": "used by"
 	  		}, 
 	  		"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice",
 			"nodetype": "URI"
   		},
@@ -144,7 +150,7 @@
 	  			"en": "Collaborator"
 	  		}, 
 			"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice", 
 			"nodetype": "URI"
   		},
@@ -165,7 +171,7 @@
 	  			"en": "Predecessor"
 	  		},
 	  		"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/ProjectAspects"},
 	  		"type": "choice",
 			"nodetype": "URI"
   		},
@@ -186,7 +192,7 @@
 	  			"en": "Successor"
 	  		}, 
 	  		"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/ProjectAspects"},
 	  		"type": "choice", 
 			"nodetype": "URI"
   		},
@@ -228,7 +234,7 @@
 	  			"en": "Coordinator"
 	  		},
 			"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice", 
 			"nodetype": "URI"
   		},
@@ -249,7 +255,7 @@
 	  			"en": "Stakeholder"
 	  		}, 
 	  		"cardinality": {"pref": 1},
-			"lookupProtocol": "scam",
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice", 
 			"nodetype": "URI"
   		},
@@ -384,7 +390,7 @@
 			"label": {
 	  			"en": "is about"
 	  		},
-			// "constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Context"},
+			// "constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Context"},
 	  		"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -398,7 +404,7 @@
 			"label": {
 	  			"en": "supported by"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Context"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Context"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -412,7 +418,7 @@
 			"label": {
 	  			"en": "contradicted by"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Context"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Context"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -426,7 +432,7 @@
 			"label": {
 	  			"en": "is related to"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Context"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Context"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -440,7 +446,7 @@
 			"label": {
 	  			"en": "is related to"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Assumptions"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Assumptions"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -562,7 +568,7 @@
 			"label": {
 	  			"en": "influences"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Assumptions"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Assumptions"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -576,7 +582,7 @@
 			"label": {
 	  			"en": "contributes to"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Goals"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Goals"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -590,7 +596,7 @@
 			"label": {
 	  			"en": "obstructed by"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Goals"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Goals"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -604,7 +610,7 @@
 			"label": {
 	  			"en": "influences"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Goals"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Goals"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -618,7 +624,7 @@
 			"label": {
 	  			"en": "influences"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Impact"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Impact"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -663,7 +669,7 @@
 			"label": {
 	  			"en": "uses"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type":"http://purl.org/telmap/Approach"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://purl.org/telmap/Approach"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
@@ -677,7 +683,7 @@
 			"label": {
 	  			"en": "Method"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://purl.org/telmap/Method"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Method"},
 			"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
