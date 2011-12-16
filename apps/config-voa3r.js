@@ -14,7 +14,8 @@ __confolio.addConfig({
 "definitionsPath": "definitions-voa3r",
 "startButtons": "false",
 "theme": "voa3r",
-"showTextButton": 		"false",
+"showTextButton": "false",
+"possibleToCommentEntry": "false",
 
 "supportedLanguageMap": {
                 "de":"Deutsch",
