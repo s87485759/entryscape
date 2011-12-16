@@ -416,7 +416,7 @@
 			"label": {
 	  			"en": "Creator"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://http://xmlns.com/foaf/0.1/Person"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
 	  		"cardinality": {"min": 0, "pref": 1},
 	  		"type": "group",
 	  		"content": [
@@ -429,7 +429,7 @@
 			"label": {
 	  			"en": "Contributor"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://http://xmlns.com/foaf/0.1/Person"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
 	  		"cardinality": {"min": 0, "pref": 1},
 	  		"type": "group",
 	  		"content": [
@@ -442,7 +442,7 @@
 			"label": {
 	  			"en": "Publisher"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://http://xmlns.com/foaf/0.1/Person"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
 	  		"cardinality": {"min": 0, "pref": 1},
 	  		"type": "group",
 	  		"content": [
@@ -455,7 +455,7 @@
 			"label": {
 	  			"en": "Creator (personal)"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://http://xmlns.com/foaf/0.1/Person"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
 	  		"cardinality": {"min": 0, "pref": 0},
 	  		"type": "group",
 	  		"content": [
@@ -468,7 +468,7 @@
 			"label": {
 	  			"en": "Creator (corporate)"
 	  		},
-			"constraints":{"http://www.w3.org/TR/rdf-schema/type": "http://http://xmlns.com/foaf/0.1/Person"},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
 	  		"cardinality": {"min": 0, "pref": 0},
 	  		"type": "group",
 	  		"content": [
