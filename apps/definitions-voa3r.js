@@ -12,10 +12,14 @@
 	"sv": {"sv": "Svenska", "en": "Swedish", "de": "Swedish", "fr": "Suédois", "es": "Sueco", "it": "Svedese", "gr": "Σουηδικά"}
   },
   "namespaces": {
+  	"telmap": "http://purl.org/telmap/",
+	"oelrt": "http://organic-edunet.eu/LOM/rdf/voc#LearningResourceType-",
+	"rev": "http://purl.org/stuff/rev#"
   },
   "applicationTypes-NR": {
   },
   "applicationTypes-IR": {
+    "rev:Review": {"en": "Review"}
   },
   "mimeTypes": {
 	"application/x-shockwave-flash": {"en": "Application: Flash"},
@@ -51,6 +55,47 @@
     "video/quicktime": {"en": "Video: Quicktime"},
     "video/x-ms-wmv": {"en": "Video: WMV"}
   },
+  "specialIcons": {
+  	"link": {"base": "themes/icons/oxygen/", "filename": "link.png"},
+	"RSS":  {"base": "themes/icons/oxygen/", "filename": "RSS.png", "16x16": true},
+	"portfolio": {"base": "themes/icons/oxygen/", "filename": "book.png"},
+	"folder": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+	"user": {"base": "themes/icons/oxygen/", "filename": "user.png"},
+	"group": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+	"user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
+	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"},
+	"pushpin": {"base": "themes/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
+	"pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true}
+  },
+  "icons": {
+  	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},
+	"BT": {
+		"CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book.png", "16x16": true},
+		"SYSTEM_CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book2.png"},
+		"USER": {"base": "themes/icons/oxygen/", "filename": "user.png", "16x16": true},
+		"GROUP": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+		"LIST": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+		"RESULT_LIST": {"base": "themes/icons/oxygen/", "filename": "find.png"}
+	},
+	"AT": {
+		"http://purl.org/stuff/rev#Review": {"base": "themes/icons/dkit/", "filename": "chat_bubble.png", "16x16": true}
+	},
+	"MT": {
+		"video": 		{"base": "themes/icons/oxygen/", "filename": "video.png"},
+		"presentation": {"base": "themes/icons/oxygen/", "filename": "presentation.png"},
+		"image": 		{"base": "themes/icons/oxygen/", "filename": "image.png"},
+		"images": 		{"base": "themes/icons/oxygen/", "filename": "images.png"},
+		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
+		"text": 		{"base": "themes/icons/oxygen/", "filename": "text_plain.png"},
+		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
+	},
+	"LT": {
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
+	}
+  },
+  "comments": [{"class": "http://purl.org/stuff/rev#Review", "property": "http://ontologi.es/like#regarding"}],
   "MPLanguages": [{"value": "", label:{"en":"", "sv":""}},
 		{"value": "en", label:{"en":"English", "sv":"Engelska"}},
 		{"value": "de", label:{"en":"German", "sv":"Tyska"}},
@@ -72,6 +117,7 @@
 		"RESULT_LIST": "rformForFolders"
 	},
 	"AT": {
+	    "http://purl.org/stuff/rev#Review": "Review"
 	},
 	"MT": {
 	}		
@@ -86,9 +132,9 @@
 	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"TELMAP_PA_v1": {"items": ["http://purl.org/telmap/ProjectAspects"]},
 	"rformForFolders": {"items": ["rformForFolders"]},
-	"VOA3R": {"items": ["voa3r:All"]}
+	"VOA3R": {"items": ["voa3r:All"]},
+	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
   },
   "rformItems": [
       {url: "rforms/telmap.json", type: "sirff"},
@@ -97,6 +143,7 @@
 	  {url: "rforms/LOM-hnet.json", type: "sirff"},
 	  {url: "rforms/Europeana.json", type: "sirff"},
 	  {url: "rforms/FolderRform.json", type: "sirff"},
-	{url: "rforms/voa3r.json", type: "sirff"}
+	  {url: "rforms/voa3r.json", type: "sirff"},
+	  {url: "rforms/Review.json", type: "sirff"}
   ]
 }
