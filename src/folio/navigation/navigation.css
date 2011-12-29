@@ -99,7 +99,7 @@
 }
 
 .breadcrumbs .crumb span.icon {
-	margin-left: 1em;
+	margin-left: 0.4em;
 	margin-right: 0.3em;
 }
 
@@ -155,4 +155,39 @@
 .breadcrumbsChoicesDialog div.choice:hover {
 	color: white;
 	background: blue;
+}
+
+.breadcrumbs .iconSeparator {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 1px;
+	margin-left:0.3em;
+	margin-right: 0.3em;
+	height: 16px;
+	background-repeat: no-repeat;
+}
+
+.breadcrumbs .crumbSeparatorRectangular {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 7px;
+	height: 22px;
+	background-repeat: no-repeat;
+}
+
+.breadcrumbs .crumbSeparatorArrow {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 14px;
+	height: 22px;
+	background-repeat: no-repeat;
+}
+.breadcrumbs .crumbSeparatorArrow div{
+	width: 14px;
+	height: 22px;
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAWCAYAAADwza0nAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sMHRcCDh9J3n8AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA5klEQVQ4y4XUPy4EQBQH4PFviaxEJWrFRmwlCofgAAoair3AHkOj3FqEaBSOIUJHFEqJSoEIhU+zmsnbeS+ZZjJf3mRmflNwiFKNdXxoVBkv6Af4KIPwgG6ALzIIlwHs4jGDMAjwFr4z+IXNAA8zCE9YquAUrjMI50HXFbxkEPYCvIvfDL5hLcAnGYQbzFVwHnfTpV2zpZSZaq5TSllsdXxHL9jqWbbVgwDtZ6c6yhITwXssVKiD29YD+MRG0O04e3JRqHf+L30SPA3QKl5bsXrGcgCvWkH+wXaABtnXMQxQf5zNifUHJJwjXOWzlD4AAAAASUVORK5CYII=);
 }

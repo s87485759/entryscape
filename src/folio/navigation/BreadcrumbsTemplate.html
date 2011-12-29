@@ -2,16 +2,12 @@
   <div dojoAttachPoint="bcNode" class="bcNode">
   	<div style="float:left">
 		<span dojoAttachPoint="showTreeNode" class="bicon"><span class="icon toggleTreeViewVisible" dojoAttachEvent="onclick: _toggleTree" title="Toggle tree visible"></span></span>
+		<span class="iconSeparator distinctBackground"></span>
 		<span dojoAttachPoint="listListModeNode" class="bicon distinctBackground"><span class="icon showListLikeList" dojoAttachEvent="onclick: _showListLikeList" title="Switch to list view"></span></span>
 		<span dojoAttachPoint="iconListModeNode" class="bicon"><span class="icon showListLikeIcons" dojoAttachEvent="onclick: _showListLikeIcons" title="Switch to icon view"></span></span>
 		<div class="listMode CLI" style="display: none;" dojoAttachPoint="CLIModeNode"></div>
 	</div>
 	<span dojoAttachPoint="breadcrumbs"></span>
-	<div dojoType="dijit.TooltipDialog" dojoAttachPoint="choicesDialogDijit" style="display:none;" class="breadcrumbsChoicesDialog" autofocus="false">
-		<div style="display:none;width: 6em;" dojoAttachPoint="typeAhedBoxDijit" dojoType="dijit.form.TextBox"></div>
-		<div dojoAttachPoint="choicesNode">
-		</div>
-	</div>
   </div>
   <div dojoType="folio.navigation.CommandLine" region="center" dojoAttachPoint="CLIDijit" style="display: none;width:100%"></div>
 </div>

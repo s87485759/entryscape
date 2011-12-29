@@ -120,10 +120,6 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 		this._listListMode = true;
 		dojo.toggleClass(this.listListModeNode, "selected");
 
-		this.choicesDialogDijit._onBlur = dojo.hitch(this, function() {
-				dijit.popup.close(this.choicesDialogDijit);
-			}); //this._hideChoicesDialog);
-
 		if (this.application.getConfig()["CLI"] === "true") {
 			dojo.style(this.CLIModeNode, "display", "");
 			dojo.attr(this.CLIModeNode, "src", dojo.moduleUrl("folio", "icons_oxygen/22x22/shellscript.png"));
@@ -261,8 +257,14 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			var label = index == 0 ? this._getContextLabel(crumb): folio.data.getLabel(crumb);
 			var cls = crumb == this.current ? "label selected" : "label";
 			var crumbNode = dojo.create("div", {"class": "crumb"}, this.breadcrumbs);
+			if (index === 0) {
+				dojo.create("span", {"class": "crumbSeparatorRectangular distinctBackground"}, crumbNode);
+			} else {
+				var arrow = dojo.create("span", {"class": "crumbSeparatorArrow distinctBackground"}, crumbNode);
+				dojo.create("div", null, arrow);
+			}
 			var sep = dojo.create("span", {"class": "icon menu"}, crumbNode);
-			dojo.connect(sep, "onclick", dojo.hitch(this,this._showChoicesDialog, crumbNode));
+			dojo.connect(sep, "onclick", dojo.hitch(this,this._showChoicesDialog, sep, crumbNode));
 			if (crumb == this.current) {
 				dojo.create("span", {innerHTML: label}, crumbNode);
 			} else {
@@ -272,42 +274,42 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 //			arr.push("<span class='crumb'><span class='choices'><span class='choicesLabel'>▼</span></span><span class='"+cls+"'>"+label+"</span></span>");
 		}));
 	},
-	_showChoicesDialog: function(crumb) {
+	_showChoicesDialog: function(sep, crumb) {
 		var index = dojo.indexOf(this.breadcrumbs.children, crumb);
-		dojo.style(this.choicesNode, "height", "");
-		dojo.style(this.choicesNode, "overflow-y", ""); 
 
 		var f = dojo.hitch(this, function(entry) {
-			dojo.attr(this.choicesNode,"innerHTML", "");
 			folio.data.getChildren(entry, dojo.hitch(this, function(children) {
-				if(children && children.length>0){
-					if (children.length > 20) {
-						dojo.style(this.choicesNode, "height", "300px");
-						dojo.style(this.choicesNode, "overflow", "auto");
-					}
-					children.sort(dojo.hitch(this, function(a,b){
-						var aa=folio.data.getLabel(a);
-						var bb=folio.data.getLabel(b);
-						if(aa>bb){
-							return 1
-						} else if (aa<bb){
-							return -1										
-						} else {
-							return 0
+				var prepareDialog = dojo.hitch(this, function(innerNode, onReady) {
+					if(children && children.length>0){
+						if (children.length > 20) {
+							dojo.style(innerNode, "height", "300px");
+							dojo.style(innerNode, "overflow", "auto");
 						}
+						children.sort(dojo.hitch(this, function(a,b){
+							var aa=folio.data.getLabel(a);
+							var bb=folio.data.getLabel(b);
+							if(aa>bb){
+								return 1
+							} else if (aa<bb){
+								return -1										
+							} else {
+								return 0
+							}
+						}
+						));
 					}
-					));
-				}
-				dojo.forEach(children, function(child, index) {
-					if (this.current === child) {
-						dojo.create("span", {innerHTML: folio.data.getLabel(child)}, this.choicesNode);
-					} else {
-						dojo.create("a", {href: this.application.getHref(child), innerHTML: folio.data.getLabel(child)}, this.choicesNode);						
-					}
-					dojo.create("br", {}, this.choicesNode);
-				}, this);
-				dijit.popup.open({popup: this.choicesDialogDijit, around: crumb});
-				dijit.focus(this.choicesDialogDijit.domNode);
+					dojo.forEach(children, function(child, index) {
+						if (this.current === child) {
+							dojo.create("span", {innerHTML: folio.data.getLabel(child)}, innerNode);
+						} else {
+							dojo.create("a", {href: this.application.getHref(child), innerHTML: folio.data.getLabel(child)}, innerNode);						
+						}
+						dojo.create("br", {}, innerNode);
+					}, this);
+					dijit.focus(innerNode);
+					onReady();
+				});
+				this.choicesDialogDijit = folio.util.launchToolKitDialog(sep, prepareDialog);				
 			}));
 		});
 		if (index > 1) {
@@ -317,37 +319,39 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			this.application.getStore().loadEntry(this.stack[index].getContext().getUri()+"/entry/_systemEntries", {limit: 0, sort: null}, f);
 		} else  if (index == 0){
 			f = dojo.hitch(this, function(entry) {
-				dojo.attr(this.choicesNode,"innerHTML", "");
 				folio.data.getAllChildren(entry, dojo.hitch(this, function(children) {
-					if (children.length > 20) {
-						dojo.style(this.choicesNode, "height", "300px");
-						dojo.style(this.choicesNode, "overflow", "auto");
-					}
-					children.sort(dojo.hitch(this, function(a,b){
-						var aa= this._getContextLabel(a).toLowerCase();
-						var bb= this._getContextLabel(b).toLowerCase();
-						if(aa>bb){
-							return 1
-						} else if (aa<bb){
-							return -1										
-						} else {
-							return 0
+					var prepareDialog = dojo.hitch(this, function(innerNode, onReady) {
+ 						
+						if (children.length > 20) {
+							dojo.style(innerNode, "height", "300px");
+							dojo.style(innerNode, "overflow", "auto");
 						}
-					}));
-
-					dojo.forEach(children, function(child) {
-						if (child.isResourceAccessible()) {
-							if (this.current === child) {
-								dojo.create("span", {innerHTML: this._getContextLabel(child)}, this.choicesNode);
+						children.sort(dojo.hitch(this, function(a,b){
+							var aa= this._getContextLabel(a).toLowerCase();
+							var bb= this._getContextLabel(b).toLowerCase();
+							if(aa>bb){
+								return 1
+							} else if (aa<bb){
+								return -1										
 							} else {
-								
-								dojo.create("a", {href: this.application.getHref(child.getResourceUri()+"/resource/_top"), innerHTML: this._getContextLabel(child)}, this.choicesNode);								
+								return 0
 							}
-							dojo.create("br", {}, this.choicesNode);
-						}
-			    	}, this);
-					dijit.popup.open({popup: this.choicesDialogDijit, around: crumb});
-					dijit.focus(this.choicesDialogDijit.domNode);
+						}));
+
+						dojo.forEach(children, function(child) {
+							if (child.isResourceAccessible()) {
+								if (this.current === child) {
+									dojo.create("span", {innerHTML: this._getContextLabel(child)}, innerNode);
+								} else {
+									dojo.create("a", {href: this.application.getHref(child.getResourceUri()+"/resource/_top"), innerHTML: this._getContextLabel(child)}, innerNode);
+								}
+								dojo.create("br", {}, innerNode);
+							}
+			    		}, this);
+						dijit.focus(innerNode);
+						onReady();
+					});
+					this.choicesDialogDijit = folio.util.launchToolKitDialog(sep, prepareDialog);
 				}));
 			});
 			this.application.getStore().loadEntry(this.application.repository+"_contexts/entry/_all", {}, f, null);
@@ -355,18 +359,5 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 	},
 	_getContextLabel: function(entry) {
 		return folio.data.getLabelRaw(entry) || entry.alias || entry.getId();
-	},
-	_hideChoicesDialog: function() {
-		var crumbChoices = this._crumbChoices; //Remember what we want to hide.
-		//Delay, so that click on toggle show/hide has a chance of destroying the menu first
-		//Otherwise this method will destroy it and the hide click will be interpreted as 
-		// a show click leading to the dialog just blinking when the user wants to hide it.
-		setTimeout(dojo.hitch(this, function() {
-			dojo.removeClass(crumbChoices, "pressed");
-			if (this._crumbChoices == crumbChoices) { //If not already hidden.
-				dijit.popup.close(this.choicesDialogDijit);
-				delete this._crumbChoices;
-			}
-		}), 1);
 	}
 });

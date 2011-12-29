@@ -224,6 +224,7 @@ folio.util.launchToolKitDialog = function(domNode, prepareDialog, params) {
 		return;
 	}
 	folio.util._currentDomNode = domNode;
+	params = params || {};
 	
 	//Prepare the TooltipDialog and its internal historyList.
 	var tooltipDialog = new dijit.TooltipDialog({});
@@ -250,4 +251,5 @@ folio.util.launchToolKitDialog = function(domNode, prepareDialog, params) {
 			tooltipDialog.openPopup();
 		});
 	}
+	return tooltipDialog;
 };
