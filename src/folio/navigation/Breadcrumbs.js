@@ -252,7 +252,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			dojo.forEach(this.crumbDijits, function(inst) {inst.destroy();});
 		}
 		this.crumbDijits = [];
-		
+		var trail = false;
 		dojo.forEach(this.stack, dojo.hitch(this, function(crumb, index) {
 			var label = index == 0 ? this._getContextLabel(crumb): folio.data.getLabel(crumb);
 			var cls = crumb == this.current ? "label selected" : "label";
@@ -266,9 +266,13 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			var sep = dojo.create("span", {"class": "icon menu"}, crumbNode);
 			dojo.connect(sep, "onclick", dojo.hitch(this,this._showChoicesDialog, sep, crumbNode));
 			if (crumb == this.current) {
+				trail = true;
 				dojo.create("span", {innerHTML: label}, crumbNode);
 			} else {
-				dojo.create("a", {innerHTML: label, href: this.application.getHref(crumb, "default")}, crumbNode);				
+				var ael = dojo.create("a", {innerHTML: label, href: this.application.getHref(crumb, "default")}, crumbNode);
+				if (trail) {
+					dojo.addClass(ael, "trail");
+				}				
 			}
 			//this.crumbDijits.push(new dijit.form.Button({label:label},dojo.create("div", null, crumbNode)));
 //			arr.push("<span class='crumb'><span class='choices'><span class='choicesLabel'>▼</span></span><span class='"+cls+"'>"+label+"</span></span>");
