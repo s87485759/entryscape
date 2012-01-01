@@ -271,7 +271,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			} else {
 				var ael = dojo.create("a", {innerHTML: label, href: this.application.getHref(crumb, "default")}, crumbNode);
 				if (trail) {
-					dojo.addClass(ael, "trail");
+					dojo.addClass(crumbNode, "trail");
 				}				
 			}
 			//this.crumbDijits.push(new dijit.form.Button({label:label},dojo.create("div", null, crumbNode)));
