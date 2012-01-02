@@ -70,7 +70,7 @@ dojo.declare("folio.list.ListView", [dijit._Widget, folio.ApplicationView], {
 			this._list.focus(event.list, event.entry);
 			return;
 		}
-		if (event.list == null && event.entry != null && this._list.list != null && this._list.list.getUri() === event.entry.getUri()) {
+		if (event.action !== "childrenChanged" && event.list == null && event.entry != null && this._list.list != null && this._list.list.getUri() === event.entry.getUri()) {
 			return;
 		}
 
