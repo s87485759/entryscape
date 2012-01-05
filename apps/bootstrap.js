@@ -59,7 +59,8 @@ __confolio.initDojo = function(){
 		isDebug: __confolio.isDebug(),
 		debugAtAllCosts: false, //__confolio.isDebug(),
 		parseOnLoad: false,
-		usePlainJson: true
+		usePlainJson: true,
+		extraLocale: ["ROOT"]
 	};
 	
 	var libs = ["dojo/dojo.js"]; 
