@@ -97,7 +97,9 @@ dojo.declare("folio.Application", null, {
 		
 		dojo.locale = dojo.i18n.normalizeLocale(locale);
 		if (!__confolio.isBuild()) {
-			dojo["require"]("folio.nls.folio"+"_"+dojo.locale);
+			try {
+				dojo["require"]("folio.nls.folio"+"_"+dojo.locale);			
+			} catch(e) {}
 		}		
 
 		//window.alert("Application.setLocale: " + locale);
@@ -112,14 +114,16 @@ dojo.declare("folio.Application", null, {
 		 * a built version when all locale files are bundled 
 		 * into a single file which is loaded in the step above.
 		 */
-		dojo.requireLocalization("dijit", "loading");
-        dojo.requireLocalization("dijit", "common");
-		dojo.requireLocalization("dijit.form", "Textarea");
-        dojo.requireLocalization("dijit.form", "validate");
-        dojo.requireLocalization("dijit.form", "ComboBox");
-        dojo.requireLocalization("dojo.cldr", "gregorian");		
-        dojo.requireLocalization("dojo.cldr", "currency");		
-        dojo.requireLocalization("dojo.cldr", "number");		
+		try {
+			dojo.requireLocalization("dijit", "loading");
+	        dojo.requireLocalization("dijit", "common");
+			dojo.requireLocalization("dijit.form", "Textarea");
+	        dojo.requireLocalization("dijit.form", "validate");
+	        dojo.requireLocalization("dijit.form", "ComboBox");
+	        dojo.requireLocalization("dojo.cldr", "gregorian");		
+	        dojo.requireLocalization("dojo.cldr", "currency");		
+	        dojo.requireLocalization("dojo.cldr", "number");		
+		} catch(e) {}
 		dojo.publish("/confolio/localeChange", [{locale: locale}]);
 	},
 	openContext: function(contextRepresentativeEntry) {
