@@ -25,7 +25,7 @@ folio.data.getIconPath = function(entry) {
 };
 
 folio.data.getYoutubeParams = function(/* string */ url, /* function */ callback) {
-	var videoT = url.match(/v=\w*&{0,1}/)[0].slice(2);
+	var videoT = url.match(/v=[\w-]*&{0,1}/)[0].slice(2);
 	var params = null;
 	if (/&/.test(videoT)) {
 		videoT=videoT.slice(0,-1);
@@ -236,9 +236,9 @@ folio.data.getFlickrImageParams = function(/* string */ url, /* function */ call
 
 folio.data.getViaOEmbed = function(url, callback) {
 	var jsonpArgs = {
-            url: "http://oohembed.com/oohembed/",
+            url: "http://api.embed.ly/1/oembed",
             callbackParamName: "callback",
-            content: {url: url},
+            content: {url: url, key: "34856b2a3d0911e190fc4040d3dc5c07"},
 			load: callback,
             error: function(error) {}
 	};
