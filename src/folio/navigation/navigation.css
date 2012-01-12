@@ -6,10 +6,23 @@
 	margin-bottom: 4px;
 }
 
+.navigationBar .appName {
+	position: absolute;
+	left: 85px;
+	top: 5px;
+	font-size: xx-large;
+}
+
+.navigationBar .appSentence {
+	position: absolute;
+	left: 85px;
+	top: 40px;
+}
+
 .navigationBar .area1 {
 	position: absolute;
 	top: 10px;
-	right: 0px;
+	right: 40px;
 }
 
 .navigationBar .area2 {
@@ -18,13 +31,36 @@
 	right: 1em;
 }
 
-.navigationBar.minimal .logo {
-	display:hidden;
-	height: 2em;
-	margin-bottom: 4px;
-	background: none;	
+.navigationBar .control {
+	display: none;
 }
-.navigationBar.minimal .languageSelector,
+
+.navigationBar .logo {
+	margin-left: 5px;
+	margin-top: 3px;
+}
+
+.navigationBar.minimal .appName {
+	font-size: x-large;
+	left: 50px;
+	top: 6px;
+}
+.navigationBar.minimal .appSentence {
+	display: none;
+}
+
+.navigationBar.minimal .control {
+	display: block;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
+.navigationBar.minimal .logo {
+	height: 32px;
+	margin-bottom: 3px;
+	width: 220px;
+}
 .navigationBar.minimal .area2 {
 	display: none;
 }
