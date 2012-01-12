@@ -3,21 +3,21 @@
 /*Logo should be < 240x60*/
 .navigationBar .logo {
 	background:transparent url('logo.png') no-repeat top left;
-	height: 64px;
-	margin-bottom: 0px;
+}
+
+.navigationBar.minimal .logo {
+	background:transparent url('logo-small.png') no-repeat top left;
 }
 
 .navigationBar .appName {
-	position: absolute;
-	left: 85px;
-	top: 5px;
-	font-size: xx-large;
+	left: 95px;
 }
+
 .navigationBar .appSentence {
-	position: absolute;
-	left: 85px;
-	top: 40px;
+	left: 95px;
 }
+
+
 .navigationBar .appName:after {
 	content: "EntryScape";
 }

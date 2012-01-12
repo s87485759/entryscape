@@ -1,0 +1,5 @@
+@import "../default/style.css";
+
+.navigationBar .appName:after {
+	content: "Confolio" !important;
+}
