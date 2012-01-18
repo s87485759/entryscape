@@ -12,11 +12,13 @@
 	"sv": {"sv": "Svenska", "en": "Swedish", "de": "Swedish", "fr": "Suédois", "es": "Sueco", "it": "Svedese", "gr": "Σουηδικά"}
   },
   "namespaces": {
-  	"oelrt": "http://organic-edunet.eu/LOM/rdf/voc#LearningResourceType-"
+  	"oelrt": "http://organic-edunet.eu/LOM/rdf/voc#LearningResourceType-",
+	"rev": "http://purl.org/stuff/rev#"
   },
   "applicationTypes-NR": {
   },
   "applicationTypes-IR": {
+	"rev:Review": {"en": "Review"},
   	"oelrt:application": {"en":"application", "el":"εφαρμογή", "no":"søknad", "ro":"aplicatie", "hu":"alkalmazás", "es":"aplicación", "et":"rakendus", "de":"anwendung", "ru":"приложение"},
 	"oelrt:assessment": {"en":"assessment", "el":"αξιολόγηση", "no":"vurdering", "ro":"evaluare", "hu":"értékelés", "es":"evaluación", "et":"hinnang", "de":"beurteilung", "ru":"оценка"},
 	"oelrt:broadcast": {"en":"broadcast", "el":"εκπομπή", "no":"kringkasting", "ro":"difuzare", "hu":"műsor", "es":"programa", "et":"ülekanne", "de":"übertragung", "ru":"передача"},
@@ -84,6 +86,57 @@
     "video/quicktime": {"en": "Video: Quicktime"},
     "video/x-ms-wmv": {"en": "Video: WMV"}
   },
+  "specialIcons": {
+  	"link": {"base": "themes/icons/oxygen/", "filename": "link.png"},
+	"RSS":  {"base": "themes/icons/oxygen/", "filename": "RSS.png", "16x16": true},
+	"portfolio": {"base": "themes/icons/oxygen/", "filename": "book.png"},
+	"folder": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+	"user": {"base": "themes/icons/oxygen/", "filename": "user.png"},
+	"group": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+	"user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
+	"group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"},
+	"pushpin": {"base": "themes/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
+	"pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true}
+  },
+  "icons": {
+  	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},
+	"BT": {
+		"CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book.png", "16x16": true},
+		"SYSTEM_CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book2.png"},
+		"USER": {"base": "themes/icons/oxygen/", "filename": "user.png", "16x16": true},
+		"GROUP": {"base": "themes/icons/oxygen/", "filename": "users2.png"},
+		"LIST": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
+		"RESULT_LIST": {"base": "themes/icons/oxygen/", "filename": "find.png"}
+	},
+	"AT": {
+		"http://purl.org/stuff/rev#Review": {"base": "themes/icons/dkit/", "filename": "chat_bubble.png", "16x16": true}
+	},
+	"MT": {
+		"video": 		{"base": "themes/icons/oxygen/", "filename": "video.png"},
+		"presentation": {"base": "themes/icons/oxygen/", "filename": "presentation.png"},
+		"image": 		{"base": "themes/icons/oxygen/", "filename": "image.png"},
+		"images": 		{"base": "themes/icons/oxygen/", "filename": "images.png"},
+		"calendar": 	{"base": "themes/icons/oxygen/", "filename": "calendar.png"},
+		"text": 		{"base": "themes/icons/oxygen/", "filename": "text_plain.png"},
+		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
+	},
+	"LT": {
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
+	}
+  },
+  "comments": [{"class": "http://purl.org/stuff/rev#Review", "property": "http://ontologi.es/like#regarding"}],
+  "MPLanguages": [{"value": "", label:{"en":"", "sv":""}},
+		{"value": "en", label:{"en":"English", "sv":"Engelska"}},
+		{"value": "de", label:{"en":"German", "sv":"Tyska"}},
+		{"value": "fr", label:{"en":"French", "sv":"Franska"}},
+		{"value": "es", label:{"en":"Spanish", "sv":"Spanska"}},
+		{"value": "el", label:{"en":"Greek", "sv":"Grekiska"}},
+		{"value": "dk", label:{"en":"Danish", "sv":"Danska"}},
+		{"value": "cz", label:{"en":"Czech", "sv":"Tjeckiska"}},
+		{"value": "it", label:{"en":"Italian", "sv":"Italienska"}},
+		{"value": "sv", label:{"en":"Swedish", "sv":"Svenska"}}],
   "MPMap-localMetadata": {
  	"defaultMP": "LOM_OEv1",
 	"BT": {
@@ -94,20 +147,34 @@
 		"LIST": "DCTerms_Minimal",
 		"RESULT_LIST": "DCTerms_Minimal"
 	},
-	"AT": {		
+	"AT": {
+	    "http://purl.org/stuff/rev#Review": "Review"
 	},
 	"MT": {
 	}		
   },
   "MPMap-externalMetadata": {
-  	"internalReferenceMP": "LOM_OEv1",
+  	"internalReferenceMP": "LOM_OE",
   	"defaultMP": "DC_Simple"
   },
-  "MPName2Id" :{
-	"LOM_OEv1": {"url": "http://rforms.confolio.org/formulator/formlet/OELOM", "mandatoryFields": true},
-	"FOAF_Group": {"url": "http://rforms.confolio.org/formulator/formlet/SCAMFOAFGroup"},
-	"FOAF_User": {"url": "http://rforms.confolio.org/formulator/formlet/oefoaf"},
-	"DCTerms_Minimal": {"url": "http://rforms.confolio.org/formulator/formlet/FolderAP"},
-	"DC_Simple": {"url": "http://rforms.confolio.org/formulator/formlet/SDC"}
-  }
+   "MPName2Id" :{
+	"LOM_OE": {"items": ["LOM-OE"]},
+	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
+	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
+	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
+	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
+	"rformForFolders": {"items": ["rformForFolders"]},
+	"VOA3R": {"items": ["voa3r:All"]},
+	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
+  },
+  "rformItems": [
+      {url: "rforms/telmap.json", type: "sirff"},
+	  {url: "rforms/dc-exhibit.json", type: "exhibit"}, 
+	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
+	  {url: "rforms/LOM-OE.json", type: "sirff"},
+	  {url: "rforms/Europeana.json", type: "sirff"},
+	  {url: "rforms/FolderRform.json", type: "sirff"},
+	  {url: "rforms/voa3r.json", type: "sirff"},
+	  {url: "rforms/Review.json", type: "sirff"}
+  ]
 }

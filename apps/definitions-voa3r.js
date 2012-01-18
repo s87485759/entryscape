@@ -127,7 +127,6 @@
   	"defaultMP": "DC_Simple"
   },
    "MPName2Id" :{
-	"LOM_OEv1": {"items": ["LOM-hnet", "http://xmlns.com/foaf/0.1/gender"]},
 	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
@@ -140,7 +139,6 @@
       {url: "rforms/telmap.json", type: "sirff"},
 	  {url: "rforms/dc-exhibit.json", type: "exhibit"}, 
 	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
-	  {url: "rforms/LOM-hnet.json", type: "sirff"},
 	  {url: "rforms/Europeana.json", type: "sirff"},
 	  {url: "rforms/FolderRform.json", type: "sirff"},
 	  {url: "rforms/voa3r.json", type: "sirff"},
