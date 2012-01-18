@@ -14,6 +14,12 @@ __confolio.addConfig({
 "unloadDialog":			false,
 "helpUrl": 				"http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": 			"themes/organic/about.html",
+"startButtons":			"false",
+"build":				true,
+"possibleToCommentEntry": "true",
+"CLI":					false,
+"scamPath":				"scam",
+
 "supportedLanguageMap": {
 		"de":"Deutsch",
 		"bg":"Български език",
@@ -34,7 +40,7 @@ __confolio.addConfig({
 		"zh-cn":"中文(简体)"
 	},
 
-"search.type.default":  "simple", //Currently only simple and solr are possible options
+"search.type.default":  "solr", //Currently only simple and solr are possible options
 "search.scope.default": "context", //Not implemented... Directs the default-scope for the search  
 "search.scope":         "folder,all,reference",
 "theme":                "organic",
@@ -44,7 +50,7 @@ __confolio.addConfig({
 "viewMap": {
 		"manager": "se.uu.ull.site.FullscreenViewStack",
 			"controller": "folio.navigation.NavigationBar",
-			"startView": "start",
+			"startView": "default",
 			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "1"}},
 					  {"name": "start", "class": "folio.apps.StartPage"},
 					  {"name": "search", "class": "folio.apps.Search"},
