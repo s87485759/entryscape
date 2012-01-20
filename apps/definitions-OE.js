@@ -133,12 +133,13 @@
 		{"value": "fr", label:{"en":"French", "sv":"Franska"}},
 		{"value": "es", label:{"en":"Spanish", "sv":"Spanska"}},
 		{"value": "el", label:{"en":"Greek", "sv":"Grekiska"}},
+		{"value": "hi", label:{"en":"Hindi", "sv":"Hindi"}},
 		{"value": "dk", label:{"en":"Danish", "sv":"Danska"}},
 		{"value": "cz", label:{"en":"Czech", "sv":"Tjeckiska"}},
 		{"value": "it", label:{"en":"Italian", "sv":"Italienska"}},
 		{"value": "sv", label:{"en":"Swedish", "sv":"Svenska"}}],
   "MPMap-localMetadata": {
- 	"defaultMP": "LOM_OEv1",
+ 	"defaultMP": "LOM_OE",
 	"BT": {
 		"CONTEXT": "DCTerms_Minimal",
 		"SYSTEM_CONTEXT": "DCTerms_Minimal",
