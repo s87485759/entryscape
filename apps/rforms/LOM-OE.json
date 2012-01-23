@@ -2591,7 +2591,7 @@
      {
       "nodetype": "URI",
       "@type": "choice",
-      "constraints": {"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://organic-edunet.eu/LOM/rdf/voc#OEOntologyProperty"},
+      "constraints": {"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.cc.uah.es/ie/ont/OE-Predicates#OEOntologyProperty"},
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
       "styles": ["ChoiceFormItem"],
       "cardinality": {
@@ -3949,72 +3949,72 @@
   {
    "choices": [
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesTheoreticalInformationOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesTheoreticalInformationOn",
      "label": {"": "provides theoretical information on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesNewInformationOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesNewInformationOn",
      "label": {"": "provides new information on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#Refutes",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Refutes",
      "label": {"": "Refutes"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#Summarizes",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Summarizes",
      "label": {"": "summarizes"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#IsAbout",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#IsAbout",
      "label": {"": "is about"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#CommentsOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#CommentsOn",
      "label": {"": "comments on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#Details",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Details",
      "label": {"": "details"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#Methodology",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Methodology",
      "label": {"": "methodology"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesDataOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesDataOn",
      "label": {"": "provides data on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesBackgroundOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesBackgroundOn",
      "label": {"": "provides background on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesExamplesOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesExamplesOn",
      "label": {"": "provides examples on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#ProvidesAlternativeViewOn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#ProvidesAlternativeViewOn",
      "label": {"": "provides alternative view on"},
      "top": true
     },
     {
-     "value": "http://organic-edunet.eu/LOM/rdf/voc#Supports",
+     "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Supports",
      "label": {"": "supports"},
      "top": true
     }
    ],
-   "constraints": {"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://organic-edunet.eu/LOM/rdf/voc#OEOntologyProperty"}
+   "constraints": {"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.cc.uah.es/ie/ont/OE-Predicates#OEOntologyProperty"}
   },
   {
    "choices": [
