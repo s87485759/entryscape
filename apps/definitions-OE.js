@@ -135,7 +135,7 @@
 		{"value": "es", label:{"en":"Spanish", "sv":"Spanska"}},
 		{"value": "el", label:{"en":"Greek", "sv":"Grekiska"}},
 		{"value": "hi", label:{"en":"Hindi", "sv":"Hindi"}},
-		{"value": "dk", label:{"en":"Danish", "sv":"Danska"}},
+		{"value": "da", label:{"en":"Danish", "sv":"Danska"}},
 		{"value": "cz", label:{"en":"Czech", "sv":"Tjeckiska"}},
 		{"value": "it", label:{"en":"Italian", "sv":"Italienska"}},
 		{"value": "sv", label:{"en":"Swedish", "sv":"Svenska"}},
@@ -143,7 +143,9 @@
 		{"value": "hu", "label":{"hu":"Magyar", "en": "Hungarian", "sv": "Ungerska"}},
 		{"value": "tr", "label":{"en":"Turkish", "sv":"Turkiska"}},
 		{"value": "ro", "label":{"ro":"Română", "en": "Romanian", "sv": "Rumänska"}},
-		{"value": "ru", "label":{"ru":"Русский", "en": "Russian", "sv": "Ryska"}}	
+		{"value": "ru", "label":{"ru":"Русский", "en": "Russian", "sv": "Ryska"}},
+		{"value": "nl", "label":{"nl":"Nederlands", "en": "Dutch", "sv": "Nederländska"}},
+		{"value": "zh", "label":{"en": "Chinese", "sv": "Kinesiska"}}
 	],
   "MPMap-localMetadata": {
  	"defaultMP": "LOM_OE",
