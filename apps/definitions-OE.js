@@ -138,7 +138,7 @@
 		{"value": "dk", label:{"en":"Danish", "sv":"Danska"}},
 		{"value": "cz", label:{"en":"Czech", "sv":"Tjeckiska"}},
 		{"value": "it", label:{"en":"Italian", "sv":"Italienska"}},
-		{"value": "sv", label:{"en":"Swedish", "sv":"Svenska"}}
+		{"value": "sv", label:{"en":"Swedish", "sv":"Svenska"}},
 		{"value": "pl", "label":{"en":"Polish", "sv":"Polska"}},
 		{"value": "hu", "label":{"hu":"Magyar", "en": "Hungarian", "sv": "Ungerska"}},
 		{"value": "tr", "label":{"en":"Turkish", "sv":"Turkiska"}},
