@@ -3960,7 +3960,7 @@
     },
     {
      "value": "http://www.cc.uah.es/ie/ont/OE-Predicates#Refutes",
-     "label": {"": "Refutes"},
+     "label": {"": "refutes"},
      "top": true
     },
     {
