@@ -2603,7 +2603,7 @@
      {
       "nodetype": "URI",
       "@type": "choice",
-      "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Concepts"},
+      "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.cc.uah.es/ie/ont/OE-OAAE#Concepts"},
       "isHierarchyPropertyInverted": false,
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
       "styles": [
@@ -4019,1370 +4019,1370 @@
   {
    "choices": [
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislation",
      "label": {"": "EULegislation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LeatherProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LeatherProduction",
      "label": {"": "LeatherProduction"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EducationActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EducationActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Training"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Learning"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Research"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Teaching"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Training"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Learning"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Research"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Teaching"}
      ],
      "label": {"": "EducationActivity"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Concepts",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Concepts",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Process"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MethodOrTechnique"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Regulation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Product"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActivityType"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Entity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Issue"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Process"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MethodOrTechnique"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Regulation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Product"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActivityType"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Entity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Issue"}
      ],
      "label": {"": "Concepts"},
      "top": true
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FeatherProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FeatherProduction",
      "label": {"": "FeatherProduction"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WineProductionProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#WineProductionProcess",
      "label": {"": "WineProductionProcess"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EUOrganicStandard",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EUOrganicStandard",
      "label": {"": "EUOrganicStandard"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ShellAquaculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ShellAquaculture",
      "label": {"": "ShellAquaculture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Distributor",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Distributor",
      "label": {"": "Distributor"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LabelingRegulation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LabelingRegulation",
      "label": {"": "LabelingRegulation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ISO14000Program",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ISO14000Program",
      "label": {"": "ISO14000Program"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Farm",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Farm",
      "label": {"": "Farm"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MilkProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MilkProduction",
      "label": {"": "MilkProduction"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Apiculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Apiculture",
      "label": {"": "Apiculture"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MethodOrTechnique",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MethodOrTechnique",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmingMethod"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AgriculturalPractice"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Certification"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmingMethod"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AgriculturalPractice"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Certification"}
      ],
      "label": {"": "MethodOrTechnique"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MarketingIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MarketingIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MarketTrends"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DirectMarketing"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MarketTrends"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#DirectMarketing"}
      ],
      "label": {"": "MarketingIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MarketTrends",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MarketTrends",
      "label": {"": "MarketTrends"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FruitProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Polyculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AquaCulture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HerbCultivation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilessCulture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionDerivedActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CerealsCultivation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnergyCropsCultivation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FieldCropsCultivation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Viticulture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PastureManagement"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FruitProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Polyculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AquaCulture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#HerbCultivation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilessCulture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionDerivedActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CerealsCultivation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnergyCropsCultivation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FieldCropsCultivation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Viticulture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PastureManagement"}
      ],
      "label": {"": "PlantProductionActivity"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Regulation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Regulation",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Legislation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LabelingRegulation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Standard"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Legislation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LabelingRegulation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Standard"}
      ],
      "label": {"": "Regulation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HACCP",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#HACCP",
      "label": {"": "HACCP"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#UnprocessedProduct",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#UnprocessedProduct",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalOriginProduct"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#VegetableOriginProduct"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicalCompound"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalOriginProduct"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#VegetableOriginProduct"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicalCompound"}
      ],
      "label": {"": "UnprocessedProduct"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalEthics",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalEthics",
      "label": {"": "AnimalEthics"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Storage",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Storage",
      "label": {"": "Storage"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#BeeOrigin",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#BeeOrigin",
      "label": {"": "BeeOrigin"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PoultryMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PoultryMeat",
      "label": {"": "PoultryMeat"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilErosion",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilErosion",
      "label": {"": "SoilErosion"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmSale",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmSale",
      "label": {"": "FarmSale"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalFood",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalFood",
      "label": {"": "NaturalFood"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Biosolids",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Biosolids",
      "label": {"": "Biosolids"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Salt",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Salt",
      "label": {"": "Salt"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilCompaction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilCompaction",
      "label": {"": "SoilCompaction"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicalCompound",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicalCompound",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Potassium"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Urea"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Nitrogen"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Phosphorus"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChileanSaltpeter"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Salt"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Potassium"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Urea"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Nitrogen"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Phosphorus"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChileanSaltpeter"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Salt"}
      ],
      "label": {"": "ChemicalCompound"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalOriginProduct",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalOriginProduct",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Wool"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChickenMeat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Feather"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LambMeat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CowMilk"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Jelly"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Honey"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PoultryMeat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Milk"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PigMeat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Meat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GoatMilk"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#BuffaloMilk"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SheepMilk"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CattleMeat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RabbitMeat"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Wool"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChickenMeat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Feather"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LambMeat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CowMilk"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Jelly"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Honey"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PoultryMeat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Milk"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PigMeat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Meat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#GoatMilk"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#BuffaloMilk"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SheepMilk"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CattleMeat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#RabbitMeat"}
      ],
      "label": {"": "AnimalOriginProduct"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeFarming",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeFarming",
      "label": {"": "AlternativeFarming"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AgroFoodSystem",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AgroFoodSystem",
      "label": {"": "AgroFoodSystem"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WaterQuality",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#WaterQuality",
      "label": {"": "WaterQuality"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Consumer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Consumer",
      "label": {"": "Consumer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Learning",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Learning",
      "label": {"": "Learning"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Standard",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Standard",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EUOrganicStandard"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicStandard"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EUOrganicStandard"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicStandard"}
      ],
      "label": {"": "Standard"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LearningIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LearningIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActionResearch"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActionLearning"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActionResearch"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActionLearning"}
      ],
      "label": {"": "LearningIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Ecoturism",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Ecoturism",
      "label": {"": "Ecoturism"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodQuality",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodQuality",
      "label": {"": "FoodQuality"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FruitProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FruitProduction",
      "label": {"": "FruitProduction"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sterilization",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sterilization",
      "label": {"": "Sterilization"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilDegradation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilDegradation",
      "label": {"": "SoilDegradation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GeneticResistence",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#GeneticResistence",
      "label": {"": "GeneticResistence"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FodderPreference",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FodderPreference",
      "label": {"": "FodderPreference"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsExport",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsExport",
      "label": {"": "ProductsExport"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Potassium",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Potassium",
      "label": {"": "Potassium"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DirectMarketing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#DirectMarketing",
      "label": {"": "DirectMarketing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislationOnGMO",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislationOnGMO",
      "label": {"": "EULegislationOnGMO"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NonProductiveActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NonProductiveActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EducationActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ServiceOrientedActivity"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EducationActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ServiceOrientedActivity"}
      ],
      "label": {"": "NonProductiveActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicCertification",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicCertification",
      "label": {"": "OrganicCertification"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Product",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Product",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProcessedProduct"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#UnprocessedProduct"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fertilizer"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProcessedProduct"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#UnprocessedProduct"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fertilizer"}
      ],
      "label": {"": "Product"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HealthIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#HealthIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantHealth"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalHealth"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WellBeing"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantHealth"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalHealth"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#WellBeing"}
      ],
      "label": {"": "HealthIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#N-Fixation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#N-Fixation",
      "label": {"": "N-Fixation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RenewevableResources",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#RenewevableResources",
      "label": {"": "RenewevableResources"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilTillage",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilTillage",
      "label": {"": "SoilTillage"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PostHarvestHandling",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PostHarvestHandling",
      "label": {"": "PostHarvestHandling"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicConversion",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicConversion",
      "label": {"": "OrganicConversion"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#IdeologyIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#IdeologyIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicPrinciple"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Permaculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalWelfare"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PovertyAlleviation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#IFOAMPrinciples"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalEthics"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RuralLivelihoods"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicPrinciple"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Permaculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalWelfare"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PovertyAlleviation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#IFOAMPrinciples"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalEthics"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#RuralLivelihoods"}
      ],
      "label": {"": "IdeologyIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoyaDrink",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoyaDrink",
      "label": {"": "SoyaDrink"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Compost",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Compost",
      "label": {"": "Compost"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CulturalLandscapes",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CulturalLandscapes",
      "label": {"": "CulturalLandscapes"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Tofu",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Tofu",
      "label": {"": "Tofu"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RuralLivelihoods",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#RuralLivelihoods",
      "label": {"": "RuralLivelihoods"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DistributionIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#DistributionIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsExport"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CommunitySupportedAgriculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeDistribution"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmSale"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmersMarket"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsImport"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodShed"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsExport"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CommunitySupportedAgriculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeDistribution"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmSale"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmersMarket"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsImport"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodShed"}
      ],
      "label": {"": "DistributionIssue"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#JuridicalPerson",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#JuridicalPerson",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RegulatoryAgency"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CertificationAgency"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Producer"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Farm"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#RegulatoryAgency"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CertificationAgency"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Producer"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Farm"}
      ],
      "label": {"": "JuridicalPerson"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MeatProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MeatProduction",
      "label": {"": "MeatProduction"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionDerivedActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionDerivedActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilTillage"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Plowing"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sowing"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PestControl"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WeedControl"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fertilization"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilTillage"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Plowing"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sowing"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PestControl"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#WeedControl"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fertilization"}
      ],
      "label": {"": "PlantProductionDerivedActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#BuffaloMilk",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#BuffaloMilk",
      "label": {"": "BuffaloMilk"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WellBeing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#WellBeing",
      "label": {"": "WellBeing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductIntegrity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductIntegrity",
      "label": {"": "ProductIntegrity"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicallyInorganicFertilizer",
-     "children": [{"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChileanSaltpeter"}],
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicallyInorganicFertilizer",
+     "children": [{"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChileanSaltpeter"}],
      "label": {"": "ChemicallyInorganicFertilizer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConsumerAttitudes",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConsumerAttitudes",
      "label": {"": "ConsumerAttitudes"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalTransport",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalTransport",
      "label": {"": "AnimalTransport"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProcessedProduct",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProcessedProduct",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Dairy"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Leather"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoyaDrink"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fodder"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sausage"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Beer"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Cheese"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Hamburger"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Tofu"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Dairy"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Leather"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoyaDrink"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fodder"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sausage"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Beer"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Cheese"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Hamburger"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Tofu"}
      ],
      "label": {"": "ProcessedProduct"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Beer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Beer",
      "label": {"": "Beer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fertilization",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fertilization",
      "label": {"": "Fertilization"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodAvailability",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodAvailability",
      "label": {"": "FoodAvailability"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HerbCultivation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#HerbCultivation",
      "label": {"": "HerbCultivation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalProduction",
      "label": {"": "LocalProduction"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilbiologicalActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilbiologicalActivity",
      "label": {"": "SoilbiologicalActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PestControl",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PestControl",
      "label": {"": "PestControl"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WeedControl",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#WeedControl",
      "label": {"": "WeedControl"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Entity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Entity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#JuridicalPerson"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalPerson"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#JuridicalPerson"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalPerson"}
      ],
      "label": {"": "Entity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropEcology",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropEcology",
      "label": {"": "CropEcology"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalNutrition"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OutdoorKeeping"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalBreeds"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalBehaviour"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FodderPreference"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#BeeOrigin"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Diet"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalNutrition"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OutdoorKeeping"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalBreeds"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalBehaviour"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FodderPreference"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#BeeOrigin"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Diet"}
      ],
      "label": {"": "AnimalProductionIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Honey",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Honey",
      "label": {"": "Honey"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Diet",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Diet",
      "label": {"": "Diet"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilStructure",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilStructure",
      "label": {"": "SoilStructure"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Manure",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Manure",
      "label": {"": "Manure"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislationOnOrganicFertilizers",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislationOnOrganicFertilizers",
      "label": {"": "EULegislationOnOrganicFertilizers"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PigMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PigMeat",
      "label": {"": "PigMeat"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sowing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sowing",
      "label": {"": "Sowing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalHealth",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalHealth",
      "label": {"": "AnimalHealth"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Diversity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Diversity",
      "label": {"": "Diversity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsImport",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsImport",
      "label": {"": "ProductsImport"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Teaching",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Teaching",
      "label": {"": "Teaching"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#InterCropping",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#InterCropping",
      "label": {"en": "intercropping"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Plowing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Plowing",
      "label": {"": "Plowing"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Legislation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Legislation",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislationOnGMO"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EULegislationOnOrganicFertilizers"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislationOnGMO"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EULegislationOnOrganicFertilizers"}
      ],
      "label": {"": "Legislation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Research",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Research",
      "label": {"": "Research"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CowMilk",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CowMilk",
      "label": {"": "CowMilk"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ClimateChangeMitigation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ClimateChangeMitigation",
      "label": {"": "ClimateChangeMitigation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalNutrition",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalNutrition",
      "label": {"": "NaturalNutrition"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Training",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Training",
      "label": {"": "Training"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropRotation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropRotation",
      "label": {"": "CropRotation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sausage",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sausage",
      "label": {"": "Sausage"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalBehaviour",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalBehaviour",
      "label": {"": "NaturalBehaviour"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProtection",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProtection",
      "label": {"": "PlantProtection"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Hamburger",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Hamburger",
      "label": {"": "Hamburger"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Breeding",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Breeding",
      "label": {"": "Breeding"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiseasesPrevention",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiseasesPrevention",
      "label": {"": "DiseasesPrevention"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AquaCulture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AquaCulture",
      "label": {"en": "aquaculture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ExtensiveGrazing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ExtensiveGrazing",
      "label": {"": "ExtensiveGrazing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NutrientRecycling",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NutrientRecycling",
      "label": {"": "NutrientRecycling"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CarbonSequestration",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CarbonSequestration",
      "label": {"": "CarbonSequestration"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CommunityService",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CommunityService",
      "label": {"": "CommunityService"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Jelly",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Jelly",
      "label": {"": "Jelly"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilHealth",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilHealth",
      "label": {"": "SoilHealth"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionDerivedActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionDerivedActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiseasesTreatment"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FodderManagement"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LivestockHousing"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Breeding"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiseasesPrevention"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiseasesTreatment"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FodderManagement"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LivestockHousing"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Breeding"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiseasesPrevention"}
      ],
      "label": {"": "AnimalProductionDerivedActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CO2Miles",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CO2Miles",
      "label": {"": "CO2Miles"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Milk",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Milk",
      "label": {"": "Milk"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MultiCropping",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MultiCropping",
      "label": {"": "MultiCropping"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Phosphorus",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Phosphorus",
      "label": {"": "Phosphorus"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnvironmentalImpact",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnvironmentalImpact",
      "label": {"": "EnvironmentalImpact"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GoatMilk",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#GoatMilk",
      "label": {"": "GoatMilk"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Farmer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Farmer",
      "label": {"": "Farmer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#TraditionalFarming",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#TraditionalFarming",
      "label": {"": "TraditionalFarming"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#IFOAMPrinciples",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#IFOAMPrinciples",
      "label": {"": "IFOAMPrinciples"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sustainability",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sustainability",
      "label": {"": "Sustainability"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Dairy",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Dairy",
      "label": {"": "Dairy"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RegulatoryAgency",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#RegulatoryAgency",
      "label": {"": "RegulatoryAgency"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilessCulture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilessCulture",
      "label": {"": "SoilessCulture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsTransport",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsTransport",
      "label": {"": "ProductsTransport"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductionProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductionProcess",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MilkProductionProcess"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MeatProductionProcess"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WineProductionProcess"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fermentation"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MilkProductionProcess"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MeatProductionProcess"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#WineProductionProcess"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fermentation"}
      ],
      "label": {"": "ProductionProcess"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmersMarket",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmersMarket",
      "label": {"": "FarmersMarket"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CompanionPlanting",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CompanionPlanting",
      "label": {"": "CompanionPlanting"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PastureManagement",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PastureManagement",
      "label": {"": "PastureManagement"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fermentation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fermentation",
      "label": {"": "Fermentation"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FarmingMethod",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FarmingMethod",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ExtensiveFarming"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeFarming"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LowInputAgriculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ExtensiveGrazing"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#TraditionalFarming"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ExtensiveFarming"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeFarming"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LowInputAgriculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ExtensiveGrazing"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#TraditionalFarming"}
      ],
      "label": {"": "FarmingMethod"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Pollution",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Pollution",
      "label": {"": "Pollution"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnergyCropsCultivation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnergyCropsCultivation",
      "label": {"": "EnergyCropsCultivation"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fertilizer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fertilizer",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicallyOrganicFertilizer"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicallyInorganicFertilizer"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicallyOrganicFertilizer"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicallyInorganicFertilizer"}
      ],
      "label": {"": "Fertilizer"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodQuality"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ShelfLife"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodAvailability"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodProcessing"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodHealth"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HACCP"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodSafety"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalFood"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodQuality"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ShelfLife"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodAvailability"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodProcessing"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodHealth"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#HACCP"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodSafety"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalFood"}
      ],
      "label": {"": "FoodIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActionLearning",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActionLearning",
      "label": {"": "ActionLearning"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RabbitMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#RabbitMeat",
      "label": {"": "RabbitMeat"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Cereal",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Cereal",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Wheat"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Barley"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Corn"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Wheat"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Barley"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Corn"}
      ],
      "label": {"": "Cereal"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LambMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LambMeat",
      "label": {"": "LambMeat"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EcologicalFootprint",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EcologicalFootprint",
      "label": {"": "EcologicalFootprint"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#VegetableOriginProduct",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#VegetableOriginProduct",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropResidue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Cereal"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropResidue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Cereal"}
      ],
      "label": {"": "VegetableOriginProduct"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConsumptionIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConsumptionIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AgroFoodSystem"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConsumerAttitudes"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#QualityPerception"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AgroFoodSystem"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConsumerAttitudes"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#QualityPerception"}
      ],
      "label": {"": "ConsumptionIssue"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EggProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AquaCulture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MeatProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Apiculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LeatherProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FishFarming"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ShellAquaculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalHusbandry"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FeatherProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionDerivedActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MilkProduction"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EggProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AquaCulture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MeatProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Apiculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LeatherProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FishFarming"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ShellAquaculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalHusbandry"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FeatherProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionDerivedActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MilkProduction"}
      ],
      "label": {"": "AnimalProductionActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GreenCare",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#GreenCare",
      "label": {"": "GreenCare"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Urea",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Urea",
      "label": {"": "Urea"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Fodder",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Fodder",
      "label": {"": "Fodder"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CerealsCultivation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CerealsCultivation",
      "label": {"": "CerealsCultivation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActionResearch",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActionResearch",
      "label": {"": "ActionResearch"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnvironmentIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnvironmentIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#RenewevableResources"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WaterQuality"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CarbonSequestration"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CulturalLandscapes"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EcologicalFootprint"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnergyEfficiency"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ClimateChangeMitigation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CO2Miles"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Biodiversity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnvironmentalImpact"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Pollution"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ISO14000Program"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sustainability"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#RenewevableResources"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#WaterQuality"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CarbonSequestration"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CulturalLandscapes"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EcologicalFootprint"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnergyEfficiency"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ClimateChangeMitigation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CO2Miles"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Biodiversity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnvironmentalImpact"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Pollution"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ISO14000Program"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sustainability"}
      ],
      "label": {"": "EnvironmentIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SheepMilk",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SheepMilk",
      "label": {"": "SheepMilk"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductionIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductionIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CommunitySupportedAgriculture"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductIntegrity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalResources"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalProduction"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GMOAvoidance"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CommunitySupportedAgriculture"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductIntegrity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalResources"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalProduction"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#GMOAvoidance"}
      ],
      "label": {"": "ProductionIssue"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChemicallyOrganicFertilizer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChemicallyOrganicFertilizer",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Manure"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Urea"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Compost"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalManure"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GreenManure"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Manure"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Urea"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Compost"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalManure"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#GreenManure"}
      ],
      "label": {"": "ChemicallyOrganicFertilizer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MilkProductionProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MilkProductionProcess",
      "label": {"": "MilkProductionProcess"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropResidue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropResidue",
      "label": {"": "CropResidue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChickenMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChickenMeat",
      "label": {"": "ChickenMeat"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MeatProductionProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#MeatProductionProcess",
      "label": {"": "MeatProductionProcess"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LowInputAgriculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LowInputAgriculture",
      "label": {"": "LowInputAgriculture"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Certification",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Certification",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicCertification"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EUOrganicCertification"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicCertification"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EUOrganicCertification"}
      ],
      "label": {"": "Certification"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Corn",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Corn",
      "label": {"": "Corn"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LivestockHousing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LivestockHousing",
      "label": {"": "LivestockHousing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GreenManure",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#GreenManure",
      "label": {"": "GreenManure"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodShed",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodShed",
      "label": {"": "FoodShed"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnergyEfficiency",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnergyEfficiency",
      "label": {"": "EnergyEfficiency"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NutrientDeficiency",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NutrientDeficiency",
      "label": {"": "NutrientDeficiency"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilConservation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilConservation",
      "label": {"": "SoilConservation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Wheat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Wheat",
      "label": {"": "Wheat"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Process",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Process",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CertificationProcess"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Sterilization"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Accreditation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicConversion"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductionProcess"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CertificationProcess"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Sterilization"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Accreditation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicConversion"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductionProcess"}
      ],
      "label": {"": "Process"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Humus",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Humus",
      "label": {"": "Humus"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CattleMeat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CattleMeat",
      "label": {"": "CattleMeat"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicPrinciple",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicPrinciple",
      "label": {"": "OrganicPrinciple"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AgriculturalPractice",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AgriculturalPractice",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#InterCropping"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MultiCropping"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropRotation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CompanionPlanting"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#InterCropping"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MultiCropping"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropRotation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CompanionPlanting"}
      ],
      "label": {"": "AgriculturalPractice"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FishFarming",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FishFarming",
      "label": {"": "FishFarming"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PovertyAlleviation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PovertyAlleviation",
      "label": {"": "PovertyAlleviation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Nitrogen",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Nitrogen",
      "label": {"": "Nitrogen"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#QualityPerception",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#QualityPerception",
      "label": {"": "QualityPerception"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FodderManagement",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FodderManagement",
      "label": {"": "FodderManagement"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WasteManagementIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#WasteManagementIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Biosolids"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SlaughterHouseWaste"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Biosolids"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SlaughterHouseWaste"}
      ],
      "label": {"": "WasteManagementIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ChileanSaltpeter",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ChileanSaltpeter",
      "label": {"": "ChileanSaltpeter"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LandOwner",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LandOwner",
      "label": {"": "LandOwner"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NaturalPerson",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#NaturalPerson",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Consumer"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Distributor"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Farmer"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LandOwner"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Consumer"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Distributor"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Farmer"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LandOwner"}
      ],
      "label": {"": "NaturalPerson"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PreCooling",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PreCooling",
      "label": {"": "PreCooling"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#TransportIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#TransportIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalTransport"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductsTransport"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalTransport"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductsTransport"}
      ],
      "label": {"": "TransportIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilHusbandry",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilHusbandry",
      "label": {"": "SoilHusbandry"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Biodiversity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Biodiversity",
      "label": {"": "Biodiversity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Accreditation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Accreditation",
      "label": {"": "Accreditation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalWelfare",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalWelfare",
      "label": {"": "AnimalWelfare"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalResources",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalResources",
      "label": {"": "LocalResources"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeCrops",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeCrops",
      "label": {"": "AlternativeCrops"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilFertility",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilFertility",
      "label": {"": "SoilFertility"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodProcessing",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodProcessing",
      "label": {"": "FoodProcessing"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodHealth",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodHealth",
      "label": {"": "FoodHealth"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LocalBreeds",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#LocalBreeds",
      "label": {"": "LocalBreeds"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodSafety",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodSafety",
      "label": {"": "FoodSafety"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Cheese",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Cheese",
      "label": {"": "Cheese"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PreStorage",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PreStorage",
      "label": {"": "PreStorage"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ExtensiveFarming",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ExtensiveFarming",
      "label": {"": "ExtensiveFarming"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Permaculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Permaculture",
      "label": {"": "Permaculture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Leather",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Leather",
      "label": {"": "Leather"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Polyculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Polyculture",
      "label": {"": "Polyculture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Barley",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Barley",
      "label": {"": "Barley"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OutdoorKeeping",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OutdoorKeeping",
      "label": {"": "OutdoorKeeping"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConversionProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConversionProcess",
      "label": {"": "ConversionProcess"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProcessingIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProcessingIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PostHarvestHandling"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Storage"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PreCooling"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PreStorage"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PostHarvestHandling"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Storage"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PreCooling"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PreStorage"}
      ],
      "label": {"": "ProcessingIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeDistribution",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeDistribution",
      "label": {"": "AlternativeDistribution"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilAcidification",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilAcidification",
      "label": {"": "SoilAcidification"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalManure",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalManure",
      "label": {"": "AnimalManure"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Producer",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Producer",
      "label": {"": "Producer"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiminutionOfHumus",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiminutionOfHumus",
      "label": {"": "DiminutionOfHumus"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CommunitySupportedAgriculture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CommunitySupportedAgriculture",
      "label": {"": "CommunitySupportedAgriculture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ShelfLife",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ShelfLife",
      "label": {"": "ShelfLife"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ActivityType",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ActivityType",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NonProductiveActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalProductionActivity"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NonProductiveActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalProductionActivity"}
      ],
      "label": {"": "ActivityType"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CertificationAgency",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CertificationAgency",
      "label": {"": "CertificationAgency"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Wool",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Wool",
      "label": {"": "Wool"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiseasesTreatment",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiseasesTreatment",
      "label": {"": "DiseasesTreatment"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilFertility"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConversionProcess"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NutrientRecycling"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilAcidification"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilHealth"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilBiology"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#NutrientDeficiency"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilConservation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilHusbandry"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DiminutionOfHumus"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilErosion"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilStructure"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilDegradation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicMatter"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilbiologicalActivity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Humus"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#N-Fixation"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilCompaction"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilFertility"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConversionProcess"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NutrientRecycling"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilAcidification"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilHealth"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilBiology"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#NutrientDeficiency"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilConservation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilHusbandry"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#DiminutionOfHumus"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilErosion"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilStructure"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilDegradation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicMatter"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilbiologicalActivity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Humus"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#N-Fixation"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilCompaction"}
      ],
      "label": {"": "SoilIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Feather",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Feather",
      "label": {"": "Feather"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ServiceOrientedActivity",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#ServiceOrientedActivity",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CommunityService"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GreenCare"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Ecoturism"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CommunityService"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#GreenCare"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Ecoturism"}
      ],
      "label": {"": "ServiceOrientedActivity"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EUOrganicCertification",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EUOrganicCertification",
      "label": {"": "EUOrganicCertification"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AnimalHusbandry",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#AnimalHusbandry",
      "label": {"": "AnimalHusbandry"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantNutrition",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantNutrition",
      "label": {"": "PlantNutrition"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Issue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Issue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProcessingIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#IdeologyIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#MarketingIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#WasteManagementIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ConsumptionIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#LearningIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#TransportIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#DistributionIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#HealthIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EnvironmentIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FoodIssue"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#ProductionIssue"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProcessingIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#IdeologyIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#MarketingIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#WasteManagementIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ConsumptionIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#LearningIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#TransportIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#DistributionIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#HealthIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#EnvironmentIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#FoodIssue"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#ProductionIssue"}
      ],
      "label": {"": "Issue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GMOAvoidance",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#GMOAvoidance",
      "label": {"": "GMOAvoidance"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#FieldCropsCultivation",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#FieldCropsCultivation",
      "label": {"": "FieldCropsCultivation"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SlaughterHouseWaste",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SlaughterHouseWaste",
      "label": {"": "SlaughterHouseWaste"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#SoilBiology",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#SoilBiology",
      "label": {"": "SoilBiology"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Viticulture",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Viticulture",
      "label": {"": "Viticulture"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicStandard",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicStandard",
      "label": {"": "OrganicStandard"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CertificationProcess",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#CertificationProcess",
      "label": {"": "CertificationProcess"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#EggProduction",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#EggProduction",
      "label": {"": "EggProduction"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantHealth",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantHealth",
      "label": {"": "PlantHealth"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Meat",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#Meat",
      "label": {"": "Meat"}
     },
     {
      "selectable": false,
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProductionIssue",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProductionIssue",
      "children": [
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantProtection"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Diversity"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#PlantNutrition"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#CropEcology"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#GeneticResistence"},
-      {"_reference": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#AlternativeCrops"}
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantProtection"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#Diversity"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#PlantNutrition"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#CropEcology"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#GeneticResistence"},
+      {"_reference": "http://www.cc.uah.es/ie/ont/OE-OAAE#AlternativeCrops"}
      ],
      "label": {"": "PlantProductionIssue"}
     },
     {
-     "value": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#OrganicMatter",
+     "value": "http://www.cc.uah.es/ie/ont/OE-OAAE#OrganicMatter",
      "label": {"": "OrganicMatter"}
     }
    ],
-   "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.semanticweb.org/ontologies/2008/8/Ontology1222276003796.owl#Concepts"},
+   "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.cc.uah.es/ie/ont/OE-OAAE#Concepts"},
    "isHierarchyPropertyInverted": false,
    "hierarchyProperty": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
    "isParentPropertyInverted": false,
