@@ -13,6 +13,10 @@
 	background:transparent url('logo.png') no-repeat top left;
 }
 
+.confolio .distinctBackground {
+        background: #d8dee5;
+}
+
 /*Skelleton*/
 .tundra .dijitSplitterV, .tundra .dijitSplitterH,
 .simpleFolio, .confolioPanel {
