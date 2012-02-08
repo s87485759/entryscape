@@ -151,12 +151,16 @@ dojo.declare("folio.editor.EntryAdminEditor", [dijit._Widget, dijit._Templated],
 			   this.updateLinkButton.set('disabled', true);
 			   this.changeLinkMessageArea.set('content', this.resourceBundle.uploadedAndChangedLink);
 			   this.entry.setRefreshNeeded();
-		   }), function () {
+				this.entry.refresh(dojo.hitch(this, function(entry){
+					this.dialog.application.dispatch({action: "changed", entry: entry, source: this});
+					this.dialog.application.getStore().updateReferencesTo(entry);
+				}));
+		   }), dojo.hitch(this, function () {
 			   this.updateLinkButton.cancel();
 			   this.updateLinkButton.set('disabled', true);
 			   this.changeLinkMessageArea.set('content', this.resourceBundle.failedChangeLink);
 			   this.entry.setRefreshNeeded();
-		   });
+		   }));
 	},
 	onUploadFieldChange: function(){
 		//var newFileArray = this.fileUploadChange.fileInput.files;
