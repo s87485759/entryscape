@@ -53,7 +53,6 @@ dojo.declare("folio.list.AbstractList", null, {
 		}
 	},
 	refresh: function(entry) {
-		//TODO check for header, i.e. the list itself...
 		if (entry != null && this.listChildren != null) {
 			var uri = entry.getUri();
 			if (this.list && this.list.getUri() === uri) {
