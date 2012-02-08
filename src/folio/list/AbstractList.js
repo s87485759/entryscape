@@ -52,8 +52,18 @@ dojo.declare("folio.list.AbstractList", null, {
 			return this.listChildren[this.selectedIndex];
 		}
 	},
-	refresh: function() {
-		this.showList(this.list);
+	refresh: function(entry) {
+		//TODO check for header, i.e. the list itself...
+		if (entry != null && this.listChildren != null) {
+			var uri = entry.getUri();
+			for (var i=0;i<this.listChildren.length;i++) {
+				if (uri === this.listChildren[i].getUri()) {
+					this._refreshChild(i);			
+					return;
+				}
+			}
+		}
+		this.showList(this.list);			
 	},
 	showList: function(folderItem, page) {
 		this.selectedIndex = -1; //clear selection.

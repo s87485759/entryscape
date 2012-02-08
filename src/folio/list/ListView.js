@@ -84,6 +84,8 @@ dojo.declare("folio.list.ListView", [dijit._Widget, folio.ApplicationView], {
 			}
 			break;
 		case "changed":
+			this._list.refresh(event.entry);
+			break;
 		case "userChange":		
 			//Make more precise.
 			if (this._list.list) {

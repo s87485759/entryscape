@@ -408,6 +408,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}).play();
 	},
 
+	_refreshChild: function(index) {
+		this._insertChild(null,this.listChildren[index], index, this.listNodes[index]);
+	},
 	//=================================================== 
 	// Private methods for generating the head
 
@@ -551,17 +554,20 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	//=================================================== 
 	// Private methods for generating a child starts here
 	
-	_insertChild: function(container, child, number) {
-		var childNode = dojo.create("div");
-		dojo.connect(childNode, "onclick", dojo.hitch(this, this.handleEvent, number));
-		dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
-		dojo.place(childNode, container);
+	_insertChild: function(container, child, number, childNode) {
+		if (!childNode) { 
+			childNode = dojo.create("div");			
+			dojo.connect(childNode, "onclick", dojo.hitch(this, this.handleEvent, number));
+			dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
+			dojo.place(childNode, container);
+			this.listNodes[number] = childNode;
+		} else {
+			dojo.attr(childNode, "innerHTML", "");
+		}
 		
 		var f = dojo.hitch(this, function(hrefObj) {
-			this.listNodes[number] = childNode;
 			if (this.iconMode) {
 				this._insertEntryAsIcon(child, childNode, number);
-				dojo.place(childNode, container);
 			} else {
 				this._insertIcon(child, childNode, hrefObj);
 				var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
@@ -577,7 +583,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				// The child is set to refresh (i.e. info.graph is removed) in method this._insertTitle 
 				//and therefor has to be performed last. 
 				this._insertTitle(child, rowNode, null, hrefObj);
-				dojo.toggleClass(childNode, "listEntry");
+				dojo.addClass(childNode, "listEntry");
 				dojo.toggleClass(childNode, "evenRow", number%2 != 0); //First row is 0, hence we mark number 1 as even.
 			}
 		});
