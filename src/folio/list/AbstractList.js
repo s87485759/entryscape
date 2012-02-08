@@ -56,6 +56,10 @@ dojo.declare("folio.list.AbstractList", null, {
 		//TODO check for header, i.e. the list itself...
 		if (entry != null && this.listChildren != null) {
 			var uri = entry.getUri();
+			if (this.list && this.list.getUri() === uri) {
+				this._updateHead();
+				return;
+			}
 			for (var i=0;i<this.listChildren.length;i++) {
 				if (uri === this.listChildren[i].getUri()) {
 					this._refreshChild(i);			

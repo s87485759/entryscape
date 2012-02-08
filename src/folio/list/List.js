@@ -367,16 +367,15 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	_rebuildList: function() {
 		this.listChildren = this.newChildren;
 		this.listNodes = [];
-		var headContainer = dojo.create("div");
 		if (!this.headLess) {
+			this.listHeadDijit.set("content", "");//Just to clear if the asynchronous call is slow.
 			if (this.list.getId() == "_systemEntries") {
-				this.list.getContext().getOwnEntry(dojo.hitch(this, this._insertHead, headContainer));
+				this.list.getContext().getOwnEntry(dojo.hitch(this, this._updateHead));
 			} else {
-				this._insertHead(headContainer);
+				this._updateHead();
 			}
 		}
 
-		this.listHeadDijit.set("content", headContainer);
 		var childrenContainer = dojo.doc.createElement("div");
 
 		if (this.titleClickFirstExpands) {
@@ -414,7 +413,8 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	//=================================================== 
 	// Private methods for generating the head
 
-	_insertHead: function(headContainer, mdEntry) {
+	_updateHead: function(mdEntry) {
+		var headContainer = dojo.create("div");
 		var mde = mdEntry || this.list;
 		var config = this.application.getConfig();
 		
@@ -498,6 +498,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 
 		dojo.connect(headContainer, "oncontextmenu", dojo.hitch(this, this.showMenu, mde, -1));
 		dojo.connect(headContainer, "onclick", dojo.hitch(this, this.handleEvent, -1));
+		this.listHeadDijit.set("content", headContainer);
 	},
 	_insertSorter : function(sortNode) {
 		dojo.create("span", {style: {"verticalAlign": "middle"}, innerHTML: this.resourceBundle.sortLabel+":&nbsp;"}, sortNode);
