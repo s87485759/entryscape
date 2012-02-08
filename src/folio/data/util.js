@@ -548,12 +548,13 @@ folio.data.percentageCalculator = function(/*Number*/ numerator, /*Number*/ deno
 	return rtValue+"%"
 };
 
-folio.data.uriRegexpStr = "(https?|ftps?)\\://(((?:(?:[\\da-zA-Z](?:[-\\da-zA-Z]{0,61}[\\da-zA-Z])?)\\.)*(?:[a-zA-Z](?:[-\\da-zA-Z]{0,6}"+
+folio.data.uriRegexpStr = "((http?|ftp?|urn|mailto|nntp|xmpp|callto|spotify|skype|irc|ssh|torrent|magnet|geo|h323|sip?|telnet|rtsp|news|info|im|dav|data).*:.*)?";
+/*folio.data.uriRegexpStr = "(https?|ftps?)\\://(((?:(?:[\\da-zA-Z](?:[-\\da-zA-Z]{0,61}[\\da-zA-Z])?)\\.)*(?:[a-zA-Z](?:[-\\da-zA-Z]{0,6}"+
 				"[\\da-zA-Z])?)\\.?)|(((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])|(0[xX]0*[\\da-fA-F]?[\\da-fA-F]\\.){3}0[xX]0*"+
 				"[\\da-fA-F]?[\\da-fA-F]|(0+[0-3][0-7][0-7]\\.){3}0+[0-3][0-7][0-7]|(0|[1-9]\\d{0,8}|[1-3]\\d{9}|4[01]\\d{8}|42[0-8]\\d{7}|429[0-3]\\d{6}|4294[0-8]"+
 				"\\d{5}|42949[0-5]\\d{4}|429496[0-6]\\d{3}|4294967[01]\\d{2}|42949672[0-8]\\d|429496729[0-5])|0[xX]0*[\\da-fA-F]{1,8}|([\\da-fA-F]{1,4}\\:){7}"+
 				"[\\da-fA-F]{1,4}|([\\da-fA-F]{1,4}\\:){6}((\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]))|localhost)(\\:\\d+)?"+
-				"(/(?:[^?#\\s/]+/)*(?:[^?#\\s/]*(?:\\?[^?#\\s]*)?(?:#[0-9A-Za-z_%/-][\\w%/.:-]*)?)?)?";
+				"(/(?:[^?#\\s/]+/)*(?:[^?#\\s/]*(?:\\?[^?#\\s]*)?(?:#[0-9A-Za-z_%/-][\\w%/=.;:-]*)?)?)?";*/
 folio.data.uriRegexp = new RegExp("^" + folio.data.uriRegexpStr + "$", "i");
 folio.data.uriRegexpSimpleStr = "(https?|ftps?)\\://";
 folio.data.uriRegexpSimple = new RegExp("^" + folio.data.uriRegexpSimpleStr, "i");
