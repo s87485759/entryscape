@@ -194,7 +194,7 @@ dojo.declare("folio.list.AbstractList", null, {
 					f(resolvedEntry);
 				}				
 			};
-			if (folio.data.isLinkLike(entry) && !folio.data.isFeed(entry)) {
+			if (folio.data.isLinkLike(entry) && !folio.data.isFeed(entry) && entry.getBuiltinType() !== folio.data.BuiltinType.RESULT_LIST) {
 				folio.data.getLinkedLocalEntry(entry, dojo.hitch(this, function(linkedEntry) {
 					f2(linkedEntry);
 				}));
