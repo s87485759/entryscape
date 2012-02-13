@@ -633,7 +633,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (hrefObj != null) {
 		    if (noDownload == null && (child.getLocationType() == folio.data.LocationType.LOCAL && 
 			  child.getBuiltinType() == folio.data.BuiltinType.NONE)  && !this.iconMode) {
-				var download = dojo.create("a", {"target": "_blank", "href": child.getResourceUri()+"?download", "title": "Download", "class": "operation"}, rowOperations);
+				var download = dojo.create("a", {"href": child.getResourceUri()+"?download", "title": "Download", "class": "operation externalLink"}, rowOperations);
 				dojo.create("span", {"class": "download operation icon"}, download);
 		    }
 

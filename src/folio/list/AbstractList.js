@@ -91,7 +91,8 @@ dojo.declare("folio.list.AbstractList", null, {
 	
 	handleEvent: function(index, event) {
 		//Do not handle events when a link (or icon inside of a link) was clicked.
-		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls") || dojo.hasClass(event.target, "external"))) {
+		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls") || dojo.hasClass(event.target, "external") || dojo.hasClass(event.target, "download"))) {
+			__confolio.ignoreUnloadDialog();
 			event.stopPropagation();
 			return;
 		}

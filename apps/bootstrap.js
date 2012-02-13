@@ -223,23 +223,34 @@ __confolio.start = function(loadIndicatorId, splashId){
 	});
 };
 
+__confolio.ignoreUnloadDialog = function() {
+	__confolio._ignoreUnloadDialog = (new Date()).getTime();
+};
 __confolio.addOnUnloadDialog = function() {
 	if (__confolio.configNotLoaded) {
 		return;
 	}
+
 	var unloadMsg = "";
-	var bu = function doBeforeUnload(){
-		if (window.event) {
-			window.event.returnValue = unloadMsg; // IE
+	var bu = function (e, f) {
+		if (__confolio._ignoreUnloadDialog != null && ((new Date()).getTime() - __confolio._ignoreUnloadDialog) < 300) {
+			delete __confolio._ignoreUnloadDialog;
+			return;
 		}
-		else {
-			return unloadMsg; // FX
-		}
+    	var e = e || window.event;
+
+	    // For IE and Firefox prior to version 4
+    	if (e) {
+        	e.returnValue = unloadMsg;
+    	}
+
+	    // For Safari
+    	return unloadMsg;
 	};
+	
 	if (window.body) {
 		window.body.onbeforeunload = bu; // IE
-	}
-	else {
+	} else {
 		window.onbeforeunload = bu; // FX 
 	}
 };
