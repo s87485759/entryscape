@@ -157,6 +157,8 @@
 	*display: inline;
     zoom:1;
     height: 1.8em;
+    max-width: 80%;
+    text-overflow: ellipsis;
 }
 .listView .listEntry .singleLine .rowOperations {
 	float: right;
