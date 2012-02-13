@@ -217,7 +217,7 @@ __confolio.start = function(loadIndicatorId, splashId){
 		}
 //		application.placeAt(dojo.body(), 0);
 //		application.startup();
-		if (!__confolio.isDebug() && __confolio.config["unloadDialog"]) {
+		if (!__confolio.isDebug() && __confolio.config["unloadDialog"] === "true") {
 			__confolio.addOnUnloadDialog();
 		}
 	});
