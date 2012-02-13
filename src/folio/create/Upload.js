@@ -78,7 +78,7 @@ dojo.declare("folio.create.Upload", [dijit._Widget, dijit._Templated], {
     	this.uploadType.set("value", "");
     	this.mimeType.store=folio.create.mimeTypeStore;
     	this.mimeType.set("value", " "); //Note, need to keep the blankspace in order to set "Detect" as the default value
-    	this.acl.launchNew(context);
+    	this.acl.launchNew(context, true);
 	},
 	typeSelected: function(typ) {
 		this.selectedType = typ;

@@ -63,6 +63,20 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 		this.aclGrid.query={ entryId: '*' };
 		this.aclContextStore = new dojo.data.ItemFileWriteStore({data: {identifier: "entryId", items: []}});
 		this.aclGrid.query={ entryId: '*' };
+		this.aclGrid.onStyleRow = dojo.hitch(this, function myStyleRow(row){
+       /* The row object has 4 parameters, and you can set two others to provide your own styling
+          These parameters are :
+            -- index : the row index
+           -- selected: whether or not the row is selected
+           -- over : whether or not the mouse is over this row
+           -- odd : whether or not this row index is odd. */
+       		var item = this.aclGrid.getItem(row.index);
+       		if (this.aclGrid.store.getValue(item, "owner")) {
+              row.customStyles += "background:#EDEDED;";
+ 	        }
+ 	        this.aclGrid.focus.styleRow(row);
+ 	        this.aclGrid.edit.styleRow(row);
+    	});
 	},
 	principalChoosen: function(principal) {
 		this.addContactButton.setDisabled(principal == undefined);
@@ -83,6 +97,7 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 	},
 	launchOld: function(entry) {
 		//TODO make sure contact list does not contain entries that are already in ACL.
+		this._updateIsLocal(folio.data.isLocal(entry));
 		this.context = entry.getContext();
 		this._loadContacts(dojo.hitch(this, function() {
 			var list = folio.data.getACLList(entry);
@@ -111,9 +126,17 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 			}
 		}));
 	},
-	launchNew: function(context) { //TODO, if created in list, the ACL should be copied from the list.
+	launchNew: function(context, isLocal) { //TODO, if created in list, the ACL should be copied from the list.
+		this._updateIsLocal(isLocal);
 		this.context = context;
 		this._loadContacts(dojo.hitch(this, this._initNew)); //What to do on error?
+	},
+	_updateIsLocal: function(isLocal) {
+		if (isLocal) {
+			dojo.style(this.advancedButton.domNode, "display", "");
+		} else {
+			dojo.style(this.advancedButton.domNode, "display", "none");			
+		}
 	},
 	_initNew: function() {
 		this.context.getOwnEntry(dojo.hitch(this, function(entry) {
