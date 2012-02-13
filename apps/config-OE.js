@@ -6,7 +6,6 @@ __confolio.addConfig({
 
 "title":                "Organic.Edunet Confolio",
 "app":					"folio.apps.TFolio",
-"startContext":         "1",
 "showLogin":            false,
 "showCreateCondition": 	"true",
 "forceNextInCreate": 	"true",
@@ -51,7 +50,7 @@ __confolio.addConfig({
 		"manager": "se.uu.ull.site.FullscreenViewStack",
 			"controller": "folio.navigation.NavigationBar",
 			"startView": "default",
-			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "1"}},
+			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "56"}},
 					  {"name": "start", "class": "folio.apps.StartPage"},
 					  {"name": "search", "class": "folio.apps.Search"},
 					  {"name": "profile", "class": "folio.apps.Profile"},
