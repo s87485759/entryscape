@@ -21,7 +21,7 @@
   "applicationTypes-IR": {
 	"telmap:ProjectAspects": {"en":"TEL-Map Project Aspects"},
 	"telmap:Organization": {"en":"TEL-Map Organization"},
-	"telmap:TEL-researcher": {"en":"TEL Researcher"},
+	"telmap:TEL-Researcher": {"en":"TEL Researcher"},
 	"rev:Review": {"en": "Review"}
   },
   "mimeTypes": {
