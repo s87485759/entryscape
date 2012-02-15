@@ -21,7 +21,7 @@
   "applicationTypes-IR": {
 	"telmap:ProjectAspects": {"en":"TEL-Map Project Aspects"},
 	"telmap:Organization": {"en":"TEL-Map Organization"},
-	"telmap:TEL-Researcher": {"en":"TEL Researcher"},
+	"telmap:TELResearcher": {"en":"TEL Researcher"},
 	"rev:Review": {"en": "Review"}
   },
   "mimeTypes": {
@@ -117,7 +117,7 @@
 	},
 	"AT": {
 		"http://purl.org/telmap/ProjectAspects": "TELMAP_PA_v1",
-		"http://purl.org/telmap/TEL-Researcher": "TELMAP_Researcher",
+		"http://purl.org/telmap/TELResearcher": "TELMAP_Researcher",
 		"http://purl.org/telmap/Organization": "TELMAP_ORG",
 		"http://purl.org/stuff/rev#Review": "Review"
 	},
@@ -135,7 +135,7 @@
 	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
 	"TELMAP_PA_v1": {"items": ["http://purl.org/telmap/ProjectAspects"]},
-	"TELMAP_Researcher": {"items": ["http://purl.org/telmap/TEL-Researcher"]},
+	"TELMAP_Researcher": {"items": ["http://purl.org/telmap/TELResearcher"]},
 	"TELMAP_ORG": {"items": ["http://purl.org/telmap/Organization"]},
 	"rformForFolders": {"items": ["rformForFolders"]},
 	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}

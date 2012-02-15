@@ -21,7 +21,7 @@
 			]
 		},
 		{
-			"id":"http://purl.org/telmap/TEL-researcher",
+			"id":"http://purl.org/telmap/TELResearcher",
 			"type":"group",
 			"label":{"en":"TEL Researcher"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
