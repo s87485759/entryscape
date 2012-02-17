@@ -382,15 +382,15 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			dojo.addClass(childrenContainer, "titleClickFirstExpands");
 		}
 		for (var i=0; i<this.listChildren.length; i++) {
+			var childNode = dojo.create("div", null, childrenContainer);
+			this.listNodes[i] = childNode;
 			if (this.listChildren[i] && this.listChildren[i].needRefresh()) {
-				var tmpi = i;
-				this.listChildren[tmpi].refresh(dojo.hitch(this,function(refreshedEntry){
-					this._insertChild(childrenContainer,refreshedEntry, tmpi);
-				}));
-			
+				this.listChildren[tmpi].refresh(dojo.hitch(this,function(cn, tmpi, refreshedEntry){
+					this._insertChild(refreshedEntry, tmpi, cn);
+				}, childNode, i));
 			}
 			else {
-				this._insertChild(childrenContainer, this.listChildren[i], i);
+				this._insertChild(this.listChildren[i], i, childNode);
 			}
 		}
 		this.listChildrenDijit.set("content", childrenContainer);
@@ -408,7 +408,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 
 	_refreshChild: function(index) {
-		this._insertChild(null,this.listChildren[index], index, this.listNodes[index]);
+		this._insertChild(this.listChildren[index], index, this.listNodes[index], true);
 	},
 	//=================================================== 
 	// Private methods for generating the head
@@ -553,17 +553,14 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	
 	//=================================================== 
-	// Private methods for generating a child starts here
-	
-	_insertChild: function(container, child, number, childNode) {
-		if (!childNode) { 
-			childNode = dojo.create("div");			
+	// Private methods for generating a child starts here	
+	_insertChild: function(child, number, childNode, refresh) {
+
+		if (refresh === true) { 
+			dojo.attr(childNode, "innerHTML", "");
+		} else {
 			dojo.connect(childNode, "onclick", dojo.hitch(this, this.handleEvent, number));
 			dojo.connect(childNode, "oncontextmenu", dojo.hitch(this, this.showMenu, child, number));
-			dojo.place(childNode, container);
-			this.listNodes[number] = childNode;
-		} else {
-			dojo.attr(childNode, "innerHTML", "");
 		}
 		
 		var f = dojo.hitch(this, function(hrefObj) {
