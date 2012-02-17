@@ -385,6 +385,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			var childNode = dojo.create("div", null, childrenContainer);
 			this.listNodes[i] = childNode;
 			if (this.listChildren[i] && this.listChildren[i].needRefresh()) {
+				var tmpi = i;
 				this.listChildren[tmpi].refresh(dojo.hitch(this,function(cn, tmpi, refreshedEntry){
 					this._insertChild(refreshedEntry, tmpi, cn);
 				}, childNode, i));
