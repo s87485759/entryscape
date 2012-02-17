@@ -67,22 +67,22 @@ dojo.declare("folio.security.LoginDialog", null, {
 	//   if no maximum
 	browsers: [
 		{
-			title: "Mozilla Firefox 3.5-5.0",
+			title: "Mozilla Firefox, 9- ",
 			dojoProperty: "isFF",
-			minValue: 3.5,
-			maxValue: 5.0
+			minValue: 9,
+			maxValue: undefined
 		},
 		{
-			title: "Internet Explorer 8-9",
+			title: "Internet Explorer 8-",
 			dojoProperty: "isIE",
 			minValue: 8,
-			maxValue: 9
+			maxValue: undefined
 		},
 		{
-			title: "Google Chrome 11-12",
+			title: "Google Chrome 15-",
 			dojoProperty: "isChrome",
-			minValue: 11,
-			maxValue: 12
+			minValue: 15,
+			maxValue: undefined
 		}
 	],
 
