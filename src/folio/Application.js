@@ -37,7 +37,6 @@ dojo.declare("folio.Application", null, {
 	preferredLanguages: ["en"],
 	namespaces: null,
 	repository: "",
-	browserLanguage: "en",
 	
 	//=================================================== 
 	// Public API 
@@ -215,7 +214,6 @@ dojo.declare("folio.Application", null, {
 	 */
 	constructor: function(params){
 		dojo.mixin(this, params);
-		this.browserLanguage = this._getBrowserLanguage();
 		this.itemStoreDeferred = new dojo.Deferred();
 		this.configDeferred = new dojo.Deferred();
 		__confolio.config.getDefinitions(dojo.hitch(this, function(definitions) {
@@ -236,24 +234,5 @@ dojo.declare("folio.Application", null, {
 		this.store = new folio.data.Store({communicator: this.communicator}); //
 		this.dialog = new folio.util.StandardDialog({});
 		this.dialog.startup();
-	},
-	//=================================================== 
-	// Private methods 
-	//===================================================	
-	_getBrowserLanguage: function(){
-		if ( navigator ) {
-			if ( navigator.language ) {
-				return navigator.language;
-			}
-		    else if ( navigator.browserLanguage ) {
-        		return navigator.browserLanguage;
-    		}
-		    else if ( navigator.systemLanguage ) {
-        		return navigator.systemLanguage;
-    		}
-    		else if ( navigator.userLanguage ) {
-        		return navigator.userLanguage;
-    		}
-		}
 	}
 });
