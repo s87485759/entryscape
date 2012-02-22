@@ -205,22 +205,23 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 			newUserData.language = userLang;
 			this.application.setLocale(userLang);
 		} else { //User has chosen to not have a preferred language, choose lang of the browser
+			var defaultedLanguage = "en";
 			if ( navigator ) {
 				if ( navigator.language ) {
-					this.application.setLocale(navigator.language);
+					defaultedLanguage = navigator.language;
 				}
 				else if ( navigator.browserLanguage ) {
-					this.application.setLocale(navigator.browserLanguage);
+					defaultedLanguage = navigator.browserLanguage;
 				}
 				else if ( navigator.systemLanguage ) {
-					this.application.setLocale(navigator.systemLanguage);
+					defaultedLanguage = navigator.systemLanguage;
 				}
 				else if ( navigator.userLanguage ) {
-					this.application.setLocale(navigator.userLanguage);
-    			} else {
-					this.application.setLocale("en");
-				}
+					defaultedLanguage = navigator.userLanguage;
+    			}
 			}
+			newUserData.language = defaultedLanguage;
+			this.application.setLocale(defaultedLanguage);
 		}
 		
 		var userResource = dojo.clone(this.userEntry.getResource());
