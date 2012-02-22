@@ -20,7 +20,6 @@ __confolio.addConfig({
 "scamPath":				"scam",
 
 "supportedLanguageMap": {
-		"":"Default",
 		"de":"Deutsch",
 		"bg":"Български език",
 		"et":"Eesti",
