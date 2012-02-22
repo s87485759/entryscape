@@ -14,12 +14,13 @@ __confolio.addConfig({
 "helpUrl": 				"http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": 			"themes/organic/about.html",
 "startButtons":			"false",
-"build":				true,
+"build":				false,
 "possibleToCommentEntry": "true",
 "CLI":					false,
 "scamPath":				"scam",
 
 "supportedLanguageMap": {
+		"":"Default",
 		"de":"Deutsch",
 		"bg":"Български език",
 		"et":"Eesti",
