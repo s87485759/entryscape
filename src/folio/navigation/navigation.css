@@ -49,6 +49,10 @@
 	display: none;
 }
 
+.navigationBar.minimal.controlVisible .area2 {
+	display: block;
+}
+
 .navigationBar.minimal .control {
 	display: block;
 	position: absolute;
@@ -63,6 +67,10 @@
 }
 .navigationBar.minimal .area2 {
 	display: none;
+	top: 0px;
+	bottom: inherit;
+	height: auto;
+	z-index: 200;
 }
 
 .navigationBar .area3 {
@@ -106,6 +114,13 @@
 	padding-left: 0.5em;
 	border-bottom-width: 5px;
 	border-bottom-style: solid;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
 .breadcrumbs .bicon {

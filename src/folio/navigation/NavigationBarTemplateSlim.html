@@ -1,0 +1,27 @@
+<div class="navigationBar minimal">
+	<a href="#view=start" class="logo"></a>
+	<div class="appName" dojoAttachPoint="appNameNode"></div>
+	<div class="appSentence" dojoAttachPoint="appSentenceNode"></div>
+	<div class="control icon" dojoAttachEvent="onclick: _controlClicked"></div>
+	<div class="area2" dojoAttachPoint="controlDialog"><div>
+			<div dojoAttachPoint="userBlock">
+				<span class="label" dojoAttachPoint="greetingNode"></span>&nbsp;
+				<a class="link user" dojoAttachPoint="userFieldNode"></a>
+			</div>
+			<div class="link" dojoAttachPoint="loginStatusNode" dojoAttachEvent="onclick:_loginLinkClicked"></div>
+			<div dojoAttachPoint="homeLinkNodeWrapper" style="display: none">|<a class="link" dojoAttachPoint="homeLinkNode"></a></div>
+			<div dojoAttachPoint="settingsLinkNodeWrapper" style="display: none">|<span class="link" dojoAttachPoint="settingsNode" dojoAttachEvent=" onclick:_settingsClicked"></span></div>
+			<div class="languageSelector">|<span class="block label"><span dojoAttachPoint="languageLabelNode"></div>:
+			<select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" name="localeChanger" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeChanger"></select></span></span>
+			<div style="display: none" dojoAttachPoint="helpLinkSpan">|<a class="link" dojoAttachPoint="helpLinkNode"></a></div>
+			<div style="display: none" dojoAttachPoint="aboutLinkSpan">|<a class="link" dojoAttachPoint="aboutLinkNode"></a></div>
+	</div></div>
+	<div class="area1"><div style="display: table-cell;">
+		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>
+		<span class="search icon" dojoAttachPoint="searchButtonNode" dojoAttachEvent="onclick:_searchClicked" style="vertical-align: middle; margin: 1px;">
+        </span>
+	</div></div>
+	<div class="area3">
+	</div>
+	<div dojoType="folio.editor.ResourceEditorDialog"></div>
+</div>

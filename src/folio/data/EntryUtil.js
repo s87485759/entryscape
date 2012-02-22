@@ -245,6 +245,11 @@ folio.data.isReference = function(entry) { //If LinkReference or Reference
 	var locType = entry.getLocationType();
 	return locType == folio.data.LocationType.LINK_REFERENCE || locType == folio.data.LocationType.REFERENCE;
 };
+
+folio.data.isLocal = function(entry) { //If local
+	return entry.getLocationType() == folio.data.LocationType.LOCAL;
+};
+
 folio.data.isLink = function(entry) { //If Link
 	var locType = entry.getLocationType();
 	return locType == folio.data.LocationType.LINK || locType == folio.data.LocationType.LINK_REFERENCE;

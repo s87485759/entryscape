@@ -376,8 +376,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 		}
 
-		var childrenContainer = dojo.doc.createElement("div");
-
+		var childrenContainer = dojo.create("div", {style: {"height": "100%"}});
+		dojo.connect(childrenContainer, "oncontextmenu", dojo.hitch(this, this._showHeaderMenu));
+		
 		if (this.titleClickFirstExpands) {
 			dojo.addClass(childrenContainer, "titleClickFirstExpands");
 		}
@@ -385,8 +386,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			var childNode = dojo.create("div", null, childrenContainer);
 			this.listNodes[i] = childNode;
 			if (this.listChildren[i] && this.listChildren[i].needRefresh()) {
-				var tmpi = i;
-				this.listChildren[tmpi].refresh(dojo.hitch(this,function(cn, tmpi, refreshedEntry){
+				this.listChildren[i].refresh(dojo.hitch(this,function(cn, tmpi, refreshedEntry){
 					this._insertChild(refreshedEntry, tmpi, cn);
 				}, childNode, i));
 			}
@@ -414,9 +414,13 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	//=================================================== 
 	// Private methods for generating the head
 
+	_showHeaderMenu: function(event) {
+		this.showMenu(this._headEntry, -1, event);
+	},
 	_updateHead: function(mdEntry) {
 		var headContainer = dojo.create("div");
 		var mde = mdEntry || this.list;
+		this._headEntry = mde;
 		var config = this.application.getConfig();
 		
 		dojo.create("img", {"class": "iconCls", "src": config.getIcon(mde)}, headContainer);
@@ -494,7 +498,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		this._insertRefreshButton(dojo.create("span", {"class": "icon refresh"}, listControls));
 		
 		var comments = mde.getComments();
-		dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, listControls);
+		if (comments.length > 0) {
+			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"}, listControls);			
+		}
 		dojo.create("span", {"class": "menu operation icon"}, listControls);		
 
 		dojo.connect(headContainer, "oncontextmenu", dojo.hitch(this, this.showMenu, mde, -1));
@@ -569,6 +575,17 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				this._insertEntryAsIcon(child, childNode, number);
 			} else {
 				this._insertIcon(child, childNode, hrefObj);
+				//Capture doubleclicks
+				if (refresh !== true) {
+					dojo.connect(childNode, "dblclick", dojo.hitch(this, function() {
+						if (hrefObj.blankTarget) {
+							window.open(hrefObj.href, "_blank");
+						} else {
+							window.location = hrefObj.href;							
+						}
+					}));
+				}
+				
 				var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
 				if (this.selectionExpands === true) {
 					var expandable = dojo.create("div", {"class": "expandCls selected"}, childNode); //Adding the selected class since not right background otherwise when in floating mode
@@ -656,7 +673,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 		if (!this.iconMode && __confolio.config["possibleToCommentEntry"] === "true") {
 			var comments = child.getComments();
-			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"+(comments.length == 0 ? " inactive": "")}, rowOperations);
+			if (comments.length > 0) {
+				dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"}, rowOperations);				
+			}
 		}
 		if (this.detailsLink && !this.iconMode) {
 			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, rowOperations);

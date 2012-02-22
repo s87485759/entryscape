@@ -341,9 +341,11 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 						this.application.setClipboard(null);
 						this.application.publish("childrenChanged", {entry: folder, source: this});
 						this.application.publish("childrenChanged", {entry: cb.from, source: this});
+						this.application.getMessages().message("Paste suceeded");						
 					}),
 					dojo.hitch(this, function() {
-						this.application.message(this.resourceBundle.pasteFailed); //This one says:"Paste failed"
+						this.application.getMessages().error(this.resourceBundle.pasteFailed);
+//						this.application.message(this.resourceBundle.pasteFailed); //This one says:"Paste failed"
 					}));
 			}));
 		}));

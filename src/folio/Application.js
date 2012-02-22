@@ -20,6 +20,7 @@
 dojo.provide("folio.Application");
 dojo.require("folio.ApplicationView");
 dojo.require("folio.Config");
+dojo.require("folio.Messages");
 dojo.require("folio.data.Communicator");
 dojo.require("folio.data.Store");
 dojo.require("folio.util.Dialog");
@@ -49,6 +50,12 @@ dojo.declare("folio.Application", null, {
 	},
 	getRepository: function() {
 		return this.repository;
+	},
+	getMessages: function() {
+		if (!this._messages) {
+			this._messages = new folio.Messages();
+		} 
+		return this._messages;
 	},
 	setUser: function(userObj) {
 		this.userObj = userObj;
