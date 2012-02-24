@@ -14,7 +14,7 @@ __confolio.addConfig({
 "helpUrl": 				"http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": 			"themes/organic/about.html",
 "startButtons":			"false",
-"build":				false,
+"build":				true,
 "possibleToCommentEntry": "true",
 "CLI":					false,
 "scamPath":				"scam",
