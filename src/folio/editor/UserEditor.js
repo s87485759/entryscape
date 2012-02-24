@@ -220,7 +220,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 					defaultedLanguage = navigator.userLanguage;
     			}
 			}
-			newUserData.language = defaultedLanguage;
+			delete newUserData.language;
 			this.application.setLocale(defaultedLanguage);
 		}
 		
