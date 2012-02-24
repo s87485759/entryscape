@@ -1,5 +1,5 @@
 {"languages": {
-	"no_select":{"en": "Default"}, 		
+	"no_select": {"en": "Default"}, 		
 	"en": {"en": "English", "sv": "Engelska", "de": "English", "fr": "Anglais", "es": "Inglés", "it": "Inglese", "gr": "Αγγλικά"},
 	"et": {"et":"Eesti", "sv": "Estländska", "en": "Estonian"},
 	"de": {"de":"Deutsch", "en": "German", "sv": "Tyska", "fr": "Allemand", "es": "Alemán", "it": "Tedesco", "gr": "ερμανικά"},
