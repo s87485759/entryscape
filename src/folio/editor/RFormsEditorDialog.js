@@ -27,13 +27,20 @@ dojo.declare("folio.editor.RFormsEditorDialog", [dijit._Widget, folio.Applicatio
 	constructor: function() {
 		this.application = __confolio.application;
 	},
+	localize: function() {
+		dojo.requireLocalization("folio", "editor");
+		this.resourceBundle = dojo.i18n.getLocalization("folio", "editor"); 
+	},
+
 	buildRendering: function() {
 		this.dialog = new dijit.Dialog();
-		var node = dojo.create("node");
-		this.dialog.set("content", node);
-		this.editor = new folio.editor.RFormsEditor({}, dojo.create("div", null, node));
+		this.innerNode = dojo.create("div");
+		this.dialog.set("content", this.innerNode);
+		this.extPresenter = new folio.editor.RFormsPresenter({style: "float:left;height: 100%;border-right-style: solid", "class": "thinBorder"}, dojo.create("div", null, this.innerNode));
+		this.editor = new folio.editor.RFormsEditor({style: "height:100%"}, dojo.create("div", null, this.innerNode));
 		this.editor.startup();
 		dojo.connect(this.editor, "doneEditing", this.dialog, "hide");
+		this.localize();
 	},
 	getSupportedActions: function() {
 		return ["showMDEditor"];
@@ -47,16 +54,34 @@ dojo.declare("folio.editor.RFormsEditorDialog", [dijit._Widget, folio.Applicatio
 	},
 	show: function(entry) {
 		console.log("showing dialog");
-		this.editor.show(entry);
 		var viewport = dijit.getViewport();
-		dojo.style(this.editor.domNode, {
-			width: Math.floor(viewport.w * 0.70)+"px",
-                                        height: Math.floor(viewport.h * 0.70)+"px",
-                                        overflow: "auto",
-                                        position: "relative"    // workaround IE bug moving scrollbar or dragging dialog
-				});
-		this.editor.resize();
-		dijit.focus(this.editor.domNode);
+		var w = Math.floor(viewport.w * 0.70);
+		var leftw = Math.floor(w*0.4-7);
+		var rightw = Math.floor(w*0.6-5);
+		var h = Math.floor(viewport.h * 0.70);
+		dojo.style(this.innerNode, {
+			width: w+"px",
+            height: h+"px",
+            overflow: "auto",
+            position: "relative"    // workaround IE bug moving scrollbar or dragging dialog
+		});
+		this.editor.show(entry);
+		if (folio.data.isReference(entry)) {
+			dojo.style(this.extPresenter.domNode, "display", "block");
+			dojo.style(this.extPresenter.domNode, {"width": leftw+"px", "paddingRight": "5px"});
+			dojo.style(this.editor.domNode, {"width": rightw+"px", "paddingLeft": "5px"});
+			this.extPresenter.show(entry, true);
+			this.dialog.set("title", this.resourceBundle.externalAndLocalMDEditorTitle);
+		} else {
+			dojo.style(this.extPresenter.domNode, "display", "none");
+			dojo.style(this.editor.domNode, {"width": w+"px", "paddingLeft": "0px"});
+			this.dialog.set("title", this.resourceBundle.LocalMDEditorTitle);
+		}
+
+		dijit.focus(this.innerNode);
 		this.dialog.show();
+		setTimeout(dojo.hitch(this, function() {
+			this.editor.resize();
+		}), 1);
 	}
 });

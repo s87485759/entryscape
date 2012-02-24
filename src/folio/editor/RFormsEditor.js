@@ -49,10 +49,10 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 	constructor: function() {
 		this.application = __confolio.application;
 	},
-	resize: function() {
+	resize: function(arg) {
 		this.inherited("resize", arguments);
 		if (this.bc) {
-			this.bc.resize();
+			this.bc.resize(arg);
 		}
 	},
 	postCreate: function() {
@@ -123,15 +123,16 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 				this.application.dispatch({action: "changed", entry: entry, source: this});
 				this.application.getStore().updateReferencesTo(entry);
 			}));
+			this.application.getMessages().message(this.metadataSaved+this.entry.getUri());
 			delete this.entry;
 			this.dialogDone.cancel();
 			this.doneEditing();
 		});
 		var onError = dojo.hitch(this, function(message){
 			if(message.status===412){
-				this.application.message(this.modifiedPreviouslyOnServer);
+				this.application.getMessages().warn(this.modifiedPreviouslyOnServer);
 			} else { 
-			    this.application.message(this.failedSavingUnsufficientMDRights);
+				this.application.getMessages().warn(this.failedSavingUnsufficientMDRights);
 			}
 			this.dialogDone.cancel();
 		}); 
