@@ -64,7 +64,7 @@ dojo.declare("folio.list.SearchList", dijit._Widget, {
 	_userChange: function() {
 		this._list.user = this.application.getUser();
 		if (this._list.list) {
-			this.application.getStore().loadEntry(this._list.list.getUri(), {limit: 0, sort: null},
+			this.application.getStore().loadEntry(this._list.list.getUri(), {limit: 0, sort: null, queryType: 'solr'},
 				dojo.hitch(this._list, this._list.showList));
 		}
 	},
