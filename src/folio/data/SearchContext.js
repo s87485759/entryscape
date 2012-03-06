@@ -35,7 +35,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		if (entry) {
 			onEntry(entry);
 		} else {
-			this.search({term: entryInfo.entryId, limit: params.limit, onSuccess: onEntry, onError: onError, locationType: ["local", "link"]});
+			this.search({term: entryInfo.entryId, limit: params.limit, onSuccess: onEntry, onError: onError, queryType:params.queryType, locationType: ["local", "link"]});
 		}
 	},
 	/*
