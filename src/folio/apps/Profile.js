@@ -91,6 +91,9 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 		return "userProfile";
 	},
 	show: function(params) {
+		//The latest parameters are saved in order to be reused when some kind of change occurs (such as a user logs in or out)
+		this.lastParams =params;
+		
 		this.entryId = params.entry;
 		this.entryUri = this.application.getRepository().replace(/:/g, "\\%3A")+"_principals/resource/"+this.entryId;
 
@@ -174,9 +177,12 @@ dojo.declare("folio.apps.Profile", [dijit.layout._LayoutWidget, dijit._Templated
 	// Private methods
 	//===================================================
 	_userChange: function() {
+		//Update the view of the currently displayed profile
+		//since the new user might have other ACL-restrictions on the things shown
 		this.user = this.application.getUser();
-		if (this.user) {
-			this.show({entry: this.user.id});			
+		if (this.lastParams) {
+			this.entry.setRefreshNeeded();
+			this.show(this.lastParams);			
 		}
 	},
 	_localize: function() {
