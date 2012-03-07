@@ -144,6 +144,7 @@ dojo.declare("folio.apps.StartPage", [dijit._Widget, dijit._Templated], {
 			dojo.style(this.startButtonsNode, "display", "none");		
 		}
 		this.resize();
+		this.show();
 	},
 	_populateList: function() {
 		if (this.pugList == null) {
