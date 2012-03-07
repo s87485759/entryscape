@@ -107,6 +107,8 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		return "search";
 	},
 	show: function(params) {
+		this.lastParams = params; //Storing the last parameters sent into show to be reused when 
+		                          //an update of the view is needed (for example when a user logs in or out)
 		this._switchToSearchAlternative(params.alternative, dojo.hitch(this, function() {
 			if (params.term) {
 				this.searchBoxDijit.set("value", params.term);
@@ -124,7 +126,12 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "search"); 
 		this.set(this.resourceBundle);
 	},
-	
+	_userChange: function() {
+		this.user = this.application.getUser();
+		if(this.lastParams){
+			this.show(this.lastParams);	
+		}
+	},
 	_searchFormChanged: function() {
 		var term = this.searchBoxDijit.get("value").toLowerCase();
 		//Do the delegated search.
