@@ -70,6 +70,7 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		this.application = __confolio.application;
 		this.inherited("postCreate", arguments);
 		dojo.subscribe("/confolio/localeChange", dojo.hitch(this, this._localize));
+		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
 		dojo.connect(this.searchBoxDijit, "onKeyUp", this, function(event) {
 			if (event.keyCode === dojo.keys.ENTER) {
 				this._searchFormChanged();
