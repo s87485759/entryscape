@@ -114,6 +114,10 @@ __confolio.start = function(loadIndicatorId, splashId){
 		splash.style.display = "none";
 		return;
 	}
+	if(!__confolio.isBuild()){ //No splash-screen if the application is build
+		var splash = document.getElementById(splashId);
+		splash.style.display = "block";
+	}
 	if (!__confolio.isBuild()) {
 		dojo.registerModulePath("folio", "../../../src/folio");
 		dojo.registerModulePath("jdil", "../../../src/jdil");
@@ -161,14 +165,15 @@ __confolio.start = function(loadIndicatorId, splashId){
 		var loadedIndicator = dojo.byId(loadIndicatorId);
 		dojo.attr(loadedIndicator, "innerHTML", "&nbsp;Building application");
 		dojo.parser.parse();
-		dojo.fadeOut({
-			node: splashId,
-			onEnd: function(){
-				// hide it completely after fadeout
-				dojo.style(splashId, "display", "none");
-			}
-		}).play();
-		
+		if (!__confolio.isBuild()) {
+			dojo.fadeOut({
+				node: splashId,
+				onEnd: function(){
+					// hide it completely after fadeout
+					dojo.style(splashId, "display", "none");
+				}
+			}).play();
+		}
 		//asynhronous loading of definitions. Use getDefinitions with a callback.
 		var deferred = new dojo.Deferred();
 		var definitionsPath = (__confolio.config["definitionsPath"] || "definitions") + ".js";
