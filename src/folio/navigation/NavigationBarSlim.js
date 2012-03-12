@@ -71,9 +71,16 @@ dojo.declare("folio.navigation.NavigationBarSlim", folio.navigation.NavigationBa
 		if (this.userEntry) {
 			f(this.userEntry);
 		} else {
+			var user = this.application.getUser();
+			var entryId;
+			if (user) {
+				entryId = user.id;
+			} else {
+				entryId = "_guest";
+			}
 			this.application.getStore().loadEntry({base: this.application.getRepository(), 
 		                 contextId: "_principals", 
-						 entryId: this.application.getUser().id}, 
+						 entryId: entryId}, 
 						 {},
 						 function(entry) {
 							if (entry.resource == null) {
