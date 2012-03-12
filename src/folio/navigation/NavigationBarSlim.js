@@ -32,16 +32,32 @@ dojo.declare("folio.navigation.NavigationBarSlim", folio.navigation.NavigationBa
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
 		dojo.place(this.controlMenuNode, document.body);
+		this._blurLayer = dojo.create("div", {style: {top: "0px", width: "100%", height: "100%", display: "none", position: "absolute", "z-index": 5}}, document.body);
+		dojo.connect(this._blurLayer, "click", this, this._hideControlMenu);
 	},
+	handle: function(event) {
+		this._hideControlMenu();
+		this.inherited("handle", arguments);
+	},
+
 	_controlClicked: function() {
 		if (this._controlMenuOpen) {
-			dojo.style(this.controlMenuNode, "display", "none");
-			this._controlMenuOpen = false;
+			this._hideControlMenu();
 		} else {
-			this._showProfilePicture();
-			dojo.style(this.controlMenuNode, "display", "");
-			this._controlMenuOpen = true;
+			this._showControlMenu();
 		}
+	},
+	_hideControlMenu: function() {
+		dojo.style(this.controlMenuNode, "display", "none");
+		dojo.style(this._blurLayer, "display", "none");
+		this._controlMenuOpen = false;
+	},
+	_showControlMenu: function() {
+		this._showProfilePicture();
+		dojo.style(this.controlMenuNode, "display", "");
+		dojo.style(this._blurLayer, "display", "");
+		this._controlMenuOpen = true;
+		dijit.focus(this.controlMenuNode);
 	},
 	_showProfilePicture: function() {
 		var f = dojo.hitch(this, function(entry){
