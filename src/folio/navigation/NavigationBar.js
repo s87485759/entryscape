@@ -55,7 +55,6 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 	searchFieldClicked: false,
 	showHelp: true,
 	showAbout: true,
-	minimal: false,
 	
 	//===================================================
 	// Inherited attributes
@@ -140,9 +139,6 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 	},
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
-		if (!this.minimal) {
-			dojo.removeClass(this.domNode, "minimal");
-		}
 		if (this.showHelp) {
 			dojo.style(this.helpLinkSpan, "display", "");
 			dojo.attr(this.helpLinkNode, "href", __confolio.viewMap.getHashUrl("help", {}));
@@ -207,8 +203,8 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 		}
 		if (this.user && this.user.homecontext) {
 			this.home = this.user.homecontext;
-			dojo.style(this.homeLinkNodeWrapper, "display", "inline");
-			dojo.style(this.settingsLinkNodeWrapper, "display", "inline");
+			dojo.style(this.homeLinkNodeWrapper, "display", "");
+			dojo.style(this.settingsLinkNodeWrapper, "display", "");
 			dojo.attr(this.homeLinkNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
 		} else {
 			dojo.style(this.homeLinkNodeWrapper, "display", "none");

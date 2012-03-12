@@ -1,9 +1,13 @@
 /*----------- NavigationBar ---------------*/
+.navigationBar {
+	padding-top: 3px;
+	border-bottom-style: solid;
+	border-bottom-width: 5px;
+}
 .navigationBar .logo {
-	float: left;	
+	display: block;
 	width: 240px;
 	height: 60px;
-	margin-bottom: 4px;
 }
 
 .navigationBar .appName {
@@ -22,12 +26,12 @@
 .navigationBar .area1 {
 	position: absolute;
 	top: 10px;
-	right: 40px;
+	right: 5px;
 }
 
 .navigationBar .area2 {
 	position: absolute;
-	bottom: 4px;
+	bottom: 11px;
 	right: 1em;
 }
 
@@ -37,40 +41,6 @@
 
 .navigationBar .logo {
 	margin-left: 5px;
-	margin-top: 3px;
-}
-
-.navigationBar.minimal .appName {
-	font-size: x-large;
-	left: 50px;
-	top: 6px;
-}
-.navigationBar.minimal .appSentence {
-	display: none;
-}
-
-.navigationBar.minimal.controlVisible .area2 {
-	display: block;
-}
-
-.navigationBar.minimal .control {
-	display: block;
-	position: absolute;
-	top: 3px;
-	right: 3px;
-}
-
-.navigationBar.minimal .logo {
-	height: 32px;
-	margin-bottom: 3px;
-	width: 220px;
-}
-.navigationBar.minimal .area2 {
-	display: none;
-	top: 0px;
-	bottom: inherit;
-	height: auto;
-	z-index: 200;
 }
 
 .navigationBar .area3 {
@@ -107,6 +77,95 @@
 .navigationBar .link:hover {
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+/*-----------Slim--------------------*/
+
+.navigationBar.slim .appName {
+	font-size: x-large;
+	left: 50px;
+	top: 6px;
+}
+.navigationBar.slim .appSentence {
+	display: none;
+}
+
+.navigationBar.slim.controlVisible .area2 {
+	display: block;
+}
+
+.navigationBar.slim .control {
+	display: block;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
+.navigationBar.slim .logo {
+	height: 32px;
+	width: 220px;
+}
+
+.navigationBar.slim .area1 {
+	right: 40px;
+}
+
+.controlMenu.distinctThickBorder {
+	top: 36px;
+	right: 0px;
+	position: absolute;
+	background: white;
+	z-index: 200;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-bottom-left-radius: 5px;
+	padding: 5px;
+	overflow: hidden;
+	height: 130px;
+	width:340px
+}
+
+.controlMenu.distinctThickBorder .userBlock .label{
+	display:none;
+}
+.controlMenu.distinctThickBorder .userBlock {
+	padding-bottom: 10px;
+}
+.controlMenu.distinctThickBorder .imageAndAlternativesBlock {
+	display: table;
+	width: 100%;
+	border-collapse:collapse;  
+	border-bottom-style: solid;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.controlMenu.distinctThickBorder .imageAndAlternativesBlock>div {
+	display: table-row;
+}
+.controlMenu.distinctThickBorder .profileImgNode {
+	display: table-cell;
+	width: 100px;
+	padding-right:10px;
+	border-right-style: solid;
+}
+.controlMenu.distinctThickBorder .alternativesNode {
+	display: table-cell;
+	vertical-align: top;
+	padding-left:10px;
+}
+
+.controlMenu.distinctThickBorder a.link {
+	text-decoration: none;
+}
+.controlMenu.distinctThickBorder a.link:hover {
+	text-decoration: underline;
+}
+
+.controlMenu.distinctThickBorder .user{
+	font-weight: bold;
+}
+.controlMenu.distinctThickBorder .languageBlock {
+	float:right;
 }
 
 /*----------- Breadcrumbs -----------*/

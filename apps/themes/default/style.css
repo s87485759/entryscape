@@ -5,7 +5,7 @@
 	background:transparent url('logo.png') no-repeat top left;
 }
 
-.navigationBar.minimal .logo {
+.navigationBar.slim .logo {
 	background:transparent url('logo-small.png') no-repeat top left;
 }
 
@@ -30,12 +30,22 @@
 .distinctBackground {
 	background: #E6E6E6;
 }
+.distinctThickBorder {
+	border-color: #E6E6E6;
+	border-width: 5px;
+}
+.distinctThinBorder {
+	border-color: #E6E6E6;
+	border-width: 1px;
+}
+
 .thinBorder {
 	border-color: lightgrey;
 	border-width: 1px;
 }
 .thickBorder {
 	border-color: lightgrey;
+	border-width: 5px;
 }
 /* Generic approach end*/
 

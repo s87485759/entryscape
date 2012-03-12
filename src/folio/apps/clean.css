@@ -39,6 +39,7 @@ html, body {
 
 .mainPanel {
 	margin: 5px;
+	margin-top: 0px;
 }
 .confolioPanel {
 	width: 100%;
@@ -660,7 +661,7 @@ a:hover, .link:hover {
 	margin-left: 0px;
 }
 .confolio .roundHeader {
-	border-bottom: 5px solid #8996bb;
+	border-bottom-style: solid;
 	padding: 3px;
 	padding-left: 15px;
 	margin-bottom: 3px;

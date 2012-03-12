@@ -9,14 +9,15 @@ __confolio.addConfig({
 "username": "Donald",
 "password": "donalddonald",
 "showLogin": "true",
-"unloadDialog": true,
-"CLI": true,
+"unloadDialog": "true",
+"CLI": "false",
+"possibleToCommentEntry": "true",
 "helpUrl": "http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": "../info/about-my.html",
 "scamPath": "scam",   /*This is default, can be left out*/
 "definitionsPath": "definitions",
 "startButtons": "true",
-"theme": "blueberry",
+"theme": "default",
 
 supportedLanguageMap: {
 		"de":"Deutsch",
@@ -26,9 +27,9 @@ supportedLanguageMap: {
 },
 "viewMap": {
 		"manager": "se.uu.ull.site.FullscreenViewStack",
-			"controller": "folio.navigation.NavigationBar",
+			"controller": "folio.navigation.NavigationBarSlim",
 			"controllerConstructorParams": {"minimal": true},
-			"startView": "default",
+			"startView": "start",
 			"views": [{"name": "default", "class": "folio.apps.EFolio", "constructorParams": {"startContext": "1"}, "initInDom": true},
 					  {"name": "start", "class": "folio.apps.StartPage", "constructorParams": {"twoColumn": false}},
 					  {"name": "profile", "class": "folio.apps.Profile", "constructorParams": {"twoColumn": false}},
