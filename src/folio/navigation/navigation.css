@@ -121,7 +121,7 @@
 	border-bottom-left-radius: 5px;
 	padding: 5px;
 	overflow: hidden;
-	height: 130px;
+	height: auto;
 	width:340px
 }
 

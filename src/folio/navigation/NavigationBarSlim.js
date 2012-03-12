@@ -37,6 +37,9 @@ dojo.declare("folio.navigation.NavigationBarSlim", folio.navigation.NavigationBa
 	},
 	handle: function(event) {
 		this._hideControlMenu();
+		if (event.action === "userChange") {
+			delete this.userEntry;
+		}
 		this.inherited("handle", arguments);
 	},
 
