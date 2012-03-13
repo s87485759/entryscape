@@ -213,6 +213,11 @@ folio.util.connectToolKitDialog = function(domNode, prepareDialog, onClose) {
 	connectNode();
 };
 
+folio.util.TooltipDialog = dojo.declare(dijit.TooltipDialog, {
+	orient: function() {
+	}
+});
+
 /**
  * Similar to connectToolKitDialog but should be called after a click already has been made.
  * The method connectToolKitDialog starts listening for clicks on the provided domNode, this method simply launches a dialog
@@ -220,6 +225,7 @@ folio.util.connectToolKitDialog = function(domNode, prepareDialog, onClose) {
  * 
  */
 folio.util.launchToolKitDialog = function(domNode, prepareDialog, params) {
+	params = params || {around: domNode};
 	if (folio.util._currentDomNode === domNode) {
 		return;
 	}
@@ -227,22 +233,25 @@ folio.util.launchToolKitDialog = function(domNode, prepareDialog, params) {
 	params = params || {};
 	
 	//Prepare the TooltipDialog and its internal historyList.
-	var tooltipDialog = new dijit.TooltipDialog({});
+	var tooltipDialog;
+	if (params.noArrow) {
+		tooltipDialog = new folio.util.TooltipDialog({});		
+	} else {
+		tooltipDialog = new dijit.TooltipDialog({});
+	}
 	tooltipDialog._onBlur = function() {
 		dijit.popup.close(tooltipDialog);
 	};
 	
 	tooltipDialog.openPopup = function() {
-		dijit.popup.open({
+		dijit.popup.open(dojo.mixin({}, params, {
 			popup: tooltipDialog,
-			around: domNode,
-			orient: params.orient,
 			onClose: dojo.hitch(null, function() {
 				tooltipDialog.destroy();					
-				params.onClose && params.onClose();
+				params.onClose && qparams.onClose();
 				setTimeout(function() {delete folio.util._currentDomNode;}, 500);
 			})
-		});
+		}));
 	};
 	if (prepareDialog) {
 		var node = dojo.create("div");
