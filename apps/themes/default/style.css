@@ -27,6 +27,7 @@
 }
 
 /* Generic approach for themes*/
+.confolio.search.column1 .groupHeader,
 .distinctBackground {
 	background: #E6E6E6;
 }

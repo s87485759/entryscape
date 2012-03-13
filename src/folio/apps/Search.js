@@ -97,7 +97,9 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 
 	resize: function() {
 		this.inherited("resize", arguments);
-		this.bc.resize();
+		if (this.bc) {
+			this.bc.resize();
+		}
 	},
 
 	/**
@@ -149,7 +151,6 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		dojo.attr(this.resultCountNode, "innerHTML", this.resourceBundle.searchResultsSearching);
 	},
 	_getSearchDetails: function() {
-		debugger;
 	},
 	_switchToSearchAlternative: function(alternative, callback) {
 		if (alternative == null) {

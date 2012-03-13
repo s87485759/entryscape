@@ -33,7 +33,7 @@ supportedLanguageMap: {
 			"views": [{"name": "default", "class": "folio.apps.EFolio", "constructorParams": {"startContext": "1"}, "initInDom": true},
 					  {"name": "start", "class": "folio.apps.StartPage", "constructorParams": {"twoColumn": false}},
 					  {"name": "profile", "class": "folio.apps.Profile", "constructorParams": {"twoColumn": false}},
-					  {"name": "search", "class": "folio.apps.Search"},
+					  {"name": "search", "class": "folio.apps.Search1Column"},
 					  {"name": "about", "class": "folio.apps.About"},
 					  {"name": "signup", "class": "folio.apps.Signup"},
 					  {"name": "help", "class": "folio.apps.Help", "constructorParams": {"initialHelpPage": "intro"}}]
