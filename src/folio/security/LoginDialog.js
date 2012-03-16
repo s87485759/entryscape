@@ -307,11 +307,11 @@ dojo.declare("folio.security.LoginDialog", null, {
 				//  about it, so only do this where necessary, i.e., in Safari)
 				if (dojo.isSafari) {
 					var _onChangeActiveurl = xhrArgs.url;
-					var i = url.indexOf("://");
+					var i = _onChangeActiveurl.indexOf("://");
 					if (i > 0) {
 						i += 3; // Move to index after "://"
-						xhrArgs.url = url.slice(0, i).concat(
-							userName + ":" + password + "@", url.slice(i));;
+						xhrArgs.url = _onChangeActiveurl.slice(0, i).concat(
+							userName + ":" + password + "@", _onChangeActiveurl.slice(i));;
 					}
 				}
 				return xhrArgs;
