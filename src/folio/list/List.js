@@ -28,7 +28,9 @@ dojo.require("folio.list.Pagination");
 dojo.require("dojo.fx");
 dojo.require("folio.entry.Details");
 
-
+/**
+ * Provides a listing of entries.
+ */
 dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWidget, dijit._Templated], {
 	//=================================================== 
 	// Public Attributes 
