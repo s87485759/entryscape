@@ -6,7 +6,7 @@
 	"el": {"el":"Ελληνικά", "en": "Greek", "sv": "Grekiska"},
 	"hu": {"hu":"Magyar", "en": "Hungarian", "sv": "Ungerska"},
 	"no-nb": {"no-nb":"Norsk (bokmål)"},
-	"ro": {"ro":"Română", "en": "Romanian", "sv": "Svenska"},
+	"ro": {"ro":"Română", "en": "Romanian", "sv": "Rumänska"},
 	"ru": {"ru":"Русский", "en": "Russian", "sv": "Ryska"},
 	"es": {"es":"Español", "en": "Spanish", "sv": "Spanska", "de": "Spanich", "fr": "Espagnol", "it": "Spagnolo", "gr": "Ισπανικά"},
 	"sv": {"sv": "Svenska", "en": "Swedish", "de": "Swedish", "fr": "Suédois", "es": "Sueco", "it": "Svedese", "gr": "Σουηδικά"}
