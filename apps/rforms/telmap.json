@@ -23,17 +23,42 @@
 		{
 			"id":"http://purl.org/telmap/TELResearcher",
 			"type":"group",
-			"label":{"en":"TEL Researcher"},
+			"label":{"en":"Individual research project"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
 			"content":[
 				{"id": "telmap:dcterms:title"},
 				{"id": "telmap:isAbout"},
 				{"id": "telmap:dc:subject#tel"},
-				{"id": "telmap:method"},
-				{"id": "telmap:innovation"},
-				{"id": "telmap:idea"},
-				{"id": "telmap:outcome"},
-				{"id": "telmap:impact"}
+				{"id": "telmap:context#literal"},
+				{"id": "telmap:context#voc"},				
+				{"id": "telmap:enabler"},
+				{"id": "telmap:problem"},
+				{"id": "telmap:goal"},
+				{"id": "telmap:purpose"},
+				{"id": "telmap:stakeholder#literal"},
+				
+				// stakeholder#voc
+				
+				{"id": "telmap:expectedImpact"},
+				{"id": "telmap:challenge"},
+				{"id": "telmap:action"},
+				
+				// TODO make flat {"id": "telmap:method"},
+				// TODO add new method values to voc
+				
+				{"id": "telmap:theory"},
+				
+				// TODO add theory voc similar to method 
+				
+				{"id": "telmap:experiment"},
+				{"id": "telmap:assumption"},
+				{"id": "telmap:hypothesis"},
+				{"id": "telmap:outcome"}
+				
+				// {"id": "telmap:stakeholder#uri"}
+				// {"id": "telmap:method"}
+				// {"id": "telmap:innovation"}
+				// {"id": "telmap:idea"}
 			]
 		},
 		{
@@ -660,6 +685,16 @@
 			"nodetype": "LITERAL"
   		},
   		{
+	  		"id": "telmap:expectedImpact", 
+	  		"property": "http://purl.org/telmap/expectedImpact", 
+	  		"label": {
+	  			"en": "Expected impact"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
 	  		"id": "telmap:impact", 
 	  		"property": "http://purl.org/telmap/impact", 
 	  		"label": {
@@ -667,6 +702,161 @@
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:context#literal",
+	  		"property": "http://purl.org/telmap/context",
+	  		"label": {
+	  			"en": "Context"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "telmap:context#voc",
+	  		"property": "http://purl.org/telmap/context",
+	  		"label": {
+	  			"en": "Context"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "choice",
+			"nodetype": "URI",
+			choices: [
+				{"value": "http://dbpedia.org/resource/Web_Science", "label": {"en": "Web science"}},
+				{"value": "http://dbpedia.org/resource/Computer-assisted_language_learning", "label": {"en": "Computer Assisted Language Learning"}},
+				{"value": "http://dbpedia.org/resource/Motivation", "label": {"en": "Motivation"}},
+				{"value": "http://dbpedia.org/resource/Personal_Learning_Environment", "label": {"en": "PLE"}},
+				{"value": "http://dbpedia.org/resource/Recommender_system", "label": {"en": "Recommender Systems"}},
+				{"value": "http://dbpedia.org/resource/Text_mining", "label": {"en": "Text Mining"}},
+				{"value": "http://dbpedia.org/resource/Visualization_%28computer_graphics%29", "label": {"en": "Visualization"}},
+				{"value": "http://dbpedia.org/resource/e-Assessment", "label": {"en": "e-Assessment"}},
+				{"value": "http://dbpedia.org/resource/Humberside_Collegiate_Institute", "label": {"en": "HCI"}},
+				{"value": "http://dbpedia.org/resource/Homeschooling%23Autonomous_learning", "label": {"en": "Autonomous Learning"}},
+				{"value": "http://dbpedia.org/resource/Education", "label": {"en": "Formal learning"}},
+				{"value": "http://dbpedia.org/resource/Informal_learning", "label": {"en": "Informal learning"}},
+				{"value": "http://dbpedia.org/resource/e-Safety", "label": {"en": "e-Safety"}},
+				{"value": "http://dbpedia.org/resource/Collaboration", "label": {"en": "Collaboration"}},
+				{"value": "http://dbpedia.org/resource/Adaptation", "label": {"en": "Adaptation"}},
+				{"value": "http://dbpedia.org/resource/Social_media", "label": {"en": "Social media"}},
+				{"value": "http://dbpedia.org/resource/Computational_linguistics", "label": {"en": "Computational linguistics"}},
+				{"value": "http://dbpedia.org/resource/Web_2.0", "label": {"en": "Web 2.0"}},
+				{"value": "http://dbpedia.org/resource/User_modeling", "label": {"en": "User modeling"}},
+				{"value": "http://dbpedia.org/resource/Scripting_language", "label": {"en": "Scripting"}},
+				{"value": "http://dbpedia.org/resource/Instructional_design", "label": {"en": "Learning design"}},
+				{"value": "http://dbpedia.org/resource/MLearning", "label": {"en": "Mobile learning"}},
+				{"value": "http://dbpedia.org/resource/Context_awareness", "label": {"en": "Context awareness"}},
+				{"value": "http://dbpedia.org/resource/Formative_assessment", "label": {"en": "Formative assessment"}},
+				{"value": "http://dbpedia.org/resource/Learning_analytics", "label": {"en": "Learning analytics"}},
+				{"value": "http://dbpedia.org/resource/Problem-based_learning", "label": {"en": "Problem Based Learning"}},
+				{"value": "http://dbpedia.org/resource/Computer_supported_cooperative_work", "label": {"en": "CSCW"}},
+				{"value": "http://dbpedia.org/resource/Discourse_analysis", "label": {"en": "Discourse analysis"}},
+				{"value": "http://dbpedia.org/resource/Informatics_engineering", "label": {"en": "Informatics Engineering"}},
+				{"value": "http://dbpedia.org/resource/Learning_tool", "label": {"en": "Learning tools"}},
+				{"value": "http://dbpedia.org/resource/Open_learning", "label": {"en": "Open learning"}},
+				{"value": "http://dbpedia.org/resource/Networked_learning", "label": {"en": "Networked learning"}},
+				{"value": "http://dbpedia.org/resource/Intelligent_tutors", "label": {"en": "Intelligent tutors"}}
+			]
+  		},
+  		{
+	  		"id": "telmap:enabler",
+	  		"property": "http://purl.org/telmap/enabler",
+	  		"label": {
+	  			"en": "Enabler"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:problem",
+	  		"property": "http://purl.org/telmap/problem",
+	  		"label": {
+	  			"en": "Problem"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:goal",
+	  		"property": "http://purl.org/telmap/goal",
+	  		"label": {
+	  			"en": "Goal"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:purpose",
+	  		"property": "http://purl.org/telmap/purpose",
+	  		"label": {
+	  			"en": "Purpose"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:challenge",
+	  		"property": "http://purl.org/telmap/challenge",
+	  		"label": {
+	  			"en": "Challenge"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "telmap:action",
+	  		"property": "http://purl.org/telmap/action",
+	  		"label": {
+	  			"en": "Action"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "telmap:theory",
+	  		"property": "http://purl.org/telmap/theory",
+	  		"label": {
+	  			"en": "Theory"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:experiment",
+	  		"property": "http://purl.org/telmap/experiment",
+	  		"label": {
+	  			"en": "Experiment"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:assumption",
+	  		"property": "http://purl.org/telmap/assumption",
+	  		"label": {
+	  			"en": "Assumption"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:hypothesis",
+	  		"property": "http://purl.org/telmap/hypothesis",
+	  		"label": {
+	  			"en": "Hypothesis"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
 			"nodetype": "LITERAL"
   		},
 		{
@@ -718,7 +908,7 @@
 	  		"type": "choice",
 			"nodetype": "URI",
 			choices: [
-				{"value": "http://purl.org/telmap/Method-ActionResearch", "label": {"en": "Action research"}},			 	
+				{"value": "http://purl.org/telmap/Method-ActionResearch", "label": {"en": "Action research"}},	 	
 				{"value": "http://purl.org/telmap/Method-CaseStudy", "label": {"en": "Case study"}},
 				{"value": "http://purl.org/telmap/Method-FocusGroup", "label": {"en": "Focus group"}},
 			 	{"value": "http://purl.org/telmap/Method-GroundedTheory", "label": {"en": "Grounded theory"}},
@@ -806,7 +996,6 @@
 				{ "value" : "elearning", "label" : "elearning" },
 				{ "value" : "conference", "label" : "conference" },
 				{ "value" : "series", "label" : "series" },
-				{ "value" : "tags", "label" : "tags" },
 				{ "value" : "online", "label" : "online" },
 				{ "value" : "management", "label" : "management" },
 				{ "value" : "social", "label" : "social" },
@@ -822,16 +1011,12 @@
 				{ "value" : "research", "label" : "research" },
 				{ "value" : "blog", "label" : "blog" },
 				{ "value" : "web", "label" : "web" },
-				{ "value" : "games", "label" : "games" },
 				{ "value" : "design", "label" : "design" },
 				{ "value" : "information", "label" : "information" },
 				{ "value" : "knowledge", "label" : "knowledge" },
 				{ "value" : "workshop", "label" : "workshop" },
 				{ "value" : "project", "label" : "project" },
 				{ "value" : "teachers", "label" : "teachers" },
-				{ "value" : "schools", "label" : "schools" },
-				{ "value" : "students", "label" : "students" },
-				{ "value" : "tools", "label" : "tools" },
 				{ "value" : "school", "label" : "school" },
 				{ "value" : "lms", "label" : "lms" },
 				{ "value" : "content", "label" : "content" },
@@ -846,7 +1031,6 @@
 				{ "value" : "search", "label" : "search" },
 				{ "value" : "science", "label" : "science" },
 				{ "value" : "facebook", "label" : "facebook" },
-				{ "value" : "technologies", "label" : "technologies" },
 				{ "value" : "resources", "label" : "resources" },
 				{ "value" : "paper", "label" : "paper" },
 				{ "value" : "blogging", "label" : "blogging" },
@@ -854,20 +1038,16 @@
 				{ "value" : "software", "label" : "software" },
 				{ "value" : "educational", "label" : "educational" },
 				{ "value" : "teaching", "label" : "teaching" },
-				{ "value" : "courses", "label" : "courses" },
 				{ "value" : "tool", "label" : "tool" },
-				{ "value" : "networks", "label" : "networks" },
 				{ "value" : "session", "label" : "session" },
 				{ "value" : "virtual", "label" : "virtual" },
 				{ "value" : "internet", "label" : "internet" },
 				{ "value" : "network", "label" : "network" },
 				{ "value" : "event", "label" : "event" },
 				{ "value" : "classroom", "label" : "classroom" },
-				{ "value" : "papers", "label" : "papers" },
 				{ "value" : "development", "label" : "development" },
 				{ "value" : "multimedia", "label" : "multimedia" },
 				{ "value" : "ipad", "label" : "ipad" },
-				{ "value" : "blogs", "label" : "blogs" },
 				{ "value" : "community", "label" : "community" },
 				{ "value" : "wiki", "label" : "wiki" },
 				{ "value" : "article", "label" : "article" },
@@ -876,7 +1056,6 @@
 				{ "value" : "skills", "label" : "skills" },
 				{ "value" : "tag", "label" : "tag" },
 				{ "value" : "free", "label" : "free" },
-				{ "value" : "year", "label" : "year" },
 				{ "value" : "sakai", "label" : "sakai" },
 				{ "value" : "life", "label" : "life" },
 				{ "value" : "source", "label" : "source" },
