@@ -36,27 +36,20 @@
 				{"id": "telmap:goal"},
 				{"id": "telmap:purpose"},
 				{"id": "telmap:stakeholder#literal"},
-				
-				// stakeholder#voc
-				
+				{"id": "telmap:stakeholder#voc"},
 				{"id": "telmap:expectedImpact"},
 				{"id": "telmap:challenge"},
 				{"id": "telmap:action"},
-				
-				// TODO make flat {"id": "telmap:method"},
-				// TODO add new method values to voc
-				
-				{"id": "telmap:theory"},
-				
-				// TODO add theory voc similar to method 
-				
+				{"id": "telmap:method#literal"},
+				{"id": "telmap:method#voc"},
+				{"id": "telmap:theory#literal"},
+				{"id": "telmap:theory#voc"},
 				{"id": "telmap:experiment"},
 				{"id": "telmap:assumption"},
 				{"id": "telmap:hypothesis"},
 				{"id": "telmap:outcome"}
-				
+
 				// {"id": "telmap:stakeholder#uri"}
-				// {"id": "telmap:method"}
 				// {"id": "telmap:innovation"}
 				// {"id": "telmap:idea"}
 			]
@@ -295,7 +288,7 @@
 	  		"property": "http://purl.org/telmap/stakeholder", 
 	  		"label": {
 	  			"en": "Stakeholder"
-	  		}, 
+	  		},
 	  		"cardinality": {"pref": 1},
 			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/telmap/Organization"},
 	  		"type": "choice", 
@@ -306,7 +299,10 @@
 	  		"property": "http://purl.org/telmap/stakeholder", 
 	  		"label": {
 	  			"en": "Stakeholder"
-	  		}, 
+	  		},
+			"description": {
+	  			"en": "Who will benefit if you reach them?"
+	  		},
 	  		"cardinality": {"pref": 1},
 			"type": "text",
 			"nodetype": "LITERAL"
@@ -680,8 +676,11 @@
 	  		"label": {
 	  			"en": "Outcome"
 	  		},
+	  		"description": {
+	  			"en": "What results have you achieved so far?"
+	  		},
 			"cardinality": {"pref": 1},
-	  		"type": "text", 
+	  		"type": "text",
 			"nodetype": "LITERAL"
   		},
   		{
@@ -689,6 +688,9 @@
 	  		"property": "http://purl.org/telmap/expectedImpact", 
 	  		"label": {
 	  			"en": "Expected impact"
+	  		},
+	  		"description": {
+	  			"en": "Why will they benefit, and why will this be important?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text", 
@@ -710,6 +712,9 @@
 	  		"label": {
 	  			"en": "Context"
 	  		},
+	  		"description": {
+	  			"en": "Where, i.e., within what areas of TEL are you working?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
@@ -719,6 +724,9 @@
 	  		"property": "http://purl.org/telmap/context",
 	  		"label": {
 	  			"en": "Context"
+	  		},
+	  		"description": {
+	  			"en": "Where, i.e., within what areas of TEL are you working?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
@@ -759,11 +767,132 @@
 				{"value": "http://dbpedia.org/resource/Intelligent_tutors", "label": {"en": "Intelligent tutors"}}
 			]
   		},
+		{
+	  		"id": "telmap:stakeholder#voc",
+	  		"property": "http://purl.org/telmap/stakeholder",
+	  		"label": {
+	  			"en": "Stakeholder"
+	  		},
+	  		"description": {
+	  			"en": "Who will benefit if you reach them?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "choice",
+			"nodetype": "URI",
+			choices: [
+				{"value": "http://dbpedia.org/resource/Teacher", "label": {"en": "Teachers"}},
+				{"value": "http://dbpedia.org/resource/Course_creator", "label": {"en": "Course creators"}},
+				{"value": "http://dbpedia.org/resource/Parent", "label": {"en": "Parents"}},
+				{"value": "http://dbpedia.org/resource/Learners", "label": {"en": "Learners"}},
+				{"value": "http://dbpedia.org/resource/Adult_learner", "label": {"en": "Adult learners"}},
+				{"value": "http://dbpedia.org/resource/Citizen", "label": {"en": "Citizens"}},
+				{"value": "http://dbpedia.org/resource/Public", "label": {"en": "General public"}},
+				{"value": "http://dbpedia.org/resource/ICT_designer", "label": {"en": "ICT designers"}},
+				{"value": "http://dbpedia.org/resource/Instructional_design", "label": {"en": "Instructional designers"}},
+				{"value": "http://dbpedia.org/resource/Educational_psychologist", "label": {"en": "Educational psychologists"}},
+				{"value": "http://dbpedia.org/resource/Higher_Educational_Institution", "label": {"en": "Higher Educational Institutions"}},
+				{"value": "http://dbpedia.org/resource/School", "label": {"en": "Schools"}},
+				{"value": "http://dbpedia.org/resource/Manager", "label": {"en": "Managers"}},
+				{"value": "http://dbpedia.org/resource/Community_of_practice", "label": {"en": "CoP"}},
+				{"value": "http://dbpedia.org/resource/Professional", "label": {"en": "Professionals"}},
+				{"value": "http://dbpedia.org/resource/Company", "label": {"en": "Companies"}},
+				{"value": "http://dbpedia.org/resource/Ministry_of_Education", "label": {"en": "Ministries of Education"}},
+				{"value": "http://dbpedia.org/resource/Government", "label": {"en": "Governments"}},
+				{"value": "http://dbpedia.org/resource/Developing_country", "label": {"en": "Developing countries"}}
+			]
+  		},
+		{
+	  		"id": "telmap:method#voc",
+	  		"property": "http://purl.org/telmap/method",
+	  		"label": {
+	  			"en": "Method"
+	  		},
+	  		"description": {
+	  			"en": "Which methods are you using or planning to use?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "choice",
+			"nodetype": "URI",
+			choices: [
+				{"value": "http://dbpedia.org/resource/Participatory_rural_appraisal", "label": {"en": "Participatory rural appraisal methods"}},
+				{"value": "http://dbpedia.org/resource/Case_study", "label": {"en": "Case studies"}},
+				{"value": "http://dbpedia.org/resource/Focus_group", "label": {"en": "Focus groups"}},
+				{"value": "http://dbpedia.org/resource/Action_research", "label": {"en": "Action research"}},
+				{"value": "http://dbpedia.org/resource/Survey", "label": {"en": "Surveys"}},
+				{"value": "http://dbpedia.org/resource/Statistics", "label": {"en": "Statistical analysis"}},
+				{"value": "http://dbpedia.org/resource/Storytelling", "label": {"en": "Story telling"}},
+				{"value": "http://dbpedia.org/resource/Recommender_system", "label": {"en": "Recommendation algorithms"}},
+				{"value": "http://dbpedia.org/resource/Part-of-speech_tagging", "label": {"en": "POS tagging"}},
+				{"value": "http://dbpedia.org/resource/Natural_language_processing", "label": {"en": "Natural language processing"}},
+				{"value": "http://dbpedia.org/resource/Use_case", "label": {"en": "Use cases"}},
+				{"value": "http://dbpedia.org/resource/Pattern_matching", "label": {"en": "Pattern matching algorithms"}},
+				{"value": "http://dbpedia.org/resource/Regression_analysis", "label": {"en": "Regression analysis"}},
+				{"value": "http://dbpedia.org/resource/Factor_analysis", "label": {"en": "Factor analysis"}},
+				{"value": "http://dbpedia.org/resource/Social_network", "label": {"en": "Social network analysis"}},
+				{"value": "http://dbpedia.org/resource/Prototype", "label": {"en": "Prototyping"}},
+				{"value": "http://dbpedia.org/resource/Interview", "label": {"en": "Interviews"}},
+				{"value": "http://dbpedia.org/resource/Community_of_practice", "label": {"en": "CoP"}},
+				{"value": "http://dbpedia.org/resource/Grounded_theory", "label": {"en": "Grounded theory"}},
+				{"value": "http://dbpedia.org/resource/Delphi_method", "label": {"en": "Delphi"}},
+				{"value": "http://dbpedia.org/resource/Scenario", "label": {"en": "Scenarios"}},
+				{"value": "http://dbpedia.org/resource/Laboratory", "label": {"en": "Lab experiments"}},
+				{"value": "http://dbpedia.org/resource/Classroom", "label": {"en": "Classroom experiments"}},
+				{"value": "http://dbpedia.org/resource/Data_mining", "label": {"en": "Data mining"}},
+				{"value": "http://dbpedia.org/resource/Literary_criticism", "label": {"en": "Literature analysis"}},
+				{"value": "http://dbpedia.org/resource/Modeling", "label": {"en": "Modeling"}},
+				{"value": "http://dbpedia.org/resource/Online_Ethnography", "label": {"en": "Online Ethnography"}},
+				{"value": "http://dbpedia.org/resource/Sampling_%28statistics%29%23Random_sampling", "label": {"en": "Random sampling"}},
+				{"value": "http://dbpedia.org/resource/Content_analysis", "label": {"en": "Content analysis"}}
+			]
+  		},
+		{
+	  		"id": "telmap:theory#voc",
+	  		"property": "http://purl.org/telmap/theory",
+	  		"label": {
+	  			"en": "Theory"
+	  		},
+				"description": {
+	  			"en": "Which theories are you using or planning to use?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "choice",
+			"nodetype": "URI",
+			choices: [
+				{"value": "http://dbpedia.org/resource/Scientometrics", "label": {"en": "Scientometrics"}},
+				{"value": "http://dbpedia.org/resource/Natural_language_processing", "label": {"en": "NLP theories"}},
+				{"value": "http://dbpedia.org/resource/Part-of-speech_tagging", "label": {"en": "POS tagging"}},
+				{"value": "http://dbpedia.org/resource/Ethnography", "label": {"en": "Ethnography research method"}},
+				{"value": "http://dbpedia.org/resource/Action_learning", "label": {"en": "Action learning"}},
+				{"value": "http://dbpedia.org/resource/SECI", "label": {"en": "SECI"}},
+				{"value": "http://dbpedia.org/resource/Autonomous_learning_model", "label": {"en": "Autonomous learning model"}},
+				{"value": "http://dbpedia.org/resource/Participatory_rural_appraisal", "label": {"en": "Participatory rural appraisal"}},
+				{"value": "http://dbpedia.org/resource/Diffusion_of_innovations", "label": {"en": "Diffusion of innovation"}},
+				{"value": "http://dbpedia.org/resource/Student-centred_learning", "label": {"en": "Student-centered models"}},
+				{"value": "http://dbpedia.org/resource/Social_capital", "label": {"en": "Social capital"}},
+				{"value": "http://dbpedia.org/resource/Activity_theory", "label": {"en": "Activity theory"}},
+				{"value": "http://dbpedia.org/resource/Situated_learning", "label": {"en": "Situated learning"}},
+				{"value": "http://dbpedia.org/resource/Reflective_practice", "label": {"en": "Reflective Practice (Schön)"}},
+				{"value": "http://dbpedia.org/resource/Situation_theory", "label": {"en": "Situation theory"}},
+				{"value": "http://dbpedia.org/resource/Formative_assessment", "label": {"en": "Formative assessment model"}},
+				{"value": "http://dbpedia.org/resource/Problem-based_learning", "label": {"en": "Problem-based learning"}},
+				{"value": "http://dbpedia.org/resource/Constructivism_%28learning_theory%29", "label": {"en": "Constructivist theory"}},
+				{"value": "http://dbpedia.org/resource/Discourse_analysis", "label": {"en": "Breaking rules on discourse analysis"}},
+				{"value": "http://dbpedia.org/resource/Statistics", "label": {"en": "Statistics"}},
+				{"value": "http://dbpedia.org/resource/Grounded_theory", "label": {"en": "Grounded theory"}},
+				{"value": "http://dbpedia.org/resource/Constructionism_%28learning_theory%29", "label": {"en": "Constructionism"}},
+				{"value": "http://dbpedia.org/resource/Connectivism", "label": {"en": "Connectivism"}},
+				{"value": "http://dbpedia.org/resource/Knowledge_building", "label": {"en": "Knowledge building"}},
+				{"value": "http://dbpedia.org/resource/Constructivist_learning_environments", "label": {"en": "Constructivist learning environments"}}
+			]
+  		},
   		{
 	  		"id": "telmap:enabler",
 	  		"property": "http://purl.org/telmap/enabler",
 	  		"label": {
 	  			"en": "Enabler"
+	  		},
+	  		"description": {
+	  			"en": "What projects and/or institutions are funding your work?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
@@ -775,6 +904,9 @@
 	  		"label": {
 	  			"en": "Problem"
 	  		},
+	  		"description": {
+	  			"en": "Which problems/questions/issues are you addressing?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
@@ -784,6 +916,9 @@
 	  		"property": "http://purl.org/telmap/goal",
 	  		"label": {
 	  			"en": "Goal"
+	  		},
+	  		"description": {
+	  			"en": "What are you trying to achieve with respect to these problems/questions/issues?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
@@ -795,6 +930,9 @@
 	  		"label": {
 	  			"en": "Purpose"
 	  		},
+	  		"description": {
+	  			"en": "Why is it important to reach these goals?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
@@ -804,6 +942,9 @@
 	  		"property": "http://purl.org/telmap/challenge",
 	  		"label": {
 	  			"en": "Challenge"
+	  		},
+	  		"description": {
+	  			"en": "What are the obstacles that are preventing you to reach your goals?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
@@ -815,15 +956,34 @@
 	  		"label": {
 	  			"en": "Action"
 	  		},
+	  		"description": {
+	  			"en": "How (by what processes), are you planning to meet these challenges?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
   		},
 		{
-	  		"id": "telmap:theory",
+	  		"id": "telmap:theory#literal",
 	  		"property": "http://purl.org/telmap/theory",
 	  		"label": {
 	  			"en": "Theory"
+	  		},
+	  		"description": {
+	  			"en": "Which theories are you using or planning to use?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "telmap:method#literal",
+	  		"property": "http://purl.org/telmap/method",
+	  		"label": {
+	  			"en": "Method"
+	  		},
+	  		"description": {
+	  			"en": "Which methods are you using or planning to use?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
@@ -835,6 +995,9 @@
 	  		"label": {
 	  			"en": "Experiment"
 	  		},
+	  		"description": {
+	  			"en": "How (case-studies/use-cases/...) are you gathering empirical data?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
@@ -845,6 +1008,9 @@
 	  		"label": {
 	  			"en": "Assumption"
 	  		},
+	  		"description": {
+	  			"en": "What assumptions are you making?"
+	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
 			"nodetype": "LITERAL"
@@ -854,6 +1020,9 @@
 	  		"property": "http://purl.org/telmap/hypothesis",
 	  		"label": {
 	  			"en": "Hypothesis"
+	  		},
+	  		"description": {
+	  			"en": "What conclusions are you able to draw under these assumptions?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
