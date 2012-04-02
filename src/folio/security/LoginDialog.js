@@ -257,12 +257,12 @@ dojo.declare("folio.security.LoginDialog", null, {
 			dojo.cookie("scamSimpleLogin", userName + ":" + password,
 				{ /* session cookie (dojo bug: leave this out rather than setting to 0 or cookie
 				     will expire immediately contrary to documentation): expires: 0,*/
-//				 path: path
+				 path: path
 				});
 		} else {
 			dojo.cookie("scamSimpleLogin", null,
-				{ /* delete the cookie: */ expires: -1
-				  //path: path
+				{ /* delete the cookie: */ expires: -1,
+				  path: path
 				});
 		}
 	},
