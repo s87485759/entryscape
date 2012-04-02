@@ -693,6 +693,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	_getEditActions: function(child, callback) {
 		var o = [];
+		var isTrashFolder = child.getId() === "_trash";
 		if (!this.user) {
 			callback(o);
 		}
@@ -705,9 +706,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (__confolio.config["possibleToCommentEntry"] === "true") {
 			o.push({action: "comment", enabled: true, label: this.resourceBundle.comment}); //is not a system entry
 		}
-		o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});
-		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: this.resourceBundle.remove});
-		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible()), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible
+		o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});		
+		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: (isTrashFolder ? this.resourceBundle.empty : this.resourceBundle.remove)});
+		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible() && !isTrashFolder), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible
 		o.push({action: "cut", enabled: child.possibleToAdmin() && !(child instanceof folio.data.SystemEntry), label: this.resourceBundle.cut}); //entry admin rights + not system entry
 		if (child.getBuiltinType() == folio.data.BuiltinType.LIST && !this.isPasteIntoDisabled) {
 			o.push({action: "paste", enabled: child.isResourceModifiable(), label: this.resourceBundle.pasteInto});
