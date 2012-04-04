@@ -434,8 +434,8 @@
 	  		"cardinality": {"pref": 1},
 	  		"type": "group", 
 	  		"content": [
-				{"id": "telmap:rdfs:seeAlso"},
-				{"id": "telmap:dcterms:description"}
+	  			{"id": "telmap:dcterms:description"},
+				{"id": "telmap:rdfs:seeAlso"}
 	  		]
 		},
 	  	{
