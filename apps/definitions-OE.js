@@ -129,6 +129,7 @@
   "comments": [{"class": "http://purl.org/stuff/rev#Review", "property": "http://ontologi.es/like#regarding"}],
   "MPLanguages": [
   		{"value": "", label:{"en":"", "sv":""}},
+  		{"value": "ar-aa", label:{"en":"Arabic", "sv":"Arabiska"}},
 		{"value": "en", label:{"en":"English", "sv":"Engelska"}},
 		{"value": "de", label:{"en":"German", "sv":"Tyska"}},
 		{"value": "fr", label:{"en":"French", "sv":"Franska"}},
