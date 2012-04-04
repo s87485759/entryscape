@@ -46,6 +46,7 @@
 				{"id": "telmap:theory#voc"},
 				{"id": "telmap:experiment"},
 				{"id": "telmap:tool"},
+				{"id": "telmap:technology"},
 				{"id": "telmap:assumption"},
 				{"id": "telmap:hypothesis"},
 				{"id": "telmap:outcome"}
@@ -691,7 +692,20 @@
 	  			"en": "Tool"
 	  		},
 	  		"description": {
-	  			"en": "What kind of tools/technologies are you using in your experiments?"
+	  			"en": "What kind of tools are you using in your experiments?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:technology", 
+	  		"property": "http://purl.org/telmap/technology", 
+	  		"label": {
+	  			"en": "Technology"
+	  		},
+	  		"description": {
+	  			"en": "What kind of TEL-related technologies are you using?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
