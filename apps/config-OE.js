@@ -20,6 +20,7 @@ __confolio.addConfig({
 "scamPath":				"scam",
 
 "supportedLanguageMap": {
+		"ar-aa":"العربية",
 		"de":"Deutsch",
 		"bg":"Български език",
 		"et":"Eesti",
@@ -27,7 +28,8 @@ __confolio.addConfig({
 		"en":"English",
 		"es":"Español",
 		"fr":"Français",
-		"hi":"हिन्दी / Hindī",
+		"hi":"हिन्दी Hindī",
+		"it":"Italiano",
 		"hu":"Magyar",
 		"no-nb":"Norsk (bokmål)",
 		"pt":"Português",
@@ -36,7 +38,7 @@ __confolio.addConfig({
 		"sl":"Slovenščina",
 		"sv":"Svenska",
 		"tr":"Türkçe",
-		"zh-cn":"中文(简体)"
+		"zh-cn":"中文 (简体)"
 	},
 
 "search.type.default":  "solr", //Currently only simple and solr are possible options
