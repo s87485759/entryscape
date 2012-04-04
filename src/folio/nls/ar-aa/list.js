@@ -1,0 +1,22 @@
+﻿({
+  "details": "تفاصيل",
+  "comment": "علق",
+  "edit": "حدث",
+  "admin": "أدر",
+  "remove": "احذف",
+  "empty": "أفرغ",
+  "copy": "انسخ",
+  "cut": "قص",
+  "paste": "ألصق",
+  "pasteInto": "ألصق في",
+  "add": "أضف",
+  "modified": "معدل عليه",
+  "items": "بنود",
+  "addedToContactsMessage": "تم إضافة هذا الشخص الى جهات الإتصال خاصتك",
+  "sortLabel": "رتب حسب",
+  "sortByNone": "ترتيب القائمة",
+  "sortByTitle": "العنوان",
+  "sortByTitleReverse": "عكس العنوان",
+  "sortByModified": "معدل عليه",
+  "sortByModifiedReverse": "عكس المعدل عليه"
+})
