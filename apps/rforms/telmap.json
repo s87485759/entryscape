@@ -45,6 +45,7 @@
 				{"id": "telmap:theory#literal"},
 				{"id": "telmap:theory#voc"},
 				{"id": "telmap:experiment"},
+				{"id": "telmap:tool"},
 				{"id": "telmap:assumption"},
 				{"id": "telmap:hypothesis"},
 				{"id": "telmap:outcome"}
@@ -678,6 +679,19 @@
 	  		},
 	  		"description": {
 	  			"en": "What results have you achieved so far?"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:tool", 
+	  		"property": "http://purl.org/telmap/tool", 
+	  		"label": {
+	  			"en": "Tool"
+	  		},
+	  		"description": {
+	  			"en": "What kind of tools/technologies are you using in your experiments?"
 	  		},
 			"cardinality": {"pref": 1},
 	  		"type": "text",
