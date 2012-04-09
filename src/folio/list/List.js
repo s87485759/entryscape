@@ -27,6 +27,7 @@ dojo.require("folio.list.EditBar");
 dojo.require("folio.list.Pagination");
 dojo.require("dojo.fx");
 dojo.require("folio.entry.Details");
+dojo.require("folio.editor.RFormsLabelEditor");
 
 /**
  * Provides a listing of entries.
@@ -202,6 +203,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 		}
 	},
+	handleEvent: function() {
+		this._do_rename();
+		this.inherited("handleEvent", arguments);
+	},
 	changeFocus: function(index, dontPublish) {
 		if (this.focusBlock) {
 			return;
@@ -358,7 +363,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			menu.startup();
 			dojo.stopEvent(event);
 
-			//WARNING, using private method in Menu, since there is no public menthod available.
+			//WARNING, using private method in Menu, since there is no public method available.
 			menu._scheduleOpen(event.target, null, {x: event.pageX, y: event.pageY});
 			if (self.selectedIndex != index) {
 				self.changeFocus(index);
@@ -412,12 +417,8 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}).play();
 	},
 
-	_refreshChild: function(index) {
-		this._insertChild(this.listChildren[index], index, this.listNodes[index], true);
-	},
 	//=================================================== 
 	// Private methods for generating the head
-
 	_showHeaderMenu: function(event) {
 		this.showMenu(this._headEntry, -1, event);
 	},
@@ -554,7 +555,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 		dojo.publish("/confolio/orderChange", [{}]);
 	},
-
 	_insertRefreshButton: function(refreshNode){
 		dojo.attr(refreshNode, "title", "Press to refresh list");
 		dojo.connect(refreshNode, "onclick", dojo.hitch(this, function() {
@@ -564,7 +564,31 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	
 	//=================================================== 
-	// Private methods for generating a child starts here	
+	// Private methods for generating a child starts here
+	_refreshChild: function(index) {
+		this._insertChild(this.listChildren[index], index, this.listNodes[index], true);
+	},
+	_handle_rename: function(entry, index, event, select) {
+		var child = this.listChildren[index];
+		var node = this.listNodes[index];
+		this._renameEditor = new folio.editor.RFormsLabelEditor({entry: child, select: select}, dojo.create("div", null, node));
+			//new dijit.form.TextBox({value: folio.data.getLabel(child)}, dojo.create("div", null, node));
+		this._renameEditor.focus();
+	},
+	_do_rename: function() {
+		if (this._renameEditor) {
+			this._renameEditor.save();
+		}
+		return this._abort_rename();
+	},
+	_abort_rename: function() {
+		if (this._renameEditor) {
+			this._renameEditor.destroy();
+			delete this._renameEditor;
+			dijit.focus(this.domNode);
+			return true;
+		}
+	},
 	_insertChild: function(child, number, childNode, refresh) {
 
 		if (refresh === true) { 
@@ -703,6 +727,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 
 		o.push({action: "edit", enabled: child.isMetadataModifiable(), label: this.resourceBundle.edit});
+		o.push({action: "rename", enabled: child.isMetadataModifiable(), label: this.resourceBundle.rename});
 		if (__confolio.config["possibleToCommentEntry"] === "true") {
 			o.push({action: "comment", enabled: true, label: this.resourceBundle.comment}); //is not a system entry
 		}
@@ -747,7 +772,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			});
 		});
 	},
-
 	_insertEntryAsIcon: function(child, childNode, number) {
 		var iconStr;
 		var config = this.application.getConfig();

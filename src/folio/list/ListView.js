@@ -91,6 +91,7 @@ dojo.declare("folio.list.ListView", [dijit._Widget, folio.ApplicationView], {
 			if (this._list.list) {
 				this.application.getStore().loadEntry(this._list.list.getUri(), {limit: 0, sort: null},
 					dojo.hitch(this._list, this._list.showList));
+					dijit.focus(this._list.domNode);
 			}
 			break;
 		case "localeChange":

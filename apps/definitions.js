@@ -154,12 +154,12 @@
   	"defaultMP": "DCTerms_Minimal"
   },
    "MPName2Id" :{
-	"LOM_OEv1": {"items": ["LOM-hnet", "http://xmlns.com/foaf/0.1/gender"]},
-	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
+	"LOM_OEv1": {"items": ["LOM-hnet", "http://xmlns.com/foaf/0.1/gender"], "label": "LOM-Title"},
+	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
+	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
+	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
+	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
+	"Review": {"items": ["http://purl.org/stuff/rev#Review"], "label": "LOM-Title"}
   },
   "rformItems": [
 	  {url: "../src/rforms/common/LOM.json", type: "sirff"}, 

@@ -473,9 +473,13 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 				params: {locationType: "local",
 						builtinType: "list"}};
 		var self = this;
-		contextToUse.createEntry(args, function() {
+		contextToUse.createEntry(args, function(newEntry) {
 			self.folder.setRefreshNeeded();
 			self.list.application.publish("childrenChanged", {entry: self.folder, source: self});
+			setTimeout(function() {
+				self.list.focus(entry, newEntry);
+				self.list.renameFocused(true);				
+			}, self.list.fadeDuration*2+30);
 		}, function(mesg) {
 			self.list.application.publish("message", {message: this.resourceBundle.unableToCreateFolderErrorMessage, source: self});
 		});

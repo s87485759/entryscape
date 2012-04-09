@@ -22,6 +22,7 @@
   "edit": "Edit",
   "admin": "Administer",
   "remove": "Remove",
+  "rename": "Rename",
   "empty": "Empty",
   "copy": "Copy",
   "cut": "Cut",

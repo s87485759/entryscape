@@ -114,6 +114,19 @@ dojo.declare("folio.list.AbstractList", null, {
 			return;
 		}
 		if (this._focused && this.list) {
+			if (this._renameEditor) {
+				switch (event.keyCode) {
+					case dojo.keys.ESCAPE:
+						this._abort_rename();
+						dojo.stopEvent(event);
+						break;
+					case dojo.keys.ENTER:
+						this._do_rename();
+						dojo.stopEvent(event);
+						break;
+				}
+				return;
+			}
 			if (event.keyCode == dojo.keys.BACKSPACE) {
 				var refs = this.list.getReferrents();
 				if (refs.length > 0) {
@@ -161,6 +174,42 @@ dojo.declare("folio.list.AbstractList", null, {
 					}
 					dojo.stopEvent(event);
 					break;
+				case dojo.keys.DELETE:
+					if (this.selectedIndex != -1) {
+						this._handle_remove(this.listChildren[this.selectedIndex], this.selectedIndex, event);
+					}
+					dojo.stopEvent(event);
+					break;
+				case 101: //letter e for edit
+					if (this.selectedIndex != -1) {
+						this._handle_edit(this.listChildren[this.selectedIndex], this.selectedIndex, event);
+					} else {
+						this._handle_edit(this.list, this.selectedIndex, event);						
+					}
+					dojo.stopEvent(event);
+					break;
+				case 97: //letter a for administer
+					if (this.selectedIndex != -1) {
+						this._handle_admin(this.listChildren[this.selectedIndex], this.selectedIndex, event);
+					} else {
+						this._handle_admin(this.list, this.selectedIndex, event);						
+					}
+					dojo.stopEvent(event);
+					break;
+				case 99: //letter c for comment
+					if (this.selectedIndex != -1) {
+						this._handle_comment(this.listChildren[this.selectedIndex], this.selectedIndex, event);
+					} else {
+						this._handle_comment(this.list, this.selectedIndex, event);						
+					}
+					dojo.stopEvent(event);
+					break;
+				case dojo.keys.F2:
+					if (this.selectedIndex != -1) {
+						this.renameFocused();
+					}
+					dojo.stopEvent(event);
+					break;
 			}
 		}
 	},
@@ -182,7 +231,10 @@ dojo.declare("folio.list.AbstractList", null, {
 //			window.location = __confolio.viewMap.getHashUrl("default", {"context": entry.getContext().getId(), "entry": entry.getId(), "list": this.list.getId()});
 		}
 	},
-	
+	renameFocused: function(select) {
+		this._handle_rename(this.listChildren[this.selectedIndex], this.selectedIndex, event, select);		
+	},
+
 	getHrefForEntry: function(entry, callback) {
 		var resolvLinkLike = function(entry, f) {
 			var f2 = function(resolvedEntry) {
@@ -248,7 +300,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================		
-	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu"],
+	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu", "rename"],
 	_handleAction: function(action, index, event) {
 		var entry;
 		if (index == -1) {
@@ -257,6 +309,9 @@ dojo.declare("folio.list.AbstractList", null, {
 			entry = this.listChildren[index];
 		}
 		this["_handle_"+action](entry, index, event);		
+	},
+	_handle_rename: function(entry, index, event) {
+		//Implement me
 	},
 	_handle_menu: function(entry, index, event) {
 		console.log("MenuClicked");
