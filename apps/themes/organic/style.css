@@ -5,58 +5,107 @@
 	background:transparent url('logo.png') no-repeat top left;
 }
 
-/* Loading icon used in splash*/
-.loadingIcon {
-	/*width: 48px;height: 48px;*/
-	/*background:transparent url('rotatingleaf.gif') no-repeat top left;*/
-	width: 212px; height: 60px;
-	background:transparent url('logo.png') no-repeat top left;
+.navigationBar.slim .logo {
+	background:transparent url('logo-small.png') no-repeat top left;
 }
 
-.confolio .distinctBackground {
-        background: #d8dee5;
+.navigationBar .appName {
+	left: 95px;
+}
+
+.navigationBar .appSentence {
+	left: 95px;
+}
+
+/* Generic approach for themes*/
+.confolio.search.column1 .groupHeader,
+.distinctBackground {
+	background: #D8EBD7;
+}
+
+.crumbSeparatorRectangular.distinctBackground,
+.crumbSeparatorArrow.distinctBackground {
+	background: #588558;
+}
+
+.distinctThickBorder {
+	border-color: #588558;
+	border-width: 5px;
+}
+.distinctThinBorder {
+	border-color: #588558;
+	border-width: 1px;
+}
+
+.thinBorder {
+	border-color: lightgrey;
+	border-width: 1px;
+}
+.thickBorder {
+	border-color: lightgrey;
+	border-width: 5px;
+}
+/* Generic approach end*/
+
+.navigationBar .label, .navigationBar .link {
+	color: grey;
+}
+.navigationBar .dijit {
+	color: black;
+}
+.viewController, .confolio {
+	background: white;
+}
+
+/* Loading icon used in splash*/
+.loadingIcon {	
+	width: 32px;height: 32px;
+	background:transparent url('../blueish.gif') no-repeat top left;
 }
 
 /*Skelleton*/
 .tundra .dijitSplitterV, .tundra .dijitSplitterH,
-.simpleFolio, .confolioPanel {
+.confolioPanel {
 	background: #588558;
+}
+
+/* Borders*/
+.iconOverview a.selected,
+.annotationprofileeditor .editTab,
+.annotationprofileeditor .editTabEditStateButtons,
+.breadcrumbs .crumb,
+.breadcrumbs .listMode,
+.breadcrumbs,
+.listChildren .iconView.selected {
+	border-color: #588558;	
 }
 
 /*Background*/
 .mainPanel,
-.navigationBar,
 .shamePresentationMode .shameValue {
 	background: white;
 }
 
-/*Selection and background of editors*/
-.tundra .annotationprofileeditor.dijitDialog .dijitDialogPaneContent,
-.cleanList.listView .listEntry.selected,
+
+/*Selection*/
+.cleanList.listView .selected,
 .folioTreeLabelSelected,
-.iconOverview div.selected {
-	background: lightgrey;
+.iconOverview a.selected,
+.breadcrumbs .crumb .label.selected,
+.breadcrumbs .listMode.selected,
+.breadcrumbs .crumb .choices.pressed,
+.listChildren .iconView.selected,
+.confolio .rforms .topLevel {
+	background: #FAFAD2; /*lightGoldenrodYellow*/
 }
 
-/* Borders*/
-.iconOverview div.selected,
-.annotationprofileeditor .editTab,
-.annotationprofileeditor .editTabEditStateButtons {
-	border-color: #30AF9A;
-}
-
-.breadcrumbs .crumb,
-.breadcrumbs .listMode,
-.breadcrumbs {
-	border-color: #588558;
-}
 
 .listView *,
 .details *,
 .listView .butsCls *,
 .folioTreeLabelSelected,
 .shameRoot {
-	border-color: #30AF9A;
+	border-color: lightgrey;
 	border-style: solid;
 	border-width: 0px;
 }
@@ -71,11 +120,12 @@
 
 .details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/
 .details .center .locInfoPane > div:first-child {
-	background: #D8EBD7;
+	background: lightgrey;
 }
 
-.editStateColor .mandatory.missing .shameLabel,
-.mandatory.missing>.shameLabel {
+
+.editStateColor .missing .shameLabel,
+.missing>.shameLabel {
 	background: red;	
 }
 
@@ -92,31 +142,4 @@
 .editStateColor .optional>.shameLabel,
 .annotationprofileeditor .editStateColor .editTabEditStateButtons .optional {
 	background: #E1D9CD;
-}
-
-div.commentPane {
-	position: relative;
-	overflow: auto;
-	max-height: 300px;
-	width: 100%;
-}
-
-.cleanList.listView .clickable .titleCls, .cleanList.listView .butsCls span:hover {
-	cursor: pointer;
-	text-decoration: none;
-}
-
-.viewController{
-	background: #ffffff;
-}
-
-.confolio {
-	background: #588558;
-}
-.area1 .area2 .area3 {
-	background: #ffffff;
-}
-/* Overwriting the declaration done in clean.css */
-.confolio .roundHeader {
-	background: #588558;
 }
