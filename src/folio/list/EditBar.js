@@ -479,7 +479,7 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 			setTimeout(function() {
 				self.list.focus(entry, newEntry);
 				self.list.renameFocused(true);				
-			}, self.list.fadeDuration*2+30);
+			}, self.list.fadeDuration*3);
 		}, function(mesg) {
 			self.list.application.publish("message", {message: this.resourceBundle.unableToCreateFolderErrorMessage, source: self});
 		});

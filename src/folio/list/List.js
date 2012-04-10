@@ -203,7 +203,12 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 		}
 	},
-	handleEvent: function() {
+	handleEvent: function(index, event) {
+		//If clicking on the same row when rename editor is open, do nothing as it is only about moving the cursor.
+		if (this._renameEditor && event && event.target && this.selectedIndex > 0 
+				&& dojo.isDescendant(event.target, this.listNodes[this.selectedIndex])) {
+			return;
+		}
 		this._do_rename();
 		this.inherited("handleEvent", arguments);
 	},
@@ -570,10 +575,12 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	_handle_rename: function(entry, index, event, select) {
 		var child = this.listChildren[index];
-		var node = this.listNodes[index];
-		this._renameEditor = new folio.editor.RFormsLabelEditor({entry: child, select: select}, dojo.create("div", null, node));
-			//new dijit.form.TextBox({value: folio.data.getLabel(child)}, dojo.create("div", null, node));
-		this._renameEditor.focus();
+		if (child.isMetadataModifiable()) {
+			dojo.removeClass(this.domNode, "no_user_select");
+			var node = this.listNodes[index];
+			this._renameEditor = new folio.editor.RFormsLabelEditor({entry: child, select: select}, dojo.create("div", null, node));
+			this._renameEditor.focus();			
+		}
 	},
 	_do_rename: function() {
 		if (this._renameEditor) {
@@ -583,6 +590,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	_abort_rename: function() {
 		if (this._renameEditor) {
+			dojo.addClass(this.domNode, "no_user_select");
 			this._renameEditor.destroy();
 			delete this._renameEditor;
 			dijit.focus(this.domNode);

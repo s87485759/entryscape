@@ -181,27 +181,15 @@ dojo.declare("folio.list.AbstractList", null, {
 					dojo.stopEvent(event);
 					break;
 				case 101: //letter e for edit
-					if (this.selectedIndex != -1) {
-						this._handle_edit(this.listChildren[this.selectedIndex], this.selectedIndex, event);
-					} else {
-						this._handle_edit(this.list, this.selectedIndex, event);						
-					}
+					this._handleAction("edit", this.selectedIndex, event);
 					dojo.stopEvent(event);
 					break;
 				case 97: //letter a for administer
-					if (this.selectedIndex != -1) {
-						this._handle_admin(this.listChildren[this.selectedIndex], this.selectedIndex, event);
-					} else {
-						this._handle_admin(this.list, this.selectedIndex, event);						
-					}
+					this._handleAction("admin", this.selectedIndex, event);
 					dojo.stopEvent(event);
 					break;
 				case 99: //letter c for comment
-					if (this.selectedIndex != -1) {
-						this._handle_comment(this.listChildren[this.selectedIndex], this.selectedIndex, event);
-					} else {
-						this._handle_comment(this.list, this.selectedIndex, event);						
-					}
+					this._handleAction("comment", this.selectedIndex, event);
 					dojo.stopEvent(event);
 					break;
 				case dojo.keys.F2:
@@ -232,7 +220,7 @@ dojo.declare("folio.list.AbstractList", null, {
 		}
 	},
 	renameFocused: function(select) {
-		this._handle_rename(this.listChildren[this.selectedIndex], this.selectedIndex, event, select);		
+		this._handle_rename(this.listChildren[this.selectedIndex], this.selectedIndex, null, select);		
 	},
 
 	getHrefForEntry: function(entry, callback) {
