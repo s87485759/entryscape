@@ -9926,7 +9926,88 @@
    "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://organic-edunet.eu/LOM/rdf/voc#ValidationStatus"}
   },
   {
-   "choices": [],
+   "choices": [
+    {
+     "value": "http://www.bmukk.gv.at",
+     "label": {"": "Bundesministerium für Unterricht, Kunst und Kultur (BMUKK)"},
+     "top": true
+    },
+    {
+     "value": "http://www.grnet.gr",
+     "label": {"": "Greek Research and Technology Network (GRNET)"},
+     "top": true
+    },
+    {
+     "value": "http://www.lebensministerium.at",
+     "label": {"": "Bundesministerium für Land- und Forstwirtschaft, Umwelt und Wasserwirtschaft (BMLFUW)"},
+     "top": true
+    },
+    {
+     "value": "http://www.umb.no",
+     "label": {"": "Norwegian University of Life Sciences (UMB)"},
+     "top": true
+    },
+    {
+     "value": "http://www.agro-bucuresti.ro",
+     "label": {"": "Universitatea de Stiinte Agronomice si Medicina Veterinara Bucuresti (USAMVB-FA)"},
+     "top": true
+    },
+    {
+     "value": "http://www.emu.ee",
+     "label": {"": "Estonian University of Life Sciences (EULS)"},
+     "top": true
+    },
+    {
+     "value": "http://www.aua.gr",
+     "label": {"": "Agricultural University of Athens (AUA)"},
+     "top": true
+    },
+    {
+     "value": "http://www.kth.se",
+     "label": {"": "Kungliga Tekniska Högskolan (KTH)"},
+     "top": true
+    },
+    {
+     "value": "http://www.agroknow.gr",
+     "label": {"": "Agro-Know"},
+     "top": true
+    },
+    {
+     "value": "http://www.uah.es",
+     "label": {"": "Universidad de Alcalá (UAH)"},
+     "top": true
+    },
+    {
+     "value": "http://www.uni-corvinus.hu",
+     "label": {"": "Budapesti Corvinus Egyetem (BCE)"},
+     "top": true
+    },
+    {
+     "value": "http://www.ellinogermaniki.gr",
+     "label": {"": "Ellinogermaniki Agogi Scholi, Panagea-Savva S.A. (EA)"},
+     "top": true
+    },
+    {
+     "value": "http://www.mogert.uni-corvinus.hu",
+     "label": {"": "Magyar Ökológiai Gazdálkodásért Egyesület (MOGERT)"},
+     "top": true
+    },
+    {
+     "value": "http://lefo.net",
+     "label": {"": "OÜ Miksike (MIKSIKE)"},
+     "top": true
+    },
+    {
+     "value": "http://www.intute.ac.uk",
+     "label": {"": "Intute / University of Nottingham (INTUTE)"},
+     "top": true
+    },
+    {
+     "value": "http://www.fao.org",
+     "label": {"": "Food and Agriculture Organization of the United Nations (FAO)"},
+     "top": true
+    }
+   ],
    "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://xmlns.com/foaf/0.1/Organization"}
   },
   {
