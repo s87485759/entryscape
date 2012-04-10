@@ -282,6 +282,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 	},
 
 	setHttpBasicAuth: function(userName, password) {
+		return; // No basic auth currently, rely on cookies.
 		this.application.getCommunicator().insertAuthArgs = function(userName, password) {
 			var authHeader = function(userName, password) {
 				var tok = userName + ":" + password;
