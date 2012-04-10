@@ -101,6 +101,7 @@
     }
    },
    {
+    "id": "LOM-OE-Title",
     "nodetype": "LANGUAGE_LITERAL",
     "@type": "text",
     "description": {"en": "This is the title of the resource"},

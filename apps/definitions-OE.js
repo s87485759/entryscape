@@ -169,14 +169,14 @@
   	"defaultMP": "DC_Simple"
   },
    "MPName2Id" :{
-	"LOM_OE": {"items": ["LOM-OE"]},
-	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"]},
-	"rformForFolders": {"items": ["rformForFolders"]},
-	"VOA3R": {"items": ["voa3r:All"]},
-	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
+	"LOM_OE": {"items": ["LOM-OE"], "label": "LOM-OE-Title"},
+	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
+	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
+	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
+	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
+	"rformForFolders": {"items": ["rformForFolders"], "label": "LOM-OE-Title"},
+	"VOA3R": {"items": ["voa3r:All"], "label": "LOM-OE-Title"},
+	"Review": {"items": ["http://purl.org/stuff/rev#Review"], "label": "LOM-OE-Title"}
   },
   "rformItems": [
       {url: "rforms/telmap.json", type: "sirff"},
