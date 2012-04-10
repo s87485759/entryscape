@@ -180,6 +180,14 @@ dojo.declare("folio.list.AbstractList", null, {
 					}
 					dojo.stopEvent(event);
 					break;
+				case dojo.keys.F2:
+					if (this.selectedIndex != -1) {
+						this.renameFocused();
+					}
+					dojo.stopEvent(event);
+					break;
+			}
+			switch (event.charCode) {				
 				case 101: //letter e for edit
 					this._handleAction("edit", this.selectedIndex, event);
 					dojo.stopEvent(event);
@@ -190,12 +198,6 @@ dojo.declare("folio.list.AbstractList", null, {
 					break;
 				case 99: //letter c for comment
 					this._handleAction("comment", this.selectedIndex, event);
-					dojo.stopEvent(event);
-					break;
-				case dojo.keys.F2:
-					if (this.selectedIndex != -1) {
-						this.renameFocused();
-					}
 					dojo.stopEvent(event);
 					break;
 			}
