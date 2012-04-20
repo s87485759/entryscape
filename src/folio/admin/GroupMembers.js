@@ -180,7 +180,7 @@ dojo.declare("folio.admin.GroupTable", [folio.admin.PaginatedTable], {
 		var divRemove = dojo.doc.createElement('div');
 		var buttonRemove = new dijit.form.Button({label: "x", onClick: dojo.hitch(this, this.removeMemberFromGroup, entry)}, divRemove);
 
-		dojo.place(dojo.doc.createTextNode(folio.data.getLabel(entry)), divTitle);
+		dojo.place(dojo.doc.createTextNode(folio.data.getLabelRaw(entry) || entry.alias || entry.getId()), divTitle);
 		dojo.place(divTitle, tdTitle);
 		dojo.place(tdTitle, tableRow);
 		dojo.place(buttonRemove.domNode, tdRemove);

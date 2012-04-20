@@ -136,7 +136,7 @@ dojo.declare("folio.admin.FolderSelect", [dijit._Widget, dijit._Templated, folio
 			// Check if the first character not is an underscore, or if it is _top or _all
 			if (/^[^_]/.test(list.getId()) || /top/.test(list.getId()) || (this.displayAll && /_all/.test(list.getId()))) {
 				// add the list to the filteringselect
-				var resourceName = folio.data.getLabel(list);
+				var resourceName = folio.data.getLabelRaw(list) || list.getId();
 				this.folderSelect.store.newItem({id: list.getUri(), name: resourceName});
 				this.folders[list.getUri()] = list;
 				if(/top/.test(list.getId())) {
@@ -285,7 +285,7 @@ dojo.declare("folio.admin.FolderView", [dijit._Widget, dijit._Templated, folio.A
 		return "<img class='iconCls' src= '"+this.application.getConfig().getIcon(entry) +"'></img>";
 	},
 	getTitleHtml: function(entry) {
-		var title = folio.data.getLabel(entry);
+		var title = folio.data.getLabelRaw(entry) || entry.alias || entry.getId();
 		return "<span class='titleCls'>"+title+"</span>";
 	},
 	/**

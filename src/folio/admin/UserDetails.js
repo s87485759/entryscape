@@ -145,7 +145,7 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 				this.application.getRepository() + "_contexts/entry/" + this.entry.getResource().homecontext,
 				{},
 				dojo.hitch(this, function(homeContext) {
-					this.homeContextField.set("value", folio.data.getLabel(homeContext));
+					this.homeContextField.set("value", folio.data.getLabel(homeContext) || homeContext.alias || homeContext.getId());
 				}),
 				dojo.hitch(this, function(msg) {
 					console.error("folio.admin.UserDetails.displayHomeContext, homecontext load error!");

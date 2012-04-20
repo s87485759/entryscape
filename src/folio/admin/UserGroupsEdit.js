@@ -144,7 +144,8 @@ dojo.declare("folio.admin.UserGroupsEdit", [dijit._Widget, dijit._Templated], {
 								var checkDiv = dojo.doc.createElement('div');
 								var checkBox = new dijit.form.CheckBox({checked: false}, checkDiv);
 
-								var title = folio.data.getLabel(sortedChildren[i]);
+								var c = sortedChildren[i];
+								var title = folio.data.getLabelRaw(c) || c.alias || c.getId();
 								var titleSpan = dojo.doc.createElement('span');
 								dojo.toggleClass(titleSpan, "titleCls");
 								title = dojo.doc.createTextNode(title);
