@@ -1,531 +1,1069 @@
 {
-	"label":{"en":"VOA3R formlets"},
-	"auxilliary":[
-		{
-			"id":"voa3r:All",
-			"type":"group",
-			"label":{"en":"VOA3R Application Profile"},
-			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"content":[
-				{"id": "voa3r:dcterms:title"}, 			// M	LangLit
-				{"id": "voa3r:dcterms:alternative"},		// O	LangLit
-				{"id": "voa3r:dcterms:description"},		// O/R	LangLit
-				{"id": "voa3r:dcterms:abstract"},		// O	LangLit
-				{"id": "voa3r:dc:subject"},			// O/R	Lit
-				{"id": "voa3r:dcterms:language"},		// M	ISO-639-1
-				{"id": "voa3r:dc:type"},			// M	voa3r:type
-				{"id": "voa3r:dcterms:creator"},		// O/R	FOAF
-				{"id": "voa3r:dcterms:contributor"},		// O/R	FOAF
-				{"id": "voa3r:dcterms:publisher"},		// O/R	FOAF
-				{"id": "voa3r:dcterms:date"},			// O/R	W3CDTF
-				{"id": "voa3r:dc:identifier"},			// O/R	Lit | ISBN, ISSN, URI, DOI
-				{"id": "voa3r:dcterms:format"},			// O/R	MIME voc (RFC2048:1996) or non-digital
-				{"id": "voa3r:dcterms:rights"},			// O/R	Lit
-				{"id": "voa3r:dcterms:accessRights"},		// O/R	Lit
-				{"id": "voa3r:dcterms:license"},		// O/R	Lit
-				{"id": "voa3r:ags:rightsStatement"},		// O/R	Lit
-				{"id": "voa3r:eprint:status"},			// O/R	eprint:status
-				{"id": "voa3r:voa3r:status"},			// O/R	voa3r:status
-				{"id": "voa3r:dcterms:bibliographicCitation"},	// O/R	LangLit
-				{"id": "voa3r:ags:creatorPersonal"},		// O	FOAF
-				{"id": "voa3r:ags:creatorCorporate"},		// O	FOAF
-				{"id": "voa3r:dcterms:source"},			// O	Lit
-				{"id": "voa3r:Relations"}
-			]
-		},
-		{	"id":"voa3r:Relations",
-			"type":"group",
-			"label":{"en":"Relations"},
-			"cardinality": {"min": 0, "pref": 0, "max": 1},
-			"cls": ["expandable"],
-			"content":[
-				{"id": "voa3r:dcterms:conformsTo"},		// O/R	Lit
-				{"id": "voa3r:dc:relation"},			// O	Lit
-				{"id": "voa3r:dcterms:references"},		// O	Lit
-				{"id": "voa3r:dcterms:isReferencedBy"},		// O	Lit
-				{"id": "voa3r:ags:isTranslationOf"},		// O	Lit
-				{"id": "voa3r:ags:hasTranslation"}		// O	Lit
-			]
-		},
-  		{
-	  		"id": "voa3r:dcterms:title", 
-	  		"property": "http://purl.org/dc/terms/title", 
-	  		"label": {
-	  			"en": "Title"
-	  		},
-			"cardinality": {"min": 1, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LANGUAGE_LITERAL"
-  		},
-		{
-			"id": "voa3r:dcterms:description",
-			"nodetype": "BLANK",
-			"cardinality": {"min":0, "pref":1},
-			"label": {
-				"en": "Description"
-			},
-			"type": "group",
-			"property": "http://purl.org/dc/terms/description",
-			"content": [{
-				"styles": ["MultiLine", "TextFormItem", "LanguageControlled"],
-				"nodetype": "LANGUAGE_LITERAL",
-				"cardinality": {"min":1, "pref":1},
-				"type": "text",
-				"property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
-			}]
-		},
-  		{
-	  		"id": "voa3r:dc:subject", 
-	  		"property": "http://purl.org/dc/elements/1.1/subject", 
-	  		"label": {
-	  			"en": "Subject"
-	  		},
-			"cardinality": {"min":0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:bibliographicCitation", 
-	  		"property": "http://purl.org/dc/terms/bibliographicCitation", 
-	  		"label": {
-	  			"en": "Bibliographic citation"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LANGUAGE_LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:alternative", 
-	  		"property": "http://purl.org/dc/terms/alternative", 
-	  		"label": {
-	  			"en": "Alternative title"
-	  		},
-			"cardinality": {"min": 0, "pref": 0},
-	  		"type": "text",
-			"nodetype": "LANGUAGE_LITERAL"
-  		},
-		{
-			"id": "voa3r:dcterms:date",
-			"nodetype": "DATATYPE_LITERAL",
-			"cardinality": {"min": 0, "pref": 1, "max": 1},
-			"label": {"en": "Date"},
-			"type": "text",
-			"property": "http://purl.org/dc/terms/date",
-			"datatype": "http://purl.org/dc/terms/W3CDTF",
-		},
-  		{
-	  		"id": "voa3r:dcterms:abstract",
-	  		"property": "http://purl.org/dc/terms/abstract",
-			"styles": ["MultiLine", "TextFormItem", "LanguageControlled"],
-	  		"label": {
-	  			"en": "Abstract"
-	  		},
-			"cardinality": {"min":0, "pref": 0},
-	  		"type": "text",
-			"nodetype": "LANGUAGE_LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:rights", 
-	  		"property": "http://purl.org/dc/terms/rights", 
-	  		"label": {
-	  			"en": "Rights"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:accessRights", 
-	  		"property": "http://purl.org/dc/terms/accessRights", 
-	  		"label": {
-	  			"en": "Access rights"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:license", 
-	  		"property": "http://purl.org/dc/terms/license", 
-	  		"label": {
-	  			"en": "License"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:ags:rightsStatement", 
-	  		"property": "http://purl.org/agmes/1.1/rightsStatement",
-	  		"label": {
-	  			"en": "Rights statement"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-  		{
-	  		"id": "voa3r:dcterms:source", 
-	  		"property": "http://purl.org/dc/terms/source", 
-	  		"label": {
-	  			"en": "Source"
-	  		},
-			"cardinality": {"min": 0, "pref": 0},
-	  		"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:dcterms:conformsTo", 
-	  		"property": "http://purl.org/dc/terms/conformsTo",
-	  		"label": {
-	  			"en": "conforms to"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 1},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:dc:relation", 
-	  		"property": "http://purl.org/dc/elements/1.1/relation",
-	  		"label": {
-	  			"en": "relation"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 0},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:dcterms:references", 
-	  		"property": "http://purl.org/dc/terms/references",
-	  		"label": {
-	  			"en": "references"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 0},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:dcterms:isReferencedBy", 
-	  		"property": "http://purl.org/dc/terms/isReferencedBy",
-	  		"label": {
-	  			"en": "is referenced by"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 0},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:ags:isTranslationOf", 
-	  		"property": "http://purl.org/agmes/1.1/isTranslationOf",
-	  		"label": {
-	  			"en": "is translation of"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 0},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-	  		"id": "voa3r:ags:hasTranslation", 
-	  		"property": "http://purl.org/agmes/1.1/hasTranslation",
-	  		"label": {
-	  			"en": "has translation"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 0},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		/*{
-			"styles": ["GroupFormItem"],
-			"nodetype": "BLANK",
-			"cardinality": {"pref": 1},
-			"label": {"en": "Identifier"},
-			"type": "group",
-			"property": "http://purl.org/dc/terms/identifier",
-			"id": "voa3r:dcterms:identifier",
-			"content": [
-			{
-				"styles": ["ChoiceFormItem"],
-				"nodetype": "LITERAL",
-				"cardinality": {"min": 1, "pref": 1, "max": 1},
-				"label": {"en": "Catalog"},
-				"type": "choice",
-				"property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#catalog",
-				"choices": [
-					{"value": "URI", "label": {"en": "URI "}},
-					{"value": "ISBN", "label": {"en": "ISBN"}},
-					{"value": "ISSN", "label": {"en": "ISSN"}},
-					{"value": "DOI", "label": {"en": "DOI"}}
-				]
-			},
-			{
-				"styles": ["TextFormItem"],
-				"nodetype": "LITERAL",
-				"cardinality": {"min": 1, "pref": 1, "max": 1},
-				"label": {"en": "Entry"},
-				"type": "text",
-				"property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#entry"
-			}]
-		},*/
-		{
-	  		"id": "voa3r:dc:identifier",
-	  		"property": "http://purl.org/dc/elements/1.1/identifier",
-	  		"label": {
-	  			"en": "Identifier"
-	  		},
-	  		"cardinality": {"min": 0, "pref": 1},
-			"type": "text",
-			"nodetype": "LITERAL"
-  		},
-		{
-			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"label": {
-				"en": "Language"
-			},
-			"type": "group",
-			"id": "voa3r:dcterms:language",
-			"property": "http://purl.org/dc/terms/language",
-			"content": [{
-				"styles": ["ChoiceFormItem"],
-				"nodetype": "DATATYPE_LITERAL",
-				"cardinality": {"min": 1, "pref": 1, "max": 1},
-				"type": "choice",
-				"property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
-				"datatype": "http://purl.org/dc/terms/RFC4646",
-				"choices": [
-					{"value": "sv", "label": {"en": "Swedish"}},
-					{"value": "en", "label": {"en": "English"}},
-					{"value": "de", "label": {"en": "German"}},
-					{"value": "no", "label": {"en": "Norwegian"}},
-					{"value": "el", "label": {"en": "Greek"}},
-					{"value": "hu", "label": {"en": "Hungarian"}},
-					{"value": "ro", "label": {"en": "Romanian"}},
-					{"value": "et", "label": {"en": "Estonian"}},
-					{"value": "es", "label": {"en": "Spanish"}},
-					{"value": "ru", "label": {"en": "Russian"}},
-					{"value": "da", "label": {"en": "Danish"}},
-					{"value": "pt", "label": {"en": "Portugese"}},
-					{"value": "fr", "label": {"en": "French"}},
-					{"value": "nl", "label": {"en": "Dutch"}},
-					{"value": "fi", "label": {"en": "Finnish"}},
-					{"value": "it", "label": {"en": "Italian"}},
-					{"value": "pl", "label": {"en": "Polish"}},
-					{"value": "cs", "label": {"en": "Czech"}},
-					{"value": "sk", "label": {"en": "Slovak"}},
-					{"value": "la", "label": {"en": "Latin"}},
-					{ "value": "x-t-notapplicable", "label": {"en": "Not applicable"}}
-				]
-			}],
-			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/LinguisticSystem"}
-		},
-		{
-			"nodetype": "DATATYPE_LITERAL",
-			"cardinality": {"min": 0, "pref": 1},
-			"label": {
-				"en": "Format"
-			},
-			"type": "choice",
-			"id": "voa3r:dcterms:format",
-			"property": "http://purl.org/dc/terms/format",
-			"datatype": "http://purl.org/dc/terms/IMT",
-			"choices": [
-				{"value": "application/pdf", "label": {"en": "PDF Document"}},
-				{"value": "audio/mpeg", "label": {"en": "Audio - MP3"}},
-				{"value": "audio/x-ms-wma", "label": {"en": "Audio - Windows Media Audio (WMA)"}},
-				{"value": "audio/x-wav", "label": {"en": "Audio - WAV"}},
-				{"value": "image/gif", "label": {"en": "Image - GIF"}},
-				{"value": "image/jpeg", "label": {"en": "Image - JPEG"}},
-				{"value": "image/png", "label": {"en": "Image - Portable Network Graphics (PNG)"}},
-				{"value": "text/plain", "label": {"en": "Text: Plain"}},
-				{"value": "XML", "label": {"en": "Text: xml"}},
-				{"value": "video/mpeg", "label": {"en": "Video: MPEG"}},
-				{"value": "video/mp4", "label": {"en": "Video - MP4"}},
-				{"value": "video/quicktime", "label": {"en": "Video - Quicktime"}},
-				{"value": "video/x-ms-wmv", "label": {"en": "Video - Windows Media Video (WMV)"}},
-				{"value": "application/vnd.ms-excel", "label": {"en": "Microsoft Excel file"}},
-				{"value": "application/vnd.ms-powerpoint", "label": {"en": "Microsoft Powerpoint file"}},
-				{"value": "application/msword", "label": {"en": "Microsoft Word file"}},
-				{"value": "application/vnd.oasis.opendocument.text", "label": {"en": "OpenOffice Text document"}},
-				{"value": "application/vnd.oasis.opendocument.spreadsheet", "label": {"en": "OpenOffice Spreadsheet"}},
-				{"value": "application/vnd.oasis.opendocument.presentation", "label": {"en": "OpenOffice presentation"}},
-				{"value": "text/html", "label": {"en": "Text: HTML"}}
-			]
-		},
-		{
-	  		"id": "voa3r:dc:type",
-	  		"property": "http://purl.org/dc/elements/1.1/type", 
-	  		"label": {
-	  			"en": "Type"
-	  		},
-			"cardinality": {"min":1, "pref": 1, "max": 1},
-	  		"type": "choice",
-			"nodetype": "LITERAL",
-			choices: [
-			 	{"value": "book", "label": {"en":"Book"}},
-			 	{"value": "journal", "label": {"en":"Journal"}},
-			 	{"value": "conference proceedings", "label": {"en":"Conference proceedings"}},
-			 	{"value": "thesis", "label": {"en":"Thesis"}},
-			 	{"value": "report", "label": {"en":"Report"}},
-			 	{"value": "magazine", "label": {"en":"Magazine"}},
-			 	{"value": "standard", "label": {"en":"Standard"}},
-			 	{"value": "book chapter", "label": {"en":"Book chapter"}},
-			 	{"value": "journal article", "label": {"en":"Journal article"}},
-			 	{"value": "conference paper", "label": {"en":"Conference paper"}},
-			 	{"value": "magazine article", "label": {"en":"Magazine article"}},
-			 	{"value": "learning resource", "label": {"en":"Learning resource"}},
-			 	{"value": "multimedia resource", "label": {"en":"Multimedia resource"}},
-			 	{"value": "data set", "label": {"en":"Data set"}},
-			 	{"value": "conference", "label": {"en":"Conference"}},
-			 	{"value": "project", "label": {"en":"Project"}},
-			 	{"value": "other", "label": {"en":"Other"}}
-			]
-  		},
-		{
-	  		"id": "voa3r:eprint:status",
-	  		"property": "http://purl.org/eprint/terms/status",
-	  		"label": {
-	  			"en": "Review status"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "choice",
-			"nodetype": "LITERAL",
-			choices: [
-			 	{"value": "peer reviewed", "label": {"en":"Peer reviewed"}},
-			 	{"value": "non peer reviewed", "label": {"en":"Non peer reviewed"}}
-			]
-  		},
-		{
-	  		"id": "voa3r:voa3r:status",
-	  		"property": "http://purl.org/voa3r/terms/status",
-	  		"label": {
-	  			"en": "Publication status"
-	  		},
-			"cardinality": {"min": 0, "pref": 1},
-	  		"type": "choice",
-			"nodetype": "LITERAL",
-			choices: [
-			 	{"value": "working", "label": {"en":"Working"}},
-			 	{"value": "unpublished", "label": {"en":"Unpublished"}},
-			 	{"value": "published", "label": {"en":"Published"}},
-			 	{"value": "not submitted", "label": {"en":"Not submitted"}},
-			 	{"value": "submitted", "label": {"en":"Submitted"}}
-			]
-  		},
-	  	{
-	  		"id": "voa3r:dcterms:creator",
-			"property": "http://purl.org/dc/terms/creator",
-			"label": {
-	  			"en": "Creator"
-	  		},
-			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
-	  		"cardinality": {"min": 0, "pref": 1},
-	  		"type": "group",
-	  		"content": [
-				{"id": "voa3r:foaf"}
-	  		]
-		},
-	  	{
-	  		"id": "voa3r:dcterms:contributor",
-			"property": "http://purl.org/dc/terms/contributor",
-			"label": {
-	  			"en": "Contributor"
-	  		},
-			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
-	  		"cardinality": {"min": 0, "pref": 1},
-	  		"type": "group",
-	  		"content": [
-				{"id": "voa3r:foaf"}
-	  		]
-		},
-	  	{
-	  		"id": "voa3r:dcterms:publisher",
-			"property": "http://purl.org/dc/terms/publisher",
-			"label": {
-	  			"en": "Publisher"
-	  		},
-			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
-	  		"cardinality": {"min": 0, "pref": 1},
-	  		"type": "group",
-	  		"content": [
-				{"id": "voa3r:foaf"}
-	  		]
-		},
-	  	{
-	  		"id": "voa3r:ags:creatorPersonal",
-			"property": "http://purl.org/agmes/1.1/creatorPersonal",
-			"label": {
-	  			"en": "Creator (personal)"
-	  		},
-			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
-	  		"cardinality": {"min": 0, "pref": 0},
-	  		"type": "group",
-	  		"content": [
-				{"id": "voa3r:foaf"}
-	  		]
-		},
-	  	{
-	  		"id": "voa3r:ags:creatorCorporate",
-			"property": "http://purl.org/agmes/1.1/creatorCorporate",
-			"label": {
-	  			"en": "Creator (corporate)"
-	  		},
-			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
-	  		"cardinality": {"min": 0, "pref": 0},
-	  		"type": "group",
-	  		"content": [
-				{"id": "voa3r:foaf"}
-	  		]
-		},
-		{
-			"id":"voa3r:foaf",
-			"type":"group",
-			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"label": {
-				"en": "Profile"
-			},
-			"content": [
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1, "max": 1},
-					"label": {"en": "Title"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/title",
-				},
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1, "max": 1},
-					"label": {"en": "First name"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/firstName"
-				},
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1, "max": 1},
-					"label": {"en": "Surname"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/surname"
-				},
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1, "max": 1},
-					"label": {"en": "Full name"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/name",
-				},
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1},
-					"label": {"en": "E-mail"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/mbox",
-				},
-				{
-					"nodetype": "LITERAL",
-					"cardinality": {"min": 0, "pref": 1},
-					"label": {"en": "Workplace homepage"},
-					"type": "text",
-					"property": "http://xmlns.com/foaf/0.1/workplaceHomepage",
-				}
-			]
-		}
-	]
+ "cachedChoices": {
+  "http://example.com/DCOntology": [
+   {
+    "constraints": {
+     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.org/dc/terms/contributor"
+    },
+    "choices": [
+     {
+      "value": "http://purl.org/dc/terms/contributor",
+      "label": {
+       "sv": "Medarbetare",
+       "en": "Contributor"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "auxilliary": [
+  {
+   "id": "voa3r:All",
+   "type": "group",
+   "label": {
+    "en": "VOA3R Application Profile"
+   },
+   "content": [
+    {
+     "id": "http://purl.org/dc/terms/title"
+    },
+    {
+     "id": "http://purl.org/dc/terms/alternative"
+    },
+    {
+     "id": "http://purl.org/dc/terms/creator"
+    },
+    {
+     "id": "http://purl.org/dc/terms/contributor"
+    },
+    {
+     "id": "http://purl.org/dc/terms/publisher"
+    },
+    {
+     "id": "http://purl.org/dc/terms/date"
+    },
+    {
+     "id": "http://purl.org/dc/terms/language"
+    },
+    {
+     "id": "http://purl.org/dc/terms/identifier"
+    },
+    {
+     "id": "http://purl.org/dc/terms/format"
+    },
+    {
+     "id": "http://www.europeana.eu/schemas/ese/isShownBy"
+    },
+    {
+     "id": "http://www.europeana.eu/schemas/ese/isShownAt"
+    },
+    {
+     "id": "http://purl.org/dc/terms/subject"
+    },
+    {
+     "id": "http://purl.org/dc/terms/description"
+    },
+    {
+     "id": "http://purl.org/dc/terms/abstract"
+    },
+    {
+     "id": "http://purl.org/dc/terms/bibliographicCitation"
+    },
+    {
+     "id": "http://purl.org/dc/terms/type"
+    },
+    {
+     "id": "http://purl.org/dc/terms/rights"
+    },
+    {
+     "id": "http://purl.org/dc/terms/accessRights"
+    },
+    {
+     "id": "http://purl.org/dc/terms/license"
+    },
+    {
+     "id": "http://voa3r.eu/terms/reviewStatus"
+    },
+    {
+     "id": "http://voa3r.eu/terms/publicationStatus"
+    },
+    {
+     "id": "http://purl.org/dc/terms/relation"
+    },
+    {
+     "id": "http://purl.org/dc/terms/conformsTo"
+    },
+    {
+     "id": "http://purl.org/dc/terms/conformsTo2"
+    },
+    {
+     "id": "http://purl.org/dc/terms/references"
+    },
+    {
+     "id": "http://purl.org/dc/terms/isReferencedBy"
+    },
+    {
+     "id": "http://purl.org/dc/terms/hasPart"
+    },
+    {
+     "id": "http://purl.org/dc/terms/isPartOf"
+    },
+    {
+     "id": "http://purl.org/dc/terms/hasVersion"
+    },
+    {
+     "id": "http://purl.org/dc/terms/isVersionOf"
+    },
+    {
+     "id": "http://voa3r.eu/terms/hasTranslation"
+    },
+    {
+     "id": "http://voa3r.eu/terms/isTranslationOf"
+    },
+    {
+     "id": "http://voa3r.eu/terms/hasMetametadata"
+    },
+    {
+     "id": "http://voa3r.eu/terms/hasResearch"
+    }
+   ],
+   "cardinality": {}
+  },
+  {
+   "id": "agent",
+   "type": "group",
+   "label": {
+    "en": "agent"
+   },
+   "content": [
+    {
+     "id": "http://xmlns.com/foaf/0.1/name"
+    },
+    {
+     "id": "http://xmlns.com/foaf/0.1/givenName"
+    },
+    {
+     "id": "http://xmlns.com/foaf/0.1/familyName"
+    },
+    {
+     "id": "http://xmlns.com/foaf/0.1/firstName"
+    },
+    {
+     "id": "http://xmlns.com/foaf/0.1/lastName"
+    },
+    {
+     "id": "http://xmlns.com/foaf/0.1/mbox"
+    }
+   ],
+   "cardinality": {}
+  },
+  {
+   "id": "metametadata",
+   "type": "group",
+   "label": {
+    "en": "metametadata"
+   },
+   "content": [
+    {
+     "id": "http://purl.org/dc/terms/identifier2"
+    },
+    {
+     "id": "http://purl.org/dc/terms/type2"
+    },
+    {
+     "id": "http://purl.org/dc/terms/language2"
+    },
+    {
+     "id": "http://purl.org/dc/terms/date2"
+    },
+    {
+     "id": "http://purl.org/dc/terms/contributor2"
+    }
+   ],
+   "cardinality": {}
+  },
+  {
+   "id": "research",
+   "type": "group",
+   "label": {
+    "en": "research"
+   },
+   "content": [
+    {
+     "id": "http://voa3r.eu/terms/objectOfInterest"
+    },
+    {
+     "id": "http://voa3r.eu/terms/measuresVariable"
+    },
+    {
+     "id": "http://voa3r.eu/terms/usesMethod"
+    },
+    {
+     "id": "http://voa3r.eu/terms/usesProtocol"
+    },
+    {
+     "id": "http://voa3r.eu/terms/usesInstrument"
+    },
+    {
+     "id": "http://voa3r.eu/terms/usesTechnique"
+    }
+   ],
+   "cardinality": {}
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/title",
+   "type": "text",
+   "nodetype": "LANGUAGE_LITERAL",
+   "property": "http://purl.org/dc/terms/title",
+   "label": {
+    "en-US": "Title"
+   },
+   "description": {
+    "en-US": "A name given to the resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/alternative",
+   "type": "text",
+   "nodetype": "LANGUAGE_LITERAL",
+   "property": "http://purl.org/dc/terms/alternative",
+   "label": {
+    "en-US": "Alternative Title"
+   },
+   "description": {
+    "en-US": "An alternative name for the resource.\nThe distinction between titles and alternative titles is application-specific."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/creator",
+   "extends": "agent",
+   "property": "http://purl.org/dc/terms/creator",
+   "label": {
+    "en-US": "Creator"
+   },
+   "description": {
+    "en-US": "An entity primarily responsible for making the resource.\nExamples of a Creator include a person, an organization, or a service."
+   }
+  },
+  {
+   "id": "http://purl.org/dc/terms/contributor",
+   "type": "propertygroup",
+   "content": [
+    {
+     "type": "choice",
+     "label": {
+      "en": "Choose predicate"
+     },
+     "constraints": {
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.org/dc/terms/contributor"
+     },
+     "ontologyUrl": "http://example.com/DCOntology"
+    },
+    {
+     "cardinality": {},
+     "extends": "agent"
+    }
+   ],
+   "label": {
+    "en-US": "Contributor"
+   },
+   "description": {
+    "en-US": "An entity responsible for making contributions to the resource.\nExamples of a Contributor include a person, an organization, or a service."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/publisher",
+   "extends": "agent",
+   "property": "http://purl.org/dc/terms/publisher",
+   "label": {
+    "en-US": "Publisher"
+   },
+   "description": {
+    "en-US": "An entity responsible for making the resource available.\nExamples of a Publisher include a person, an organization, or a service."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/date",
+   "type": "text",
+   "nodetype": "DATATYPED_LITERAL",
+   "datatype": "http://purl.org/dc/terms/W3CDTF",
+   "property": "http://purl.org/dc/terms/date",
+   "label": {
+    "en-US": "Date"
+   },
+   "description": {
+    "en-US": "A point or period of time associated with an event in the lifecycle of the resource.\nDate may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/language",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/ISO639-2"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://purl.org/dc/terms/language",
+   "label": {
+    "en-US": "Language"
+   },
+   "description": {
+    "en-US": "A language of the resource.\nRecommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/identifier",
+   "nodeType": "BLANK",
+   "type": "group",
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "DATATYPE_LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     },
+     "datatype": "http://voa3r.eu/terms/EncodedSchema"
+    }
+   ],
+   "property": "http://purl.org/dc/terms/identifier",
+   "label": {
+    "en-US": "Identifier"
+   },
+   "description": {
+    "en-US": "An unambiguous reference to the resource within a given context.\nRecommended best practice is to identify the resource by means of a string conforming to a formal identification system. "
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/format",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/IMT"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://purl.org/dc/terms/format",
+   "label": {
+    "en-US": "Format"
+   },
+   "description": {
+    "en-US": "The file format, physical medium, or dimensions of the resource.\nExamples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://www.europeana.eu/schemas/ese/isShownBy",
+   "nodeType": "BLANK",
+   "type": "group",
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://www.europeana.eu/schemas/ese/isShownBy",
+   "label": {
+    "en": "isShownBy"
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://www.europeana.eu/schemas/ese/isShownAt",
+   "nodeType": "BLANK",
+   "type": "group",
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://www.europeana.eu/schemas/ese/isShownAt",
+   "label": {
+    "en": "isShownAt"
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/subject",
+   "nodeType": "BLANK",
+   "type": "group",
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "DATATYPE_LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     },
+     "datatype": "http://voa3r.eu/terms/EncodedSchema"
+    }
+   ],
+   "property": "http://purl.org/dc/terms/subject",
+   "label": {
+    "en-US": "Subject"
+   },
+   "description": {
+    "en-US": "The topic of the resource.\nTypically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/description",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://purl.org/dc/terms/description",
+   "label": {
+    "en-US": "Description"
+   },
+   "description": {
+    "en-US": "An account of the resource.\nDescription may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/abstract",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://purl.org/dc/terms/abstract",
+   "label": {
+    "en-US": "Abstract"
+   },
+   "description": {
+    "en-US": "A summary of the resource."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/bibliographicCitation",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.openurl.info/registry/"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "DATATYPE_LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     },
+     "datatype": "http://voa3r.eu/terms/EncodedSchema"
+    }
+   ],
+   "property": "http://purl.org/dc/terms/bibliographicCitation",
+   "label": {
+    "en-US": "Bibliographic Citation"
+   },
+   "description": {
+    "en-US": "A bibliographic reference for the resource.\nRecommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/type",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://voa3r.eu/terms/ResourceType"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://purl.org/dc/terms/type",
+   "label": {
+    "en-US": "Type"
+   },
+   "description": {
+    "en-US": "The nature or genre of the resource.\nRecommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/rights",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://purl.org/dc/terms/rights",
+   "label": {
+    "en-US": "Rights"
+   },
+   "description": {
+    "en-US": "Information about rights held in and over the resource.\nTypically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/accessRights",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/eprint/accessRights/"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://purl.org/dc/terms/accessRights",
+   "label": {
+    "en-US": "Access Rights"
+   },
+   "description": {
+    "en-US": "Information about who can access the resource or an indication of its security status.\nAccess Rights may include information regarding access or restrictions based on privacy, security, or other policies."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/license",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://purl.org/dc/terms/license",
+   "label": {
+    "en-US": "License"
+   },
+   "description": {
+    "en-US": "A legal document giving official permission to do something with the resource."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://voa3r.eu/terms/reviewStatus",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://voa3r.eu/terms/ReviewStatus"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://voa3r.eu/terms/reviewStatus",
+   "label": {
+    "en": "reviewStatus"
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://voa3r.eu/terms/publicationStatus",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://voa3r.eu/terms/PublicationStatus"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://voa3r.eu/terms/publicationStatus",
+   "label": {
+    "en": "publicationStatus"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/relation",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/relation",
+   "label": {
+    "en-US": "Relation"
+   },
+   "description": {
+    "en-US": "A related resource.\nRecommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/conformsTo",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/conformsTo",
+   "label": {
+    "en-US": "Conforms To"
+   },
+   "description": {
+    "en-US": "An established standard to which the described resource conforms."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/conformsTo2",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/conformsTo",
+   "label": {
+    "en-US": "Conforms To"
+   },
+   "description": {
+    "en-US": "An established standard to which the described resource conforms."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/references",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/references",
+   "label": {
+    "en-US": "References"
+   },
+   "description": {
+    "en-US": "A related resource that is referenced, cited, or otherwise pointed to by the described resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/isReferencedBy",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/isReferencedBy",
+   "label": {
+    "en-US": "Is Referenced By"
+   },
+   "description": {
+    "en-US": "A related resource that references, cites, or otherwise points to the described resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/hasPart",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/hasPart",
+   "label": {
+    "en-US": "Has Part"
+   },
+   "description": {
+    "en-US": "A related resource that is included either physically or logically in the described resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/isPartOf",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/isPartOf",
+   "label": {
+    "en-US": "Is Part Of"
+   },
+   "description": {
+    "en-US": "A related resource in which the described resource is physically or logically included."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/hasVersion",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/hasVersion",
+   "label": {
+    "en-US": "Has Version"
+   },
+   "description": {
+    "en-US": "A related resource that is a version, edition, or adaptation of the described resource."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/isVersionOf",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/isVersionOf",
+   "label": {
+    "en-US": "Is Version Of"
+   },
+   "description": {
+    "en-US": "A related resource of which the described resource is a version, edition, or adaptation.\nChanges in version imply substantive changes in content rather than differences in format."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/hasTranslation",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/hasTranslation",
+   "label": {
+    "en": "hasTranslation"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/isTranslationOf",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/isTranslationOf",
+   "label": {
+    "en": "isTranslationOf"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/hasMetametadata",
+   "extends": "metametadata",
+   "property": "http://voa3r.eu/terms/hasMetametadata",
+   "label": {
+    "en": "hasMetametadata"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/hasResearch",
+   "extends": "research",
+   "property": "http://voa3r.eu/terms/hasResearch",
+   "label": {
+    "en": "hasResearch"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://xmlns.com/foaf/0.1/name",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://xmlns.com/foaf/0.1/name",
+   "label": {
+    "en": "name"
+   },
+   "description": {
+    "en": "A name for some thing."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://xmlns.com/foaf/0.1/givenName",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://xmlns.com/foaf/0.1/givenName",
+   "label": {
+    "en": "Given name"
+   },
+   "description": {
+    "en": "The given name of some person."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://xmlns.com/foaf/0.1/familyName",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://xmlns.com/foaf/0.1/familyName",
+   "label": {
+    "en": "familyName"
+   },
+   "description": {
+    "en": "The family name of some person."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://xmlns.com/foaf/0.1/firstName",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://xmlns.com/foaf/0.1/firstName",
+   "label": {
+    "en": "firstName"
+   },
+   "description": {
+    "en": "The first name of a person."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://xmlns.com/foaf/0.1/lastName",
+   "type": "text",
+   "nodetype": "LITERAL",
+   "property": "http://xmlns.com/foaf/0.1/lastName",
+   "label": {
+    "en": "lastName"
+   },
+   "description": {
+    "en": "The last name of a person."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://xmlns.com/foaf/0.1/mbox",
+   "nodeType": "BLANK",
+   "type": "group",
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://xmlns.com/foaf/0.1/mbox",
+   "label": {
+    "en": "personal mailbox"
+   },
+   "description": {
+    "en": "A  personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/identifier2",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/identifier",
+   "label": {
+    "en-US": "Identifier"
+   },
+   "description": {
+    "en-US": "An unambiguous reference to the resource within a given context.\nRecommended best practice is to identify the resource by means of a string conforming to a formal identification system. "
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/type2",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://purl.org/dc/terms/type",
+   "label": {
+    "en-US": "Type"
+   },
+   "description": {
+    "en-US": "The nature or genre of the resource.\nRecommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."
+   }
+  },
+  {
+   "cardinality": {
+    "pref": 1
+   },
+   "id": "http://purl.org/dc/terms/language2",
+   "nodeType": "BLANK",
+   "type": "group",
+   "constraint": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/ISO639-2"
+   },
+   "content": [
+    {
+     "type": "text",
+     "nodetype": "LITERAL",
+     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+     "cardinality": {
+      "min": 1,
+      "max": 1,
+      "pref": 1
+     }
+    }
+   ],
+   "property": "http://purl.org/dc/terms/language",
+   "label": {
+    "en-US": "Language"
+   },
+   "description": {
+    "en-US": "A language of the resource.\nRecommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://purl.org/dc/terms/date2",
+   "type": "text",
+   "nodetype": "DATATYPED_LITERAL",
+   "datatype": "http://purl.org/dc/terms/W3CDTF",
+   "property": "http://purl.org/dc/terms/date",
+   "label": {
+    "en-US": "Date"
+   },
+   "description": {
+    "en-US": "A point or period of time associated with an event in the lifecycle of the resource.\nDate may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."
+   }
+  },
+  {
+   "id": "http://purl.org/dc/terms/contributor2",
+   "type": "propertygroup",
+   "content": [
+    {
+     "type": "choice",
+     "label": {
+      "en": "Choose predicate"
+     },
+     "constraints": {
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.org/dc/terms/contributor"
+     },
+     "ontologyUrl": "http://example.com/DCOntology"
+    },
+    {
+     "cardinality": {},
+     "extends": "agent"
+    }
+   ],
+   "label": {
+    "en-US": "Contributor"
+   },
+   "description": {
+    "en-US": "An entity responsible for making contributions to the resource.\nExamples of a Contributor include a person, an organization, or a service."
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/objectOfInterest",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/objectOfInterest",
+   "label": {
+    "en": "objectOfInterest"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/measuresVariable",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/measuresVariable",
+   "label": {
+    "en": "measuresVariable"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/usesMethod",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/usesMethod",
+   "label": {
+    "en": "usesMethod"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/usesProtocol",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/usesProtocol",
+   "label": {
+    "en": "usesProtocol"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/usesInstrument",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/usesInstrument",
+   "label": {
+    "en": "usesInstrument"
+   }
+  },
+  {
+   "cardinality": {},
+   "id": "http://voa3r.eu/terms/usesTechnique",
+   "type": "text",
+   "nodetype": "URI",
+   "property": "http://voa3r.eu/terms/usesTechnique",
+   "label": {
+    "en": "usesTechnique"
+   }
+  }
+ ]
 }

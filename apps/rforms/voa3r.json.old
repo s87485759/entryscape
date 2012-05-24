@@ -1,0 +1,531 @@
+{
+	"label":{"en":"VOA3R formlets"},
+	"auxilliary":[
+		{
+			"id":"voa3r:All",
+			"type":"group",
+			"label":{"en":"VOA3R Application Profile"},
+			"cardinality": {"min": 1, "pref": 1, "max": 1},
+			"content":[
+				{"id": "voa3r:dcterms:title"}, 			// M	LangLit
+				{"id": "voa3r:dcterms:alternative"},		// O	LangLit
+				{"id": "voa3r:dcterms:description"},		// O/R	LangLit
+				{"id": "voa3r:dcterms:abstract"},		// O	LangLit
+				{"id": "voa3r:dc:subject"},			// O/R	Lit
+				{"id": "voa3r:dcterms:language"},		// M	ISO-639-1
+				{"id": "voa3r:dc:type"},			// M	voa3r:type
+				{"id": "voa3r:dcterms:creator"},		// O/R	FOAF
+				{"id": "voa3r:dcterms:contributor"},		// O/R	FOAF
+				{"id": "voa3r:dcterms:publisher"},		// O/R	FOAF
+				{"id": "voa3r:dcterms:date"},			// O/R	W3CDTF
+				{"id": "voa3r:dc:identifier"},			// O/R	Lit | ISBN, ISSN, URI, DOI
+				{"id": "voa3r:dcterms:format"},			// O/R	MIME voc (RFC2048:1996) or non-digital
+				{"id": "voa3r:dcterms:rights"},			// O/R	Lit
+				{"id": "voa3r:dcterms:accessRights"},		// O/R	Lit
+				{"id": "voa3r:dcterms:license"},		// O/R	Lit
+				{"id": "voa3r:ags:rightsStatement"},		// O/R	Lit
+				{"id": "voa3r:eprint:status"},			// O/R	eprint:status
+				{"id": "voa3r:voa3r:status"},			// O/R	voa3r:status
+				{"id": "voa3r:dcterms:bibliographicCitation"},	// O/R	LangLit
+				{"id": "voa3r:ags:creatorPersonal"},		// O	FOAF
+				{"id": "voa3r:ags:creatorCorporate"},		// O	FOAF
+				{"id": "voa3r:dcterms:source"},			// O	Lit
+				{"id": "voa3r:Relations"}
+			]
+		},
+		{	"id":"voa3r:Relations",
+			"type":"group",
+			"label":{"en":"Relations"},
+			"cardinality": {"min": 0, "pref": 0, "max": 1},
+			"cls": ["expandable"],
+			"content":[
+				{"id": "voa3r:dcterms:conformsTo"},		// O/R	Lit
+				{"id": "voa3r:dc:relation"},			// O	Lit
+				{"id": "voa3r:dcterms:references"},		// O	Lit
+				{"id": "voa3r:dcterms:isReferencedBy"},		// O	Lit
+				{"id": "voa3r:ags:isTranslationOf"},		// O	Lit
+				{"id": "voa3r:ags:hasTranslation"}		// O	Lit
+			]
+		},
+  		{
+	  		"id": "voa3r:dcterms:title", 
+	  		"property": "http://purl.org/dc/terms/title", 
+	  		"label": {
+	  			"en": "Title"
+	  		},
+			"cardinality": {"min": 1, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LANGUAGE_LITERAL"
+  		},
+		{
+			"id": "voa3r:dcterms:description",
+			"nodetype": "BLANK",
+			"cardinality": {"min":0, "pref":1},
+			"label": {
+				"en": "Description"
+			},
+			"type": "group",
+			"property": "http://purl.org/dc/terms/description",
+			"content": [{
+				"styles": ["MultiLine", "TextFormItem", "LanguageControlled"],
+				"nodetype": "LANGUAGE_LITERAL",
+				"cardinality": {"min":1, "pref":1},
+				"type": "text",
+				"property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
+			}]
+		},
+  		{
+	  		"id": "voa3r:dc:subject", 
+	  		"property": "http://purl.org/dc/elements/1.1/subject", 
+	  		"label": {
+	  			"en": "Subject"
+	  		},
+			"cardinality": {"min":0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:bibliographicCitation", 
+	  		"property": "http://purl.org/dc/terms/bibliographicCitation", 
+	  		"label": {
+	  			"en": "Bibliographic citation"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LANGUAGE_LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:alternative", 
+	  		"property": "http://purl.org/dc/terms/alternative", 
+	  		"label": {
+	  			"en": "Alternative title"
+	  		},
+			"cardinality": {"min": 0, "pref": 0},
+	  		"type": "text",
+			"nodetype": "LANGUAGE_LITERAL"
+  		},
+		{
+			"id": "voa3r:dcterms:date",
+			"nodetype": "DATATYPE_LITERAL",
+			"cardinality": {"min": 0, "pref": 1, "max": 1},
+			"label": {"en": "Date"},
+			"type": "text",
+			"property": "http://purl.org/dc/terms/date",
+			"datatype": "http://purl.org/dc/terms/W3CDTF",
+		},
+  		{
+	  		"id": "voa3r:dcterms:abstract",
+	  		"property": "http://purl.org/dc/terms/abstract",
+			"styles": ["MultiLine", "TextFormItem", "LanguageControlled"],
+	  		"label": {
+	  			"en": "Abstract"
+	  		},
+			"cardinality": {"min":0, "pref": 0},
+	  		"type": "text",
+			"nodetype": "LANGUAGE_LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:rights", 
+	  		"property": "http://purl.org/dc/terms/rights", 
+	  		"label": {
+	  			"en": "Rights"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:accessRights", 
+	  		"property": "http://purl.org/dc/terms/accessRights", 
+	  		"label": {
+	  			"en": "Access rights"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:license", 
+	  		"property": "http://purl.org/dc/terms/license", 
+	  		"label": {
+	  			"en": "License"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:ags:rightsStatement", 
+	  		"property": "http://purl.org/agmes/1.1/rightsStatement",
+	  		"label": {
+	  			"en": "Rights statement"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "voa3r:dcterms:source", 
+	  		"property": "http://purl.org/dc/terms/source", 
+	  		"label": {
+	  			"en": "Source"
+	  		},
+			"cardinality": {"min": 0, "pref": 0},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:dcterms:conformsTo", 
+	  		"property": "http://purl.org/dc/terms/conformsTo",
+	  		"label": {
+	  			"en": "conforms to"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 1},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:dc:relation", 
+	  		"property": "http://purl.org/dc/elements/1.1/relation",
+	  		"label": {
+	  			"en": "relation"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 0},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:dcterms:references", 
+	  		"property": "http://purl.org/dc/terms/references",
+	  		"label": {
+	  			"en": "references"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 0},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:dcterms:isReferencedBy", 
+	  		"property": "http://purl.org/dc/terms/isReferencedBy",
+	  		"label": {
+	  			"en": "is referenced by"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 0},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:ags:isTranslationOf", 
+	  		"property": "http://purl.org/agmes/1.1/isTranslationOf",
+	  		"label": {
+	  			"en": "is translation of"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 0},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+	  		"id": "voa3r:ags:hasTranslation", 
+	  		"property": "http://purl.org/agmes/1.1/hasTranslation",
+	  		"label": {
+	  			"en": "has translation"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 0},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		/*{
+			"styles": ["GroupFormItem"],
+			"nodetype": "BLANK",
+			"cardinality": {"pref": 1},
+			"label": {"en": "Identifier"},
+			"type": "group",
+			"property": "http://purl.org/dc/terms/identifier",
+			"id": "voa3r:dcterms:identifier",
+			"content": [
+			{
+				"styles": ["ChoiceFormItem"],
+				"nodetype": "LITERAL",
+				"cardinality": {"min": 1, "pref": 1, "max": 1},
+				"label": {"en": "Catalog"},
+				"type": "choice",
+				"property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#catalog",
+				"choices": [
+					{"value": "URI", "label": {"en": "URI "}},
+					{"value": "ISBN", "label": {"en": "ISBN"}},
+					{"value": "ISSN", "label": {"en": "ISSN"}},
+					{"value": "DOI", "label": {"en": "DOI"}}
+				]
+			},
+			{
+				"styles": ["TextFormItem"],
+				"nodetype": "LITERAL",
+				"cardinality": {"min": 1, "pref": 1, "max": 1},
+				"label": {"en": "Entry"},
+				"type": "text",
+				"property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#entry"
+			}]
+		},*/
+		{
+	  		"id": "voa3r:dc:identifier",
+	  		"property": "http://purl.org/dc/elements/1.1/identifier",
+	  		"label": {
+	  			"en": "Identifier"
+	  		},
+	  		"cardinality": {"min": 0, "pref": 1},
+			"type": "text",
+			"nodetype": "LITERAL"
+  		},
+		{
+			"cardinality": {"min": 1, "pref": 1, "max": 1},
+			"label": {
+				"en": "Language"
+			},
+			"type": "group",
+			"id": "voa3r:dcterms:language",
+			"property": "http://purl.org/dc/terms/language",
+			"content": [{
+				"styles": ["ChoiceFormItem"],
+				"nodetype": "DATATYPE_LITERAL",
+				"cardinality": {"min": 1, "pref": 1, "max": 1},
+				"type": "choice",
+				"property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+				"datatype": "http://purl.org/dc/terms/RFC4646",
+				"choices": [
+					{"value": "sv", "label": {"en": "Swedish"}},
+					{"value": "en", "label": {"en": "English"}},
+					{"value": "de", "label": {"en": "German"}},
+					{"value": "no", "label": {"en": "Norwegian"}},
+					{"value": "el", "label": {"en": "Greek"}},
+					{"value": "hu", "label": {"en": "Hungarian"}},
+					{"value": "ro", "label": {"en": "Romanian"}},
+					{"value": "et", "label": {"en": "Estonian"}},
+					{"value": "es", "label": {"en": "Spanish"}},
+					{"value": "ru", "label": {"en": "Russian"}},
+					{"value": "da", "label": {"en": "Danish"}},
+					{"value": "pt", "label": {"en": "Portugese"}},
+					{"value": "fr", "label": {"en": "French"}},
+					{"value": "nl", "label": {"en": "Dutch"}},
+					{"value": "fi", "label": {"en": "Finnish"}},
+					{"value": "it", "label": {"en": "Italian"}},
+					{"value": "pl", "label": {"en": "Polish"}},
+					{"value": "cs", "label": {"en": "Czech"}},
+					{"value": "sk", "label": {"en": "Slovak"}},
+					{"value": "la", "label": {"en": "Latin"}},
+					{ "value": "x-t-notapplicable", "label": {"en": "Not applicable"}}
+				]
+			}],
+			"constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/LinguisticSystem"}
+		},
+		{
+			"nodetype": "DATATYPE_LITERAL",
+			"cardinality": {"min": 0, "pref": 1},
+			"label": {
+				"en": "Format"
+			},
+			"type": "choice",
+			"id": "voa3r:dcterms:format",
+			"property": "http://purl.org/dc/terms/format",
+			"datatype": "http://purl.org/dc/terms/IMT",
+			"choices": [
+				{"value": "application/pdf", "label": {"en": "PDF Document"}},
+				{"value": "audio/mpeg", "label": {"en": "Audio - MP3"}},
+				{"value": "audio/x-ms-wma", "label": {"en": "Audio - Windows Media Audio (WMA)"}},
+				{"value": "audio/x-wav", "label": {"en": "Audio - WAV"}},
+				{"value": "image/gif", "label": {"en": "Image - GIF"}},
+				{"value": "image/jpeg", "label": {"en": "Image - JPEG"}},
+				{"value": "image/png", "label": {"en": "Image - Portable Network Graphics (PNG)"}},
+				{"value": "text/plain", "label": {"en": "Text: Plain"}},
+				{"value": "XML", "label": {"en": "Text: xml"}},
+				{"value": "video/mpeg", "label": {"en": "Video: MPEG"}},
+				{"value": "video/mp4", "label": {"en": "Video - MP4"}},
+				{"value": "video/quicktime", "label": {"en": "Video - Quicktime"}},
+				{"value": "video/x-ms-wmv", "label": {"en": "Video - Windows Media Video (WMV)"}},
+				{"value": "application/vnd.ms-excel", "label": {"en": "Microsoft Excel file"}},
+				{"value": "application/vnd.ms-powerpoint", "label": {"en": "Microsoft Powerpoint file"}},
+				{"value": "application/msword", "label": {"en": "Microsoft Word file"}},
+				{"value": "application/vnd.oasis.opendocument.text", "label": {"en": "OpenOffice Text document"}},
+				{"value": "application/vnd.oasis.opendocument.spreadsheet", "label": {"en": "OpenOffice Spreadsheet"}},
+				{"value": "application/vnd.oasis.opendocument.presentation", "label": {"en": "OpenOffice presentation"}},
+				{"value": "text/html", "label": {"en": "Text: HTML"}}
+			]
+		},
+		{
+	  		"id": "voa3r:dc:type",
+	  		"property": "http://purl.org/dc/elements/1.1/type", 
+	  		"label": {
+	  			"en": "Type"
+	  		},
+			"cardinality": {"min":1, "pref": 1, "max": 1},
+	  		"type": "choice",
+			"nodetype": "LITERAL",
+			choices: [
+			 	{"value": "book", "label": {"en":"Book"}},
+			 	{"value": "journal", "label": {"en":"Journal"}},
+			 	{"value": "conference proceedings", "label": {"en":"Conference proceedings"}},
+			 	{"value": "thesis", "label": {"en":"Thesis"}},
+			 	{"value": "report", "label": {"en":"Report"}},
+			 	{"value": "magazine", "label": {"en":"Magazine"}},
+			 	{"value": "standard", "label": {"en":"Standard"}},
+			 	{"value": "book chapter", "label": {"en":"Book chapter"}},
+			 	{"value": "journal article", "label": {"en":"Journal article"}},
+			 	{"value": "conference paper", "label": {"en":"Conference paper"}},
+			 	{"value": "magazine article", "label": {"en":"Magazine article"}},
+			 	{"value": "learning resource", "label": {"en":"Learning resource"}},
+			 	{"value": "multimedia resource", "label": {"en":"Multimedia resource"}},
+			 	{"value": "data set", "label": {"en":"Data set"}},
+			 	{"value": "conference", "label": {"en":"Conference"}},
+			 	{"value": "project", "label": {"en":"Project"}},
+			 	{"value": "other", "label": {"en":"Other"}}
+			]
+  		},
+		{
+	  		"id": "voa3r:eprint:status",
+	  		"property": "http://purl.org/eprint/terms/status",
+	  		"label": {
+	  			"en": "Review status"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "choice",
+			"nodetype": "LITERAL",
+			choices: [
+			 	{"value": "peer reviewed", "label": {"en":"Peer reviewed"}},
+			 	{"value": "non peer reviewed", "label": {"en":"Non peer reviewed"}}
+			]
+  		},
+		{
+	  		"id": "voa3r:voa3r:status",
+	  		"property": "http://purl.org/voa3r/terms/status",
+	  		"label": {
+	  			"en": "Publication status"
+	  		},
+			"cardinality": {"min": 0, "pref": 1},
+	  		"type": "choice",
+			"nodetype": "LITERAL",
+			choices: [
+			 	{"value": "working", "label": {"en":"Working"}},
+			 	{"value": "unpublished", "label": {"en":"Unpublished"}},
+			 	{"value": "published", "label": {"en":"Published"}},
+			 	{"value": "not submitted", "label": {"en":"Not submitted"}},
+			 	{"value": "submitted", "label": {"en":"Submitted"}}
+			]
+  		},
+	  	{
+	  		"id": "voa3r:dcterms:creator",
+			"property": "http://purl.org/dc/terms/creator",
+			"label": {
+	  			"en": "Creator"
+	  		},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
+	  		"cardinality": {"min": 0, "pref": 1},
+	  		"type": "group",
+	  		"content": [
+				{"id": "voa3r:foaf"}
+	  		]
+		},
+	  	{
+	  		"id": "voa3r:dcterms:contributor",
+			"property": "http://purl.org/dc/terms/contributor",
+			"label": {
+	  			"en": "Contributor"
+	  		},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
+	  		"cardinality": {"min": 0, "pref": 1},
+	  		"type": "group",
+	  		"content": [
+				{"id": "voa3r:foaf"}
+	  		]
+		},
+	  	{
+	  		"id": "voa3r:dcterms:publisher",
+			"property": "http://purl.org/dc/terms/publisher",
+			"label": {
+	  			"en": "Publisher"
+	  		},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
+	  		"cardinality": {"min": 0, "pref": 1},
+	  		"type": "group",
+	  		"content": [
+				{"id": "voa3r:foaf"}
+	  		]
+		},
+	  	{
+	  		"id": "voa3r:ags:creatorPersonal",
+			"property": "http://purl.org/agmes/1.1/creatorPersonal",
+			"label": {
+	  			"en": "Creator (personal)"
+	  		},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
+	  		"cardinality": {"min": 0, "pref": 0},
+	  		"type": "group",
+	  		"content": [
+				{"id": "voa3r:foaf"}
+	  		]
+		},
+	  	{
+	  		"id": "voa3r:ags:creatorCorporate",
+			"property": "http://purl.org/agmes/1.1/creatorCorporate",
+			"label": {
+	  			"en": "Creator (corporate)"
+	  		},
+			"constraints":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://http://xmlns.com/foaf/0.1/Person"},
+	  		"cardinality": {"min": 0, "pref": 0},
+	  		"type": "group",
+	  		"content": [
+				{"id": "voa3r:foaf"}
+	  		]
+		},
+		{
+			"id":"voa3r:foaf",
+			"type":"group",
+			"cardinality": {"min": 1, "pref": 1, "max": 1},
+			"label": {
+				"en": "Profile"
+			},
+			"content": [
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1, "max": 1},
+					"label": {"en": "Title"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/title",
+				},
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1, "max": 1},
+					"label": {"en": "First name"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/firstName"
+				},
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1, "max": 1},
+					"label": {"en": "Surname"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/surname"
+				},
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1, "max": 1},
+					"label": {"en": "Full name"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/name",
+				},
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1},
+					"label": {"en": "E-mail"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/mbox",
+				},
+				{
+					"nodetype": "LITERAL",
+					"cardinality": {"min": 0, "pref": 1},
+					"label": {"en": "Workplace homepage"},
+					"type": "text",
+					"property": "http://xmlns.com/foaf/0.1/workplaceHomepage",
+				}
+			]
+		}
+	]
+}
