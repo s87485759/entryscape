@@ -146,10 +146,7 @@
 	"Review": {"items": ["http://purl.org/stuff/rev#Review"]}
   },
   "rformItems": [
-      {url: "rforms/telmap.json", type: "sirff"},
-	  {url: "rforms/dc-exhibit.json", type: "exhibit"}, 
 	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
-	  {url: "rforms/Europeana.json", type: "sirff"},
 	  {url: "rforms/FolderRform.json", type: "sirff"},
 	  {url: "rforms/voa3r.json", type: "sirff"},
 	  {url: "rforms/Review.json", type: "sirff"}
