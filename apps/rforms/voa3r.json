@@ -267,30 +267,17 @@
   },
   {
    "id": "http://purl.org/dc/terms/contributor",
-   "type": "propertygroup",
-   "content": [
-    {
-     "type": "choice",
-     "label": {
-      "en": "Choose predicate"
-     },
-     "constraints": {
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.org/dc/terms/contributor"
-     },
-     "ontologyUrl": "http://dublincore.org/2010/10/11/dcterms.rdf"
-    },
-    {
-     "cardinality": {
-      "min": 0
-     },
-     "extends": "agent"
-    }
-   ],
+   "extends": "agent",
+   "property": "http://purl.org/dc/terms/contributor",
    "label": {
     "en-US": "Contributor"
    },
    "description": {
     "en-US": "An entity responsible for making contributions to the resource.\nExamples of a Contributor include a person, an organization, or a service."
+   },
+   "cardinality": {
+    "min": 0,
+    "pref": 1
    }
   },
   {
