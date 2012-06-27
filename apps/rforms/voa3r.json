@@ -281,8 +281,7 @@
     },
     {
      "cardinality": {
-      "min": 0,
-      "pref": 1
+      "min": 0
      },
      "extends": "agent"
     }
