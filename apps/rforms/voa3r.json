@@ -898,7 +898,8 @@
   },
   {
    "cardinality": {
-    "min": 0
+    "min": 0,
+    "pref": 1
    },
    "id": "http://xmlns.com/foaf/0.1/name",
    "type": "text",
@@ -973,7 +974,8 @@
   },
   {
    "cardinality": {
-    "min": 0
+    "min": 0,
+    "pref": 1
    },
    "id": "http://xmlns.com/foaf/0.1/mbox",
    "nodetype": "URI",
