@@ -71,11 +71,13 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
            -- over : whether or not the mouse is over this row
            -- odd : whether or not this row index is odd. */
        		var item = this.aclGrid.getItem(row.index);
-       		if (this.aclGrid.store.getValue(item, "owner")) {
-              row.customStyles += "background:#EDEDED;";
- 	        }
- 	        this.aclGrid.focus.styleRow(row);
- 	        this.aclGrid.edit.styleRow(row);
+       		if (item) {
+	       		if (this.aclGrid.store.getValue(item, "owner")) {
+    	          row.customStyles += "background:#EDEDED;";
+ 	    	    }
+ 	        	this.aclGrid.focus.styleRow(row);
+ 	        	this.aclGrid.edit.styleRow(row);       			
+       		}
     	});
 	},
 	principalChoosen: function(principal) {
