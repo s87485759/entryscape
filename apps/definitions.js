@@ -87,7 +87,7 @@
     "video/x-ms-wmv": {"en": "Video: WMV"}
   },
   "specialIcons": {
-  	"link": {"base": "themes/icons/oxygen/", "filename": "link.png"},
+  	"link": {"base": "themes/icons/oxygen/", "filename": "video.png"},
 	"RSS":  {"base": "themes/icons/oxygen/", "filename": "RSS.png", "16x16": true},
 	"portfolio": {"base": "themes/icons/oxygen/", "filename": "book.png"},
 	"folder": {"base": "themes/icons/oxygen/", "filename": "folder.png"},
@@ -99,7 +99,7 @@
 	"pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true},
   },
   "icons": {
-  	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "unknown.png"},
+  	"defaultIcon": {"base": "themes/icons/oxygen/", "filename": "video.png"}, 
 	"BT": {
 		"CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book.png", "16x16": true},
 		"SYSTEM_CONTEXT": {"base": "themes/icons/oxygen/", "filename": "book2.png"},

@@ -114,10 +114,11 @@ dojo.declare("folio.create.CreateWizard", [dijit._Widget, dijit._Templated], {
 		}));
 	},
 	finishClicked: function() {
-		/*if (this.apPlain && this.apPlain.isMandatoryMissing()) {
+		if (this.apPlain && !this.apPlain.isWithinCardinalityConstraints()) {
 			this.finishButton.cancel();
-			return;		
-		}*/
+			this.apPlain.showErrors();
+			return;
+		}
 		this.cancelButton.set("disabled", true);	
 		var self = this;
 		if (this.co) {

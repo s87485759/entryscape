@@ -23,7 +23,7 @@ dojo.require("rforms.model.Engine");
 dojo.require("rforms.view.Editor");
 
 dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
-	
+	includeLevel: "mandatory",
 	constructor: function(args) {
 		this.application = __confolio.application;
 	},
@@ -54,8 +54,14 @@ dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
 			if (!this.includeLevel) {
 				this.includeLevel = "mandatory";
 			}
-			this.editor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: this.includeLevel}, dojo.create("div", null, this.domNode));			
+			this.editor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: this.includeLevel, compact: true}, dojo.create("div", null, this.domNode));			
 		}));
+	},
+	isWithinCardinalityConstraints: function() {
+		return this.editor.binding.report().errors.length === 0;
+	},
+	showErrors: function() {
+		this.editor.report();
 	},
 	getMetadata: function(){
 		return this.graph.exportRDFJSON();

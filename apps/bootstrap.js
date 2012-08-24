@@ -201,7 +201,17 @@ __confolio.start = function(loadIndicatorId, splashId){
 		});
 		
 		__confolio.application.getConfig(function() {
-			__confolio.viewMap = se.uu.ull.site.init(__confolio.config.viewMap, dojo.create("div", null, dojo.body()));			
+			__confolio.viewMap = se.uu.ull.site.init(__confolio.config.viewMap, dojo.create("div", null, dojo.body()));
+			var vm = dojo.query(".viewMap", dojo.body())[0];
+			dojo.style(vm, {"position": "relative", "margin-left": "auto", "margin-right": "auto"});
+			if (__confolio.config.minwidth != null) {
+				var minw = parseInt(__confolio.config.minwidth);
+				dojo.style(vm, {"min-width": ""+minw+"px"});
+			}
+			if (__confolio.config.minwidth != null) {
+				var maxw = parseInt(__confolio.config.maxwidth);
+				dojo.style(vm, {"max-width": ""+maxw+"px"});
+			}
 		});
 		
 /*		var eval("var appCls = " + appClsStr + ";");

@@ -4,19 +4,18 @@
  */
 __confolio.addConfig({
 
-"title":	"Confolio 3-pane work view",
-"app": 		"folio.apps.TFolio",
+"title":	"EntryStore",
 "startContext": "1",
 "username": "Donald",
 "password": "donalddonald",
 "showLogin": "true",
-"unloadDialog": "true",
+"unloadDialog": "false",
 "CLI": "false",
 "possibleToCommentEntry": "true",
 "helpUrl": "http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": "../info/about-my.html",
 "scamPath": "scam",   /*This is default, can be left out*/
-"definitionsPath": "definitions",
+"definitionsPath": "definitions-OE",
 "startButtons": "true",
 "theme": "default",
 
@@ -29,8 +28,8 @@ supportedLanguageMap: {
 "viewMap": {
 		"manager": "se.uu.ull.site.FullscreenViewStack",
 			"controller": "folio.navigation.NavigationBar",
-			"startView": "start",
-			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "1"}, "initInDom": true},
+			"startView": "default",
+			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
 					  {"name": "start", "class": "folio.apps.StartPage"},
 					  {"name": "profile", "class": "folio.apps.Profile"},
 					  {"name": "search", "class": "folio.apps.Search"},

@@ -1,3 +1,4 @@
+/*global dojo,folio*/
 /*
  * Copyright (c) 2007-2010
  *
@@ -37,11 +38,11 @@ dojo.declare("folio.Config", null, {
 	"showLogin":            "false",
 	"username":             "",
 	"password":             "",
-	"unloadDialog": 		true,
-	"scamPath": 			"scam",
-	"definitionsPath": 		"definitions",
-	"CLI": 					false,
-	"app": 					"folio.apps.Default",
+	"unloadDialog":			true,
+	"scamPath":				"scam",
+	"definitionsPath":		"definitions",
+	"CLI":					false,
+	"app":					"folio.apps.Default",
 
 	//=================================================== 
 	// Public API 
@@ -52,11 +53,11 @@ dojo.declare("folio.Config", null, {
 		} else {
 			var alts = this.definitions.icons;
 			return this._resolveIconResolution(
-					this._getFromBT(alts, entry)
-					 || this._getFromAT(alts, entry)
-					 || this._getFromMT(alts, entry)
-					 || this._getFromLT(alts, entry)
-					 || alts["defaultIcon"], resolution);
+					this._getFromBT(alts, entry) ||
+						this._getFromAT(alts, entry) ||
+						this._getFromMT(alts, entry) ||
+						this._getFromLT(alts, entry) ||
+						alts.defaultIcon, resolution);
 		}
 	},
 	 
@@ -67,8 +68,8 @@ dojo.declare("folio.Config", null, {
 	 * typically they should be used as a basis for constructing an rforms Template.
 	 * An example of a MetadataProfile:
 	 * {"items": [
-	 * 		"http://purl.org/dc/terms/title", 
-	 * 		"http://purl.org/dc/terms/description"]
+	 *		"http://purl.org/dc/terms/title", 
+	 *		"http://purl.org/dc/terms/description"]
 	 * }
 	 *  
 	 * @param {Object} entry that the MetadataProfile should be used for.
@@ -77,11 +78,11 @@ dojo.declare("folio.Config", null, {
 	getMPForLocalMD: function(entry) {
 		var alts = this.definitions["MPMap-localMetadata"];
 		return this._resolveMPName(
-				 this._getFromBT(alts, entry)
-				 || this._getFromServices(alts, entry)
-				 || this._getFromAT(alts, entry)
-				 || this._getFromLT(alts, entry)
-				 || alts["defaultMP"]);
+				 this._getFromBT(alts, entry) ||
+					this._getFromServices(alts, entry) ||
+					this._getFromAT(alts, entry) ||
+					this._getFromLT(alts, entry) ||
+					alts.defaultMP);
 	},
 	
 	/**
@@ -92,8 +93,8 @@ dojo.declare("folio.Config", null, {
 	 */
 	getDefaultMP: function() {
 		var alts = this.definitions["MPMap-localMetadata"];
-		if (alts["defaultMP"]){
-			return  this._resolveMPName(alts["defaultMP"]);
+		if (alts.defaultMP){
+			return this._resolveMPName(alts.defaultMP);
 		} else {
 			return "";
 		}
@@ -131,16 +132,16 @@ dojo.declare("folio.Config", null, {
 		}
 		
 		return this._resolveMPName(
-				this._getFromBT(altsExternal, entry)
-				 || this._getFromBT(altsLocal, entry)
-				 || this._getFromServices(altsExternal, entry)
-				 || this._getFromServices(altsLocal, entry)
-				 || this._getFromAT(altsExternal, entry)
-				 || this._getFromAT(altsLocal, entry)
-				 || this._getFromLT(altsExternal, entry)
-				 || this._getFromLT(altsLocal, entry)
-				 || altsExternal["defaultMP"]
-				 || altsLocal["defaultMP"]);
+				this._getFromBT(altsExternal, entry) ||
+					this._getFromBT(altsLocal, entry) ||
+					this._getFromServices(altsExternal, entry) ||
+					this._getFromServices(altsLocal, entry) ||
+					this._getFromAT(altsExternal, entry) ||
+					this._getFromAT(altsLocal, entry) ||
+					this._getFromLT(altsExternal, entry) ||
+					this._getFromLT(altsLocal, entry) ||
+					altsExternal.defaultMP ||
+					altsLocal.defaultMP);
 	},
 	
 	getMPLanguages: function() {
@@ -152,9 +153,9 @@ dojo.declare("folio.Config", null, {
 	getMPForType: function(type) {
 		var alts = this.definitions["MPMap-localMetadata"];
 		if (alts.AT == null) {
-			return this._resolveMPName(alts["defaultMP"]);
+			return this._resolveMPName(alts.defaultMP);
 		}
-		return this._resolveMPName(alts.AT[type] || alts["defaultMP"]);
+		return this._resolveMPName(alts.AT[type] || alts.defaultMP);
 	},
 	getComments: function() {
 		return this.definitions.comments;
@@ -178,34 +179,38 @@ dojo.declare("folio.Config", null, {
 		return iconStruct.base+iconStruct.filename;
 	},
 	_resolveMPName: function(mPName) {
-		return this.definitions["MPName2Id"][mPName];
+		var resolve = this.definitions.MPName2Id[mPName];
+		if (resolve && !resolve.label) {
+			resolve.lavel = this.definitions.labelFallback;
+		}
+		return  resolve || {items: [mPName], label: this.definitions.labelFallback};
 	},
 	_getFromServices: function(services2values, entry) {
 	},
 	_getFromBT: function(types2values, entry) {
 		var bt = entry.getBuiltinType();
 		if (bt !== folio.data.BuiltinType.NONE &&
-			types2values["BT"]) {
+			types2values.BT) {
 			for (var key in folio.data.BuiltinType) {
 				if (folio.data.BuiltinType[key] === bt) {
-					return types2values["BT"][key];
+					return types2values.BT[key];
 				}
 			}
 		}
 	},
 	_getFromLT: function(types2values, entry) {
 		var lt = entry.getLocationType();
-		if (types2values["LT"]) {
+		if (types2values.LT) {
 			for (var key in folio.data.LocationType) {
 				if (folio.data.LocationType[key] === lt) {
-					return types2values["LT"][key];
+					return types2values.LT[key];
 				}
 			}
 		}
 	},
 	_getFromMT: function(types2values, entry) {
 		var mt = entry.getMimeType();
-		var alts = types2values["MT"];
+		var alts = types2values.MT;
 		if (alts == null || mt == null) {
 			return;
 		}
@@ -219,21 +224,27 @@ dojo.declare("folio.Config", null, {
 	},
 
 	_getFromAT: function(types2values, entry) {
-		if (!types2values["AT"]) {
+		if (!types2values.AT) {
 			return;
 		}
 		var md = entry.getMetadata();
 		if (md != null) {
 			var statements = md.find(entry.getResourceUri(), folio.data.RDFSchema.TYPE);
-			var atMap = types2values["AT"]
-			for (var i=0;i<statements.length;i++) {
-				if (atMap[statements[i].getValue()]) {
-					return atMap[statements[i].getValue()];
+			var atArr = types2values.AT;
+			for (var ind=0;ind<atArr.length;ind++) {
+				var at = atArr[ind];
+				for (var i=0;i<statements.length;i++) {
+					var value = statements[i].getValue();
+					if (at.type && at.type === value) {
+						return at.mp || value;
+					} else if (at.prefix && value.lastIndexOf(at.prefix, 0) === 0) {
+						return at.mp || value;
+					}
 				}
 			}
 		}
 	},
 	_getMPFromInnerRef: function(types2MPs){
-		return types2MPs["internalReferenceMP"];
+		return types2MPs.internalReferenceMP;
 	}
 });

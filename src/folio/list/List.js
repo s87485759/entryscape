@@ -319,9 +319,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		}
 	},
 	showDetails: function(detailsNode, entry) {
-		var viewport = dijit.getViewport();
-		var width = Math.floor((viewport.w < 600 ? viewport.w: 600 ) * 0.70),
-			height = Math.floor((viewport.h < 700 ? viewport.h: 700) * 0.70);
+		var bb = __confolio.application.getBoundingBox();
+		debugger;
+		var width = Math.floor((bb.w < 600 ? bb.w: 600 ) * 0.70),
+			height = Math.floor((bb.h < 700 ? bb.h: 700) * 0.70);
 		folio.util.launchToolKitDialog(detailsNode, function(innerNode, onReady) {
 			dojo.style(innerNode, {
 										width: width+"px",
@@ -350,7 +351,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			dijit.focus(details.domNode);
 			onReady();
 			details.resize();
-		}, {x: viewport.w-75, y: 100, noArrow: true});
+		}, {x: bb.x+bb.w-75, y: 100, noArrow: true});
 	},
 	showMenu: function(entry, index, event) {
 		console.log("launch menu");

@@ -81,6 +81,27 @@ folio.data.getContextForResource = function(entry) {
 	}
 };
 
+folio.data.getLabel = function(entry) {
+	var config = __confolio.application.getConfig();
+	var itemStore = __confolio.application.getItemStore();
+	var vb = folio.data.getLabelRForms(config, itemStore, entry, false);
+	if (vb) {
+		return vb.getValue();
+	}
+	return folio.data.getPlainLabel(entry);
+}
+
+folio.data.getLabelRForms = function(config, itemStore, entry, createIfMissing) {
+	var mp = config.getMPForLocalMD(entry);
+	if (!mp || !mp.label) {
+		return;
+	}
+	var template = itemStore.createTemplateFromChildren([mp.label]);
+	var graph = new rdfjson.Graph(entry.getLocalMetadata().exportRDFJSON());
+	var rootBinding = rforms.model.match(graph, entry.getResourceUri(), template);
+	return rforms.model.findFirstValueBinding(rootBinding, createIfMissing);
+}
+
 folio.data.getLabelRaw = function(entry) {
 	var builtinType = entry.getBuiltinType();
 	var result;
@@ -108,7 +129,7 @@ folio.data.getLabelRaw = function(entry) {
 	}
 	return folio.data.getStringFromProperties(entry, [folio.data.DCSchema.TITLE, folio.data.DCTermsSchema.TITLE]);
 };
-folio.data.getLabel = function(entry) {
+folio.data.getPlainLabel = function(entry) {
 	//var label = folio.data.getStringFromProperties(entry, [folio.data.DCTermsSchema.TITLE, folio.data.DCSchema.TITLE, folio.data.FOAFSchema.NAME]);
 	var label = folio.data.getLabelRaw(entry);
 	if (!label) {

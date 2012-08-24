@@ -121,7 +121,7 @@
 		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
 	},
 	"LT": {
-		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "book.png"},
 		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
 		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
 	}

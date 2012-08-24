@@ -30,6 +30,19 @@
 .navigationBar .search {
 	background-image: url(icons/dkit/16x16/search.png);
 }
+
+.navigationBar .home {
+	background-image: url(icons/dkit/16x16/home.png);
+}
+
+.navigationBar .user {
+	background-image: url(icons/dkit/16x16/user.png);
+}
+
+.navigationBar .guest {
+	background-image: url(icons/dkit/16x16/user-gray.png);
+}
+
 .viewMap .icon.comment {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACk0lEQVQ4jX1TX0hTcRQ+24ix18qgUpAeWi8FsUEgBAbVHiLJhzKyJ+3PHpIaUdvYIBAcUT0Y4apRkNFfg0i2pWUFNTLN0trd2qppqGPtNmtqm07d3emce0eM/viDDz6+853vd36XcwFKz8r1ADtcAObHACeDANYimB95DlBzDqCyCv4+Kg3AdqdsVFmDBrAKbkJYZRNmGTInTW0VDHJgbSvAEl1JQM0ZahS0ZPaUt0QLzU9S2DeaQ/GnhGJGkjlr5a5oQWMXPGqboIX6duViWGeiMQUVNXt3XhvDkJjHkbSE41MFTEwrYP6FNK6xR20Pecmvgk0NFLD7Igc0Gi8M49tEHoNJCSMpCWM/JDmIwTw6IWFQlHCQPOylKRrhQCcFmLs5oNfdN4UvRhewP76AQ1/zKNBt4W8KmLPWH89jgDzsBZvQK38PDqBxZvwfc9j1eQ6fjcyRaR5fjc9TgwLmrHGtmzz+Tznknt8BNEH65vssdoRn8UF0Fh+S4VEshz3DCpiz1km1e+S5Fcwi9ygB/A6r4DvqFfHKYAbb32Vkw91QlswKOoizdp1qV8lzzCfyE3xwfIACTKd4WaqXN0ek1t5JPE/va3s9jZcGptHzRgFz1rjGnjLy0hOqoe4yBSytBDnJJjhXtUTR0ZPCsy/T6Aqk8XQRzFnjGnuo2SmPX2EsLpJ+G8CJIZ6knorJDa0xbPIm0fF0Ai1+Eetux5E1rtFz98mrbdz/xzpXGAAO+jhER6YPe+/EseF+AjX20HfS2gh7qFEn/ydrt/7jf+BTdZgDapc1Rwq7boyh1hGeoVu3QBP9SNUWgDWbi+v7v6MEmGiCSUKAYARLH8DqjYs0lZ4VeoBDPmU3zF205m6AMv2iLb8A1d76c/PiJYkAAAAASUVORK5CYII=);
 }

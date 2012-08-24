@@ -50,14 +50,15 @@ dojo.declare("folio.editor.RFormsLabelEditor", [dijit._Widget], {
 			var template = itemStore.createTemplateFromChildren([mp.label]);
 			this.entry.setRefreshNeeded();
 			this.entry.refresh(dojo.hitch(this, function() {
-				this._displayedValue = folio.data.getLabel(this.entry);
+				this._valueBinding = folio.data.getLabelRForms(this.application.getConfig(), itemStore, this.entry, true);
+				this._displayedValue = this._valueBinding.getValue();
+				if (this._displayedValue === "") {
+					this._displayedValue = folio.data.getLabel(this.entry);					
+				}
 				this.textBox.set("value", this._displayedValue);
 				if (this.select) {
 					this.textBox.focusNode.select();
 				}
-				this.graph = new rdfjson.Graph(this.entry.getLocalMetadata().exportRDFJSON());
-				this._rootBinding = rforms.model.match(this.graph, this.entry.getResourceUri(), template);
-				this._valueBinding = this._findOrCreateChildBinding(this._rootBinding);
 			}));
 		}));
 	},
@@ -88,62 +89,8 @@ dojo.declare("folio.editor.RFormsLabelEditor", [dijit._Widget], {
 		var modDate = dojo.date.stamp.fromISOString(this.entry.getModificationDate());		
 		this.entry.getContext().communicator.saveJSONIfUnmodified(
 				this.entry.getLocalMetadataUri(),
-				this.graph.exportRDFJSON(), modDate.toUTCString(),
+				this._valueBinding.getGraph().exportRDFJSON(), modDate.toUTCString(),
 				onSuccess, onError);
 		return false;
-	},
-	_findOrCreateChildBinding: function(binding) {
-		if (binding instanceof rforms.model.ValueBinding) {
-			return binding;
-		}
-		var cbs = binding.getItemGroupedChildBindings();
-		if (cbs.length > 0) {
-			var childItem = binding.getItem().getChildren()[0];
-			var vbs = cbs[0];
-			if (vbs.length === 0) {
-				var b = rforms.model.create(binding, childItem, {});
-				if (b instanceof rforms.model.ValueBinding) {
-					b.setLanguage(dojo.locale);
-				}
-				return this._findOrCreateChildBinding(b);
-			} else {
-				if (!childItem instanceof rforms.template.Text) {
-					return this._findOrCreateChildBinding(vbs[0]);					
-/*				} else if (childItem.getNodetype() === "LANGUAGE_LITERAL") {
-					var vb = vbs[0];
-					var result = {};
-					for (var i=0;i<vbs.length;i++) {
-						var lang = vbs[i].getLanguage();
-						if (lang == null) {
-							result.emptyLanguageValue = vbs[i];
-						} else {
-							if (lang == dojo.locale) {
-								result.perfectLocaleLanguageValue = vbs[i];
-							} else if (lang.substring(0, 1) == dojo.locale.substring(0, 1)) {
-								result.localeLanguageValue = vbs[i];
-							} else if (lang.indexOf("en") != -1) {
-								result.englishLanguageValue = vbs[i];
-							} else {
-								result.anyLanguageValue = vbs[i];
-							}
-						}
-					}
-					return result.perfectLocaleLanguageValue 
-						|| result.localeLanguageValue 
-						|| result.englishLanguageValue 
-						|| result.emptyLanguageValue
-						|| vb;*/
-				} else {
-					var vb = vbs[0];
-					for (var i=0;i<vbs.length;i++) {
-						if (vbs[i].getValue() === this._displayedValue) {
-							vb = vbs[i];
-							break;
-						}
-					}
-					return vb;
-				}
-			}
-		}
 	}
 });

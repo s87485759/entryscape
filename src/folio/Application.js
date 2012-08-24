@@ -1,3 +1,4 @@
+/*global dojo,folio,__confolio, console,window,rforms*/
 /*
  * Copyright (c) 2007-2010
  *
@@ -43,10 +44,22 @@ dojo.declare("folio.Application", null, {
 	// Public API 
 	//===================================================
 	getItemStore: function(callback) {
-		this.itemStoreDeferred.addCallbacks(callback);
+		if (callback) {
+			if (this.itemStore) {
+				callback(this.itemStore);
+			} else {
+				this.itemStoreDeferred.addCallbacks(callback);				
+			}
+		} else {
+			return this.itemStore;
+		}
 	},
 	getDialog: function() {
 		return this.dialog;
+	},
+	getBoundingBox: function() {
+		var vm = dojo.query(".viewMap", dojo.body())[0];
+		return dojo.position(vm);
 	},
 	getRepository: function() {
 		return this.repository;
@@ -105,7 +118,7 @@ dojo.declare("folio.Application", null, {
 		dojo.locale = dojo.i18n.normalizeLocale(locale);
 		if (!__confolio.isBuild()) {
 			try {
-				dojo["require"]("folio.nls.folio"+"_"+dojo.locale);			
+				dojo["require"]("folio.nls.folio"+"_"+dojo.locale);	 //Written like this to avoid preparsing by dojo Shrinksafe
 			} catch(e) {}
 		}		
 
@@ -130,7 +143,7 @@ dojo.declare("folio.Application", null, {
 	        dojo.requireLocalization("dojo.cldr", "gregorian");		
 	        dojo.requireLocalization("dojo.cldr", "currency");		
 	        dojo.requireLocalization("dojo.cldr", "number");		
-		} catch(e) {}
+		} catch(e2) {}
 		dojo.publish("/confolio/localeChange", [{locale: locale}]);
 	},
 	openContext: function(contextRepresentativeEntry) {

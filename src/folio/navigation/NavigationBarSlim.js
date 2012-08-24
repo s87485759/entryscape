@@ -1,3 +1,4 @@
+/*global dojo,dijit,folio*/
 /*
  * Copyright (c) 2007-2010
  *
@@ -26,12 +27,11 @@ dojo.require("dojo.fx.easing");
  * Same as NavigationBar, but with a smaller design.
  */
 dojo.declare("folio.navigation.NavigationBarSlim", folio.navigation.NavigationBar, {
-	minimal: false,
 	templatePath: dojo.moduleUrl("folio", "navigation/NavigationBarSlimTemplate.html"),
 	
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
-		dojo.place(this.controlMenuNode, document.body);
+		dojo.place(this.controlMenuNode, dojo.query(".viewMap", dojo.body())[0]);
 		this._blurLayer = dojo.create("div", {style: {top: "0px", width: "100%", height: "100%", display: "none", position: "absolute", "z-index": 5}}, document.body);
 		dojo.connect(this._blurLayer, "click", this, this._hideControlMenu);
 	},
@@ -68,7 +68,7 @@ dojo.declare("folio.navigation.NavigationBarSlim", folio.navigation.NavigationBa
 			dojo.attr(this.profilePictureNode, "innerHTML", "");
 			var imageUrl = folio.data.getFromMD(entry, folio.data.FOAFSchema.IMAGE);
 			var config = this.application.getConfig();
-			var backup = folio.data.isUser(entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame")
+			var backup = folio.data.isUser(entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame");
 			dojo.create("img", {src: imageUrl || backup, style: {width: "100px"}}, this.profilePictureNode);
 		});
 		if (this.userEntry) {
