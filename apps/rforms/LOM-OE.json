@@ -1,6 +1,38 @@
 {
  "id":"LOM-OE",
  "ontologies": ["http://localhost:8080/ontologies/Model0.rdf"],
+ "auxilliary": [
+    {
+    "id": "LOM-OE-Title",
+    "nodetype": "LANGUAGE_LITERAL",
+    "@type": "text",
+    "description": {"en": "This is the title of the resource"},
+    "styles": [
+     "LanguageControlled",
+     "TextFormItem"
+    ],
+    "property": "http://purl.org/dc/terms/title",
+    "label": {
+     "sl": "Naslov",
+     "ro": "Titlu",
+     "hu": "Cím",
+     "hi": "शीर्षक ",
+     "de": "Titel",
+     "el": "Τίτλος",
+     "sv": "Titel",
+     "bg": "Заглавие",
+     "fr": "Titre",
+     "en": "Title",
+     "ru": "Название",
+     "et": "Pealkiri",
+     "es": "Título"
+    },
+    "cardinality": {
+     "min": 1,
+     "pref": 1
+    }
+   }
+ ],
  "root": {
   "content": [
    {
@@ -100,36 +132,7 @@
      "pref": 1
     }
    },
-   {
-    "id": "LOM-OE-Title",
-    "nodetype": "LANGUAGE_LITERAL",
-    "@type": "text",
-    "description": {"en": "This is the title of the resource"},
-    "styles": [
-     "LanguageControlled",
-     "TextFormItem"
-    ],
-    "property": "http://purl.org/dc/terms/title",
-    "label": {
-     "sl": "Naslov",
-     "ro": "Titlu",
-     "hu": "Cím",
-     "hi": "शीर्षक ",
-     "de": "Titel",
-     "el": "Τίτλος",
-     "sv": "Titel",
-     "bg": "Заглавие",
-     "fr": "Titre",
-     "en": "Title",
-     "ru": "Название",
-     "et": "Pealkiri",
-     "es": "Título"
-    },
-    "cardinality": {
-     "min": 1,
-     "pref": 1
-    }
-   },
+   {id: "LOM-OE-Title"},
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",
