@@ -101,7 +101,8 @@
 				{"id": "telmap:predecessor#literal"},
 				{"id": "telmap:predecessor#uri"},
 				{"id": "telmap:successor#literal"},
-				{"id": "telmap:successor#uri"}
+				{"id": "telmap:successor#uri"},
+				{"id": "telmap:sector"},
 			]
 		},
 		{
@@ -156,7 +157,14 @@
 			"content":[
 				{"id": "telmap:basedOn"},
 				{"id": "telmap:method"},
-				{"id": "telmap:uses#Approach"}
+				{"id": "telmap:uses#Approach"},
+				{"id": "telmap:valueProposition"},
+				{"id": "telmap:keyInnovativeElements"},
+				{"id": "telmap:usedTechnology"},
+				{"id": "telmap:learningProcesses"},
+				{"id": "telmap:obstructor"},
+				{"id": "telmap:supporter"},
+				{"id": "telmap:lifeCycleSupport"}
 			]
 		},
 		{
@@ -1144,6 +1152,86 @@
 			"cardinality": {"pref": 1, "min": 1},
 	  		"type": "text",
 			"nodetype": "LANGUAGE_LITERAL"
+  		},
+  		{
+	  		"id": "telmap:valueProposition",
+	  		"property": "http://purl.org/telmap/valueProposition", 
+	  		"label": {
+	  			"en": "Value proposition"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:keyInnovativeElements",
+	  		"property": "http://purl.org/telmap/keyInnovativeElements",
+	  		"label": {
+	  			"en": "Key innovative elements for the innovations developed"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:usedTechnology", 
+	  		"property": "http://purl.org/telmap/usedTechnology", 
+	  		"label": {
+	  			"en": "Used technologies (name of the output, how it was applied)"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:learningProcesses", 
+	  		"property": "http://purl.org/telmap/learningProcesses", 
+	  		"label": {
+	  			"en": "Learning processes supported by the project"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:obstructor", 
+	  		"property": "http://purl.org/telmap/obstructor", 
+	  		"label": {
+	  			"en": "Events, drivers or factors that obstructed the project from reaching its goals"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:supporter", 
+	  		"property": "http://purl.org/telmap/supporter", 
+	  		"label": {
+	  			"en": "Events, drivers or factors that supported the project to reach its goals"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:lifeCycleSupport", 
+	  		"property": "http://purl.org/telmap/lifeCycleSupport", 
+	  		"label": {
+	  			"en": "Support for lifecycle of e-learning"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text", 
+			"nodetype": "LITERAL"
+  		},
+  		{
+	  		"id": "telmap:sector",
+	  		"property": "http://purl.org/telmap/sector", 
+	  		"label": {
+	  			"en": "Sector/domain adressed"
+	  		},
+			"cardinality": {"pref": 1},
+	  		"type": "text",
+			"nodetype": "LITERAL"
   		},
 		{
 	  		"id": "telmap:cordis:shortName", 
