@@ -115,7 +115,6 @@
 			"content":[
 				{"id": "telmap:dcterms:relation#Assumptions"},
 				{"id": "telmap:idea"},
-				{"id": "telmap:innovation"},
 				{"id": "telmap:influences#Assumptions"}
 			]
 		},
@@ -142,6 +141,7 @@
 			"content":[
 				{"id": "telmap:outcome"},
 				{"id": "telmap:impact"},
+				{"id": "telmap:innovation"},
 				{"id": "telmap:usedBy#literal"},
 				{"id": "telmap:usedBy#uri"},
 				{"id": "telmap:influences#Impact"}
