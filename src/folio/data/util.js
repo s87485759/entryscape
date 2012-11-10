@@ -25,7 +25,7 @@ folio.data.getIconPath = function(entry) {
 };
 
 folio.data.getYoutubeParams = function(/* string */ url, /* function */ callback) {
-	var videoT = url.match(/v=[\w-]*&{0,1}/)[0].slice(2);
+	var videoT = url.match(/(v=|v\/)[\w-]*&{0,1}/)[0].slice(2);
 	var params = null;
 	if (/&/.test(videoT)) {
 		videoT=videoT.slice(0,-1);
@@ -249,7 +249,7 @@ folio.data.services = [
 		{service: "youtube",
 			type: "video",
 			object: "flash",
-			regexp: /youtube\.com.*v=/i,
+			regexp: /youtube\.com.*(v=|v\/-)/i,
 			getParameters: folio.data.getYoutubeParams},
 		{service: "google",
 			type: "video",

@@ -1,5 +1,120 @@
 @import url("../icons.css");
 
+.viewController .navigationBar {
+	position: relative;
+}
+
+.siteMap {
+	position: relative;
+	height: 100%;
+}
+
+.siteMap .viewControllerWrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 40px;
+}
+
+.siteMap .viewMapWrapper {
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	width: 100%;
+	bottom: 0px;
+}
+
+
+/* ============= Really small displays ============= */
+@media (max-width: 500px) {
+	body {
+		padding: 0px;
+	}
+	.navigationBar .appName {
+		display: none;
+	}
+	.navigationBar .searchField {
+		width: 160px;
+	}
+	.viewMap {
+		width: auto;
+	}
+	.viewController {
+		width: auto !important;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		position: fixed;
+	}
+}
+	
+/* ============= Small displays ==================== */
+@media (max-width: 767px) and (min-width: 500px){
+	body {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+	.viewMap {
+		width: auto;
+	}
+	.viewController {
+		width: auto !important;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		position: fixed;
+	}
+}
+
+/* ============ Medium displays ==================== */
+@media (max-width: 979px) and (min-width: 768px) {
+	.viewMap, .viewController {
+		width: 724px;
+		max-width: 100%;
+	}
+}
+/* ============ Medium large displays ==================== */
+@media (min-width: 980px) and (max-width: 1199px) {
+	.viewMap, .viewController {
+		width: 940px;
+		max-width: 100%;
+	}
+}
+
+
+/* ============ Large displays ======================= */
+@media (min-width: 1200px) {
+	.viewMap, .viewController {
+		width: 1170px;
+		max-width: 100%;
+	}
+}
+
+.viewMap, .viewController {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.viewController, .viewControllerWrapper {
+	background: black;
+}
+
+/* ===========Brighten icons in navigationbar since they are on black background now.=======*/
+.siteMap .viewController .icon {
+    opacity:0.85;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=85)";
+    filter:alpha(opacity=85);
+}
+
+.siteMap .viewController .icon:hover {
+    opacity:1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=100)";
+    filter:alpha(opacity=100);
+    zoom:1
+}
+
+
 /*Logo should be < 240x60*/
 .navigationBar .logo {
 	background:transparent url('logo.png') no-repeat top left;
@@ -11,10 +126,12 @@
 
 .navigationBar .appName {
 	left: 95px;
+	color: white;
 }
 
 .navigationBar .appSentence {
 	left: 95px;
+	color: white;
 }
 
 
@@ -29,14 +146,14 @@
 /* Generic approach for themes*/
 .confolio.search.column1 .groupHeader,
 .distinctBackground {
-	background: #E6E6E6;
+	background: #EEE;
 }
 .distinctThickBorder {
-	border-color: #E6E6E6;
+	border-color: #EEE;
 	border-width: 5px;
 }
 .distinctThinBorder {
-	border-color: #E6E6E6;
+	border-color: #EEE;
 	border-width: 1px;
 }
 
@@ -56,7 +173,7 @@
 .navigationBar .dijit {
 	color: black;
 }
-.viewController, .confolio {
+.confolio {
 	background: white;
 }
 
@@ -69,7 +186,7 @@
 /*Skelleton*/
 .tundra .dijitSplitterV, .tundra .dijitSplitterH,
 .confolioPanel {
-	background: #E6E6E6;
+	background: #EEE;
 }
 
 /* Borders*/
@@ -80,7 +197,7 @@
 .breadcrumbs .listMode,
 .breadcrumbs,
 .listChildren .iconView.selected {
-	border-color: #E6E6E6;	
+	border-color: #EEE;	
 }
 
 /*Background*/
@@ -118,7 +235,7 @@
 .details .top .resourceSpace,
 .details .top .url,
 .details .center .bottom {
-	background: #E6E6E6;
+	background: #EEE;
 }
 
 .details .center .extInfoPane > div:first-child, /*first-child selectors separate because of ie6*/

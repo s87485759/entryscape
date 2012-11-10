@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="themes/favicon16.ico">
+	<title>JQuery experiment</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var esNS = "http://scam.sf.net/schema#";
+
+		Entry = (function() {
+			var f = function(data) {
+				this.init(data);
+			};
+			var euri,ruri, muri;
+			var d;
+			f.prototype.init = function(data) {
+				d = data;
+				//Extract uris from RDF/JSON format.
+				for (var res in data.info) {
+					if (data.info.hasOwnProperty(res) &&
+						data.info[res].hasOwnProperty(esNS+"resource")) {
+						euri = res;
+						ruri = data.info[res][esNS+"resource"][0].value;
+						break;
+					}
+				}
+			};
+			f.prototype.getEntryURI = function() {
+				return euri;
+			};
+			f.prototype.getResourceURI = function() {
+				return ruri;
+			};
+			f.prototype.getEntryInfo = function() {
+				return d.info;
+			};			
+			f.prototype.getLocalMetadata = function() {
+				return d.metadata;
+			};
+			f.prototype.getExternalMetadata = function() {
+				return d["cached-external-metadata"];
+			};
+			f.prototype.getRelations = function() {
+				return d.relations;
+			};
+			f.prototype.getRights = function() {
+				return d.rights;
+			};
+			f.prototype.getResource = function() {
+				return d.resource;
+			};
+			
+			return f;
+		})();			
+	</script>
+	<script type="text/javascript">
+		var base = "http://localhost:8080/scam/";
+		var context = "1";
+		var entry = "_top";
+		var topURI = base + context+ "/resource/"+entry;
+		$.ajax({
+			url: base+context+"/entry/"+entry+"?includeAll&format=application/json",
+			type: "GET",
+			dataType: "json",
+			success: function(data) {
+				var body = $("body");
+				$.each(data.resource.children, function(index, value) {
+					var entry = new Entry(value);
+					body.append("<div>"+entry.getResourceURI()+"</div>");
+					//alert(JSON.stringify(data));
+				});
+			}
+		});
+	</script>
+  </head>
+  <body>
+  </body>
+</html>

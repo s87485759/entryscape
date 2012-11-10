@@ -193,10 +193,10 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 			this.userId = this.user.id;
 			dojo.attr(this.userFieldNode, "innerHTML", this.user.user);
 			dojo.attr(this.userFieldNode, "href", this.application.getHref(this.application.getRepository()+"_principals/entry/"+this.userId, "profile")); //this.user.user
-			if (this.userIconNode) {
-				dojo.attr(this.userIconNode, "href", this.application.getHref(this.application.getRepository()+"_principals/entry/"+this.userId, "profile")); //this.user.user				
-				dojo.style(this.userIconNode, "display", "");
-				dojo.style(this.guestIconNode, "display", "none");
+			if (this.profileIconNode) {
+				dojo.attr(this.profileIconNode, "href", this.application.getHref(this.application.getRepository()+"_principals/entry/"+this.userId, "profile")); //this.user.user				
+				dojo.style(this.profileIconNode, "display", "");
+				dojo.style(this.signInIconNode, "display", "none");
 			}
 			dojo.attr(this.loginStatusNode, "innerHTML", this.resourceBundle.logoutLink);
 		} else {
@@ -204,12 +204,12 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 			dojo.attr(this.userFieldNode, "innerHTML", this.resourceBundle.guestUser);
 			dojo.attr(this.userFieldNode, "href", "");
 			dojo.attr(this.loginStatusNode, "innerHTML", this.resourceBundle.loginLink);
-			if (this.userIconNode) {
-				dojo.style(this.userIconNode, "display", "none");
-				dojo.style(this.guestIconNode, "display", "");
+			if (this.profileIconNode) {
+				dojo.style(this.profileIconNode, "display", "none");
+				dojo.style(this.signInIconNode, "display", "");
 			}
-			if (this.homeIconNode) {
-				dojo.style(this.homeIconNode, "display", "none");
+			if (this.folderIconNode) {
+				dojo.style(this.folderIconNode, "display", "none");
 			}
 			this.home = undefined;
 		}
@@ -218,15 +218,15 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 			dojo.style(this.homeLinkNodeWrapper, "display", "");
 			dojo.style(this.settingsLinkNodeWrapper, "display", "");
 			dojo.attr(this.homeLinkNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
-			if (this.homeIconNode) {
-				dojo.attr(this.homeIconNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
-				dojo.style(this.homeIconNode, "display", "");
+			if (this.folderIconNode) {
+				dojo.attr(this.folderIconNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
+				dojo.style(this.folderIconNode, "display", "");
 			}
 		} else {
 			dojo.style(this.homeLinkNodeWrapper, "display", "none");
 			dojo.style(this.settingsLinkNodeWrapper, "display", "none");
-			if (this.homeIconNode) {
-				dojo.style(this.homeIconNode, "display", "none");
+			if (this.folderIconNode) {
+				dojo.style(this.folderIconNode, "display", "none");
 			}
 		}
 	},

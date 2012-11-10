@@ -110,6 +110,19 @@
 	right: 40px;
 }
 
+.navigationBar.slim .area1 .signin {
+	background: transparent;
+	color: white;
+	border-style: none;
+	padding: 0px 2px 2px 2px;
+	margin: 0px 0px 0px 10px;
+	border-radius: 2px;
+}
+.navigationBar.slim .area1 .signin:hover {
+	background: grey;
+	cursor: pointer;
+}
+
 .controlMenu.distinctThickBorder {
 	top: 36px;
 	right: 0px;
@@ -171,7 +184,6 @@
 
 /*----------- Breadcrumbs -----------*/
 .breadcrumbs {
-	padding-left: 0.5em;
 	border-bottom-width: 5px;
 	border-bottom-style: solid;
 	-webkit-touch-callout: none;
@@ -181,6 +193,25 @@
 	-ms-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+}
+
+.breadcrumbs .ownerBar {
+	padding: 0.3em;
+	font-size: large;
+	min-height: 1em;
+}
+
+.breadcrumbs .ownerBar .icon {
+	vertical-align: middle;
+	margin: 0px;
+}
+
+.breadcrumbs .ownerBar .icon.home {
+	margin-left: 10px;
+}
+
+.breadcrumbs .bcNode {
+	padding-left: 0.5em;
 }
 
 .breadcrumbs .bicon {

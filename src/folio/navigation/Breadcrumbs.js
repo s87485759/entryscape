@@ -248,23 +248,28 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 	_draw: function() {
 		//draw the breadcrumbs.
 		dojo.attr(this.breadcrumbs, "innerHTML", "");
-		if (this.crumbDijits) {
+/*		if (this.crumbDijits) {
 			dojo.forEach(this.crumbDijits, function(inst) {inst.destroy();});
-		}
+		}*/
 		this.crumbDijits = [];
 		var trail = false;
 		dojo.forEach(this.stack, dojo.hitch(this, function(crumb, index) {
-			var label = index == 0 ? this._getContextLabel(crumb): folio.data.getLabel(crumb);
-			var cls = crumb == this.current ? "label selected" : "label";
-			var crumbNode = dojo.create("div", {"class": "crumb"}, this.breadcrumbs);
+//			var cls = crumb == this.current ? "label selected" : "label";
+			var crumbNode;
 			if (index === 0) {
-				dojo.create("span", {"class": "crumbSeparatorRectangular distinctBackground"}, crumbNode);
+				this._drawOwnerBar(crumb);
+				return;
+			} else if (index === 1) {
+				crumbNode = dojo.create("div", {"class": "crumb"}, this.breadcrumbs);
+				dojo.create("span", {"class": "crumbSeparatorRectangular distinctBackground"}, crumbNode);				
 			} else {
+				crumbNode = dojo.create("div", {"class": "crumb"}, this.breadcrumbs);
 				var arrow = dojo.create("span", {"class": "crumbSeparatorArrow distinctBackground"}, crumbNode);
 				dojo.create("div", null, arrow);
 			}
 			var sep = dojo.create("span", {"class": "icon menu"}, crumbNode);
 			dojo.connect(sep, "onclick", dojo.hitch(this,this._showChoicesDialog, sep, crumbNode));
+			var label = folio.data.getLabel(crumb);
 			if (crumb == this.current) {
 				trail = true;
 				dojo.create("span", {innerHTML: label}, crumbNode);
@@ -278,11 +283,49 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 //			arr.push("<span class='crumb'><span class='choices'><span class='choicesLabel'>▼</span></span><span class='"+cls+"'>"+label+"</span></span>");
 		}));
 	},
+	_drawOwnerBar: function(entry) {
+		var acl = dojo.filter(folio.data.getACLList(entry), function(principalRow) {
+			return principalRow.admin === true;
+		});
+		var count = acl.length;
+		var oEntries = [];
+		var done = dojo.hitch(this, function() {
+			if (oEntries.length === 1) {
+				var name = folio.data.getLabelRaw(oEntries[0]) || oEntries[0].resource.name;
+				dojo.attr(this.ownerBarNode, "innerHTML", name);
+				dojo.attr(this.profileNode, "href", this.application.getHref(oEntries[0].getUri(), "profile"));
+				dojo.style(this.ownerIconsNode, "display", "");					
+			} else {
+				dojo.style(this.ownerIconsNode, "display", "none");
+				dojo.attr(this.ownerBarNode, "innerHTML", this._getContextLabel(entry));				
+			}
+		});
+		var f = function(ownerEntry) {
+			if (ownerEntry && ownerEntry.resource && ownerEntry.resource.homecontext === entry.getId()) {
+				oEntries.push(ownerEntry);
+			}
+			count--;
+			if (count === 0) {
+				done();
+			}
+		};
+		
+		if (acl.length > 0) {
+			for (var i=0;i<acl.length;i++) {
+				this.application.getStore().loadEntry(acl[i].uri, {limit: 0, sort: null}, f);
+			}
+		} else {
+			done();
+		}
+	},
 	_showChoicesDialog: function(sep, crumb) {
-		var index = dojo.indexOf(this.breadcrumbs.children, crumb);
+		var index = dojo.indexOf(this.breadcrumbs.children, crumb)+1;
 
 		var f = dojo.hitch(this, function(entry) {
-			folio.data.getChildren(entry, dojo.hitch(this, function(children) {
+			folio.data.getChildren(entry, dojo.hitch(this, function(chldr) {
+				var children = dojo.filter(chldr, function(child) {
+					return folio.data.isList(child);
+				});
 				var prepareDialog = dojo.hitch(this, function(innerNode, onReady) {
 					if(children && children.length>0){
 						if (children.length > 20) {
@@ -302,11 +345,17 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 						}
 						));
 					}
-					dojo.forEach(children, function(child, index) {
+					dojo.forEach(children, function(child, idx) {
 						if (this.current === child) {
 							dojo.create("span", {innerHTML: folio.data.getLabel(child)}, innerNode);
 						} else {
-							dojo.create("a", {href: this.application.getHref(child), innerHTML: folio.data.getLabel(child)}, innerNode);						
+							if (folio.data.isLinkLike(child) && !folio.data.isFeed(child) && child.getBuiltinType() !== folio.data.BuiltinType.RESULT_LIST) {
+								folio.data.getLinkedLocalEntry(child, dojo.hitch(this, function(linkedEntry) {
+									dojo.create("a", {href: this.application.getHref(linkedEntry), innerHTML: folio.data.getLabel(child)}, innerNode);									
+								}));
+							} else {
+								dojo.create("a", {href: this.application.getHref(child), innerHTML: folio.data.getLabel(child)}, innerNode);								
+							}
 						}
 						dojo.create("br", {}, innerNode);
 					}, this);
@@ -323,9 +372,8 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			this.application.getStore().loadEntry(this.stack[index].getContext().getUri()+"/entry/_systemEntries", {limit: 0, sort: null}, f);
 		} else  if (index == 0){
 			f = dojo.hitch(this, function(entry) {
-				folio.data.getAllChildren(entry, dojo.hitch(this, function(children) {
+				folio.data.getAllChildren(entry, dojo.hitch(this, function(chldr) {
 					var prepareDialog = dojo.hitch(this, function(innerNode, onReady) {
- 						
 						if (children.length > 20) {
 							dojo.style(innerNode, "height", "300px");
 							dojo.style(innerNode, "overflow", "auto");

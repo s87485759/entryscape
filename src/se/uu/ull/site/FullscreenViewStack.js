@@ -27,7 +27,8 @@ dojo.declare("se.uu.ull.site.FullscreenViewStack", [dijit.layout._LayoutWidget, 
 	//=================================================== 
 	// Inherited Attributes 
 	//===================================================
-	templateString: "<div class='viewMap widescreen'><div dojoType='dijit.layout.BorderContainer' style='height: 100%' dojoAttachPoint='bc' gutters='false'><div class='viewController' dojoType='dijit.layout.ContentPane' region='top'><div class='inline' dojoAttachPoint='controlNode'></div></div><div dojoType='dijit.layout.ContentPane' region='center'><div dojoAttachPoint='viewNode' style='height: 100%'></div></div></div></div>",
+//	templateString: "<div class='viewMap widescreen'><div dojoType='dijit.layout.BorderContainer' style='height: 100%' dojoAttachPoint='bc' gutters='false'><div class='viewController' dojoType='dijit.layout.ContentPane' region='top'><div class='inline' dojoAttachPoint='controlNode'></div></div><div dojoType='dijit.layout.ContentPane' region='center'><div dojoAttachPoint='viewNode' style='height: 100%'></div></div></div></div>",
+	templatePath: dojo.moduleUrl("se.uu.ull.site", "FullscreenViewStackTemplate.html"),
 	widgetsInTemplate: true,
 
 	//===================================================
@@ -98,7 +99,7 @@ dojo.declare("se.uu.ull.site.FullscreenViewStack", [dijit.layout._LayoutWidget, 
 	},
 	resize: function() {
 		this.inherited("resize", arguments);
-		this.bc.resize();
+//		this.bc.resize();
 		if (this._view && this._view.resize) {
 			this._view.resize();
 		}

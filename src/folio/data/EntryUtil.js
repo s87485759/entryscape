@@ -19,6 +19,7 @@
 
 dojo.provide("folio.data.EntryUtil");
 dojo.require("folio.data.List");
+dojo.require("rforms.model.Engine");
 
 folio.data.extractEntryInfo = function(entry) {
 	entry.localMetadataUri = entry.entryInfo.base+entry.entryInfo.contextId+"/metadata/"+entry.entryInfo.entryId;

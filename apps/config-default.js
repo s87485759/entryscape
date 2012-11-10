@@ -4,7 +4,7 @@
  */
 __confolio.addConfig({
 
-"title":	"EntryStore",
+"title":	"EntryScape",
 "startContext": "1",
 "username": "Donald",
 "password": "donalddonald",
@@ -15,7 +15,7 @@ __confolio.addConfig({
 "helpUrl": "http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": "../info/about-my.html",
 "scamPath": "scam",   /*This is default, can be left out*/
-"definitionsPath": "definitions-OE",
+"definitionsPath": "definitions",
 "startButtons": "true",
 "theme": "default",
 
@@ -27,11 +27,11 @@ supportedLanguageMap: {
 },
 "viewMap": {
 		"manager": "se.uu.ull.site.FullscreenViewStack",
-			"controller": "folio.navigation.NavigationBar",
+			"controller": "folio.navigation.NavigationBarSlim",
 			"startView": "default",
 			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
 					  {"name": "start", "class": "folio.apps.StartPage"},
-					  {"name": "profile", "class": "folio.apps.Profile"},
+					  {"name": "profile", "class": "folio.profile.Profile"},
 					  {"name": "search", "class": "folio.apps.Search"},
 					  {"name": "about", "class": "folio.apps.About"},
 					  {"name": "signup", "class": "folio.apps.Signup"},

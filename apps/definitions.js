@@ -87,7 +87,7 @@
     "video/x-ms-wmv": {"en": "Video: WMV"}
   },
   "specialIcons": {
-  	"link": {"base": "themes/icons/oxygen/", "filename": "video.png"},
+  	"link": {"base": "themes/icons/oxygen/", "filename": "link.png"},
 	"RSS":  {"base": "themes/icons/oxygen/", "filename": "RSS.png", "16x16": true},
 	"portfolio": {"base": "themes/icons/oxygen/", "filename": "book.png"},
 	"folder": {"base": "themes/icons/oxygen/", "filename": "folder.png"},

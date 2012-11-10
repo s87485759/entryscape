@@ -1,4 +1,4 @@
-<div class="navigationBar slim distinctThickBorder">
+<div class="navigationBar slim">
 	<a href="#view=start" class="logo"></a>
 	<div class="appName" dojoAttachPoint="appNameNode"></div>
 	<div class="appSentence" dojoAttachPoint="appSentenceNode"></div>
@@ -31,9 +31,9 @@
 	<div class="area1"><div style="display: table-cell;">
 		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>
 		<span class="search icon" dojoAttachPoint="searchButtonNode" dojoAttachEvent="onclick:_searchClicked" style="vertical-align: middle; margin: 1px;"></span>
-		<a dojoAttachPoint="homeIconNode" class="home icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
-		<a dojoAttachPoint="userIconNode" class="user icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
-		<span dojoAttachPoint="guestIconNode" dojoAttachEvent="onclick:_loginLinkClicked" class="guest icon" style="vertical-align: middle; margin: 1px;"></span>
+		<a dojoAttachPoint="profileIconNode" class="home icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
+		<a dojoAttachPoint="folderIconNode" class="folder icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
+		<button dojoAttachPoint="signInIconNode" dojoAttachEvent="onclick:_loginLinkClicked" class="signin" style="vertical-align: middle;">Sign in</button>
 	</div></div>
 	<div class="area3">
 	</div>

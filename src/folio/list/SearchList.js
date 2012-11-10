@@ -18,7 +18,7 @@
  */
 
 dojo.provide("folio.list.SearchList");
-dojo.require("dijit._Widget");
+dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.list.List");
 
 /**
@@ -30,7 +30,7 @@ dojo.require("folio.list.List");
  * if there are several parent folders one is choosen arbitrarily.
  * 
  */
-dojo.declare("folio.list.SearchList", dijit._Widget, {
+dojo.declare("folio.list.SearchList", dijit.layout._LayoutWidget, {
 	//===================================================
 	// Public api
 	//===================================================
@@ -45,6 +45,7 @@ dojo.declare("folio.list.SearchList", dijit._Widget, {
 	// Inherited methods
 	//===================================================
 	buildRendering: function() {
+		this.domNode = this.srcNodeRef;
 		this.application = __confolio.application;
 		this._list = new folio.list.List(
 						{application: this.application,
@@ -54,10 +55,20 @@ dojo.declare("folio.list.SearchList", dijit._Widget, {
 						 detailsLink: true,
 						 openFolderLink: true,
 						 publishFocusEvents: false}, 
-						this.srcNodeRef);
+						 dojo.create("div", null, this.srcNodeRef));
 		dojo.style(this._list.domNode.parentNode, "height", "100%");
 		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
 	},
+	getChildren: function() {
+		return [this._list];
+	},
+	resize: function(size) {
+		this.inherited("resize", arguments);
+		if (this._list != null) {
+			this._list.resize();			
+		}
+	},
+
 	//===================================================
 	// Private methods
 	//===================================================

@@ -20,6 +20,7 @@
 @import "../list/list.css";
 @import "../comment/comment.css";
 @import "../navigation/navigation.css";
+@import "../profile/profile.css";
 
 html, body {
 	background: #fff;
@@ -551,64 +552,6 @@ a:hover, .link:hover {
 }
 .confolio .resultCounter {
 	float:right;
-}
-
-/* ------UserProfile---------*/
-.confolio.userProfile .profile,
-.confolio.userProfile .rights,
-.confolio.userProfile .latestMaterial {
-	margin: 0px;
-	padding: 10px;
-	background: white;
-}
-.confolio.userProfile .latestMaterial {
-	margin-left: 0px;
-}
-.confolio.userProfile .latestMaterial {
-	width: 50%;
-}
-
-.confolio.userProfile .profile>div {
-	padding: 1em;
-}
-
-.confolio.userProfile .profile .profileInfo {
-	margin-left: 140px;
-	min-height: 110px;
-}
-.confolio.userProfile .profile .profilePicture {
-	position: absolute;
-	left: 20px;
-}
-
-.confolio.userProfile .rights .groupsHeader {
-	margin-top: 0px;
-}
-
-.confolio.userProfile .userImage,
-.confolio.userProfile .groupImage,
-.confolio.userProfile .homeContextImage {
-	background-repeat: no-repeat;
-	height: 32px;
-	width: 32px;
-	margin-right: 0.5em;
-}
-
-.confolio.userProfile .userImage {
-	background-image: url(../../folio/icons_oxygen/32x32/user.png);
-}
-.confolio.userProfile .groupImage {
-	background-image: url(../../folio/icons_oxygen/32x32/users2.png);
-}
-.confolio.userProfile .homeContextImage {
-	background-image: url(../../folio/icons_oxygen/32x32/book.png);
-}
-
-.confolio.userProfile .profile h1 {
-	font-size: x-large;
-	padding: 0px;
-	margin: 0px;
-	margin-bottom: 0.3em;
 }
 
 /*------Help view--------------------------*/
