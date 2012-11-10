@@ -107,7 +107,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 							this.FOAFAPContentPane.set("content", node);
 						 	this.entry = entry;
 							this.apPlain = new folio.editor.RFormsEditorPlain({},node);
-							this.apPlain.setIncludeLevel("recommended");
+							this.apPlain.setIncludeLevel("optional");
 							//this.FOAFAPContentPane.set('content', this.apPlain);
 							this.apPlain.show(new rdfjson.Graph(this.entry.getLocalMetadata().exportRDFJSON()), this.entry, this.entry.getResourceUri());
 		}));

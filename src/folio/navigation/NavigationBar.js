@@ -254,10 +254,10 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 		}
 	},
 	_settingsClicked: function() {
-		dojo.publish("/confolio/showResourceEditor", [{width: "400px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
+		dojo.publish("/confolio/showResourceEditor", [{width: "700px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
 	},
 	_userFieldClicked: function() {
-		dojo.publish("/confolio/showResourceEditor", [{width: "400px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
+		dojo.publish("/confolio/showResourceEditor", [{width: "700px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
 	},
 	_loginLinkClicked: function() {
 		new folio.security.LoginDialog({

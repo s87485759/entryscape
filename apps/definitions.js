@@ -156,12 +156,13 @@
    "MPName2Id" :{
 	"LOM_OEv1": {"items": ["LOM-hnet", "http://xmlns.com/foaf/0.1/gender"], "label": "LOM-Title"},
 	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
-	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
+	"FOAF_User": {"items": ["foafuser"]},
 	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
 	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-Title"},
 	"Review": {"items": ["http://purl.org/stuff/rev#Review"], "label": "LOM-Title"}
   },
   "rformItems": [
+	  {url: "rforms/EntryScape.json", type: "sirff"},
 	  {url: "../src/rforms/common/LOM.json", type: "sirff"}, 
 	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
 	  {url: "rforms/LOM-hnet.json", type: "sirff"},
