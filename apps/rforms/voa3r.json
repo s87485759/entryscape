@@ -15,7 +15,7 @@
      }
     ]
    }
-  ]
+  ],
   "http://purl.org/eprint/accessRights": [
    {
     "constraints": {
@@ -43,7 +43,7 @@
      {
       "value": "http://purl.org/eprint/accessRights/ClosedAccess",
       "label": {
-       "en": "Closed Access",
+       "en": "Closed Access"
       },
       "description": {
       	"en": "Not available on the public Internet. Access is typically limited to a small number of people and/or corporate bodies and acceptable use is very limited."
