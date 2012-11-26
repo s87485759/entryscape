@@ -156,7 +156,7 @@
      "id": "http://xmlns.com/foaf/0.1/lastName"
     },
     {
-     "id": "http://xmlns.com/foaf/0.1/mbox"
+     "id": "voa3r_http://xmlns.com/foaf/0.1/mbox"
     }
    ],
    "cardinality": {
@@ -977,7 +977,7 @@
     "min": 0,
     "pref": 1
    },
-   "id": "http://xmlns.com/foaf/0.1/mbox",
+   "id": "voa3r_http://xmlns.com/foaf/0.1/mbox",
    "nodetype": "URI",
    "type": "text",
    "property": "http://xmlns.com/foaf/0.1/mbox",
