@@ -16,6 +16,42 @@
     ]
    }
   ]
+  "http://purl.org/eprint/accessRights": [
+   {
+    "constraints": {
+    "http://purl.org/dc/dcam/memberOf": "http://purl.org/eprint/accessRights/"
+    },
+    "choices": [
+     {
+      "value": "http://purl.org/eprint/accessRights/OpenAccess",
+      "label": {
+       "en": "Open Access"
+      },
+      "description": {
+      	"en": "Freely available on the public Internet. Freely available means \"... permitting any users to read, download, copy, distribute, print, search, or link to the full texts of these articles, crawl them for indexing, pass them as data to software, or use them for any other lawful purpose, without financial, legal, or technical barriers other than those inseparable from gaining access to the Internet itself. The only constraint on reproduction and distribution, and the only role for copyright in this domain, should be to give authors control over the integrity of their work and the right to be properly acknowledged and cited\". (BOAI)"
+      }
+     },
+          {
+      "value": "http://purl.org/eprint/accessRights/RestrictedAccess",
+      "label": {
+       "en": "Restricted Access"
+      },
+      "description": {
+      	"en": "Available on the public Internet but access is subject to restrictions or controls. Restrictions may include publishers' embargo periods, rights enforcement, subscription or registration and may incur financial costs. Acceptable use is likely to be limited by licensing conditions."
+      }
+     },
+     {
+      "value": "http://purl.org/eprint/accessRights/ClosedAccess",
+      "label": {
+       "en": "Closed Access",
+      },
+      "description": {
+      	"en": "Not available on the public Internet. Access is typically limited to a small number of people and/or corporate bodies and acceptable use is very limited."
+      }
+     }
+    ]
+   }
+  ]
  },
  "auxilliary": [
   {
@@ -624,6 +660,7 @@
     "min": 0,
     "pref": 1
    },
+   "ontologyUrl": "http://purl.org/eprint/accessRights",
    "id": "http://purl.org/dc/terms/accessRights",
    "constraints": {
     "http://purl.org/dc/dcam/memberOf": "http://purl.org/eprint/accessRights/"
