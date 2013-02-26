@@ -497,7 +497,7 @@ dojo.declare("folio.list.AbstractList", null, {
 					representationType: "informationresource",
 					locationType: "reference",
 					builtinType: builtinTypeString,//entry.getBuiltinType(),
-					metadata: entry.getLocationType() === folio.data.LocationType.LOCAL ? entry.getLocalMetadataUri(): entry.getExternalMetadataUri(),
+					'cached-external-metadata': entry.getLocationType() === folio.data.LocationType.LOCAL ? entry.getLocalMetadataUri(): entry.getExternalMetadataUri(),
 					resource: entry.getResourceUri()}};
 			contacts.getContext().createEntry(linkEntry, dojo.hitch(this, updateEntry), dojo.hitch(d, d.errback));
 		};
