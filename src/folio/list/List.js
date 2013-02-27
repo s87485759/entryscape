@@ -754,7 +754,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			homeContext.loadEntryFromId("_contacts", {}, dojo.hitch(this, function (result) {
 				//TODO, this check needs to be rewritten, depends on specific jdil format.
 				if (result && result.resource && result.resource.children) {
-					var userResUri = user.getResourceUri();
 					var childList=result.resource.children;
 					for (var iter=0; iter<childList.length; iter++) {
 						var mdStub=childList[iter].info["sc:resource"];
