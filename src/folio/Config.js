@@ -231,14 +231,16 @@ dojo.declare("folio.Config", null, {
 		if (md != null) {
 			var statements = md.find(entry.getResourceUri(), folio.data.RDFSchema.TYPE);
 			var atArr = types2values.AT;
-			for (var ind=0;ind<atArr.length;ind++) {
-				var at = atArr[ind];
-				for (var i=0;i<statements.length;i++) {
-					var value = statements[i].getValue();
-					if (at.type && at.type === value) {
-						return at.mp || value;
-					} else if (at.prefix && value.lastIndexOf(at.prefix, 0) === 0) {
-						return at.mp || value;
+			for (var ind in atArr) {
+				if (atArr.hasOwnProperty(ind)) {
+					var at = atArr[ind];
+					for (var i=0;i<statements.length;i++) {
+						var value = statements[i].getValue();
+						if (at.type && at.type === value) {
+							return at.mp || value;
+						} else if (at.prefix && value.lastIndexOf(at.prefix, 0) === 0) {
+							return at.mp || value;
+						}
 					}
 				}
 			}
