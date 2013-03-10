@@ -155,7 +155,7 @@ dojo.declare("folio.data.Entry", null, {
 	},
 	getHomeContext: function() {
 		return this.getInfo().findFirstValue(this.getResourceUri(), folio.data.SCAMSchema.HOME_CONTEXT) ||
-			(this.resource.homecontext != null ? this.getContext().getBaseUri()+this.resource.homecontext : null); //Fallback, old way of setting homecontext.
+			(this.resource != null && this.resource.homecontext != null ? this.getContext().getBaseUri()+this.resource.homecontext : null); //Fallback, old way of setting homecontext.
 	},
 	/*
 	 * @param contextUri should be the uri to the context resource, e.g. http://entrystore.com/store/4
