@@ -413,7 +413,7 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		var term;
 		if (folio.data.isUser(this.entry)) {
 			term = "(creator:" + this.entryUri + "+OR+contributors:" + this.entryUri + ")";
-		} else {
+		} else if (this.homeContext != null){
 			term = "context:"+this.homeContext.getResourceUri().replace(/:/g, "\\%3A");
 		}
 		if (term != null) {
