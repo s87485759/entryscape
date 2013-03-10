@@ -23,6 +23,7 @@ dojo.require("se.uu.ull.site.FullscreenViewStack");
 dojo.require("folio.navigation.NavigationBar");
 dojo.require("folio.apps.TFolio");
 dojo.require("folio.apps.StartPage");
+dojo.require("folio.start.Start");
 dojo.require("folio.apps.Profile");
 dojo.require("folio.apps.Help");
 dojo.require("folio.apps.About");
