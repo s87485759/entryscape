@@ -153,6 +153,21 @@ dojo.declare("folio.data.Entry", null, {
 			return ei.findFirstValue(this.getResourceUri(), folio.data.DCTermsSchema.EXTENT);
 		}
 	},
+	getHomeContext: function() {
+		return this.getInfo().findFirstValue(this.getResourceUri(), folio.data.SCAMSchema.HOME_CONTEXT) ||
+			(this.resource.homecontext != null ? this.getContext().getBaseUri()+this.resource.homecontext : null); //Fallback, old way of setting homecontext.
+	},
+	/*
+	 * @param contextUri should be the uri to the context resource, e.g. http://entrystore.com/store/4
+	 */
+	setHomeContext: function(contextUri) {
+		var info = this.getInfo();
+		var sts = info.find(this.getResourceUri(), folio.data.SCAMSchema.HOME_CONTEXT);
+		for (var i=0;i<sts.length;i++) {
+			info.remove(sts[i]);
+		}
+		info.create(this.getResourceUri(), folio.data.SCAMSchema.HOME_CONTEXT, {type: "uri", value: contextUri});
+	},
 	/**
 	 * @return {Array} of Strings that are entryUris to all lists where this entry is a child.
 	 */

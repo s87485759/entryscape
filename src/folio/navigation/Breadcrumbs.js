@@ -285,7 +285,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 	},
 	_drawOwnerBar: function(entry) {
 		var acl = dojo.filter(folio.data.getACLList(entry), function(principalRow) {
-			return principalRow.admin === true;
+			return principalRow.admin === true || principalRow.mwrite === true || principalRow.rwrite === true;
 		});
 		var count = acl.length;
 		var oEntries = [];
@@ -301,7 +301,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			}
 		});
 		var f = function(ownerEntry) {
-			if (ownerEntry && ownerEntry.resource && ownerEntry.resource.homecontext === entry.getId()) {
+			if (ownerEntry && ownerEntry.getHomeContext() === entry.getResourceUri()) {
 				oEntries.push(ownerEntry);
 			}
 			count--;

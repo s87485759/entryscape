@@ -39,7 +39,8 @@ folio.data.SCAMSchema = {
 	READ: folio.data.SCAMBaseUri+"read",
 	WRITE: folio.data.SCAMBaseUri+"write",
 	HAS_GROUP_MEMBER: folio.data.SCAMBaseUri+"hasGroupMember",
-	HAS_LIST_MEMBER: folio.data.SCAMBaseUri+"hasListMember"
+	HAS_LIST_MEMBER: folio.data.SCAMBaseUri+"hasListMember",
+	HOME_CONTEXT: folio.data.SCAMBaseUri+"homeContext"
 };
 
 folio.data.DCSchema = {

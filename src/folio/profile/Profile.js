@@ -131,9 +131,11 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			dojo.style(this.communitiesButtonNode, "display", "none");			
 			dojo.style(this.communitiesNode, "display", "none");
 			delete this.homeContext;
-			this._showProfileInfo();
-			this._showMembers();
-			this._updateRightPane();
+			this._getHomeContext(dojo.hitch(this, function() {
+				this._showProfileInfo();
+				this._showMembers();
+				this._updateRightPane();
+			}));
 		}
 	/*//Below old group case.
  		dojo.attr(this.principalLabelNode, "innerHTML", this.groupLabel);
@@ -202,11 +204,9 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 	
 	_getHomeContext: function(callback) {
 		delete this.homeContext;
-		if (this.entry && this.entry.resource && this.entry.resource.homecontext) {
-			this.application.getStore().loadEntry({
-					base: this.application.getRepository(), 
-					contextId: "_contexts", 
-					entryId: this.entry.resource.homecontext}, 
+		var hc = this.entry.getHomeContext();
+		if (hc != null) {
+			this.application.getStore().loadEntry(hc, 
 					{},
 					dojo.hitch(this, function(entry) {
 						this.homeContext = entry;
@@ -409,13 +409,22 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		}
 		this._currRecentEntry = this.entry;
 		//TODO: Perhaps also add Link_Reference to the query.
-		this.recentSearchList.show({
-			term: "(creator:" + this.entryUri + "+OR+contributors:" + this.entryUri + ")",
-			builtinType: ["None"],
-			locationType: ["Local", "Link"],
-			sort: "modified+desc",
-			queryType: "solr"
-		});
+		
+		var term;
+		if (folio.data.isUser(this.entry)) {
+			term = "(creator:" + this.entryUri + "+OR+contributors:" + this.entryUri + ")";
+		} else {
+			term = "context:"+this.homeContext.getResourceUri().replace(/:/g, "\\%3A");
+		}
+		if (term != null) {
+			this.recentSearchList.show({
+				term: term,
+				builtinType: ["None"],
+				locationType: ["Local", "Link"],
+				sort: "modified+desc",
+				queryType: "solr"
+			});
+		}
 	},
 	
 	_addToContactList: function(){

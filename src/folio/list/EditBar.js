@@ -47,6 +47,10 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 		if (__confolio.config["showTextButton"] === "false") {
 			dojo.style(this.textButton.domNode, "display", "none");
 		}
+		if (__confolio.config["showCreateObjectButton"] === "true") {
+			dojo.style(this.createButton.domNode, "display", "");
+		}
+		
 		this.localize();
 	},
 	getSupportedActions: function() {
