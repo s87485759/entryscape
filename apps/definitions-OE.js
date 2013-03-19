@@ -121,7 +121,7 @@
 		"sound": 		{"base": "themes/icons/oxygen/", "filename": "sound.png"}
 	},
 	"LT": {
-		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "book.png"},
+		"LINK": 			{"base": "themes/icons/oxygen/", "filename": "html.png"},
 		"LINK_REFERENCE": 	{"base": "themes/icons/oxygen/", "filename": "html.png"},
 		"REFERENCE": 		{"base": "themes/icons/oxygen/", "filename": "html.png"}
 	}
@@ -170,8 +170,8 @@
   },
    "MPName2Id" :{
 	"LOM_OE": {"items": ["LOM-OE"], "label": "LOM-OE-Title"},
-	"FOAF_Group": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
-	"FOAF_User": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
+	"FOAF_Group": {"items": ["entryscape:foaf-group"], "label": "foaf:name"},
+	"FOAF_User": {"items": ["foaf:Person"], "label": "foaf:name"},
 	"DCTerms_Minimal": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
 	"DC_Simple": {"items": ["http://purl.org/dc/terms/title", "http://purl.org/dc/terms/description"], "label": "LOM-OE-Title"},
 	"rformForFolders": {"items": ["rformForFolders"], "label": "LOM-OE-Title"},
@@ -179,13 +179,11 @@
 	"Review": {"items": ["http://purl.org/stuff/rev#Review"], "label": "LOM-OE-Title"}
   },
   "rformItems": [
-      {url: "rforms/telmap.json", type: "sirff"},
-	  {url: "rforms/dc-exhibit.json", type: "exhibit"}, 
-	  {url: "rforms/foaf-exhibit.json", type: "exhibit"}, 
-	  {url: "rforms/LOM-OE.json", type: "sirff"},
-	  {url: "rforms/Europeana.json", type: "sirff"},
-	  {url: "rforms/FolderRform.json", type: "sirff"},
-	  {url: "rforms/voa3r.json", type: "sirff"},
-	  {url: "rforms/Review.json", type: "sirff"}
+	  {"url": "rforms/EntryScape.json", "type": "sirff"},
+	  {"url": "rforms/dc-exhibit.json", "type": "exhibit"}, 
+	  {"url": "rforms/LOM-OE.json", "type": "sirff"},
+	  {"url": "rforms/foaf.json", "type": "sirff"},
+	  {"url": "rforms/FolderRform.json", "type": "sirff"},
+	  {"url": "rforms/Review.json", "type": "sirff"}
   ]
 }
