@@ -1,7 +1,11 @@
-/*global dojo, dijit, se*/
-dojo.provide("se.uu.ull.site.ViewController");
-
-dojo.declare("se.uu.ull.site.ViewController", null, {
+/*global define*/
+define([
+	"dojo/_base/declare",
+	"dojo/_base/lang",
+	"dojo/aspect"],
+function(declare, lang, aspect) {
+	
+return declare(null, {
 	//===================================================
 	// Public attributes
 	//===================================================
@@ -24,7 +28,9 @@ dojo.declare("se.uu.ull.site.ViewController", null, {
 	constructor: function(params) {
 		this.viewMap = params.viewMap;
 		this._hierarchy = [];
-		dojo.connect(this.viewMap, "beforeViewChange", this, this.show);
+		aspect.after(this.viewMap, "beforeViewChange", lang.hitch(this, function(res, args) {
+			this.show.call(this, args[0], args[1]);
+		}));
 	},
 	
 	//===================================================
@@ -52,7 +58,7 @@ dojo.declare("se.uu.ull.site.ViewController", null, {
 	_getHierarchyBranch: function(arrNode, viewName) {
 		for (var i=0;i<arrNode.length;i++) {
 			var node = arrNode[i];
-			if (dojo.isString(node)) {
+			if (lang.isString(node)) {
 				if (node === viewName) {
 					return [viewName];
 				}
@@ -69,4 +75,5 @@ dojo.declare("se.uu.ull.site.ViewController", null, {
 			}
 		}
 	}
+});
 });

@@ -17,8 +17,8 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"extInformationText": "External information about the resource",
-  "locInformationText": "Local information about the resource",
+({"extInformationText": "Original information",
+  "locInformationText": "Provided information",
   "creatorText": "Creator",
   "modifiedText": "Modified",
   "createdText": "Created",

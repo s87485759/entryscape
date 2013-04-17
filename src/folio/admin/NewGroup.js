@@ -73,8 +73,7 @@ dojo.declare("folio.admin.NewGroup", [dijit._Widget, dijit._Templated, folio.adm
 			resource: {"children":[]}, 
 			params: {locationType: "local", builtinType: "Group", representationType: "informationresource"}
 		};
-		this.application.getCommunicator().createEntry(
-			args,
+		this.application.getCommunicator().createEntry(args).then(
 			dojo.hitch(this, function(entry) {
 				// Refresh the list that holds the newly created group
 				this.entry.setRefreshNeeded(true);

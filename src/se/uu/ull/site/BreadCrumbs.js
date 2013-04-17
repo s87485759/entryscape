@@ -1,45 +1,50 @@
-/*global dojo, dijit, se*/
-dojo.provide("se.uu.ull.site.BreadCrumbs");
-dojo.require("se.uu.ull.site.ViewController");
-dojo.require("dijit._Widget");
+/*global define*/
+define([
+	"dojo/_base/declare",
+	"dojo/_base/lang",
+	"dojo/_base/array",
+	"dojo/aspect",
+	"dojo/dom-construct",
+	"dojo/dom-class",
+	"dojo/dom-attr",
+	"./ViewController",
+	"dijit/_Widget"
+],
+function(declare, lang, array, aspect, construct, domClass, attr, ViewController, _Widget) {
 
-dojo.declare("se.uu.ull.site.BreadCrumbs",  [dijit._Widget, se.uu.ull.site.ViewController], {	
+return declare([_Widget, ViewController], {	
 	//===================================================
 	// Inherited methods
 	//===================================================
 	buildRendering: function() {
-        this.domNode = this.srcNodeRef || dojo.create("div", null);
-		dojo.addClass(this.domNode, "breadCrumbs");
+        this.domNode = this.srcNodeRef || construct.create("div", null);
+		domClass.add(this.domNode, "breadCrumbs");
 	},
 	
 	showHierarchy: function(viewName, params, hierarchy) {		
 		var viewMapDef = this.viewMap.getViewMapDef();
-		dojo.attr(this.domNode, "innerHTML", "");
+		attr.set(this.domNode, "innerHTML", "");
 		var nameFound = false;
-		dojo.forEach(hierarchy, function(hierViewName) {
+		array.forEach(hierarchy, function(hierViewName) {
 			if (nameFound) {
 				return;
 			}
 			var viewDef = this._getView(viewMapDef, hierViewName);
-			var link = dojo.create("a", {"href": this.viewMap.getHashUrl(viewDef.name, params),"class": "view"}, this.domNode);
+			var link = construct.create("a", {"href": this.viewMap.getHashUrl(viewDef.name, params),"class": "view"}, this.domNode);
 			if (viewDef.name === viewName) {
 				nameFound = true;
 			} else {
-				dojo.create("span", {"class": "separator", "innerHTML": ">"}, this.domNode);				
+				construct.create("span", {"class": "separator", "innerHTML": ">"}, this.domNode);				
 			}
 
-			dojo["require"](viewDef["class"]);
-			setTimeout(function() {
-				dojo.addOnLoad(dojo.hitch(this, function(link, viewDef) {
-					if (viewDef.name === viewName) {
-						dojo.addClass(link, "current");
-					}
-					var viewCls = eval(viewDef["class"]);
-					var obj = dojo.mixin({}, viewCls.prototype);
-					var label = obj.getLabel(params);
-					dojo.attr(link, "innerHTML", label);
-				}, link, viewDef));
-			}, 1);
+			require([viewDef["class"]], function(viewCls) {
+				if (viewDef.name === viewName) {
+					dojo.addClass(link, "current");
+				}
+				var obj = dojo.mixin({}, viewCls.prototype);
+				var label = obj.getLabel(params);
+				dojo.attr(link, "innerHTML", label);				
+			});
 		}, this);
 	},
 	
@@ -53,4 +58,5 @@ dojo.declare("se.uu.ull.site.BreadCrumbs",  [dijit._Widget, se.uu.ull.site.ViewC
 			}
 		}
 	}
+});
 });

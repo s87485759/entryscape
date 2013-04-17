@@ -25,6 +25,7 @@ dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit._Templated");
 dojo.require("dijit.form.TextBox");
 dojo.require("folio.list.SearchList");
+dojo.require("folio.navigation.PrincipalInfo");
 dojo.require("folio.editor.RFormsPresenter");
 
 
@@ -115,14 +116,13 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		delete this._currFolderEntry;
 		delete this._currFeaturedEntry;
 		delete this._currRecentEntry;
-		this._showProfilePicture();
 		dojo.style(this.foldersNode, "display", "none");
 		if (folio.data.isUser(this.entry)) {
 			dojo.style(this.membersButtonNode, "display", "none");
 			dojo.style(this.communitiesButtonNode, "display", "");
 			dojo.style(this.membersNode, "display", "none");	
 			this._getHomeContext(dojo.hitch(this, function() {
-				this._showProfileInfo();
+				this.principalInfoDijit.show(this.entry);
 				this._showCommunities();
 				this._updateRightPane();
 			}));
@@ -132,43 +132,11 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			dojo.style(this.communitiesNode, "display", "none");
 			delete this.homeContext;
 			this._getHomeContext(dojo.hitch(this, function() {
-				this._showProfileInfo();
+				this.principalInfoDijit.show(this.entry);
 				this._showMembers();
 				this._updateRightPane();
 			}));
 		}
-	/*//Below old group case.
- 		dojo.attr(this.principalLabelNode, "innerHTML", this.groupLabel);
-			//				dojo.attr(this.principalNameLabelNode, "innerHTML", this.groupNameLabel);
-			dojo.attr(this.memberHeaderNode, "innerHTML", this.membershipHeader);
-			dojo.style(this.homeContextRowNode, "display", "none");
-			this._showMembers();
-			this._showRights(dojo.hitch(this, function(){
-				var context = this.accessToContexts.length > 0 ? this.accessToContexts[0].getId() : null;
-				//TODO: Perhaps also add Link_Reference to the query
-				if (context) {
-					console.log("Soker med 1: " + context);
-					var baseURIForContext = this.entry.getContext().getBaseURI();
-					context = baseURIForContext.replace(/:/g, "\\%3A") + context;
-					console.log("Soker med 2: " + context);
-					this.simpleSearchList.show({
-						term: "(resource.rw:" + this.entryUri + "+OR+admin:" + this.entryUri + "+OR+context:" + context + ")",
-						builtinType: ["None"],
-						locationType: ["Local", "Link"],
-						sort: "modified+desc",
-						queryType: "solr"
-					});
-				} else {
-					this.simpleSearchList.show({
-						term: "(resource.rw:" + this.entryUri + "+OR+admin:" + this.entryUri + ")",
-						builtinType: ["None"],
-						locationType: ["Local", "Link"],
-						sort: "modified+desc",
-						queryType: "solr"
-					});
-				}
-			}));
-		}*/
 	},
 
 	//===================================================
@@ -190,18 +158,7 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "profile"); 
 		this.set(this.resourceBundle);
 	},
-	_showProfilePicture: function() {
-		dojo.attr(this.profilePictureNode, "innerHTML", "");
-		var imageUrl = folio.data.getFromMD(this.entry, folio.data.FOAFSchema.IMAGE);
-		var config = this.application.getConfig();
-		var backup = folio.data.isUser(this.entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame");
-		if (window.location.href.indexOf("cookieMonster=true") !== -1) {
-			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, this.profilePictureNode);
-		} else {
-			dojo.create("img", {src: imageUrl || backup, style: {"max-width": "100px"}}, this.profilePictureNode);
-		}
-	},
-	
+		
 	_getHomeContext: function(callback) {
 		delete this.homeContext;
 		var hc = this.entry.getHomeContext();
@@ -215,38 +172,6 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		} else {
 			callback();
 		}
-	},
-	_showProfileInfo: function() {
-		//User info
-		var name = folio.data.getLabelRaw(this.entry) || this.entry.resource.name;
-		dojo.attr(this.principalNameNode, "innerHTML", name);
-
-		//Homecontext
-		dojo.style(this.profileIconsNode, "display", "none");
-		if (this.homeContext) {
-			var name = folio.data.getLabelRaw(this.homeContext) || this.homeContext.alias || this.homeContext.getId();
-			dojo.attr(this.homeContextNode, "title", name);
-			dojo.attr(this.homeContextNode, "href", this.application.getHref(this.application.getRepository()+this.homeContext.getId()+"/entry/_top", "default"));
-			dojo.style(this.profileIconsNode, "display", "");
-			dojo.attr(this.profileDescriptionNode, "innerHTML", folio.data.getDescription(this.homeContext));
-			//In case the quota is given, displays both the actual size + percentage used
-			if(this.homeContext.quota && this.homeContext.quota.quotaFillLevel !== undefined){
-				var quota =" ("+folio.data.bytesAsHumanReadable(this.homeContext.quota.quotaFillLevel);
-				if (this.homeContext.quota.quota !== -1) {
-					quota +="/" + folio.data.bytesAsHumanReadable(this.homeContext.quota.quota) +
-							", " +
-							folio.data.percentageCalculator(this.homeContext.quota.quotaFillLevel, this.homeContext.quota.quota) +
-							")";
-				} else {
-					quota += ")";
-				}
-				dojo.attr(this.homeContextQuotaNode, "innerHTML", quota);
-			} else {
-				dojo.attr(this.homeContextQuotaNode, "innerHTML", "");
-			}
-		}
-		//User metadata
-//		this.profileMDInfoDijit.show(this.entry);
 	},
 	_showCommunities: function() {
 		dojo.removeClass(this.foldersButtonNode, "selected");
@@ -294,7 +219,7 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			}, this);
 		}));
 	},
-	_showFolders: function(callback) {
+	_showFolders: function() {
 		dojo.addClass(this.foldersButtonNode, "selected");
 		dojo.removeClass(this.communitiesButtonNode, "selected");
 		dojo.removeClass(this.membersButtonNode, "selected");
@@ -321,9 +246,6 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 								}
 							}
 						}, this);
-						if (callback) {
-							callback();
-						}
 					}));
 				}));
 			}),

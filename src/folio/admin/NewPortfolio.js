@@ -78,8 +78,7 @@ dojo.declare("folio.admin.NewPortfolio", [dijit._Widget, dijit._Templated, folio
 			resource: resourceObj, 
 			params: {locationType: "local", builtinType: "Context", representationType: "informationresource"}
 		};
-		this.application.getCommunicator().createEntry(
-			args,
+		this.application.getCommunicator().createEntry(args).then(
 			dojo.hitch(this, function(entry) {
 				// Refresh the list that holds the newly created portfolio
 				this.entry.setRefreshNeeded(true);

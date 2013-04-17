@@ -63,12 +63,12 @@ dojo.declare("folio.data.Context", null, {
 	///createReference: function(resourceURI, metadataURI, list, onEntry, onError) {
 	///},
 	moveEntryHere: function(entry, fromListEntry, toListEntry, onSuccess, onError) {
-		this.communicator.moveEntry(entry, fromListEntry, toListEntry, onSuccess, onError);
+		this.communicator.moveEntry(entry, fromListEntry, toListEntry).then(onSuccess, onError);
 	},
 	// remove entry from context
 	removeEntry: function(entry, onSuccess, onError) {
 		var removeTree = folio.data.isList(entry) && folio.data.getChildCount(entry) > 0;
-		this.communicator.removeEntry({entry: entry, recursive: removeTree, onSuccess: dojo.hitch(this, function(mesg) {
+		this.communicator.deleteEntry(entry, removeTree).then(dojo.hitch(this, function(mesg) {
 			//If a non empty list, the remove may have removed an entire tree, 
 			//hence many entries might have disapered and must be removed from cache
 			//(there is currently no REST support to get a list of removed entries)
@@ -93,7 +93,7 @@ dojo.declare("folio.data.Context", null, {
 				unlisted.setRefreshNeeded();
 			}
 			onSuccess();
-		}), onError: onError});
+		}), onError);
 	},
 	getEntryFromEntryURI: function(entryURI) {
 		return this.getEntry(entryURI.slice(entryURI.lastIndexOf("/")+1));
@@ -132,20 +132,21 @@ dojo.declare("folio.data.Context", null, {
 			def = new dojo.Deferred();
 			def.addCallbacks(onEntry, onError);
 			this.deferreds[eId] = def;
-			this.communicator.loadJSONEntry(dojo.mixin({entry: entry, infoUri: entryInfo.infoUri,
-					onEntry: dojo.hitch(this, function(entry) {
-						this.cacheEntry(entry);	// Save entry in cache
-						delete this.deferreds[eId];
-						def.callback(entry);
-					}), onError: dojo.hitch(this, function(message, ioArgs) {
-						delete this.deferreds[eId];
-						def.errback(message, ioArgs);						
-					})}, params)); // get entries from database
+			this.communicator.getEntry(dojo.mixin({entry: entry, infoUri: entryInfo.infoUri}, params)).then(
+				dojo.hitch(this, function(entry) {
+					this.cacheEntry(entry);	// Save entry in cache
+					delete this.deferreds[eId];
+					def.callback(entry);
+				}), dojo.hitch(this, function(message, ioArgs) {
+					delete this.deferreds[eId];
+					def.errback(message, ioArgs);						
+				})
+			); // get entries from database
 		}
 	},
 	createEntry: function(args, onEntry, onError) {
 		args.context = this;
-		this.communicator.createEntry(args, dojo.hitch(this, function(entryId) {
+		this.communicator.createEntry(args).then(dojo.hitch(this, function(entryId) {
 				if (args.parentList) {
 //					args.parentList.resource.push({context: this.getId(), entry: entryId});
 					args.parentList.needRefresh();
@@ -168,7 +169,7 @@ dojo.declare("folio.data.Context", null, {
 	},
 	setAlias: function(newAlias, onSuccess, onFailure) {
 		this.getOwnEntry(dojo.hitch(this, function(entry) {
-			this.communicator.saveJSON(this.getUri()+"/alias", {alias: newAlias}, function(){
+			this.communicator.PUT(this.getUri()+"/alias", {alias: newAlias}).then(function(){
 				entry.alias = newAlias;
 				onSuccess(newAlias);
 			}, onFailure);
@@ -344,16 +345,17 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		entry.info.create(entryInfo.entryUri, folio.data.SCAMSchema.RESOURCE, {"type":"uri", "value": entryInfo.resourceURI});
 		entry.info.create(entryInfo.resourceURI, folio.data.RDFSchema.TYPE, {"type": "uri", "value": folio.data.BuiltinTypeSchema.RESULT_LIST});
 		entry.buiType = folio.data.BuiltinType.RESULT_LIST;
-		this.communicator.loadJSONEntry({entry: entry, infoUri: searchURI, limit: parameters.limit,  
-					onEntry: dojo.hitch(this, function(entry) {
-						var md = entry.getLocalMetadata();
-						if (!entry.resource || !entry.resource.results || entry.resource.results === 0) {
-							var msg = this.resourceBundle.noMatch;
-							md.create(entryInfo.resourceURI, folio.data.DCSchema.DESCRIPTION, {type: "literal", value: msg});
-						}
-						this.cacheEntry(entry);
-						parameters.onSuccess(entry);
-					}), onError: parameters.onError});
+		this.communicator.getEntry({entry: entry, infoUri: searchURI, limit: parameters.limit}).then(
+			dojo.hitch(this, function(entry) {
+				var md = entry.getLocalMetadata();
+				if (!entry.resource || !entry.resource.results || entry.resource.results === 0) {
+					var msg = this.resourceBundle.noMatch;
+					md.create(entryInfo.resourceURI, folio.data.DCSchema.DESCRIPTION, {type: "literal", value: msg});
+				}
+				this.cacheEntry(entry);
+				parameters.onSuccess(entry);
+			}), parameters.onError
+		);
 	},
 	getAlias: function(onLoad) {
 		onLoad("_search");

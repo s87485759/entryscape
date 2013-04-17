@@ -86,11 +86,7 @@ dojo.declare("folio.editor.RFormsLabelEditor", [dijit._Widget], {
 			}
 		}); 
 
-		var modDate = dojo.date.stamp.fromISOString(this.entry.getModificationDate());		
-		this.entry.getContext().communicator.saveJSONIfUnmodified(
-				this.entry.getLocalMetadataUri(),
-				this._valueBinding.getGraph().exportRDFJSON(), modDate.toUTCString(),
-				onSuccess, onError);
+		this.entry.saveLocalMetadata(this._valueBinding.getGraph()).then(onSuccess, onError);
 		return false;
 	}
 });

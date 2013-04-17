@@ -56,7 +56,7 @@ dojo.declare("folio.data.AbstractList", folio.data.List, {
 		return this.size;
 	},
 	getDefaultLimit: function() {
-		return this.entry.context.communicator.defaultLimit;
+		return this.entry.context.communicator.getDefaultLimit();
 	},
 	isPaginated: function() {
 		return this.size === undefined ? true : this.size > this.getDefaultLimit();
@@ -213,9 +213,9 @@ dojo.declare("folio.data.SCAMList", folio.data.AbstractList, {
 	loadChildren: function(limit, offset, onChildren, onError) {
 		this.checkSortChange();
 		if (this._detectMissing(limit, offset)) {
-			this.entry.context.communicator.nextPageJSONEntry({entry: this.entry, infoUri: this.entry.entryInfo.infoUri, 
-			  limit: limit, offset: offset, sort: this.entry.noSort ? undefined : this.sortObj,
-			  onEntry: dojo.hitch(this, function(entry) {
+			this.entry.context.communicator.getEntry({entry: this.entry, infoUri: this.entry.entryInfo.infoUri, 
+			  limit: limit, offset: offset, sort: this.entry.noSort ? undefined : this.sortObj}).then(
+			  dojo.hitch(this, function(entry) {
 				this._importChildren(offset);
 				if (limit == -1) {
 					this.missing = false;
@@ -227,7 +227,7 @@ dojo.declare("folio.data.SCAMList", folio.data.AbstractList, {
 					}
 				}
 				onChildren(this._getChildrenSlice(offset, limit));
-			}), onError: onError});
+			}), onError);
 		} else {
 			onChildren(this._getChildrenSlice(offset, limit));
 		}
@@ -264,7 +264,7 @@ dojo.declare("folio.data.SCAMList", folio.data.AbstractList, {
 		}
 		this._detectMissing(-1, 0);
 		if (this.isSorted() || this.missing) {
-			this.entry.context.communicator.loadJSON(this.entry.getResourceUri(), onChildren, onError);
+			this.entry.context.communicator.GET(this.entry.getResourceUri()).then(onChildren, onError);
 		} else {
 			onChildren(dojo.map(this.childrenE, function(ce) {return ce.getId();}));
 		}

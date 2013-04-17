@@ -27,6 +27,7 @@ dojo.require("dijit.form.Button");
 dojo.require("dijit.form.Form");
 dojo.require("dijit.Tooltip");
 dojo.require("dojox.encoding.base64");
+dojo.require("dojo.string");
 
 /**
  * LoginDialog currently has several purposes:
@@ -90,6 +91,15 @@ dojo.declare("folio.security.LoginDialog", null, {
 
 	constructor: function(params) {
 		dojo.mixin(this, params);
+	},
+	
+	destroyRecursive: function() {
+		if (this.widget) {
+			this.widget.destroyRecursive();
+		}
+		if (this.dialog) {
+			this.dialog.destroyRecursive();			
+		}
 	},
 
 	show: function(noAutomaticLogin) {
@@ -195,7 +205,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 		var w = this.widget;
 		var b = this.resourceBundle;
 		var i, browser, item, text;
-		this.dialog.set("title", b.title);
+		this.dialog.set("title", dojo.string.substitute(b.title, {app :__confolio.config['title']}));
 		w.userLabel.domNode.innerHTML = b.user;
 		w.passwordLabel.domNode.innerHTML = b.password;
 		w.loginButton.set("label", b.logIn);
@@ -240,7 +250,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 		this.setAuthentication(userName, password);
 
 		// Make the login request
-		this.application.getCommunicator().loadJSON(this.application.repository + "login?auth_challenge=false",
+		this.application.getCommunicator().GET(this.application.repository + "login?auth_challenge=false").then(
 			dojo.hitch(this, "setUser"), dojo.hitch(this, "setUser"));
 	},
 		
@@ -275,7 +285,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 			this.setHttpBasicAuth(userName, password);
 
 			// Make the login request
-			this.application.getCommunicator().loadJSON(this.application.repository + "login?auth_challenge=false",
+			this.application.getCommunicator().GET(this.application.repository + "login?auth_challenge=false").then(
 				dojo.hitch(this, "setUser"), dojo.hitch(this, "setUser"));
 			return true;
 		}

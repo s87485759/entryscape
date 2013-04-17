@@ -347,3 +347,82 @@
 	background-repeat: no-repeat;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAWCAYAAADwza0nAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sMHRcCDh9J3n8AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA5klEQVQ4y4XUPy4EQBQH4PFviaxEJWrFRmwlCofgAAoair3AHkOj3FqEaBSOIUJHFEqJSoEIhU+zmsnbeS+ZZjJf3mRmflNwiFKNdXxoVBkv6Af4KIPwgG6ALzIIlwHs4jGDMAjwFr4z+IXNAA8zCE9YquAUrjMI50HXFbxkEPYCvIvfDL5hLcAnGYQbzFVwHnfTpV2zpZSZaq5TSllsdXxHL9jqWbbVgwDtZ6c6yhITwXssVKiD29YD+MRG0O04e3JRqHf+L30SPA3QKl5bsXrGcgCvWkH+wXaABtnXMQxQf5zNifUHJJwjXOWzlD4AAAAASUVORK5CYII=);
 }
+
+
+/* ================PrincipalInfo========================*/
+.confolio .principalInfo {
+	padding: 7px 40px 10px 40px;
+	height: 86px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-bottom-left-radius: 6px;
+	-moz-border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.principalInfoWrapper {
+	position: relative;
+}
+
+.confolio .breadcrumbs .principalInfo {
+	padding: 7px 35px 10px 35px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.confolio .breadcrumbs .principalInfoText {
+	padding: 5px 18px;
+}
+
+.confolio .principalPicture {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top: 2px;
+	left: 0px;
+	padding: 0px;
+	background-color: white;
+	border: 1px solid lightgrey;
+	line-height: 0px;
+}
+
+.confolio .principalInfoText {
+	position: absolute;
+	top: 0px;
+	left: 80px;
+	vertical-align: top;
+	padding: 5px 20px;
+	height: 80px;
+	overflow: hidden;
+}
+
+.confolio .principalPicture img{
+	max-width: 80px;
+	max-height: 80px;
+	display: block;
+	margin: 0 auto;
+}
+
+.confolio .principalInfo h1 {
+	margin: 0px;
+	padding: 0px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #333;
+}
+
+.confolio .principalInfo .icon24 {
+	vertical-align: middle;
+	margin-left: 5px;
+	margin-bottom: 2px;
+}
+
+.confolio .principalInfo .icon24.home {
+	margin-left: 20px;
+}
+
+.confolio .principalInfo .principalDescription {
+	font-size: large;
+	margin: 5px 0px;
+}

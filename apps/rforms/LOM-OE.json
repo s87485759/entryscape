@@ -132,7 +132,7 @@
      "pref": 1
     }
    },
-   {id: "LOM-OE-Title"},
+   {"id": "LOM-OE-Title"},
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",

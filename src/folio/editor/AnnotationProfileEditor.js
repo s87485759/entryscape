@@ -272,17 +272,11 @@ dojo.declare("folio.editor.AnnotationProfileEditor", [dijit.layout.ContentPane, 
 			theLoader.getFormModel().removeEmptyValues();
 			var fm2jdil = new shame.engine.FM2JDIL(this.loaderLoc.template, this.entry.getContext().namespaces);
 			var graph = fm2jdil.convert(theLoader.getFormModel());
+
+
 			var modDate = dojo.date.stamp.fromISOString(this.entry.getModificationDate());
 			
-			this.entry.getContext().communicator.saveJSONIfUnmodified(
-					this.entry.getLocalMetadataUri(), 
-					{metadata: graph.getRoot()}, modDate.toUTCString(),
-					onSuccess, onError);
-			/*this.entry.getContext().communicator.saveJSONFormModel(
-					this.entry.getLocalMetadataUri(), 
-					theLoader.getFormModel(), 
-					this.annotationprofile,
-					onSuccess, onError);*/
+			this.entry.saveLocalMetadata(graph.getRoot()).then(onSuccess, onError);
 		});
 		/*if (this.changeToLinkReference) {
 			var entryURI = this.entry.info.getRoot()["@id"];

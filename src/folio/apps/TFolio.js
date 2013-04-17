@@ -40,6 +40,13 @@ dojo.declare("folio.apps.TFolio", [dijit._Widget, dijit._Templated], {
 		//Hack since using a percentage for details gives a few pixels to little.
 		this.inherited("startup", arguments);
 		this.bc.startup();
+		this.watch("selected", dojo.hitch(this, function() {
+			if (this.get("selected")) {
+				this.listView._list.listenForKeyEvents();
+			} else {
+				this.listView._list.stopListenForKeyEvents();
+			}
+		}));
 	},
 	resize: function() {
 		this.inherited("resize", arguments);

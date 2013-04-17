@@ -24,7 +24,7 @@
 
 
 /*Logo should be < 240x60*/
-.navigationBar .logo {
+.navigationBar .logo, .loginDialog .logo {
 	background:transparent url('logo.png') no-repeat top left;
 }
 
@@ -43,7 +43,7 @@
 }
 
 
-.navigationBar .appName:after {
+.navigationBar .appName:after, .loginDialog .appName:after {
 	content: "EntryScape";
 }
 
@@ -56,6 +56,11 @@
 .distinctBackground {
 	background: #EEE;
 }
+
+.rforms.rformsEditor .rformsTopLevel {
+	background: transparent;
+}
+
 .distinctThickBorder {
 	border-color: #EEE;
 	border-width: 5px;

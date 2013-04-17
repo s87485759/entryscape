@@ -41,7 +41,7 @@ dojo.declare("folio.WidgetApplicationAbstract", [dijit._Widget, dijit._Templated
 	},
 	startup:function() {
 		this.inherited("startup", arguments);
-		this.communicator = new folio.data.Communicator(); //Set up a communicator
+		this.communicator = folio.data.Communicator;
 		var repositoryNS = new jdil.Namespaces({namespaces: {"rest":this.repository}});
 		this.namespaces = new jdil.Namespaces({url: this.dataDir+"namespaces", parent: repositoryNS}); //Set up the namespace
 		

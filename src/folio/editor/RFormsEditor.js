@@ -98,7 +98,7 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 				template = itemStore.detectTemplate(graph, entry.getResourceUri(), explicitPlusMp);
 			}
 //			var template = itemStore.createTemplateFromChildren([folio.data.DCTermsSchema.TITLE,folio.data.DCTermsSchema.DESCRIPTION]);
-			var binding = rforms.model.match(this.graph, entry.getResourceUri(), template);
+			var binding = rforms.model.Engine.match(this.graph, entry.getResourceUri(), template);
 			var includeLevel = this.optional ? "optional" : this.recommended ? "recommended" : "mandatory";
 			this.editor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: includeLevel, compact: this.compact}, dojo.create("div", null, this.rformsEditorNode));			
 		}));
@@ -138,10 +138,10 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 		}); 
 
 		var modDate = dojo.date.stamp.fromISOString(this.entry.getModificationDate());		
-		this.entry.getContext().communicator.saveJSONIfUnmodified(
+		this.application.getCommunicator().PUT(
 				this.entry.getLocalMetadataUri(),
-				this.graph.exportRDFJSON(), modDate.toUTCString(),
-				onSuccess, onError);
+				this.graph.exportRDFJSON(), modDate.toUTCString())
+				.then(onSuccess, onError);
 	},
 	doneEditing: function() {
 	},

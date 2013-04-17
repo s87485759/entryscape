@@ -66,19 +66,18 @@ dojo.declare("folio.admin.PortfolioExportImportRemove", [dijit._Widget, dijit._T
 	_removeContext: function(){
 		var contextet = this.entry.getContext();
 		var storet = contextet.getStore();
-		this.application.getCommunicator().removeEntry({
-			entry: this.entry,
-			onSuccess:dojo.hitch(this, function(argv){
+		this.application.getCommunicator().deleteEntry(this.entry).then(
+			dojo.hitch(this, function(argv){
 				dojo.attr(this.deleteMsgAreaNode, 'innerHTML','Context successfully removed!');
 				this.application.dispatch({action: "childrenChanged", entry: this.entry, source: this});
 				this.removeButton.set('disabled', true);
 				this.RMDialog.hide();
 			}),
-			onError:dojo.hitch(this, function(argv){
+			dojo.hitch(this, function(argv){
 				//TODO: Display a message somewhere...
 				dojo.attr(this.deleteMsgAreaNode, 'innerHTML','Removal of this context failed!');
 			})
-		});
+		);
 	},
 	_createNewFileUpload: function(){
 		if(this.fileUploadChange){

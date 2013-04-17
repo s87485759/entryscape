@@ -364,7 +364,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			remove.show({
 			   entry: entry,
 			   parent: this.list,
-			   index: index + this.currentPage*this.application.getCommunicator().defaultLimit,
+			   index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit(),
 			   application: this.application,
 			   accessToThrash: trashAccess
 			   });
@@ -373,7 +373,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			remove.show({
 			   entry: entry,
 			   parent: this.list,
-			   index: index + this.currentPage*this.application.getCommunicator().defaultLimit,
+			   index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit(),
 			   application: this.application,
 			   accessToThrash: false
 			   });
@@ -409,13 +409,13 @@ dojo.declare("folio.list.AbstractList", null, {
 			if(listsWithEntry.length === 1){
 				var entryObj = folio.data.normalizeEntryInfo(listsWithEntry[0]);
 				entryObj.refreshMe = true;
-	            entry.getContext().getStore().loadEntry(entryObj, {limit: this.application.getCommunicator().defaultLimit},
+	            entry.getContext().getStore().loadEntry(entryObj, {limit: this.application.getCommunicator().getDefaultLimit()},
 				   dojo.hitch(this,function(result){
 				   	this.application.setClipboard({
 						entry:entry,
 						operation: "cut",
 						from:result,
-						index: index + this.currentPage*this.application.getCommunicator().defaultLimit
+						index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit()
 					});
 				   }),
 				   dojo.hitch(this,function(){
@@ -432,7 +432,7 @@ dojo.declare("folio.list.AbstractList", null, {
                 entry: entry,
                 operation: "cut",
                 from: this.list,
-                index: index + this.currentPage*this.application.getCommunicator().defaultLimit
+                index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit()
         });
 	},
 	_handle_paste: function(entry, index, event) {

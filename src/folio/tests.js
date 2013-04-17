@@ -36,7 +36,7 @@ folio.tests.setup = function(){ // setUp
 			folio.tests.baseUri = "http://localhost:8080"
 			folio.tests.isLoaded = true;
 			folio.tests.startEntry = "/rest/3/entry/1";
-			folio.tests.com = new folio.data.Communicator();
+			folio.tests.com = folio.data.Communicator;
 			folio.tests.nss = new jdil.Namespaces({url: "/Confolio/WebRoot/testdata/namespaces", namespaces: {rest: "rest/3/"}});
 			folio.tests.store = new folio.data.Store({communicator: folio.tests.com, namespaces: folio.tests.nss});
 			folio.tests.store.loadEntry(folio.tests.startEntry, {},

@@ -17,11 +17,24 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"accountLabel": "Account",
+({
+  "name": "Name",
+  "displayedName": "Name that will be displayed",
+  "email": "Email",
+  "info": "Info",
+  "accountLabel": "Account",
   "profileLabel": "Profile",
+  "noProfilePictureLabel": "No profile picture",
+  "urlProfilePictureLabel": "Web address to profile picture",
+  "localProfilePictureLabel": "Uploaded profile picture",
+  "urlProfilePictureTest": "Test profile picture",
+  "localProfilePictureUpload": "Upload new",
   "userNameLabel": "Username",
   "passwdLabel": "Password",
-  "passwd2Label": "Verify password",
+  "oldPassword": "Old password",
+  "newPassword": "New password",
+  "verifyNewPassword": "Verify new password",
+  "mismatchPassword": "Please verify the new password by repeating it correctly!",
   "languageLabel": "Preferred language",
   "changeSettingsButtonLabel": "Change settings",
   "cancelButtonLabel": "Cancel",

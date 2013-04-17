@@ -34,6 +34,25 @@ folio.data.extractEntryInfo = function(entry) {
 	//		
 };
 
+folio.data.isSystemEntry = function(entryId) {
+	if (entryId.indexOf("_") == 0) {
+		switch(entryId) {
+			case "_all":
+			case "_top":
+			case "_featured":
+			case "_unlisted":
+			case "_latest":
+			case "_systemEntries":
+			case "_feeds":
+			case "_contacts":
+			case "_comments":
+			case "_trash":
+				return true;
+		}
+	}
+	return false;
+},
+
 //graph.getCanonicalURI(graph.getFirstObjectValue("sc:resource"));
 //---------The three types------------------
 folio.data._excavateTypes = function(entry) {
@@ -99,8 +118,8 @@ folio.data.getLabelRForms = function(config, itemStore, entry, createIfMissing) 
 	}
 	var template = itemStore.createTemplateFromChildren([mp.label]);
 	var graph = new rdfjson.Graph(entry.getLocalMetadata().exportRDFJSON());
-	var rootBinding = rforms.model.match(graph, entry.getResourceUri(), template);
-	return rforms.model.findFirstValueBinding(rootBinding, createIfMissing);
+	var rootBinding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
+	return rforms.model.Engine.findFirstValueBinding(rootBinding, createIfMissing);
 }
 
 folio.data.getLabelRaw = function(entry) {
@@ -625,7 +644,7 @@ folio.data.entryFromStub = function(context, stub) {
 			throw ("RDFJSON change made this approach obsolete, really needed?");
 //			einfo = folio.data.normalizeEntryInfo(stub.info["@id"]);
 		}
-		if (einfo.entryId.charAt(0) == "_") {
+		if (folio.data.isSystemEntry(einfo.entryId)) {
 			entry = new folio.data.SystemEntry({entryInfo: einfo, context: context, communicator: context.communicator});
 		} else {
 			entry = new folio.data.Entry({entryInfo: einfo, context: context, communicator: context.communicator});
@@ -647,8 +666,7 @@ folio.data.loadUserGroups = function(store, /* folio.data.Entry */ user, /* func
 	var groupArray = new Array();
 	var groupsLoaded = 0;
 	var groupUriArray = new Array();
-	user.getContext().communicator.loadJSON(
-			user.getUri().replace(/entry/, "relation") + "?includeAll",
+	user.getContext().communicator.GET(user.getUri().replace(/entry/, "relation") + "?includeAll").then(
 			dojo.hitch(this, function(data) {
 				var rgraph = new rdfjson.Graph(data);
 				var arr = rgraph.find(null, folio.data.SCAMSchema.HAS_GROUP_MEMBER, {"type": "uri", "value": user.getUri()});

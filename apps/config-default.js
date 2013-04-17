@@ -8,7 +8,7 @@ __confolio.addConfig({
 "startContext": "1",
 "username": "Donald",
 "password": "donalddonald",
-"showLogin": "true",
+"showLogin": "false",
 "unloadDialog": "false",
 "CLI": "false",
 "possibleToCommentEntry": "true",
@@ -18,6 +18,7 @@ __confolio.addConfig({
 "definitionsPath": "definitions",
 "startButtons": "true",
 "theme": "default",
+"showCreateObjectButton": "false",
 
 supportedLanguageMap: {
 		"de":"Deutsch",
@@ -26,15 +27,16 @@ supportedLanguageMap: {
 		"zh-cn":"中文(简体)"
 },
 "viewMap": {
-		"manager": "se.uu.ull.site.FullscreenViewStack",
-			"controller": "folio.navigation.NavigationBarSlim",
-			"startView": "default",
-			"views": [{"name": "default", "class": "folio.apps.TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
-					  {"name": "start", "class": "folio.apps.StartPage"},
-					  {"name": "profile", "class": "folio.profile.Profile"},
-					  {"name": "search", "class": "folio.apps.Search"},
-					  {"name": "about", "class": "folio.apps.About"},
-					  {"name": "signup", "class": "folio.apps.Signup"},
-					  {"name": "help", "class": "folio.apps.Help", "constructorParams": {"initialHelpPage": "intro"}}]
+		"manager": "se/uu/ull/site/FullscreenViewStack",
+			"controller": "folio/navigation/NavigationBarSlim",
+			"startView": "start",
+			"views": [{"name": "default", "class": "folio/apps/TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
+					  {"name": "start", "class": "folio/start/Start"},
+					  {"name": "profile", "class": "folio/profile/Profile"},
+					  {"name": "settings", "class": "folio/settings/Settings"},
+					  {"name": "search", "class": "folio/apps/Search"},
+					  {"name": "about", "class": "folio/apps/About"},
+					  {"name": "signup", "class": "folio/apps/Signup"},
+					  {"name": "help", "class": "folio/apps/Help", "constructorParams": {"initialHelpPage": "intro"}}]
 		}
 });

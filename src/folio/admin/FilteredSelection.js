@@ -23,11 +23,13 @@ dojo.require("dijit._Templated");
 dojo.require("folio.Application");
 dojo.require("dijit.form.FilteringSelect");
 dojo.require("folio.data.Constants");
-dojo.require("dojo.data.ItemFileWriteStore");
+dojo.require("dojo.store.Memory");
 dojo.require("folio.data.EntryUtil");
 dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit.form.Button");
+
+dojo.require("dojo.data.ItemFileWriteStore");
 
 dojo.require("dojo.parser");
 
@@ -126,7 +128,8 @@ dojo.declare("folio.admin.FolderSelect", [dijit._Widget, dijit._Templated, folio
 		this.folders = [];
 		//this.folderSelect.value = "";
 		//this.folderSelect.set("value", "");
-		this.folderSelect.store = new dojo.data.ItemFileWriteStore({data: {identifier: "id", label: "name", items:[]}});
+		var store = new dojo.store.Memory({data: []});
+		this.folderSelect.set("store", store); //new dojo.data.ItemFileWriteStore({data: {identifier: "id", label: "name", items:[]}}));
 		if (this.user && this.topFolder) {
 			this._recursiveBuildFolders(this.topFolder);
 		}
@@ -137,7 +140,7 @@ dojo.declare("folio.admin.FolderSelect", [dijit._Widget, dijit._Templated, folio
 			if (/^[^_]/.test(list.getId()) || /top/.test(list.getId()) || (this.displayAll && /_all/.test(list.getId()))) {
 				// add the list to the filteringselect
 				var resourceName = folio.data.getLabelRaw(list) || list.getId();
-				this.folderSelect.store.newItem({id: list.getUri(), name: resourceName});
+				this.folderSelect.store.put({id: list.getUri(), name: resourceName});
 				this.folders[list.getUri()] = list;
 				if(/top/.test(list.getId())) {
 					this.folderSelect.setValue(list.getUri());

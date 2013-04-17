@@ -69,8 +69,7 @@ dojo.declare("folio.admin.PortfolioDetails", [dijit._Widget, dijit._Templated, f
 		this.hideChangeAliasError();
 		// Get the alias
 
-		this.entry.getContext().communicator.loadJSON(
-				this.entry.getResourceUri() + "/alias",
+		this.entry.getContext().communicator.GET(this.entry.getResourceUri() + "/alias").then(
 				dojo.hitch(this, function(aliasobj) {
 					var alias = aliasobj["alias"];
 					if (!alias) {
@@ -106,7 +105,7 @@ dojo.declare("folio.admin.PortfolioDetails", [dijit._Widget, dijit._Templated, f
 			metadata.create(this.entry.getResourceUri(), folio.data.DCTermsSchema.DESCRIPTION, {type: "literal", value: desc});		
 		}
 
-		this.entry.getContext().communicator.saveJSON(this.entry.getLocalMetadataUri(), metadata.exportRDFJSON(),
+		this.entry.getContext().communicator.PUT(this.entry.getLocalMetadataUri(), metadata.exportRDFJSON()).then(
 				dojo.hitch(this, function(data) {
 					this.entry.setRefreshNeeded();
 					this.entry.refresh(dojo.hitch(this, function(refreshed) {
@@ -154,9 +153,9 @@ dojo.declare("folio.admin.PortfolioDetails", [dijit._Widget, dijit._Templated, f
 		if (this.aliasField.attr("value")) {
 			aliasobj["alias"] = this.aliasField.attr("value");
 		}
-		this.entry.getContext().communicator.saveJSON(
+		this.entry.getContext().communicator.PUT(
 				this.entry.getResourceUri() + "/alias",
-				aliasobj,
+				aliasobj).then(
 				dojo.hitch(this, function(data) {
 					// Hide ev error messages
 					this.hideChangeAliasError();

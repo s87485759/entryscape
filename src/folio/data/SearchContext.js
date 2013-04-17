@@ -167,8 +167,8 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		entry.info.create(entryInfo.entryUri, folio.data.SCAMSchema.RESOURCE, {"type":"uri", "value": entryInfo.resourceURI});
 		entry.info.create(entryInfo.resourceURI, folio.data.RDFSchema.TYPE, {"type": "uri", "value": folio.data.BuiltinTypeSchema.RESULT_LIST});
 		entry.buiType = folio.data.BuiltinType.RESULT_LIST;
-		this.communicator.loadJSONEntry({entry: entry, infoUri: searchURI, limit: parameters.limit,  
-					onEntry: dojo.hitch(this, function(entry) {
+		this.communicator.getEntry({entry: entry, infoUri: searchURI, limit: parameters.limit}).then(
+					dojo.hitch(this, function(entry) {
 						var md = entry.getLocalMetadata();
 						if (!entry.resource || !entry.resource.results || entry.resource.results === 0) {
 							var msg = this.resourceBundle.noMatch;
@@ -176,7 +176,8 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 						}
 						this.cacheEntry(entry);
 						parameters.onSuccess(entry);
-					}), onError: parameters.onError});
+					}), 
+					parameters.onError);
 	},
 	getAlias: function(onLoad) {
 		onLoad("_search");

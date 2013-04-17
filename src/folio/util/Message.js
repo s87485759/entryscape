@@ -21,13 +21,14 @@ dojo.provide("folio.util.Message");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
 dojo.require("folio.Application");
+dojo.require("dijit.Dialog");
 
 dojo.declare("folio.util.MessageDialog", [dijit.Dialog, folio.ApplicationView], {
 	constructor: function() {
-		this.localize();
 	},
 	startup: function() {
 		this.titleNode.innerHTML = "Message";
+		this.localize();
 	},
 	getSupportedActions: function() {
 		return ["message", "localeChange"];

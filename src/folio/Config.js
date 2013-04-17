@@ -233,15 +233,23 @@ dojo.declare("folio.Config", null, {
 			var atArr = types2values.AT;
 			for (var ind in atArr) {
 				if (atArr.hasOwnProperty(ind)) {
+					var expanded = this._expand(ind);
 					for (var i=0;i<statements.length;i++) {
 						var value = statements[i].getValue();
-						if (ind === value) {
+						if (expanded === value) {
 							return atArr[ind];
 						}
 					}
 				}
 			}
 		}
+	},
+	_expand: function(nsuri) {
+		var arr = nsuri.split(":");
+		if (arr.length === 2 && this.definitions.namespaces[arr[0]] != null) {
+			return this.definitions.namespaces[arr[0]]+arr[1];
+		}
+		return nsuri;
 	},
 	_getMPFromInnerRef: function(types2MPs){
 		return types2MPs.internalReferenceMP;

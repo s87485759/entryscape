@@ -225,7 +225,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 		}
 		
 		var userResource = dojo.clone(this.userEntry.getResource());
-		this.userEntry.getContext().communicator.saveJSON(this.userEntry.getResourceUri(), newUserData,
+		this.userEntry.getContext().communicator.PUT(this.userEntry.getResourceUri(), newUserData).then(
 				dojo.hitch(this, function(data) {
 					this.user = data;
 					this.clear();
@@ -245,8 +245,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 						});
 						loginDialog.setAuthentication(newUserData.name, newUserData.password);
 						loginDialog.destroyRecursive();
-						var tmp = this.apPlain.getMetadata();
-						this.userEntry.getContext().communicator.saveJSON(this.userEntry.getLocalMetadataUri(),tmp);
+						this.userEntry.saveLocalMetadata(this.apPlain.getMetadata());
 					}
 					this.userEntry.setRefreshNeeded();
 				}),
@@ -257,8 +256,7 @@ dojo.declare("folio.editor.UserEditor", [dijit._Widget, dijit._Templated, folio.
 				})
 		);
 		if (!newUserData.password) { //This is done in the callback if the password is set, note that this is not necessary with cookie-auth
-			var tmp = this.apPlain.getMetadata();
-			this.userEntry.getContext().communicator.saveJSON(this.userEntry.getLocalMetadataUri(), tmp);
+			this.userEntry.saveLocalMetadata(this.apPlain.getMetadata());
 			this.userEntry.setRefreshNeeded();
 		}
 		if (this.onFinish) {

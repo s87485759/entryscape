@@ -103,7 +103,7 @@ dojo.declare("folio.admin.GroupDetails", [dijit._Widget, dijit._Templated, folio
 			metadata.create(this.entry.getResourceUri(), folio.data.DCTermsSchema.DESCRIPTION, {type: "literal", value: desc});			
 		}
 
-		this.entry.getContext().communicator.saveJSON(this.entry.getLocalMetadataUri(), metadata.exportRDFJSON(),
+		this.entry.saveLocalMetadata(metadata.exportRDFJSON()).then(
 				dojo.hitch(this, function(data) {
 					this.entry.setRefreshNeeded();
 					this.entry.refresh(dojo.hitch(this, function(refreshed) {
@@ -157,7 +157,7 @@ dojo.declare("folio.admin.GroupDetails", [dijit._Widget, dijit._Templated, folio
 	},
 	changeGroupAliasClicked: function() {
 		var newGroupData = {name: this.groupAliasField.get("value")};
-		this.entry.getContext().communicator.saveJSON(this.entry.getAliasUri(), newGroupData,
+		this.entry.getContext().communicator.PUT(this.entry.getAliasUri(), newGroupData).then(
 				dojo.hitch(this, function(data) {
 					this.entry.getResource().name = newGroupData.name;
 					this.displayAlias();

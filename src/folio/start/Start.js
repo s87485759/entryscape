@@ -47,14 +47,6 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 	//===================================================
 	// I18n attributes
 	//===================================================
-	userNameLabel: "",
-	groupNameLabel: "",
-	homeContextLabel: "",
-	memberOfHeader: "",
-	membershipHeader: "",
-	rightsHeader: "",
-	latestMaterial: "",
-	generalProfile: "",
 
 	//===================================================
 	// Easter egg attribute

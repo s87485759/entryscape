@@ -50,7 +50,7 @@ dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
 				var mp = config.getMPForLocalMD(entry);
 				template = itemStore.detectTemplate(this.graph, uri, (mp != null && mp.items != null ? mp.items : null));				
 			}
-			var binding = rforms.model.match(this.graph, uri, template);
+			var binding = rforms.model.Engine.match(this.graph, uri, template);
 			if (!this.includeLevel) {
 				this.includeLevel = "mandatory";
 			}

@@ -99,7 +99,7 @@ dojo.declare("folio.editor.EntryAdminEditor", [dijit._Widget, dijit._Templated],
 			   this._createNewFileUpload();
 			   dojo.style(this.FileChangePane, "display", "block");
 			   var localResource = this.entry.getResource();
-			   this.changeFileMimeType.store=folio.create.mimeTypeStore;
+			   this.changeFileMimeType.set("store", folio.create.mimeTypeStore);
 			   //var fileMimeT = this.entry.getMimeType();
 			   //if(fileMimeT){
 			   //	 this.changeFileMimeType.attr('value', fileMimeT);
@@ -227,9 +227,13 @@ dojo.declare("folio.editor.EntryAdminEditor", [dijit._Widget, dijit._Templated],
 		contextForEntry.communicator.putFile(resUri, this.fileUploadChange.fileInput,
 		   dojo.hitch(this,function(){
 			   this.entry.refresh();
-			   this.fileSaveButton.cancel();
+			   var self = this;
+			   setTimeout(function() {
+			   		self.fileSaveButton.cancel();
+					self.fileSaveButton.set('disabled', true);
+			   }, 1);
+
 			   this.changeFileMimeType.set('disabled', true);
-	           this.fileSaveButton.set('disabled', true);
 			   this.changeFileMessageArea.set('content', this.resourceBundle.uploadedAndChangedFile);
 			   this._createNewFileUpload();
 		   }), function () {

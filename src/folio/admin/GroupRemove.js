@@ -52,16 +52,15 @@ dojo.declare("folio.admin.GroupRemove", [dijit._Widget, dijit._Templated, folio.
 	_removeGroup: function(){
 		var contextet = this.entry.getContext();
 		var storet = contextet.getStore();
-		this.application.getCommunicator().removeEntry({
-			entry: this.entry,
-			onSuccess:dojo.hitch(this, function(argv){
+		this.application.getCommunicator().deleteEntry(this.entry).then(
+			dojo.hitch(this, function(argv){
 				console.log("User deleted!");
 				this.removeButton.cancel();
 			}),
-			onError:dojo.hitch(this, function(argv){
+			dojo.hitch(this, function(argv){
 				console.log("Failed to delete user!");
 				this.removeButton.cancel();
 			})
-		});
+		);
 	}
 });

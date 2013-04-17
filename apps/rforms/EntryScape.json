@@ -4,21 +4,21 @@
  		"id": "entryscape:dcterms-small",
  		"type": "group",
  		"content": [
- 			{id: "dcterms:title"},
- 			{extends: "dcterms:description", cls: ["rformsmultiline"], cardinality: {pref: 1}}
+ 			{"id": "dcterms:title"},
+ 			{"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}}
  		]
  	}, {
  		"id": "entryscape:foaf-group",
  		"type": "group",
  		"content": [
- 			{id: "foaf:name", cardinality: {pref: 1}},
- 			{id: "dcterms:description", cls: ["rformsmultiline"], cardinality: {pref: 1}},
- 			{id: "foaf:mbox"},
- 			{id: "foaf:homepage"},
- 			{id: "foaf:img", cardinality: {pref: 1}},
- 			{id: "foaf:weblog"},
- 			{id: "foaf:member"},
- 			{id: "foaf:page"}
+ 			{"id": "foaf:name", "cardinality": {"pref": 1}},
+ 			{"id": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
+ 			{"id": "foaf:mbox"},
+ 			{"id": "foaf:homepage"},
+ 			{"id": "foaf:img", "cardinality": {"pref": 1}},
+ 			{"id": "foaf:weblog"},
+ 			{"id": "foaf:member"},
+ 			{"id": "foaf:page"}
  		]
  	}
  ]

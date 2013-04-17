@@ -65,9 +65,9 @@ dojo.declare("folio.admin.PortfolioQuota", [dijit._Widget, dijit._Templated, fol
 		var calculatedQuota = folio.data.humanReadableToBytes(this.quotaFieldDijit.get("value"), this.quotaUnitSelectDijit.get("value"));
 		var quotaObj = {};
 	    quotaObj.quota = calculatedQuota;
-		this.entry.getContext().communicator.saveJSON(
+		this.entry.getContext().communicator.PUT(
 				this.entry.getResourceUri()+"/quota",
-				quotaObj,
+				quotaObj).then(
 				dojo.hitch(this, function(data) {
 					// Hide previous error messages
 					dojo.style(this.portfolioQuotaErrorNode,"display","block");

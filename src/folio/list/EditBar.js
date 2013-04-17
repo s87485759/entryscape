@@ -444,8 +444,13 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 		this.getEntryOrReferencedEntry(this.folder, dojo.hitch(this, this.folderClickedImpl));
 	},
 	textClickedImpl: function(entry) {
-		var md = {};
-		md[folio.data.DCTermsSchema.TITLE] = "New Text";
+		var mdGraph = rdfjson.Graph();
+		var contextToUse = entry.getContext(); 
+		mdGraph.create(contextToUse.getBase() + contextToUse.getId()+"/resource/_newId",
+						  folio.data.DCTermsSchema.TITLE,
+						  {"type":"literal","value":"New Text"}, true);
+		var md = mdGraph.exportRDFJSON();
+
 		var helpObj = folio.data.createNewEntryHelperObj(entry.getContext());
 		folio.data.addMimeType(helpObj.info, helpObj.resURI, "text/html+snippet");
 		var args = {
@@ -456,9 +461,13 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 				params: {locationType: "local",
 						builtinType: "none"}};
 		var self = this;
-		entry.getContext().createEntry(args, function() {
+		entry.getContext().createEntry(args, function(newEntry) {
 			self.folder.setRefreshNeeded();
 			self.list.application.publish("childrenChanged", {entry: self.folder, source: self});
+			setTimeout(function() {
+				self.list.focus(entry, newEntry);
+				self.list.renameFocused(true);
+			}, self.list.fadeDuration*3);
 		}, function(mesg) {
 			self.list.application.publish("message", {message: this.resourceBundle.unableToCreateFolderErrorMessage, source: self});
 		});

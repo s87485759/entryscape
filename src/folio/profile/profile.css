@@ -1,61 +1,7 @@
-.confolio.userProfile .profile_top {
-	padding: 35px 80px 20px 80px;
-	height: 120px;
-	-webkit-border-bottom-left-radius: 6px;
-	-webkit-border-bottom-right-radius: 6px;
--moz-border-bottom-right-radius: 6px;
-	-moz-border-bottom-right-radius: 6px;
-border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
-}
-
-.confolio.userProfile .profilePicture {
-	display: inline-block;
-	max-height: 120px;
-	min-height: 100px;
-	padding: 4px;
-	background-color: white;
-	border: 1px solid lightgrey;
-	line-height: 0px;
-}
-
-.confolio.userProfile .profilePicture img{
-	max-height: 115px;
-}
-
-.confolio.userProfile .profileInfo {
-	display: inline-block;
-	vertical-align: top;
-	padding: 5px 20px;
-	height: 100%;
-}
-.confolio.userProfile .profileInfo h1 {
-	margin: 0px;
-	padding: 0px;
-	font-size: 30px;
-	font-weight: bold;
-	color: #333;
-}
-
-.confolio.userProfile .profileInfo .icon24 {
-	vertical-align: middle;
-	margin-left: 0px;
-	margin-bottom: 2px;
-}
-
-.confolio.userProfile .profileInfo .icon24.home {
-	margin-left: 20px;
-}
-
-.confolio.userProfile .profileInfo .profileDescription {
-	font-size: large;
-	margin: 5px 0px;
-}
-
 .confolio.userProfile .profile_left,
 .confolio.userProfile .profile_right {
 	position: absolute;
-	top: 175px;
+	top: 110px;
 	bottom:0px;
 	width: 50%;
 }

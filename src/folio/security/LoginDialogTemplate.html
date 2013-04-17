@@ -1,7 +1,13 @@
-<div style="height: 100%; width: 37em; padding: 1px; background-image: url('themes/logo.png'); background-position: top left; background-repeat: no-repeat;">
-	<div style="display: table-cell; width: 37em; text-align: right;"><div style="text-align: right;"><label for="${id}_localeSelect" dojoType="dijit._Widget" dojoAttachPoint="languageLabel"></label>&nbsp;<select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" id="${id}_localeSelect" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeSelectDijit" tabindex="4"></select></div></div>
+<div class="loginDialog">
+	<div class="logo"></div>
+	<div class="language-box">
+		<div style="text-align: right;">
+			<label for="${id}_localeSelect" dojoType="dijit._Widget" dojoAttachPoint="languageLabel"></label>&nbsp;
+			<select class="language-select" dojoType="dijit.form.FilteringSelect" id="${id}_localeSelect" searchAttr="label" autocomplete="true" dojoAttachPoint="localeSelectDijit" tabindex="4"></select>
+		</div>
+	</div>
 	<form dojoType="dijit.form.Form" dojoAttachPoint="loginForm">
-		<table style="margin: 4em 8em 2em 8em;">
+		<table>
 			<tr><td colspan="2">
 				<span dojoType="dijit.layout.ContentPane" dojoAttachPoint="loginStatus" style="font-weight: bold;"></span>
 			</td></tr>

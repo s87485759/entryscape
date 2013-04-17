@@ -236,7 +236,7 @@ dojo.declare("folio.Application", null, {
 		dojo.mixin(this, params);
 		this.itemStoreDeferred = new dojo.Deferred();
 		this.configDeferred = new dojo.Deferred();
-		__confolio.config.getDefinitions(dojo.hitch(this, function(definitions) {
+		__confolio.config.definitionsPromise.then(dojo.hitch(this, function(definitions) {
 				this.config = new folio.Config(__confolio.config);
 				this.configDeferred.callback(this.config);
 
@@ -250,7 +250,7 @@ dojo.declare("folio.Application", null, {
 				}
 			}));
 		
-		this.communicator = new folio.data.Communicator(); //Set up a communicator
+		this.communicator = folio.data.Communicator; //Set up a communicator
 		this.store = new folio.data.Store({communicator: this.communicator}); //
 		this.dialog = new folio.util.StandardDialog({});
 		this.dialog.startup();

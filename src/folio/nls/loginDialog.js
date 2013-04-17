@@ -18,7 +18,7 @@
  */
 
 {
-  "title": "Confolio Login",
+  "title": "Login to ${app}",
   "user": "User:",
   "password": "Password:",
   "logIn": "Log In",

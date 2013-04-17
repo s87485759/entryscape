@@ -18,8 +18,7 @@
  */
 
 dojo.provide("folio.create.TypeDefaults");
-dojo.require("dojo.data.ItemFileReadStore");
-
+dojo.require("dojo.store.Memory");
 
 folio.create.getCreateLanguages = function(config) {
 	var arr = [];
@@ -63,8 +62,7 @@ folio.create.getCreateTypeStore = function(config) {
 	if (!folio.create.mixedTypeStore) {//Should this check for folio.create.createTypeStore instead?
 		folio.create._getNRApplicationType(config);
 		folio.create.createTypes = dojo.clone(folio.create.builtinType).concat(dojo.clone(folio.create.nrApplicationType));
-		folio.create.createTypeStore = new dojo.data.ItemFileReadStore({data: 
-								{identifier: "id", items: folio.create.createTypes}});
+		folio.create.createTypeStore = new dojo.store.Memory({data: folio.create.createTypes});
 	}
 	return folio.create.createTypeStore;	
 };
@@ -74,8 +72,7 @@ folio.create.getMixedTypeStore = function(config) {
 		folio.create._getIRApplicationType(config);
 		folio.create._getNRApplicationType(config);
 		folio.create.builtinPlusApplicationType = dojo.clone(folio.create.builtinType).concat(dojo.clone(folio.create.nrApplicationType)).concat(dojo.clone(folio.create.irApplicationType));
-		folio.create.mixedTypeStore = new dojo.data.ItemFileReadStore({data: 
-								{identifier: "id", items: folio.create.builtinPlusApplicationType}});
+		folio.create.mixedTypeStore = new dojo.store.Memory({data: folio.create.builtinPlusApplicationType});
 	}
 	return folio.create.mixedTypeStore;	
 };
@@ -84,7 +81,7 @@ folio.create.getMimeTypeStore = function(config) {
 	if (!folio.create.mimeTypeStore) {
 		var mimeTypes = folio.create._convertHashToIdArray(config["definitions"]["mimeTypes"], config);
 		mimeTypes.splice(0, 0, {id: " ", en: "Detect"});
-		folio.create.mimeTypeStore = new dojo.data.ItemFileReadStore({data: {identifier: "id", items: mimeTypes}});
+		folio.create.mimeTypeStore = new dojo.store.Memory({data: mimeTypes});		
 	}
 	return folio.create.mimeTypeStore;
 };

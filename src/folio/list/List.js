@@ -85,7 +85,14 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		    pasteElts.removeClass("disabledEntryButton");
 		}
 	},
-
+	listenForKeyEvents: function() {
+		this._keyEventConnector = dojo.connect(dojo.doc, "keypress", dojo.hitch(this, this.handleKeyPress));
+	},
+	stopListenForKeyEvents: function() {
+		if (this._keyEventConnector) {
+			dojo.disconnect(this._keyEventConnector);			
+		}
+	},
 	//=================================================== 
 	// Inherited methods 
 	//===================================================
@@ -102,7 +109,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			dojo.style(this.listControlsDijit.domNode, "display", "none");
 		}
 		
-		dojo.connect(dojo.doc, "keypress", dojo.hitch(this, this.handleKeyPress));
 		dojo.addClass(this.listControlsNode, "editBar");
 		this.listControlsNode.appendChild(this.editBar.domNode);
 		this.listPaginationNode.appendChild(this.pagination.domNode);
@@ -320,7 +326,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	showDetails: function(detailsNode, entry) {
 		var bb = __confolio.application.getBoundingBox();
-		debugger;
 		var width = Math.floor((bb.w < 600 ? bb.w: 600 ) * 0.70),
 			height = Math.floor((bb.h < 700 ? bb.h: 700) * 0.70);
 		folio.util.launchToolKitDialog(detailsNode, function(innerNode, onReady) {

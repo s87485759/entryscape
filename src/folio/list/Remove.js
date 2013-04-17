@@ -45,7 +45,7 @@ dojo.declare("folio.list.Remove", [dijit.layout._LayoutWidget, dijit._Templated]
 			return;		
 		}
 		
-		if (args.entry.getId().indexOf("_") == 0) {
+		if (args.entry instanceof folio.data.SystemEntry) {
 			args.application.message(this.rBundle.removeSystemEntriesNA);
 			return;
 		}

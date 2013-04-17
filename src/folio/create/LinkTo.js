@@ -25,7 +25,6 @@ dojo.require("dijit.layout.StackContainer");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit.form.CheckBox");
 dojo.require("dijit.form.FilteringSelect");
-dojo.require("dojo.data.ItemFileReadStore");
 dojo.require("dijit.form.TextBox");
 dojo.require("dijit.form.ValidationTextBox");
 dojo.require("folio.editor.MinimalMetadata");
@@ -92,12 +91,7 @@ dojo.declare("folio.create.LinkTo", [dijit._Widget, dijit._Templated], {
 		if (type && type !=="" ) {
 			this.selectedType = type;
 			var self = this;
-			folio.create.mixedTypeStore.fetchItemByIdentity({
-				identity: type,
-				onItem: function(item){
-					self.scheme = folio.create.mixedTypeStore.getValue(item, "scheme");
-				}
-			});
+			this.scheme = folio.create.mixedTypeStore.get(type).scheme;
 		}
 	},
 	mimeTypeSelected: function(type) {

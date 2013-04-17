@@ -144,29 +144,37 @@ __confolio.start = function(loadIndicatorId, splashId){
 		};
 	}
 	
-	dojo.require("dojo.parser");
-	dojo.require("folio.Application");
-	//Make sure all classes in viewMap is loaded.
-	dojo.require(__confolio.config.viewMap.manager);
-	__confolio.config.viewMap.controller && dojo.require(__confolio.config.viewMap.controller);
-/*	dojo.forEach(__confolio.config.viewMap.views, function(viewDef) {
-		dojo.require(viewDef["class"]);
-	});*/
 	
-	dojo.require("folio.security.LoginDialog");
-	dojo.require("dijit.Dialog");
-	dojo.require("dojo.cookie");
-	dojo.addOnLoad(function(){
+	var deps = ["dojo/request",
+	            "dojo/parser",
+	            "dojo/query",
+	            "dojo/dom",
+	            "dojo/dom-attr",
+	            "dojo/dom-style",
+	            "dojo/_base/fx",
+	            "dojo/_base/window",
+	            "dojo/Deferred",
+	            "folio/Application",
+	         	"se/uu/ull/site/ViewMap",
+	     		"folio/security/LoginDialog",
+	     		"dijit/Dialog",
+	     		"dojo/cookie"];
+	//Make sure the specified manager is loaded.
+	deps.push(__confolio.config.viewMap.manager);
+	//If a controller is specified, load it
+	__confolio.config.viewMap.controller && deps.push(__confolio.config.viewMap.controller);
+	
+	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, Application, ViewMap, LoginDialog, Dialog, cookie, Manager) {
 		var scamPath = __confolio.config["scamPath"] || "scam";
-		dojo.cookie("scamSimpleLogin", null, {
+		cookie("scamSimpleLogin", null, {
 			path: "/"+scamPath+"/",
 			expires: -1
 		}); // Reset login
 		var loadedIndicator = dojo.byId(loadIndicatorId);
-		dojo.attr(loadedIndicator, "innerHTML", "&nbsp;Building application");
-		dojo.parser.parse();
+		attr.set(loadedIndicator, "innerHTML", "&nbsp;Building application");
+		parser.parse();
 		if (!__confolio.isBuild()) {
-			dojo.fadeOut({
+			fx.fadeOut({
 				node: splashId,
 				onEnd: function(){
 					// hide it completely after fadeout
@@ -175,24 +183,19 @@ __confolio.start = function(loadIndicatorId, splashId){
 			}).play();
 		}
 		//asynhronous loading of definitions. Use getDefinitions with a callback.
-		var deferred = new dojo.Deferred();
 		var definitionsPath = (__confolio.config["definitionsPath"] || "definitions") + ".js";
-		dojo.xhrGet({
-			url: definitionsPath,
-			handleAs: "json-comment-optional",
+		__confolio.config.definitionsPromise = request.get(definitionsPath, {
+			handleAs: "json",
 			headers: {"Accept": "application/json",
-						"Content-type": "application/json; charset=UTF-8"},
-			load: function(data) {
+					  "Content-type": "application/json; charset=UTF-8"}
+		}).then(
+			function(data) {
 				__confolio.config["definitions"] = data;
-				deferred.callback(data);
+				return data;
 			},
-			error: function() {
+			function() {
 				alert("Error in configuration, cannot load the definitions from "+ definitionsPath);
-			}
-		});
-		__confolio.config.getDefinitions = function(callback) {
-			deferred.addCallbacks(callback);
-		};
+			});
 		
 		
 		__confolio.application = new folio.Application({
@@ -201,25 +204,19 @@ __confolio.start = function(loadIndicatorId, splashId){
 		});
 		
 		__confolio.application.getConfig(function() {
-			__confolio.viewMap = se.uu.ull.site.init(__confolio.config.viewMap, dojo.create("div", null, dojo.body()));
-			var vm = dojo.query(".viewMap", dojo.body())[0];
-			dojo.style(vm, {"position": "relative", "margin-left": "auto", "margin-right": "auto"});
+			__confolio.viewMap = Manager.create(__confolio.config.viewMap, dojo.create("div", null, win.body()));
+			var vm = query(".viewMap", win.body())[0];
+			style.set(vm, {"position": "relative", "margin-left": "auto", "margin-right": "auto"});
 			if (__confolio.config.minwidth != null) {
 				var minw = parseInt(__confolio.config.minwidth);
-				dojo.style(vm, {"min-width": ""+minw+"px"});
+				style.set(vm, {"min-width": ""+minw+"px"});
 			}
 			if (__confolio.config.minwidth != null) {
 				var maxw = parseInt(__confolio.config.maxwidth);
-				dojo.style(vm, {"max-width": ""+maxw+"px"});
+				style.set(vm, {"max-width": ""+maxw+"px"});
 			}
 		});
 		
-/*		var eval("var appCls = " + appClsStr + ";");
-		var application = new appCls({
-			dataDir: "../data/",
-			repository: window.location.protocol + "//" + window.location.host + "/" + scamPath + "/",
-			startContext: startContext
-		});*/
 		var username = __confolio.config["username"] || "";
 		var password = __confolio.config["password"] || "";
 		var cookieValue = dojo.cookie("scamSimpleLogin");

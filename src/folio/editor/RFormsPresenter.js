@@ -53,7 +53,7 @@ dojo.declare("folio.editor.RFormsPresenter", dijit._Widget, {
 			}
 			var template = itemStore.detectTemplate(graph, entry.getResourceUri(), (mp != null && mp.items != null ? mp.items : null));
 //			var template = itemStore.createTemplateFromChildren([folio.data.DCTermsSchema.TITLE,folio.data.DCTermsSchema.DESCRIPTION]);
-			var binding = rforms.model.match(graph, entry.getResourceUri(), template);
+			var binding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
 			this.presenter = new rforms.view.Presenter({template: template, binding: binding, compact: this.compact}, dojo.create("div", null, this.domNode));
 		}));
 	}

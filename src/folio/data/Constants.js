@@ -63,8 +63,10 @@ folio.data.DCTermsSchema = {
 folio.data.FOAFSchema = {
 	NAME: folio.data.FOAFBaseUri+"name",
 	FIRSTNAME: folio.data.FOAFBaseUri+"firstName",
+	LASTNAME: folio.data.FOAFBaseUri+"lastName",
 	SURNAME: folio.data.FOAFBaseUri+"surname",
 	IMAGE: folio.data.FOAFBaseUri+"img",
+	PLAN: folio.data.FOAFBaseUri+"plan",
 	MBOX: folio.data.FOAFBaseUri+"mbox",
 	THUMBNAIL: folio.data.FOAFBaseUri+ "thumbnail"
 };

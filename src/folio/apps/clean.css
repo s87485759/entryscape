@@ -22,6 +22,8 @@
 @import "../navigation/navigation.css";
 @import "../profile/profile.css";
 @import "../start/start.css";
+@import "../settings/settings.css";
+
 
 html, body {
 	background: #fff;
@@ -407,6 +409,11 @@ a:hover, .link:hover {
 	text-align: center;
 }
 
+.entryDetails .contentViewSwitcher.leftCentered {
+	text-align: left;
+	padding: 5px;
+}
+
 .entryDetails .contentViewSwitcher .contentIcon {
 	width: 128px;
 	position: relative;
@@ -645,6 +652,40 @@ a:hover, .link:hover {
 }
 .confolio .resultCounter {
 	float:right;
+}
+
+/*------Login dialog-----------------------*/
+.loginDialog {
+	position: relative;
+	height: 100%;
+	width: 38em;
+	padding: 1px;
+}
+.loginDialog .logo {
+	background-position: top left;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 96px;
+	height: 96px;
+	top: 10px;
+	left: 30px;
+}
+
+.loginDialog .language-box {
+	text-align: right;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+.loginDialog .language-box .language-select {
+	width: 10em;
+	font-size: smaller;
+	vertical-align: middle;
+}
+
+.loginDialog table {
+	margin: 10px 10px 30px 150px;
 }
 
 /*------Help view--------------------------*/

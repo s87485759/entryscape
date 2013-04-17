@@ -1,18 +1,23 @@
-/*global dojo, dijit, se*/
-dojo.provide("se.uu.ull.site.tests.Pane");
-dojo.require("dijit.layout.ContentPane");
-
-
-se.uu.ull.site.tests.contentNr = 0;
-dojo.declare("se.uu.ull.site.tests.Pane", dijit.layout.ContentPane, {
-	constructor: function() {
-		this.content = "Content "+se.uu.ull.site.tests.contentNr;
-		se.uu.ull.site.tests.contentNr++;
-	},
+/*global define*/
+define(["dojo/_base/declare",
+	"dojo/dom-construct",
+	"dijit/_Widget"
+], function(declare, construct, _Widget) {
 	
-	show: function(params) {
-	},
-	getLabel: function(params) {
-		return "content";
-	}
+	var contentNr = 0;
+
+	return declare(_Widget, {
+		buildRendering: function() {
+			this.domNode = construct.create("div", {innerHTML: "Content "+contentNr});
+			contentNr++;
+		},
+		
+		
+		show: function(params) {
+		},
+
+		getLabel: function(params) {
+			return "content";
+		}
+	});
 });

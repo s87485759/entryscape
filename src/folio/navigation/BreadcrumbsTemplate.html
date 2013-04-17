@@ -1,11 +1,5 @@
 <div class="breadcrumbs">
-  <div class="ownerBar distinctBackground">
-  	<span dojoAttachPoint="ownerBarNode"></span>
-  	<span dojoAttachPoint="ownerIconsNode">
-	  	<a class="icon home" dojoAttachPoint="profileNode" ></a>
-		<span class="icon folder disabled"></span>
-	</span>
-  </div>
+  <div class="ownerBar distinctBackground" data-dojo-attach-point="principalInfoDijit" data-dojo-type="folio/navigation/PrincipalInfo" data-dojo-props="view: 'default'"></div>
   <div dojoAttachPoint="bcNode" class="bcNode">
   	<div style="float:left">
 		<span dojoAttachPoint="showTreeNode" class="bicon"><span class="icon toggleTreeViewVisible" dojoAttachEvent="onclick: _toggleTree" title="Toggle tree visible"></span></span>

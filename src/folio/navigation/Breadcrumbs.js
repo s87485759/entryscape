@@ -10,6 +10,7 @@ dojo.require("dojox.collections.SortedList");
 dojo.require("dojox.collections.Dictionary");
 dojo.require("folio.navigation.CommandLine");
 dojo.require("folio.navigation.FDO");
+dojo.require("folio.navigation.PrincipalInfo");
 	
 /**
  * Provides a breadcrumb list where you can see the folder hierarchy.
@@ -78,12 +79,12 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 			break;
 		case "deleted":
 		case "clear":
+		case  "userChange":
 			if (this.stack.length> 0) {
-				this.application.getStore().loadEntry(this.stack[this.stack.length-1].getEntryUri(), 
+				this.application.getStore().loadEntry(this.stack[this.stack.length-1].getUri(), 
 					{limit: 0, sort: null}, dojo.hitch(this, this.setCurrentFolder));
 			} 
 			break;
-		case  "userChange":
 			//TODO
 			break;
 		}
@@ -291,13 +292,14 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 		var oEntries = [];
 		var done = dojo.hitch(this, function() {
 			if (oEntries.length === 1) {
-				var name = folio.data.getLabelRaw(oEntries[0]) || oEntries[0].resource.name;
+				this.principalInfoDijit.show(oEntries[0]);
+/*				var name = folio.data.getLabelRaw(oEntries[0]) || oEntries[0].resource.name;
 				dojo.attr(this.ownerBarNode, "innerHTML", name);
 				dojo.attr(this.profileNode, "href", this.application.getHref(oEntries[0].getUri(), "profile"));
-				dojo.style(this.ownerIconsNode, "display", "");					
+				dojo.style(this.ownerIconsNode, "display", "");*/
 			} else {
-				dojo.style(this.ownerIconsNode, "display", "none");
-				dojo.attr(this.ownerBarNode, "innerHTML", this._getContextLabel(entry));				
+/*				dojo.style(this.ownerIconsNode, "display", "none");
+				dojo.attr(this.ownerBarNode, "innerHTML", this._getContextLabel(entry));*/
 			}
 		});
 		var f = function(ownerEntry) {

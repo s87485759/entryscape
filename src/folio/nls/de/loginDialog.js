@@ -1,5 +1,5 @@
 ({
-  "title": "Confolio Login",
+  "title": "${app} Login",
   "user": "Benutzername:",
   "password": "Passwort:",
   "logIn": "Anmelden",

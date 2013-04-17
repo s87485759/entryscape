@@ -132,14 +132,12 @@ dojo.declare("folio.admin.NewUser", [dijit._Widget, dijit._Templated, folio.admi
 //			console.log("creating home portfolio in ");
 //			console.log(this.folderSelect.getSelectedFolder().getContext());
 			// Create the home portfolio
-			this.application.getCommunicator().createEntry(
-					portfolioArgs,
+			this.application.getCommunicator().createEntry(portfolioArgs).then(
 					dojo.hitch(this, function(contextId) {
 //						console.log("portfolio created!! contextId: "+contextId);
 						userArgs.resource["homecontext"] = contextId;
 //						console.log("creating user");
-						this.application.getCommunicator().createEntry(
-								userArgs,
+						this.application.getCommunicator().createEntry(userArgs).then(
 								dojo.hitch(this, function(userId) {
 //									console.log("user created!! userId: "+userId);
 									var base = this.entry.getContext().getBaseURI();
@@ -152,14 +150,14 @@ dojo.declare("folio.admin.NewUser", [dijit._Widget, dijit._Templated, folio.admi
 									var entryInfo = new rdfjson.Graph();
 									entryInfo.create(cEUri, folio.data.SCAMSchema.WRITE, {type: "uri", value: uUri});
 									entryInfo.create(cEUri, folio.data.SCAMSchema.RESOURCE, {type: "uri", value: cRUri});
-									entryInfo.create(cEUri, folio.data.SCAMSchema.METADATA, {type: "uri", value: cMUri});
+									entryInfo.create(cEUri, folio.data.SCAMSchema.LOCAL_METADATA, {type: "uri", value: cMUri});
 									entryInfo.create(cMUri, folio.data.SCAMSchema.READ, {type: "uri", value: usersUri});
 									entryInfo.create(cRUri, folio.data.SCAMSchema.READ, {type: "uri", value: usersUri});
 									entryInfo.create(cRUri, folio.data.RDFSchema.TYPE, {type: "uri", value: folio.data.BuiltinTypeSchema.CONTEXT});
 									
-									this.application.getCommunicator().saveJSON(
+									this.application.getCommunicator().PUT(
 											cEUri,
-											{info: entryInfo.exportRDFJSON()},
+											{info: entryInfo.exportRDFJSON()}).then(
 											dojo.hitch(this,function() {
 												// Refresh the list that holds the newly created context
 												var contextList = this.folderSelect.getSelectedFolder();
@@ -255,8 +253,7 @@ dojo.declare("folio.admin.NewUser", [dijit._Widget, dijit._Templated, folio.admi
 					}));
 		}
 		else {
-			this.application.getCommunicator().createEntry(
-				userArgs,
+			this.application.getCommunicator().createEntry(userArgs).then(
 				dojo.hitch(this, function(entry) {
 					// Refresh the list that holds the newly created user
 					this.entry.setRefreshNeeded(true);

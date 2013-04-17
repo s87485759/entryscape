@@ -24,7 +24,6 @@ dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.StackContainer");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit.form.FilteringSelect");
-dojo.require("dojo.data.ItemFileReadStore");
 dojo.require("dijit.form.TextBox");
 dojo.require("folio.editor.MinimalMetadata");
 dojo.require("folio.create.ACL");

@@ -109,7 +109,8 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 	//===================================================
 	constructor: function(args) {
 		if (window.AudioPlayer) {
-			AudioPlayer.setup(dojo.moduleUrl("folio", "../../lib/audio/player.swf"), {width: 280});			
+			//Needs to be changed, does not work in built mode.
+//			AudioPlayer.setup(dojo.moduleUrl("folio", "../../lib/audio/player.swf"), {width: 280});			
 		}
 	},
 	getChildren: function() {
@@ -164,16 +165,16 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		this.set(this.resourceBundle);
 	},
 	_embedToggled: function() {
-		this.contentViewDijit.webInline = this.webpageCheckDijit.get("checked");
-		this.contentViewDijit.pdfInline = this.pdfCheckDijit.get("checked");
-		this.contentViewDijit.flashInline = this.flashCheckDijit.get("checked");
-		this.contentViewDijit.imgInline = this.imageCheckDijit.get("checked");
-		if (this.entry) {
-			//Fake an event
-			this.contentViewDijit.showEntry({
-				entry: this.entry
-			});
-		}
+		setTimeout(dojo.hitch(this, function() {
+			this.contentViewDijit.webInline = this.webpageCheckDijit.get("checked");
+			this.contentViewDijit.pdfInline = this.pdfCheckDijit.get("checked");
+			this.contentViewDijit.flashInline = this.flashCheckDijit.get("checked");
+			this.contentViewDijit.imgInline = this.imageCheckDijit.get("checked");
+			if (this.entry) {
+				//Fake an event
+				this.contentViewDijit.show(this.entry);
+			}
+		}), 1);
 	},
 	_replace: function(entry) {
 		this.contentViewDijit.show(entry);

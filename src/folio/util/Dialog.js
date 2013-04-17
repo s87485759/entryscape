@@ -23,6 +23,7 @@ dojo.require("dijit._Templated");
 dojo.require("dijit.layout.BorderContainer");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit.Toolbar");
+dojo.require("dijit.TooltipDialog");
 dojo.require("dojox.form.BusyButton");
 dojo.require("dijit.form.Button");
 dojo.require("folio.create.Create");

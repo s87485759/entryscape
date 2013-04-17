@@ -21,6 +21,7 @@ dojo.provide("folio.data.Entry");
 dojo.require("folio.data.EntryUtil");
 dojo.require("folio.data.Constants");
 dojo.require("rdfjson.Graph");
+dojo.require("dojo.Deferred");
 
 dojo.declare("folio.data.Entry", null, {
 	locType: folio.data.LocationType.LOCAL,
@@ -42,17 +43,17 @@ dojo.declare("folio.data.Entry", null, {
 		delete this.list;
 	},
 	refresh: function(onEntry, onError, refreshParams) {
-		var params = {entry: this, infoUri: this.entryInfo.infoUri, limit: 0, sort: (this.noSort ? undefined : null), 
-				onEntry: dojo.hitch(this, function(entry) {
-						this.refreshMe = false;
-						if (onEntry) {
-							onEntry(entry);
-						}
-					}), onError: onError};
+		var params = {entry: this, infoUri: this.entryInfo.infoUri, limit: 0, sort: (this.noSort ? undefined : null)};
 		if (refreshParams != undefined) {
 			dojo.mixin(params, refreshParams);
 		}
-		this.context.communicator.loadJSONEntry(params);
+		this.context.communicator.getEntry(params).then(
+				dojo.hitch(this, function(entry) {
+					this.refreshMe = false;
+					if (onEntry) {
+						onEntry(entry);
+					}
+				}), onError);
 	},
 	
 	/*============Identifiers========================================*/
@@ -202,16 +203,35 @@ dojo.declare("folio.data.Entry", null, {
 		return dojo.map(this.getInfo().find(this.getUri(), folio.data.DCTermsSchema.CONTRIBUTOR), function(statement) {return statement.getValue();});
 	},
 	
+	get: function(prop) {
+		return this.getMetadata().findFirstValue(this.getResourceUri(), prop) ||
+			this.getInfo().findFirstValue(this.getResourceUri(), prop);
+			this.getInfo().findFirstValue(this.getUri(), prop);
+	},
+	
 	/*===============Saving methods=======================*/
 	saveInfo: function(onSuccess, onError) {
-		this.context.communicator.saveJSON(this.getUri(), {info: this.getInfo().exportRDFJSON()}, onSuccess, onError);
+		this.context.communicator.PUT(this.getUri(), {info: this.getInfo().exportRDFJSON()}).then(onSuccess, onError);
 	},
 	saveInfoWithRecusiveACL: function(saveRecursively, onSuccess, onError) {
-		this.context.communicator.saveJSON(this.getUri()+(saveRecursively? "?applyACLtoChildren=true":""), {info: this.getInfo().exportRDFJSON()}, onSuccess, onError);
+		this.context.communicator.PUT(
+			this.getUri()+(saveRecursively? "?applyACLtoChildren=true":""), 
+			{info: this.getInfo().exportRDFJSON()})
+		.then(onSuccess, onError);
 	},
-	saveMetadata: function(onSuccess, onError) {
+	saveLocalMetadata: function(graph) {
+		if (graph) {
+			this.localMetadata = graph;
+		}
 		if (this.locType != folio.data.LocationType.REFERENCE) {
-			this.context.communicator.saveJSON(this.getMetadataUri(), {metadata: this.getLocalMetadata().exportRDFJSON()}, onSuccess, onError);
+			return this.context.communicator.PUT(
+				this.getLocalMetadataUri(), 
+				this.getLocalMetadata().exportRDFJSON(), 
+				dojo.date.stamp.fromISOString(this.getModificationDate()).toUTCString());
+		} else {
+			var d = new dojo.Deferred();
+			d.reject("Failed saving local metadata since there is none, entry is a reference.");
+			return d;
 		}
 	},
 	saveResource: function(onSuccess, onError) {
@@ -220,14 +240,18 @@ dojo.declare("folio.data.Entry", null, {
 			if (this.buiType == folio.data.BuiltinType.LIST || this.buiType == folio.data.BuiltinType.GROUP) {
 				folio.data.getList(this, dojo.hitch(this, function(list) {
 					list.getResource(dojo.hitch(this, function(res) {
-						this.context.communicator.saveJSONIfUnmodified(this.getResourceUri(), {resource: res}, dojo.date.stamp.fromISOString(this.getModificationDate()).toUTCString(), onSuccess, onError);
+						this.context.communicator.PUT(
+								this.getResourceUri(), 
+								{resource: res}, 
+								dojo.date.stamp.fromISOString(this.getModificationDate()).toUTCString())
+							.then(onSuccess, onError);
 					}));
 				}), onError);
 			} else {
-				this.context.communicator.saveJSON(this.getResourceUri(), {resource: resource}, onSuccess, onError);
+				this.context.communicator.PUT(this.getResourceUri(), {resource: resource}).then(onSuccess, onError);
 			}
 		} else if (onError) {
-			onError();
+			onError("Failed saving resource since there is none, entry is not local.");
 		}
 	},
 	hasUserAccess: function(userEntry, callback) {

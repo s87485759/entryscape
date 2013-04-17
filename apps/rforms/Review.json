@@ -57,7 +57,7 @@
 					{"value": "2", "label": {"en": "2"}},
 					{"value": "3", "label": {"en": "3"}},
 					{"value": "4", "label": {"en": "4"}},
-					{"value": "5", "label": {"en": "5"}},
+					{"value": "5", "label": {"en": "5"}}
 				],
 				"styles": ["rformshorizontalRadioButtons", "rformsstars"]
 			}

@@ -44,7 +44,7 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 	postCreate: function() {
 		this.portfolioList.addConfirmListener(dojo.hitch(this,function(c) {
 			var newUserData = {homecontext: c.getId()};
-			this.entry.getContext().communicator.saveJSON(this.entry.getResourceUri(), newUserData,
+			this.entry.getContext().communicator.PUT(this.entry.getResourceUri(), newUserData).then(
 					dojo.hitch(this, function(data) {
 						//update to the new homecontext without a real refresh.
 						this.entry.getResource().homecontext = c.getId();
@@ -57,9 +57,9 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 						var entryInfo = c.getInfo();
 						entryInfo.create(c.getUri(), folio.data.SCAMSchema.WRITE, {type: "uri", value: this.entry.getResourceUri()});
 
-						this.application.getCommunicator().saveJSON(
+						this.application.getCommunicator().PUT(
 							c.getUri(),
-							{info: entryInfo.exportRDFJSON()},
+							{info: entryInfo.exportRDFJSON()}).then(
 							dojo.hitch(this, function(accessRights) {
 								console.log("success :)");
 								console.log(accessRights);
@@ -114,7 +114,10 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 			// Check if there is a name
 			name = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.NAME);
 			firstname = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.FIRSTNAME);
-			surname = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.SURNAME);
+			surname = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.LASTNAME);
+			if (surname == null) {
+				surname = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.SURNAME);				
+			}
 			// Check if there is an email-adress
 			email = metadata.findFirstValue(this.entry.getResourceUri(), folio.data.FOAFSchema.MBOX);
 			if (email) {
@@ -193,7 +196,7 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 			metadata.create(this.entry.getResourceUri(), folio.data.FOAFSchema.MBOX, {type: "literal", value: email});			
 		}
 		
-		this.entry.getContext().communicator.saveJSON(this.entry.getLocalMetadataUri(), metadata.exportRDFJSON(),
+		this.entry.getContext().communicator.PUT(this.entry.getLocalMetadataUri(), metadata.exportRDFJSON()).then(
 				dojo.hitch(this, function(data) {
 					this.entry.setRefreshNeeded();
 					this.entry.refresh(dojo.hitch(this, function(refreshed) {
@@ -242,7 +245,7 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 		if (newPassword) {
 			newUserData.password = newPassword;
 		}
-		this.entry.getContext().communicator.saveJSON(this.entry.getResourceUri(), newUserData,
+		this.entry.getContext().communicator.PUT(this.entry.getResourceUri(), newUserData).then(
 				dojo.hitch(this, function(data) {
 					this.entry.getResource().name = newUserData.name;
 					this.displayAccountInformation();
