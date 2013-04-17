@@ -19,8 +19,8 @@ define([
 	};
 
 	var communicator = {
-		setSort: function(sortObj) {
-			sortObj = sortObj;
+		setSort: function(sortObject) {
+			sortObj = sortObject;
 		},
 		getSort: function() {
 			return sortObj;

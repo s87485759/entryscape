@@ -1,42 +1,33 @@
-/*
- * Copyright (c) 2007-2010
- *
- * This file is part of Confolio.
- *
- * Confolio is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Confolio is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
- */
+/*global define*/
+define(["dojo/_base/declare", 
+	"dojo/_base/lang", 
+	"dojo/on",
+	"dojo/aspect", 
+	"dojo/dom-class", 
+	"dojo/dom-construct",
+	"dijit/focus",
+	"rforms/view/Chooser",
+	"dijit/form/TextBox",
+	"folio/list/SearchList",
+	"rforms/model/system"], 
+function(declare, lang, on, aspect, domClass, construct, focusUtil, Chooser, TextBox, SearchList, system) {
 
-dojo.provide("folio.editor.EntryChooser");
-dojo.require("rforms.view.Chooser");
-dojo.require("dijit.form.TextBox");
-dojo.require("folio.list.SearchList");
 
-dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
+var EntryChooser = declare(Chooser, {
 	//===================================================
 	// Inherited methods
 	//===================================================
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
-		var search = new dijit.form.TextBox({trim: true, lowercase: true}, dojo.create("div", null, this.selectionNode));
-		dojo.addClass(search.domNode, "searchField");
-		dijit.focus(search.focusNode);
-		var results = new folio.list.SearchList({}, dojo.create("div", null, this.selectionNode));
-		dojo.connect(results._list, "focusedEntry", this, function(entry) {
+		var search = new TextBox({trim: true, lowercase: true}, construct.create("div", null, this.selectionNode));
+		domClass.add(search.domNode, "searchField");
+		focusUtil.focus(search.focusNode);
+		var results = new SearchList({}, construct.create("div", null, this.selectionNode));
+		aspect.after(results._list, "focusedEntry", lang.hitch(this, function(entry) {
 			this._selectChoice({value: entry.getUri(), label: {en: folio.data.getLabel(entry)}, description: {en: folio.data.getDescription(entry)}});
-		});
+		}));
 		var t;
-		var doSearch = dojo.hitch(this, function() {
+		var doSearch = lang.hitch(this, function() {
 			var v = search.get("value");
 			if (v != null && v.length > 2) {
 				var constraints = this.binding.getItem().getConstraints();
@@ -46,18 +37,18 @@ dojo.declare("folio.editor.EntryChooser", rforms.view.Chooser, {
 				results.show({term: v, queryType: "solr"});
 			}
 		});
-		dojo.connect(search, "onKeyUp", this, function() {
+		on(search, "keyUp", lang.hitch(this, function() {
 			if (t != null) {
 				clearTimeout(t);
 			}
 			t = setTimeout(doSearch, 300);
-		});
+		}));
 		
-		this.bc.startup();
+		//this.bc.startup();
 	}
 });
 
-rforms.getSystemChoice = function(item, value) {
+system.getChoice = function(item, value) {
 	var obj = {"value": value};
 	var store = __confolio.application.getStore();
 	var context = store.getContextFor(value);
@@ -79,7 +70,10 @@ rforms.getSystemChoice = function(item, value) {
 	return obj;
 };
 
-rforms.openSystemChoiceSelector = function(binding, callback) {
-	var ec = new folio.editor.EntryChooser({binding: binding, done: callback});
+system.openChoiceSelector = function(binding, callback) {
+	var ec = new EntryChooser({binding: binding, done: callback});
+	ec.startup();
 	ec.show();
 };
+	return EntryChooser;
+});

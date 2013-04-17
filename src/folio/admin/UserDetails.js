@@ -125,11 +125,11 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 			}
 		}
 		// Display the name
-		this.firstnameField.set("value",firstname);
-		this.surnameField.set("value",surname);
-		this.nameField.set("value", name);
+		this.firstnameField.set("value",firstname || "");
+		this.surnameField.set("value",surname || "");
+		this.nameField.set("value", name || "");
 		// Display the email
-		this.emailField.set("value", email);
+		this.emailField.set("value", email || "");
 	},
 	displayAccountInformation: function() {
 		// Cancel the button
@@ -137,7 +137,7 @@ dojo.declare("folio.admin.UserDetails", [dijit._Widget, dijit._Templated, folio.
 		// Hide ev error messages
 		this.hideChangeAccountError();
 		// Display the username
-		this.userNameField.set("value", this.entry.getResource().name);
+		this.userNameField.set("value", this.entry.getResource().name || "");
 		// Clear the password fields
 		this.passwordField.set("value", "");
 		this.confirmField.set("value", "");
