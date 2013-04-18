@@ -1,0 +1,577 @@
+/*global define, __confolio*/
+define(["dojo/_base/declare", 
+	"dojo/_base/lang",
+	"dojo/_base/connect",
+	"dojo/date/stamp", 
+	"dojo/dom-class",
+	"dojo/dom-style", 
+	"dojo/dom-construct", 
+	"dojo/dom-attr", 
+	"dijit/_Widget",
+	"dijit/_TemplatedMixin",
+	"dijit/_WidgetsInTemplateMixin",
+	"dijit/form/TextBox",
+	"dijit/form/Textarea",
+	"dojox/form/BusyButton",
+	"dojox/form/Uploader",
+	"dijit/form/FilteringSelect",
+	"dijit/form/RadioButton",
+	"dojo/store/Memory",
+	"folio/create/TypeDefaults",
+	"folio/list/SearchList",
+	"folio/security/LoginDialog",
+	"folio/editor/RFormsEditorPlain",
+	"folio/editor/RFormsPresenter",
+	"folio/navigation/PrincipalInfo",
+	"rdfjson/Graph",
+	"dojo/text!./SettingsTemplate.html"
+], function(declare, lang, connect, stamp, domClass, style, construct, attr, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin, 
+	TextBox, Textarea, BusyButton, Uploader, FilteringSelect, RadioButton, Memory, TypeDefaults, SearchList, LoginDialog, RFormsEditorPlain, RFormsPresenter, PrincipalInfo, Graph, template) {
+
+/**
+ * Shows profile information, group membership, access to portfolios and folders, and latest material.
+ * The profile information includes username, home portfolio and user profile metadata.
+ */
+return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+	//===================================================
+	// Public Attributes
+	//===================================================
+	
+	//===================================================
+	// Inherited Attributes
+	//===================================================
+	templateString: template,
+	
+	//===================================================
+	// I18n attributes
+	//===================================================
+
+	//===================================================
+	// Private attributes
+	//===================================================
+	
+	//===================================================
+	// Inherited methods
+	//===================================================
+	postCreate: function() {
+		this.inherited("postCreate", arguments);
+		this.application = __confolio.application;		
+
+		var mb = function() {
+			if (this.get("disabled") !== true) this._makeBusy();
+		};
+		var fixBusyButton = function(but) {
+			but._makeBusy = but.makeBusy; but.makeBusy = mb;
+		};
+		
+		//Connect to application events
+		connect.subscribe("/confolio/localeChange", lang.hitch(this, this._localize));
+		connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
+		
+		//Handle click on tabs.
+		this.connect(this.profileButtonNode, "onclick", this._showProfile);
+		this.connect(this.accountButtonNode, "onclick", this._showAccount);
+		
+		//Account info
+		this.connect(this.firstNameDijit, "onKeyUp", this._infoChanged);
+		this.connect(this.lastNameDijit, "onKeyUp", this._infoChanged);
+		this.connect(this.fullNameDijit, "onKeyUp", this._infoChanged);
+		this.connect(this.infoDijit, "onKeyUp", this._infoChanged);
+		this.connect(this.emailDijit, "onKeyUp", this._infoChanged);
+		fixBusyButton(this.infoSaveButton);
+		this.connect(this.infoSaveButton, "onClick", this._saveAccountInfo);
+
+		//Preferred language
+		folio.create.getCreateLanguages(this.application.getConfig());
+		this.langStore = new Memory({'data': folio.create.createLanguages});
+		this.languageSelectDijit.set("searchAttr", 'label');
+		this.languageSelectDijit.set("store", this.langStore);
+		this.connect(this.languageSelectDijit, "onChange", this._UIPrefsChanged);
+		fixBusyButton(this.uiprefsSaveButton);
+		this.connect(this.uiprefsSaveButton, "onClick", this._saveUIPrefsInfo);
+		
+		//Profile picture
+		this.connect(this.noPictureChoiceButton, "onClick", this._showNoPictureChoice);
+		this.connect(this.urlPictureChoiceButton, "onClick", this._showURLPictureChoice);
+		this.connect(this.localPictureChoiceButton, "onClick", this._showLocalPictureChoice);
+		this.connect(this.urlProfilePictureTestButton, "onClick", lang.hitch(this, function() {
+			this._updateProfilePicturePreview(this.urlProfilePictureDijit.get("value") || "");
+		}));
+		this.connect(this.urlProfilePictureDijit, "onKeyUp", lang.hitch(this, this._updateSaveProfilePictureButton));
+		this.connect(this.profilePictureSaveButton, "onClick", this._saveProfilePicture);
+		this.connect(this.localProfilePictureUploadButton, "onChange", this._uploadProfilePicture);
+		fixBusyButton(this.profilePictureSaveButton);
+		
+		//Password
+		this.connect(this.passwordSaveButton, "onClick", this._savePassword);
+		fixBusyButton(this.passwordSaveButton);
+		this.connect(this.newPasswordDijit, "onKeyUp", lang.hitch(this, this._updatePasswordSaveButton));
+		this.connect(this.verifyNewPasswordDijit, "onKeyUp", lang.hitch(this, this._updatePasswordSaveButton));
+		
+		this._localize();
+	},
+
+	/**
+	 * Required by ViewMap to be able to set a nice breadcrumb.
+	 * @param {Object} params
+	 */
+	getLabel: function(params) {
+		return "userProfile";
+	},
+	show: function(params) {
+		this.entryUri = this.application.getRepository()+"_principals/resource/"+params.entry;
+		
+		var f = lang.hitch(this, function(entry){this.showEntry(entry);});
+		this.application.getStore().loadEntry(this.entryUri, {},
+			function(entry) {
+				if (entry.resource == null) {
+					entry.setRefreshNeeded();
+					entry.refresh(f);
+				} else {
+					f(entry);
+				}
+			});
+	},
+	showEntry: function(entry) {		
+		this.entry = entry;
+		this._showAccount();
+		this.principalInfo.show(entry);
+	},
+
+	//===================================================
+	// Private methods
+	//===================================================
+	_userChange: function() {
+		this.user = this.application.getUser();
+		if (this.entryUri) {
+			this.application.getStore().loadEntry(this.entryUri, {}, lang.hitch(this, this.showEntry));			
+		}
+	},
+	_localize: function() {
+		dojo.requireLocalization("folio", "annotationProfile");
+		this.annotationProfileNLS = dojo.i18n.getLocalization("folio", "annotationProfile"); 
+
+		dojo.requireLocalization("folio", "userEditor");
+		this.settingsNLS = dojo.i18n.getLocalization("folio", "userEditor"); 
+		
+		//Account info
+		this.infoSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
+		this.infoSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
+		this.infoSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
+		attr.set(this.nameNode, "innerHTML", this.settingsNLS.name);
+		attr.set(this.infoNode, "innerHTML", this.settingsNLS.info);
+		attr.set(this.emailNode, "innerHTML", this.settingsNLS.email);
+		
+		//Account uiprefs
+		attr.set(this.languageNode, "innerHTML", this.settingsNLS.languageLabel);
+		this.uiprefsSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
+		this.uiprefsSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
+		this.uiprefsSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
+
+		//Profile picture
+		attr.set(this.noProfilePictureLabelNode, "innerHTML", this.settingsNLS.noProfilePictureLabel);
+		attr.set(this.urlProfilePictureLabelNode, "innerHTML", this.settingsNLS.urlProfilePictureLabel);
+		attr.set(this.localProfilePictureLabelNode, "innerHTML", this.settingsNLS.localProfilePictureLabel);
+		this.urlProfilePictureTestButton.set("label", this.settingsNLS.urlProfilePictureTest);
+		this.localProfilePictureUploadButton.set("label", this.settingsNLS.localProfilePictureUpload);
+		this.profilePictureSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
+		this.profilePictureSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
+		this.profilePictureSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
+
+		//Password
+		attr.set(this.oldPasswordNode, "innerHTML", this.settingsNLS.oldPassword);
+		attr.set(this.newPasswordNode, "innerHTML", this.settingsNLS.newPassword);
+		attr.set(this.verifynNewPasswordNode, "innerHTML", this.settingsNLS.verifyNewPassword);
+		attr.set(this.passwordMismatchNode, "innerHTML", this.settingsNLS.mismatchPassword);
+		this.passwordSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
+		this.passwordSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
+		this.passwordSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
+
+/*		AMD way 
+ 		require(["dojo/i18n!folio/nls/annotationProfile"], lang.hitch(this, function(i18n) {
+			this.annotationProfileNLS = i18n;
+		}));*/
+/*		dojo.requireLocalization("folio", "profile");
+		this.resourceBundle = dojo.i18n.getLocalization("folio", "profile"); 
+		this.set(this.resourceBundle);*/
+	},
+	
+	
+	// ============AccountTab==================
+	_showAccount: function() {
+		//Account tab switch
+		this._accountUpdate = true;
+		style.set(this.accountNode, "display", "");
+		style.set(this.profileNode, "display", "none");
+		domClass.remove(this.profileButtonNode, "selected");
+		domClass.add(this.accountButtonNode, "selected");
+		
+		//User resource and metadata.
+		var res = this.entry.getResource();
+		var md = this.entry.getLocalMetadata();
+
+		//Switch between group and user mode
+		if (folio.data.isUser(this.entry)) {
+			style.set(this.userPrincipalNode, "display", "");
+			style.set(this.groupPrincipalNode, "display", "none");
+		} else {
+			style.set(this.groupPrincipalNode, "display", "");			
+			style.set(this.userPrincipalNode, "display", "none");
+		}
+
+		//Update account info
+		this.firstNameDijit.set("value", md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/firstName") || "");
+		this.lastNameDijit.set("value", md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/lastName") || "");
+		var fn = md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/name") || "";
+		this.fullNameDijit.set("value", fn);
+		this._setFullName(fn);
+		this.infoDijit.set("value", md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/plan") || "");
+		var email = md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/mbox") || "";
+		if (email.indexOf("mailto:") === 0) {
+			email = email.substr(7);
+		}
+		this.emailDijit.set("value", email);
+		
+		//Update uiprefs
+		this.languageSelectDijit.set("value", res.language? res.language : "");
+
+		//Update profile picture
+		var pictUrl = md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/img");
+		if (pictUrl == null) {
+			this.noPictureChoiceButton.set("checked", true);
+			this._showNoPictureChoice();
+		} else if (pictUrl.indexOf(this.entry.getHomeContext() + "/resource/_profilePicture") === 0) {
+			this.localPictureChoiceButton.set("checked", true);
+			this._showLocalPictureChoice();	
+		} else {
+			this.urlPictureChoiceButton.set("checked", true);
+			this.urlProfilePictureDijit.set("value", pictUrl);
+			this._showURLPictureChoice();
+		}
+
+		setTimeout(lang.hitch(this, function() { //Delay since some updates of dijits are not sent until after event loop.
+			this._accountUpdate = false;
+		}), 1);
+	},
+	
+	// Info = firstname + lastname + name + email
+	_infoChanged: function() {
+		if (this._accountUpdate) return;
+		
+		this.infoSaveButton.set("disabled", false);
+		this._setFullName(this.firstNameDijit.get("value"), this.lastNameDijit.get("value"));
+	},
+	_saveAccountInfo: function() {
+		var md = this.entry.getLocalMetadata();
+		var subj = this.entry.getResourceUri();
+		var foaf = "http://xmlns.com/foaf/0.1/";
+		md.findAndRemove(subj, foaf+"firstName");
+		md.findAndRemove(subj, foaf+"lastName");
+		md.findAndRemove(subj, foaf+"name");
+		md.findAndRemove(subj, foaf+"plan");
+		md.findAndRemove(subj, foaf+"mbox");
+		if (folio.data.isUser(this.entry)) {
+			var fn = this.firstNameDijit.get("value");
+			if (fn !== "") {
+				md.create(subj, foaf+"firstName", {type: "literal", value: fn});
+			}
+			var ln = this.lastNameDijit.get("value");
+			if (ln !== "") {
+				md.create(subj, foaf+"lastName", {type: "literal", value: ln});
+			}
+			if (fn !== "" || ln !== "") {
+				md.create(subj, foaf+"name", {type: "literal", value: fn + " " +ln});
+			}
+		} else {
+			md.create(subj, foaf+"name", {type: "literal", value: this.fullNameDijit.get("value")});
+		}
+		var info = this.infoDijit.get("value");
+		if (info !== "") {
+			md.create(subj, foaf+"plan", {type: "literal", value: info});			
+		}
+		var mbox = this.emailDijit.get("value");
+		if (mbox !== "") {
+			md.create(subj, foaf+"mbox", {type: "uri", value: "mailto:" + mbox});
+		}
+		
+		this.entry.saveLocalMetadata().then(lang.hitch(this, function() {
+				this.entry.refresh(lang.hitch(this, function(entry){
+					this.application.dispatch({action: "changed", entry: entry, source: this});
+					this.application.getStore().updateReferencesTo(entry);
+				}));
+				this.application.getMessages().message(this.annotationProfileNLS.metadataSaved+this.entry.getUri());
+				this.infoSaveButton.cancel();				
+				this.infoSaveButton.set("disabled", true);
+				this.principalInfo.show(this.entry);
+			}), lang.hitch(this, function(message) {
+				if(message.status===412){
+					this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+				} else { 
+					this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+				}
+				this.infoSaveButton.cancel();
+			}));
+	},
+	_setFullName: function(firstname, lastname) {
+		attr.set(this.fullNameNode, "innerHTML", this.settingsNLS.displayedName + "&nbsp;&nbsp;<span>"+(firstname || "")+" "+(lastname || "")+"</span>");
+	},
+	
+	// uiprefs = preferred language
+	_UIPrefsChanged: function() {
+		if (this._accountUpdate) return;
+		this.uiprefsSaveButton.set("disabled", false);
+	},
+	_saveUIPrefsInfo: function() {
+		var newUserData = {};
+		var userLang = this.languageSelectDijit.get("value");
+		if (userLang && userLang != ''){
+			newUserData.language = userLang;
+			this.application.setLocale(userLang);
+		} else { //User has chosen to not have a preferred language, choose lang of the browser
+			newUserData.language = "";
+			var defaultedLanguage = "en";
+			if ( navigator ) {  //TODO, where does navigator object come from?
+				if ( navigator.language ) {
+					defaultedLanguage = navigator.language;
+				}
+				else if ( navigator.browserLanguage ) {
+					defaultedLanguage = navigator.browserLanguage;
+				}
+				else if ( navigator.systemLanguage ) {
+					defaultedLanguage = navigator.systemLanguage;
+				}
+				else if ( navigator.userLanguage ) {
+					defaultedLanguage = navigator.userLanguage;
+    			}
+			}
+			this.application.setLocale(defaultedLanguage);
+		}
+		
+		this.application.getCommunicator().PUT(this.entry.getResourceUri(), newUserData).then(
+				dojo.hitch(this, function(data) {
+					this.entry.getResource().language = newUserData.language;
+					this.uiprefsSaveButton.cancel();
+					this.uiprefsSaveButton.set("disabled", true);
+				}),
+				dojo.hitch(this, function(mesg) {
+					this.uiprefsSaveButton.cancel();
+				})
+		);
+	},
+	
+	// profile picture
+	_updateProfilePicturePreview: function(pictUrl) {
+		if (pictUrl !== "") {
+			attr.set(this.profilePictureNode, "src", pictUrl);
+		} else {
+			var config = this.application.getConfig();
+			var backup = folio.data.isUser(this.entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame");
+			attr.set(this.profilePictureNode, "src", backup);	
+		}
+
+	},
+	_showNoPictureChoice: function() {
+		this._updateSaveProfilePictureButton();
+		this.urlProfilePictureDijit.set("disabled", true);
+		this.urlProfilePictureTestButton.set("disabled", true);
+		this.localProfilePictureUploadButton.set("disabled", true);
+		this._updateProfilePicturePreview("");
+	},
+	
+	_showURLPictureChoice: function() {
+		this._updateSaveProfilePictureButton();
+		this.urlProfilePictureDijit.set("disabled", false);
+		this.urlProfilePictureTestButton.set("disabled", false);
+		this.localProfilePictureUploadButton.set("disabled", true);
+		this._updateProfilePicturePreview(this.urlProfilePictureDijit.get("value") || "");
+	},
+
+	_showLocalPictureChoice: function() {
+		this.urlProfilePictureDijit.set("disabled", true);
+		this.urlProfilePictureTestButton.set("disabled", true);
+		this.localProfilePictureUploadButton.set("disabled", false);
+		this._checkForLocalProfilePicture(lang.hitch(this,function() {
+			this._updateSaveProfilePictureButton();
+			if (this._ppEntry) {
+				this._updateProfilePicturePreview(this._ppEntry.getResourceUri()+"?request.preventCache="+(new Date()).getTime());
+			} else {
+				this._updateProfilePicturePreview("");
+			}
+		}));
+	},
+	_checkForLocalProfilePicture: function(callback) {
+		if (this._ppEntry === false) {
+			callback();
+			return;
+		}
+		var contexturl = this.entry.getHomeContext();
+		var hc = this.application.getStore().getContextById(contexturl.substr(contexturl.lastIndexOf("/")+1));
+		hc.loadEntryFromId("_profilePicture", null, lang.hitch(this, function(e) {
+			this._ppEntry = e;
+			callback();
+		}), lang.hitch(this, function() {
+			this._ppEntry = false;
+			callback();
+		}));
+	},
+	
+	_uploadProfilePicture: function() {
+		var files = this.localProfilePictureUploadButton.getFileList();
+		var inp = this.localProfilePictureUploadButton._inputs[0];
+		var contexturl = this.entry.getHomeContext();
+		var hc = this.application.getStore().getContextById(contexturl.substr(contexturl.lastIndexOf("/")+1));
+		var fail = lang.hitch(this, function(err) {
+			console.log(err);
+			this.localProfilePictureUploadButton.reset();
+		});
+		var pp = lang.hitch(this, function(ppEntry) {
+			this._ppEntry = ppEntry;
+			this.application.getCommunicator().putFile(ppEntry.getResourceUri(), inp, lang.hitch(this, function() {
+				this._updateProfilePicturePreview(ppEntry.getResourceUri()+"?request.preventCache="+(new Date()).getTime());
+				this.localProfilePictureUploadButton.reset();
+				this._updateSaveProfilePictureButton();
+				this.principalInfo.show(this.entry);
+			}), fail);
+		});
+		this._checkForLocalProfilePicture(lang.hitch(this, function() {
+			if (this._ppEntry) {
+				pp(this._ppEntry);
+			} else {
+				var md = new Graph();
+				var res = this.entry.getHomeContext() + "/resource/_profilePicture";
+				md.create(res, "http://purl.org/dc/terms/title", {type: "literal", value: files[0].name});
+				hc.createEntry({
+						metadata: md.exportRDFJSON(), 
+						params: {representationType: "informationresource",
+							   locationType: "local",
+							   builtinType: "none",
+							   id: "_profilePicture"}
+					   }, pp, fail);
+			}
+		}));
+	},
+	
+	_updateSaveProfilePictureButton: function() {
+		if (this._ppb_timer) {
+			clearTimeout(this._ppb_timer);
+		}
+		this._ppb_timer = setTimeout(lang.hitch(this, function() {
+			this._updateSaveProfilePictureButtonSync();
+			delete this._ppb_timer;
+		}), 200);
+	},
+	_updateSaveProfilePictureButtonSync: function() {
+		var md = this.entry.getLocalMetadata();
+		var subj = this.entry.getResourceUri();
+		var savedProfilePict = md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/img") || "";
+		var newProfilePict = this._getNewProfilePictureUrl();
+		this.profilePictureSaveButton.set("disabled", newProfilePict === null ? true : savedProfilePict === newProfilePict);
+	},
+	_getNewProfilePictureUrl: function() {
+		if (this.localPictureChoiceButton.get("checked")) {
+			if (this._ppEntry) {
+				return this.entry.getHomeContext() + "/resource/_profilePicture";				
+			} else {
+				return null;
+			}
+		} else if (this.urlPictureChoiceButton.get("checked")) {
+			return this.urlProfilePictureDijit.get("value") || "";			
+		}
+		return "";
+	},
+	_saveProfilePicture: function() {
+		var md = this.entry.getLocalMetadata();
+		var subj = this.entry.getResourceUri();
+		var foaf = "http://xmlns.com/foaf/0.1/";
+
+		md.findAndRemove(subj, foaf+"img");
+		var profpict = this._getNewProfilePictureUrl();
+		if (profpict !== "" && profpict !== null) {
+			md.create(subj, foaf+"img", {type: "uri", value: profpict});			
+		}
+		this.entry.saveLocalMetadata().then(lang.hitch(this, function() {
+				this.entry.refresh(lang.hitch(this, function(entry){
+					this.profilePictureSaveButton.cancel();
+					this.profilePictureSaveButton.set("disabled", true);
+					this.principalInfo.show(this.entry);
+				}));
+			}), lang.hitch(this, function(message) {
+				if(message.status===412){
+					this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+				} else { 
+					this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+				}
+				this.profilePictureSaveButton.cancel();
+			}));		
+	},
+	// Password
+	_savePassword: function() {
+		var newUserData = {password: this.newPasswordDijit.get("value")};		
+		this.application.getCommunicator().PUT(this.entry.getResourceUri(), newUserData).then(
+				lang.hitch(this, function(data) {
+					var loginDialog = new LoginDialog({
+						application: this.application
+					});
+					loginDialog.setAuthentication(this.entry.getResource().name, newUserData.password);
+					loginDialog.destroyRecursive();
+					this.newPasswordDijit.set("value", "");
+					this.verifyNewPasswordDijit.set("value", "");					
+					this.passwordSaveButton.cancel();
+					this.passwordSaveButton.set("disabled", true);
+				}),
+				dojo.hitch(this, function(mesg) {
+					this.passwordSaveButton.cancel();
+				})
+		);
+	},
+	_updatePasswordSaveButton: function() {
+		var np = this.newPasswordDijit.get("value");
+		var vnp = this.verifyNewPasswordDijit.get("value");
+		if (np.length === 0 && vnp.length === 0) {
+			this.passwordSaveButton.set("disabled", true);
+			style.set(this.passwordMismatchNode, "display", "none");
+		} else if (np !== vnp){
+			this.passwordSaveButton.set("disabled", true);
+			style.set(this.passwordMismatchNode, "display", "");
+		} else {
+			this.passwordSaveButton.set("disabled", false);
+			style.set(this.passwordMismatchNode, "display", "none");
+		}
+	},
+	
+	// ==================ProfileTab======================
+	_showProfile: function() {
+		//Account tab switch
+		domClass.add(this.profileButtonNode, "selected");		
+		domClass.remove(this.accountButtonNode, "selected");		
+		style.set(this.accountNode, "display", "none");
+		style.set(this.profileNode, "display", "");
+		
+		//Update editor
+		attr.set(this.profileEditorNode, "innerHTML", "");
+		var node = construct.create("div", null, this.profileEditorNode);
+		this.apPlain = new RFormsEditorPlain({},node);
+		this.apPlain.setIncludeLevel("optional");
+		this.graph = new Graph(this.entry.getLocalMetadata().exportRDFJSON());
+		this.apPlain.show(this.graph, this.entry, this.entry.getResourceUri());
+	},
+	_saveProfile: function() {
+		this.entry.saveLocalMetadata(this.graph).then(lang.hitch(this, function(){
+			this.entry.refresh(lang.hitch(this, function(entry){
+				this.application.dispatch({action: "changed", entry: entry, source: this});
+				this.application.getStore().updateReferencesTo(entry);
+				this.principalInfo.show(this.entry);
+			}));
+			this.application.getMessages().message(this.annotationProfileNLS.metadataSaved+this.entry.getUri());
+			this.saveProfileButton.cancel();
+		}),lang.hitch(this, function(message){
+			if(message.status===412){
+				this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+			} else { 
+				this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+			}
+			this.saveProfileButton.cancel();
+		}));
+	}
+});
+});

@@ -30,7 +30,6 @@ dojo.require("folio.editor.UserEditor");
 dojo.require("dijit.form.FilteringSelect");
 dojo.requireLocalization("dijit.form", "validate");
 dojo.require("folio.security.LoginDialog");
-dojo.require("folio.editor.ResourceEditor");
 
 
 /**
@@ -217,6 +216,7 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 			this.home = this.user.homecontext;
 			dojo.style(this.homeLinkNodeWrapper, "display", "");
 			dojo.style(this.settingsLinkNodeWrapper, "display", "");
+			dojo.attr(this.settingsNode, "href", this.application.getHref(this.application.getRepository()+"_principals/resource/"+this.user.id, "settings"));
 			dojo.attr(this.homeLinkNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
 			if (this.folderIconNode) {
 				dojo.attr(this.folderIconNode, "href", this.application.getHref(this.application.getRepository()+this.user.homecontext+"/resource/_top", "default"));
@@ -252,12 +252,6 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 		} else {
 			this.application.message(this.resourceBundle.notLoggedInNoHomeMessage);
 		}
-	},
-	_settingsClicked: function() {
-		dojo.publish("/confolio/showResourceEditor", [{width: "700px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
-	},
-	_userFieldClicked: function() {
-		dojo.publish("/confolio/showResourceEditor", [{width: "700px", height: "250px", context: "_principals", entry: this.userId, widgetClass: folio.editor.UserEditor, dialogTitle: this.changeUserDialogTitle}]);
 	},
 	_loginLinkClicked: function() {
 		new folio.security.LoginDialog({
