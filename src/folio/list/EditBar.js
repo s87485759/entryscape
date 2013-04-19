@@ -444,7 +444,7 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 		this.getEntryOrReferencedEntry(this.folder, dojo.hitch(this, this.folderClickedImpl));
 	},
 	textClickedImpl: function(entry) {
-		var mdGraph = rdfjson.Graph();
+		var mdGraph = new rdfjson.Graph();
 		var contextToUse = entry.getContext(); 
 		mdGraph.create(contextToUse.getBase() + contextToUse.getId()+"/resource/_newId",
 						  folio.data.DCTermsSchema.TITLE,
@@ -473,7 +473,7 @@ dojo.declare("folio.list.EditBar", [dijit._Widget, dijit._Templated, folio.Appli
 		});
 	},
 	folderClickedImpl: function(entry) {
-		var mdGraph = rdfjson.Graph();
+		var mdGraph = new rdfjson.Graph();
 		var contextToUse = entry.getContext(); 
 		mdGraph.create(contextToUse.getBase() + contextToUse.getId()+"/resource/_newId",
 						  folio.data.DCTermsSchema.TITLE,
