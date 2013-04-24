@@ -32,6 +32,7 @@ dojo.require("dojo.date");
 dojo.require("dojox.form.BusyButton");
 dojo.require("dijit.layout.TabContainer");
 dojo.require("folio.editor.RFormsEditorPlain");
+dojo.require("rforms.model.Engine");
 
 /**
  * Shows a dialog within which all comments for an entry are displayed. 
@@ -101,7 +102,7 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 
 			var template = itemStore.detectTemplate(this.graph, this.resourceURI, config.getMPForType(commentStyle["class"]).items);
 			var langs = config.getMPLanguages();
-			var binding = rforms.model.match(this.graph, this.resourceURI, template);
+			var binding = rforms.model.Engine.match(this.graph, this.resourceURI, template);
 			var node = dojo.create("div");
 			this.mdEditorContainer.set("content", node);
 			this.mdEditor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
