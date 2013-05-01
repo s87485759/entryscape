@@ -17,12 +17,15 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"fileUploadLabel": "File",
-  "mimeTypeLabel": "Format",
-  "uploadTypeLabel": "Type",
-  "browseButtonLabel": "Browse...",
-  "cancelButtonLabel": "Cancel",
-  "mimeTypeWarningLabel": "Recommended to keep the value 'Detect'",
-  "advancedUploadButtonLabelMoreDetails": "More details",
-  "advancedUploadButtonLabelLessDetails": "Less details"
-})
+define({
+	root : {
+		"fileUploadLabel" : "File",
+		"mimeTypeLabel" : "Format",
+		"uploadTypeLabel" : "Type",
+		"browseButtonLabel" : "Browse...",
+		"cancelButtonLabel" : "Cancel",
+		"mimeTypeWarningLabel" : "Recommended to keep the value 'Detect'",
+		"advancedUploadButtonLabelMoreDetails" : "More details",
+		"advancedUploadButtonLabelLessDetails" : "Less details"
+	}
+});

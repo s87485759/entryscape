@@ -58,7 +58,8 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		creatorText: {node: "creatorTextNode", type: "innerHTML"},
 		modifiedText: {node: "modifiedTextNode", type: "innerHTML"},
 		createdText: {node: "createdTextNode", type: "innerHTML"},
-		referentsLabel: {node: "referentsLabelNode", type: "innerHTML"}
+		referentsLabel: {node: "referentsLabelNode", type: "innerHTML"},
+		accessText: {node: "accessTextNode", type: "innerHTML"}
 	}),
 	templatePath: dojo.moduleUrl("folio.entry", "DetailsTemplate.html"),
 	widgetsInTemplate: true, //Because Details has subwidgets
@@ -242,6 +243,7 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 			dojo.attr(this.createdNode, "innerHTML", "");
 			dojo.attr(this.modifiedNode, "innerHTML", "");
 			dojo.attr(this.creatorNode, "innerHTML", "");
+			dojo.attr(this.accessNode, "innerHTML", "");
 			dojo.attr(this.rssNode, "innerHTML", "");
 			return;
 		}
@@ -271,6 +273,21 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		} else  {
 			dojo.style(this.rssWrapperNode, "display", "none");			
 		}
+		
+		//Check access, fix user.
+		/*entry.getOwnEntry(dojo.hitch(this, function(context) {
+			var private = true;
+			var stmts = context.getInfo().find(context.getUri(), folio.data.SCAMSchema.WRITE);
+			if (stmts.length > 1 || stmts[0].getValue() !== userEntryURI) {
+				private = false;
+				...
+			}
+			var info = entry.getInfo();
+			var stmts = info.find(null, folio.data.SCAMSchema.WRITE);
+			if (stmts.length >= 0) {
+			
+			}			
+		}));*/
 	},
 /*	_toggleReferents: function() {
 		if (this.referentsVisible) {

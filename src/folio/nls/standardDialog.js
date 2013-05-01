@@ -17,8 +17,11 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"cancelButtonLabel": "Cancel",
-  "nextButtonLabel": "Next",
-  "finishButtonLabel": "OK",
-  "busyButtonLabel": "Sending..."
-})
+define({
+	root : {
+		"cancelButtonLabel" : "Cancel",
+		"nextButtonLabel" : "Next",
+		"finishButtonLabel" : "OK",
+		"busyButtonLabel" : "Sending..."
+	}
+});

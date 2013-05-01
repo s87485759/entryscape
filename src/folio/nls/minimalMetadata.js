@@ -17,9 +17,12 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"labelLabel": "Title",
-  "descriptionLabel": "Description",
-  "uploadFile": "Upload file",
-  "cancel": "Cancel",
-  "done": "Done"
-})
+define({
+	root : {
+		"labelLabel" : "Title",
+		"descriptionLabel" : "Description",
+		"uploadFile" : "Upload file",
+		"cancel" : "Cancel",
+		"done" : "Done"
+	}
+});

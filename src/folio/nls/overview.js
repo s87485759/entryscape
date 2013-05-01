@@ -17,9 +17,12 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"iconsTitle": "Icons",
-  "treeTitle": "Tree",
-  "resourceAccessDeniedGuest": "You have to be logged in to enter portfolio \"${0}\".",
-  "resourceAccessDeniedUser": "Portfolio \"${0}\" is not available for you, if you feel that this is wrong you have to contact the owner of the portfolio or an administrator.",
-  "resourceAccessDeniedAdmin": "Portfolio \"${0}\" is only available for administrators."
-})
+define({
+	root : {
+		"iconsTitle" : "Icons",
+		"treeTitle" : "Tree",
+		"resourceAccessDeniedGuest" : "You have to be logged in to enter portfolio \"${0}\".",
+		"resourceAccessDeniedUser" : "Portfolio \"${0}\" is not available for you, if you feel that this is wrong you have to contact the owner of the portfolio or an administrator.",
+		"resourceAccessDeniedAdmin" : "Portfolio \"${0}\" is only available for administrators."
+	}
+});

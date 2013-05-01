@@ -45,9 +45,14 @@
 			</div>
 		</div>
 		<div dojoType="dijit.layout.ContentPane" region="bottom" class="footer thinBorder distinctBackground">
-				<span style="float:left"><b><span dojoAttachPoint="creatorTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="creatorNode"></span>&nbsp;&nbsp;</span>
-				<span style="float:right"><b><span dojoAttachPoint="modifiedTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="modifiedNode"></span>&nbsp;&nbsp;</span>
-				<span style="float:right"><b><span dojoAttachPoint="createdTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="createdNode"></span>&nbsp;&nbsp;</span>
+				<div class="createdAndModifiedBlock">
+					<div><b><span dojoAttachPoint="modifiedTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="modifiedNode"></span>&nbsp;&nbsp;</div>
+					<div><b><span dojoAttachPoint="createdTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="createdNode"></span>&nbsp;&nbsp;</div>
+				</div>
+				<div>
+					<div><b><span dojoAttachPoint="creatorTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="creatorNode"></span>&nbsp;&nbsp;</div>
+					<div style="display:none"><b><span dojoAttachPoint="accessTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="accessNode"></span>&nbsp;&nbsp;</div>
+				</div>
 		</div>
     </div>
 </div>

@@ -17,24 +17,27 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  "saveDialogRecommend": "Save changes before continuing? (Changes will be lost otherwise)",
-  "saveDialogSaveLabel": "Save",
-  "saveDialogDiscardLabel": "Discard changes",
-  "saveDialogCancelLabel": "Cancel",
-  "dialogTitle": "Edit metadata for ",
-  "mandatoryLabel": "Mandatory",
-  "recommendedLabel": "Recommended",
-  "colorLabel": "Color labels",
-  "shameMessageLabel": "Form is being constructed, please wait.",
-  "readyForValidationLabel": "Ready for validation",
-  "optionalLabel": "Optional",
-  "dialogCancelLabel": "Cancel",
-  "dialogDoneLabel": "Done",
-  "dialogDoneBusyLabel": "Saving",
-  "mandatoryElementsMissing": "Mandatory elements missing!",
-  "changeToLinkReference": "You do not have sufficient rights to change this entry so that it may contain local metadata in addition to the referenced metadata.",
-  "failedSavingUnsufficientMDRights": "You do not have sufficient rights to save the metadata.",
-  "modifiedPreviouslyOnServer" : "ERROR: The resource has been changed on the server, your changes have NOT been saved.",
-  "metadataSaved": "Information has been saved for resource "
-})
+define({
+	root : {
+		"saveDialogRecommend" : "Save changes before continuing? (Changes will be lost otherwise)",
+		"saveDialogSaveLabel" : "Save",
+		"saveDialogDiscardLabel" : "Discard changes",
+		"saveDialogCancelLabel" : "Cancel",
+		"dialogTitle" : "Edit metadata for ",
+		"mandatoryLabel" : "Mandatory",
+		"recommendedLabel" : "Recommended",
+		"colorLabel" : "Color labels",
+		"shameMessageLabel" : "Form is being constructed, please wait.",
+		"readyForValidationLabel" : "Ready for validation",
+		"optionalLabel" : "Optional",
+		"dialogCancelLabel" : "Cancel",
+		"dialogDoneLabel" : "Done",
+		"dialogDoneBusyLabel" : "Saving",
+		"mandatoryElementsMissing" : "Mandatory elements missing!",
+		"changeToLinkReference" : "You do not have sufficient rights to change this entry so that it may contain local metadata in addition to the referenced metadata.",
+		"failedSavingUnsufficientMDRights" : "You do not have sufficient rights to save the metadata.",
+		"modifiedPreviouslyOnServer" : "ERROR: The resource has been changed on the server, your changes have NOT been saved.",
+		"metadataSaved" : "Information has been saved for resource "
+	}
+});
+

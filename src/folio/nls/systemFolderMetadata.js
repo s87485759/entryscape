@@ -17,21 +17,23 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"_top_Label": "Top",
-	"_top_Description": "The top folder of the portfolio general material.",
-	"_comments_Label": "Comments folder",
-	"_comments_Description": "All comments is listed here.",
-	"_contacts_Label": "Contacts",
-	"_contacts_Description": "A list of all your contacts.",
-	"_featured_Label": "Featured",
-	"_featured_Description": "A featured list.",
-	"_feeds_Label": "Feeds",
-	"_feeds_Description": "A list of feeds.",
-	"_latest_Label": "Latest entries",
-	"_latest_Description": "The latest entries added to the portfolio",
-	"_trash_Label": "Garbage bin",
-	"_trash_Description": "Thrown away files end up here.",
-	"_unlisted_Label": "Unlisted entries",
-	"_unlisted_Description": "Entries that are not located in any folder can be found here."
-})
+define({
+	root : {
+		"_top_Label" : "Top",
+		"_top_Description" : "The top folder of the portfolio general material.",
+		"_comments_Label" : "Comments folder",
+		"_comments_Description" : "All comments is listed here.",
+		"_contacts_Label" : "Contacts",
+		"_contacts_Description" : "A list of all your contacts.",
+		"_featured_Label" : "Featured",
+		"_featured_Description" : "A featured list.",
+		"_feeds_Label" : "Feeds",
+		"_feeds_Description" : "A list of feeds.",
+		"_latest_Label" : "Latest entries",
+		"_latest_Description" : "The latest entries added to the portfolio",
+		"_trash_Label" : "Garbage bin",
+		"_trash_Description" : "Thrown away files end up here.",
+		"_unlisted_Label" : "Unlisted entries",
+		"_unlisted_Description" : "Entries that are not located in any folder can be found here."
+	}
+});

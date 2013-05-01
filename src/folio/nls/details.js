@@ -17,11 +17,19 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"extInformationText": "Original information",
-  "locInformationText": "Provided information",
-  "creatorText": "Creator",
-  "modifiedText": "Modified",
-  "createdText": "Created",
-  "referentsLabel": "In folders:",
-  "internalRefLabel": "Refers to entry that occurs in"
-})
+define({
+	root : {
+		"extInformationText" : "Original information",
+		"locInformationText" : "Provided information",
+		"creatorText" : "Creator",
+		"accessText" : "Access",
+		"publicAccess": "Public",
+		"restrictedAccess": "Restricted",
+		"privateAccess": "Private",
+		"licenseText": "License",
+		"modifiedText" : "Modified",
+		"createdText" : "Created",
+		"referentsLabel" : "In folders:",
+		"internalRefLabel" : "Refers to entry that occurs in"
+	}
+});

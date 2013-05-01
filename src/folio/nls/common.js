@@ -17,11 +17,13 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  // Used when no value is found, for example in the metadata.
-  "noValueFound": "[No value found]",
-  // Used when no label/title for an entry is found.
-  "noTitleFound": "No title found!",
-  // Used when there are insufficient rights, for example to read metadata.
-  "insufficientRights": "Insufficient rights for this resource!"
-})
+define({
+	root : {
+		// Used when no value is found, for example in the metadata.
+		"noValueFound" : "[No value found]",
+		// Used when no label/title for an entry is found.
+		"noTitleFound" : "No title found!",
+		// Used when there are insufficient rights, for example to read metadata.
+		"insufficientRights" : "Insufficient rights for this resource!"
+	}
+});

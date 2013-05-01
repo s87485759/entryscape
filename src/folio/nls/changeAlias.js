@@ -17,6 +17,8 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"aliasLabel": "Alias"
-})
+define({
+	root : {
+		"aliasLabel" : "Alias"
+	}
+});

@@ -17,10 +17,13 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"commentDialogTitle": "Comments for:",
-  "finishButtonLabel": "Post",
-  "cancelButtonLabel": "Close",
-  "busyButtonLabel": "Working",
-  "defaultTextAreaText": "Type your comment here...",
-  "sendErrorLabel": "Error: could not send comment"
-})
+define({
+	root : {
+		"commentDialogTitle" : "Comments for:",
+		"finishButtonLabel" : "Post",
+		"cancelButtonLabel" : "Close",
+		"busyButtonLabel" : "Working",
+		"defaultTextAreaText" : "Type your comment here...",
+		"sendErrorLabel" : "Error: could not send comment"
+	}
+});

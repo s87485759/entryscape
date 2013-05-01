@@ -17,17 +17,19 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  "removeDialogTitle": "Remove",
-  "emptyTrash": "Empty the garbage bin?",
-  "folderRefreshProgress": "${0} out of ${1} folders refreshed",
-  "folderSaveProgress": "Entry removed from ${0} out of ${1} folders",
-  "moveToTrash": "Move to the garbage bin?",
-  "removeCompletely": "Remove completely?",
-  "removeFromAll": "all folders",
-  "removeFromAllFailed": "An error occured, the entry remains in this folder but may have been removed from other folders.",
-  "removeFromCurrent": "this folder",
-  "removeFromFolder": "This entry occurs in more than one folder.<br>From where do you want to remove it?",
-  "removeSystemEntriesNA": "System entries cannot be removed or moved to trash.",
-  "removeListedEntryFromSearchResultNA": "Entry exists in a folder, it has to be removed from there."
-})
+define({
+	root : {
+		"removeDialogTitle" : "Remove",
+		"emptyTrash" : "Empty the garbage bin?",
+		"folderRefreshProgress" : "${0} out of ${1} folders refreshed",
+		"folderSaveProgress" : "Entry removed from ${0} out of ${1} folders",
+		"moveToTrash" : "Move to the garbage bin?",
+		"removeCompletely" : "Remove completely?",
+		"removeFromAll" : "all folders",
+		"removeFromAllFailed" : "An error occured, the entry remains in this folder but may have been removed from other folders.",
+		"removeFromCurrent" : "this folder",
+		"removeFromFolder" : "This entry occurs in more than one folder.<br>From where do you want to remove it?",
+		"removeSystemEntriesNA" : "System entries cannot be removed or moved to trash.",
+		"removeListedEntryFromSearchResultNA" : "Entry exists in a folder, it has to be removed from there."
+	}
+});

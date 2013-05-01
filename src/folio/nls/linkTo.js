@@ -17,12 +17,15 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"URLLabel": "URL",
-  "linkTypeLabel": "Type",
-  "advancedButtonLabelMoreDetails": "More details",
-  "advancedButtonLabelLessDetails": "Less details",
-  "downloadableLabel": "Downloadable",
-  "formatLabel": "Format",
-  "externalInfoLabel": "External info",
-  "mdInfoLabel": "Info URL"
-})
+define({
+	root : {
+		"URLLabel" : "URL",
+		"linkTypeLabel" : "Type",
+		"advancedButtonLabelMoreDetails" : "More details",
+		"advancedButtonLabelLessDetails" : "Less details",
+		"downloadableLabel" : "Downloadable",
+		"formatLabel" : "Format",
+		"externalInfoLabel" : "External info",
+		"mdInfoLabel" : "Info URL"
+	}
+});

@@ -17,5 +17,8 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"createTypeLabel": "Type"
-})
+define({
+	root : {
+		"createTypeLabel" : "Type"
+	}
+});

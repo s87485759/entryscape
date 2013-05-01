@@ -127,44 +127,45 @@ dojo.declare("folio.search.LocalSearch", [dijit._Widget, dijit._Templated], {
 		}
 	},
 	_localize: function() {
-		dojo.requireLocalization("folio", "search");
-		this.resourceBundle = dojo.i18n.getLocalization("folio", "search"); 
-		this.set(this.resourceBundle);
+		require(["dojo/i18n!folio/nls/search"], dojo.hitch(this, function(i18n) {
+			this.resourceBundle = i18n; 
+			this.set(this.resourceBundle);
 		
-		var context = this.application.getStore().getContext(this.application.repository+"_search");
-		context.search({locationType: ["Local"], builtinType: ["Context"], sort: "modified+desc", queryType: "solr", onSuccess: dojo.hitch(this, function(entryResult) {
-			folio.data.getAllChildren(entryResult, dojo.hitch(this, function(children) {
-				var contextsArray = dojo.map(children, function(child) {
-					return {"label": folio.data.getLabelRaw(child) || child.alias || child.getId(), id: child.getId()};
-				});
-				var store = dojo.data.ItemFileReadStore({
-					data: {
-						identifier: "id",
-						label: "label",
-						items: contextsArray
-					}
-				});
-				this.specficPortfolioChangerDijit.set("store", store);
-			}));
-		})});
-		var sortOrderStore = dojo.data.ItemFileReadStore({
-			data: {
-				identifier: "id",
-				label: "label",
-				items: [{label: this.resourceBundle.sortBestMatch, id: "score"}, 
-						{label: this.resourceBundle.sortTitle, id: "title"},
-						{label: this.resourceBundle.sortModified, id: "modified"}]
+			var context = this.application.getStore().getContext(this.application.repository+"_search");
+			context.search({locationType: ["Local"], builtinType: ["Context"], sort: "modified+desc", queryType: "solr", onSuccess: dojo.hitch(this, function(entryResult) {
+				folio.data.getAllChildren(entryResult, dojo.hitch(this, function(children) {
+					var contextsArray = dojo.map(children, function(child) {
+						return {"label": folio.data.getLabelRaw(child) || child.alias || child.getId(), id: child.getId()};
+					});
+					var store = dojo.data.ItemFileReadStore({
+						data: {
+							identifier: "id",
+							label: "label",
+							items: contextsArray
+						}
+					});
+					this.specficPortfolioChangerDijit.set("store", store);
+				}));
+			})});
+			var sortOrderStore = dojo.data.ItemFileReadStore({
+				data: {
+					identifier: "id",
+					label: "label",
+					items: [{label: this.resourceBundle.sortBestMatch, id: "score"}, 
+							{label: this.resourceBundle.sortTitle, id: "title"},
+							{label: this.resourceBundle.sortModified, id: "modified"}]
+				}
+			});
+			if (this.sortChangerDijitConnector) {
+				dojo.disconnect(this.sortChangerDijitConnector);
 			}
-		});
-		if (this.sortChangerDijitConnector) {
-			dojo.disconnect(this.sortChangerDijitConnector);
-		}
-		this.sortChangerDijit.set("store", sortOrderStore);
-		this.sortChangerDijit.set("value", "score");
-		
-		setTimeout(function() {
-			this.sortChangerDijitConnector = dojo.connect(this.sortChangerDijit, "onChange", this, this._searchFormChanged);
-		}, 100);
+			this.sortChangerDijit.set("store", sortOrderStore);
+			this.sortChangerDijit.set("value", "score");
+
+			setTimeout(function() {
+				this.sortChangerDijitConnector = dojo.connect(this.sortChangerDijit, "onChange", this, this._searchFormChanged);
+			}, 100);
+		}));
 	},
 	_searchFormChangedRadio: function(value) {
 		if (value) {

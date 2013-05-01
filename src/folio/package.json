@@ -1,0 +1,22 @@
+{
+    "name": "folio",
+    "version": "2.0",
+    "main": "main",
+    "dependencies": {
+	"dojo": "1.8.3",
+	"dijit": "1.8.3",
+	"dojox": "1.8.3",
+	"util": "1.8.3",
+	"rdfjson": "2.0",
+        "rforms": "2.0"
+    },
+    "description": "The folio namespace is used for the Entryscape platform.",
+    "licenses": [
+	{
+	    "type": "BSD",
+	    "url": "http://bugs.dojotoolkit.org/browser/dojo/trunk/LICENSE#L13"
+	}
+    ],
+    "homepage": "https://code.google.com/p/entrystore/",
+    "dojoBuild": "package.js"
+}

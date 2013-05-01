@@ -17,5 +17,8 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"message": "You tried to ${0} entry ${1} within context with alias \"${2}\".<br>It ${3}: ${4}"
-})
+define({
+	root : {
+		"message" : "You tried to ${0} entry ${1} within context with alias \"${2}\".<br>It ${3}: ${4}"
+	}
+});

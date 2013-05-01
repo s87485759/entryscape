@@ -17,6 +17,9 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"searchedFor": "Searched for ",
-  "noMatch": "No matching entries found."
-})
+define({
+	root : {
+		"searchedFor" : "Searched for ",
+		"noMatch" : "No matching entries found."
+	}
+});

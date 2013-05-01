@@ -17,6 +17,9 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"aclDialogTitle": "Access rights"
-})
+define({
+	root : {
+		"aclDialogTitle" : "Access rights"
+	}
+});
+

@@ -17,21 +17,24 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"uploadedAndChangedLink": "Sucessfully uploaded and changed the link",
-  "failedChangeLink": "Did not manage to change the link",
-  "replacingFile": "Replacing file...",
-  "uploadedAndChangedFile": "Sucessfully uploaded and changed the file",
-  "failedChangeFile": "Did not manage to change the file",
-  "linkDestinationText": "Link destination: ",
-  "saveLinkButtonLabel": "Update Link",
-  "replaceFileText": "Replace file: ",
-  "browseButtonLabel": "Browse ...",
-  "browseButtonCancelLabel": "Cancel",
-  "typeOfFileText": "Type of file: ",
-  "fileSaveButtonLabel": "Save File",
-  "saveAccessControlButtonLabel": "Save Access Control",
-  "closeButtonLabel": "Close",
-  "recursiveACL": "Set the same access rights for the whole folder",
-  "recursiveACLWarningNote": "Note",
-  "recursiveACLWarning": "since the \"Set the same access rights for the whole folder\" checkbox is checked, the access control list will be applied to all entries and subfolders within this folder. As this may include entries that are also part of other folders, do not check the box if there are such entries for which you want to maintain the current access control setting."
-})
+define({
+	root : {
+		"uploadedAndChangedLink" : "Sucessfully uploaded and changed the link",
+		"failedChangeLink" : "Did not manage to change the link",
+		"replacingFile" : "Replacing file...",
+		"uploadedAndChangedFile" : "Sucessfully uploaded and changed the file",
+		"failedChangeFile" : "Did not manage to change the file",
+		"linkDestinationText" : "Link destination: ",
+		"saveLinkButtonLabel" : "Update Link",
+		"replaceFileText" : "Replace file: ",
+		"browseButtonLabel" : "Browse ...",
+		"browseButtonCancelLabel" : "Cancel",
+		"typeOfFileText" : "Type of file: ",
+		"fileSaveButtonLabel" : "Save File",
+		"saveAccessControlButtonLabel" : "Save Access Control",
+		"closeButtonLabel" : "Close",
+		"recursiveACL" : "Set the same access rights for the whole folder",
+		"recursiveACLWarningNote" : "Note",
+		"recursiveACLWarning" : "since the \"Set the same access rights for the whole folder\" checkbox is checked, the access control list will be applied to all entries and subfolders within this folder. As this may include entries that are also part of other folders, do not check the box if there are such entries for which you want to maintain the current access control setting."
+	}
+});

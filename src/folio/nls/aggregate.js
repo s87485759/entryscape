@@ -17,5 +17,8 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"contentNotDigitalResource": "Cannot display content, not a digital resource"
-})
+define({
+	root: {
+		"contentNotDigitalResource": "Cannot display content, not a digital resource"
+	}
+});

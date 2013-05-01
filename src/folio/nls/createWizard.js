@@ -17,12 +17,15 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"cancelButtonLabel": "Cancel",
-  "nextButtonLabel": "Next",
-  "finishButtonLabel": "Finish",
-  "busyButtonLabel": "sending",
-  "uploadFileTitle": "Upload file",
-  "createObjectTitle": "Create object",
-  "linkToWebResourceTitle": "Link to web resource",
-  "conditionText": "This resource has been pre-checked according to the rules of the Organic.Edunet project"
-})
+define({
+	root : {
+		"cancelButtonLabel" : "Cancel",
+		"nextButtonLabel" : "Next",
+		"finishButtonLabel" : "Finish",
+		"busyButtonLabel" : "sending",
+		"uploadFileTitle" : "Upload file",
+		"createObjectTitle" : "Create object",
+		"linkToWebResourceTitle" : "Link to web resource",
+		"conditionText" : "This resource has been pre-checked according to the rules of the Organic.Edunet project"
+	}
+});

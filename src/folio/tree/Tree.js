@@ -116,8 +116,9 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		}
 		this.showing = true;
 		dojo.style(this.floatingTreeNode, "display", "");
+		this.tree.resize();
 		this._resizeFloatingTree();
-		var left = -dojo.marginBox(this.floatingTreeNode).w
+		var left = -dojo.marginBox(this.floatingTreeNode).w;
 		dojo.style(this.floatingTreeNode, "left", left);
 		dojo.animateProperty({node: this.floatingTreeNode, 
 							  properties:  {left: 0},

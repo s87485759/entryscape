@@ -125,9 +125,13 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 	// Private methods
 	//===================================================
 	_localize: function() {
-		dojo.requireLocalization("folio", "search");
+		require(["dojo/i18n!folio/nls/search"], dojo.hitch(this, function(i18n) {
+			this.resourceBundle = i18n;
+			this.set(i18n);
+		}));
+/*		dojo.requireLocalization("folio", "search");
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "search"); 
-		this.set(this.resourceBundle);
+		this.set(this.resourceBundle);*/
 	},
 	_userChange: function() {
 		this.user = this.application.getUser();
@@ -148,7 +152,7 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		dojo.attr(this.resultCountNode, "innerHTML", dojo.replace(this.resourceBundle.searchResults, {nrOfHits:  nrOfHits || 0}));
 	},
 	_searchResultsSearching: function() {
-		dojo.attr(this.resultCountNode, "innerHTML", this.resourceBundle.searchResultsSearching);
+		dojo.attr(this.resultCountNode, "innerHTML", this.resourceBundle ? this.resourceBundle.searchResultsSearching : "");
 	},
 	_getSearchDetails: function() {
 	},

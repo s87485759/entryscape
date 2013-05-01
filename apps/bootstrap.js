@@ -55,32 +55,21 @@ __confolio.initDojo = function(){
 		return;
 	}
 
-	djConfig = {
+	dojoConfig = {
 		isDebug: __confolio.isDebug(),
-		debugAtAllCosts: false, //__confolio.isDebug(),
 		parseOnLoad: false,
 		usePlainJson: true,
+		async: false,
 		extraLocale: ["ROOT"]
 	};
 	
 	var libs = ["dojo/dojo.js"]; 
-	if (__confolio.isDebug() && !__confolio.isBuild()) {
-		// Including the compressed DataGrid explicitly; uncompressed is not working with debug
-//		libs.push("dojox/grid/DataGrid.js");
-	}	
-	if (__confolio.isBuild()) {
-		libs.push("folio/folio.js");
-	}
-	var appModuleName = __confolio.config["appModuleName"] != null ? "-"+__confolio.config["appModuleName"] : "";
-	var jsPath = __confolio.isBuild() ? "../target"+appModuleName+"/" : "../lib/dojo/";
+	var jsPath = __confolio.isBuild() ? "../target/" : "../lib/dojo/";
 	var debugExt = __confolio.isDebug() ? ".uncompressed.js" : "";
 
 	for (var i = 0;i<libs.length;i++) {
 		document.write('<script src="', jsPath + libs[i] + debugExt, '" type="text/javascript"><\/script>');		
 	}
-	
-	//"dojo/back.js" - Never with the debugExtension (.uncompressed.js)
-	//document.write('<script src="', jsPath + "dojo/back.js", '" type="text/javascript"><\/script>');	
 };
 
 __confolio.addJSLibs = function(libs) {
@@ -96,7 +85,7 @@ __confolio.initializeLoadIndicator = function(nodeId){
 
 	var nr = 0;
 	var step = 0;
-	var loadedIndicator = dojo.byId(nodeId);
+/*	var loadedIndicator = dojo.byId(nodeId);
 	dojo.connect(dojo, "provide", function(str){
 		dojo.attr(loadedIndicator, "innerHTML", "&nbsp;Loading:&nbsp;&nbsp;" + str);
 		nr++;
@@ -105,7 +94,7 @@ __confolio.initializeLoadIndicator = function(nodeId){
 			step++;
 			dojo.style(loadedIndicator, "width", "" + step * 10 + "%");
 		}
-	});
+	});*/
 };
 
 __confolio.start = function(loadIndicatorId, splashId){

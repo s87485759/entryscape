@@ -17,15 +17,17 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"userLabel": "User:",
-	"groupLabel": "Group:",
-	"userNameLabel": "Username",
-	"groupNameLabel": "Group name",
-	"homeContextLabel": "Home portfolio",
-	"memberOfHeader": "Is member of the following groups",
-	"membershipHeader": "Members of the group",
-	"rightsHeader": "Has access to the following Portfolios and Folders",
-  	"latestMaterial": "Latest material",
-	"generalProfile": "General"	
-})
+define({
+	root : {
+		"userLabel" : "User:",
+		"groupLabel" : "Group:",
+		"userNameLabel" : "Username",
+		"groupNameLabel" : "Group name",
+		"homeContextLabel" : "Home portfolio",
+		"memberOfHeader" : "Is member of the following groups",
+		"membershipHeader" : "Members of the group",
+		"rightsHeader" : "Has access to the following Portfolios and Folders",
+		"latestMaterial" : "Latest material",
+		"generalProfile" : "General"
+	}
+});

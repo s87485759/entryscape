@@ -17,22 +17,25 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  "advancedButtonTextMore": "More details",
-  "advancedButtonTextLess": "Less details",
-  "overrideContextButtonTextOverride": "Override portfolio defaults",
-  "overrideContextButtonTextDefault": "Return to portfolio defaults",
-  "headLabelTextDefault": "Default access",
-  "headLabelTextSpecify": "Specify access",
-  "forUserGroup": "For user/group",
-  "read": "Read",
-  "write": "Write",
-  "readResource": "Read res.",
-  "readMetadata": "Read met.",
-  "writeResource": "Write res.",
-  "writeMetadata": "Write met.",
-  "admin": "Admin",
-  "addContact": "Add contact",
-  "removeContact": "Remove",
-  "ownerNote": "Owners of the portfolio always keeps their full rights, the owners are"
-})
+define({
+	root: {
+		"advancedButtonTextMore": "More details",
+		"advancedButtonTextLess": "Less details",
+		"overrideContextButtonTextOverride": "Override portfolio defaults",
+		"overrideContextButtonTextDefault": "Return to portfolio defaults",
+		"headLabelTextDefault": "Default access",
+		"headLabelTextSpecify": "Specify access",
+		"forUserGroup": "For user/group",
+		"read": "Read",
+		"write": "Write",
+		"readResource": "Read res.",
+		"readMetadata": "Read met.",
+		"writeResource": "Write res.",
+		"writeMetadata": "Write met.",
+		"admin": "Admin",
+		"addContact": "Add contact",
+		"removeContact": "Remove",
+		"ownerNote": "Owners of the portfolio always keeps their full rights, the owners are"
+	}
+
+});

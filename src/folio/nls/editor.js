@@ -17,7 +17,9 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"externalAndLocalMDEditorTitle": "External information (left side, read only). &nbsp;&nbsp;&nbsp;Local information (right side, editable).",
-	"LocalMDEditorTitle": "Edit local information"
-})
+define({
+	root : {
+		"externalAndLocalMDEditorTitle" : "External information (left side, read only). &nbsp;&nbsp;&nbsp;Local information (right side, editable).",
+		"LocalMDEditorTitle" : "Edit local information"
+	}
+});

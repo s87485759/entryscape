@@ -17,25 +17,28 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"details": "Details",
-  "comment": "Comment",
-  "edit": "Edit",
-  "admin": "Administer",
-  "remove": "Remove",
-  "rename": "Rename",
-  "empty": "Empty",
-  "copy": "Copy",
-  "cut": "Cut",
-  "paste": "Paste",
-  "pasteInto": "Paste into",
-  "add": "Add",
-  "modified": "Modified",
-  "items": "Items",
-  "addedToContactsMessage": "This person was added to your contacts.\n",
-  "sortLabel": "Sort by",
-  "sortByNone": "List order",
-  "sortByTitle": "Title",
-  "sortByTitleReverse": "Title reverse",
-  "sortByModified": "Modified",
-  "sortByModifiedReverse": "Modified reverse"
-})
+define({
+	root : {
+		"details" : "Details",
+		"comment" : "Comment",
+		"edit" : "Edit",
+		"admin" : "Administer",
+		"remove" : "Remove",
+		"rename" : "Rename",
+		"empty" : "Empty",
+		"copy" : "Copy",
+		"cut" : "Cut",
+		"paste" : "Paste",
+		"pasteInto" : "Paste into",
+		"add" : "Add",
+		"modified" : "Modified",
+		"items" : "Items",
+		"addedToContactsMessage" : "This person was added to your contacts.\n",
+		"sortLabel" : "Sort by",
+		"sortByNone" : "List order",
+		"sortByTitle" : "Title",
+		"sortByTitleReverse" : "Title reverse",
+		"sortByModified" : "Modified",
+		"sortByModifiedReverse" : "Modified reverse"
+	}
+});

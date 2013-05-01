@@ -17,18 +17,20 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	includeTypeLabel: "Include according to resource type",
-	includeTypeImageLabel: "Image",
-	includeTypeTextLabel: "Text",
-	includeTypeVideoLabel: "Video",
-	includeTypeSoundLabel: "Sound",
+define({
+	root : {
+		includeTypeLabel : "Include according to resource type",
+		includeTypeImageLabel : "Image",
+		includeTypeTextLabel : "Text",
+		includeTypeVideoLabel : "Video",
+		includeTypeSoundLabel : "Sound",
 
-	sortByLabel: "Sort by",
-	sortChangerLabel: "Sort order",
-	sortBestMatch: "Best match",
-	sortTitle: "Title",
-	sortModified: "Modified",
-	ascendingLabel: "ascending",
-	descendingLabel: "descending"
-})
+		sortByLabel : "Sort by",
+		sortChangerLabel : "Sort order",
+		sortBestMatch : "Best match",
+		sortTitle : "Title",
+		sortModified : "Modified",
+		ascendingLabel : "ascending",
+		descendingLabel : "descending"
+	}
+});

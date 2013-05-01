@@ -17,36 +17,38 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	searchAgainstLabel: "Match search term against",
-
-	searchInLabel: "Portfolios to search in",	
-	allPortfoliosLabel: "all portfolios",
-	myPortfolioLabel: "my portfolio",
-	specificPortfolioLabel: "in portfolio",
-
-	includeLTLabel: "Include according to link type",	
-	includeLTLocalLabel: "Uploaded or created resources",
-	includeLTLinkLabel: "Resource Links",
-	includeLTReferenceLabel: "Resource and Metadata Links",
-	includeLTLinkReferenceLabel: "Resource and metadata Links + complementary metadata",
-
-	includeBTLabel: "Include according to resource type",
-	includeBTNoneLabel: "Other resources",
-	includeBTContextLabel: "Portfolio",
-	includeBTListLabel: "Folders",
-	includeBTUserLabel: "Users",
-	includeBTGroupLabel: "Groups",
-	includeBTStringLabel: "Strings, including comments",
-
-	sortByLabel: "Sort by",
-	sortChangerLabel: "Sort order",
-	sortBestMatch: "Best match",
-	sortTitle: "Title",
-	sortModified: "Modified",
-	ascendingLabel: "ascending",
-	descendingLabel: "descending",
+define({
+	root: {
+		searchAgainstLabel: "Match search term against",
 	
-	searchResultsSearching: "Searching...",
-	searchResults: "{nrOfHits} hits"
-})
+		searchInLabel: "Portfolios to search in",	
+		allPortfoliosLabel: "all portfolios",
+		myPortfolioLabel: "my portfolio",
+		specificPortfolioLabel: "in portfolio",
+	
+		includeLTLabel: "Include according to link type",	
+		includeLTLocalLabel: "Uploaded or created resources",
+		includeLTLinkLabel: "Resource Links",
+		includeLTReferenceLabel: "Resource and Metadata Links",
+		includeLTLinkReferenceLabel: "Resource and metadata Links + complementary metadata",
+	
+		includeBTLabel: "Include according to resource type",
+		includeBTNoneLabel: "Other resources",
+		includeBTContextLabel: "Portfolio",
+		includeBTListLabel: "Folders",
+		includeBTUserLabel: "Users",
+		includeBTGroupLabel: "Groups",
+		includeBTStringLabel: "Strings, including comments",
+	
+		sortByLabel: "Sort by",
+		sortChangerLabel: "Sort order",
+		sortBestMatch: "Best match",
+		sortTitle: "Title",
+		sortModified: "Modified",
+		ascendingLabel: "ascending",
+		descendingLabel: "descending",
+		
+		searchResultsSearching: "Searching...",
+		searchResults: "{nrOfHits} hits"
+	}
+});

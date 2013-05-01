@@ -17,30 +17,32 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  "name": "Name",
-  "displayedName": "Name that will be displayed",
-  "email": "Email",
-  "info": "Info",
-  "accountLabel": "Account",
-  "profileLabel": "Profile",
-  "noProfilePictureLabel": "No profile picture",
-  "urlProfilePictureLabel": "Web address to profile picture",
-  "localProfilePictureLabel": "Uploaded profile picture",
-  "urlProfilePictureTest": "Test profile picture",
-  "localProfilePictureUpload": "Upload new",
-  "userNameLabel": "Username",
-  "passwdLabel": "Password",
-  "oldPassword": "Old password",
-  "newPassword": "New password",
-  "verifyNewPassword": "Verify new password",
-  "mismatchPassword": "Please verify the new password by repeating it correctly!",
-  "languageLabel": "Preferred language",
-  "changeSettingsButtonLabel": "Change settings",
-  "cancelButtonLabel": "Cancel",
-  "msgCurrentUsername": "Current username is ",
-  "msgPwdNoMatch": "The passwords do not match, please try again.",
-  "passwordLength": "The password needs to be at least 8 characters long!",
-  "msgUserChangeSuccess": "User has been successfully changed. You have to reload your browser and log in again.",
-  "msgUserChangeFailure": "User not changed due to: "
-})
+define({
+	root : {
+		"name" : "Name",
+		"displayedName" : "Name that will be displayed",
+		"email" : "Email",
+		"info" : "Info",
+		"accountLabel" : "Account",
+		"profileLabel" : "Profile",
+		"noProfilePictureLabel" : "No profile picture",
+		"urlProfilePictureLabel" : "Web address to profile picture",
+		"localProfilePictureLabel" : "Uploaded profile picture",
+		"urlProfilePictureTest" : "Test profile picture",
+		"localProfilePictureUpload" : "Upload new",
+		"userNameLabel" : "Username",
+		"passwdLabel" : "Password",
+		"oldPassword" : "Old password",
+		"newPassword" : "New password",
+		"verifyNewPassword" : "Verify new password",
+		"mismatchPassword" : "Please verify the new password by repeating it correctly!",
+		"languageLabel" : "Preferred language",
+		"changeSettingsButtonLabel" : "Change settings",
+		"cancelButtonLabel" : "Cancel",
+		"msgCurrentUsername" : "Current username is ",
+		"msgPwdNoMatch" : "The passwords do not match, please try again.",
+		"passwordLength" : "The password needs to be at least 8 characters long!",
+		"msgUserChangeSuccess" : "User has been successfully changed. You have to reload your browser and log in again.",
+		"msgUserChangeFailure" : "User not changed due to: "
+	}
+});

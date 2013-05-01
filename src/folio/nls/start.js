@@ -17,11 +17,14 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"welcomeMessage": "The platform that gives you quick and easy access to personal and shared portfolios from wherever you are. Upload files, link to material online such as videos, photos, lectures, or create material directly in your portfolio. Then organize your material in folders and, if needed, describe it with established metadata standards.",
-  "welcomeHeader": "Welcome to Confolio!",
-  "searchLabel": "Search",
-  "latestMaterial": "Latest material",
-  "includePortfoliosLabel": "Portfolios",
-  "includeUsersLabel": "Users",
-  "includeGroupsLabel": "Groups"
-})
+define({
+	root : {
+		"welcomeMessage" : "The platform that gives you quick and easy access to personal and shared portfolios from wherever you are. Upload files, link to material online such as videos, photos, lectures, or create material directly in your portfolio. Then organize your material in folders and, if needed, describe it with established metadata standards.",
+		"welcomeHeader" : "Welcome to Confolio!",
+		"searchLabel" : "Search",
+		"latestMaterial" : "Latest material",
+		"includePortfoliosLabel" : "Portfolios",
+		"includeUsersLabel" : "Users",
+		"includeGroupsLabel" : "Groups"
+	}
+});
