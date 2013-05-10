@@ -205,17 +205,22 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		this._currMemEntry = this.entry;
 		dojo.attr(this.membersNode, "innerHTML", "");
 		folio.data.getAllChildren(this.entry, dojo.hitch(this, function(children) {
-			dojo.forEach(children, function(child) {
+			var cs = dojo.map(children, function(c) {
+				return {e: c, n: folio.data.getLabelRaw(c) || c.name || c.getId()};
+			});
+			cs.sort(function(e1, e2) {
+				return e1.n > e2.n;
+			});
+			dojo.forEach(cs, function(child) {
 				var userDiv = dojo.create("div", {"class": "card distinctBackground"}, this.membersNode);
 				var imgWrap = dojo.create("div", {"class": "img-wrap"}, userDiv);
-				var imageUrl = folio.data.getFromMD(child, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
+				var imageUrl = folio.data.getFromMD(child.e, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
 				if (window.location.href.indexOf("cookieMonster=true") !== -1) {
 					dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 				} else {
 					dojo.create("img", {src: imageUrl || backup, style: {"max-width": "100px"}}, imgWrap);
 				}
-				var name = folio.data.getLabelRaw(child) || child.name || child.getId();
-				dojo.create("a", {href: this.application.getHref(child, "profile"), "innerHTML": name}, userDiv);				
+				dojo.create("a", {href: this.application.getHref(child.e, "profile"), "innerHTML": child.n}, userDiv);				
 			}, this);
 		}));
 	},
