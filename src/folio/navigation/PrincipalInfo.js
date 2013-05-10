@@ -110,6 +110,24 @@ dojo.declare("folio.navigation.PrincipalInfo", [dijit._Widget, dijit._Templated]
 			folio.data.getDescription(this.entry) ||
 			(this.homeContext ? folio.data.getDescription(this.homeContext) : "");
 		dojo.attr(this.principalDescriptionNode, "innerHTML", desc);
+		
+		var email = this.entry.get(folio.data.FOAFSchema.MBOX);
+		if (email != null) {
+			dojo.attr(this.emailNode, "href", email);			
+			dojo.attr(this.emailNode, "title", email);
+			dojo.style(this.emailNode, "display", "");
+		} else {
+			dojo.style(this.emailNode, "display", "none");			
+		}
+
+		var homepage = this.entry.get(folio.data.FOAFSchema.HOMEPAGE);
+		if (homepage != null) {
+			dojo.attr(this.homepageNode, "href", homepage);			
+			dojo.attr(this.homepageNode, "title", homepage);
+			dojo.style(this.homepageNode, "display", "");
+		} else {
+			dojo.style(this.homepageNode, "display", "none");			
+		}
 
 		//In case the quota is given, displays both the actual size + percentage used
 		if (this.homeContext && this.homeContext.quota && this.homeContext.quota.quotaFillLevel !== undefined){

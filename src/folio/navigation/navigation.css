@@ -423,3 +423,22 @@
 	font-size: large;
 	margin: 5px 0px;
 }
+
+
+.confolio .principalInfo .contactinfo {
+	line-height: 1px;
+	font-size: 10px;
+	font-weight: normal;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.confolio .principalInfo .contactinfo>a {
+	display: block;
+	line-height: 10px;
+	color: grey;
+}
+
+.confolio .principalInfo .contactinfo>a:hover {
+	color: black;
+}

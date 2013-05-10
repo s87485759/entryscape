@@ -68,6 +68,7 @@ folio.data.FOAFSchema = {
 	IMAGE: folio.data.FOAFBaseUri+"img",
 	PLAN: folio.data.FOAFBaseUri+"plan",
 	MBOX: folio.data.FOAFBaseUri+"mbox",
+	HOMEPAGE: folio.data.FOAFBaseUri+"homepage",
 	THUMBNAIL: folio.data.FOAFBaseUri+ "thumbnail"
 };
 
