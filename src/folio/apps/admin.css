@@ -1,11 +1,10 @@
-@import "../../../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */	
-@import "../../../lib/dojo/dojo/resources/dojo.css";
-@import "../../../lib/shame-src/shame.css";
-@import "../../../lib/dojo/dojox/image/resources/image.css"; /*some problem in this css file*/
-@import "../../../lib/dojo/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
-@import "../../../lib/dojo/dojox/layout/resources/ExpandoPane.css"; 
-@import "../../../lib/dojo/dojox/form/resources/BusyButton.css";
-@import "../../../lib/dojo/dojox/grid/resources/tundraGrid.css";
+@import "../../../lib/dojo-src/dijit/themes/tundra/tundra.css"; /* required when dijit */	
+@import "../../../lib/dojo-src/dojo/resources/dojo.css";
+@import "../../../lib/dojo-src/dojox/image/resources/image.css"; /*some problem in this css file*/
+@import "../../../lib/dojo-src/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
+@import "../../../lib/dojo-src/dojox/layout/resources/ExpandoPane.css"; 
+@import "../../../lib/dojo-src/dojox/form/resources/BusyButton.css";
+@import "../../../lib/dojo-src/dojox/grid/resources/tundraGrid.css";
 @import "../create/create.css";
 @import "../admin/admin.css";
 

@@ -1,22 +1,22 @@
-@import "../../../lib/dojo/dijit/themes/tundra/tundra.css"; /* required when dijit */	
-@import "../../../lib/dojo/dojo/resources/dojo.css";
-@import "../../../src/rforms/view/resources/rforms.css";
-@import "../../../lib/dojo/dojox/image/resources/image.css"; /*some problem in this css file*/
-@import "../../../lib/dojo/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
-@import "../../../lib/dojo/dojox/layout/resources/ExpandoPane.css"; 
-@import "../../../lib/dojo/dojox/form/resources/BusyButton.css";
-@import "../../../lib/dojo/dojox/grid/resources/tundraGrid.css";
+@import "../../../lib/dojo-src/dijit/themes/tundra/tundra.css"; /* required when dijit */	
+@import "../../../lib/dojo-src/dojo/resources/dojo.css";
+@import "../../../lib/dojo-src/dojox/image/resources/image.css"; /*some problem in this css file*/
+@import "../../../lib/dojo-src/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
+@import "../../../lib/dojo-src/dojox/layout/resources/ExpandoPane.css"; 
+@import "../../../lib/dojo-src/dojox/form/resources/BusyButton.css";
+@import "../../../lib/dojo-src/dojox/grid/resources/tundraGrid.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Save.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Preview.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/InsertEntity.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/PageBreak.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Breadcrumb.css";
+@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/FindReplace.css";
+@import "../../../lib/dojo-src/dojox/widget/Toaster/Toaster.css";
+
+@import "../../rforms/view/resources/rforms.css";
+
 @import "../create/create.css";
-
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/Save.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/Preview.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/InsertEntity.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/PageBreak.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/Breadcrumb.css";
-@import "../../../lib/dojo/dojox/editor/plugins/resources/css/FindReplace.css";
-@import "../../../lib/dojo/dojox/widget/Toaster/Toaster.css";
-
 @import "../list/list.css";
 @import "../comment/comment.css";
 @import "../navigation/navigation.css";
