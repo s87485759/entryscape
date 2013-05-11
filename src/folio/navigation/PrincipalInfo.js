@@ -63,7 +63,9 @@ dojo.declare("folio.navigation.PrincipalInfo", [dijit._Widget, dijit._Templated]
 		dojo.attr(this.principalPictureNode, "innerHTML", "");
 		var imageUrl = folio.data.getFromMD(this.entry, folio.data.FOAFSchema.IMAGE);
 		if (imageUrl != null) {
-			imageUrl = imageUrl+"?request.preventCache="+(new Date()).getTime();
+			if (imageUrl.indexOf(this.application.getRepository()) === 0) {
+				imageUrl = imageUrl+"?request.preventCache="+(new Date()).getTime();			
+			}
 		}
 		var config = this.application.getConfig();
 		var backup = folio.data.isUser(this.entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame");
@@ -112,8 +114,8 @@ dojo.declare("folio.navigation.PrincipalInfo", [dijit._Widget, dijit._Templated]
 		dojo.attr(this.principalDescriptionNode, "innerHTML", desc);
 		
 		var email = this.entry.get(folio.data.FOAFSchema.MBOX);
-		if (email != null) {
-			dojo.attr(this.emailNode, "href", email);			
+		if (email != null && this.application.getUser() != null) {
+			dojo.attr(this.emailNode, "href", email);
 			dojo.attr(this.emailNode, "title", email);
 			dojo.style(this.emailNode, "display", "");
 		} else {
