@@ -230,9 +230,9 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 				var imgWrap = dojo.create("div", {"class": "principalPicture"}, userDiv);
 				var imageUrl = folio.data.getFromMD(child.e, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
 				if (window.location.href.indexOf("cookieMonster=true") !== -1) {
-					dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
+					dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif"}, imgWrap);
 				} else {
-					dojo.create("img", {src: imageUrl || backup, style: {"max-width": "100px"}}, imgWrap);
+					dojo.create("img", {src: imageUrl || backup}, imgWrap);
 				}
 				dojo.create("span", {"innerHTML": child.n}, userDiv);
 				var navIcons = dojo.create("div", {"class": "navIcons"}, userDiv);
