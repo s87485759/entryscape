@@ -31,7 +31,7 @@
     opacity:0.24 !important;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=24)" !important;
     filter:alpha(opacity=24) !important;
-    cursor: inherit !important;
+    cursor: auto !important;
 }
 
 .siteMap .icon:hover, .siteMap .icon24:hover {
