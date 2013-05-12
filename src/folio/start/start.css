@@ -80,30 +80,52 @@ border-bottom-left-radius: 6px;
 	-moz-border-radius: 6px;
 	padding: 10px;
 	margin-bottom: 20px;
-	width: 115px;
+	width: 86px;
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
-	height: 180px;
+	height: 145px;
 	vertical-align: top;
 	position: relative;
 	text-align: center;
 }
 
-.card .img-wrap {
-	max-width: 93%;
-	min-height: 100px;
-	line-height: 100px;
-	text-align: center;
-	margin-bottom: 0.3em;
-	padding: 4px;
-	background-color: white;
+.card:hover {
+	background: lightgrey;
+	cursor: pointer;
 }
 
-.card .img-wrap img {
-	max-height: 82%;
-	height: auto;
-	max-width: 100%;
-	vertical-align: middle;
-	border: 0;
+.card .navIcons {
+	display: none;
+	position: absolute;
+	bottom: 0px;
+	width: 80px;
+	border-top: 1px solid grey;
+	background: lightgrey;
+}
+.card:hover .navIcons {
+	display: block;
+}
+.confolio .card .principalPicture {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.confolio .principalPicture {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top: 2px;
+	left: 0px;
+	padding: 2px;
+	background-color: white;
+	border: 1px solid lightgrey;
+	line-height: 0px;
+}
+
+.confolio .principalPicture img{
+	max-width: 80px;
+	max-height: 80px;
+	display: block;
+	margin: 0 auto;
 }

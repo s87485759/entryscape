@@ -185,7 +185,7 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 	
 	_createCommunityCard: function(groupEntry) {
 		var groupDiv = dojo.create("div", {"class": "card distinctBackground"}, this.communitiesNode);
-		var imgWrap = dojo.create("div", {"class": "img-wrap"}, groupDiv);
+		var imgWrap = dojo.create("div", {"class": "principalPicture"}, groupDiv);
 		if (this.cookieMonster) {
 			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 		} else {
@@ -193,7 +193,23 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 			dojo.create("img", {src: imageUrl}, imgWrap);
 		}
 		var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
-		dojo.create("a", {href: this.application.getHref(groupEntry, "profile"), "innerHTML": name}, groupDiv);
+		dojo.create("span", {"innerHTML": name}, groupDiv);
+
+		var navIcons = dojo.create("div", {"class": "navIcons"}, groupDiv);
+		dojo.connect(groupDiv, "onclick", this, dojo.hitch(this, function(event) {
+			if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+				this.application.openEntry(groupEntry, "profile");
+			}
+		}));
+		
+		dojo.create("a", {"class": "icon24 home", href: this.application.getHref(groupEntry, "profile")}, navIcons);
+		var hc = groupEntry.getHomeContext();
+		if (hc) {
+			var hcid = hc.substr(hc.lastIndexOf("/")+1);
+			dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+		} else {
+			dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);
+		}
 	},
 	_showPeople: function() {
 		dojo.removeClass(this.recentButtonNode, "selected");
@@ -231,11 +247,11 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 			}),
 			onError: dojo.hitch(this, function(error) {
 			})
-		});		
+		});
 	},
 	_createPeopleCard: function(personEntry) {
 		var userDiv = dojo.create("div", {"class": "card distinctBackground"}, this.peopleNode);
-		var imgWrap = dojo.create("div", {"class": "img-wrap"}, userDiv);
+		var imgWrap = dojo.create("div", {"class": "principalPicture"}, userDiv);
 		if (this.cookieMonster) {
 			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 		} else {
@@ -243,7 +259,21 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 			dojo.create("img", {src: imageUrl}, imgWrap);
 		}
 		var name = folio.data.getLabelRaw(personEntry) || personEntry.name || personEntry.getId();
-		dojo.create("a", {href: this.application.getHref(personEntry, "profile"), "innerHTML": name}, userDiv);		
+		dojo.create("span", {"innerHTML": name}, userDiv);
+		var navIcons = dojo.create("div", {"class": "navIcons"}, userDiv);
+		dojo.connect(userDiv, "onclick", this, dojo.hitch(this, function(event) {
+			if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+				this.application.openEntry(personEntry, "profile");
+			}
+		}));
+		dojo.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
+		var hc = personEntry.getHomeContext();
+		if (hc) {
+			var hcid = hc.substr(hc.lastIndexOf("/")+1);
+			dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+		} else {
+			dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);			
+		}
 	},
 		
 	_showRecent: function() {

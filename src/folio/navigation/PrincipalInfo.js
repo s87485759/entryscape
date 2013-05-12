@@ -70,9 +70,9 @@ dojo.declare("folio.navigation.PrincipalInfo", [dijit._Widget, dijit._Templated]
 		var config = this.application.getConfig();
 		var backup = folio.data.isUser(this.entry) ? ""+config.getIcon("user_picture_frame") : ""+config.getIcon("group_picture_frame");
 		if (window.location.href.indexOf("cookieMonster=true") !== -1) {
-			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "80px"}}, this.principalPictureNode);
+			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif"}, this.principalPictureNode);
 		} else {
-			dojo.create("img", {src: imageUrl || backup, style: {"max-width": "80px"}}, this.principalPictureNode);
+			dojo.create("img", {src: imageUrl || backup}, this.principalPictureNode);
 		}
 	},
 

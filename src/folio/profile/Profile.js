@@ -185,10 +185,24 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		dojo.attr(this.communitiesNode, "innerHTML", "");
 		var addGroup = dojo.hitch(this, function(groupEntry) {
 			var groupDiv = dojo.create("div", {"class": "card distinctBackground"}, this.communitiesNode);
-			var imgWrap = dojo.create("div", {"class": "img-wrap"}, groupDiv);
+			var imgWrap = dojo.create("div", {"class": "principalPicture"}, groupDiv);
 			dojo.create("img", {src: ""+this.application.getConfig().getIcon("group")}, imgWrap);
 			var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
-			dojo.create("a", {href: this.application.getHref(groupEntry, "profile"), "innerHTML": name}, groupDiv);
+			dojo.create("span", {"innerHTML": name}, groupDiv);
+			var navIcons = dojo.create("div", {"class": "navIcons"}, groupDiv);
+			dojo.connect(groupDiv, "onclick", this, dojo.hitch(this, function(event) {
+				if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+					this.application.openEntry(groupEntry, "profile");
+				}
+			}));
+			dojo.create("a", {"class": "icon24 home", href: this.application.getHref(groupEntry, "profile")}, navIcons);
+			var hc = groupEntry.getHomeContext();
+			if (hc) {
+				var hcid = hc.substr(hc.lastIndexOf("/")+1);
+				dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+			} else {
+				dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);
+			}
 		});
 		dojo.forEach(this.entry.getGroups(), dojo.hitch(this, function(groupUri) {
 			this.application.getStore().loadEntry(groupUri, {}, addGroup);
@@ -213,14 +227,29 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			});
 			dojo.forEach(cs, function(child) {
 				var userDiv = dojo.create("div", {"class": "card distinctBackground"}, this.membersNode);
-				var imgWrap = dojo.create("div", {"class": "img-wrap"}, userDiv);
+				var imgWrap = dojo.create("div", {"class": "principalPicture"}, userDiv);
 				var imageUrl = folio.data.getFromMD(child.e, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
 				if (window.location.href.indexOf("cookieMonster=true") !== -1) {
 					dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 				} else {
 					dojo.create("img", {src: imageUrl || backup, style: {"max-width": "100px"}}, imgWrap);
 				}
-				dojo.create("a", {href: this.application.getHref(child.e, "profile"), "innerHTML": child.n}, userDiv);				
+				dojo.create("span", {"innerHTML": child.n}, userDiv);
+				var navIcons = dojo.create("div", {"class": "navIcons"}, userDiv);
+				dojo.connect(userDiv, "onclick", this, dojo.hitch(this, function(event) {
+					if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+						this.application.openEntry(child.e, "profile");
+					}
+				}));
+
+				dojo.create("a", {"class": "icon24 home", href: this.application.getHref(child.e, "profile")}, navIcons);
+				var hc = child.e.getHomeContext();
+				if (hc) {
+					var hcid = hc.substr(hc.lastIndexOf("/")+1);
+					dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+				} else {
+					dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);
+				}
 			}, this);
 		}));
 	},

@@ -372,18 +372,6 @@
 	border-radius: 0px;
 }
 
-.confolio .principalPicture {
-	position: absolute;
-	width: 80px;
-	height: 80px;
-	top: 2px;
-	left: 0px;
-	padding: 0px;
-	background-color: white;
-	border: 1px solid lightgrey;
-	line-height: 0px;
-}
-
 .confolio .principalInfoText {
 	position: absolute;
 	top: 0px;
@@ -392,13 +380,6 @@
 	padding: 5px 20px;
 	height: 80px;
 	overflow: hidden;
-}
-
-.confolio .principalPicture img{
-	max-width: 80px;
-	max-height: 80px;
-	display: block;
-	margin: 0 auto;
 }
 
 .confolio .principalInfo h1 {
