@@ -121,7 +121,7 @@
 		            {"value": "es", "label":{"en":"Spanish", "sv":"Spanska"}},
 					{"value": "sv", "label":{"en":"Swedish", "sv":"Svenska"}}],
   "MPMap-localMetadata": {
- 	"defaultMP": "DCTerms_Minimal",
+ 	"defaultMP": "DCTerms_medium",
 	"BT": {
 		"USER": "FOAF_User",
 		"GROUP": "FOAF_Group"
@@ -133,12 +133,12 @@
 	}
   },
   "MPMap-externalMetadata": {
-  	"defaultMP": "DCTerms_Minimal"
+  	"defaultMP": "DCTerms_medium"
   },
    "MPName2Id" :{
 	"FOAF_Group": {"items": ["entryscape:foaf-group"], "label": "foaf:name"},
 	"FOAF_User": {"items": ["foaf:Person"], "label": "foaf:name"},
-	"DCTerms_Minimal": {"items": ["entryscape:dcterms-small"], "label": "dcterms:title"},
+	"DCTerms_medium": {"items": ["entryscape:dcterms-medium"], "label": "dcterms:title"},
 	"Review": {"items": ["http://purl.org/stuff/rev#Review"], "label": "dcterms:title"}
   },
   "rformItems": [

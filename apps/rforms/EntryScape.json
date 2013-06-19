@@ -1,25 +1,166 @@
 {
   "auxilliary": [
-	{
- 		"id": "entryscape:dcterms-small",
- 		"type": "group",
- 		"content": [
- 			{"id": "dcterms:title"},
- 			{"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}}
- 		]
- 	}, {
- 		"id": "entryscape:foaf-group",
- 		"type": "group",
- 		"content": [
- 			{"id": "foaf:name", "cardinality": {"pref": 1}},
- 			{"id": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
- 			{"id": "foaf:mbox"},
- 			{"id": "foaf:homepage"},
- 			{"id": "foaf:img", "cardinality": {"pref": 1}},
- 			{"id": "foaf:weblog"},
- 			{"id": "foaf:member"},
- 			{"id": "foaf:page"}
- 		]
- 	}
- ]
+      {
+          "id": "entryscape:dcterms-small",
+          "type": "group",
+          "content": [
+              {"id": "dcterms:title"},
+              {"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}}
+          ]
+      }, {
+          "id": "entryscape:dcterms-medium",
+          "type": "group",
+          "content": [
+              {"id": "dcterms:title", "cardinality": {"pref": 1}},
+              {"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
+              {"id": "entryscape:rights"},
+              {"id": "dcterms:creator", "cardinality": {"max": 1, "pref": 1}, "nodetype": "ONLY_LITERAL"}
+          ]
+      }, {
+          "id": "entryscape:foaf-group",
+          "type": "group",
+          "content": [
+              {"id": "foaf:name", "cardinality": {"pref": 1}},
+              {"id": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
+              {"id": "foaf:mbox"},
+              {"id": "foaf:homepage"},
+              {"id": "foaf:img", "cardinality": {"pref": 1}},
+              {"id": "foaf:weblog"},
+              {"id": "foaf:member"},
+              {"id": "foaf:page"}
+          ]
+      }, {
+          "id": "entryscape:rights",
+          "label": {
+              "de": "Beschreibung Copyright",
+              "sl": "Opis avtorskih pravic",
+              "ro": "Descriere Copyright",
+              "el": "Περιγραφή Πνευματικών Δικαιωμάτων",
+              "hu": "Szerzői jog leírása",
+              "bg": "Описание на Авторското право",
+              "fr": "Description du copyright",
+              "en": "Copyright Description",
+              "ru": "Описание авторских прав",
+              "hi": "मुद्राधिकार वर्णन",
+              "et": "Autoriõiguste kirjeldus",
+              "es": "Descripción de los derechos de autor"
+          },
+          "type": "group",
+          "content": [
+              {"id": "entryscape:dcterms-rights"},
+              {"id": "entryscape:dc-rights"}
+          ]
+      }, {
+          "id": "entryscape:dcterms-rights",
+          "label": {
+              "de": "Ressource gemäß Creative Commons zu verwenden",
+              "sl": "Dovoljenje na področju vira (glede na Creative Commons)",
+              "ro": "Licenta care se aplica resursei (in conformitate cu drepturile de autor \"Creative Commons\")",
+              "el": "Περιγραφή Πνευματικών Δικαιωμάτων",
+              "hu": "A forrásra érvényes felhatalmazás (a Creative Commons szerint)",
+              "bg": "Разрешително което се прилага към източника (според Творчески Права )",
+              "fr": "Licence qui s'applique à la ressource (selon Creative Commons)",
+              "en": "Licence that applies to the resource (according to Creative Commons)",
+              "ru": "Лицензии, относящиеся к источникам (в соответствии с Creative Commons)",
+              "hi": "अधिकार पत्र जो संसाधनों पर लागू होता है (रचनात्मक जन के अनुरुप)",
+              "et": "Allikaga seotud litsents (Creative Commonsi tingimustest lähtuvalt)",
+              "es": "Licencia aplicada al recurso (de acuerdo con Creative Commons)"
+          },
+          "description": {"en": "Possible values:\n1) Are commercial uses of this resource allowed? (Yes/No)\n    Are modifications of this resource by other people allowed? (Yes/No)\n2) Free-text description of the rights\n\n\nDescription of restrictions and copyrights that may refer to the use of this resource"},
+          "type": "choice",
+          "nodetype": "URI",
+          "property": "http://purl.org/dc/terms/rights",
+          "styles": ["rformsverticalRadioButtons"],
+          "choices": [
+              {
+                  "value": "http://creativecommons.org/licenses/by/3.0/",
+                  "label": {
+                      "de": "Der Urheber gestattet die Ressource für kommerzielle Zwecke zu nutzen und Änderungen vorzunehmen",
+                      "sl": "Lastnik DOVOLJUJE komercialno rabo in spreminjanje vira.",
+                      "ro": "Autorul PERMITE utilizarea in scop comercial SI modificari asupra resursei",
+                      "el": "Άδεια που εφαρμόζεται στο αντικείμενο (αναφορικά με Creative Commons)",
+                      "hu": "A tulajdonos engedélyezi a kereskedelmi forgalomba hozatalt és a változásokat",
+                      "bg": "Притежателят ПОЗВОЛЯВА търговска употреба и промени в ресурса ",
+                      "fr": "Le détenteur des droits AUTORISE l'utilisation commerciale ET les modifications de la ressource",
+                      "en": "The owner ALLOWS commercial uses AND changes to the resource",
+                      "ru": "Владелец РАЗРЕШАЕТ как использование источника в коммерческих целях, ТАК И изменение содержания",
+                      "hi": "स्वामी वाणिज्यिक उपयोग एवं संसाधनों में परिवर्तन की अनुमति देता है",
+                      "et": "Omanik LUBAB kasutada allikat kommertslikel eesmärkidel JA muuta allika sisu",
+                      "es": "El propieatrio PERMITE uso comercial Y cambios en el recurso"
+                  }
+              },
+              {
+                  "value": "http://creativecommons.org/licenses/by-nd/3.0/",
+                  "label": {
+                      "de": "Der Urheber gestattet, die Ressource für kommerzielle Zwecke zu nutzen, es dürfen jedoch keine Änderungen vorgenommen werden",
+                      "sl": "Lastnik DOVOLJUJE komercialno rabo toda NE dovoli spreminjanja vira.",
+                      "ro": "Autorul PERMITE utilizarea in scop comercial dar nu permite modificari asupra resursei",
+                      "el": "Ο ιδιοκτήτης του αντικειμένου ΕΠΙΤΡΕΠΕΙ εμπορικές χρήσεις ΚΑΙ αλλαγές στο αντικείμενο",
+                      "hu": "A tulajdonos engedélyezi a kereskedelmi forgalomba hozatalt, változások nélkül.",
+                      "bg": "Притежателят ПОЗВОЛЯВА търговска употреба, но НЕ се позволява да се променя ресурса",
+                      "fr": "Le détenteur des droits AUTORISE l'utilisation commerciale MAIS REFUSE les modifications de la ressource",
+                      "en": "The owner ALLOWS commercial uses but does NOT allow changes to the resource",
+                      "ru": "Владелец РАЗРЕШАЕТ использование источника в коммерческих целях, но НЕ РАЗРЕШАЕТ изменение содержания",
+                      "hi": "स्वामी वाणिज्यिक उपयोग की अनुमति देता है परंतु  संसाधनों में परिवर्तन की अनुमति नहीं  देता है",
+                      "et": "Omanik LUBAB kasutada allikat kommertslikel eesmärkidel, kuid EI luba muuta allika sisu",
+                      "es": "El propieatrio PERMITE uso comercial pero NO permite cambios en el recurso"
+                  }
+              },
+              {
+                  "value": "http://creativecommons.org/licenses/by-nc/3.0/",
+                  "label": {
+                      "de": "Der Urheber gestattet keine kommerzielle Nutzung, erlaubt aber Änderungen an der Ressource",
+                      "sl": "Lastnik NE dovoljuje komercialne rabe toda DOVOLJUJE spreminjanje vira.",
+                      "ro": "Autorul NU permite utilizarea in scop comercial dar PERMITE modificari asupra resursei",
+                      "el": "Ο ιδιοκτήτης του αντικειμένου ΔΕΝ επιτρέπει εμπορικές χρήσεις αλλά ΕΠΙΤΡΕΠΕΙ αλλαγές στο αντικείμενο",
+                      "hu": "A tulajdonos nem engedélyezi a kereskedelmi forgalomba hozatalt, de a módosítást igen. ",
+                      "bg": "Притежателят НЕ ПОЗВОЛЯВА за търговски цели, но ПОЗВОЛЯВА да се променя ресурса",
+                      "fr": "Le détenteur des droits N'AUTORISE PAS l'utilisation commerciale MAIS ACCEPTE les modifications de la ressource",
+                      "en": "The owner does NOT allow commercial uses but ALLOWS changes to the resource",
+                      "ru": "Владелец НЕ РАЗРЕШАЕТ использование источника в коммерческих целях, но РАЗРЕШАЕТ изменение содержания",
+                      "hi": "स्वामी वाणिज्यिक उपयोग की अनुमति नही देता है परंतु संसाधनों में परिवर्तन की अनुमति देता है",
+                      "et": "Omanik EI LUBA kasutada allikat kommertslikel eesmärkidel, kuid LUBAB muuta allika sisu",
+                      "es": "El propieatrio NO permite uso comercial pero PERMITE cambios en el recurso"
+                  }
+              },
+              {
+                  "value": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
+                  "label": {
+                      "de": "Der Urheber gestattet die nicht-kommerzielle Nutzung oder Änderungen an der Ressourcen",
+                      "sl": "Lastnik NE dovoljuje komercialne rabe ALI spreminjanja virov.",
+                      "ro": "Autorul NU permite nici utilizarea in scop comercial nici modificari asupra resursei",
+                      "el": "Ο ιδιοκτήτης του αντικειμένου ΕΠΙΤΡΕΠΕΙ εμπορικές χρήσεις αλλά ΌΧΙ αλλαγές στο αντικείμενο",
+                      "hu": "A tulajdonos nem engedélyezi a kereskedelmi forgalomba hozatalt és módosítást. ",
+                      "bg": "Притежателят НЕ позволява търговска употреба и ИЛИ да се променя ресурса ",
+                      "fr": "Le détenteur des droits N'AUTORISE PAS l'utilisation commerciale NI les modifications de la ressource",
+                      "en": "The owner does NOT allow commercial uses OR changes to the resource",
+                      "ru": "Владелец НЕ РАЗРЕШАЕТ как использование источника в коммерческих целях, ТАК И изменение содержания",
+                      "hi": "स्वामी वाणिज्यिक उपयोग और संसाधनों में परिवर्तन की अनुमति नहीं  देता है",
+                      "et": "Omanik EI LUBA kasutada allikat kommertslikel eesmärkidel EGA luba muuta allika sisu",
+                      "es": "El propieatrio NO permite uso comercial ni cambios en el recurso"
+                  }
+              }
+          ]
+      }, {
+          "id": "entryscape:dc-rights",
+          "label": {
+              "de": "im Worten (wenn keine der oben genannten Beschreibungen passt)",
+              "sl": "V besedilu (če nič od naštetega ne ustreza)",
+              "ro": "In text (daca nici unul dintre cuvintele de mai sus nu se potrivesc)",
+              "el": "Ελεύθερη περιγραφή Πνευματικών Δικαιωμάτων (αν τα παραπάνω δεν ταιριάζουν)",
+              "hu": "Bővebben (ha a fentiek egyike sem igaz)",
+              "bg": "В текст (ако никой от горните не съответства)",
+              "fr": "Description textuelle (si aucun des choix ci-dessus ne s'applique)",
+              "en": "In text (if none of the above fits)",
+              "ru": "Текстом (если ни однин из вышеуказанных вариантов не подходит)",
+              "hi": "पाठ्य में (यदि उक्त में  से कोई उचित नहीं है )",
+              "et": "Tekstina (kui ükski ülaltoodud variantidest ei sobi)",
+              "es": "En texto (si no corresponde ninguno de los anteriores)"
+          },
+          "type": "text",
+          "nodetype": "literal",
+          "cls": ["rformsmultiline"],
+          "cardinality": {"pref": 1}
+      }
+  ]
 }
