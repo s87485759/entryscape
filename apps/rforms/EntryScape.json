@@ -14,7 +14,7 @@
               {"id": "dcterms:title", "cardinality": {"pref": 1}},
               {"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
               {"id": "entryscape:rights"},
-              {"id": "dcterms:creator", "cardinality": {"max": 1, "pref": 1}, "nodetype": "ONLY_LITERAL"}
+              {"id": "dcterms:creator", "cardinality": {"max": 1, "pref": 1}, "nodetype": "ONLY_LITERAL", "type": "text"}
           ]
       }, {
           "id": "entryscape:foaf-group",
@@ -68,6 +68,7 @@
           },
           "description": {"en": "Possible values:\n1) Are commercial uses of this resource allowed? (Yes/No)\n    Are modifications of this resource by other people allowed? (Yes/No)\n2) Free-text description of the rights\n\n\nDescription of restrictions and copyrights that may refer to the use of this resource"},
           "type": "choice",
+          "cardinality": {"pref": 1},
           "nodetype": "URI",
           "property": "http://purl.org/dc/terms/rights",
           "styles": ["rformsverticalRadioButtons"],
