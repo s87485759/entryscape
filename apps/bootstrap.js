@@ -172,7 +172,7 @@ __confolio.start = function(loadIndicatorId, splashId){
 			}).play();
 		}
 		//asynhronous loading of definitions. Use getDefinitions with a callback.
-		var definitionsPath = (__confolio.config["definitionsPath"] || "definitions") + ".js";
+		var definitionsPath = (__confolio.config["definitionsPath"] || "definitions") + ".json";
 		__confolio.config.definitionsPromise = request.get(definitionsPath, {
 			handleAs: "json",
 			headers: {"Accept": "application/json",
