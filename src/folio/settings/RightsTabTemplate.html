@@ -1,0 +1,37 @@
+<div>
+    <div class="distinctBackground settingsBlock">
+        <h4 data-dojo-attach-point="_groupInfoLabelNode">Information about group visible to:</h4>
+        <input type="radio" name="groupInfo" data-dojo-type="dijit/form/RadioButton" id="${id}-groupInfoGuest" data-dojo-attach-point="_groupInfoGuestChoiceDijit">&nbsp;
+        <label for="${id}-groupInfoGuest" data-dojo-attach-point="_groupInfoGuestChoiceLabelNode">Everyone</label>
+        <input type="radio" name="groupInfo" data-dojo-type="dijit/form/RadioButton" id="${id}-groupInfoUsers" data-dojo-attach-point="_groupInfoUsersChoiceDijit">&nbsp;
+        <label for="${id}-groupInfoUsers" data-dojo-attach-point="_groupInfoUsersChoiceLabelNode">Users signed in</label>
+        <input type="radio" name="groupInfo" data-dojo-type="dijit/form/RadioButton" id="${id}-groupInfoMembers" data-dojo-attach-point="_groupInfoMembersChoiceDijit">&nbsp;
+        <label for="${id}-groupInfoMembers" data-dojo-attach-point="_groupInfoMembersChoiceLabelNode">Members</label>
+
+        <h4 data-dojo-attach-point="_groupMembersLabelNode">Members of group visible to:</h4>
+        <input type="radio" name="members" data-dojo-type="dijit/form/RadioButton" id="${id}-membersGuest" data-dojo-attach-point="_membersGuestChoiceDijit">&nbsp;
+        <label for="${id}-membersGuest" data-dojo-attach-point="_membersGuestChoiceLabelNode">Everyone</label>
+        <input type="radio" name="members" data-dojo-type="dijit/form/RadioButton" id="${id}-membersUsers" data-dojo-attach-point="_membersUsersChoiceDijit">&nbsp;
+        <label for="${id}-membersUsers" data-dojo-attach-point="_membersUsersChoiceLabelNode">Users signed in</label>
+        <input type="radio" name="members" data-dojo-type="dijit/form/RadioButton" id="${id}-membersMembers" data-dojo-attach-point="_membersMembersChoiceDijit">&nbsp;
+        <label for="${id}-membersMembers" data-dojo-attach-point="_membersMembersChoiceLabelNode">Members</label>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="_saveGroupAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _saveGroupAccess">Save</div>
+    </div>
+    <div class="distinctBackground settingsBlock" data-dojo-attach-point="_homeContextRights">
+        <h4 data-dojo-attach-point="_portfolioLabelNode">Content in portfolio visible to:</h4>
+        <input type="radio" name="portfolio" data-dojo-type="dijit/form/RadioButton" id="${id}-portfolioGuest" data-dojo-attach-point="_portfolioGuestChoiceDijit">&nbsp;
+        <label for="${id}-portfolioGuest" data-dojo-attach-point="_portfolioGuestChoiceLabelNode">Everyone</label>
+        <input type="radio" name="portfolio" data-dojo-type="dijit/form/RadioButton" id="${id}-portfolioUsers" data-dojo-attach-point="_portfolioUsersChoiceDijit">&nbsp;
+        <label for="${id}-portfolioUsers" data-dojo-attach-point="_portfolioUsersChoiceLabelNode">Users signed in</label>
+        <input type="radio" name="portfolio" data-dojo-type="dijit/form/RadioButton" id="${id}-portfolioMembers" data-dojo-attach-point="_portfolioMembersChoiceDijit">&nbsp;
+        <label for="${id}-portfolioMembers" data-dojo-attach-point="_portfolioMembersChoiceLabelNode">Members</label>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="_savePortfolioAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _savePortfolioAccess">Save</div>
+    </div>
+    <div class="distinctBackground settingsBlock" data-dojo-attach-point="_selectHomeContext" style="display:none">
+        <span>Home context id: </span><div data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="_homeContextIdDijit" data-dojo-attach-event="onChange: _homeContextIdChanged"></div><br>
+        <span>Home context label: </span><span data-dojo-attach-point="_homeContextLabelNode"></span><br>
+        <div data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="_copyRightsButton" data-dojo-attach-event="onClick: _copyRights">Set current group owners as owners of home Context</div>
+        <div data-dojo-type="dijit/form/Button" data-dojo-attach-point="_revertHomeContextButton" data-dojo-attach-event="onClick: _revertHomeContext">Revert to previous home Context</div>
+        <div data-dojo-type="dojox/form/BusyButton" data-dojo-attach-point="_saveHomeContextButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _saveHomeContext">Save new home Context</div>
+    </div>
+</div>
