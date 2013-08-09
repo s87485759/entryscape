@@ -170,10 +170,10 @@ dojo.declare("folio.util.StandardDialog", folio.util.Dialog, {
  * the node. The provided tooltipdialog will be new for each time.
  * 
  * 
- * @param {Object} launchNode - where the tooltipdialog will be launched around
+ * @param {Object} domNode - where the tooltipdialog will be launched around
  * @param {Object} prepareDialog - a callback function which is called with the parameter of the tooltipDialog which openPopup method
  * 	should be called when the appropriate content of the tooltipdialog has been set.
- * @param {Object} onDialogClose - will be called when the tooltipdialog is closed.
+ * @param {Object} onClose - will be called when the tooltipdialog is closed.
  */
 folio.util.connectToolKitDialog = function(domNode, prepareDialog, onClose) {
 	var nodeConnector;

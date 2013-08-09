@@ -78,10 +78,11 @@
 	margin: 7px;
 }
 
+/*
 .tundra .dijitTextArea {
 	padding-left: 0px;
 	padding-right: 0px;
-}
+} */
 
 
 /* Hide first level in shame forms */
@@ -125,7 +126,7 @@
 	padding-bottom: 2px;
 	padding-top: 2px;
 	padding-left: 2px;
-	height: 29px;
+	height: 33px;
 }
 
 .entryDetails .header img {
@@ -141,10 +142,14 @@
 	text-align: center;
 }
 
-.entryDetails .contentViewSwitcher.leftCentered {
+.entryDetails .contentViewSwitcher.leftAligned {
 	text-align: left;
-	padding: 5px;
 }
+
+.entryDetails .contentViewSwitcher .contentPresentationMode{
+    padding: 8px;
+}
+
 
 .entryDetails .contentViewSwitcher .contentIcon {
 	width: 128px;
@@ -197,6 +202,11 @@
 .entryDetails .resource, 
 .entryDetails .referentsList a {
 	font-weight: bold;
+    display: inline-block;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
 }
 
 .referentsList a {

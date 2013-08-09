@@ -73,7 +73,7 @@ dojo.declare("folio.data.Entry", null, {
 		return this.externalMetadataCacheUri; 
 	},
 	getResourceUri: function() {
-		return this.resourceUri;
+		return this.resourceURI;
 	},
 	getRelationUri: function() {
 		return this.relationUri;
@@ -261,7 +261,7 @@ dojo.declare("folio.data.Entry", null, {
 //TODO this method is probably not complete.
 //No saving, and what about all the other tripples (outgoing)
 		var infoGraph = this.getInfo();
-		this.resourceUri = newUri; //No need to refresh...
+		this.resourceURI = newUri; //No need to refresh...
 		var arr = infoGraph.find(this.getUri(), folio.data.SCAMSchema.RESOURCE);
 		if (arr != null && arr.length === 1) {
 			arr[0].setValue(newUri);

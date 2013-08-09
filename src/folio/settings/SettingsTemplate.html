@@ -2,84 +2,18 @@
 	<div class="settingsTop distinctBackground" data-dojo-type="folio/navigation/PrincipalInfo" data-dojo-attach-point="principalInfo" data-dojo-props="view: 'settings'"></div>
 	<div class="settingsOutline distinctBackground">
 		<ul>
-			<li class="selected" data-dojo-attach-point="accountButtonNode"><a>Account</a></li>
-			<li data-dojo-attach-point="profileButtonNode"><a>Profile</a></li>
+			<li class="selected" data-dojo-attach-point="_accountButtonNode"><a>General</a></li>
+			<li data-dojo-attach-point="_profileButtonNode"><a>Profile</a></li>
+            <li style="display: none" data-dojo-attach-point="_membersButtonNode"><a>Members</a></li>
+            <li data-dojo-attach-point="_rightsButtonNode"><a>Rights</a></li>
 		</ul>
 	</div>
 	<div class="settingsCenter">
 		<div style="position:relative;height: 100%">
-			<div class="settingsContent accountContainer" data-dojo-attach-point="accountNode">
-				<div class="distinctBackground accountBlock">
-					<h4 data-dojo-attach-point="nameNode"></h4>
-					<div data-dojo-attach-point="userPrincipalNode">
-						<div data-dojo-attach-point="firstNameDijit" data-dojo-type="dijit/form/TextBox"></div>
-						<div data-dojo-attach-point="lastNameDijit" data-dojo-type="dijit/form/TextBox"></div>
-						<div class="fullNameRow" data-dojo-attach-point="fullNameNode"> </div>
-					</div>
-					<div data-dojo-attach-point="groupPrincipalNode">
-						<div class="wideInput" data-dojo-attach-point="fullNameDijit" data-dojo-type="dijit/form/TextBox"></div>
-					</div>
-					<h4 data-dojo-attach-point="infoNode"></h4>
-					<div class="wideInput" data-dojo-attach-point="infoDijit" data-dojo-type="dijit/form/Textarea"></div>
-					<h4 data-dojo-attach-point="emailNode"></h4>
-					<div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="infoSaveButton" data-dojo-props="disabled: true"></div>
-					<div class="wideInput" data-dojo-attach-point="emailDijit" data-dojo-type="dijit/form/TextBox"></div>
-				</div>
-				<div class="distinctBackground accountBlock profilepicture">
-					<div class="column1">
-						<div class="headingRow">
-							<input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-nppc" data-dojo-attach-point="noPictureChoiceButton">&nbsp;
-							<label for="${id}-nppc" data-dojo-attach-point="noProfilePictureLabelNode"></label>
-						</div>
-						<div class="headingRow">
-							<input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-uppc" data-dojo-attach-point="urlPictureChoiceButton">&nbsp;
-							<label for="${id}-uppc" data-dojo-attach-point="urlProfilePictureLabelNode"></label>
-						</div>
-						<div class="urlProfilePicture" data-dojo-attach-point="urlProfilePictureDijit" data-dojo-type="dijit/form/TextBox"></div>
-						<div data-dojo-attach-point="urlProfilePictureTestButton" data-dojo-type="dijit/form/Button"></div>
-						<div class="headingRow">
-							<input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-lppc" data-dojo-attach-point="localPictureChoiceButton">&nbsp;
-							<label class="localProfilePictureLabel" for="${id}-lppc" data-dojo-attach-point="localProfilePictureLabelNode"></label>
-							<input data-dojo-type="dojox/form/Uploader" data-dojo-props="multiple: false, uploadOnSelect: false" data-dojo-attach-point="localProfilePictureUploadButton" name="inputFile"/>
-						</div>
-					</div>
-					<div class="column2">
-						<div class="principalPicture">
-							<img data-dojo-attach-point="profilePictureNode"></img>
-						</div>
-					</div>
-					<div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="profilePictureSaveButton" data-dojo-props="disabled: true"></div>						
-				</div>
-				<div class="distinctBackground accountBlock">
-					<h4 data-dojo-attach-point="languageNode"></h4>
-					<div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="uiprefsSaveButton" data-dojo-props="disabled: true"></div>
-					<input data-dojo-attach-point="languageSelectDijit" data-dojo-type="dijit/form/FilteringSelect"></input>
-				</div>
-				<div class="distinctBackground accountBlock">
-					<div class="passwordRow">
-						<label for="${id}-opw" data-dojo-attach-point="oldPasswordNode"></label>
-						<input type="password" id="${id}-opw" data-dojo-attach-point="oldPasswordDijit" data-dojo-type="dijit/form/TextBox"></input></br>
-					</div>
-					<div class="passwordRow">					
-						<label for="${id}-npw" data-dojo-attach-point="newPasswordNode"></label>
-						<input type="password" class="passwordInput" id="${id}-npw" data-dojo-attach-point="newPasswordDijit" data-dojo-type="dijit/form/TextBox"></input></br>
-					</div>
-					<div class="passwordRow">					
-						<label for="${id}-vnpw" data-dojo-attach-point="verifynNewPasswordNode"></label>
-						<input type="password" class="passwordInput" id="${id}-vnpw" data-dojo-attach-point="verifyNewPasswordDijit" data-dojo-type="dijit/form/TextBox"></input>
-						<div class="passwordMismatch" data-dojo-attach-point="passwordMismatchNode" style="display: none;"></div>
-					</div>
-					<div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="passwordSaveButton" data-dojo-props="disabled: true"></div>						
-				</div>
-			</div>
-			<div class="container settingsContent" style="display: none" data-dojo-attach-point="profileNode">
-				<div class="content distinctBackground">
-					<div data-dojo-attach-point="profileEditorNode"></div>
-				</div>
-				<div class="footer distinctBackground" data-dojo-attach-point="profileButtonsNode">
-					<div class="button" data-dojo-attach-event="onClick: _saveProfile" data-dojo-type="dojox/form/BusyButton" busyLabel="" data-dojo-attach-point="saveProfileButton">Save</div>
-				</div>
-			</div>
+			<div class="settingsContent accountContainer" data-dojo-attach-point="_accountTabDijit" data-dojo-type="folio/settings/AccountTab"></div>
+			<div class="settingsContent container" style="display: none" data-dojo-attach-point="_profileTabDijit" data-dojo-type="folio/settings/ProfileTab"></div>
+            <div class="settingsContent container" style="display: none" data-dojo-attach-point="_membersTabDijit" data-dojo-type="folio/settings/MembersTab"></div>
+            <div class="settingsContent container" style="display: none" data-dojo-attach-point="_rightsTabDijit" data-dojo-type="folio/settings/RightsTab"></div>
 		</div>
 	</div>
 </div>

@@ -59,12 +59,13 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 	// Inherited attributes
 	//===================================================
 	attributeMap: dojo.mixin(dojo.clone(dijit.layout.ContentPane.prototype.attributeMap), {
-        aboutLink: {node: "aboutLinkNode", type: "innerHTML"},
-        helpLink: {node: "helpLinkNode", type: "innerHTML"},
+        aboutLink: {node: "aboutLinkNodeLabel", type: "innerHTML"},
+        helpLink: {node: "helpLinkNodeLabel", type: "innerHTML"},
         greeting: {node: "greetingNode", type: "innerHTML"},
         userField: {node: "userFieldNode", type: "innerHTML"},
-        homeLink: {node: "homeLinkNode", type: "innerHTML"},
-        settings: {node: "settingsNode", type: "innerHTML"},
+        profileLink: {node: "profileLinkNodeLabel", type: "innerHTML"},
+        homeLink: {node: "homeLinkNodeLabel", type: "innerHTML"},
+        settings: {node: "settingsLinkNodeLabel", type: "innerHTML"},
         searchLabel: {node: "searchButtonNode", type: "attribute", attribute: "title"},
         languageLabel: {node: "languageLabelNode", type: "innerHTML"}
 	}),
@@ -174,13 +175,14 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 	},
 	localize: function() {
 		dojo.requireLocalization("folio", "navigationBar");
-		this.resourceBundle = dojo.i18n.getLocalization("folio", "navigationBar"); 
-		this.set(this.resourceBundle);
+		this.resourceBundle = dojo.i18n.getLocalization("folio", "navigationBar");
+        this.resourceBundleLD = dojo.i18n.getLocalization("folio", "loginDialog");
+        this.set(this.resourceBundle);
 		if (!this.user) {
 			this.set("userField", this.resourceBundle.guestUser);
-			this.loginStatusNode.innerHTML= this.resourceBundle.loginLink;
+			this.loginStatusNodeLabel.innerHTML= this.resourceBundleLD.logIn;
 		} else {
-			this.loginStatusNode.innerHTML= this.resourceBundle.logoutLink;
+			this.loginStatusNodeLabel.innerHTML= this.resourceBundleLD.logOut;
 		}
 	},
 	//===================================================
@@ -197,12 +199,13 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 				dojo.style(this.profileIconNode, "display", "");
 				dojo.style(this.signInIconNode, "display", "none");
 			}
-			dojo.attr(this.loginStatusNode, "innerHTML", this.resourceBundle.logoutLink);
+			dojo.attr(this.loginStatusNodeLabel, "innerHTML", this.resourceBundleLD.logOut);
 		} else {
 			this.userId = undefined;
 			dojo.attr(this.userFieldNode, "innerHTML", this.resourceBundle.guestUser);
 			dojo.attr(this.userFieldNode, "href", "");
-			dojo.attr(this.loginStatusNode, "innerHTML", this.resourceBundle.loginLink);
+
+			dojo.attr(this.loginStatusNodeLabel, "innerHTML", this.resourceBundleLD.logIn);
 			if (this.profileIconNode) {
 				dojo.style(this.profileIconNode, "display", "none");
 				dojo.style(this.signInIconNode, "display", "");
@@ -212,6 +215,13 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 			}
 			this.home = undefined;
 		}
+        if (this.user) {
+            dojo.style(this.profileLinkNodeWrapper, "display", "");
+            dojo.attr(this.profileLinkNode, "href", this.application.getHref(this.application.getRepository()+"_principals/resource/"+this.user.id, "profile"));
+        } else {
+            dojo.style(this.profileLinkNodeWrapper, "display", "none");
+        }
+
 		if (this.user && this.user.homecontext) {
 			this.home = this.user.homecontext;
 			dojo.style(this.homeLinkNodeWrapper, "display", "");

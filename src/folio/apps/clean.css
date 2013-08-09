@@ -1,10 +1,10 @@
-@import "../../../lib/dojo-src/dijit/themes/tundra/tundra.css"; /* required when dijit */	
+@import "../../../lib/dojo-src/dijit/themes/claro/claro.css"; /* required when dijit */
 @import "../../../lib/dojo-src/dojo/resources/dojo.css";
 @import "../../../lib/dojo-src/dojox/image/resources/image.css"; /*some problem in this css file*/
 @import "../../../lib/dojo-src/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
 @import "../../../lib/dojo-src/dojox/layout/resources/ExpandoPane.css"; 
 @import "../../../lib/dojo-src/dojox/form/resources/BusyButton.css";
-@import "../../../lib/dojo-src/dojox/grid/resources/tundraGrid.css";
+@import "../../../lib/dojo-src/dojox/grid/resources/claroGrid.css";
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Save.css";
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Preview.css";
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
@@ -198,9 +198,16 @@ a:hover, .link:hover {
 	width: 60px;
 }
 
+/*
 .tundra .overView .dijitTabPaneWrapper {
 	border-width: 0px;
 }
+.tundra .dijitInputField input,
+.tundra .dijitTextBox,
+.tundra .dijitComboBox,
+.tundra .dijitSpinner {
+	margin: 0;
+}*/
 
 .annotationprofileeditor .editTab {
 	border-width: 1px;
@@ -241,12 +248,6 @@ a:hover, .link:hover {
 	text-decoration:none;
 }
 
-.tundra .dijitInputField input,
-.tundra .dijitTextBox,
-.tundra .dijitComboBox,
-.tundra .dijitSpinner {
-	margin: 0;
-}
 
 /*.dijitTabContainerBottom-container, 
 .dijitTabContainerTop-container, 
@@ -255,11 +256,15 @@ a:hover, .link:hover {
 	overflow: auto;	
 }*/
 
+.claro .confolio .dijitContentPane {
+    padding: 0px;
+}
+
 /* Insert content of arrow button here explicity or button will not be shown in Opera
- (when that bug has been fixed in dojo, the following should be removed) */
+ (when that bug has been fixed in dojo, the following should be removed)
 .dijitArrowButton {
 	content: "▼"; vertical-align: middle;
-}
+}*/
 
 /* Ensure proper positioning for the application (needed in Opera) */
 .confolioPanel {
@@ -444,7 +449,7 @@ a:hover, .link:hover {
 .loginDialog {
 	position: relative;
 	height: 100%;
-	width: 38em;
+	width: 37em;
 	padding: 1px;
 }
 .loginDialog .logo {
@@ -453,25 +458,20 @@ a:hover, .link:hover {
 	position: absolute;
 	width: 96px;
 	height: 96px;
-	top: 10px;
-	left: 30px;
-}
-
-.loginDialog .language-box {
-	text-align: right;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-}
-
-.loginDialog .language-box .language-select {
-	width: 10em;
-	font-size: smaller;
-	vertical-align: middle;
+	top: 30px;
+	left: 35px;
 }
 
 .loginDialog table {
 	margin: 10px 10px 30px 150px;
+}
+
+.loginDialog table td {
+    padding-bottom: 4px;
+}
+
+.loginDialog table td .dijitButtonNode {
+    margin-right: -3px;
 }
 
 /*------Help view--------------------------*/

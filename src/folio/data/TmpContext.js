@@ -56,7 +56,7 @@ dojo.declare("folio.data.TmpContext", folio.data.Context, {
 	//===================================================
 	_createEntry: function(resourceUri, builtinType, locationType) {
 		var entry = this._createPlainEntry();
-		entry.resourceUri = resourceUri || this.getBase()+"_tmp/resource/"+entry.getId();
+		entry.resourceURI = resourceUri || this.getBase()+"_tmp/resource/"+entry.getId();
 		entry.info.create(entry.getUri(), folio.data.SCAMSchema.RESOURCE, {"type":"uri", "value": resourceUri});
 		
 		entry.info.create(resourceUri, folio.data.RDFSchema.TYPE, {"type": "uri", "value": builtinType});

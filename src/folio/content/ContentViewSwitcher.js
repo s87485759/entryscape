@@ -54,7 +54,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	},
 	show: function(entry) {
 		dojo.attr(this.domNode, "innerHTML", "");
-		dojo.removeClass(this.domNode, "leftCentered");
+		dojo.removeClass(this.domNode, "leftAligned");
 
 		this.entry = entry;
 		this.contentNode = null;
@@ -189,7 +189,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	},
 	
 	_htmlSnippet: function(entry) {
-		dojo.addClass(this.domNode, "leftCentered");
+		dojo.addClass(this.domNode, "leftAligned");
 		this.contentNode = dojo.create("div", {style: {height: "100%", "overflow-y": "auto"}}, this.domNode);
 		this.editable = true;
 		this.contentDijit = new folio.content.RTE({entry: entry}, this.contentNode);

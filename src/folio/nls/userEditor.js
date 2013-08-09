@@ -28,7 +28,7 @@ define({
 		"noProfilePictureLabel" : "No profile picture",
 		"urlProfilePictureLabel" : "Web address to profile picture",
 		"localProfilePictureLabel" : "Uploaded profile picture",
-		"urlProfilePictureTest" : "Test profile picture",
+		"urlProfilePictureTest" : "Test address",
 		"localProfilePictureUpload" : "Upload new",
 		"userNameLabel" : "Username",
 		"passwdLabel" : "Password",

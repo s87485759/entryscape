@@ -45,12 +45,12 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 		 	label: "Local", 
 			searchDetailsClass: "folio.search.LocalSearch", 
 			searchResultsClass: "folio.list.SearchList"
-		}/*,
+		},
 		"europeana": {
-		 	label: "Europeana", 
-			searchDetailsClass: "folio.search.EuropeanaSearch", 
+		 	label: "KSamsok",
+			searchDetailsClass: "folio.search.KSamsok",
 			searchResultsClass: "folio.list.SimpleSearchList"
-		}*/},
+		}},
 	defaultSearchAlternative: "local",
 
 	//===================================================
@@ -188,17 +188,17 @@ dojo.declare("folio.apps.Search", [dijit._Widget, dijit._Templated], {
 						alt.searchResults = new sRCls({}, dojo.create("div", null, this._searchResultsContainer));
 						dojo.connect(alt.searchResults, "onResults", this, this._searchResultsChanged);
 						this._currentSearchAlternative = alternative;
-						callback && callback();
+						callback && dojo.isFunction(callback) && callback();
 					});
 				}), 1);
 			} else {
 				dojo.style(this._searchAlternatives[alternative].searchDetails.domNode, "display", "");
 				dojo.style(this._searchAlternatives[alternative].searchResults.domNode, "display", "");				
 				this._currentSearchAlternative = alternative;
-				callback && callback();
+				callback && dojo.isFunction(callback) && callback();
 			}
 		} else {
-			callback && callback();
+			callback && dojo.isFunction(callback) && callback();
 		}
 	}
 });

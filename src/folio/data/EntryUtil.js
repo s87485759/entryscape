@@ -24,7 +24,7 @@ dojo.require("rforms.model.Engine");
 folio.data.extractEntryInfo = function(entry) {
 	entry.localMetadataUri = entry.entryInfo.base+entry.entryInfo.contextId+"/metadata/"+entry.entryInfo.entryId;
 	entry.externalMetadataCacheUri = entry.entryInfo.base+entry.entryInfo.contextId+"/external-metadata-cache/"+entry.entryInfo.entryId;
-	entry.resourceUri = entry.getInfo().findFirstValue(entry.getUri(), folio.data.SCAMSchema.RESOURCE);
+	entry.resourceURI = entry.getInfo().findFirstValue(entry.getUri(), folio.data.SCAMSchema.RESOURCE);
 	entry.relationUri = entry.entryInfo.base+entry.entryInfo.contextId+"/relation/"+entry.entryInfo.entryId;
 	folio.data._excavateTypes(entry);
 	if (entry.locType == folio.data.LocationType.LINK_REFERENCE ||

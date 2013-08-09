@@ -1,0 +1,15 @@
+<div class='listControls'>
+    <div class="listOrderChangerWrapper">
+        <label data-dojo-attach-point="sortLabelNode" for="${id}-sorter"></label>
+        <div class="listOrderChanger" data-dojo-attach-point="orderChanger" data-dojo-type="dijit/form/FilteringSelect" id="${id}-sorter"
+             data-dojo-props="searchAttr: 'label', autocomplete: true" data-dojo-attach-event="onChange: _orderChange"></div>
+    </div>
+    <div data-dojo-attach-point="itemCountNode"></div>
+    <div class="pagination" data-dojo-attach-point="pagination">
+        <span dojoAttachEvent='onclick: pagStart' class='pagStart'>&lt;&lt;</span>&nbsp;&nbsp;&nbsp;
+        <span dojoAttachEvent='onclick: pagPrev' class='pagPrev'>&lt;</span>&nbsp;
+        <span dojoAttachEvent='onclick: pagPages' dojoAttachPoint='pagPagesNode' class='pagPages'></span>&nbsp;&hellip;&nbsp;
+        <span dojoAttachEvent='onclick: pagNext' class='pagNext'>&gt;</span>&nbsp&nbsp;&nbsp;
+        <span dojoAttachEvent='onclick: pagEnd' class='pagEnd'>&gt;&gt;</span>
+    </div>
+</div>

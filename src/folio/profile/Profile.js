@@ -67,14 +67,15 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		this.application = __confolio.application;		
 		this.featuredList.application = __confolio.application;
 
-		dojo.connect(this.foldersButtonNode, "onclick", this, this._showFolders);
-		dojo.connect(this.communitiesButtonNode, "onclick", this, this._showCommunities);
-		dojo.connect(this.membersButtonNode, "onclick", this, this._showMembers);
-		dojo.connect(this.featuredButtonNode, "onclick", this, this._showFeatured);
-		dojo.connect(this.recentButtonNode, "onclick", this, this._showRecent);
+		this.connect(this.foldersButtonNode, "onclick", this._showFolders);
+		this.connect(this.communitiesButtonNode, "onclick", this._showCommunities);
+		this.connect(this.membersButtonNode, "onclick", this._showMembers);
+		this.connect(this.featuredButtonNode, "onclick", this._showFeatured);
+		this.connect(this.recentButtonNode, "onclick", this._showRecent);
 
 		dojo.subscribe("/confolio/localeChange", dojo.hitch(this, this._localize));
 		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
+        dojo.subscribe("/confolio/childrenChanged", dojo.hitch(this, this._childrenChanged));
 		this._localize();
 	},
 
@@ -98,7 +99,7 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			entryId: params.entry}, 
 			{},
 			function(entry) {
-				if (entry.resource == null) {
+				if (entry.resource == null || entry.needRefresh()) {
 					entry.setRefreshNeeded();
 					entry.refresh(f);
 				} else {
@@ -158,6 +159,11 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "profile"); 
 		this.set(this.resourceBundle);
 	},
+    _childrenChanged: function(args) {
+        if (this.entry && args.entry === this.entry.getId() && args.context === "_principals") {
+
+        }
+    },
 		
 	_getHomeContext: function(callback) {
 		delete this.homeContext;
@@ -213,10 +219,6 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		dojo.addClass(this.membersButtonNode, "selected");
 		dojo.style(this.membersNode, "display", "");
 		dojo.style(this.foldersNode, "display", "none");
-		if (this.entry === this._currMemEntry) {
-			return;
-		}
-		this._currMemEntry = this.entry;
 		dojo.attr(this.membersNode, "innerHTML", "");
 		folio.data.getAllChildren(this.entry, dojo.hitch(this, function(children) {
 			var cs = dojo.map(children, function(c) {

@@ -220,6 +220,50 @@ dojo.declare("folio.Application", null, {
 			}
 		}
 	},
+
+    /**
+     * Similar to getHref, but respects links.
+     *
+     * @param  {folio.data.Entry} entry
+     * @param {Function} callback
+     */
+    getHrefLinkLike: function(entry, callback) {
+        var resolvLinkLike = function(entry, f) {
+            var f2 = function(resolvedEntry) {
+                if (folio.data.isUser(resolvedEntry) && resolvedEntry.getResource() == null) {
+                    resolvedEntry.setRefreshNeeded();
+                }
+                if (resolvedEntry.needRefresh()) {
+                    resolvedEntry.refresh(f);
+                } else {
+                    f(resolvedEntry);
+                }
+            };
+            if (folio.data.isLinkLike(entry) && !folio.data.isFeed(entry) && entry.getBuiltinType() !== folio.data.BuiltinType.RESULT_LIST) {
+                folio.data.getLinkedLocalEntry(entry, function(linkedEntry) {
+                    f2(linkedEntry);
+                });
+            } else {
+                f2(entry);
+            }
+        };
+        if (folio.data.isUser(entry) || folio.data.isGroup(entry)) { //Opens the homeContext of a user.
+            resolvLinkLike(entry, dojo.hitch(this, function(e) {
+                callback({href: this.getHref(e, "profile")});
+            }));
+        } else if (folio.data.isListLike(entry)) {
+            resolvLinkLike(entry, dojo.hitch(this, function(e) {
+                callback({href: this.getHref(e, "default")});
+            }));
+        } else if (folio.data.isContext(entry)) {
+            resolvLinkLike(entry, dojo.hitch(this, function(e) {
+                callback({href: this.getHref(e.getResourceUri()+"/resource/_top", "default")});
+            }));
+        } else {
+            callback({href: entry.getResourceUri(), blankTarget: true});
+        }
+    },
+
 	dispatch: function(params) {
 		console.log("dispatch is deprecated");
 		this.publish(params.action, params);

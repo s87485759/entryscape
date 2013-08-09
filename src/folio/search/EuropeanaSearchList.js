@@ -49,19 +49,19 @@ dojo.declare("folio.search.EuropeanaSearchList", folio.data.AbstractList, {
 				types = (this.params.term != null ? "+AND+": "")+"europeana_type:"+this.params.types[0];
 			}
 		}
-
-		return "http://api.europeana.eu/api/opensearch.rss?searchTerms="+this.params.term+types+"&wskey=BYOXSVLSSU";
+        return "http://europeana.eu/api//v2/search.json?wskey=BYOXSVLSSU&query="+this.params.terms+types+"&start=1&rows=12&profile=standard";
+        //return "http://api.europeana.eu/api/opensearch.rss?searchTerms="+this.params.term+types+"&wskey=BYOXSVLSSU";
 	},
 	loadChildren: function(limit, offset, onChildren, onError) {
 		if (this._detectMissing(limit, offset)) {
-			__confolio.application.getCommunicator().loadViaSCAMProxy({url: this.constructSearchUrl(), handleAs: "text", onSuccess: dojo.hitch(this, function(xmlStr) {
-					var jsdom = dojox.xml.DomParser.parse(xmlStr);
-					var result = jsdom.byName("item");
+			__confolio.application.getCommunicator().loadViaSCAMProxy({url: this.constructSearchUrl(), handleAs: "json", onSuccess: dojo.hitch(this, function(jsondata) {
+					var result = jsondata.items;
 					this.size = result.length; //correct?
 	  				for (var i = 0; i < result.length; i++) {
 	    				var fentry = result[i];
 						var enclosure = fentry.byName("enclosure");
-						var link = fentry.byName("link")[0].childNodes[0].nodeValue;
+
+                        var link = fentry.byName("link")[0].childNodes[0].nodeValue;  //ExternalMetadataURI
 						var resourceUri = enclosure.length > 0 ? enclosure[0].attributes[0].nodeValue : link.substring(0, link.indexOf(".srw?wskey"))+".html";
 						var childE = this.entry.getContext().createLinkReference(resourceUri, link, folio.data.BuiltinTypeSchema.NONE);
 						childE.readAccessToMetadata = true;
@@ -87,7 +87,7 @@ dojo.declare("folio.search.EuropeanaSearchList", folio.data.AbstractList, {
 										onSuccess: function(data) {
 											ent.localMetadata = new rdfjson.Graph(dojo.clone(data));
 											var stmts = graph.find(null, folio.data.DCSchema.TITLE, null);
-											ent.resourceUri = stmts[0].getSubject();
+											ent.resourceURI = stmts[0].getSubject();
 											pres.show(ent, false);
 											tooltipdialog.setContent(newNode);
 								
@@ -96,7 +96,7 @@ dojo.declare("folio.search.EuropeanaSearchList", folio.data.AbstractList, {
 											tooltipdialog.openPopup();
 										}});
 							};
-							folio.util.createToolKitDialog(node, prepareDialog);
+							folio.util.connectToolKitDialog(node, prepareDialog);
 						}, childE);
 						
 						if (this.homeContext) {

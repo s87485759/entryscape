@@ -3,30 +3,69 @@
 	<div class="appName" dojoAttachPoint="appNameNode"></div>
 	<div class="appSentence" dojoAttachPoint="appSentenceNode"></div>
 	<div class="control icon" dojoAttachEvent="onclick: _controlClicked"></div>
-	<div class="controlMenu distinctThickBorder" style="display:none;" dojoAttachPoint="controlMenuNode">
-			<div class="imageAndAlternativesBlock distinctThinBorder">
-				<div>
-					<div dojoAttachPoint="profilePictureNode" class="profileImgNode distinctThinBorder">
-					</div>
-					<div class="alternativesNode">
-						<div dojoAttachPoint="userBlock" class="userBlock">
-							<span class="label" dojoAttachPoint="greetingNode"></span>
-							<a class="link user" dojoAttachPoint="userFieldNode"></a>
-						</div>
-						<div dojoAttachPoint="homeLinkNodeWrapper" style="display: none"><a class="link" dojoAttachPoint="homeLinkNode"></a></div>
-						<div dojoAttachPoint="settingsLinkNodeWrapper" style="display: none"><a class="link" dojoAttachPoint="settingsNode"></a></div>
-						<div style="display: none" dojoAttachPoint="helpLinkSpan"><a class="link" dojoAttachPoint="helpLinkNode"></a></div>
-						<div style="display: none" dojoAttachPoint="aboutLinkSpan"><a class="link" dojoAttachPoint="aboutLinkNode"></a></div>
-					</div>
-				</div>
-			</div>
-			<div>
-				<div class="languageBlock">
-					<span class="languageSelector"><span class="block label"><span dojoAttachPoint="languageLabelNode"></span>:&nbsp;&nbsp;
-					<select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" name="localeChanger" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeChanger"></select></span></span>
-				</div>
-				<div class="link" dojoAttachPoint="loginStatusNode" dojoAttachEvent="onclick:_loginLinkClicked"></div>
-			</div>
+	<div class="controlMenu" style="display:none;" dojoAttachPoint="controlMenuNode">
+        <div class="controlMenuWheel">
+            <div class="distinctThickBorder">
+                <div class="control icon" dojoAttachEvent="onclick: _controlClicked"></div>
+            </div>
+        </div>
+        <div class="cosmetic"></div>
+        <div class="controlMenuBody">
+            <div class="distinctThickBorder">
+                <div class="imageAndAlternativesBlock distinctThinBorder">
+                    <div>
+                        <div dojoAttachPoint="profilePictureNode" class="profileImgNode distinctThinBorder">
+                        </div>
+                        <div class="alternativesNode">
+                            <div dojoAttachPoint="userBlock" class="userBlock">
+                                <span class="label" dojoAttachPoint="greetingNode"></span>
+                                <a class="link user" dojoAttachPoint="userFieldNode"></a>
+                            </div>
+                            <div dojoAttachPoint="profileLinkNodeWrapper" style="display: none">
+                                <a class="link iconWrapper" dojoAttachPoint="profileLinkNode">
+                                    <span class="home icon"></span>
+                                    <span dojoAttachPoint="profileLinkNodeLabel"></span>
+                                </a>
+                            </div>
+                            <div dojoAttachPoint="homeLinkNodeWrapper" style="display: none">
+                                <a class="link iconWrapper" dojoAttachPoint="homeLinkNode">
+                                    <span class="folder icon"></span>
+                                    <span dojoAttachPoint="homeLinkNodeLabel"></span>
+                                </a>
+                            </div>
+                            <div dojoAttachPoint="settingsLinkNodeWrapper" style="display: none">
+                                <a class="link iconWrapper" dojoAttachPoint="settingsNode">
+                                    <span class="settings icon"></span>
+                                    <span dojoAttachPoint="settingsLinkNodeLabel"></span>
+                                </a>
+                            </div>
+                            <div style="display: none" dojoAttachPoint="helpLinkSpan">
+                                <a class="link iconWrapper" dojoAttachPoint="helpLinkNode">
+                                    <span class="help icon"></span>
+                                    <span dojoAttachPoint="helpLinkNodeLabel"></span>
+                                </a>
+                            </div>
+                            <div style="display: none" dojoAttachPoint="aboutLinkSpan">
+                                <a class="link iconWrapper" dojoAttachPoint="aboutLinkNode">
+                                    <span class="info icon"></span>
+                                    <span dojoAttachPoint="aboutLinkNodeLabel"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signinAndLanguage">
+                    <div class="languageBlock">
+                        <span class="languageSelector"><span class="block label"><span dojoAttachPoint="languageLabelNode"></span>:&nbsp;&nbsp;
+                        <select style="width: 10em; vertical-align: middle;" dojoType="dijit.form.FilteringSelect" name="localeChanger" searchAttr="label" style="width: 10em;font-size: smaller;" autocomplete="true" dojoAttachPoint="localeChanger"></select></span></span>
+                    </div>
+                    <div class="link menuloginLink iconWrapper" dojoAttachPoint="loginStatusNode" dojoAttachEvent="onclick:_loginLinkClicked">
+                        <span class="security icon"></span>
+                        <span dojoAttachPoint="loginStatusNodeLabel"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 	<div class="area1"><div style="display: table-cell;">
 		<div class="searchField" dojoType="dijit.form.TextBox" dojoAttachPoint="searchField" dojoAttachEvent="onClick:_clearSearchField"></div>

@@ -146,6 +146,7 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 			}*/
 			this.editContentButtonDijit.set("disabled", !this.contentViewDijit.isContentEditable()); 
 			this.contentAreaDijit.resize();
+            this.resize();
 		});
 	},
 	postCreate: function() {
@@ -164,6 +165,7 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		dojo.requireLocalization("folio", "details");
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "details");
 		this.set(this.resourceBundle);
+        //this.embedButtonDijit.set("label", "Embed");
 	},
 	_embedToggled: function() {
 		setTimeout(dojo.hitch(this, function() {

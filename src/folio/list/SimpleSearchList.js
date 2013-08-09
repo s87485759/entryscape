@@ -18,7 +18,7 @@
  */
 
 dojo.provide("folio.list.SimpleSearchList");
-dojo.require("folio.list.Pagination");
+dojo.require("folio.list.ListControls");
 
 /**
  * Searches for entries according to the given parameters and displays 
@@ -44,8 +44,10 @@ dojo.declare("folio.list.SimpleSearchList", dijit._Widget, {
 	},
 	postCreate: function() {
 		this.application = __confolio.application;
-		this.pagination = new folio.list.Pagination({list: this});
-		this.inherited("postCreate", arguments);
+		this.pagination = new folio.list.ListControls();
+        this.pagination.setListViewer(this);
+
+        this.inherited("postCreate", arguments);
 	},
 	onResults: function(nrOfHits) {
 	},
@@ -176,10 +178,10 @@ dojo.declare("folio.list.SimpleSearchList", dijit._Widget, {
 			}
 		}
 		if (entry._addToFolio) {
-			entry._addToFolio(dojo.create("div", {"class": "add"}, row));
+			entry._addToFolio(dojo.create("div", {"class": "icon bookmark", title: "add bookmark in home folder"}, row));
 		}
 		if (entry._constructPreview) {
-			entry._constructPreview(dojo.create("div", {"class": "preview", title: "bookmark"}, row));
+			entry._constructPreview(dojo.create("div", {"class": "icon info", title: "more information"}, row));
 		}
 		
 		

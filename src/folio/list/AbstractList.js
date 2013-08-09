@@ -27,6 +27,7 @@ dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.data.Entry");
 dojo.require("folio.list.Remove");
 dojo.require("folio.comment.CommentDialog");
+dojo.require("folio.list.operations");
 
 dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
@@ -39,7 +40,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	publishFocusEvents: true,
 
 	//=================================================== 
-	// Public API 
+	// Public API
 	//===================================================
 	setIconMode: function(iconMode) {
 		this.iconMode = iconMode;
@@ -77,7 +78,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	},
 	openChild: function(index, event) {
 		var entry = this.listChildren[index];
-		this.getHrefForEntry(entry, function(hrefObj) {
+		this.application.getHrefLinkLike(entry, function(hrefObj) {
 			if (hrefObj.blankTarget) {
 				window.open(hrefObj.href);
 			} else {
@@ -225,44 +226,6 @@ dojo.declare("folio.list.AbstractList", null, {
 		this._handle_rename(this.listChildren[this.selectedIndex], this.selectedIndex, null, select);		
 	},
 
-	getHrefForEntry: function(entry, callback) {
-		var resolvLinkLike = function(entry, f) {
-			var f2 = function(resolvedEntry) {
-				if (folio.data.isUser(resolvedEntry) && resolvedEntry.getResource() == null) {
-					resolvedEntry.setRefreshNeeded();
-				}
-				if (resolvedEntry.needRefresh()) {
-					resolvedEntry.refresh(f);
-				} else {
-					f(resolvedEntry);
-				}				
-			};
-			if (folio.data.isLinkLike(entry) && !folio.data.isFeed(entry) && entry.getBuiltinType() !== folio.data.BuiltinType.RESULT_LIST) {
-				folio.data.getLinkedLocalEntry(entry, dojo.hitch(this, function(linkedEntry) {
-					f2(linkedEntry);
-				}));
-			} else {
-				f2(entry);
-			}
-		};
-		if (folio.data.isUser(entry) || folio.data.isGroup(entry)) { //Opens the homeContext of a user.
-			resolvLinkLike(entry, dojo.hitch(this, function(e) {
-				callback({href: this.application.getHref(e, "profile")});
-			}));
-		} else if (folio.data.isListLike(entry)) {
-			resolvLinkLike(entry, dojo.hitch(this, function(e) {
-				callback({href: this.application.getHref(e, "default")});
-			}));
-		} else if (folio.data.isContext(entry)) {
-			resolvLinkLike(entry, dojo.hitch(this, function(e) {
-				callback({href: this.application.getHref(e.getResourceUri()+"/resource/_top", "default")});
-			}));
-		} else {
-			callback({href: entry.getResourceUri(), blankTarget: true});
-		}
-	},
-
-
 	//=================================================== 
 	// Abstract methods 
 	//===================================================
@@ -290,7 +253,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================		
-	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu", "rename"],
+	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new"],
 	_handleAction: function(action, index, event) {
 		var entry;
 		if (index == -1) {
@@ -439,12 +402,12 @@ dojo.declare("folio.list.AbstractList", null, {
 		if (index == -1) {
 			console.log("HeaderPasteClicked");
 			if (!this.isPasteDisabled) {
-				this.editBar.pasteClicked();
+                folio.list.operations.pasteInto(this.list);
 			}
 		} else {
 			console.log("ItemPasteClicked");
 			if (!this.isPasteIntoDisabled && entry.isResourceModifiable()) {
-				this.editBar.pasteClicked(entry);
+                folio.list.operations.pasteInto(entry);
 			}
 		}
 	},

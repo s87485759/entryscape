@@ -71,6 +71,7 @@ dojo.declare("folio.content.RTE", [dijit.layout._LayoutWidget], {
 	},
 	_setPresenter: function() {
 		dojo.attr(this.domNode, "innerHTML", "");
+        dojo.addClass(this.domNode, "contentPresentationMode");
 		dojo.xhrGet(__confolio.application.getCommunicator().insertAuthArgs({
 			url:this.entry.getResourceUri(),
 			handleAs: "text",
@@ -85,6 +86,7 @@ dojo.declare("folio.content.RTE", [dijit.layout._LayoutWidget], {
 	},
 	_setEditor: function() {
 		dojo.attr(this.domNode, "innerHTML", "");
+        dojo.removeClass(this.domNode, "contentPresentationMode");
 		var plugins = [
 			{name: 'viewSource', stripScripts: true, stripComments: true}, 
 			'showBlockNodes', 'newPage', {name: 'save', url: this.entry.getResourceUri()}, '|',

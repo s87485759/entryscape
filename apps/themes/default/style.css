@@ -93,11 +93,11 @@
 /* Loading icon used in splash*/
 .loadingIcon {	
 	width: 32px;height: 32px;
-	background:transparent url('../blueish.gif') no-repeat top left;
+	background:transparent url('../blueish/blueish.gif') no-repeat top left;
 }
 
 /*Skelleton*/
-.tundra .dijitSplitterV, .tundra .dijitSplitterH,
+.mainPanel .dijitSplitterV, .mainPanel .dijitSplitterH,
 .confolioPanel {
 	background: #EEE;
 }
@@ -132,8 +132,8 @@
 	background: #FAFAD2; /*lightGoldenrodYellow*/
 }
 
-
-.listView *,
+.listView .listHead,
+.listView .listChildren *,
 .details *,
 .listView .butsCls *,
 .folioTreeLabelSelected,
@@ -156,6 +156,25 @@
 	background: lightgrey;
 }
 
+/* == Override dojo Claro theme ==*/
+.claro .dijitDialogTitleBar {
+    background-color: #EEE;
+}
+
+/*
+.claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
+    background-color: #d3d3d3;
+}
+
+.claro .dijitButtonHover .dijitButtonNode, .claro .dijitDropDownButtonHover .dijitButtonNode, .claro .dijitComboButton .dijitButtonNodeHover,
+.claro .dijitComboButton .dijitDownArrowButtonHover, .claro .dijitToggleButtonHover .dijitButtonNode {
+  background-color: darkgrey;
+} */
+
+
+
+
+/* == RForms style  ==*/
 
 .editStateColor .missing .shameLabel,
 .missing>.shameLabel {

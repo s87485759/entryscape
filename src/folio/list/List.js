@@ -23,10 +23,10 @@ dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
 dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.data.Entry");
-dojo.require("folio.list.EditBar");
-dojo.require("folio.list.Pagination");
+dojo.require("folio.list.ListControls");
 dojo.require("dojo.fx");
 dojo.require("folio.entry.Details");
+dojo.require("folio.create.CreateMenu");
 dojo.require("folio.editor.RFormsLabelEditor");
 
 /**
@@ -42,14 +42,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	controlsLess: false,
 	includeDetailsButton: false,
 	openFolderLink: false,
-	rounded: false,
-	isPasteDisabled: true,
-	isPasteIntoDisabled: true,
-	titleClickFirstExpands: false,
-	floatingExpand: true,
-	selectionExpands: false,
-	childAnimationDuration: 40,
-	useAnimations: false,
 	detailsLink: false,
 
 	//=================================================== 
@@ -67,24 +59,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	//=================================================== 
 	// Public API
 	//===================================================
-	setPasteDisabled: function(disabled) {
-		this.isPasteDisabled = disabled;
-		var pasteElt = dojo.query(".paste", this.listHeadDijit.containerNode);
-		if (disabled) {
-		    pasteElt.addClass("disabledEntryButton");
-		} else {
-		    pasteElt.removeClass("disabledEntryButton");
-		}
-	},
-	setPasteIntoDisabled: function(disabled) {
-		this.isPasteIntoDisabled = disabled;
-		var pasteElts = dojo.query(".paste", this.listChildrenDijit.containerNode);
-		if (disabled) {
-		    pasteElts.addClass("disabledEntryButton");
-		} else {
-		    pasteElts.removeClass("disabledEntryButton");
-		}
-	},
 	listenForKeyEvents: function() {
 		this._keyEventConnector = dojo.connect(dojo.doc, "keypress", dojo.hitch(this, this.handleKeyPress));
 	},
@@ -93,13 +67,9 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			dojo.disconnect(this._keyEventConnector);			
 		}
 	},
-	//=================================================== 
-	// Inherited methods 
 	//===================================================
-	constructor: function() {
-		this.editBar = new folio.list.EditBar({list: this});
-		this.pagination = new folio.list.Pagination({list: this});
-	},
+	// Inherited methods
+	//===================================================
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
 		if (this.headLess) {
@@ -108,24 +78,16 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (this.controlsLess) {
 			dojo.style(this.listControlsDijit.domNode, "display", "none");
 		}
-		
-		dojo.addClass(this.listControlsNode, "editBar");
-		this.listControlsNode.appendChild(this.editBar.domNode);
-		this.listPaginationNode.appendChild(this.pagination.domNode);
-		if (this.rounded) {
-			dojo.addClass(this.domNode, "roundedList");
-		} else {
-			dojo.addClass(this.domNode, "cleanList");			
-		}
-		if (this.floatingExpand) {
-			dojo.addClass(this.domNode, "floatingExpand");
-		}
+
+//        this._insertSorter(dojo.create("div", {"class": "sortCls"}, this.sorterNode));
+
+        dojo.addClass(this.domNode, "cleanList");
 		dojo.connect(this.listChildrenDijit, "onClick", dojo.hitch(this, this.handleEvent, -1));
 		dojo.connect(this.listChildrenDijit, "onMouseMove", dojo.hitch(this, function(ev) {
 			if (dojo.hasClass(ev.target, "iconCls") && !this.iconMode) {
 				var parent = ev.target.parentNode;
 				while (parent != null && !dojo.hasClass(parent, "listEntry")) {
-					parent = parent.parentNode;					
+					parent = parent.parentNode;
 				}
 				var k=0, e=parent;
 				while (e) {
@@ -138,6 +100,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	startup: function() {
 		this.inherited("startup", arguments);
+        this.listControls.setListViewer(this);
 	},
 	getChildren: function() {
 		return [this.borderContainerDijit];
@@ -150,7 +113,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	showList: function(folderEntry, page, callback) {
 		this.inherited("showList", arguments);
-		this.editBar.setActiveFolder(folderEntry);
+//		this.editBar.setActiveFolder(folderEntry);
 		this.selectedIndex = -1;
 		this.faded = false;
 		this.newChildren = null;
@@ -160,11 +123,11 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			if(folio.data.isReference(folderEntry) && this.application.repository && folderEntry.getExternalMetadataUri().indexOf(this.application.repository,0)>-1){
 				this.list = list.entry;
 			}
-			this.editBar.setActiveFolder(this.list);
+//			this.editBar.setActiveFolder(this.list);
 			var p = page != undefined ? page : 0;
 			this.currentPage = p;
 			list.getPage(p, 0, dojo.hitch(this, function(children) {
-			this.pagination.update(list, p);
+			this.listControls.update(list, p);
 				this.newChildren = children;
 				if (this.faded) {
 					this._rebuildList();
@@ -172,7 +135,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 						callback();
 					}
 				}
-			this.editBar.updateButtons();
+//			this.editBar.updateButtons();
 			}));
 		}));
 		dojo.fadeOut({
@@ -222,81 +185,16 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (this.focusBlock) {
 			return;
 		}
-		if (!this.useAnimations || this.iconMode || this.selectionExpands === false) {
-			if (this.selectedIndex != -1) {
-				var hideNode = this.listNodes[this.selectedIndex];
-				dojo.removeClass(hideNode, "selected");
-				if (!this.iconMode && this.selectionExpands !== false) {
-					var hideExpandNode = dojo.query(".expandCls", hideNode)[0];
-					dojo.style(hideExpandNode, "display", "none");
-					dojo.style(hideExpandNode, "height", "0px");
-				}
-			}
-			this.doChangeFocus(index, dontPublish);
-			if (index != -1) {
-				var showNode = this.listNodes[index];
-				dojo.addClass(showNode, "selected");
-				if (!this.iconMode  && this.selectionExpands !== false) {
-					var showExpandNode = dojo.query(".expandCls", showNode)[0];
-					dojo.style(showExpandNode, "display", "");
-					dojo.style(showExpandNode, "height", "70px");
-				}
-			}
-		} else {
-			this.focusBlock = true;
-			if (index != -1) {
-				var showNode = this.listNodes[index];
-				var showExpandNode = dojo.query(".expandCls", showNode)[0];
-				var showAnim = dojo.animateProperty({
-						node:showExpandNode,
-					duration: this.childAnimationDuration,
-						properties: {
-							height: 70
-						},
-					beforeBegin: dojo.hitch(this, function() {
-						dojo.addClass(showNode, "selected");
-						dojo.style(showExpandNode, "display", "");
-					}),
-					onEnd: dojo.hitch(this, function() {
-						this.focusBlock = false;
-						this.doChangeFocus(index, dontPublish);
-					})
-				});
-			}
-			if (this.selectedIndex != -1) {
-				var hideNode = this.listNodes[this.selectedIndex];
-				var hideExpandNode = dojo.query(".expandCls", hideNode)[0];
-				var hideAnim = dojo.animateProperty({
-						node:hideExpandNode,
-					duration: this.childAnimationDuration,
-						properties: {
-		  				height: 0
-						},
-					onEnd: dojo.hitch(this, function() {
-						dojo.removeClass(hideNode, "selected");
-						dojo.style(hideExpandNode, "display", "none");
-						if (index == -1) {
-							this.focusBlock = false;
-							this.doChangeFocus(index, dontPublish);
-						}
-					})
-				});
-			}
-			
-			if (index != -1 && this.selectedIndex != -1) {
-				if (this.floatingExpand) {
-	//				dojo.fx.combine([hideAnim, showAnim]).play();				
-					dojo.fx.chain([hideAnim, showAnim]).play();
-				} else {
-					dojo.fx.combine([hideAnim, showAnim]).play();				
-				}
-			} else if (index != -1) {
-				showAnim.play();
-			} else if (this.selectedIndex != -1){
-				hideAnim.play();
-			}
-		}
-	},	
+        if (this.selectedIndex != -1) {
+            var hideNode = this.listNodes[this.selectedIndex];
+            dojo.removeClass(hideNode, "selected");
+        }
+        this.doChangeFocus(index, dontPublish);
+        if (index != -1) {
+            var showNode = this.listNodes[index];
+            dojo.addClass(showNode, "selected");
+        }
+	},
 	isFocus: function (entry) {
 		if (this.selectedIndex == -1 || this.listChildren == null) {
 			return false;
@@ -324,6 +222,14 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			f();
 		}
 	},
+
+    focusAndRename: function(newEntry) {
+        setTimeout(dojo.hitch(this, function() {
+            this.focus(this.list, newEntry);
+            this.renameFocused(true);
+        }), this.fadeDuration*3);
+    },
+
 	showDetails: function(detailsNode, entry) {
 		var bb = __confolio.application.getBoundingBox();
 		var width = Math.floor((bb.w < 600 ? bb.w: 600 ) * 0.70),
@@ -399,9 +305,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		var childrenContainer = dojo.create("div", {style: {"height": "100%"}});
 		dojo.connect(childrenContainer, "oncontextmenu", dojo.hitch(this, this._showHeaderMenu));
 		
-		if (this.titleClickFirstExpands) {
-			dojo.addClass(childrenContainer, "titleClickFirstExpands");
-		}
 		for (var i=0; i<this.listChildren.length; i++) {
 			var childNode = dojo.create("div", null, childrenContainer);
 			this.listNodes[i] = childNode;
@@ -415,11 +318,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			}
 		}
 		this.listChildrenDijit.set("content", childrenContainer);
-		if (!this.user) {
-			dojo.style(this.editBar.domNode, "display", "none");
-		} else {
-			dojo.style(this.editBar.domNode, "display", "");
-		}
 		this.resize();
 			
 		dojo.fadeIn({
@@ -446,125 +344,30 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		//Title
 		dojo.create("div", {"class": "titleCls", "title": desc, "innerHTML": folio.data.getLabel(mde)}, headContainer);
 
-
-		//Buttons and description (include when children has buttons on expand)
-		if (this.selectionExpands === true) {
-			//Description
-			dojo.create("div", {"class": "descCls", "innerHTML": desc.replace(/(\r\n|\r|\n)/g, "<br/>")}, headContainer);
-			
-			var buts = dojo.create("div", {"class": "butsCls"}, headContainer);
-			if (this.includeDetails) {
-				dojo.create("span", {"class": "details", "innerHTML": this.resourceBundle.details}, buts);
-			}
-			if (this.user) {			
-				//Comment
-				if (__confolio.config["possibleToCommentEntry"] === "true") {
-					var isNotSystemEntry = !(this.list instanceof folio.data.SystemEntry) ? "" : "disabledEntryButton";
-					dojo.create("span", {
-						"class": "comment link " + isNotSystemEntry,
-						"innerHTML": this.resourceBundle.comment
-					}, buts);
-				}	
-				//Edit
-				var listMDModifiable = this.list.isMetadataModifiable() ? "": "disabledEntryButton";
-				dojo.create("span", {"class": "edit link "+listMDModifiable, "innerHTML": this.resourceBundle.edit}, buts);
-				
-				//Admin
-				var hasListAdminRights = this.list.possibleToAdmin() ? "" : "disabledEntryButton";
-				dojo.create("span", {"class": "admin link "+hasListAdminRights, "innerHTML": this.resourceBundle.admin}, buts);
-				
-				//Empty trash
-				if (this.list.getId() == "_trash") {
-					var removeNode = dojo.create("span", {"class": "remove link disabledEntryButton", "innerHTML": this.resourceBundle.empty}, buts);
-					this.list.getContext().getOwnEntry(dojo.hitch(this,function(contextEntry){
-						if(contextEntry.possibleToAdmin() && folio.data.getChildCount(this.list) !== 0) {
-							//Only allowed if owner of context and there is something to empty.
-							dojo.removeClass(removeNode, "disabledEntryButton");
-						}
-					}));
-				}
-				
-				//Copy
-				var listMDAndResAccessible = (this.list.isMetadataAccessible() && this.list.isResourceAccessible()) ? "": "disabledEntryButton";
-				dojo.create("span", {"class": "copy link "+listMDAndResAccessible, "innerHTML": this.resourceBundle.copy}, buts);
-				
-				//Cut
-				var hasListAdminRightsAndNotSystemEntry = this.list.possibleToAdmin() && !(this.list instanceof folio.data.SystemEntry)? "" : "disabledEntryButton";
-				dojo.create("span", {"class": "cut link "+hasListAdminRightsAndNotSystemEntry, "innerHTML": this.resourceBundle.cut}, buts);
-	
-				//Paste			
-				var pasteAllowed = this.isPasteDisabled && this.list.isResourceModifiable() ? "disabledEntryButton" : "";
-				dojo.create("span", {"class": "paste link "+pasteAllowed, "innerHTML": this.resourceBundle.paste}, buts);
-			}
-		}
-
 		//Sorter and Refresher
 		var listControls = dojo.create("div", {"class": "expandCls"}, headContainer);
 		//Head Metadata
-		var nr = folio.data.getChildCount(this.list);
-		var childCount = this.resourceBundle.items+":&nbsp;"+(nr != undefined ? nr : "?");
-/*		var mod = this.list.getModificationDate();
-		mod = mod ? mod : this.list.getCreationDate();
-		mod = mod ? mod.slice(0,10) : "";
-		mod = this.resourceBundle.modified + ":&nbsp;"+mod;*/
-//		dojo.create("div", {"class": "expandTopCls", "innerHTML": childCount+"&nbsp;&nbsp;&nbsp;"+mod}, headContainer);
-		dojo.create("span", {"class": "sortCls", style: {"verticalAlign": "middle", "margin-right": "1em"}, "innerHTML": childCount}, listControls);
-		
-		this._insertSorter(dojo.create("div", {"class": "sortCls"}, listControls));
-		this._insertRefreshButton(dojo.create("span", {"class": "icon refresh"}, listControls));
-		
+
+        var newicon;
+        if (this.list.isResourceModifiable()) {
+            newicon = dojo.create("span", {"class": "new icon24 operation"}, listControls);
+            this.connect(newicon, "mouseover", this._handle_new);
+            this.createMenu = new folio.create.CreateMenu({list: this}, dojo.create("div", {}, listControls));
+        } else {
+            newicon = dojo.create("span", {"class": "new icon24 operation disabled", title: "You do not have sufficient rights to create entries in this folder."}, listControls);
+        }
+
+		this._insertRefreshButton(dojo.create("span", {"class": "refresh icon24"}, listControls));
+
 		var comments = mde.getComments();
 		if (comments.length > 0) {
 			dojo.create("span", {"title": ""+comments.length+" comments", "class": "comment operation icon"}, listControls);			
 		}
-		dojo.create("span", {"class": "menu operation icon"}, listControls);		
+		dojo.create("span", {"class": "menu operation icon24"}, listControls);
 
 		dojo.connect(headContainer, "oncontextmenu", dojo.hitch(this, this.showMenu, mde, -1));
 		dojo.connect(headContainer, "onclick", dojo.hitch(this, this.handleEvent, -1));
 		this.listHeadDijit.set("content", headContainer);
-	},
-	_insertSorter : function(sortNode) {
-		dojo.create("span", {style: {"verticalAlign": "middle"}, innerHTML: this.resourceBundle.sortLabel+":&nbsp;"}, sortNode);
-		this.orderChanger = new dijit.form.FilteringSelect({name: "orderChanger", searchAttr: "label", autocomplete: true, style: "width:8em;vertical-align: middle"}, 
-			dojo.create("select", null, sortNode));
-					
-		if (this.orderConnector) {
-			dojo.disconnect(this.orderConnector);
-		} else {
-			this.order = "title"			
-		}
-		this.orderChanger.set("store", new dojo.data.ItemFileReadStore({
-            data: {identifier: "value", items: [{value:"none", label: this.resourceBundle.sortByNone},
-						   {value:"title", label: this.resourceBundle.sortByTitle},
-						   {value:"titleD", label: this.resourceBundle.sortByTitleReverse},
-						   {value:"modified", label: this.resourceBundle.sortByModified},
-						   {value:"modifiedD", label: this.resourceBundle.sortByModifiedReverse}]}
-        }));
-		this.orderChanger.set("value", this.order);
-		this.orderConnector = dojo.connect(this.orderChanger, "onChange", this, this._changeOrderClicked);
-	},
-	_changeOrderClicked: function() {
-		if (this.order == this.orderChanger.get("value")) {
-			return;
-		}
-		this.order = this.orderChanger.get("value");
-		switch(this.order) {
-			case "title":
-				this.application.getCommunicator().setSort({sortBy: "title", prio: "List"});
-				break;
-			case "modified":
-				this.application.getCommunicator().setSort({sortBy: "modified", prio: "List"});
-				break;
-			case "titleD":
-				this.application.getCommunicator().setSort({sortBy: "title", prio: "List", descending: true});
-				break;
-			case "modifiedD":
-				this.application.getCommunicator().setSort({sortBy: "modified", prio: "List", descending: true});
-				break;
-			case "none":
-				this.application.getCommunicator().setSort({});
-		}
-		dojo.publish("/confolio/orderChange", [{}]);
 	},
 	_insertRefreshButton: function(refreshNode){
 		dojo.attr(refreshNode, "title", "Press to refresh list");
@@ -579,7 +382,10 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	_refreshChild: function(index) {
 		this._insertChild(this.listChildren[index], index, this.listNodes[index], true);
 	},
-	_handle_rename: function(entry, index, event, select) {
+    _handle_new: function(entry, index, event) {
+        this.createMenu.show(this.list);
+    },
+    _handle_rename: function(entry, index, event, select) {
 		var child = this.listChildren[index];
 		if (child.isMetadataModifiable()) {
 			dojo.removeClass(this.domNode, "no_user_select");
@@ -629,15 +435,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				}
 				
 				var rowNode = dojo.create("div", {"class": "singleLine"}, childNode);
-				if (this.selectionExpands === true) {
-					var expandable = dojo.create("div", {"class": "expandCls selected"}, childNode); //Adding the selected class since not right background otherwise when in floating mode
-					this._insertDescription(child, expandable);
-					var bottomInfo = dojo.create("div", {"class": "bottomInfo selected"}, expandable);
-					this._insertChildCountIfList(child, bottomInfo);
-					this._insertModifiedDate(child, bottomInfo);
-					this._insertEditButtons(child, expandable);
-				}
-				
+
 				// The child is set to refresh (i.e. info.graph is removed) in method this._insertTitle 
 				//and therefor has to be performed last. 
 				this._insertTitle(child, rowNode, null, hrefObj);
@@ -649,7 +447,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		//Preparing the hrefObj for the child.
 		if ((folio.data.isWebContent(child) || folio.data.isListLike(child) || 
 			folio.data.isContext(child) || folio.data.isUser(child)) && child.isResourceAccessible()) {
-			this.getHrefForEntry(child, f);
+			this.application.getHrefLinkLike(child, f);
 		} else {
 			f();
 		}
@@ -700,9 +498,6 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				dojo.attr(aNode, "target", "_blank");
 			}
 
-			if (this.titleClickFirstExpands) {
-				var sNode = dojo.create("span", {"class": "titleCls", "innerHTML": folio.data.getLabel(child)}, childNode);
-			}
 			if (hrefObj.blankTarget && !this.iconMode) {
 				var linkArrow = dojo.create("a", {"href": hrefObj.href, "target": "_blank", "title": "Open in new window or tab", "class": "externalLink"}, childNode);
 				dojo.create("span", {"class": "external operation icon"}, linkArrow);
@@ -722,7 +517,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (this.detailsLink && !this.iconMode) {
 			dojo.create("span", {"class": "details operation icon", "title": "Open details"}, rowOperations);
 		}
-		if (!this.selectionExpands && !this.iconMode) {
+		if (!this.iconMode) {
 			dojo.create("span", {"class": "menu operation icon", "title": "Open menu"}, rowOperations);
 		}
 	},
@@ -749,12 +544,14 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: (isTrashFolder ? this.resourceBundle.empty : this.resourceBundle.remove)});
 		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible() && !isTrashFolder), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible
 		o.push({action: "cut", enabled: child.possibleToAdmin() && !(child instanceof folio.data.SystemEntry), label: this.resourceBundle.cut}); //entry admin rights + not system entry
-		if (child.getBuiltinType() == folio.data.BuiltinType.LIST && !this.isPasteIntoDisabled) {
-			o.push({action: "paste", enabled: child.isResourceModifiable(), label: this.resourceBundle.pasteInto});
+
+        if (child.getBuiltinType() == folio.data.BuiltinType.LIST && !this.isPasteIntoDisabled) {
+            var cb = this.application.getClipboard();
+			o.push({action: "paste", enabled: cb != null && cb.entry != null && child.isResourceModifiable(), label: this.resourceBundle.pasteInto});
 		}
 
 		//add to contacts is possible, remains to check if user is already in contacts (requires asynchrous call).
-		if (child.getBuiltinType() == folio.data.BuiltinType.USER && this.user.homecontext) {
+		if (child.getBuiltinType() == folio.data.BuiltinType.USER && this.user && this.user.homecontext) {
 		    var homeContext = this.application.getStore().getContext(this.application.repository+this.user.homecontext);
 			homeContext.loadEntryFromId("_contacts", {}, dojo.hitch(this, function (result) {
 				//TODO, this check needs to be rewritten, depends on specific jdil format.

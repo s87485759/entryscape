@@ -1,30 +1,27 @@
 <div class="loginDialog">
-	<div class="logo"></div>
-	<div class="language-box">
-		<div style="text-align: right;">
-			<label for="${id}_localeSelect" dojoType="dijit._Widget" dojoAttachPoint="languageLabel"></label>&nbsp;
-			<select class="language-select" dojoType="dijit.form.FilteringSelect" id="${id}_localeSelect" searchAttr="label" autocomplete="true" dojoAttachPoint="localeSelectDijit" tabindex="4"></select>
-		</div>
-	</div>
-	<form dojoType="dijit.form.Form" dojoAttachPoint="loginForm">
-		<table>
-			<tr><td colspan="2">
-				<span dojoType="dijit.layout.ContentPane" dojoAttachPoint="loginStatus" style="font-weight: bold;"></span>
-			</td></tr>
-			<tr>
-				<th><label for="${id}_userInput" dojoType="dijit._Widget" dojoAttachPoint="userLabel"></label>&nbsp;</th>
-				<td><input dojoType="dijit.form.TextBox" dojoAttachPoint="userInput" id="${id}_userInput" size="20" type="input" tabindex="1"/></td>
-			</tr>
-			<tr>
-				<th><label for="${id}_passwordInput" dojoType="dijit._Widget" dojoAttachPoint="passwordLabel"></label>&nbsp;</th>
+    <div class="logo"></div>
+    <form dojoType="dijit.form.Form" dojoAttachPoint="loginForm">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <span dojoType="dijit.layout.ContentPane" dojoAttachPoint="loginStatus" style="font-weight: bold;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="${id}_userInput" dojoType="dijit._Widget" dojoAttachPoint="userLabel"></label>&nbsp;</td>
+                <td><input dojoType="dijit.form.TextBox" dojoAttachPoint="userInput" id="${id}_userInput" size="20" type="input" tabindex="1"/></td>
+            </tr>
+            <tr>
+                <td><label for="${id}_passwordInput" dojoType="dijit._Widget" dojoAttachPoint="passwordLabel"></label>&nbsp;</td>
 				<td><input dojoType="dijit.form.TextBox" dojoAttachPoint="passwordInput" id="${id}_passwordInput" size="20" type="password" tabindex="2"/></td>
-			</tr>
-			<tr><td colspan="2" style="text-align: right;">
-				<input dojoType="dijit.form.Button" dojoAttachPoint="loginButton" type="submit" tabindex="3"/>
-			</td></tr>
-		</table>
-	</form>
-	<div style="margin-top: .5em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserWarning"></div>
-	<ul style="margin-top: 0em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserList"></ul>
-	<div style="margin-top: .5em;"><span dojoType="dijit._Widget" dojoAttachPoint="guestPrelink"></span><a href="javascript:void(0);" dojoType="dijit._Widget" dojoAttachPoint="guestLink" dojoAttachEvent="onClick:doClose" tabindex="5"></a><span dojoType="dijit._Widget" dojoAttachPoint="guestPostlink"></span></div>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                    <input dojoType="dijit.form.Button" dojoAttachPoint="loginButton" type="submit" tabindex="3"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div style="margin-top: .5em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserWarning"></div>
+    <ul style="margin-top: 0em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserList"></ul>
 </div>

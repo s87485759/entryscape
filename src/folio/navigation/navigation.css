@@ -97,8 +97,8 @@
 .navigationBar.slim .control {
 	display: block;
 	position: absolute;
-	top: 3px;
-	right: 3px;
+	top: 5px;
+	right: 5px;
 }
 
 .navigationBar.slim .logo {
@@ -123,29 +123,79 @@
 	cursor: pointer;
 }
 
-.controlMenu.distinctThickBorder {
-	top: 0px;
-	right: 0px;
-	position: absolute;
-	background: white;
-	z-index: 200;
-	border-left-style: solid;
-	border-bottom-style: solid;
-	border-right-style: solid;
-	border-bottom-left-radius: 5px;
-	padding: 5px;
-	overflow: hidden;
-	height: auto;
-	width:340px
+
+.controlMenu {
+    top: -40px;
+    right: 0px;
+    position: absolute;
+    z-index: 200;
+    overflow: hidden;
+    height: auto;
+    width:340px
+}
+.controlMenu .controlMenuWheel {
+    position: absolute;
+    right: 0px;
+    height: 39px;
+    width: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: white;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #759DC0;
 }
 
-.controlMenu.distinctThickBorder .userBlock .label{
+.controlMenu .controlMenuWheel .control {
+    margin-left: 1px;
+}
+
+.controlMenu .cosmetic {
+    position: absolute;
+    right: 5px;
+    width: 31px;
+    height: 6px;
+    top: 39px;
+    background: white;
+}
+.controlMenu .controlMenuWheel>div.distinctThickBorder {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    height: 39px;
+}
+.controlMenu .controlMenuBody {
+    margin-top: 39px;
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #759DC0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.controlMenu .controlMenuBody div.distinctThickBorder {
+    border-style: solid;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+	padding: 7px 10px;
+	overflow: hidden;
+	height: auto;
+}
+
+.controlMenu .userBlock .label{
 	display:none;
 }
-.controlMenu.distinctThickBorder .userBlock {
-	padding-bottom: 10px;
+.controlMenu .userBlock {
+	padding-bottom: 7px;
 }
-.controlMenu.distinctThickBorder .imageAndAlternativesBlock {
+.controlMenu .imageAndAlternativesBlock {
 	display: table;
 	width: 100%;
 	border-collapse:collapse;  
@@ -153,39 +203,60 @@
 	padding-bottom: 5px;
 	margin-bottom: 5px;
 }
-.controlMenu.distinctThickBorder .imageAndAlternativesBlock>div {
+.controlMenu .imageAndAlternativesBlock>div {
 	display: table-row;
 }
-.controlMenu.distinctThickBorder .profileImgNode {
+.controlMenu .profileImgNode {
 	display: table-cell;
 	width: 100px;
 	padding-right:10px;
 	border-right-style: solid;
 }
-.controlMenu.distinctThickBorder .alternativesNode {
+.controlMenu .alternativesNode {
 	display: table-cell;
 	vertical-align: top;
 	padding-left:10px;
+    padding-bottom: 5px;
 }
 
-.controlMenu.distinctThickBorder a.link {
+.controlMenu .alternativesNode>div {
+    margin-bottom: 3px;
+}
+.controlMenu .alternativesNode .icon {
+    margin-right: 10px;
+    vertical-align: middle
+}
+.controlMenu .menuloginLink .icon {
+    margin-right: 5px;
+    vertical-align: middle
+}
+.controlMenu .signinAndLanguage {
+    padding-top: 6px;
+}
+
+.controlMenu a.link {
 	text-decoration: none;
 }
-.controlMenu.distinctThickBorder a.link:hover {
+.controlMenu a.link:hover {
 	text-decoration: underline;
 }
 
-.controlMenu.distinctThickBorder .user{
+.controlMenu .user{
 	font-weight: bold;
 }
-.controlMenu.distinctThickBorder .languageBlock {
+.controlMenu .languageBlock {
 	float:right;
+    margin-right: 3px;
+}
+.controlMenu .menuloginLink {
+    margin-left: 3px;
 }
 
 /*----------- Breadcrumbs -----------*/
 .breadcrumbs {
 	border-bottom-width: 5px;
 	border-bottom-style: solid;
+    min-height: 125px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -228,6 +299,14 @@
     border-style: solid;
     border-color: white;
     margin-top: 1px;
+}
+
+.breadcrumbs .crumb>* {
+    display: inline-block;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
 }
 
 .breadcrumbs .crumb {
@@ -329,7 +408,7 @@
 	*display: inline;
     zoom:1;
 	width: 7px;
-	height: 22px;
+	height: 23px;
 	background-repeat: no-repeat;
 }
 

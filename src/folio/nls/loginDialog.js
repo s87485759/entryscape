@@ -19,20 +19,18 @@
 
 define({
 	root : {
-		"title" : "Login to ${app}",
-		"user" : "User:",
+		"title" : "Sign in to ${app}",
+		"user" : "Username:",
 		"password" : "Password:",
-		"logIn" : "Log In",
-		"loggingIn" : "Logging in&hellip;",
-		"loggingOut" : "Logging out&hellip;",
-		"loggedOut" : "You are now logged out.",
+		"logIn" : "Sign In",
+        "logOut": "Sign Out", /*Needed for NavigationBar*/
+		"loggingIn" : "Signing in&hellip;",
+		"loggingOut" : "Signing out&hellip;",
+		"loggedOut" : "You are now signed out.",
 		"invalidLogin" : "Invalid user name or password.",
 		"language" : "Language:",
 		"warning" : "Warning: ",
-		"warningText" : "Your browser has not been tested with this version of Confolio. While Confolio will probably work, there may be some issues. Tested browsers:",
+		"warningText" : "Your browser has not been tested with this version of EntryScape. While EntryScape will probably work, there may be some issues. The following browsers have been tested:",
 		"andHigher" : "%s and higher",
-		"guestPrelink" : "For guest access, ",
-		"guestLink" : "close",
-		"guestPostlink" : "&nbsp;this login window."
 	}
 });

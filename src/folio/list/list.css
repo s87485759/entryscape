@@ -63,7 +63,7 @@
 /*-----------List Head-----------------*/
 .listView .listHead {
 	height: 33px;
-	border-bottom-width: 1px;
+	border-bottom-width: 1px !important;
 
 	/* Prevent scrollbars from appearing, which shouldn't be needed
 	 anyway (Opera likes to show a scrollbar for the list head) */
@@ -72,30 +72,25 @@
 
 .listView .listHead>div {
 	height: 100%;
+    position: relative;
+    top: -5px;
 }
 
 .listView .listHead .expandCls {
-	margin-right: 0.5em;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    text-align: right;
 }
 
 .listView .listHead .icon {
 	vertical-align: middle;
 }
 
-.listView .listHead .icon.refresh {
-	margin-right: 0.7em;
-	}
-
-.listView .listHead .sortCls {
-	font-size: smaller;
-	display: inline-block;
-	margin-right: 0.3em;
-}
-
 .listView .listHead .iconCls {
 	position: absolute;
 	left: 3px;
-	top: 0px;
+	top: 4px;
 	width: 32px;
 	height: 32px;
 	cursor: pointer;
@@ -103,10 +98,13 @@
 
 .listView .listHead .titleCls {
 	font-weight: bold;
-	margin-top: 0px;
-	margin-left: 38px;
+    font-size: medium;
+	top: 8px;
+	left: 43px;
 	cursor: pointer;
-	display:inline;
+	display: block;
+    right: 90px;
+    position: absolute;
 }
 
 .listView .listHead .descCls{
@@ -131,15 +129,9 @@
 	width: 100%;
 	text-align: right;
 }
-.listView .listHead .expandCls {
-	position: absolute;
-	bottom: 3px;
-	right: 3px;
-	text-align: right;
-}
 
 /*-----------List Child Regular-----------------*/
-.listView .listEntry {
+.listView .listChildren .listEntry {
 	position: relative;
 	height: 1.8em;
 	padding-top: 3px;
@@ -315,26 +307,36 @@
 	display: block;
 }
 
+.confolio .simpleSearchList .info {
+	float: right;
+	margin-right: 0.3em;
+}
+
+.confolio .simpleSearchList .bookmark {
+	float: right;
+	margin-right: 0.3em;
+}
+
 /*--- list controls----- */
-.cleanList.listView .listControls {
-	border-top-width: 1px;
+.confolio .listControlsPane {
+    border-top-width: 1px;
+    border-top-style: solid;
+    height: 25px;
+}
+.confolio .listControls {
+    height: 100%;
 }
 
-
-.confolio .simpleSearchList .preview {
-	float: right;
-	background-image: url(../../folio/icons_oxygen/16x16/document_preview.png);
-	background-repeat: no-repeat;
-	height: 16px;
-	width: 16px;
-	margin-right: 0.3em;
+.confolio .listControls>div {
+    display: inline-block;
+    margin-left: 10px;
+    padding-top: 3px;
 }
 
-.confolio .simpleSearchList .add {
-	float: right;
-	background-image: url(../../folio/icons_oxygen/16x16/bookmark_add.png);
-	background-repeat: no-repeat;
-	height: 16px;
-	width: 16px;
-	margin-right: 0.3em;
+.confolio .listControls .listOrderChangerWrapper {
+    float: right;
+    margin-right: 10px;
+}
+.confolio .listControls .listOrderChanger {
+    width: 8em;
 }

@@ -14,7 +14,7 @@
 	top: 112px;
 	bottom: 10px;
 	left: 0px;
-	width: 250px;
+	width: 150px;
 	padding: 20px 0px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -53,7 +53,7 @@
 	position: absolute;
 	top: 112px;
 	bottom: 10px;
-	left: 260px;
+	left: 160px;
 	right: 0px;	
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -80,11 +80,11 @@
 	overflow-y: auto; 
 }
 
-.confolio.settings .accountBlock:first-child {
+.confolio.settings .settingsBlock:first-child {
 	margin-top: 0px;
 }
 
-.confolio.settings .accountBlock {
+.confolio.settings .settingsBlock {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
@@ -96,7 +96,7 @@
 .confolio.settings .settingsSave {
 	position: absolute;
 	right: 10px;
-	bottom: 5px;
+	bottom: 3px;
 }
 
 .confolio.settings h4:first-child, .confolio.settings .headingRow:first-child {
@@ -128,13 +128,13 @@
 }
 
 .confolio.settings .localProfilePictureLabel {
-	width: 30em;
+	width: 24em;
 	display: inline-block;
 }
 
 .confolio.settings .urlProfilePicture {
-	width: 27em;
-	margin-right: 3em;
+	width: 23em;
+	margin-right: 1em;
 }
 
 .confolio.settings .profilepicture {
@@ -161,35 +161,101 @@
 	min-width: 77px;
 }
 
+/* ======Memberlist=====================================*/
+.confolio.settings .userListChoices {
+    float: right;
+}
+.confolio.settings .userListChoices label {
+    margin-right: 10px;
+}
+.confolio.settings .userSearchBox {
+    width: 15em;
+    margin-left: 1em;
+}
+
+.confolio.settings .userListMessage {
+    padding: 6px 10px;
+    text-align: center;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.distinctBackground.member.card {
+    background: #b2ee9b;
+}
+
+.distinctBackground.member.card:hover {
+    background: #5beb71;
+}
+
+.distinctBackground.member.card:hover .navIcons {
+    background: #5beb71;
+}
+
+.distinctBackground.owner.card {
+    background: #ebee8d;
+}
+
+.distinctBackground.owner.card:hover {
+    background: #eed700;
+}
+
+.distinctBackground.owner.card:hover .navIcons {
+    background: #eed700;
+}
+
 /* ======Could perhaps be made into generic css ========*/
 .confolio.settings .container {
 	position: relative;
 	height: 100%;
 }
 
-.confolio.settings .content {
-	position: absolute;
+.confolio.settings .contentTop,
+.confolio.settings .contentBottom {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    padding: 10px;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.confolio.settings .contentTop>*,
+.confolio.settings .contentBottom>*{
+    overflow: auto;
+    height: 100%;
+}
+
+.confolio.settings .contentTop {
 	top: 0px;
 	bottom: 45px;
+}
+
+.confolio.settings .contentBottom {
+    top: 45px;
+    bottom: 0px;
+}
+
+.confolio.settings .footer,
+.confolio.settings .header {
+	position: absolute;
 	left: 0px;
 	right: 0px;
-	padding: 10px;
-}
-
-.confolio.settings .content>* {
-	overflow: auto;
-	height: 100%;
-}
-
-.confolio.settings .footer {
-	position: absolute;
-	bottom: 0px;
-	height: 35px;
-	left: 0px;
-	width: 100%;
+    padding: 6px 10px;
 	-webkit-borde-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
+}
+
+.confolio.settings .footer {
+    bottom: 0px;
+    height: 23px;
+}
+
+.confolio.settings .header {
+    top: 0px;
+    height: 23px;
 }
 
 .confolio.settings .footer .button {

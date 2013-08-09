@@ -87,8 +87,6 @@ dojo.declare("folio.security.LoginDialog", null, {
 		}
 	],
 
-	languages: __confolio.config["supportedLanguageMap"],
-
 	constructor: function(params) {
 		dojo.mixin(this, params);
 	},
@@ -109,7 +107,6 @@ dojo.declare("folio.security.LoginDialog", null, {
 		if (this.dialog == null) {
 			var that = this;
 			var i, browser, isTested = false, isMatch;
-			var lang, data;
 			this.dialog = new dijit.Dialog({autofocus: false, content: "<div></div>"});
 			var node = dojo.create("div");
 			this.dialog.set("content", node);
@@ -151,23 +148,9 @@ dojo.declare("folio.security.LoginDialog", null, {
 				dojo.style(w.browserWarning.domNode, "display", "block");
 				dojo.style(w.browserList.domNode, "display", "block");
 			}
-	
-			data = [];
-			for (lang in this.languages) {
-				data.push({value: lang, label: this.languages[lang]});
-			}
-			w.localeSelectDijit.set("store", new dojo.data.ItemFileReadStore({
-			  data: {identifier: "value", items: data}}));
-			lang = dojo.locale;
-			if (!this.languages.hasOwnProperty(lang) &&
-			  this.languages.hasOwnProperty(lang.slice(0, 2))) {
-				lang = lang.slice(0, 2);
-			}
-			w._approximateOriginalLanguage = lang;
-			w.localeSelectDijit.set("value", lang);
-	
+
 //			w.placeAt(this.containerNode);
-	
+
 			// Make sure that the dialog is destroyed after it is hidden
 			//  (otherwise it will remain loaded in the background and element
 			//  identifiers will conflict between instances)
@@ -212,11 +195,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 		if (this.status) {
 			w.loginStatus.set("content", this.resourceBundle[this.status]);
 		}
-		w.languageLabel.domNode.innerHTML = b.language;
 		w.browserWarning.domNode.innerHTML = "<strong>" + b.warning + "</strong>" + b.warningText;
-		w.guestPrelink.domNode.innerHTML = b.guestPrelink;
-		w.guestLink.domNode.innerHTML = b.guestLink;
-		w.guestPostlink.domNode.innerHTML = b.guestPostlink;
 		w.browserList.domNode.innerHTML = "";
 		for (i = 0; i < this.browsers.length; i++) {
 			browser = this.browsers[i];
@@ -378,14 +357,6 @@ dojo.declare("folio.security.LoginDialog", null, {
 		}
 	},
 
-	onChangeLocale: function() {
-		if (!this.widget.localeSelectDijit.ignoreChange &&
-		  this.widget.localeSelectDijit.get("value") !== "no_select") {		
-			this.application.setLocale(this.widget.localeSelectDijit.get("value"));
-			this.localize();
-		}
-	},
-
 	doClose: function() {
 		if (this.dialog != null) {
 			this.dialog.hide();
@@ -407,13 +378,6 @@ dojo.declare("folio.security.LoginDialogWidget", [dijit._Widget, dijit._Template
 	
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
-		this.connect(this.localeSelectDijit, "onChange", this.onChangeLocale);
-	},
-
-	onChangeLocale: function(lang) {
-		if (lang !== this._approximateOriginalLanguage) {
-			delete this._approximateOriginalLanguage;
-			this.dialog.onChangeLocale();			
-		}
 	}
+
 });
