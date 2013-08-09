@@ -15,11 +15,8 @@
             "en":"Resource",
             "sv":"Resurs"
         },
-        "@type":"group",
+        "type":"group",
         "content":[{
-                "styles":["TextFormItem",
-                    "LanguageControlled"
-                ],
                 "nodetype":"LANGUAGE_LITERAL",
                 "cardinality":{
                     "min":1,
@@ -28,15 +25,13 @@
                 "label":{
                     "en":"Title"
                 },
-                "@type":"text",
+                "type":"text",
                 "property":"http://purl.org/dc/terms/title",
                 "description":{
                     "en":"This is the title of the resource"
                 }
             },
             {
-                "styles":["GroupFormItem"
-                ],
                 "nodetype":"BLANK",
                 "cardinality":{
                     "min":1,
@@ -45,16 +40,13 @@
                 "label":{
                     "en":"Description"
                 },
-                "@type":"group",
+                "type":"group",
                 "property":"http://purl.org/dc/terms/description",
                 "description":{
                     "en":"Provide one paragraph describing the content of this resource"
                 },
                 "content":[{
-                        "styles":["MultiLine",
-                            "TextFormItem",
-                            "LanguageControlled"
-                        ],
+                        "styles":["multiLine"],
                         "nodetype":"LANGUAGE_LITERAL",
                         "cardinality":{
                             "min":1,
@@ -63,11 +55,8 @@
                         "label":{
                             "en":""
                         },
-                        "@type":"text",
-                        "property":"http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
-                        "description":{
-                            "en":""
-                        }
+                        "type":"text",
+                        "property":"http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
                     }
                 ]
             }

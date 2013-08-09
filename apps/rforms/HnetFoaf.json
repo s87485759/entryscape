@@ -15,10 +15,9 @@
    "en": "Resource",
    "sv": "Resurs"
   },
-  "@type": "group",
+  "type": "group",
   "content": [
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -26,12 +25,11 @@
      "max": 1
     },
     "label": {"en": "Title"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/title",
     "description": {"en": "The approriate values for foaf:title are not formally constrained, and will vary across community and context. Values such as 'Mr', 'Mrs', 'Ms', 'Dr' etc. are expected."}
    },
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -39,11 +37,10 @@
      "max": 1
     },
     "label": {"en": "First name"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/firstName"
    },
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -51,11 +48,10 @@
      "max": 1
     },
     "label": {"en": "Surname"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/surname"
    },
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -63,24 +59,22 @@
      "max": 1
     },
     "label": {"en": "Full name"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/name",
     "description": {"en": ""}
    },
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
      "pref": 1
     },
     "label": {"en": "E-mail"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/mbox",
     "description": {"en": "The foaf:mbox property is a relationship between the owner of a mailbox and a mailbox. These are typically identified using the mailto: URI scheme (see RFC 2368).\nE.g. mailto:test@example.com"}
    },
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -88,7 +82,7 @@
      "max": 1
     },
     "label": {"en": "Profile picture"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/img",
     "description": {"en": "Provide a webadress to a picture of you"}
    }

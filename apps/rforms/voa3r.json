@@ -53,7 +53,7 @@
    }
   ]
  },
- "auxilliary": [
+ "templates": [
   {
    "id": "voa3r:All",
    "type": "group",
@@ -537,8 +537,8 @@
    "id": "http://purl.org/dc/terms/description",
    "type": "text",
    "nodetype": "LANGUAGE_LITERAL",
-   "cls": [
-    "rformsmultiline"
+   "styles": [
+    "multiline"
    ],
    "property": "http://purl.org/dc/terms/description",
    "label": {
@@ -555,8 +555,8 @@
    "id": "http://purl.org/dc/terms/abstract",
    "type": "text",
    "nodetype": "LANGUAGE_LITERAL",
-   "cls": [
-    "rformsmultiline"
+   "styles": [
+    "multiline"
    ],
    "property": "http://purl.org/dc/terms/abstract",
    "label": {
@@ -587,16 +587,16 @@
       "min": 1,
       "max": 1
      },
-     "cls": [
-      "rformsmultiline"
+     "styles": [
+      "multiline"
      ],
      "datatype": "http://voa3r.eu/terms/EncodedSchema"
     }
    ],
    "nodetype": "BLANK",
    "type": "group",
-   "cls": [
-    "rformsmultiline"
+   "styles": [
+    "multiline"
    ],
    "property": "http://purl.org/dc/terms/bibliographicCitation",
    "label": {

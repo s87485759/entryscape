@@ -15,10 +15,9 @@
    "en": "Resource",
    "sv": "Resurs"
   },
-  "@type": "group",
+  "type": "group",
   "content": [
    {
-    "styles": ["TextFormItem"],
     "nodetype": "LITERAL",
     "cardinality": {
      "min": 0,
@@ -26,12 +25,11 @@
      "max": 1
     },
     "label": {"en": "Full name"},
-    "@type": "text",
+    "type": "text",
     "property": "http://xmlns.com/foaf/0.1/name",
     "description": {"en": ""}
    },
    {
-    "styles": ["GroupFormItem"],
     "nodetype": "BLANK",
     "cardinality": {
      "min": 1,
@@ -48,14 +46,12 @@
      "sv": "Beskrivning",
      "ru": "Описание"
     },
-    "@type": "group",
+    "type": "group",
     "property": "http://purl.org/dc/terms/description",
     "description": {"en": "Provide one paragraph describing the content of this resource"},
     "content": [{
      "styles": [
-      "MultiLine",
-      "TextFormItem",
-      "LanguageControlled"
+      "multiline"
      ],
      "nodetype": "LANGUAGE_LITERAL",
      "cardinality": {
@@ -63,7 +59,7 @@
       "pref": 1
      },
      "label": {"en": ""},
-     "@type": "text",
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "description": {"en": ""}
     }]

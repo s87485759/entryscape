@@ -1,6 +1,6 @@
 {
 	"label":{"en":"Europeana forms"},
-	"auxilliary":[
+	"templates":[
 		{
 			"id":"Europeana",
 			"type":"group",
@@ -41,7 +41,7 @@
 	  	{
 	  		"id": "http://purl.org/dc/elements/1.1/description", 
 	  		"property": "http://purl.org/dc/elements/1.1/description", 
-			"cls": ["multiline"],
+			"styles": ["multiline"],
 	  		"label": {
 	  			"en": "Description"
 	  		}, 

@@ -1,0 +1,392 @@
+{
+  "templates": [
+      {
+          "id": "ksamsok:all",
+          "type": "group",
+          "content": [
+              {"id": "ksamsok:"}
+          ]
+      }, {
+          "id": "ksamsok:version",
+          "label": {"sv": "KSamsökversion"},
+          "type": "choice",
+          "choices": [
+              {"value": "1.1", "label": {"sv": "Version 1.1"}},
+              {"value": "1.0", "label": {"sv": "Version 1.0"}},
+              {"value": "0.99", "label": {"sv": "Version 0.99"}},
+              {"value": "0.98", "label": {"sv": "Version 0.98"}},
+              {"value": "0.97", "label": {"sv": "Version 0.97"}}
+          ],
+          "cardinality": {"min": 1, "max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#ksamsokVersion"
+      }, {
+          "id": "ksamsok:serviceName",
+          "label": {"sv": "Via tjänsten"},
+          "description": {"sv": "Namn på tjänsten som data levereras från, t ex 'object'."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#serviceName"
+      }, {
+          "id": "ksamsok:serviceOrganization",
+          "label": {"sv": "Från institution"},
+          "description": {"sv": "Institutionen som levererar tjänsten, t ex 'shm'' eller 'raä'."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#serviceOrganization"
+      },  {
+          "id": "ksamsok:buildDate",
+          "label": {"sv": "Information genererades"},
+          "description": {"sv": "Tid när objektinformationen genererades (skördades), format: YYYY-MM-DD (exempel 2008-09-15) enligt ISO 8601."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#buildDate"
+      },  {
+          "id": "ksamsok:createdDate",
+          "label": {"sv": "Informationen skapades"},
+          "description": {"sv": "Tid när objektinformationen skapades, format: YYYY-MM-DD (exempel 2008-09-15) enligt ISO 8601."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#createdDate"
+      },  {
+          "id": "ksamsok:lastChangedDate",
+          "label": {"sv": "Information ändrades"},
+          "description": {"sv": "Senaste tidpunkten när objektinformationen ändrades, format: YYYY-MM-DD (exempel 2008-09-15) enligt ISO 8601."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#lastChangedDate"
+      }, {
+          "id": "ksamsok:collection",
+          "label": {"sv": "Samling"},
+          "description": {"sv": "Samlingsnamn"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#collection"
+      }, {
+          "id": "ksamsok:theme",
+          "label": {"sv": "Tema"},
+          "description": {"sv": "Tema"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#theme"
+      }, {
+          "id": "ksamsok:url",
+          "label": {"sv": "Länk till presentation"},
+          "description": {"sv": "URL till objektpresentation (HTML)"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#url"
+      }, {
+          "id": "ksamsok:museumdatUrl",
+          "label": {"sv": "Länk till data"},
+          "description": {"sv": "URL till museumdat-representationen"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#museumdatUrl"
+      }, {
+          "id": "ksamsok:thumbnail",
+          "label": {"sv": "Miniatyr"},
+          "description": {"sv": "URL till miniatyrbild (thumbnail) som valts ut att representera objektet"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#thumbnail"
+      }, {
+          "id": "ksamsok:subject",
+          "label": {"sv": "Ämne"},
+          "description": {"sv": "Ämnesspecifikation, t ex 'Arkeologi'."},
+          "type": "choice",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#subject",
+          "choices": [
+              {"value": "http://kulturarvsdata.se/resurser/Subject#site", "label": {"sv": "Miljö"}, "description": {"sv": "Anger att objektet/tjänsten innehåller miljö- eller platsbeskrivningar eller geografiska företeelser som fornlämningar eller bebyggelse."}},
+              {"value": "http://kulturarvsdata.se/resurser/Subject#archaeology", "label": {"sv": "Arkeologi"}, "description": {"sv": "Anger att objektet/tjänsten innehåller information om arkeologiskt (jordfunnet) material."}},
+              {"value": "http://kulturarvsdata.se/resurser/Subject#art", "label": {"sv": "Konst"}, "description": {"sv": "Anger att objektet/tjänsten innehåller konst."}},
+              {"value": "http://kulturarvsdata.se/resurser/Subject#culturalHistory", "label": {"sv": "Kulturhistoria"}, "description": {"sv": "Anger att objektet/tjänsten innehåller kulturhistoria."}},
+              {"value": "http://kulturarvsdata.se/resurser/Subject#naturalHistory", "label": {"sv": "Natur"}, "description": {"sv": "Anger att objektet/tjänsten innehåller information om naturlämningar eller ekofakter."}}
+          ]
+
+      }, {
+          "id": "ksamsok:mediaType",
+          "label": {"sv": "Mediatype"},
+          "description": {"sv": "Mediatyp enl MIME, t ex 'http://kulturarvsdata.se/resurser/MediaType#image/gif'."},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#mediaType"
+      }, {
+          "id": "ksamsok:dataQuality",
+          "label": {"sv": "Datakvalité"},
+          "description": {"sv": "Vilken informationskvalité som denna tjänsten tillhandahåller för detta objekt."},
+          "type": "choice",
+          "cardinality": {"max": 1},
+          "nodetype": "URI",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#DataQuality"},
+          "property": "http://kulturarvsdata.se/ksamsok#dataQuality",
+          "choices": [
+              {"value": "http://kulturarvsdata.se/resurser/DataQuality#raw", "label": {"sv": "Rådata"}, "description": {"sv": "Tjänsten innehåller i huvudsak rå, generell information som skapats för att tillgodose den egna organisationens behov."}},
+              {"value": "http://kulturarvsdata.se/resurser/DataQuality#processed", "label": {"sv": "Bearbetad data"}, "description": {"sv": "Tjänsten innehåller bearbetad, mer utförlig, information som är redaktionellt anpassad och kanske även medvetet utvald."}}
+          ]
+      }, {
+          "id": "ksamsok:itemSuperType",
+          "label": {"sv": "Kategori av objekt"},
+          "description": {"sv": "Övernivå till objekttyp, agent, fysiskt ting, händelse eller koncept."},
+          "type": "choice",
+          "cardinality": {"min": 1, "max": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#itemSuperType",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#EntitySuperType"},
+          "choices": [
+              {"value": "http://kulturarvsdata.se/resurser/EntitySuperType#agent", "label": {"sv": "Agent"}, "description": {"sv": "Person, grupp och organisation."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntitySuperType#object", "label": {"sv": "Fysiskt ting"}, "description": {"sv": "Föremål, fotografi, bearbetningar/interaktiv resurs, film/video, ljud, dokument, karta, byggnad, fornlämning, konstverk, bok, samling, ritning, teckning och kulturmiljö."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntitySuperType#event", "label": {"sv": "Händelse"}, "description": {"sv": "Avgränsas av tid och rum t.ex. historisk händelse och utställning."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntitySuperType#concept", "label": {"sv": "Koncept"}, "description": {"sv": "En övergripande definition av ett event eller ett objekt t.ex. av krig."}}
+          ]
+      }, {
+          "id": "ksamsok:itemType",
+          "label": {"sv": ""},
+          "description": {"sv": ""},
+          "type": "choice",
+          "cardinality": {"pref": 1},
+          "nodetype": "URI",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#EntityType"},
+          "property": "http://kulturarvsdata.se/ksamsok#itemType",
+          "choices": [
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#object", "label": {"sv": "Objekt/föremål"}, "description": {"sv": "Information om t.ex. museiföremål. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#photo", "label": {"sv": "Foto"}, "description": {"sv": "Information om fotografier. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#interactiveResource", "label": {"sv": "Bearbetning/interaktiv resurs"}, "description": {"sv": "Information om en interaktiv resurs som texter, Internet-sidor och multimedia. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#video", "label": {"sv": "Film/video"}, "description": {"sv": "Information om rörlig bild. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#sound", "label": {"sv": "Ljud"}, "description": {"sv": "Information om ljudupptagning/inspelning. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#document", "label": {"sv": "Dokument"}, "description": {"sv": "Information om ett dokument eller arkivhandling som finns tillgänglig i fulltextformat. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#book", "label": {"sv": "Bok"}, "description": {"sv": "Information om en publikation som finns tillgänglig i fulltextformat. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#drawing", "label": {"sv": "Teckning"}, "description": {"sv": "Information om en teckning. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#art", "label": {"sv": "Konstverk"}, "description": {"sv": "Information om ett konstverk. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#blueprint", "label": {"sv": "Ritning"}, "description": {"sv": "Information om en ritning t.ex. en arkitektritning. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#map", "label": {"sv": "Karta"}, "description": {"sv": "Information om en karta. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#collection", "label": {"sv": "Samling"}, "description": {"sv": "Information om en samling eller annat urval. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#site", "label": {"sv": "Miljö"}, "description": {"sv": "Ersätts av Kulturmiljö men finns kvar för bakåtkompatibilitet. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#culturallandscape", "label": {"sv": "Kulturmiljö"}, "description": {"sv": "Information om en större miljö som t.ex. innefattar fornlämningar och/eller bebyggelse (exempelvis en kyrkomiljö eller ett riksintresse). Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#monument", "label": {"sv": "Kulturlämning"}, "description": {"sv": "Information om en kulturlämning i kulturlandskapet t.ex. en husgrund eller ett fornminne. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#building", "label": {"sv": "Byggnad"}, "description": {"sv": "Information om en byggnad. Underkategori till Fysiskt ting."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#person", "label": {"sv": "Person"}, "description": {"sv": "Information om en person. Underkategori till Agent."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#organization", "label": {"sv": "Organisation"}, "description": {"sv": "Information om en organisation. Underkategori till Agent."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#group", "label": {"sv": "Grupp"}, "description": {"sv": "Information om en grupp personer (t.ex. konstnärsgrupp). Underkategori till Agent."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#event", "label": {"sv": "Historisk händelse"}, "description": {"sv": "Information om en händelse, historisk eller nutida. Underkategori till Event."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#display", "label": {"sv": "Utställning"}, "description": {"sv": "Information om en fysisk eller digital utställning. Underkategori till Event."}},
+              {"value": "http://kulturarvsdata.se/resurser/EntityType#concept", "label": {"sv": "Koncept"}, "description": {"sv": "En övergripande definition av ett event eller ett objekt t.ex. av krig."}}
+          ]
+      }, {
+          "id": "ksamsok:itemClass",
+          "label": {"sv": "Resursklassifikation"},
+          "description": {"sv": "Klassificera mha olika resurser (kulturarvsdata.se eller anndra)."},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#itemClass"
+      }, {
+          "id": "ksamsok:itemClassName",
+          "label": {"sv": "Namngiven klassifikation"},
+          "description": {"sv": "Klass eller kategori (i väntan på att den semantiska webben slår igenom är det bra att ange klassnamnet här även om man redan använt itemClass)."},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemClassName"
+      }, {
+          "id": "ksamsok:itemLicense",
+          "label": {"sv": "Licens"},
+          "description": {"sv": "K-samsöks egna URI:er för licenser."},
+          "type": "choice",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#License"},
+          "property": "http://kulturarvsdata.se/ksamsok#itemLicense",
+          "choices": [
+              {"value": "http://kulturarvsdata.se/resurser/License#pdmark", "label": {"sv": "Public Domain Mark"}, "description": {"sv": "Objektet får kopieras, användas, spridas och ändras utan restriktioner."}},
+              {"value": "http://kulturarvsdata.se/resurser/License#unknown", "label": {"sv": "Okänd"}, "description": {"sv": "Objektets upphovsman är okänd."}},
+              {"value": "http://kulturarvsdata.se/resurser/License#cc0", "label": {"sv": "Creative Commons - Zero"}, "description": {"sv": "Objektet får återanvänas utan restriktioner."}},
+              {"value": "http://kulturarvsdata.se/resurser/License#by", "label": {"sv": "Creative Commons - Erkännande"}, "description": {"sv": "Upphovsman ska anges vid användning"}},
+              {"value": "http://kulturarvsdata.se/resurser/License#by-nd", "label": {"sv": "Creative Commons - Erkännande-Inga bearbetningar"}, "description": {"sv": "Upphovsman ska anges vid användning, objektet får inte bearbetas"}},
+{"value": "http://kulturarvsdata.se/resurser/License#by-nc-nd", "label": {"sv": "Creative Commons - Erkännande-Ickekommersiell-Inga bearbetningar"}, "description": {"sv": "Upphovsman ska anges vid användning, ej kommersiell användning, objektet får inte bearbetas"}},
+              {"value": "http://kulturarvsdata.se/resurser/License#by-nc", "label": {"sv": "Creative Commons - Erkännande-Ickekommersiell"}, "description": {"sv": "Upphovsman ska anges vid användning, ej kommersiell användning"}},
+              {"value": "http://kulturarvsdata.se/resurser/License#by-nc-sa", "label": {"sv": "Creative Commons - Erkännande-Ickekommersiell-Dela Lika"}, "description": {"sv": "Upphovsman ska anges vid användning, ej kommersiell användning, bearbetningar delas med samma villkor"}},
+              {"value": "http://kulturarvsdata.se/resurser/License#by-sa", "label": {"sv": "Creative Commons - Erkännande-Dela Lika"}, "description": {"sv": "Upphovsman ska anges vid användning, bearbetningar delas med samma villkor"}},
+              {"value": "http://kulturarvsdata.se/resurser/License#rr-f", "label": {"sv": "Rights reserved – free access"}, "description": {"sv": "Objektet finns tillgängligt för alla i sin helhet men får inte återanvändas utan tillstånd."}},
+              {"value": "http://kulturarvsdata.se/resurser/License#rr-p", "label": {"sv": "Rights reserved – paid access"}, "description": {"sv": "Objektet finns tillgängligt på nätet men måste betala för att se det i sin helhet (t ex via en engångskostnad eller prenumeration)."}},
+              {"value": "http://kulturarvsdata.se/resurser/License#rr-r", "label": {"sv": "Rights reserved – restricted access"}, "description": {"sv": "Tillgången till objektet är begränsat på andra sätt än att användaren måste betala för det, t ex registrering eller annan kontrollerad tillgång."}}
+          ]
+      }, {
+          "id": "ksamsok:itemLicenseUrl",
+          "label": {"sv": "Annan licens"},
+          "description": {"sv": "Andra än K-samsöks URI:er för licenser."},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "URI",
+          "property": "http://kulturarvsdata.se/ksamsok#itemLicenseUrl"
+      }, {
+          "id": "ksamsok:itemName",
+          "label": {"sv": "Etikett"},
+          "description": {"sv": "Någon form av etikett som beskriver objektet."},
+          "type": "group",
+          "cardinality": {"pref": 1},
+          "nodetype": "BLANK",
+          "property": "http://kulturarvsdata.se/ksamsok#itemName",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#ItemName"},
+          "contents": [
+              {
+                  "label": {"sv": "Typ"},
+                  "description": {"sv": "Typ av etikett, t ex 'sakord'"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#type"
+              }, {
+                  "label": {"sv": "Värde"},
+                  "description": {"sv": "Etikettsvärdet som beskriver objektet"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#name"
+              }
+          ]
+      }, {
+          "id": "ksamsok:itemSpecification",
+          "label": {"sv": "Specifikation"},
+          "description": {"sv": "Modellbeteckning eller liknande."},
+          "type": "group",
+          "cardinality": {"pref": 1},
+          "nodetype": "BLANK",
+          "property": "http://kulturarvsdata.se/ksamsok#itemSpecification",
+          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://kulturarvsdata.se/ksamsok#ItemSpecification"},
+          "contents": [
+              {
+                  "label": {"sv": "Typ"},
+                  "description": {"sv": "Typ av specifikation, t ex 'produkttyp' eller 'modell'"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#type"
+              }, {
+                  "label": {"sv": "Värde"},
+                  "description": {"sv": "Specifikationssvärdet"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#name"
+              }
+          ]
+      }, {
+          "id": "ksamsok:itemLabel",
+          "label": {"sv": "Namn"},
+          "description": {"sv": "Huvudsaklig beskrivning av objektet - klassifikation, sakord el dyl"},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "LANGUAGE_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemLabel"
+      }, {
+          "id": "ksamsok:itemTitle",
+          "label": {"sv": "Titel eller verksnamn"},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "LANGUAGE_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemTitle"
+      }, {
+          "id": "ksamsok:itemDescription",
+          "label": {"sv": "Beskrivning"},
+          "description": {"sv": "Beskrivning, även ostrukturerad text för fritextsökning."},
+          "type": "group",
+          "cardinality": {"pref": 1},
+          "nodetype": "BLANK",
+          "property": "http://kulturarvsdata.se/ksamsok#itemDescription",
+          "contents": [
+              {
+                  "label": {"sv": "Typ"},
+                  "description": {"sv": "Typ av beskrivning, t ex 'föremålsbeskrivning'."},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#type"
+              }, {
+                  "label": {"sv": "Text"},
+                  "description": {"sv": "Beskrivningstexten, kan tillhandahållas på flera språk."},
+                  "cardinality": {"min": 1},
+                  "type": "text",
+                  "nodetype": "LANGUAGE_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#desc",
+                  "styles": ["multiline"]
+              }
+          ]
+      }, {
+          "id": "ksamsok:itemKeyword",
+          "label": {"sv": "Nyckelord"},
+          "type": "text",
+          "cardinality": {"pref": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemKeyword"
+      }, {
+          "id": "ksamsok:itemMotiveWord",
+          "label": {"sv": "Motivord"},
+          "type": "text",
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemMotiveWord"
+      }, {
+          "id": "ksamsok:itemMaterial",
+          "label": {"sv": "Material"},
+          "description": {"sv": "Material som objektet betstår av."},
+          "type": "group",
+          "cardinality": {"pref": 1},
+          "nodetype": "BLANK",
+          "property": "http://kulturarvsdata.se/ksamsok#itemMaterial",
+          "contents": [
+              {
+                  "label": {"sv": "Typ"},
+                  "description": {"sv": "Typ av material, t ex 'huvudmaterial' eller 'tilläggsmaterial'"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#type"
+              }, {
+                  "label": {"sv": "Värde"},
+                  "description": {"sv": "Materialet indikerat med ett värde, t ex 'sten"},
+                  "cardinality": {"min": 1, "max": 1},
+                  "type": "text",
+                  "nodetype": "ONLY_LITERAL",
+                  "property": "http://kulturarvsdata.se/ksamsok#material"
+              }
+          ]
+      }, {
+          "id": "ksamsok:itemTechnique",
+          "label": {"sv": "Produktionsteknik"},
+          "description": {"sv": "Teknik för att producera objektet, t ex 'slipad'"},
+          "type": "text",
+          "cardinality": {"pref": 1, "max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemTechnique"
+      }, {
+          "id": "ksamsok:itemStyle",
+          "label": {"sv": "Stil"},
+          "description": {"sv": "Stil som präglar objektet, t ex 'gustaviansk'"},
+          "type": "text",
+          "cardinality": {"pref": 1, "max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemStyle"
+      }, {
+          "id": "ksamsok:itemColor",
+          "label": {"sv": "Färg"},
+          "description": {"sv": "Färg som präglar objektet, t ex 'blå'"},
+          "type": "text",
+          "cardinality": {"max": 1},
+          "nodetype": "ONLY_LITERAL",
+          "property": "http://kulturarvsdata.se/ksamsok#itemColor"
+      }
+  ]
+}

@@ -1,5 +1,5 @@
 {
- "auxilliary": [
+ "templates": [
   {
    "id": "foaf:mbox",
    "property": "http://xmlns.com/foaf/0.1/mbox",
@@ -408,9 +408,7 @@
    },
    "type": "text",
    "nodetype": "LANGUAGE_LITERAL",
-   "cls": [
-    "rformsmultiline"
-   ],
+   "styles": ["multiline"],
    "cardinality": {
     "pref": 1
    }
@@ -901,9 +899,7 @@
    },
    "type": "text",
    "nodetype": "LANGUAGE_LITERAL",
-   "cls": [
-    "rformsmultiline"
-   ],
+   "styles": ["multiline"],
    "cardinality": {
     "pref": 1
    }
@@ -956,8 +952,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -978,8 +974,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1069,8 +1065,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1112,8 +1108,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1221,8 +1217,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1264,8 +1260,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1337,8 +1333,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1359,8 +1355,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1438,8 +1434,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1481,8 +1477,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1569,8 +1565,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1612,8 +1608,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1679,8 +1675,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1701,8 +1697,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1771,8 +1767,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1793,8 +1789,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1860,8 +1856,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1882,8 +1878,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -1949,8 +1945,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -1971,8 +1967,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2035,8 +2031,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2057,8 +2053,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2121,8 +2117,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2143,8 +2139,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2207,8 +2203,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2229,8 +2225,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2284,8 +2280,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2306,8 +2302,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2361,8 +2357,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2383,8 +2379,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2441,8 +2437,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2463,8 +2459,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"
@@ -2518,8 +2514,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Online accounts"
@@ -2540,8 +2536,8 @@
       "max": 1
      },
      "type": "group",
-     "cls": [
-      "rformsexpandable"
+     "styles": [
+      "expandable"
      ],
      "label": {
       "en": "Additional information"

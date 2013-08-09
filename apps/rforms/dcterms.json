@@ -1,5 +1,5 @@
 {
- "auxilliary": [
+ "templates": [
   {
    "id": "dcterms:title",
    "property": "http://purl.org/dc/terms/title",

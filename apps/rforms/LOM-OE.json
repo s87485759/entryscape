@@ -1,16 +1,12 @@
 {
  "id":"LOM-OE",
  "ontologies": ["http://localhost:8080/ontologies/Model0.rdf"],
- "auxilliary": [
+ "templates": [
     {
     "id": "LOM-OE-Title",
     "nodetype": "LANGUAGE_LITERAL",
-    "@type": "text",
+    "type": "text",
     "description": {"en": "This is the title of the resource"},
-    "styles": [
-     "LanguageControlled",
-     "TextFormItem"
-    ],
     "property": "http://purl.org/dc/terms/title",
     "label": {
      "sl": "Naslov",
@@ -39,7 +35,7 @@
     "content": [
      {
       "nodetype": "LITERAL",
-      "@type": "choice",
+      "type": "choice",
       "choices": [
        {
         "value": "URI",
@@ -58,7 +54,6 @@
         "label": {"en": "DOI"}
        }
       ],
-      "styles": ["ChoiceFormItem"],
       "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#catalog",
       "label": {
        "sl": "Katalog",
@@ -83,8 +78,7 @@
      },
      {
       "nodetype": "LITERAL",
-      "@type": "text",
-      "styles": ["TextFormItem"],
+      "type": "text",
       "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#entry",
       "label": {
        "sl": "Vnos",
@@ -109,8 +103,7 @@
      }
     ],
     "nodetype": "BLANK",
-    "@type": "group",
-    "styles": ["GroupFormItem"],
+    "type": "group",
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#identifier",
     "label": {
      "sl": "Identifikator",
@@ -136,7 +129,7 @@
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",
-     "@type": "choice",
+     "type": "choice",
      "choices": [
       {
        "value": "sv",
@@ -240,7 +233,6 @@
        "label": {"en": "Arabic"}
       }
      ],
-     "styles": ["ChoiceFormItem"],
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "datatype": "http://purl.org/dc/terms/RFC4646",
      "cardinality": {
@@ -250,10 +242,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "The primary human language or languages used within this learning object to communicate to the intended user.\n"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/LinguisticSystem"},
-    "styles": ["GroupFormItem"],
     "property": "http://purl.org/dc/terms/language",
     "label": {
      "sl": "Izvorni jezik",
@@ -278,12 +269,10 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
+     "type": "text",
      "description": {"en": ""},
      "styles": [
-      "LanguageControlled",
-      "TextFormItem",
-      "MultiLine"
+      "multiline"
      ],
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "label": {"en": ""},
@@ -293,9 +282,8 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Provide one paragraph describing the content of this resource"},
-    "styles": ["GroupFormItem"],
     "property": "http://purl.org/dc/terms/description",
     "label": {
      "sl": "Opis",
@@ -320,7 +308,7 @@
    {
     "content": [{
      "nodetype": "LITERAL",
-     "@type": "choice",
+     "type": "choice",
      "choices": [
       {
        "value": "Africa",
@@ -1282,7 +1270,6 @@
        }
       }
      ],
-     "styles": ["ChoiceFormItem"],
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -1291,10 +1278,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Geographical coverage\n\nIndicate the countries and/or regions for which this resource is more appropriate"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/LocationPeriodOrJurisdiction"},
-    "styles": ["GroupFormItem"],
     "property": "http://purl.org/dc/terms/coverage",
     "label": {
      "de": "Gültigkeitsbereich",
@@ -1318,11 +1304,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -1330,10 +1312,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Provide some keywords that describe the topic of this resource"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#LangString"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#keyword",
     "label": {
      "sl": "Ključna beseda",
@@ -1357,11 +1338,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Internal structure of resource\n\natomic: a single individual resource\ncollection: set of resources with no specified relationships\nnetworked: set of resources with unspecified relationships\nhierarchical: set of resources with tree structure relationships\nlinear: set of resources with \"previous\"/\"next\" relationships."},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Structure"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#structure",
     "label": {
      "sl": "Struktura",
@@ -1388,11 +1368,10 @@
     "content": [
      {
       "nodetype": "URI",
-      "@type": "choice",
+      "type": "choice",
       "description": {"en": "Role of the contributor\n\nSelect the role of the contributing entity"},
       "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Role"},
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-      "styles": ["ChoiceFormItem"],
       "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#role",
       "label": {
        "de": "Rolle",
@@ -1418,9 +1397,8 @@
       "content": [
        {
         "nodetype": "LITERAL",
-        "@type": "text",
+        "type": "text",
         "description": {"en": "Provide your name"},
-        "styles": ["TextFormItem"],
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#FN",
         "label": {
          "de": "vollständiger Name",
@@ -1444,8 +1422,7 @@
        },
        {
         "nodetype": "LITERAL",
-        "@type": "text",
-        "styles": ["TextFormItem"],
+        "type": "text",
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#EMAIL",
         "label": {
          "sl": "naslov elektronske pošte",
@@ -1471,8 +1448,7 @@
        {
         "content": [{
          "nodetype": "LITERAL",
-         "@type": "text",
-         "styles": ["TextFormItem"],
+         "type": "text",
          "property": "http://www.w3.org/2001/vcard-rdf/3.0#Orgname",
          "label": {"en": "Name"},
          "cardinality": {
@@ -1482,8 +1458,7 @@
          }
         }],
         "nodetype": "BLANK",
-        "@type": "group",
-        "styles": ["GroupFormItem"],
+        "type": "group",
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#ORG",
         "label": {
          "de": "Name der Organisation",
@@ -1507,9 +1482,8 @@
        }
       ],
       "nodetype": "BLANK",
-      "@type": "group",
+      "type": "group",
       "description": {"en": "Fullname/title of contributor\n\nProvide full name or title of contributing entity"},
-      "styles": ["GroupFormItem"],
       "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#entity",
       "label": {
        "de": "Entität",
@@ -1533,9 +1507,8 @@
      },
      {
       "nodetype": "DATATYPE_LITERAL",
-      "@type": "text",
+      "type": "text",
       "description": {"en": "Date of contribution\n\nProvide date of contribution (e.g.  Publication)"},
-      "styles": ["TextFormItem"],
       "property": "http://purl.org/dc/terms/date",
       "label": {
        "sl": "Datum",
@@ -1561,9 +1534,8 @@
      }
     ],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Contribution"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#contribution",
     "label": {
      "de": "Beitrag",
@@ -1586,11 +1558,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Targeted user(s)\n\nThe principal users that can benefit from using this resource"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/AgentClass"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://purl.org/dc/terms/audience",
     "label": {
      "de": "voraussichtliche NutzerInnen",
@@ -1613,7 +1584,7 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "What is the type of the resource?"},
     "choices": [
      {
@@ -2129,7 +2100,6 @@
       }
      }
     ],
-    "styles": ["ChoiceFormItem"],
     "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
     "label": {
      "de": "Art der Lernressource",
@@ -2153,7 +2123,7 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Context of use\n\nThe principal environment in which the resource should be used\n"},
     "choices": [
      {
@@ -2337,7 +2307,6 @@
       }
      }
     ],
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#context",
     "label": {
      "de": "Kontext",
@@ -2361,11 +2330,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -2374,10 +2339,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "What is the age range of the typical intended used of this resource? Use \"U\" to leave the upper or lower limit of the age range undefined, e.g. 15-U or U-10."},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#LangString"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#typicalAgeRange",
     "label": {
      "de": "typischer Altersbereich",
@@ -2402,11 +2366,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -2414,10 +2374,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Comments on how this learning object is to be used."},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#LangString"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#educationalDescription",
     "label": {
      "de": "Beschreibung der Pädagogik",
@@ -2440,7 +2399,7 @@
    },
    {
     "nodetype": "DATATYPE_LITERAL",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Does the usage of this resource involves any costs to the users"},
     "choices": [
      {
@@ -2476,7 +2435,6 @@
       }
      }
     ],
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#cost",
     "label": {
      "de": "Kosten",
@@ -2501,7 +2459,7 @@
    },
    {
     "nodetype": "DATATYPE_LITERAL",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Are there any copyrights involved in the use of this resource?"},
     "choices": [
      {
@@ -2537,7 +2495,6 @@
       }
      }
     ],
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#copyrightAndOtherRestrictions",
     "label": {
      "de": "Copyright und andere Einschränkungen",
@@ -2564,7 +2521,7 @@
     "content": [
      {
       "nodetype": "URI",
-      "@type": "choice",
+      "type": "choice",
       "choices": [
        {
         "value": "http://creativecommons.org/licenses/by/3.0/",
@@ -2635,7 +2592,6 @@
         }
        }
       ],
-      "styles": ["ChoiceFormItem"],
       "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
       "label": {
        "de": "Ressource gemäß Creative Commons zu verwenden",
@@ -2659,11 +2615,9 @@
      },
      {
       "nodetype": "LANGUAGE_LITERAL",
-      "@type": "text",
+      "type": "text",
       "styles": [
-       "LanguageControlled",
-       "TextFormItem",
-       "MultiLine"
+       "multiline"
       ],
       "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
       "label": {
@@ -2687,9 +2641,8 @@
      }
     ],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Possible values:\n1) Are commercial uses of this resource allowed? (Yes/No)\n    Are modifications of this resource by other people allowed? (Yes/No)\n2) Free-text description of the rights\n\n\nDescription of restrictions and copyrights that may refer to the use of this resource"},
-    "styles": ["GroupFormItem"],
     "property": "http://purl.org/dc/terms/rights",
     "label": {
      "de": "Beschreibung Copyright",
@@ -2714,10 +2667,9 @@
     "content": [
      {
       "nodetype": "URI",
-      "@type": "choice",
+      "type": "choice",
       "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.cc.uah.es/ie/ont/OE-Predicates#predicate"},
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-      "styles": ["ChoiceFormItem"],
       "cardinality": {
        "min": 1,
        "max": 1,
@@ -2726,14 +2678,10 @@
      },
      {
       "nodetype": "URI",
-      "@type": "choice",
+      "type": "choice",
       "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.cc.uah.es/ie/ont/OE-OAAE#Concepts"},
       "isHierarchyPropertyInverted": false,
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-      "styles": [
-       "ChoiceFormItem",
-       "ExpandableTree"
-      ],
       "hierarchyProperty": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "isParentPropertyInverted": false,
       "parentProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
@@ -2744,8 +2692,7 @@
       }
      }
     ],
-    "@type": "propertygroup",
-    "styles": ["GroupFormItem"],
+    "type": "propertygroup",
     "label": {
      "de": "Klassifizierung",
      "sl": "Razvrščanje",
@@ -2767,11 +2714,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Level of granularity\n\n(These are the element values; the numbers in the parentheses should be stored instead of these values when each one is selected)\nraw media / resource files (1)\nlesson (2)\ncourse (3)\neducational program (4)"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#AggregationLevel"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#aggregationLevel",
     "label": {
      "de": "Aggregationsebene",
@@ -2797,10 +2743,9 @@
     "content": [
      {
       "nodetype": "URI",
-      "@type": "choice",
+      "type": "choice",
       "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://organic-edunet.eu/LOM/rdf/voc#ValidationStatus"},
       "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-      "styles": ["ChoiceFormItem"],
       "property": "http://organic-edunet.eu/LOM/rdf/validationStatus",
       "label": {
        "de": "Status der Validierung",
@@ -2826,8 +2771,7 @@
       "content": [
        {
         "nodetype": "LITERAL",
-        "@type": "text",
-        "styles": ["TextFormItem"],
+        "type": "text",
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#FN",
         "label": {"en": "Name"},
         "cardinality": {
@@ -2838,8 +2782,7 @@
        },
        {
         "nodetype": "LITERAL",
-        "@type": "text",
-        "styles": ["TextFormItem"],
+        "type": "text",
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#EMAIL",
         "label": {
          "de": "E-Mail",
@@ -2861,10 +2804,9 @@
        {
         "content": [{
          "nodetype": "URI",
-         "@type": "choice",
+         "type": "choice",
          "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://xmlns.com/foaf/0.1/Organization"},
          "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-         "styles": ["ChoiceFormItem"],
          "property": "http://www.w3.org/2001/vcard-rdf/3.0#Orgname",
          "cardinality": {
           "min": 1,
@@ -2873,8 +2815,7 @@
          }
         }],
         "nodetype": "BLANK",
-        "@type": "group",
-        "styles": ["GroupFormItem"],
+        "type": "group",
         "property": "http://www.w3.org/2001/vcard-rdf/3.0#ORG",
         "label": {"en": "Organisation"},
         "cardinality": {
@@ -2885,8 +2826,7 @@
        }
       ],
       "nodetype": "BLANK",
-      "@type": "group",
-      "styles": ["GroupFormItem"],
+      "type": "group",
       "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#entity",
       "label": {
        "de": "vCard Entität",
@@ -2906,8 +2846,7 @@
      },
      {
       "nodetype": "DATATYPE_LITERAL",
-      "@type": "text",
-      "styles": ["TextFormItem"],
+      "type": "text",
       "property": "http://purl.org/dc/terms/date",
       "label": {
        "de": "Datum",
@@ -2930,11 +2869,9 @@
      {
       "content": [{
        "nodetype": "LANGUAGE_LITERAL",
-       "@type": "text",
+       "type": "text",
        "styles": [
-        "LanguageControlled",
-        "TextFormItem",
-        "MultiLine"
+        "multiline"
        ],
        "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
        "cardinality": {
@@ -2943,8 +2880,7 @@
        }
       }],
       "nodetype": "BLANK",
-      "@type": "group",
-      "styles": ["GroupFormItem"],
+      "type": "group",
       "property": "http://purl.org/dc/terms/description",
       "label": {
        "de": "Kommentar zur Validierung",
@@ -2968,8 +2904,7 @@
      }
     ],
     "nodetype": "BLANK",
-    "@type": "group",
-    "styles": ["GroupFormItem"],
+    "type": "group",
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#annotation",
     "label": {
      "de": "Validierung",
@@ -2992,11 +2927,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Status of development\n\nIs this the final version of the resource?"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Status"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#status",
     "label": {
      "de": "Status",
@@ -3023,11 +2957,10 @@
      "content": [
       {
        "nodetype": "URI",
-       "@type": "choice",
+       "type": "choice",
        "description": {"en": "Specific technology/software\n\nSelect if the resource needs some particular operating system or browser to be accessed"},
        "constraints": {"http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Requirement"},
        "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-       "styles": ["ChoiceFormItem"],
        "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
        "label": {"en": "Type"},
        "cardinality": {
@@ -3037,11 +2970,10 @@
       },
       {
        "nodetype": "URI",
-       "@type": "choice",
+       "type": "choice",
        "description": {"en": "Name of technology/software\n\nProvide the name of the browser or operating system that is needed to access this resource"},
        "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Technology"},
        "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-       "styles": ["ChoiceFormItem"],
        "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#technology",
        "label": {
         "de": "Name",
@@ -3061,9 +2993,8 @@
       },
       {
        "nodetype": "LITERAL",
-       "@type": "text",
+       "type": "text",
        "description": {"en": "Lowest possible version\n\nIndicate the lowest version of the software needed that can support the resource"},
-       "styles": ["TextFormItem"],
        "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#minimumVersion",
        "label": {
         "de": "Minimale Version",
@@ -3083,9 +3014,8 @@
       },
       {
        "nodetype": "LITERAL",
-       "@type": "text",
+       "type": "text",
        "description": {"en": "Highest possible version\n\nIndicate the highest version of the software needed that can support the resource"},
-       "styles": ["TextFormItem"],
        "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#maximumVersion",
        "label": {
         "de": "Maximale Version",
@@ -3105,8 +3035,7 @@
       }
      ],
      "nodetype": "BLANK",
-     "@type": "group",
-     "styles": ["GroupFormItem"],
+     "type": "group",
      "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#alternativeRequirement",
      "cardinality": {
       "min": 0,
@@ -3115,9 +3044,8 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#RequirementOrComposite"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#requirement",
     "label": {
      "de": "Anforderungen",
@@ -3141,11 +3069,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -3153,10 +3077,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "What is the current version of the resource"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Version"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#version",
     "label": {
      "de": "Version",
@@ -3180,7 +3103,7 @@
    },
    {
     "nodetype": "DATATYPE_LITERAL",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "File format\n\nWhat format is the resource in? Is it a word document, a picture or a video? "},
     "choices": [
      {
@@ -3264,7 +3187,6 @@
       "label": {"en": "Text: HTML"}
      }
     ],
-    "styles": ["ChoiceFormItem"],
     "property": "http://purl.org/dc/terms/format",
     "label": {
      "de": "Format",
@@ -3288,11 +3210,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Is this resource causing some interaction from the learner's side? Is it partly inducing actions from the learner?"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#InteractivityType"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#interactivityType",
     "label": {
      "de": "Interaktivitätstyp",
@@ -3317,11 +3238,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -3329,10 +3246,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Describe any installation needed"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#LangString"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#installationRemarks",
     "label": {
      "de": "Anmerkungen zur Installierung",
@@ -3356,11 +3272,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Information Density\n\nEstimate the density of the information within the resource"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#SemanticDensity"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#semanticDensity",
     "label": {
      "de": "semantische Dichte",
@@ -3384,11 +3299,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "Level of interaction\n\nWhat is the interactivity level between the resource and its users? Ranging from very low, low and medium to high and very high"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#InteractivityLevel"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#interactivityLevel",
     "label": {
      "de": "Interaktivitätsniveau",
@@ -3413,8 +3327,7 @@
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",
-     "@type": "text",
-     "styles": ["TextFormItem"],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "datatype": "http://www.w3.org/2001/XMLSchema#duration",
      "cardinality": {
@@ -3424,10 +3337,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "If played at the intended speed, how long would the resource take to view/follow/listen? Use \"H\", \"M\" and \"S\" to approximately (PT) indicate hours, minutes and seconds e.g. PT1H30M or PT1M50S"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Duration"},
-    "styles": ["GroupFormItem"],
     "property": "http://purl.org/dc/terms/extent",
     "label": {
      "de": "Dauer",
@@ -3451,11 +3363,10 @@
    },
    {
     "nodetype": "URI",
-    "@type": "choice",
+    "type": "choice",
     "description": {"en": "How difficult is it to work with this resource?"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Difficulty"},
     "ontologyUrl": "http://localhost:8080/ontologies/Model0.rdf",
-    "styles": ["ChoiceFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#difficulty",
     "label": {
      "de": "Schwierigkeitsgrad",
@@ -3480,8 +3391,7 @@
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",
-     "@type": "text",
-     "styles": ["TextFormItem"],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "datatype": "http://www.w3.org/2001/XMLSchema#duration",
      "cardinality": {
@@ -3491,10 +3401,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "The typical time that it should take this resource when taught to a typical audience"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#Duration"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#typicalLearningTime",
     "label": {
      "de": "Lerndauer",
@@ -3519,11 +3428,7 @@
    {
     "content": [{
      "nodetype": "LANGUAGE_LITERAL",
-     "@type": "text",
-     "styles": [
-      "LanguageControlled",
-      "TextFormItem"
-     ],
+     "type": "text",
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "cardinality": {
       "min": 0,
@@ -3531,10 +3436,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "Describe any other technical requirements"},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://ltsc.ieee.org/rdf/lomv1p0/lom#LangString"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#otherPlatformRequirements",
     "label": {
      "de": "andere Plattformanforderungen",
@@ -3559,7 +3463,7 @@
    {
     "content": [{
      "nodetype": "DATATYPE_LITERAL",
-     "@type": "choice",
+     "type": "choice",
      "choices": [
       {
        "value": "sv",
@@ -3612,7 +3516,6 @@
        "label": {"en": "Latin"}
       }
      ],
-     "styles": ["ChoiceFormItem"],
      "property": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
      "datatype": "http://purl.org/dc/terms/RFC4646",
      "cardinality": {
@@ -3621,10 +3524,9 @@
      }
     }],
     "nodetype": "BLANK",
-    "@type": "group",
+    "type": "group",
     "description": {"en": "The human language(s) used by the typical intended user of this learning object."},
     "constraints": {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://purl.org/dc/terms/LinguisticSystem"},
-    "styles": ["GroupFormItem"],
     "property": "http://ltsc.ieee.org/rdf/lomv1p0/lom#educationalLanguage",
     "label": {
      "de": "Sprache",
@@ -3648,7 +3550,7 @@
    }
   ],
   "nodetype": "RESOURCE",
-  "@type": "group",
+  "type": "group",
   "label": {
    "de": "Ressource",
    "sv": "Resurs",

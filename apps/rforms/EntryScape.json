@@ -1,18 +1,18 @@
 {
-  "auxilliary": [
+  "templates": [
       {
           "id": "entryscape:dcterms-small",
           "type": "group",
           "content": [
               {"id": "dcterms:title"},
-              {"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}}
+              {"extends": "dcterms:description", "styles": ["multiline"], "cardinality": {"pref": 1}}
           ]
       }, {
           "id": "entryscape:dcterms-medium",
           "type": "group",
           "content": [
               {"id": "dcterms:title", "cardinality": {"pref": 1}},
-              {"extends": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
+              {"extends": "dcterms:description", "styles": ["multiline"], "cardinality": {"pref": 1}},
               {"id": "entryscape:rights"},
               {"id": "entryscape:creator"}
           ]
@@ -21,7 +21,7 @@
           "type": "group",
           "content": [
               {"id": "foaf:name", "cardinality": {"pref": 1}},
-              {"id": "dcterms:description", "cls": ["rformsmultiline"], "cardinality": {"pref": 1}},
+              {"id": "dcterms:description", "styles": ["multiline"], "cardinality": {"pref": 1}},
               {"id": "foaf:mbox"},
               {"id": "foaf:homepage"},
               {"id": "foaf:img", "cardinality": {"pref": 1}},
@@ -71,7 +71,7 @@
           "cardinality": {"pref": 1, "max": 1},
           "nodetype": "URI",
           "property": "http://purl.org/dc/terms/rights",
-          "styles": ["rformsverticalRadioButtons"],
+          "styles": ["verticalRadioButtons"],
           "choices": [
               {
                   "value": "http://creativecommons.org/licenses/by/3.0/",
@@ -161,7 +161,7 @@
           },
           "type": "text",
           "nodetype": "literal",
-          "cls": ["rformsmultiline"],
+          "styles": ["multiline"],
           "cardinality": {"pref": 1}
       },
       {

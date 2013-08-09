@@ -1,6 +1,6 @@
 {
 	"label":{"en":"TEL-Map formlets"},
-	"auxilliary":[
+	"templates":[
 		{
 			"id":"http://purl.org/telmap/ProjectAspects",
 			"type":"group",
@@ -61,7 +61,7 @@
 			"type":"group",
 			"label":{"en":"CORDIS"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:cordis:acronym"},
 				{"id": "telmap:cordis:title"},
@@ -89,7 +89,7 @@
 			"label":{"en":"Context"},
 			"description":{"en":"Project Context"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:stakeholder#literal"},
 				{"id": "telmap:stakeholder#uri"},
@@ -102,7 +102,7 @@
 				{"id": "telmap:predecessor#uri"},
 				{"id": "telmap:successor#literal"},
 				{"id": "telmap:successor#uri"},
-				{"id": "telmap:sector"},
+				{"id": "telmap:sector"}
 			]
 		},
 		{
@@ -111,7 +111,7 @@
 			"label":{"en":"Assumptions"},
 			"description":{"en":"Project Assumptions"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:dcterms:relation#Assumptions"},
 				{"id": "telmap:idea"},
@@ -124,7 +124,7 @@
 			"label":{"en":"Goals"},
 			"description":{"en":"Project Goals"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:contributesTo#Goals"},
 				{"id": "telmap:obstructedBy#Goals"},
@@ -137,7 +137,7 @@
 			"label":{"en":"Impacts"},
 			"description":{"en":"Project Impact"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:outcome"},
 				{"id": "telmap:impact"},
@@ -153,7 +153,7 @@
 			"label":{"en":"Approach"},
 			"description":{"en":"Project Approach"},
 			"cardinality": {"min": 1, "pref": 1, "max": 1},
-			"cls": ["expandable"],
+			"styles": ["expandable"],
 			"content":[
 				{"id": "telmap:basedOn"},
 				{"id": "telmap:method"},
@@ -326,7 +326,7 @@
 			"cardinality": {"pref": 1, "max": 1},
 	  		"type": "choice", 
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://purl.org/telmap/EC-FP5", "label": {"en":"FP5"}},
 			 	{"value": "http://purl.org/telmap/EC-FP6", "label": {"en":"FP6"}},
 			 	{"value": "http://purl.org/telmap/EC-FP7", "label": {"en":"FP7"}},
@@ -344,7 +344,7 @@
 			"cardinality": {"pref": 1, "max": 1},
 	  		"type": "choice", 
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://purl.org/telmap/EC-NoE", "label": {"en": "Network of Excellence"}},
 			 	{"value": "http://purl.org/telmap/EC-CP", "label": {"en": "Collaborative Project"}},
 			 	{"value": "http://purl.org/telmap/EC-CSA", "label": {"en": "Coordination and Support Action"}},
@@ -421,7 +421,7 @@
 			"label": {"en": "Start date"},
 			"type": "text",
 			"property": "http://purl.org/telmap/cordis/dateStart",
-			"datatype": "http://purl.org/dc/terms/W3CDTF",
+			"datatype": "http://purl.org/dc/terms/W3CDTF"
 		},
 		{
 			"id": "telmap:cordis:dateEnd",
@@ -430,7 +430,7 @@
 			"label": {"en": "End date"},
 			"type": "text",
 			"property": "http://purl.org/telmap/cordis/dateEnd",
-			"datatype": "http://purl.org/dc/terms/W3CDTF",
+			"datatype": "http://purl.org/dc/terms/W3CDTF"
 		},
 	  	{
 	  		"id": "telmap:isAbout",
@@ -545,7 +545,7 @@
 		{
 	  		"id": "telmap:cordis:description", 
 	  		"property": "http://purl.org/telmap/cordis/description",
-	  		"cls": ["multiline"], 
+	  		"styles": ["multiline"],
 	  		"label": {
 	  			"en": "Description"
 	  		},
@@ -583,7 +583,7 @@
 			"type": "group",
 			"property": "http://purl.org/dc/terms/description",
 			"content": [{
-				"styles": ["MultiLine", "TextFormItem", "LanguageControlled"],
+				"styles": ["multiline"],
 				"nodetype": "LANGUAGE_LITERAL",
 				"cardinality": {"min":1, "pref":1},
 				"type": "text",
@@ -767,7 +767,7 @@
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://dbpedia.org/resource/Web_Science", "label": {"en": "Web science"}},
 				{"value": "http://dbpedia.org/resource/Computer-assisted_language_learning", "label": {"en": "Computer Assisted Language Learning"}},
 				{"value": "http://dbpedia.org/resource/Motivation", "label": {"en": "Motivation"}},
@@ -815,7 +815,7 @@
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://dbpedia.org/resource/Teacher", "label": {"en": "Teachers"}},
 				{"value": "http://dbpedia.org/resource/Course_creator", "label": {"en": "Course creators"}},
 				{"value": "http://dbpedia.org/resource/Parent", "label": {"en": "Parents"}},
@@ -849,7 +849,7 @@
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://dbpedia.org/resource/Participatory_rural_appraisal", "label": {"en": "Participatory rural appraisal methods"}},
 				{"value": "http://dbpedia.org/resource/Case_study", "label": {"en": "Case studies"}},
 				{"value": "http://dbpedia.org/resource/Focus_group", "label": {"en": "Focus groups"}},
@@ -893,7 +893,7 @@
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://dbpedia.org/resource/Scientometrics", "label": {"en": "Scientometrics"}},
 				{"value": "http://dbpedia.org/resource/Natural_language_processing", "label": {"en": "NLP theories"}},
 				{"value": "http://dbpedia.org/resource/Part-of-speech_tagging", "label": {"en": "POS tagging"}},
@@ -1071,7 +1071,7 @@
 	  			"en": "based on"
 	  		},
 			"cardinality": {"pref": 1},
-	  		"cls": ["multiline"],
+	  		"styles": ["multiline"],
 	  		"type": "text", 
 			"nodetype": "LITERAL"
   		},
@@ -1112,7 +1112,7 @@
 			"cardinality": {"pref": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://purl.org/telmap/Method-ActionResearch", "label": {"en": "Action research"}},	 	
 				{"value": "http://purl.org/telmap/Method-CaseStudy", "label": {"en": "Case study"}},
 				{"value": "http://purl.org/telmap/Method-FocusGroup", "label": {"en": "Focus group"}},
@@ -1252,7 +1252,7 @@
 			"cardinality": {"pref": 1, "max": 1},
 	  		"type": "choice",
 			"nodetype": "URI",
-			choices: [
+			"choices": [
 				{"value": "http://purl.org/telmap/Organization-NonProfit", "label": {"en": "Non-profit organization"}},
 				{"value": "http://purl.org/telmap/Organization-Research", "label": {"en": "Research organization"}},
 				{"value": "http://purl.org/telmap/Organization-PublicBody", "label": {"en": "Public body"}},
