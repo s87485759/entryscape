@@ -31,6 +31,7 @@ define([
         //===================================================
         // Private attributes
         //===================================================
+        _defaultTabName: "account",
         _currentTabName: "account",
         _tabNames: ["account", "profile", "members", "rights"],
 
@@ -67,13 +68,14 @@ define([
             this.entryUri = this.application.getRepository() + "_principals/resource/" + params.entry;
 
             var f = lang.hitch(this, function (entry) {
+                var same = this.entry && this.entry.getId() === entry.getId();
                 this.entry = entry;
                 if (folio.data.isGroup(this.entry)) {
                     style.set(this._membersButtonNode, "display", "");
                 } else {
                     style.set(this._membersButtonNode, "display", "none");
                 }
-                this._switchToTab(this._currentTabName);
+                this._switchToTab(same ? this._currentTabName : this._defaultTabName);
                 this.principalInfo.show(entry);
             });
             this.application.getStore().loadEntry(this.entryUri, {},
@@ -123,6 +125,13 @@ define([
          * @private
          */
         _switchToTab: function (tabName) {
+            //First, if settings where not inited when the user signed in.
+            if (this.user !== this.application.getUser()) {
+                this.user = this.application.getUser();
+                array.forEach(this._tabNames, function(tabname) {
+                    this["_"+tabname+"TabDijit"]._userChange();
+                }, this);
+            }
             if (this._currentTabName !== tabName) {
                 domClass.remove(this["_" + this._currentTabName + "ButtonNode"], "selected");
                 style.set(this["_" + this._currentTabName + "TabDijit"].domNode, "display", "none");

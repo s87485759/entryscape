@@ -108,7 +108,8 @@ border-bottom-left-radius: 6px;
 }
 .confolio .card .principalPicture {
 	position: relative;
-	margin-bottom: 10px;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .confolio .principalPicture {
@@ -128,4 +129,9 @@ border-bottom-left-radius: 6px;
 	max-height: 80px;
 	display: block;
 	margin: 0 auto;
+}
+
+.confolio .card>span {
+    margin-top: 5px;
+    display: block;
 }

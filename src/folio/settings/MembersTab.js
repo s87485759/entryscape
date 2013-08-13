@@ -52,10 +52,17 @@ define([
 
         showEntry: function (entry) {
             this.entry = entry;
-            this._entryACL = folio.data.getACLList(entry);
+            this._principalACL = folio.data.getACLList(entry);
             //Update editor
             this._updateList();
-
+            var homeContextUri = this.entry.getHomeContext();
+            if (homeContextUri != null) {
+                this.application.getStore().loadEntry(homeContextUri, {},
+                    lang.hitch(this, function(homeContext) {
+                        this._homeContext = homeContext;
+                        this._homeContextACL = folio.data.getACLList(this._homeContext);
+                    }));
+            }
         },
 
         //===================================================
@@ -149,7 +156,7 @@ define([
             var isMember = array.some(refs, function(ref) {
                 return ref === group;
             });
-            var isOwner = array.some(this._entryACL, function(ac) {
+            var isOwner = array.some(this._principalACL, function(ac) {
                 return  ac.admin === true && ac.entryId === personEntry.getId();
             });
             var memberCls = isMember ? isOwner ? " owner" : " member" : "";
@@ -185,7 +192,7 @@ define([
             construct.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
         },
         _toggleOwner: function(memberEntry, node, add) {
-            var acl = lang.clone(this._entryACL), id = memberEntry.getId();
+            var acl = lang.clone(this._principalACL), id = memberEntry.getId();
             if (add) {
                 acl.push({uri: memberEntry.getUri(), entryId: id, admin: true});
             } else {
@@ -202,11 +209,36 @@ define([
                 this.entry.setRefreshNeeded();
                 this.entry.refresh(lang.hitch(this, function() {
                     this.application.publish("changed", {entry: this.entry, source: this});
-                    this._entryACL = acl;
+                    this._principalACL = acl;
+                    this._toggleOwnerOfHomeContext(memberEntry, add);
                     this._createPeopleCard(memberEntry, node);
                 }));
             });
             this.entry.saveInfo(savef, function() {});
+        },
+        _toggleOwnerOfHomeContext: function(memberEntry, add) {
+            if (this._homeContext != null) {
+                var mid = memberEntry.getId();
+                if (add) {
+                    if (!array.some(this._homeContextACL, function(ac) {
+                        if (ac.entryId === mid) {
+                            ac.admin = true;
+                            return true;
+                        }
+                    })) {
+                        this._homeContextACL.push({entryId: mid, admin: true});
+                    }
+                } else {
+                    this._homeContextACL = array.filter(this._homeContextACL, function(ac) {
+                        if (ac.entryId === mid && ac.admin) {
+                            delete ac.admin;
+                        }
+                        return ac.mread || ac.mwrite || ac.rread || ac.rwrite || ac.admin;
+                    });
+                }
+                folio.data.setACLList(this._homeContext, this._homeContextACL);
+                this._homeContext.saveInfo(function() {}, function() {}); //TODO better handling if things go wrong.
+            }
         },
         _toggleMember: function(memberEntry, node, add) {
             if (this.user && !add && memberEntry.getId() === this.user.id) {
