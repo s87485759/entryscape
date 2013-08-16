@@ -158,6 +158,10 @@ dojo.declare("folio.navigation.NavigationBar", [dijit._Widget, dijit._Templated,
 		if (config.supportedLanguageMap) {
 			this.supportedLanguageMap = config.supportedLanguageMap;
 		}
+        if (config.debug === "true" || config.debug === true) {
+            this.supportedLanguageMap["nls"] = "localization keys";
+        }
+
 		for (lang in this.supportedLanguageMap) {
 			data.push({value: lang, label: this.supportedLanguageMap[lang]});
 		}

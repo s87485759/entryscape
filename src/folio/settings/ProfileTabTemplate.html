@@ -3,6 +3,7 @@
         <div data-dojo-attach-point="profileEditorNode"></div>
     </div>
     <div class="footer distinctBackground" data-dojo-attach-point="profileButtonsNode">
-        <div data-dojo-attach-point="saveProfileButtonNode">Save</div>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave"
+             data-dojo-attach-point="i18n,saveProfileButton" data-dojo-attach-event="onClick: _saveProfile">save</div>
     </div>
 </div>

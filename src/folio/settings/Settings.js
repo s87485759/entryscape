@@ -6,27 +6,26 @@ define([
     "dojo/_base/connect",
     "dojo/dom-class",
     "dojo/dom-style",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin",
+    "folio/util/Widget",
     "folio/navigation/PrincipalInfo", //In template
     "folio/settings/AccountTab",      //In template
     "folio/settings/ProfileTab",      //In template
     "folio/settings/MembersTab",      //In template
     "folio/settings/RightsTab",      //In template
     "dojo/text!./SettingsTemplate.html"
-], function (declare, lang, array, connect, domClass, style, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin,
+], function (declare, lang, array, connect, domClass, style, Widget,
              AccountTab, ProfileTab, MembersTab, RightsTab, PrincipalInfo, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
      * The profile information includes username, home portfolio and user profile metadata.
      */
-    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    return declare(Widget, {
         //===================================================
         // Inherited Attributes
         //===================================================
         templateString: template,
+        nls: ["settings"],
 
         //===================================================
         // Private attributes
@@ -40,21 +39,11 @@ define([
         //===================================================
         postCreate: function () {
             this.inherited("postCreate", arguments);
-            this.application = __confolio.application;
-
-            //Connect to application events
-            connect.subscribe("/confolio/localeChange", lang.hitch(this, this._localize));
-            connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
-
 
             //Handle click on tabs.
             array.forEach(this._tabNames, function(tabname) {
                 this.connect(this["_"+tabname+"ButtonNode"], "onclick", lang.hitch(this, this._switchToTab, tabname));
             }, this);
-        },
-        startup: function() {
-            this.inherited("startup", arguments);
-            this._localize();
         },
 
         /**
@@ -92,31 +81,6 @@ define([
         //===================================================
         // Private methods
         //===================================================
-        _userChange: function () {
-            this.user = this.application.getUser();
-            if (this.entryUri) {
-                this.application.getStore().loadEntry(this.entryUri, {}, lang.hitch(this, this.showEntry));
-            }
-            array.forEach(this._tabNames, function(tabname) {
-                this["_"+tabname+"TabDijit"]._userChange();
-            }, this);
-        },
-        _localize: function () {
-            dojo.requireLocalization("folio", "userEditor");
-            this.settingsNLS = dojo.i18n.getLocalization("folio", "userEditor");
-            array.forEach(this._tabNames, function(tabname) {
-                this["_"+tabname+"TabDijit"]._localize();
-            }, this);
-
-            /*		AMD way
-             require(["dojo/i18n!folio/nls/annotationProfile"], lang.hitch(this, function(i18n) {
-             this.annotationProfileNLS = i18n;
-             }));*/
-            /*		dojo.requireLocalization("folio", "profile");
-             this.resourceBundle = dojo.i18n.getLocalization("folio", "profile");
-             this.set(this.resourceBundle);*/
-        },
-
         /**
          * Expects there to be a this._tabnameButtonNode and this._tabnameTabDijit for every tab named tabname.
          * Current tab is kept in variable this._currentTabName.

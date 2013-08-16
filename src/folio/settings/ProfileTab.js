@@ -6,43 +6,28 @@ define(["dojo/_base/declare",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
+    "folio/util/Widget",
     "dojox/form/BusyButton",
     "folio/editor/RFormsEditorPlain",
     "folio/editor/RFormsPresenter",
     "rdfjson/Graph",
     "dojo/text!./ProfileTabTemplate.html"
-], function (declare, lang, connect, domClass, style, construct, attr, _Widget, _TemplatedMixin, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
+], function (declare, lang, connect, domClass, style, construct, attr, Widget, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
      * The profile information includes username, home portfolio and user profile metadata.
      */
-    return declare([_Widget, _TemplatedMixin], {
+    return declare([Widget], {
         //===================================================
         // Inherited Attributes
         //===================================================
         templateString: template,
+        nls: ["annotationProfile", "common"],
 
         //===================================================
         // Inherited methods
         //===================================================
-        postCreate: function () {
-            this.application = __confolio.application;
-            this.inherited("postCreate", arguments);
-
-            var fixBusyButton = function (but) {
-                but._makeBusy = but.makeBusy;
-                but.makeBusy = function () {
-                    if (this.get("disabled") !== true) this._makeBusy();
-                };
-            };
-            this.saveProfileButton = new BusyButton({}, this.saveProfileButtonNode);
-            this.connect(this.saveProfileButton, "onClick", this._saveProfile);
-            domClass.add(this.saveProfileButton.domNode, "settingsSave");
-            fixBusyButton(this.saveProfileButton);
-        },
 
         showEntry: function (entry) {
             this.entry = entry;
@@ -55,16 +40,13 @@ define(["dojo/_base/declare",
             this.apPlain.show(this.graph, this.entry, this.entry.getResourceUri());
         },
 
+        localize: function()  {
+            this.saveProfileButton.set("busyLabel", this.NLS.common.saveInProgress);
+        },
+
         //===================================================
         // Private methods
         //===================================================
-        _userChange: function () {
-        },
-
-        _localize: function () {
-            dojo.requireLocalization("folio", "annotationProfile");
-            this.annotationProfileNLS = dojo.i18n.getLocalization("folio", "annotationProfile");
-        },
 
         _saveProfile: function () {
             this.entry.saveLocalMetadata(this.graph).then(lang.hitch(this, function () {
@@ -72,13 +54,13 @@ define(["dojo/_base/declare",
                     this.application.publish("changed", {entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.annotationProfileNLS.metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLS.annotationProfile.metadataSaved + this.entry.getUri());
                 this.saveProfileButton.cancel();
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
                 }
                 this.saveProfileButton.cancel();
             }));

@@ -7,9 +7,7 @@ define([
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin",
+    "folio/util/Widget",
     "dijit/form/TextBox",
     "dijit/form/Textarea",
     "dojox/form/BusyButton",
@@ -22,18 +20,19 @@ define([
     "folio/security/LoginDialog",
     "rdfjson/Graph",
     "dojo/text!./AccountTabTemplate.html"
-], function (declare, lang, connect, domClass, style, construct, attr, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin,
+], function (declare, lang, connect, domClass, style, construct, attr, Widget,
              TextBox, Textarea, BusyButton, Uploader, FilteringSelect, RadioButton, Memory, TypeDefaults, SearchList, LoginDialog, Graph, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
      * The profile information includes username, home portfolio and user profile metadata.
      */
-    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    return declare(Widget, {
         //===================================================
         // Inherited Attributes
         //===================================================
         templateString: template,
+        nls: ["annotationProfile", "userEditor"],
 
         //===================================================
         // Inherited methods
@@ -42,21 +41,12 @@ define([
             this.inherited("postCreate", arguments);
             this.application = __confolio.application;
 
-            var mb = function () {
-                if (this.get("disabled") !== true) this._makeBusy();
-            };
-            var fixBusyButton = function (but) {
-                but._makeBusy = but.makeBusy;
-                but.makeBusy = mb;
-            };
-
             //Account info
             this.connect(this.firstNameDijit, "onKeyUp", this._infoChanged);
             this.connect(this.lastNameDijit, "onKeyUp", this._infoChanged);
             this.connect(this.fullNameDijit, "onKeyUp", this._infoChanged);
             this.connect(this.infoDijit, "onKeyUp", this._infoChanged);
             this.connect(this.emailDijit, "onKeyUp", this._infoChanged);
-            fixBusyButton(this.infoSaveButton);
             this.connect(this.infoSaveButton, "onClick", this._saveAccountInfo);
 
             //Preferred language
@@ -65,7 +55,6 @@ define([
             this.languageSelectDijit.set("searchAttr", 'label');
             this.languageSelectDijit.set("store", this.langStore);
             this.connect(this.languageSelectDijit, "onChange", this._UIPrefsChanged);
-            fixBusyButton(this.uiprefsSaveButton);
             this.connect(this.uiprefsSaveButton, "onClick", this._saveUIPrefsInfo);
 
             //Profile picture
@@ -78,11 +67,9 @@ define([
             this.connect(this.urlProfilePictureDijit, "onKeyUp", lang.hitch(this, this._updateSaveProfilePictureButton));
             this.connect(this.profilePictureSaveButton, "onClick", this._saveProfilePicture);
             this.connect(this.localProfilePictureUploadButton, "onChange", this._uploadProfilePicture);
-            fixBusyButton(this.profilePictureSaveButton);
 
             //Password
             this.connect(this.passwordSaveButton, "onClick", this._savePassword);
-            fixBusyButton(this.passwordSaveButton);
             this.connect(this.newPasswordDijit, "onKeyUp", lang.hitch(this, this._updatePasswordSaveButton));
             this.connect(this.verifyNewPasswordDijit, "onKeyUp", lang.hitch(this, this._updatePasswordSaveButton));
         },
@@ -95,61 +82,19 @@ define([
         //===================================================
         // Private methods
         //===================================================
-        _userChange: function () {
+        userChange: function () {
             this.user = this.application.getUser();
             if (this.entryUri) {
                 this.application.getStore().loadEntry(this.entryUri, {}, lang.hitch(this, this.showEntry));
             }
         },
-        _localize: function () {
-            dojo.requireLocalization("folio", "annotationProfile");
-            this.annotationProfileNLS = dojo.i18n.getLocalization("folio", "annotationProfile");
 
-            dojo.requireLocalization("folio", "userEditor");
-            this.settingsNLS = dojo.i18n.getLocalization("folio", "userEditor");
-
-            //Account info
-            this.infoSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
-            this.infoSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
-            this.infoSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
-            attr.set(this.nameNode, "innerHTML", this.settingsNLS.name);
-            attr.set(this.infoNode, "innerHTML", this.settingsNLS.info);
-            attr.set(this.emailNode, "innerHTML", this.settingsNLS.email);
-
-            //Account uiprefs
-            attr.set(this.languageNode, "innerHTML", this.settingsNLS.languageLabel);
-            this.uiprefsSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
-            this.uiprefsSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
-            this.uiprefsSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
-
-            //Profile picture
-            attr.set(this.noProfilePictureLabelNode, "innerHTML", this.settingsNLS.noProfilePictureLabel);
-            attr.set(this.urlProfilePictureLabelNode, "innerHTML", this.settingsNLS.urlProfilePictureLabel);
-            attr.set(this.localProfilePictureLabelNode, "innerHTML", this.settingsNLS.localProfilePictureLabel);
-            this.urlProfilePictureTestButton.set("label", this.settingsNLS.urlProfilePictureTest);
-            this.localProfilePictureUploadButton.set("label", this.settingsNLS.localProfilePictureUpload);
-            this.profilePictureSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
-            this.profilePictureSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
-            this.profilePictureSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
-
-            //Password
-            attr.set(this.oldPasswordNode, "innerHTML", this.settingsNLS.oldPassword);
-            attr.set(this.newPasswordNode, "innerHTML", this.settingsNLS.newPassword);
-            attr.set(this.verifynNewPasswordNode, "innerHTML", this.settingsNLS.verifyNewPassword);
-            attr.set(this.passwordMismatchNode, "innerHTML", this.settingsNLS.mismatchPassword);
-            this.passwordSaveButton.set("label", this.annotationProfileNLS.saveDialogSaveLabel);
-            this.passwordSaveButton._label = this.annotationProfileNLS.saveDialogSaveLabel; //Seems like a bug in BusyButton
-            this.passwordSaveButton.set("busyLabel", this.annotationProfileNLS.dialogDoneBusyLabel);
-
-            /*		AMD way
-             require(["dojo/i18n!folio/nls/annotationProfile"], lang.hitch(this, function(i18n) {
-             this.annotationProfileNLS = i18n;
-             }));*/
-            /*		dojo.requireLocalization("folio", "profile");
-             this.resourceBundle = dojo.i18n.getLocalization("folio", "profile");
-             this.set(this.resourceBundle);*/
+        localize: function() {
+            this.infoSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
+            this.uiprefsSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
+            this.profilePictureSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
+            this.passwordSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
         },
-
 
         // ============AccountTab==================
         _showAccount: function () {
@@ -170,13 +115,7 @@ define([
             var md = this.entry.getLocalMetadata();
 
             //Switch between group and user mode
-            if (folio.data.isUser(this.entry)) {
-                style.set(this.userPrincipalNode, "display", "");
-                style.set(this.groupPrincipalNode, "display", "none");
-            } else {
-                style.set(this.groupPrincipalNode, "display", "");
-                style.set(this.userPrincipalNode, "display", "none");
-            }
+            domClass.toggle(this.domNode, "principalIsGroup", folio.data.isGroup(this.entry));
 
             //Update account info
             this.firstNameDijit.set("value", md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/firstName") || "");
@@ -191,8 +130,10 @@ define([
             }
             this.emailDijit.set("value", email);
 
-            //Update uiprefs
-            this.languageSelectDijit.set("value", res.language ? res.language : "");
+            if (folio.data.isUser(this.entry)) {
+                //Update uiprefs
+                this.languageSelectDijit.set("value", res.language ? res.language : "");
+            }
 
             //Update profile picture
             var pictUrl = md.findFirstValue(this.entry.getResourceUri(), "http://xmlns.com/foaf/0.1/img");
@@ -258,20 +199,20 @@ define([
                     this.application.publish("changed", {entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.annotationProfileNLS.metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLS.annotationProfile.metadataSaved + this.entry.getUri());
                 this.infoSaveButton.cancel();
                 this.infoSaveButton.set("disabled", true);
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
                 }
                 this.infoSaveButton.cancel();
             }));
         },
         _setFullName: function (firstname, lastname) {
-            attr.set(this.fullNameNode, "innerHTML", this.settingsNLS.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
+            attr.set(this.fullNameNode, "innerHTML", this.NLS.userEditor.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
         },
 
         // uiprefs = preferred language
@@ -455,9 +396,9 @@ define([
                 }));
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.annotationProfileNLS.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.annotationProfileNLS.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
                 }
                 this.profilePictureSaveButton.cancel();
             }));

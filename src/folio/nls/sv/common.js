@@ -17,11 +17,13 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-  // Used when no value is found, for example in the metadata.
-  "noValueFound": "[Inget v&auml;rde]",
-  // Used when no label/title for an entry is found.
-  "noTitleFound": "Ingen titel hittades!",
-  // Used when there are insufficient rights, for example to read metadata.
-  "insufficientRights": "Otillräckliga rättigheter för denna resurs!"
+define({
+    "save": "Spara",
+    "saveInProgress": "Sparar...",
+    // Used when no value is found, for example in the metadata.
+    "noValueFound": "[Inget v&auml;rde]",
+    // Used when no label/title for an entry is found.
+    "noTitleFound": "Ingen titel hittades!",
+    // Used when there are insufficient rights, for example to read metadata.
+    "insufficientRights": "Otillräckliga rättigheter för denna resurs!"
 })

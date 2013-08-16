@@ -11,24 +11,23 @@ define([
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/dom-geometry",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin",
+    "folio/util/Widget",
     "dojox/form/BusyButton",
     "folio/editor/RFormsEditorPlain",
     "folio/editor/RFormsPresenter",
     "rdfjson/Graph",
     "dojo/text!./MembersTabTemplate.html"
-], function (declare, lang, connect, on, array, dom, domClass, style, construct, attr, geom, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
+], function (declare, lang, connect, on, array, dom, domClass, style, construct, attr, geom, Widget, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
 
     /**
      * Shows list of members, supports finding new users to add as members and remove old members.
      */
-    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    return declare([Widget], {
         //===================================================
         // Inherited Attributes
         //===================================================
         templateString: template,
+        nls: ["settings"],
 
         //===================================================
         // Private Attributes
@@ -68,12 +67,7 @@ define([
         //===================================================
         // Private methods
         //===================================================
-        _userChange: function () {
-            this.user = this.application.getUser();
-        },
-
-        _localize: function () {
-        },
+        _localize: function() {},
         _listScrolling: function(args) {
             var bb = geom.position(this._scrollBoxNode);
             var inbb = geom.position(this._memberListNode);
@@ -107,7 +101,7 @@ define([
             this._lastListState = this._currentListState;
             this._lastEntry = this.entry;
             attr.set(this._memberListNode, "innerHTML", "");
-            style.set(this._memberListMessage, "display", "");
+            style.set(this._loadingMessage, "display", "");
 
             var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
             var params = {locationType: ["Local"], builtinType: ["User"], queryType: "solr"};
@@ -135,7 +129,7 @@ define([
                 return;
             }
             this._loading = true;
-            style.set(this._memberListMessage, "display", "");
+            style.set(this._loadingMessage, "display", "");
 
             this._currentList.getPage(this._currentLastPage+1, 50, lang.hitch(this, function(children) {
                 this._currentLastPage++;
@@ -147,7 +141,7 @@ define([
                         this._createPeopleCard(child);
                     }
                 }, this);
-                style.set(this._memberListMessage, "display", "none");
+                style.set(this._loadingMessage, "display", "none");
                 this._loading = false;
             }));
         },

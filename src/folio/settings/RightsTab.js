@@ -7,23 +7,22 @@ define(["dojo/_base/declare",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin",
+    "folio/util/Widget",
     "dijit/form/RadioButton", //For template
     "dojox/form/BusyButton",  //For template
     "dojo/text!./RightsTabTemplate.html"
-], function (declare, lang, connect, array, domClass, style, construct, attr, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin, RadioButton, BusyButton, template) {
+], function (declare, lang, connect, array, domClass, style, construct, attr, Widget, RadioButton, BusyButton, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
      * The profile information includes username, home portfolio and user profile metadata.
      */
-    return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+    return declare(Widget, {
         //===================================================
         // Inherited Attributes
         //===================================================
         templateString: template,
+        nls: ["settings", "common"],
 
         //===================================================
         // Inherited methods
@@ -31,15 +30,6 @@ define(["dojo/_base/declare",
         postCreate: function () {
             this.application = __confolio.application;
             this.inherited("postCreate", arguments);
-
-            var fixBusyButton = function (but) {
-                but._makeBusy = but.makeBusy;
-                but.makeBusy = function () {
-                    if (this.get("disabled") !== true) this._makeBusy();
-                };
-            };
-            fixBusyButton(this._savePrincipalAccessButton);
-            fixBusyButton(this._copyRightsButton);
 
             this.connect(this._principalGuestChoiceDijit, "onClick", lang.hitch(this, this._principalACLChange, "_guest", "mread"));
             this.connect(this._principalUsersChoiceDijit, "onClick", lang.hitch(this, this._principalACLChange, "_users", "mread"));
@@ -62,10 +52,12 @@ define(["dojo/_base/declare",
             this._principal = entry;
             this._principalACL = folio.data.getACLList(entry);
 
-            if (folio.data.isGroup(this._principal)) {
-                style.set(this._groupMembersBlockNode, "display", "");
-            } else {
+            if (folio.data.isUser(this._principal)) {
+                this.setI18nState(1);
                 style.set(this._groupMembersBlockNode, "display", "none");
+            } else {
+                this.setI18nState(2);
+                style.set(this._groupMembersBlockNode, "display", "");
             }
             //Update editor
             var id = this._principal.getId();
@@ -108,10 +100,10 @@ define(["dojo/_base/declare",
             } else {
                 style.set(this._homeContextRights, "display", "none");
             }
-
-            if (this._settingsNLS) {
-                this._updateStrings();
-            }
+        },
+        localize: function() {
+            this._savePrincipalAccessButton.set("busyLabel", this.NLS.common.saveInProgress);
+            this._savePortfolioAccessButton.set("busyLabel", this.NLS.common.saveInProgress);
         },
 
         //===================================================
@@ -137,45 +129,8 @@ define(["dojo/_base/declare",
                     }
                 }));
             }
-            this._localize();
         },
-        _localize: function () {
-            require(["dojo/i18n!folio/nls/settings"], lang.hitch(this, function(settings){
-                this._settingsNLS = settings;
-                if (this._principal) {
-                    this._updateStrings();
-                }
-            }));
-        },
-        _updateStrings: function() {
-            if (folio.data.isUser(this._principal)) {
-                attr.set(this._principalLabelNode , "innerHTML", this._settingsNLS.userReadRights);
-                attr.set(this._principalPrivateChoiceLabelNode , "innerHTML", this._settingsNLS.privateAccess);
-                attr.set(this._portfolioPrivateChoiceLabelNode, "innerHTML", this._settingsNLS.privateAccess);
-                this._copyRightsButton.set("label", this._settingsNLS.setUserAsOwnerOfPortfolio);
-                this._copyRightsButton._label = this._settingsNLS.setUserAsOwnerOfPortfolio;
-            } else {
-                attr.set(this._principalLabelNode , "innerHTML", this._settingsNLS.groupReadRights);
-                attr.set(this._principalPrivateChoiceLabelNode , "innerHTML", this._settingsNLS.membersAccess);
 
-                attr.set(this._groupMembersLabelNode , "innerHTML", this._settingsNLS.membersReadRights);
-                attr.set(this._membersGuestChoiceLabelNode, "innerHTML", this._settingsNLS.guestAccess);
-                attr.set(this._membersUsersChoiceLabelNode, "innerHTML", this._settingsNLS.usersAccess);
-                attr.set(this._membersMembersChoiceLabelNode, "innerHTML", this._settingsNLS.membersAccess);
-                attr.set(this._portfolioPrivateChoiceLabelNode, "innerHTML", this._settingsNLS.membersAccess);
-                this._copyRightsButton.set("label", this._settingsNLS.setGroupPortfolioRights);
-                this._copyRightsButton._label = this._settingsNLS.setGroupPortfolioRights;
-            }
-            attr.set(this._principalGuestChoiceLabelNode , "innerHTML", this._settingsNLS.guestAccess);
-            attr.set(this._principalUsersChoiceLabelNode , "innerHTML", this._settingsNLS.usersAccess);
-
-            attr.set(this._portfolioLabelNode, "innerHTML", this._settingsNLS.portfolioReadRights);
-            attr.set(this._portfolioGuestChoiceLabelNode, "innerHTML", this._settingsNLS.guestAccess);
-            attr.set(this._portfolioUsersChoiceLabelNode, "innerHTML", this._settingsNLS.usersAccess);
-            this._revertHomeContextButton.set("label", this._settingsNLS.revertToPreviousHomeContext);
-            this._saveHomeContextButton.set("label", this._settingsNLS.saveNewHomeContext);
-            this._saveHomeContextButton._label = this._settingsNLS.saveNewHomeContext;
-        },
         _setHomeContext: function(homeContext) {
             style.set(this._homeContextRights, "display", "");
             this._homeContext = homeContext;

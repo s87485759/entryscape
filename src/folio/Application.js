@@ -110,7 +110,11 @@ dojo.declare("folio.Application", null, {
 	message: function(message) {
 		dojo.publish("/confolio/message", [{message: message}]);
 	},
+    getLocale: function() {
+        return this._locale;
+    },
 	setLocale: function(locale) {
+        this._locale = locale;
 		if (dojo.locale == locale) {
 			return;
 		}

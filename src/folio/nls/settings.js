@@ -19,6 +19,10 @@
 
 define({
 	"root" : {
+        "generalTabLabel": "General",
+        "profileTabLabel": "Profile",
+        "membersTabLabel": "Members",
+        "rightsTabLabel": "Rights",
         "groupReadRights": "Information about group visible to:",
         "userReadRights": "User profile visible to:",
         "guestAccess": "Public",
@@ -30,7 +34,12 @@ define({
         "setGroupPortfolioRights": "Set current group owners as owners of home Context",
         "setUserAsOwnerOfPortfolio": "Set current user as owners of home Context",
         "revertToPreviousHomeContext": "Revert to previous home Context",
-        "saveNewHomeContext": "Save new home Context"
+        "saveNewHomeContext": "Save new home Context",
+        "userSearchLabel": "Search users:",
+        "membersChoiceLabel": "Members",
+        "nonMembersChoiceLabel": "Non-members",
+        "allUsersChoiceLabel": "All",
+        "memberLoadingListMessage": "Loading..."
 	},
     "sv": true
 });
