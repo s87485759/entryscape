@@ -7,10 +7,13 @@ define([
     var exports = {};
     var resourceBundle;
 
-    connect.subscribe("/confolio/localeChange", function() {
+    var localize = function() {
         dojo.requireLocalization("folio", "editBar");
         resourceBundle = dojo.i18n.getLocalization("folio", "editBar");
-    });
+    };
+    localize();
+
+    connect.subscribe("/confolio/localeChange", localize);
 
 
     exports.isPasteForbidden = function(folder, callback) {
@@ -138,14 +141,14 @@ define([
 
     exports.moveOutOfContext = function(folder) {
         var cb = __confolio.application.getClipboard();
-        if (folio.data.isList(cb.entry) && !folio.data.isLinkLike(cb.entry)) {
+        /*if (folio.data.isList(cb.entry) && !folio.data.isLinkLike(cb.entry)) {
             __confolio.application.message(resourceBundle.unableToMoveFolders); //This one says: "Folders cannot currently be cut and pasted into other portfolio."
             return;
-        }
-        if (cb.entry.getReferrents().length > 1) {
+        } */
+        /*if (cb.entry.getReferrents().length > 1) {
             __confolio.application.message(resourceBundle.resourceInManyFoldersUnableToCut); //This one says: "Cut resource appears in more than one folder and cannot be cut and pasted into another portfolio."
             return;
-        }
+        }*/
         if (cb.entry instanceof folio.data.SystemEntry) {
             __confolio.application.message(resourceBundle.resourceIsSystemFolderUnableToCut);//This one says: "Cut resource is a special system resource and cannot be cut and pasted into another portfolio."
             return;

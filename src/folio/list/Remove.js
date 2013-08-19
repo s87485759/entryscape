@@ -74,7 +74,7 @@ dojo.declare("folio.list.Remove", [dijit.layout._LayoutWidget, dijit._Templated]
 				} else {
 					this.contentPane.innerHTML="<p>"+this.rBundle.moveToTrash+ " </p>";
 					args.dialog.addStandardButtons(dojo.hitch(this, this.moveToTrash, args));
-					args.dialog.show(this, this.rBundle.removeDialogTitle);					
+					args.dialog.show(this, this.rBundle.removeDialogTitle);
 				}
 				break;
 			default:
@@ -93,7 +93,7 @@ dojo.declare("folio.list.Remove", [dijit.layout._LayoutWidget, dijit._Templated]
 					args.dialog.addButton(new dijit.form.Button({label:this.rBundle.removeFromAll, onClick: dojo.hitch(this, this.removeFromAllFolders, args)}));
 					args.dialog.addCancelButton();
 //			args.dialog.addStandardButtons(dojo.hitch(this, this.removeFromFolder, args));
-					args.dialog.show(this, this.rBundle.removeDialogTitle);					
+					args.dialog.show(this, this.rBundle.removeDialogTitle);
 				}
 		}
 	},
@@ -200,6 +200,7 @@ dojo.declare("folio.list.Remove", [dijit.layout._LayoutWidget, dijit._Templated]
 					args.entry.setRefreshNeeded();
 					args.entry.refresh(function() {
 						args.dialog.done();
+                        args.parent.setRefreshNeeded();
 						args.application.dispatch({action: "childrenChanged", entry: args.parent, source: self});
 					});
 				});
@@ -224,7 +225,8 @@ dojo.declare("folio.list.Remove", [dijit.layout._LayoutWidget, dijit._Templated]
 			context.moveEntryHere(args.entry, args.parent, trash, 
 					dojo.hitch(this, function() {
 						//Close the dialog
-						args.dialog.done();                        
+						args.dialog.done();
+                        args.parent.setRefreshNeeded();
 						//Notify the application that the parent list has changed.
 						args.application.dispatch({action: "childrenChanged", entry: args.parent, source: this});
 					}), err);
