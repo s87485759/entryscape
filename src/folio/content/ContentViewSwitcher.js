@@ -52,11 +52,24 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 			}
 		});
 	},
-	show: function(entry) {
+    show: function(entry) {
+        if (this._showTimer) {
+            clearTimeout(this._showTimer);
+        }
+        this._showTimer = setTimeout(dojo.hitch(this, function() {
+            delete this._showTimer;
+            this._show(entry);
+        }),300);
+    },
+	_show: function(entry) {
+        if (this.entry === entry) {
+            return;
+        }
+        this.entry = entry;
+
 		dojo.attr(this.domNode, "innerHTML", "");
 		dojo.removeClass(this.domNode, "leftAligned");
 
-		this.entry = entry;
 		this.contentNode = null;
 		this.doResize = false;
 		this.contentDijit = null;
