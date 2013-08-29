@@ -1,6 +1,7 @@
 dojo.provide("folio.content.ContentViewSwitcher");
 dojo.require("folio.content.RTE");
 dojo.require("dijit.layout._LayoutWidget");
+dojo.require("dojox.image.LightboxNano");
 
 /**
  * 
@@ -101,8 +102,12 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 				this.showing = false;
 			}
 		} else {
-				this.showing = false;
-			if (folio.data.isWebContent(entry)) {
+            this.showing = false;
+            var imgs = folio.data.getImages(entry);
+            if (imgs.length > 0) {
+                this._showImage(imgs[0].full || imgs[0].thumb);
+                this.showing = true;
+            } else if (folio.data.isWebContent(entry)) {
 				var mimetype = entry.getMimeType();
 				if (mimetype && mimetype.indexOf("image") === 0 && this.imgInline) {
 					this._showImage(entry.getResourceUri());
@@ -188,14 +193,20 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 		this.showing = true;
 		this.doResize = true;
 		var img = new Image();
-		this.contentNode = dojo.create("div", null, this.domNode);
+		this.contentNode = dojo.create("div", {"innerHTML": "Loading image..."}, this.domNode);
 		dojo.disconnect(this.imgConnect);
 		this.imgConnect = dojo.connect(img, "onload", this, function() {
-			dojo.place(img, this.contentNode);
+			dojo.attr(this.contentNode, "innerHTML", "");
+            dojo.place(img, this.contentNode);
 			this.origWidth = img.width;
 			this.origHeight = img.height;
 			img.style.width = "100%";
 			img.style.height = "100%";
+            if (this._lightbox) {
+                this._lightbox.destroy();
+                delete this._lightbox;
+            }
+            new dojox.image.LightboxNano({href: url}, img);
 			this.resizeContent();
 		});
 		dojo.attr(img, "src", url);
@@ -223,16 +234,16 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	},
 	_contentImage: function(entry, service) {
 		this.showing = true;
-		var url = entry.getResourceUri();
-		if (url && url != "" && service) {
-			service.getParameters(url,
-				dojo.hitch(this, function(param) {
-					if(param) {
-						this._showImage(param.url);
-					}
-				})
-			);
-		}
+        var url = entry.getResourceUri();
+        if (url && url != "" && service) {
+            service.getParameters(url,
+                dojo.hitch(this, function(param) {
+                    if(param) {
+                        this._showImage(param.url);
+                    }
+                })
+            );
+        }
 	},
 	_contentFlash: function(entry, service) {
 		this.showing = true;

@@ -19,6 +19,9 @@
 
 define({
 	root : {
+        "done": "Done",
+        "choose": "Choose",
+        "cancel": "Cancel",
         "save": "Save",
         "saveInProgress": "Saving...",
 		// Used when no value is found, for example in the metadata.

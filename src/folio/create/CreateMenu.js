@@ -38,13 +38,16 @@ define([
                 this.hide();
                 operations.createFolder(this.list.list, lang.hitch(this.list, this.list.focusAndRename));
             }));
+            var onDone = lang.hitch(this.list, this.list.listenForKeyEvents);
             query(".link", this.moveMeToTop).on("click", lang.hitch(this, function() {
                 this.hide();
-                application.publish("showCreateWizard", {type: "linkto", entry: this.list.list});
+                this.list.stopListenForKeyEvents();
+                application.publish("showCreateWizard", {type: "linkto", entry: this.list.list, onFinish: onDone, onCancel: onDone});
             }));
             query(".upload", this.moveMeToTop).on("click", lang.hitch(this, function() {
                 this.hide();
-                application.publish("showCreateWizard", {type: "upload", entry: this.list.list});
+                this.list.stopListenForKeyEvents();
+                application.publish("showCreateWizard", {type: "upload", entry: this.list.list, onFinish: onDone, onCancel: onDone});
             }));
         },
         initState: function() {

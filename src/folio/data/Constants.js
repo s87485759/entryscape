@@ -21,6 +21,7 @@ dojo.provide("folio.data.Constants");
 
 folio.data.SCAMBaseUri = "http://scam.sf.net/schema#";
 folio.data.RDFBaseUri = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+folio.data.RDFSBaseUri = "http://www.w3.org/2000/01/rdf-schema#";
 folio.data.DCBaseUri = "http://purl.org/dc/elements/1.1/";
 folio.data.DCTermsBaseUri = "http://purl.org/dc/terms/";
 folio.data.FOAFBaseUri = "http://xmlns.com/foaf/0.1/";
@@ -29,6 +30,12 @@ folio.data.RDFSchema = {
 	TYPE: folio.data.RDFBaseUri+"type",
 	VALUE: folio.data.RDFBaseUri+"value"
 };
+
+folio.data.RDFSSchema = {
+    SEEALSO: folio.data.RDFSBaseUri+"seeAlso",
+    LABEL: folio.data.RDFSBaseUri+"label"
+};
+
 
 folio.data.SCAMSchema = {
 	RESOURCE: folio.data.SCAMBaseUri+"resource",

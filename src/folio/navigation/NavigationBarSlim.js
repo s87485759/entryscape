@@ -22,6 +22,8 @@ dojo.provide("folio.navigation.NavigationBarSlim");
 dojo.require("folio.navigation.NavigationBar");
 dojo.require("dojo.fx");
 dojo.require("dojo.fx.easing");
+dojo.require("dojox.widget.Toaster");
+
 
 /**
  * Same as NavigationBar, but with a smaller design.

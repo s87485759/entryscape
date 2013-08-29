@@ -1,0 +1,21 @@
+<div style="overflow: hidden" class="confolio search">
+    <div class="searchTop distinctBackground" data-dojo-attach-point="_searchBar">
+        <div dojoType="dijit.form.TextBox" dojoAttachPoint="searchBoxDijit"></div>
+        <span data-dojo-attach-point="searchButtonNode" class="icon24 search" data-dojo-attach-event="click:_searchFormChanged"></span>
+    </div>
+    <div class="searchOutline distinctBackground">
+        <div data-dojo-attach-point="_searchTypeBlock" class="searchTypeBlock">
+            <div data-dojo-attach-point="_searchTypeChooser" class="searchChooser"></div>
+            <div data-dojo-attach-point="_searchTypeInfo" class="searchInfo"></div>
+        </div>
+
+        <img data-dojo-attach-point="_searchTypeLogo" class="searchLogo"/>
+        <div dojoAttachPoint="_searchDetailsContainer" class="searchDetailsContainer">
+        </div>
+    </div>
+    <div class="searchCenter">
+        <div style="position:relative;height: 100%">
+            <div dojoAttachPoint="_searchResultsContainer" style="height: 100%"></div>
+        </div>
+    </div>
+</div>

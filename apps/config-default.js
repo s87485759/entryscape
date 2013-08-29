@@ -34,7 +34,7 @@ supportedLanguageMap: {
 					  {"name": "start", "class": "folio/start/Start"},
 					  {"name": "profile", "class": "folio/profile/Profile"},
 					  {"name": "settings", "class": "folio/settings/Settings"},
-					  {"name": "search", "class": "folio/apps/Search"},
+					  {"name": "search", "class": "folio/search/Search"},
 					  {"name": "about", "class": "folio/apps/About"},
 					  {"name": "signup", "class": "folio/apps/Signup"},
 					  {"name": "help", "class": "folio/apps/Help", "constructorParams": {"initialHelpPage": "intro"}}]

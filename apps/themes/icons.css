@@ -44,6 +44,10 @@
 	background-image: url(icons/dkit/16x16/search.png);
 }
 
+.entryScape .search.icon24 {
+    background-image: url(icons/dkit/24x24/search.png);
+}
+
 .entryScape .home.icon {
 	background-image: url(icons/dkit/16x16/home.png);
 }

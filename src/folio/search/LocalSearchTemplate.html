@@ -1,11 +1,6 @@
-<div class="searchDetails">
-	<div class="roundBody">
-		<div style="display: none" class="group thinBorder">
-			<div class="groupHeader"><span dojoAttachPoint="searchAgainstLabelNode"></span>:</div>
-		</div>
-	</div>
+<div class="searchDetails" style="margin-top:-2.2em">
 
-	<div class="groupHeader"><span dojoAttachPoint="searchInLabelNode"></span>:</div>
+	<div class="groupHeader distinctBackground"><span dojoAttachPoint="searchInLabelNode"></span>:</div>
 	<div class="group thinBorder">
 			<div dojoType="dijit.form.RadioButton" id="${id}_all" dojoAttachPoint="allPortfoliosDijit" name="${id}_inPortfolio" dojoAttachEvent="onChange:_searchFormChangedRadio" checked="true"></div>
 			<label for="${id}_all" dojoAttachPoint="allPortfoliosLabelNode"></label><br>
@@ -18,7 +13,7 @@
 			style="width: 10em;font-size: smaller;vertical-align: middle;" autocomplete="true" dojoAttachPoint="specficPortfolioChangerDijit" id="${id}_portfolioChanger"></select><br>
 	</div>
 	<div>
-		<div class="groupHeader"><span dojoAttachPoint="includeLTLabelNode"></span>:</div>
+		<div class="groupHeader distinctBackground"><span dojoAttachPoint="includeLTLabelNode"></span>:</div>
 		<div class="group thinBorder">
 			<span dojoType="dijit.form.CheckBox" id="${id}_lt_local" dojoAttachPoint="includeLTLocalDijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
 			<label for="${id}_lt_local" dojoAttachPoint="includeLTLocalLabelNode"></label><br>
@@ -30,7 +25,7 @@
 			<label for="${id}_lt_linkreference" dojoAttachPoint="includeLTLinkReferenceLabelNode"></label><br>
 		</div>
 		
-		<div class="groupHeader"><span dojoAttachPoint="includeBTLabelNode"></span>:</div>
+		<div class="groupHeader distinctBackground"><span dojoAttachPoint="includeBTLabelNode"></span>:</div>
 		<div class="group thinBorder">
 			<span dojoType="dijit.form.CheckBox" id="${id}_bt_context" dojoAttachPoint="includeBTContextDijit" dojoAttachEvent="onChange:onChange" checked="true"></span>
 			<label for="${id}_bt_context" dojoAttachPoint="includeBTContextLabelNode"></label><br>
@@ -47,7 +42,7 @@
 		</div>
 	</div>
 	
-	<div class="groupHeader"><span dojoAttachPoint="sortByLabelNode"></span>:</div>
+	<div class="groupHeader distinctBackground"><span dojoAttachPoint="sortByLabelNode"></span>:</div>
 	<div class="group thinBorder">
 			<label for="${id}_sortChanger" dojoAttachPoint="sortChangerLabelNode"></label>:&nbsp;
 			<select dojoType="dijit.form.FilteringSelect" searchAttr="label"

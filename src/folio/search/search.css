@@ -1,0 +1,134 @@
+.confolio.search {
+    position: relative;
+}
+
+.confolio.search .searchTop {
+    position: absolute;
+    top: 18px;
+    left: 290px;
+    right: 0px;
+    padding: 6px 16px 6px 25px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.confolio.search .searchOutline {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 0px;
+    width: 300px;
+    padding: 6px 0px 20px 0px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.confolio.search .searchCenter {
+    position: absolute;
+    top: 70px;
+    bottom: 10px;
+    left: 310px;
+    right: 0px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    overflow-y: auto;
+}
+
+.confolio.search .searchTop .dijitTextBox {
+    width: 20em;
+}
+
+.confolio.search .searchTop .icon24 {
+    vertical-align: middle;
+}
+
+.confolio.search .searchOutline .searchTypeBlock {
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px;
+    width: 140px;
+}
+.confolio.search .searchOutline .searchChooser {
+    font-size: 16px;
+}
+
+.confolio.search .searchOutline .searchChooser>* {
+    width: 100%;
+}
+.confolio.search .searchOutline .searchInfo {
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.confolio.search .searchOutline .searchLogo {
+    width: 110px;
+    margin-left: 10px;
+}
+
+.confolio.search .searchOutline .searchDetailsContainer {
+    position:absolute;
+    bottom: 0.3em;
+    left: 2em;
+    right: 2em;
+    top: 140px;
+    overflow-y: auto;
+}
+
+/*------Old stuff---------*/
+
+.confolio.search .searchForm {
+    width: 35%;
+}
+
+/*-------SimpleSearchList--------*/
+.resultView {
+    padding-right: 10px;
+}
+.resultView .contentRow {
+    margin-bottom: 4px;
+    border-bottom-style: solid;
+    min-height: 60px;
+}
+.resultView .contentRow .icon.info,
+.resultView .contentRow .icon.bookmark {
+    float: right;
+}
+.resultView .contentRow a {
+    font-weight: bold;
+}
+
+.resultView .contentRow .modified {
+    float: right;
+}
+.resultView .contentRow .description {
+    margin: 0px;
+    padding: 0px;
+}
+.resultView .contentRow .iconCls {
+    float: left;
+}
+.resultView .contentRow .iconCls>img,
+.resultView .contentRow .iconCls {
+    padding-right: 5px;
+    max-width: 70px;
+    max-height: 55px;
+}
+
+.resultCounter {
+    float:right;
+}
+
+/*---------ChoiceSearch--------------*/
+.choiceSearch .choiceInfo {
+}
+.choiceSearch .choiceValue {
+    display:inline-block;
+    padding: 3px 8px;
+    border: 1px solid #d3d3d3;
+    margin: 0px 10px;
+}

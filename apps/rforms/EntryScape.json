@@ -14,7 +14,8 @@
               {"id": "dcterms:title", "cardinality": {"pref": 1}},
               {"extends": "dcterms:description", "styles": ["multiline"], "cardinality": {"pref": 1}},
               {"id": "entryscape:rights"},
-              {"id": "entryscape:creator"}
+              {"id": "entryscape:creator"},
+              {"id": "entryscape:relation"}
           ]
       }, {
           "id": "entryscape:foaf-group",
@@ -175,6 +176,19 @@
           },
           "description": {
               "en": "The creator of the linked/uploaded resource, simply provide a name."
+          }
+      },
+      {
+          "id": "entryscape:relation",
+          "type": "choice",
+          "cardinality": {"pref": 1},
+          "nodetype": "URI",
+          "property": "http://purl.org/dc/elements/1.1/relation",
+          "label": {
+              "en": "Relation"
+          },
+          "description": {
+              "en": "A related resource, can be of any type."
           }
       }
   ]

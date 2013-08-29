@@ -100,6 +100,9 @@ dojo.declare("folio.data.Entry", null, {
 	possibleToAdmin: function() {
 		return this.adminRights;
 	},
+    /**
+     * @returns {rdfjson.Graph}
+     */
 	getLocalMetadata: function() {
 		return this.localMetadata ? this.localMetadata :
 		 new rdfjson.Graph();
@@ -143,6 +146,10 @@ dojo.declare("folio.data.Entry", null, {
 	getRepresentationType: function() { //Returnes the buildtinType as a string from the entry info
 		return this.repType;
 	},
+    setRepresentationType: function(rept) {
+        this.repType = rept;
+        //TODO does not update the entryinfo.
+    },
 	getMimeType: function() {
 		return folio.data.getFirstFromMDThenInfo(this, folio.data.DCTermsSchema.FORMAT);
 	},

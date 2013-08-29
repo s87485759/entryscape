@@ -172,7 +172,7 @@ define([
 			var xhrArgs = {
 				headers: headers
 			};
-			if (args.metadata || args.info || args.resource || args.cachedExternalMetadata) {
+			if (args.metadata || args.info || args.resource || args.cachedExternalMetadata || args.informationResource === false) {
 				var postData = {};
 				if (args.metadata) {
 					postData.metadata = args.metadata;
@@ -186,6 +186,9 @@ define([
 				if (args.cachedExternalMetadata) {
 					postData["cached-external-metadata"] = args.cachedExternalMetadata;
 				}
+                if (args.informationResource === false) {
+                    postData["informationResource"] =  "false";
+                }
 				xhrArgs.data = json.stringify(postData);
 			}
 	

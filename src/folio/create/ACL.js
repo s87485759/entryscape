@@ -37,7 +37,7 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 	templatePath: dojo.moduleUrl("folio", "create/ACLTemplate.html"),	
 	advanced: false,
 	open: false,
-	autoHeight: 6,
+	autoHeight: 10,
 	constructor: function(args) {
 		dojo.requireLocalization("folio", "acl");
 		this.resourceBundle = dojo.i18n.getLocalization("folio", "acl");
@@ -105,7 +105,7 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 			var list = folio.data.getACLList(entry);
 			if (list.length > 0) {
 				this._markUsedPrincipalsInContacts(list);
-				//this.aclGrid.setStore(this.aclEntryStore);
+				this.aclGrid.setStore(this.aclEntryStore);
 
 				//Init the context ACL store as well, just if we decide to switch back to defaults.
 				this.context.getOwnEntry(dojo.hitch(this, function(entry) {
@@ -120,7 +120,8 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 					
 					this._loadLabels(this.aclContextStore, dojo.hitch(this, this._initOwnerNote, list));
 					this._loadLabels(this.aclEntryStore, dojo.hitch(this, function() {
-//						this.aclGrid.setStore(this.aclEntryStore);						
+//						this.aclGrid.setStore(this.aclEntryStore);
+                        this.aclGrid.resize();
 					}));
 				}));
 			} else {
@@ -149,6 +150,7 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 			this._loadLabels(this.aclEntryStore);
 			this._loadLabels(this.aclContextStore, dojo.hitch(this, this._initOwnerNote, list));
 			this.aclGrid.setStore(this.aclContextStore);
+            setTimeout(dojo.hitch(this.aclGrid, this.aclGrid.update),1);
 		}));
 	},
 	_initOwnerNote: function(list, items) {
@@ -286,12 +288,13 @@ dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated],
 				onItem: dojo.hitch(this, function(item) {
 					if (item != undefined) {
 						this.principalStore.setValue(item, "present", true);
-		    		    this.principalStore.save();						
+		    		    this.principalStore.save();
 					}
 			})});
 		}
 	},
 	resize: function(size) {
+        this.titlePaneDijit.resize();
 		this.aclGrid.resize();
 	},
 	toggleOverride: function() {

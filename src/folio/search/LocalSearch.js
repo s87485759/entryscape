@@ -36,7 +36,6 @@ dojo.declare("folio.search.LocalSearch", [dijit._Widget, dijit._Templated], {
 			allPortfoliosLabel: {node: "allPortfoliosLabelNode", type: "innerHTML"},
 			myPortfolioLabel: {node: "myPortfolioLabelNode", type: "innerHTML"},
 			specificPortfolioLabel: {node: "specificPortfolioLabelNode", type: "innerHTML"},
-	        searchAgainstLabel: {node: "searchAgainstLabelNode", type: "innerHTML"},
  	        searchInLabel: {node: "searchInLabelNode", type: "innerHTML"},
 	        includeLTLabel: {node: "includeLTLabelNode", type: "innerHTML"},
 	        includeBTLabel: {node: "includeBTLabelNode", type: "innerHTML"},

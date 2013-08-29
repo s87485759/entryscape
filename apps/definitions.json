@@ -143,7 +143,7 @@
   },
   "rformItems": [
 	  {"url": "rforms/EntryScape.json", "type": "sirff"},
-      {"url": "rforms/ksamsok.json", "type": "sirff"},
+      {"url": "rforms/SOCH.json", "type": "sirff"},
 	  {"url": "rforms/dcterms.json", "type": "sirff"},
 	  {"url": "rforms/foaf.json", "type": "sirff"},
 	  {"url": "rforms/Review.json", "type": "sirff"}

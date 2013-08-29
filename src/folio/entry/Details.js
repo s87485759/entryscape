@@ -358,3 +358,39 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		}
 	}
 });
+
+
+folio.entry.Details.show = function(node, entry) {
+    var bb = __confolio.application.getBoundingBox();
+    var width = Math.floor((bb.w < 600 ? bb.w: 600 ) * 0.70),
+        height = Math.floor((bb.h < 700 ? bb.h: 700) * 0.70);
+    folio.util.launchToolKitDialog(node, function(innerNode, onReady) {
+        dojo.style(innerNode, {
+            width: width+"px",
+            height: height +"px",
+            overflow: "auto",
+            position: "relative"    // workaround IE bug moving scrollbar or dragging dialog
+        });
+
+        dojo.addClass(innerNode, "confolio");
+        dojo.addClass(innerNode, "mainPanel");
+        var details = new folio.entry.Details({
+            application: __confolio.application,
+            style: {"width": "100%", "height": "100%"},
+            doFade: false
+        }, dojo.create("div", {}, innerNode));
+        details.startup();
+        if (folio.data.isListLike(entry)) {
+            details._parentListUrl = entry.getUri();
+        } else 	if (folio.data.isContext(entry)) {
+            details._parentListUrl = entry.getContext().getBaseURI()+entry.getId() +"/entry/_systemEntries";
+        }
+        details.editContentButtonDijit.set("label", "Edit");
+        details.update(entry);
+        details.contentViewDijit.show(entry);
+        //Make sure that someDijit is finished rendering, or at least has some realistic size before making the following calls.
+        dijit.focus(details.domNode);
+        onReady();
+        details.resize();
+    }, {x: bb.x+bb.w-75, y: 100, noArrow: true});
+};

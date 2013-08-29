@@ -4,6 +4,7 @@
 @import "../../../lib/dojo-src/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
 @import "../../../lib/dojo-src/dojox/layout/resources/ExpandoPane.css"; 
 @import "../../../lib/dojo-src/dojox/form/resources/BusyButton.css";
+@import "../../../lib/dojo-src/dojox/form/resources/RangeSlider.css";
 @import "../../../lib/dojo-src/dojox/grid/resources/claroGrid.css";
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Save.css";
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Preview.css";
@@ -24,6 +25,7 @@
 @import "../start/start.css";
 @import "../settings/settings.css";
 @import "../entry/details.css";
+@import "../search/search.css";
 
 
 html, body {
@@ -416,35 +418,6 @@ a:hover, .link:hover {
 .start .includes label {
 	margin-right: 0.3em;
 }
-
-/*-------SimpleSearchList--------*/
-.confolio .simpleSearchList .contentRow {
-	margin-bottom: 4px;
-	border-bottom-style: solid;
-	min-height: 2em;
-}
-
-.confolio .simpleSearchList .contentRow a {
-	font-weight: bold;
-}
-
-.confolio .simpleSearchList .contentRow .modified {
-	float: right;
-}
-.confolio .simpleSearchList .contentRow .description {
-	margin: 0px;
-	padding: 0px;
-}
-.confolio .simpleSearchList .contentRow .iconCls {
-	float: left;
-	width: 18px;
-	height: 18px;
-	padding-right: 5px;
-}
-.confolio .resultCounter {
-	float:right;
-}
-
 /*------Login dialog-----------------------*/
 .loginDialog {
 	position: relative;
@@ -488,15 +461,6 @@ a:hover, .link:hover {
 	padding-right: 2em;
 }
 
-/*---------Search View------------------------------*/
-.confolio.search .searchForm {
-	width: 35%;
-}
-
-.confolio.search .searchLogo {
-	margin-top: 2em;
-	margin-left: 1em;
-}
 
 /*------IconTitleRow, used in start, userProfile and groupProfile-------------*/
 .confolio .iconTitleRow {
@@ -561,7 +525,6 @@ a:hover, .link:hover {
 	z-index: 100;
 	top: +1.9em;
 	left: 0.5em;
-	background: white;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	margin-left: 0.5em;

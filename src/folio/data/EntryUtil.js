@@ -111,6 +111,37 @@ folio.data.getLabel = function(entry) {
 	return folio.data.getPlainLabel(entry);
 }
 
+folio.data.getSeeAlso = function(entry) {
+    var sa = entry.getLocalMetadata().findFirstValue(entry.getResourceUri(), folio.data.RDFSSchema.SEEALSO);
+    if (sa == null && entry.getExternalMetadata() != null) {
+        sa = entry.getExternalMetadata().findFirstValue(entry.getResourceUri(), folio.data.RDFSSchema.SEEALSO);
+    }
+    return sa;
+};
+
+folio.data.getImages = function(entry) {
+    var sns = "http://schema.org/";
+    var resourceUri = entry.getResourceUri();
+    var f = function(graph) {
+        if (graph == null) {
+            return [];
+        }
+        var imgs = dojo.map(graph.find(resourceUri, sns+"image"), function(stmt) {
+            return {thumb: graph.findFirstValue(stmt.getValue(), sns+"thumbnail"),
+                full: graph.findFirstValue(stmt.getValue(), sns+"contentUrl")};
+        });
+        imgs = dojo.filter(imgs, function(img) {
+            return img.thumb != null || img.full != null;
+        });
+        return imgs;
+    };
+    var images = f(entry.getLocalMetadata());
+    if (images.length > 0) {
+        return images;
+    }
+    return f(entry.getExternalMetadata());
+};
+
 folio.data.getLabelRForms = function(config, itemStore, entry, createIfMissing) {
 	var mp = config.getMPForLocalMD(entry);
 	if (!mp || !mp.label) {

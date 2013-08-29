@@ -18,7 +18,7 @@
  */
 
 dojo.provide("folio.editor.RFormsEditorPlain");
-dojo.require("folio.editor.EntryChooser");
+dojo.require("folio.search.ChoiceSearch");
 dojo.require("dijit._Widget");
 dojo.require("rforms.model.Engine");
 dojo.require("rforms.view.Editor");
