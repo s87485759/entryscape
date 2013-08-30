@@ -134,8 +134,13 @@ dojo.declare("folio.admin.FolderSelect", [dijit._Widget, dijit._Templated, folio
 			this._recursiveBuildFolders(this.topFolder);
 		}
 	},
-	_recursiveBuildFolders: function(/*Entry*/list) {
-		if (list.getBuiltinType() == folio.data.BuiltinType.LIST && !this.folders[list.getUri()]) {
+	_recursiveBuildFolders: function(/*Entry*/list, ignore) {
+        ignore = ignore || {};
+        if (ignore[list.getId()]) {
+            return;
+        }
+        if (list.getBuiltinType() == folio.data.BuiltinType.LIST && !this.folders[list.getUri()]) {
+			ignore[list.getId()] = true;
 			// Check if the first character not is an underscore, or if it is _top or _all
 			if (/^[^_]/.test(list.getId()) || /top/.test(list.getId()) || (this.displayAll && /_all/.test(list.getId()))) {
 				// add the list to the filteringselect
@@ -149,7 +154,7 @@ dojo.declare("folio.admin.FolderSelect", [dijit._Widget, dijit._Templated, folio
 			// Load all the children of the list
 			folio.data.getAllChildren(list, dojo.hitch(this, function(children) {
 				dojo.forEach(children, dojo.hitch(this, function(child) {
-					this._recursiveBuildFolders(child);
+					this._recursiveBuildFolders(child, ignore);
 				}));
 			}));
 		}
