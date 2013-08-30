@@ -3,9 +3,7 @@
  *
  */
 __confolio.addConfig({
-
 "title":	"EntryScape",
-"startContext": "1",
 "username": "Donald",
 "password": "donalddonald",
 "showLogin": "false",
