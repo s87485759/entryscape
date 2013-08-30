@@ -260,7 +260,7 @@ define(["dojo/_base/declare",
                 var prepareDialog = function (newNode, onReady) {
                     var f = function(graph) {
                         entry.externalMetadata = graph;
-                        var pres = new RFormsPresenter({}, construct.create("div", null, newNode));
+                        var pres = new RFormsPresenter({style: {"min-width": "300px", "max-width": "600px", "max-height": "600px"}}, construct.create("div", null, newNode));
                         pres.show(entry, true);
                         //Make sure that someDijit is finished rendering, or at least has some realistic size before making the next call.
                         focusUtil.focus(pres.domNode);
@@ -272,7 +272,6 @@ define(["dojo/_base/declare",
                             url: entry.getExternalMetadataUri(),
                             handleAs: entry._handleExtMdAs || "json",
                             onSuccess: function(data) {
-                                debugger;
                                 f(entry._transformExtMd(data));
                                 delete entry._transformExtMd;
                             }});

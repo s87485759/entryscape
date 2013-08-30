@@ -18,7 +18,7 @@ define([], function() {
         {
             "id": "kulturnav",
             "name": "Kulturnav",
-            "description": "hepp hopp",
+            "description": "KulturNav is a Nordic Terminology Server for Museums and Cultural Heritage Organizations.",
             "detailsClass": "folio/search/providers/Kulturnav",
             "resultsClass": "folio/search/ResultView",
             "logo": "providers/kulturnav.png"

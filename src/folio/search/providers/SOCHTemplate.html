@@ -1,0 +1,71 @@
+<div class="searchDetails">
+
+    <div style="display:table-row">
+        <div style="display:table-cell">
+            <div data-dojo-type="dojox.form.VerticalRangeSlider" data-dojo-attach-event="onChange: _sliderChanged" data-dojo-attach-point="_slider"
+                 data-dojo-props="showButtons:false,value:[0,2000], minimum:0, maximum:2000, discreteValues:101,intermediateChanges:true,showButtons:false"
+                 style="height:400px;" name="verticalSlider">
+                <ol data-dojo-type="dijit/form/VerticalRuleLabels" data-dojo-props="container:'leftDecoration'"
+                    style="width:2.5em;font-size:75%;color:gray;">
+                    <li>0</li>
+                    <li></li>
+                    <li>200</li>
+                    <li></li>
+                    <li>400</li>
+                    <li></li>
+                    <li>600</li>
+                    <li></li>
+                    <li>800</li>
+                    <li></li>
+                    <li>1000</li>
+                    <li></li>
+                    <li>1200</li>
+                    <li></li>
+                    <li>1400</li>
+                    <li></li>
+                    <li>1600</li>
+                    <li></li>
+                    <li>1800</li>
+                    <li></li>
+                    <li>2000</li>
+                </ol>
+                <div data-dojo-type="dijit/form/VerticalRule" data-dojo-props="container:'leftDecoration',count:21"
+                     style="width:5px;"></div>
+                <div data-dojo-type="dijit/form/VerticalRule" data-dojo-props="container:'rightDecoration',count:21"
+                     style="width:5px;"></div>
+                <ol data-dojo-type="dijit/form/VerticalRuleLabels" data-dojo-props="container:'rightDecoration'"
+                    style="width:2em;font-size:75%;color:gray;">
+                    <li></li>
+                    <li>100</li>
+                    <li></li>
+                    <li>300</li>
+                    <li></li>
+                    <li>500</li>
+                    <li></li>
+                    <li>700</li>
+                    <li></li>
+                    <li>900</li>
+                    <li></li>
+                    <li>1100</li>
+                    <li></li>
+                    <li>1300</li>
+                    <li></li>
+                    <li>1500</li>
+                    <li></li>
+                    <li>1700</li>
+                    <li></li>
+                    <li>1900</li>
+                    <li></li>
+                </ol>
+            </div>
+        </div>
+        <div style="display:table-cell;vertical-align: top;padding-left:2em">
+            <div><label title="Ändringar görs i slidern till vänster.">Tidsperiod:</label><br>
+                <span data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="_toTime" style="width:50px;margin-left:10px;" data-dojo-props="disabled:true, value: '-'"></span> till
+                <span data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="_fromTime" style="width:50px" data-dojo-props="disabled:true, value:'-'"></span><br>
+            </div>
+            <br>
+            <label>Typ av objekt:</label> <div data-dojo-attach-point="_itemTypesSelect" style="margin-left:10px;"></div>
+        </div>
+    </div>
+</div>
