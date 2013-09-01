@@ -1,0 +1,141 @@
+{
+  "templates": [
+    {
+      "type": "group",
+      "id": "cidoc-crm:died_in",
+      "nodetype": "RESOURCE",
+      "property": "http://www.cidoc-crm.org/cidoc-crm/P100i_died_in",
+      "label": {
+        "en": "Died in"
+      },
+      "content": [
+        {
+          "id": "dbpedia:deathDate"
+        },
+        {
+          "id": "cidoc-crm:took_place_at"
+        },
+        {
+          "id": "dbont:deathPlace"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "kulturnav:all",
+      "nodetype": "RESOURCE",
+      "content": [
+        {
+          "id": "cidoc-crm:was_born"
+        },
+        {
+          "id": "cidoc-crm:died_in"
+        },
+        {
+          "id": "owl:sameAs"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "cidoc-crm:was_born",
+      "nodetype": "RESOURCE",
+      "content": [
+        {
+          "id": "dbpedia:birthDate"
+        },
+        {
+          "id": "cidoc-crm:took_place_at"
+        },
+        {
+          "id": "dbpedia:birthPlace"
+        }
+      ],
+      "label": {
+        "en": "Was born in"
+      },
+      "property": "http://www.cidoc-crm.org/cidoc-crm/P98i_was_born"
+    },
+    {
+      "type": "group",
+      "id": "cidoc-crm:took_place_at",
+      "nodetype": "RESOURCE",
+      "label": {
+        "en": "Took place at"
+      },
+      "property": "http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at",
+      "styles": [
+        "invisibleGroup"
+      ],
+      "content": [
+        {
+          "id": "dbpedia:location"
+        }
+      ],
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "dbpedia:location",
+      "nodetype": "URI",
+      "property": "http://dbpedia.org/property/location",
+      "label": {
+        "en": "Location"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "text",
+      "id": "dbpedia:deathDate",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://dbpedia.org/property/deathDate",
+      "label": {
+        "en": "Date of death"
+      },
+      "datatype": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://dbpedia.org/property/birthDate",
+      "label": {
+        "en": "Date of birth"
+      },
+      "datatype": "http://www.w3.org/2001/XMLSchema#date",
+      "id": "dbpedia:birthDate"
+    },
+    {
+      "type": "choice",
+      "id": "owl:sameAs",
+      "nodetype": "URI",
+      "property": "http://www.w3.org/2002/07/owl#sameAs",
+      "label": {
+        "en": "Same as"
+      }
+    },
+    {
+      "type": "text",
+      "id": "dbpedia:birthPlace",
+      "nodetype": "PLAIN_LITERAL",
+      "property": "http://dbpedia.org/property/birthPlace",
+      "label": {
+        "en": "Place of birth"
+      }
+    },
+    {
+      "type": "text",
+      "id": "dbont:deathPlace",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://dbpedia.org/ontology/deathPlace",
+      "label": {
+        "en": "Place of death"
+      }
+    }
+  ]
+}

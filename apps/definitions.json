@@ -145,6 +145,8 @@
 	  {"url": "rforms/EntryScape.json", "type": "sirff"},
       {"url": "rforms/SOCH.json", "type": "sirff"},
 	  {"url": "rforms/dcterms.json", "type": "sirff"},
+      {"url": "rforms/dc.json", "type": "sirff"},
+      {"url": "rforms/kulturnav.json", "type": "sirff"},
 	  {"url": "rforms/foaf.json", "type": "sirff"},
 	  {"url": "rforms/Review.json", "type": "sirff"}
   ]
