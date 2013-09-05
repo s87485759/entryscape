@@ -31,6 +31,6 @@ define({
 		"language" : "Language:",
 		"warning" : "Warning: ",
 		"warningText" : "Your browser has not been tested with this version of EntryScape. While EntryScape will probably work, there may be some issues. The following browsers have been tested:",
-		"andHigher" : "%s and higher",
+		"andHigher" : "%s and higher"
 	}
 });
