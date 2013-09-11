@@ -53,8 +53,9 @@
           ]
       }, {
           "id": "entryscape:dcterms-rights",
-          "label": {
-              "de": "Ressource gemäß Creative Commons zu verwenden",
+          "label": { "en": "Creative Commons" },
+          "description": {
+              "de": "Ressource ist lizenziert gemäß Creative Commons",
               "sl": "Dovoljenje na področju vira (glede na Creative Commons)",
               "ro": "Licenta care se aplica resursei (in conformitate cu drepturile de autor \"Creative Commons\")",
               "el": "Περιγραφή Πνευματικών Δικαιωμάτων",
@@ -67,7 +68,6 @@
               "et": "Allikaga seotud litsents (Creative Commonsi tingimustest lähtuvalt)",
               "es": "Licencia aplicada al recurso (de acuerdo con Creative Commons)"
           },
-          "description": {"en": "Possible values:\n1) Are commercial uses of this resource allowed? (Yes/No)\n    Are modifications of this resource by other people allowed? (Yes/No)\n2) Free-text description of the rights\n\n\nDescription of restrictions and copyrights that may refer to the use of this resource"},
           "type": "choice",
           "cardinality": {"pref": 1, "max": 1},
           "nodetype": "URI",
@@ -76,7 +76,8 @@
           "choices": [
               {
                   "value": "http://creativecommons.org/licenses/by/3.0/",
-                  "label": {
+                  "label": { "en": "Attribution (CC BY 3.0)" },
+                  "description": {
                       "de": "Der Urheber gestattet die Ressource für kommerzielle Zwecke zu nutzen und Änderungen vorzunehmen",
                       "sl": "Lastnik DOVOLJUJE komercialno rabo in spreminjanje vira.",
                       "ro": "Autorul PERMITE utilizarea in scop comercial SI modificari asupra resursei",
@@ -93,7 +94,8 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nd/3.0/",
-                  "label": {
+                  "label": { "en": "Attribution, No Derivative Works (CC BY-ND 3.0)" },
+                  "description": {
                       "de": "Der Urheber gestattet, die Ressource für kommerzielle Zwecke zu nutzen, es dürfen jedoch keine Änderungen vorgenommen werden",
                       "sl": "Lastnik DOVOLJUJE komercialno rabo toda NE dovoli spreminjanja vira.",
                       "ro": "Autorul PERMITE utilizarea in scop comercial dar nu permite modificari asupra resursei",
@@ -110,7 +112,8 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nc/3.0/",
-                  "label": {
+                  "label": { "en": "Attribution, Non-Commercial (CC BY-NC 3.0)" },
+                  "description": {
                       "de": "Der Urheber gestattet keine kommerzielle Nutzung, erlaubt aber Änderungen an der Ressource",
                       "sl": "Lastnik NE dovoljuje komercialne rabe toda DOVOLJUJE spreminjanje vira.",
                       "ro": "Autorul NU permite utilizarea in scop comercial dar PERMITE modificari asupra resursei",
@@ -127,7 +130,8 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
-                  "label": {
+                  "label": { "en": "Attribution, Non-Commercial, No Derivative Works (CC BY-NC-ND 3.0)" },
+                  "description": {
                       "de": "Der Urheber gestattet die nicht-kommerzielle Nutzung oder Änderungen an der Ressourcen",
                       "sl": "Lastnik NE dovoljuje komercialne rabe ALI spreminjanja virov.",
                       "ro": "Autorul NU permite nici utilizarea in scop comercial nici modificari asupra resursei",
@@ -141,6 +145,18 @@
                       "et": "Omanik EI LUBA kasutada allikat kommertslikel eesmärkidel EGA luba muuta allika sisu",
                       "es": "El propieatrio NO permite uso comercial ni cambios en el recurso"
                   }
+              },
+			  {
+                  "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+                  "label": { "en": "Attribution, Share Alike (CC BY-SA 3.0)" }
+              },
+			  {
+                  "value": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
+                  "label": { "en": "Attribution, Non-Commercial, Share Alike (CC BY-NC-SA 3.0)" }
+              },
+			  {
+                  "value": "http://creativecommons.org/publicdomain/zero/1.0/",
+                  "label": { "en": "Public Domain Dedication, No Copyright (CC0 1.0)" }
               }
           ]
       }, {
