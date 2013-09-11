@@ -76,7 +76,7 @@
           "choices": [
               {
                   "value": "http://creativecommons.org/licenses/by/3.0/",
-                  "label": { "en": "Attribution (CC BY 3.0)" },
+                  "label": { "en": "CC BY 3.0 (Attribution)" },
                   "description": {
                       "de": "Der Urheber gestattet die Ressource für kommerzielle Zwecke zu nutzen und Änderungen vorzunehmen",
                       "sl": "Lastnik DOVOLJUJE komercialno rabo in spreminjanje vira.",
@@ -94,7 +94,7 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nd/3.0/",
-                  "label": { "en": "Attribution, No Derivative Works (CC BY-ND 3.0)" },
+                  "label": { "en": "CC BY-ND 3.0 (Attribution, No Derivative Works)" },
                   "description": {
                       "de": "Der Urheber gestattet, die Ressource für kommerzielle Zwecke zu nutzen, es dürfen jedoch keine Änderungen vorgenommen werden",
                       "sl": "Lastnik DOVOLJUJE komercialno rabo toda NE dovoli spreminjanja vira.",
@@ -112,7 +112,7 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nc/3.0/",
-                  "label": { "en": "Attribution, Non-Commercial (CC BY-NC 3.0)" },
+                  "label": { "en": "CC BY-NC 3.0 (Attribution, Non-Commercial)" },
                   "description": {
                       "de": "Der Urheber gestattet keine kommerzielle Nutzung, erlaubt aber Änderungen an der Ressource",
                       "sl": "Lastnik NE dovoljuje komercialne rabe toda DOVOLJUJE spreminjanje vira.",
@@ -130,7 +130,7 @@
               },
               {
                   "value": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
-                  "label": { "en": "Attribution, Non-Commercial, No Derivative Works (CC BY-NC-ND 3.0)" },
+                  "label": { "en": "CC BY-NC-ND 3.0 (Attribution, Non-Commercial, No Derivative Works)" },
                   "description": {
                       "de": "Der Urheber gestattet die nicht-kommerzielle Nutzung oder Änderungen an der Ressourcen",
                       "sl": "Lastnik NE dovoljuje komercialne rabe ALI spreminjanja virov.",
@@ -148,22 +148,22 @@
               },
 			  {
                   "value": "http://creativecommons.org/licenses/by-sa/3.0/",
-                  "label": { "en": "Attribution, Share Alike (CC BY-SA 3.0)" }
+                  "label": { "en": "CC BY-SA 3.0 (Attribution, Share Alike)" }
               },
 			  {
                   "value": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
-                  "label": { "en": "Attribution, Non-Commercial, Share Alike (CC BY-NC-SA 3.0)" }
+                  "label": { "en": "CC BY-NC-SA 3.0 (Attribution, Non-Commercial, Share Alike)" }
               },
 			  {
                   "value": "http://creativecommons.org/publicdomain/zero/1.0/",
-                  "label": { "en": "Public Domain Dedication, No Copyright (CC0 1.0)" }
+                  "label": { "en": "CC0 1.0 (Public Domain Dedication, No Copyright)" }
               }
           ]
       }, {
           "id": "entryscape:dc-rights",
           "property": "http://purl.org/dc/elements/1.1/rights",
           "label": {
-              "de": "im Worten (wenn keine der oben genannten Beschreibungen passt)",
+              "de": "in Worten (wenn keine der oben genannten Beschreibungen passt)",
               "sl": "V besedilu (če nič od naštetega ne ustreza)",
               "ro": "In text (daca nici unul dintre cuvintele de mai sus nu se potrivesc)",
               "el": "Ελεύθερη περιγραφή Πνευματικών Δικαιωμάτων (αν τα παραπάνω δεν ταιριάζουν)",
