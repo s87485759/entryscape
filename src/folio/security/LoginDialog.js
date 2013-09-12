@@ -192,6 +192,7 @@ dojo.declare("folio.security.LoginDialog", null, {
 		w.userLabel.domNode.innerHTML = b.user;
 		w.passwordLabel.domNode.innerHTML = b.password;
 		w.loginButton.set("label", b.logIn);
+        w.staySignedInLabelNode.innerHTML = b.staySignedInLabel;
 		if (this.status) {
 			w.loginStatus.set("content", this.resourceBundle[this.status]);
 		}
@@ -239,20 +240,17 @@ dojo.declare("folio.security.LoginDialog", null, {
 	},
 
 	setSimpleCookieAuth: function(userName, password) {
-		var path = __confolio.config["scamPath"] || "scam";
-		path = "/"+path+"/";
-//		var path = "/scam/"; // Assume that SCAM is always at /scam/ (possibly a bug!)
+		var params = {
+            path: "/" //"/"+(__confolio.config["scamPath"] || "scam")+"/"
+        };
 		if (userName !== "_guest") {
-			dojo.cookie("scamSimpleLogin", userName + ":" + password,
-				{ /* session cookie (dojo bug: leave this out rather than setting to 0 or cookie
-				     will expire immediately contrary to documentation): expires: 0,*/
-				 path: path
-				});
+            if (this.widget.staySignedIn.get("checked")) {
+                params.expires = 14;
+            }
+			dojo.cookie("scamSimpleLogin", userName + ":" + password, params);
 		} else {
-			dojo.cookie("scamSimpleLogin", null,
-				{ /* delete the cookie: */ expires: -1,
-				  path: path
-				});
+            params.expires = -1;
+			dojo.cookie("scamSimpleLogin", null, params);
 		}
 	},
 	doLoginViaCookie: function() {

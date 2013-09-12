@@ -17,20 +17,21 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-{
-  "title": "${app} Inloggning",
-  "user": "Användare:",
-  "password": "Lösenord:",
-  "logIn": "Logga in",
-  "loggingIn": "Loggar in&hellip;",
-  "loggingOut": "Loggar ut&hellip;",
-  "loggedOut": "Du är nu utloggad.",
-  "invalidLogin": "Ogiltigt användarnamn eller lösenord.",
-  "language": "Språk:",
-  "warning": "Varning: ",
-  "warningText": "Din webbläsare har inte testats med denna version av Confolio. Även om Confolio troligtvis kommer att fungera kan det finnas brister. Testade webbläsare:",
-  "andHigher": "%s och högre",
-  "guestPrelink": "För gäståtkomst, ",
-  "guestLink": "stäng",
-  "guestPostlink": "&nbsp;denna inloggningsdialog."
-}
+define({
+    "title": "${app} Inloggning",
+    "user": "Användare:",
+    "password": "Lösenord:",
+    "logIn": "Logga in",
+    "loggingIn": "Loggar in&hellip;",
+    "loggingOut": "Loggar ut&hellip;",
+    "loggedOut": "Du är nu utloggad.",
+    "invalidLogin": "Ogiltigt användarnamn eller lösenord.",
+    "language": "Språk:",
+    "warning": "Varning: ",
+    "warningText": "Din webbläsare har inte testats med denna version av Confolio. Även om Confolio troligtvis kommer att fungera kan det finnas brister. Testade webbläsare:",
+    "andHigher": "%s och högre",
+    "guestPrelink": "För gäståtkomst, ",
+    "guestLink": "stäng",
+    "guestPostlink": "&nbsp;denna inloggningsdialog.",
+    "staySignedInLabel": "fortsätt vara inloggad"
+})

@@ -155,10 +155,10 @@ __confolio.start = function(loadIndicatorId, splashId){
 	
 	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, Application, ViewMap, LoginDialog, Dialog, cookie, Manager) {
 		var scamPath = __confolio.config["scamPath"] || "scam";
-		cookie("scamSimpleLogin", null, {
+/*		cookie("scamSimpleLogin", null, {
 			path: "/"+scamPath+"/",
 			expires: -1
-		}); // Reset login
+		}); // Reset login*/
 		var loadedIndicator = dojo.byId(loadIndicatorId);
 		attr.set(loadedIndicator, "innerHTML", "&nbsp;Building application");
 		parser.parse();
