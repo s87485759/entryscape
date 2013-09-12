@@ -197,7 +197,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		if (this.tree != null) {
 			this.tree.destroy();
 		}
-		this.tree = new dijit.Tree({region: "left", model: treeModel, showRoot: false,
+		this.tree = new dijit.Tree({region: "left", model: treeModel, persist: false, showRoot: false,
 					onClick: dojo.hitch(this, function(entry) {
 						if (folio.data.isLinkLike(entry)) {
 							folio.data.getLinkedLocalEntry(entry, dojo.hitch(this, function(linkedEntry) {
