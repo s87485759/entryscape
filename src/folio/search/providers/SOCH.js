@@ -29,6 +29,9 @@ define([
     var SOCHList = declare(ResultsList, {
         kns: "http://kulturarvsdata.se/ksamsok#",
         sns: "http://schema.org/",
+        resultRequestAccept: "text/xml",
+        resultRequestHandle: "string",
+
 
         constructSearchUrl: function(offset, limit) {
             var url = "http://kulturarvsdata.se/ksamsok/api?x-api=metasol43856&method=search&hitsPerPage=20";
@@ -67,7 +70,7 @@ define([
                 var locMd = childE.getLocalMetadata();
 
                 locMd.create(resourceUri, folio.data.DCTermsSchema.TITLE, {type: "literal", value: extMdGraph.findFirstValue(resourceUri, this.kns+"itemLabel") || "No label found"});
-                locMd.create(resourceUri, folio.data.DCTermsSchema.DESCRIPTION, {type: "literal", value: "a description"});
+                //locMd.create(resourceUri, folio.data.DCTermsSchema.DESCRIPTION, {type: "literal", value: "a description"});
                 var sa = extMdGraph.findFirstValue(resourceUri, this.kns+"url");
                 if (sa) {
                     locMd.create(resourceUri, folio.data.RDFSSchema.SEEALSO, sa);
@@ -133,7 +136,19 @@ define([
         //===================================================
         getSearchDetails: function() {
             return {
-                search: dojo.hitch(this, this._search)
+                search: lang.hitch(this, function(parameters) {
+                    var fromTime = this._fromTime.get("value"), toTime = this._toTime.get("value"), itemType = this._itemTypeFS.get("value");
+                    if (fromTime != "-") {
+                        parameters.fromTime = parseInt(fromTime);
+                    }
+                    if (toTime != "-") {
+                        parameters.toTime = parseInt(toTime);
+                    }
+                    if (itemType != "alla") {
+                        parameters.itemType = itemType
+                    }
+                    new SOCHList(parameters);
+                })
             };
         },
         //===================================================
@@ -167,25 +182,6 @@ define([
             } else { //Hack since asc and desc does not work with title.
                 return sort;
             }
-        },
-
-        _search: function(parameters) {
-            var base = this.application.getRepository();
-            var fromTime = this._fromTime.get("value"), toTime = this._toTime.get("value"), itemType = this._itemTypeFS.get("value");
-            if (fromTime != "-") {
-                parameters.fromTime = parseInt(fromTime);
-            }
-            if (toTime != "-") {
-                parameters.toTime = parseInt(toTime);
-            }
-            if (itemType != "alla") {
-                parameters.itemType = itemType
-            }
-
-            var tmpContext = this.application.getStore().getContext(base+"_tmp");
-            var entry = tmpContext.createLocal(folio.data.BuiltinTypeSchema.RESULT_LIST);
-            entry.list = new SOCHList(entry, parameters);
-            parameters.onSuccess(entry);
         }
     });
 });

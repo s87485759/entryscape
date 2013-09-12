@@ -106,12 +106,14 @@ border-bottom-left-radius: 6px;
 .card:hover .navIcons {
 	display: block;
 }
+.confolio .card .img-wrap,
 .confolio .card .principalPicture {
 	position: relative;
     vertical-align: middle;
     display: table-cell;
 }
 
+.card .img-wrap,
 .confolio .principalPicture {
 	position: absolute;
 	width: 80px;
@@ -124,6 +126,7 @@ border-bottom-left-radius: 6px;
 	line-height: 0px;
 }
 
+.card .img-wrap img,
 .confolio .principalPicture img{
 	max-width: 80px;
 	max-height: 80px;

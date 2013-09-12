@@ -92,9 +92,6 @@ define([
             //First, if settings where not inited when the user signed in.
             if (this.user !== this.application.getUser()) {
                 this.user = this.application.getUser();
-                array.forEach(this._tabNames, function(tabname) {
-                    this["_"+tabname+"TabDijit"]._userChange();
-                }, this);
             }
             if (this._currentTabName !== tabName) {
                 domClass.remove(this["_" + this._currentTabName + "ButtonNode"], "selected");

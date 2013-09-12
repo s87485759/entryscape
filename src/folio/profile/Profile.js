@@ -27,6 +27,7 @@ dojo.require("dijit.form.TextBox");
 dojo.require("folio.list.SearchList");
 dojo.require("folio.navigation.PrincipalInfo");
 dojo.require("folio.editor.RFormsPresenter");
+dojo.require("folio.util.utils");
 
 
 /**
@@ -230,12 +231,16 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 			dojo.forEach(cs, function(child) {
 				var userDiv = dojo.create("div", {"class": "card distinctBackground"}, this.membersNode);
 				var imgWrap = dojo.create("div", {"class": "principalPicture"}, userDiv);
-				var imageUrl = folio.data.getFromMD(child.e, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
+				var imageUrl = folio.data.getFromMD(child.e, folio.data.FOAFSchema.IMAGE);
+                var imageDefault = this.application.getConfig().getIcon("user");
 				if (window.location.href.indexOf("cookieMonster=true") !== -1) {
 					dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif"}, imgWrap);
 				} else {
-					dojo.create("img", {src: imageUrl || backup}, imgWrap);
-				}
+                    dojo.create("img", {src: imageDefault}, imgWrap);
+                    if (imgWrap) { //If an profilepicture is available, try to load it, if it exists it will replace the default image.
+                        folio.util.utils.lazyLoadImage(imgWrap, imageUrl);
+                    }
+                }
 				dojo.create("span", {"innerHTML": child.n}, userDiv);
 				var navIcons = dojo.create("div", {"class": "navIcons"}, userDiv);
 				dojo.connect(userDiv, "onclick", this, dojo.hitch(this, function(event) {
@@ -275,8 +280,14 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 				folio.data.getList(entryResult, dojo.hitch(this, function(list) {
 					list.getPage(0, 50, dojo.hitch(this, function(children) {
 						var acceptCount = 0;
+                        var contextIds = {};
+                        dojo.forEach(children, function(child) {
+                            if (folio.data.isContext(child)) {
+                                contextIds[child.getId()] = true;
+                            }
+                        });
 						dojo.forEach(children, function(child) {
-							if (acceptCount < 20 && child.readAccessToMetadata) {
+							if (acceptCount < 20 && child.readAccessToMetadata && !contextIds[child.getContext().getId()]) {
 								if (this._addFolderEntry(child)) {
 									acceptCount++;
 								}

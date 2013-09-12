@@ -130,6 +130,10 @@ folio.data.getImages = function(entry) {
             return {thumb: graph.findFirstValue(stmt.getValue(), sns+"thumbnail"),
                 full: graph.findFirstValue(stmt.getValue(), sns+"contentUrl")};
         });
+        imgs.push({
+            full: graph.findFirstValue(resourceUri, folio.data.FOAFSchema.DEPICTION) || graph.findFirstValue(resourceUri, folio.data.FOAFSchema.IMAGE),
+            thumb: graph.findFirstValue(resourceUri, folio.data.FOAFSchema.THUMBNAIL)
+        });
         imgs = dojo.filter(imgs, function(img) {
             return img.thumb != null || img.full != null;
         });

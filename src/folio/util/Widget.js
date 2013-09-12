@@ -49,6 +49,9 @@ define([
 
         _i18nKeys: [],
 
+        templateString: "<div></div>",
+
+
         constructor: function() {
             this.i18n = [];
         },

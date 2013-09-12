@@ -18,6 +18,10 @@
  */
 
 define({
+    "generalTabLabel": "Generellt",
+    "profileTabLabel": "Användarprofil",
+    "membersTabLabel": "Medlemmar",
+    "rightsTabLabel": "Rättigheter",
     "groupReadRights": "Information om gruppen synlig för:",
     "userReadRights": "Användarens profil synlig för:",
     "guestAccess": "Alla",
@@ -25,5 +29,38 @@ define({
     "membersAccess":  "Medlemmar",
     "privateAccess": "Mig själv",
     "membersReadRights": "List av medlemmar synliga för:",
-    "portfolioReadRights": "Portföljens innehåll synligt för:"
+    "portfolioReadRights": "Portföljens innehåll synligt för:",
+    "setGroupPortfolioRights": "Sätt nuvararnde gruppägare till att också vara ägare av gruppens hemcontext",
+    "setUserAsOwnerOfPortfolio": "Sätt användare som ägare av hemcontext",
+    "revertToPreviousHomeContext": "Återgå till föregående hemcontext",
+    "saveNewHomeContext": "Spara nytt hemcontext",
+    "userSearchLabel": "Sök anvädare:",
+    "membersChoiceLabel": "Medlemmar",
+    "nonMembersChoiceLabel": "icke-medlemmar",
+    "allUsersChoiceLabel": "Alla",
+    "memberLoadingListMessage": "Laddar...",
+    "name" : "Namn",
+    "displayedName" : "Namn som kommer visas",
+    "email" : "Email",
+    "info" : "Information",
+/*    "accountLabel" : "Konto",
+    "profileLabel" : "Profil",*/
+    "noProfilePictureLabel" : "Ingen profilbild",
+    "urlProfilePictureLabel" : "Webadress till profilbild",
+    "localProfilePictureLabel" : "Ladda upp profil bild",
+    "urlProfilePictureTest" : "Testa webbadress",
+    "localProfilePictureUpload" : "Ladda upp ny",
+    "userNameLabel" : "Användarnamn",
+    "passwdLabel" : "Lösenord",
+    "oldPassword" : "Gammalt lösenord",
+    "newPassword" : "Nytt lösenord",
+    "verifyNewPassword" : "Verifiera nytt lösenord",
+    "mismatchPassword" : "Var vänlig verifiera nytt lösenord genom att upprepa det korrekt!",
+    "languageLabel" : "Föredraget språk",
+    "changeSettingsButtonLabel" : "Ändra inställningar"
+    /*"msgCurrentUsername": "Nuvarande användarnamn är ",
+    "msgPwdNoMatch": "Lösenorden matchar inte, var god försök igen",
+    "passwordLength": "Lösenordet måste vara minst 8 tecken långt",
+    "msgUserChangeSuccess": "Användarnamn ändrad. Var god ladda om browsern för att logga in igen.",
+    "msgUserChangeFailure": "Användarnamn ej ändrad på grund av: "*/
 });

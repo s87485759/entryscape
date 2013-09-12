@@ -26,7 +26,7 @@ supportedLanguageMap: {
 },
 "viewMap": {
 		"manager": "se/uu/ull/site/FullscreenViewStack",
-			"controller": "folio/navigation/NavigationBarSlim",
+			"controller": "folio/navigation/NavigationBar",
 			"startView": "start",
 			"views": [{"name": "default", "class": "folio/apps/TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
 					  {"name": "start", "class": "folio/start/Start"},

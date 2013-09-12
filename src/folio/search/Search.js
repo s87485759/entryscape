@@ -130,8 +130,17 @@ define(["dojo/_base/declare",
                     style.set(this._searchAlternatives[this._currentSearchAlternative].searchResults.domNode, "display", "none");
                 }
                 var info = this._alternativeStore.get(alternative);
-                attr.set(this._searchTypeLogo, "src", require.toUrl("folio/search/")+info.logo);
-                attr.set(this._searchTypeInfo, "innerHTML", info.description);
+                if (info.logo) {
+                    attr.set(this._searchTypeLogo, "src", require.toUrl("folio/search/")+info.logo);
+                    style.set(this._searchTypeLogo, "display", "");
+                } else {
+                    style.set(this._searchTypeLogo, "display", "none");
+                }
+                if (info.description) {
+                    attr.set(this._searchTypeInfo, "innerHTML", info.description);
+                } else {
+                    attr.set(this._searchTypeInfo, "innerHTML", "");
+                }
 
                 if (this._searchAlternatives[alternative] == null) {
                     this._searchAlternatives[alternative] = {};

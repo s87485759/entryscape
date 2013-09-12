@@ -32,7 +32,7 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["annotationProfile", "userEditor"],
+        nls: ["annotationProfile", "settings"],
 
         //===================================================
         // Inherited methods
@@ -50,8 +50,12 @@ define([
             this.connect(this.infoSaveButton, "onClick", this._saveAccountInfo);
 
             //Preferred language
-            folio.create.getCreateLanguages(this.application.getConfig());
-            this.langStore = new Memory({'data': folio.create.createLanguages});
+            var slm = this.application.getConfig().supportedLanguageMap || {};
+            var langs = [];
+            for (var l in slm) {
+                langs.push({id: l, label: slm[l]});
+            }
+            this.langStore = new Memory({'data': langs});
             this.languageSelectDijit.set("searchAttr", 'label');
             this.languageSelectDijit.set("store", this.langStore);
             this.connect(this.languageSelectDijit, "onChange", this._UIPrefsChanged);
@@ -212,7 +216,7 @@ define([
             }));
         },
         _setFullName: function (firstname, lastname) {
-            attr.set(this.fullNameNode, "innerHTML", this.NLS.userEditor.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
+            attr.set(this.fullNameNode, "innerHTML", this.NLS.settings.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
         },
 
         // uiprefs = preferred language

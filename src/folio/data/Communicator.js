@@ -224,13 +224,20 @@ define([
 		
 		loadViaSCAMProxy: function(params) {
 			var url = __confolio.application.getRepository()+"proxy?url="+encodeURIComponent(params.url);
+            var hdrs;
+            if (params.accept) {
+                hdrs = lang.clone(headers);
+                hdrs.Accept = params.accept;
+            } else {
+                hdrs = headers;
+            }
 			if (params.from != null) {
 				url += "&fromFormat="+params.from;
 			}
 			var req = request.get(communicator.insertAuthParams(url), {
 				preventCache: true,
 				handleAs: params.handleAs || "json",
-				headers: headers}
+				headers: hdrs}
 			).then(params.onSuccess, params.onError || function(mesg) {
 				console.error(mesg);
 			});

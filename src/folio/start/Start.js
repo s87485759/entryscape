@@ -26,6 +26,7 @@ dojo.require("dijit._Templated");
 dojo.require("dijit.form.TextBox");
 dojo.require("folio.list.SearchList");
 dojo.require("folio.editor.RFormsPresenter");
+dojo.require("folio.util.utils");
 
 
 /**
@@ -255,8 +256,11 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 		if (this.cookieMonster) {
 			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 		} else {
-			var imageUrl = folio.data.getFromMD(personEntry, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
-			dojo.create("img", {src: imageUrl}, imgWrap);
+            dojo.create("img", {src: this.application.getConfig().getIcon("user")}, imgWrap);
+            var imageUrl = folio.data.getFromMD(personEntry, folio.data.FOAFSchema.IMAGE);
+            if (imageUrl) {
+                folio.util.utils.lazyLoadImage(imgWrap, imageUrl);
+            }
 		}
 		var name = folio.data.getLabelRaw(personEntry) || personEntry.name || personEntry.getId();
 		dojo.create("span", {"innerHTML": name}, userDiv);

@@ -1,4 +1,4 @@
-({
+define({
   "saveDialogRecommend": "Spara ändringar? (Annars kommer ändringarna att förloras)",
   "saveDialogSaveLabel": "Spara",
   "saveDialogDiscardLabel": "Spara inte",
@@ -16,5 +16,6 @@
   "mandatoryElementsMissing": "Alla obligatoriska fält är ej ifyllda",
   "changeToLinkReference": "Du har inte tillräckliga rättigheter för att ändra entryns karaktär så att den får ha egen metadata förutom den refererade.",
   "failedSavingUnsufficientMDRights": "Du har inte tillräckliga rättigheter för att spara metadatan.",
-  "modifiedPreviouslyOnServer": "Fel: Kunde inte spara dina ändringar, eftersom någon annan har ändrat innan du hann spara"
-})
+  "modifiedPreviouslyOnServer": "Fel: Kunde inte spara dina ändringar, eftersom någon annan har ändrat innan du hann spara",
+  "metadataSaved" : "Informationen har sparats för resursen"
+});

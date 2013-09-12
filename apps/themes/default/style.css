@@ -24,16 +24,15 @@
 
 
 /*Logo should be < 240x60*/
-.navigationBar .logo, .loginDialog .logo {
+.loginDialog .logo {
 	background:transparent url('logo.png') no-repeat top left;
 }
 
-.navigationBar.slim .logo {
+.navigationBar .logo {
 	background:transparent url('logo-small.png') no-repeat top left;
 }
 
 .navigationBar .appName {
-	left: 95px;
 	color: white;
 }
 

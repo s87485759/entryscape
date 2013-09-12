@@ -233,22 +233,25 @@ define(["dojo/_base/declare",
                                     builtinType: "none"
                                 }
                             },
-                            function() {
-                                this.application.getMessages().message("Item added to your portfolio.");
+                            function(newEntry) {
+                                var parent = context.getEntry("_top");
+                                if (parent) {
+                                    parent.setRefreshNeeded();
+                                    parent.refresh(function() {
+                                        __confolio.application.publish("childrenChanged", {entry: parent, entryInstance: parent});
+                                        __confolio.application.getMessages().message("Item added to your portfolio.");
+                                    });
+                                } else {
+                                    __confolio.application.getMessages().message("Item added to your portfolio.");
+                                }
                             },
                             function(mesg) {
-                                this.application.getMessages().error("Something went wrong, sorry in Beta mode here.\nTest with another item.\n"+mesg);
+                                __confolio.application.getMessages().error("Something went wrong, sorry in Beta mode here.\nTest with another item.\n"+mesg);
                             });
                     };
 
                     if (entry._transformExtMd) {
-                        __confolio.application.getCommunicator().loadViaSCAMProxy({
-                            url: entry.getExternalMetadataUri(),
-                            handleAs: entry._handleExtMdAs || "json",
-                            onSuccess: function(data) {
-                                add(entry._transformExtMd(data));
-                                delete entry._transformExtMd;
-                            }});
+                        entry._transformExtMd(add);
                     } else {
                         add(entry.getExternalMetadata());
                     }
@@ -268,13 +271,7 @@ define(["dojo/_base/declare",
                     }
 
                     if (entry._transformExtMd) {
-                        __confolio.application.getCommunicator().loadViaSCAMProxy({
-                            url: entry.getExternalMetadataUri(),
-                            handleAs: entry._handleExtMdAs || "json",
-                            onSuccess: function(data) {
-                                f(entry._transformExtMd(data));
-                                delete entry._transformExtMd;
-                            }});
+                        entry._transformExtMd(f);
                     } else {
                         f(entry.getExternalMetadata());
                     }

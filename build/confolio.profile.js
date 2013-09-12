@@ -33,6 +33,7 @@ var profile = {
 				"folio/apps/About",
 				"folio/apps/TFolio",
 				"folio/security/LoginDialog",
+                "folio/search/Search",
 				"dijit/Dialog",
 				"dojo/back",
 				"dojo/cookie",

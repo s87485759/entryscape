@@ -2,6 +2,7 @@ dojo.provide("folio.content.ContentViewSwitcher");
 dojo.require("folio.content.RTE");
 dojo.require("dijit.layout._LayoutWidget");
 dojo.require("dojox.image.LightboxNano");
+dojo.require("folio.util.utils");
 
 /**
  * 
@@ -12,7 +13,6 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	//===================================================
 	//Special case when content is image, following variables are needed.
 	img: null,
-	imgConnect: null,
 	origWidth: 0,
 	origHeight: 0,
 	webInline: false,
@@ -192,24 +192,21 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	_showImage: function(url) {
 		this.showing = true;
 		this.doResize = true;
-		var img = new Image();
-		this.contentNode = dojo.create("div", {"innerHTML": "Loading image..."}, this.domNode);
-		dojo.disconnect(this.imgConnect);
-		this.imgConnect = dojo.connect(img, "onload", this, function() {
-			dojo.attr(this.contentNode, "innerHTML", "");
-            dojo.place(img, this.contentNode);
-			this.origWidth = img.width;
-			this.origHeight = img.height;
-			img.style.width = "100%";
-			img.style.height = "100%";
+        this.contentNode = dojo.create("div", {"innerHTML": "Loading image..."}, this.domNode);
+		folio.util.utils.lazyLoadImage(this.contentNode, url, dojo.hitch(this, function(img) {
+            this.origWidth = img.width;
+            this.origHeight = img.height;
+            img.style.width = "100%";
+            img.style.height = "100%";
             if (this._lightbox) {
                 this._lightbox.destroy();
                 delete this._lightbox;
             }
             new dojox.image.LightboxNano({href: url}, img);
-			this.resizeContent();
-		});
-		dojo.attr(img, "src", url);
+            this.resizeContent();
+        }), dojo.hitch(this, function() {
+            dojo.attr(this.contentNode, "innerHTML", "Failed loading image with address:<br>"+url);
+        }));
 	},
 	
 	_htmlSnippet: function(entry) {

@@ -38,6 +38,7 @@ define({
 		"failedSavingUnsufficientMDRights" : "You do not have sufficient rights to save the metadata.",
 		"modifiedPreviouslyOnServer" : "ERROR: The resource has been changed on the server, your changes have NOT been saved.",
 		"metadataSaved" : "Information has been saved for resource "
-	}
+	},
+    "sv": true
 });
 

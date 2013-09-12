@@ -86,7 +86,7 @@ define(["dojo/_base/declare",
             eUri = value;
         }
         if (eUri == null) {
-            return {label: {en: value}, href: seeAlso || value, target: "_blank"};
+            return {value: value, label: {en: value}, href: seeAlso || value, target: "_blank"};
         } else {
             var store = __confolio.application.getStore();
             var context = store.getContextFor(eUri);

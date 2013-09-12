@@ -12,36 +12,44 @@
 
 .navigationBar .appName {
 	position: absolute;
-	left: 85px;
-	top: 5px;
-	font-size: xx-large;
+    font-size: x-large;
+    left: 50px;
+    top: 6px;
 }
 
 .navigationBar .appSentence {
 	position: absolute;
 	left: 85px;
 	top: 40px;
+    display: none;
 }
 
 .navigationBar .area1 {
 	position: absolute;
 	top: 10px;
-	right: 5px;
+    right: 40px;
 }
 
 .navigationBar .area2 {
+    display: block;
 	position: absolute;
 	bottom: 11px;
 	right: 1em;
 }
 
 .navigationBar .control {
-	display: none;
+   display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .navigationBar .logo {
 	margin-left: 5px;
+    height: 32px;
+    width: 220px;
 }
+
 
 .navigationBar .area3 {
 	position: absolute;
@@ -79,50 +87,21 @@
 	text-decoration: underline;
 }
 
-/*-----------Slim--------------------*/
 
-.navigationBar.slim .appName {
-	font-size: x-large;
-	left: 50px;
-	top: 6px;
+.navigationBar .area1 .signin {
+    background: transparent;
+    color: white;
+    border-style: none;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 0px 0px 10px;
+    border-radius: 2px;
 }
-.navigationBar.slim .appSentence {
-	display: none;
-}
-
-.navigationBar.slim.controlVisible .area2 {
-	display: block;
-}
-
-.navigationBar.slim .control {
-	display: block;
-	position: absolute;
-	top: 5px;
-	right: 5px;
+.navigationBar .area1 .signin:hover {
+    background: grey;
+    cursor: pointer;
 }
 
-.navigationBar.slim .logo {
-	height: 32px;
-	width: 220px;
-}
-
-.navigationBar.slim .area1 {
-	right: 40px;
-}
-
-.navigationBar.slim .area1 .signin {
-	background: transparent;
-	color: white;
-	border-style: none;
-	padding: 0px 2px 2px 2px;
-	margin: 0px 0px 0px 10px;
-	border-radius: 2px;
-}
-.navigationBar.slim .area1 .signin:hover {
-	background: grey;
-	cursor: pointer;
-}
-
+/*-----------ControlMenu-------------------*/
 
 .controlMenu {
     top: -40px;

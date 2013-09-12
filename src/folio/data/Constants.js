@@ -72,6 +72,7 @@ folio.data.FOAFSchema = {
 	FIRSTNAME: folio.data.FOAFBaseUri+"firstName",
 	LASTNAME: folio.data.FOAFBaseUri+"lastName",
 	SURNAME: folio.data.FOAFBaseUri+"surname",
+    DEPICTION: folio.data.FOAFBaseUri+"depiction",
 	IMAGE: folio.data.FOAFBaseUri+"img",
 	PLAN: folio.data.FOAFBaseUri+"plan",
 	MBOX: folio.data.FOAFBaseUri+"mbox",

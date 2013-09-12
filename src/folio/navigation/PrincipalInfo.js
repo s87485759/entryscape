@@ -5,10 +5,11 @@ define(["dojo/_base/declare",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
+    "folio/util/utils",
     "dijit/_Widget",
     "dijit/_TemplatedMixin",
     "dojo/text!./PrincipalInfoTemplate.html"
-], function (declare, lang, connect, style, construct, attr, _Widget, _TemplatedMixin, template) {
+], function (declare, lang, connect, style, construct, attr, utils, _Widget, _TemplatedMixin, template) {
 
     /**
      * Shows principal information in the form of a picture, a name and a description.
@@ -85,7 +86,10 @@ define(["dojo/_base/declare",
             if (window.location.href.indexOf("cookieMonster=true") !== -1) {
                 construct.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif"}, this.principalPictureNode);
             } else {
-                construct.create("img", {src: imageUrl || backup}, this.principalPictureNode);
+                construct.create("img", {src: backup}, this.principalPictureNode);
+                if (imageUrl) {
+                    utils.lazyLoadImage(this.principalPictureNode, imageUrl);
+                }
             }
         },
 
