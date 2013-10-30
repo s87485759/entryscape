@@ -83,9 +83,9 @@
     -moz-border-radius: 6px;
     border-radius: 6px;
     padding: 2px 5px;
-    border: 1px solid lightgrey;
+    border: 1px solid #759dc0;
     min-width: 80px;
-    background: #9d9eff;
+    background: #bcd8f4;
 }
 .share .principal img {
     vertical-align: middle;
@@ -98,7 +98,7 @@
 }
 
 .share .shareBlockWrapper {
-    max-height: 155px;
+    height: 155px;
     overflow-y: auto;
 }
 
