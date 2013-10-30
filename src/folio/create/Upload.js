@@ -130,9 +130,10 @@ dojo.declare("folio.create.Upload", [dijit._Widget, dijit._Templated], {
 			}));
 		} else {
 			if (this.selectedMimeType != undefined && this.selectedMimeType != "") {
-				var helpObj = folio.data.createNewEntryHelperObj(this.context);
+				/*var helpObj = folio.data.createNewEntryHelperObj(this.context);
 				folio.data.addMimeType(helpObj.info, helpObj.resURI, this.selectedMimeType);
-				obj.info = helpObj.info.exportRDFJSON();
+				obj.info = helpObj.info.exportRDFJSON();*/
+                obj.mimetype = this.selectedMimeType;
 			}
 			onFinish(obj);
 		}

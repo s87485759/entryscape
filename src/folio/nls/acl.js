@@ -21,10 +21,10 @@ define({
 	root: {
 		"advancedButtonTextMore": "More details",
 		"advancedButtonTextLess": "Less details",
-		"overrideContextButtonTextOverride": "Override portfolio defaults",
-		"overrideContextButtonTextDefault": "Return to portfolio defaults",
-		"headLabelTextDefault": "Default access",
-		"headLabelTextSpecify": "Specify access",
+		"overrideContextButtonTextOverride": "Override",
+		"overrideContextButtonTextDefault": "Discard",
+		"headLabelTextDefault": "Portfolio rights",
+		"headLabelTextSpecify": "Entry specific rights",
 		"forUserGroup": "For user/group",
 		"read": "Read",
 		"write": "Write",
@@ -35,7 +35,17 @@ define({
 		"admin": "Admin",
 		"addContact": "Add contact",
 		"removeContact": "Remove",
-		"ownerNote": "Owners of the portfolio always keeps their full rights, the owners are"
+		"ownerNote": "Owners of the portfolio:",
+        "public": "Anyone",
+        "users": "Signed in",
+        "canRead": "Can view",
+        "canReadMetadata": "Can view metadata",
+        "canWrite": "Can edit",
+        "isOwner": "Is owner",
+        "noAccess": "No rights specified",
+        "principalSearchLabel": "Add users/groups:",
+        "principalSearchPlaceHolder": "Search requires >2 characters",
+        "dialogTitle": "Access rights",
+        "applyRecursiveLabel": "Set the same access rights on everything inside the folder"
 	}
-
 });

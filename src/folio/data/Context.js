@@ -152,7 +152,7 @@ dojo.declare("folio.data.Context", null, {
 					args.parentList.needRefresh();
 				}
 				if (args.fileInput) {
-					args.context.communicator.putFile(this.getUri()+"/resource/"+entryId, args.fileInput,
+					args.context.communicator.putFile(this.getUri()+"/resource/"+entryId, args.fileInput, args.mimetype,
 						dojo.hitch(this, function(data) {
 							this.loadEntryFromId(entryId, {}, onEntry, onError);
 						}), 

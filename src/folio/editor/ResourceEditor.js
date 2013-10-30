@@ -19,6 +19,9 @@
 
 dojo.provide("folio.editor.ResourceEditor");
 dojo.require("folio.Application");
+dojo.require("dijit._Widget");
+dojo.require("dijit._Templated");
+dojo.require("folio.ApplicationView");
 
 dojo.declare("folio.editor.ResourceEditor", null, {
 	widgetsInTemplate: true,

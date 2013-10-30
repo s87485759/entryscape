@@ -125,6 +125,15 @@ folio.data.BuiltinTypeSchema = {
 	NONE: folio.data.SCAMBaseUri+"None"
 };
 
+folio.data.getKey = function(struct, value) {
+    for (var key in struct) {
+        if (struct.hasOwnProperty(key) && struct[key] === value) {
+            return key;
+        }
+    }
+};
+
+
 folio.message = {
 	INFO: 1,
 	ERROR: 2,

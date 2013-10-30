@@ -329,7 +329,7 @@ define([
             });
             var pp = lang.hitch(this, function (ppEntry) {
                 this._ppEntry = ppEntry;
-                this.application.getCommunicator().putFile(ppEntry.getResourceUri(), inp, lang.hitch(this, function () {
+                this.application.getCommunicator().putFile(ppEntry.getResourceUri(), inp, null, lang.hitch(this, function () {
                     this._updateProfilePicturePreview(ppEntry.getResourceUri() + "?request.preventCache=" + (new Date()).getTime());
                     this.localProfilePictureUploadButton.reset();
                     this._updateSaveProfilePictureButton();

@@ -138,20 +138,20 @@
 	border-bottom-style: solid;
 }
 
-.entryDetails .contentViewSwitcher {
+.contentViewSwitcher {
 	text-align: center;
 }
 
-.entryDetails .contentViewSwitcher.leftAligned {
+.contentViewSwitcher.leftAligned {
 	text-align: left;
 }
 
-.entryDetails .contentViewSwitcher .contentPresentationMode{
+.contentViewSwitcher .contentPresentationMode{
     padding: 8px;
 }
 
 
-.entryDetails .contentViewSwitcher .contentIcon {
+.contentViewSwitcher .contentIcon {
 	width: 128px;
 	position: relative;
 	left: 50%;

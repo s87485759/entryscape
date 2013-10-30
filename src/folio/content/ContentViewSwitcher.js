@@ -4,6 +4,8 @@ dojo.require("dijit.layout._LayoutWidget");
 dojo.require("dojox.image.LightboxNano");
 dojo.require("folio.util.utils");
 
+var flashidx = 0;
+
 /**
  * 
  */
@@ -26,7 +28,9 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	//===================================================
 	// Public Methods
 	//===================================================
-	isContentEditable: function() {
+	contentUpdated: function() {
+    },
+    isContentEditable: function() {
 		return this.contentDijit ? this.contentDijit.isEditable() : false;
 	},
 	toggleEditMode: function() {
@@ -46,6 +50,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 	},
 	buildRendering: function() {
 		this.domNode = this.srcNodeRef || dojo.create("div");
+        dojo.addClass(this.domNode, "contentViewSwitcher");
 		dojo.connect(this.domNode, "onclick", function(evt) {
 			if (event.target.href != null) {
 				evt.preventDefault();
@@ -60,6 +65,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
         this._showTimer = setTimeout(dojo.hitch(this, function() {
             delete this._showTimer;
             this._show(entry);
+            this.contentUpdated();
         }),300);
     },
 	_show: function(entry) {
@@ -247,7 +253,9 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 		var url = entry.getResourceUri();
 		if (url && this.url != "" && service) {
 			this.doResize = true;
-			this.contentNode = dojo.create("div", {innerHTML: "<div id='flashplayer'></div>"}, this.domNode);
+            flashidx++;
+            var flashid = "flashplayer_"+flashidx;
+			this.contentNode = dojo.create("div", {innerHTML: "<div id='"+flashid+"'></div>"}, this.domNode);
 			
 
 			service.getParameters(url,
@@ -255,7 +263,7 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 					if (swfArgs) {
 						swfobject.embedSWF(
 						swfArgs.videoSrc,
-						"flashplayer",
+						flashid,
 						"100%",
 						"100%",
 						swfArgs.version,
@@ -271,7 +279,8 @@ dojo.declare("folio.content.ContentViewSwitcher", [dijit.layout._LayoutWidget], 
 								} else {
 									dojo.style(this.contentNode, "marginTop", 0);
 								}
-							}), 500);
+                                this.resize();
+                            }), 500);
 						}));
 						this.origWidth = swfArgs.width;
 						this.origHeight = swfArgs.height;

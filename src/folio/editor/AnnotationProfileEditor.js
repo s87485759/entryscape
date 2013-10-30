@@ -65,7 +65,7 @@ dojo.declare("folio.editor.AnnotationProfilePresenter", [dijit.layout.ContentPan
 			   //ap = this.application.dataDir +"jdil/SDC.js";
 			}*/
 		} else if (entry.isMetadataAccessible()){
-			ap = this.application.getConfig().getMPForLocalMD(entry);
+			ap = this.application.getConfig().getTemplate(entry);
 			graph = entry.getLocalMetadata();
 /*			if(entry.getBuiltinType() == folio.data.BuiltinType.USER){
 				ap = "http://tomcat.knowware.nada.kth.se/formulator/formlet/oefoaf";
@@ -185,7 +185,7 @@ dojo.declare("folio.editor.AnnotationProfileEditor", [dijit.layout.ContentPane, 
 	updateSHAME: function(entry) {
 		this.clearForms();
 		this.entry = entry;
-		this.annotationProfile = this.application.getConfig().getMPForLocalMD(entry);
+		this.annotationProfile = this.application.getConfig().getTemplate(entry);
 
 		/*if(!this.annotationProfile){
 		   //this.annotationProfile = "http://tomcat.knowware.nada.kth.se/formulator/formlet/HNETLOM";
@@ -363,7 +363,7 @@ dojo.declare("folio.editor.AnnotationProfileEditorDialog", folio.editor.Annotati
 			
 			setTimeout(dojo.hitch(this, function() {
 			this.shameMessageNode.style.display="";
-			this.annotationProfile = this.application.getConfig().getMPForLocalMD(event.entry);
+			this.annotationProfile = this.application.getConfig().getTemplate(event.entry);
 /*			switch(event.entry.getBuiltinType()){
 				case folio.data.BuiltinType.NONE:
 				   //this.annotationProfile = "http://tomcat.knowware.nada.kth.se/formulator/formlet/HNETLOM";

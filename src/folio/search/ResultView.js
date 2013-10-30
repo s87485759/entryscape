@@ -14,8 +14,10 @@ define(["dojo/_base/declare",
     "dijit/focus",
     "dojox/image/LightboxNano",
     "folio/list/ListControls",
-    "folio/editor/RFormsPresenter"
-], function (declare, lang, connect, on, array, json, domClass, style, construct, attr, stamp, _WidgetBase, focusUtil, LightboxNano, ListControls, RFormsPresenter) {
+    "folio/editor/RFormsPresenter",
+    "folio/util/dialog"
+], function (declare, lang, connect, on, array, json, domClass, style, construct, attr, stamp,
+             _WidgetBase, focusUtil, LightboxNano, ListControls, RFormsPresenter, dialog) {
 
     /**
      * Searches for entries according to the given parameters and displays
@@ -277,7 +279,7 @@ define(["dojo/_base/declare",
                     }
 
                 };
-                folio.util.connectToolKitDialog(construct.create("div", {"class": "icon info", title: "more information"}, row), prepareDialog);
+                dialog.connectToolKitDialog(construct.create("div", {"class": "icon info", title: "more information"}, row), prepareDialog);
             }
 
             //Description

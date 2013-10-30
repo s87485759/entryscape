@@ -28,13 +28,16 @@ supportedLanguageMap: {
 		"manager": "se/uu/ull/site/FullscreenViewStack",
 			"controller": "folio/navigation/NavigationBar",
 			"startView": "start",
-			"views": [{"name": "default", "class": "folio/apps/TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
-					  {"name": "start", "class": "folio/start/Start"},
-					  {"name": "profile", "class": "folio/profile/Profile"},
-					  {"name": "settings", "class": "folio/settings/Settings"},
-					  {"name": "search", "class": "folio/search/Search"},
-					  {"name": "about", "class": "folio/apps/About"},
-					  {"name": "signup", "class": "folio/apps/Signup"},
-					  {"name": "help", "class": "folio/apps/Help", "constructorParams": {"initialHelpPage": "intro"}}]
-		}
+			"views": [
+                {"name": "default", "class": "folio/apps/TFolio", "constructorParams": {"startContext": "2"}, "initInDom": true},
+                {"name": "start", "class": "folio/start/Start"},
+                {"name": "profile", "class": "folio/profile/Profile"},
+                {"name": "settings", "class": "folio/settings/Settings"},
+                {"name": "search", "class": "folio/search/Search"},
+                {"name": "about", "class": "folio/view/About"},
+                {"name": "signup", "class": "folio/view/Signup"},
+                {"name": "slides", "class": "folio/view/Slides"},
+                {"name": "ldbrowser", "class": "folio/view/LDBrowser"},
+                {"name": "help", "class": "folio/view/Help", "constructorParams": {"initialHelpPage": "intro"}}
+            ]}
 });

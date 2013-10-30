@@ -16,9 +16,10 @@ define([
     "dijit/_Widget",
     "dijit/_TemplatedMixin",
     "folio/list/operations",
+    "folio/create/CreateDialog",
     "dojo/text!./CreateMenuTemplate.html"
 ], function(declare, lang, connect, mouse, win, domgeom, topic, query, domClass, style, construct, attr, fx, nlfx,
-            _Widget, _TemplatedMixin, operations, template) {
+            _Widget, _TemplatedMixin, operations, CreateDialog, template) {
 
     return declare([_Widget, _TemplatedMixin], {
         templateString: template,
@@ -38,17 +39,23 @@ define([
                 this.hide();
                 operations.createFolder(this.list.list, lang.hitch(this.list, this.list.focusAndRename));
             }));
-            var onDone = lang.hitch(this.list, this.list.listenForKeyEvents);
-            query(".link", this.moveMeToTop).on("click", lang.hitch(this, function() {
+            var launch = function(mode)  {
                 this.hide();
                 this.list.stopListenForKeyEvents();
-                application.publish("showCreateWizard", {type: "linkto", entry: this.list.list, onFinish: onDone, onCancel: onDone});
-            }));
-            query(".upload", this.moveMeToTop).on("click", lang.hitch(this, function() {
-                this.hide();
-                this.list.stopListenForKeyEvents();
-                application.publish("showCreateWizard", {type: "upload", entry: this.list.list, onFinish: onDone, onCancel: onDone});
-            }));
+                var d = new CreateDialog({
+                    context: this.list.list.getContext(),
+                    list: this.list.list,
+                    mode: mode,
+                    onHide: lang.hitch(this.list, this.list.listenForKeyEvents)
+                });
+                d.startup();
+                d.show();
+            }
+            query(".link", this.moveMeToTop).on("click", lang.hitch(this, launch, "link"));
+            query(".upload", this.moveMeToTop).on("click", lang.hitch(this, launch, "upload"));
+            query(".artifact", this.moveMeToTop).on("click", lang.hitch(this, launch, "artifact"));
+// Old ways of launching create dialog
+// application.publish("showCreateWizard", {type: "upload", entry: this.list.list, onFinish: onDone, onCancel: onDone});
         },
         initState: function() {
             style.set(this.moveMeToTop, {

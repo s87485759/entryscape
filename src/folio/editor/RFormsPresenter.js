@@ -40,18 +40,18 @@ dojo.declare("folio.editor.RFormsPresenter", dijit._Widget, {
 			return;
 		}
 		this.application.getItemStore(dojo.hitch(this, function(itemStore) {
-			var graph, mp, config = this.application.getConfig();
+			var graph, mpItems, config = this.application.getConfig();
 			if (showExternalMetadata === true) {
 				graph = entry.getExternalMetadata();
-				mp = config.getMPForExternalMD(entry);
+				mpItems = config.getTemplate(entry, "external");
 			} else {
 				graph = entry.getLocalMetadata();
-				mp = config.getMPForLocalMD(entry);
+				mpItems = config.getTemplate(entry, "local");
 			}
 			if (graph === undefined){
 				graph = new rdfjson.Graph({});
 			}
-			var template = itemStore.detectTemplate(graph, entry.getResourceUri(), (mp != null && mp.items != null ? mp.items : null));
+			var template = itemStore.detectTemplate(graph, entry.getResourceUri(), mpItems);
 //			var template = itemStore.createTemplateFromChildren([folio.data.DCTermsSchema.TITLE,folio.data.DCTermsSchema.DESCRIPTION]);
 			var binding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
 			this.presenter = new rforms.view.Presenter({template: template, binding: binding, compact: this.compact}, dojo.create("div", null, this.domNode));

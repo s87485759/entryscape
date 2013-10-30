@@ -1,0 +1,170 @@
+/*------Login dialog-----------------------*/
+.loginDialog {
+    position: relative;
+    height: 100%;
+    width: 37em;
+    padding: 1px;
+}
+.loginDialog .logo {
+    background-position: top left;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    top: 30px;
+    left: 35px;
+}
+
+.loginDialog table {
+    margin: 10px 10px 30px 150px;
+}
+
+.loginDialog table td {
+    padding-bottom: 4px;
+}
+
+.loginDialog table td .dijitButtonNode {
+    margin-right: -3px;
+}
+/* -------SharingDialog--------------*/
+.share {
+    width: 600px;
+}
+
+.share .addPrincipalsBlock,
+.share .portfolioDefaultBlock {
+    padding: 7px 5px 7px 10px;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.share .addPrincipalsBlock {
+    height: 57px;
+}
+
+
+.share .ownersBlockLabel,
+.share .portfolioDefaultBlock label,
+.share .addPrincipalsBlock .searchPrincipals {
+    font-size: medium;
+}
+
+.share .portfolioDefaultBlock .dijitButton {
+    float: right;
+    margin-top: -3px;
+}
+
+.share .ownersBlock {
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+
+.share .shareBlock {
+    padding: 10px;
+}
+
+.share .shareBlockLabel {
+    border-bottom: solid 1px grey;
+    font-size: 14px
+}
+
+.share .ownersBlock .principal {
+    margin: 4px 5px 2px 0px;
+}
+
+.share .principal {
+    display: inline-block;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 2px 5px;
+    border: 1px solid lightgrey;
+    min-width: 80px;
+    background: #9d9eff;
+}
+.share .principal img {
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.share .principal:hover {
+    background: lightgrey;
+    cursor: pointer;
+}
+
+.share .shareBlockWrapper {
+    max-height: 155px;
+    overflow-y: auto;
+}
+
+.share .shareBlock {
+    display: table;
+    width: 580px;
+}
+
+.share .shareBlock>* {
+    display: table-row;
+}
+
+.share .shareBlock>*>* {
+    display: table-cell;
+    padding: 3px;
+}
+
+.share .shareBlock .principalLabel {
+    width: auto;
+}
+
+.share .shareBlock .accessRights {
+    width: 200px;
+    text-align: right;
+}
+
+.share .shareBlock .accessRights .dijitStretch,
+.share .shareBlock .accessRights>* {
+    width: 100%;
+}
+
+.share .shareBlock .removeRow {
+    width: 30px;
+    text-align: right;
+}
+
+.share .icon {
+    vertical-align: middle;
+}
+
+.share .principal .icon {
+    margin-left: 3px;
+}
+
+.share .principalSearchResults {
+    margin-top: 8px;
+}
+
+.share .principalSearchResults .principal {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.share .addPrincipalsBlock {
+    overflow: hidden;
+}
+
+.share .principal .match {
+    text-decoration: underline;
+}
+
+.share .searchPrincipals label {
+    margin-right: 5px;
+}
+
+.share .applyRecursiveBlock {
+    margin-top: 10px;
+    font-size: medium;
+}

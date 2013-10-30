@@ -147,11 +147,11 @@ folio.data.getImages = function(entry) {
 };
 
 folio.data.getLabelRForms = function(config, itemStore, entry, createIfMissing) {
-	var mp = config.getMPForLocalMD(entry);
-	if (!mp || !mp.label) {
+	var mp = config.getLabelTemplate(entry, "local");
+	if (!mp) {
 		return;
 	}
-	var template = itemStore.createTemplateFromChildren([mp.label]);
+	var template = itemStore.createTemplateFromChildren([mp]);
 	var graph = new rdfjson.Graph(entry.getLocalMetadata().exportRDFJSON());
 	var rootBinding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
 	return rforms.model.Engine.findFirstValueBinding(rootBinding, createIfMissing);
@@ -535,12 +535,11 @@ folio.data.createEntryGraphFromACLList = function(context, list) {
 };
 
 folio.data.fillACLInRDFJSONGraph = function(info, entryURI, resURI, metURI, base, list) {
-	dojo.forEach(info.find(entryURI, folio.data.SCAMSchema.WRITE), info.remove, info);
-	dojo.forEach(info.find(resURI, folio.data.SCAMSchema.READ), info.remove, info);
-	dojo.forEach(info.find(resURI, folio.data.SCAMSchema.WRITE), info.remove, info);
-	dojo.forEach(info.find(resURI, folio.data.SCAMSchema.READ), info.remove, info);
-	dojo.forEach(info.find(metURI, folio.data.SCAMSchema.READ), info.remove, info);
-	dojo.forEach(info.find(metURI, folio.data.SCAMSchema.WRITE), info.remove, info);
+    info.findAndRemove(entryURI, folio.data.SCAMSchema.WRITE);
+    info.findAndRemove(resURI, folio.data.SCAMSchema.READ);
+    info.findAndRemove(resURI, folio.data.SCAMSchema.WRITE);
+    info.findAndRemove(metURI, folio.data.SCAMSchema.READ);
+    info.findAndRemove(metURI, folio.data.SCAMSchema.WRITE);
 
 	for (var i=0;i<list.length;i++) {
 		var row = list[i];

@@ -120,7 +120,7 @@
 
 
 /*Selection*/
-.entryScape_selected,
+.entryScape .entryScape_selected,
 .cleanList.listView .selected,
 .folioTreeLabelSelected,
 .iconOverview a.selected,
@@ -129,7 +129,7 @@
 .breadcrumbs .crumb .choices.pressed,
 .listChildren .iconView.selected,
 .confolio .rforms .topLevel {
-	background: #FAFAD2; /*lightGoldenrodYellow*/
+	background: #EEEE98; /* #FAFAD2  lightGoldenrodYellow*/
 }
 
 .listView .listHead,

@@ -86,11 +86,10 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 			var config = this.application.getConfig();
 			var graph = entry.getLocalMetadata();
 			var langs = config.getMPLanguages();
-			var mp = config.getMPForLocalMD(entry);
+			var mpItems = config.getTemplate(entry, "local");
 			if (!this.explicitRforms || this.explicitRforms.length < 1) {
-				var template = itemStore.detectTemplate(graph, entry.getResourceUri(), (mp != null && mp.items != null ? mp.items : null));
+				var template = itemStore.detectTemplate(graph, entry.getResourceUri(), mpItems);
 			} else {
-				var mpItems = (mp != null && mp.items != null ? mp.items : null); 
 				var explicitPlusMp = this.explicitRforms;
 				if(mpItems){
 					explicitPlusMp.concat(mpItems);

@@ -26,6 +26,8 @@
 @import "../settings/settings.css";
 @import "../entry/details.css";
 @import "../search/search.css";
+@import "../view/view.css";
+@import "../security/security.css";
 
 
 html, body {
@@ -418,34 +420,6 @@ a:hover, .link:hover {
 .start .includes label {
 	margin-right: 0.3em;
 }
-/*------Login dialog-----------------------*/
-.loginDialog {
-	position: relative;
-	height: 100%;
-	width: 37em;
-	padding: 1px;
-}
-.loginDialog .logo {
-	background-position: top left;
-	background-repeat: no-repeat;
-	position: absolute;
-	width: 96px;
-	height: 96px;
-	top: 30px;
-	left: 35px;
-}
-
-.loginDialog table {
-	margin: 10px 10px 30px 150px;
-}
-
-.loginDialog table td {
-    padding-bottom: 4px;
-}
-
-.loginDialog table td .dijitButtonNode {
-    margin-right: -3px;
-}
 
 /*------Help view--------------------------*/
 .confolio.help {
@@ -577,4 +551,71 @@ a:hover, .link:hover {
 	margin-top: 10px;
 	font-size: medium;
 	margin-bottom: 10px;
+}
+
+
+/*-------------Card design, used in several places---------*/
+
+.card {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 86px;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 3px;
+    height: 145px;
+    vertical-align: top;
+    position: relative;
+    text-align: center;
+}
+
+.card:hover {
+    background: lightgrey;
+    cursor: pointer;
+}
+
+.card .navIcons {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    width: 80px;
+    border-top: 1px solid grey;
+    background: lightgrey;
+}
+.card:hover .navIcons {
+    display: block;
+}
+.confolio .card .img-wrap,
+.confolio .card .principalPicture {
+    position: relative;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.card .img-wrap,
+.confolio .principalPicture {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 2px;
+    left: 0px;
+    padding: 2px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    line-height: 0px;
+}
+
+.card .img-wrap img,
+.confolio .principalPicture img{
+    max-width: 80px;
+    max-height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+.confolio .card>span {
+    margin-top: 5px;
+    display: block;
 }

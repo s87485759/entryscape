@@ -63,7 +63,7 @@ define([
 				headers: loc_headers
 			}));
 		},
-		putFile: function(resourceURI, inputNode, onSuccess, onError) {
+		putFile: function(resourceURI, inputNode, mimetype, onSuccess, onError) {
 			  if(!inputNode.value){ return; }
 	          
 	          var _newForm; 
@@ -81,7 +81,8 @@ define([
 	          _newForm.appendChild(inputNode);
 	          win.body().appendChild(_newForm);
 	
-	          iframe(communicator.insertAuthParams(resourceURI+(resourceURI.indexOf("?") < 0 ? "?" : "&")+"method=put&textarea=true"),
+	          iframe(communicator.insertAuthParams(resourceURI+(resourceURI.indexOf("?") < 0 ? "?" : "&")+"method=put&textarea=true"+
+                  (mimetype!= null ? "&mimetype="+mimetype: "")),
 				{
 					preventCache: true,
 	                handleAs: "json",

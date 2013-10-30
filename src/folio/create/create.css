@@ -41,25 +41,29 @@
 }
 
 .createMenu .icon24.link {
-    top: 16px;
-    left:13px;
+    top: 12px;
+    left:14px;
 }
 
 .createMenu .icon24.upload {
-    top: 14px;
-    left: 60px;
+    top: 10px;
+    left: 58px;
 }
 
 .createMenu .icon24.folder {
-    top: 61px;
-    left:13px;
+    top: 49px;
+    left:5px;
 }
 
 .createMenu .icon24.text {
-    top: 61px;
-    left:61px;
+    top: 49px;
+    left:69px;
 }
 
+.createMenu .icon24.artifact {
+    top: 72px;
+    left:35px;
+}
 
 .createMenuBackground {
     width: 100%;
@@ -69,3 +73,112 @@
     top: 0px;
     left: 0px;
 }
+
+/*-----------CreateDialog---------------*/
+.createDialog {
+    width: 600px;
+}
+
+.createDialog.artifactState .notArtifact,
+.createDialog.uploadState .notUpload,
+.createDialog.linkState .notLink{
+    display: none !important;
+}
+
+.createDialog .category {
+    float: right;
+}
+
+.createDialog.artifactState .inputArea {
+    padding-top: 1em;
+}
+.createDialog .inputArea {
+    width: 500px;
+    display: table;
+    font-size: medium;
+}
+.createDialog .inputArea .row {
+    display: table-row;
+}
+.createDialog .inputArea .row>label {
+    padding-right: 1.3em;
+}
+
+.createDialog .inputArea .row>div,
+.createDialog .inputArea .row>div>div {
+    width: 100%;
+}
+
+.createDialog .inputArea .row .dijitFileInputVisible {
+    width: 270px;
+}
+.createDialog .inputArea .row .dijitFileInputReal {
+    width: 380px;
+}
+
+.createDialog .inputArea .row>* {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0.3em 0.3em 0.3em 0px;
+}
+
+.createDialog .types {
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.createDialog .types .card {
+    display: inline-block;
+    height: 100px;
+}
+
+.createDialog .ATSelectLabel {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: medium;
+    height: 24px;
+}
+.createDialog .ATSelectLabel .createTypeLabel {
+    vertical-align: top;
+}
+
+.createDialog .ATSelectLabel .selectTypeWaiting,
+.createDialog .ATSelectLabel .noAutodetectTypePossible {
+    display:none;
+    padding-left: 1.5em;
+    font-style: italic;
+    font-size: small;
+}
+
+.createDialog .ATSelectLabel .clearManuallySelectedType,
+.createDialog .ATSelectLabel .clearAutoSelectedType {
+    display:none;
+    font-style: italic;
+    font-size: small;
+    margin-left: 1.5em;
+    padding: 2px 6px;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border-style: solid;
+}
+
+.createDialog .icon.delete {
+    margin-left: 10px;
+    margin-bottom: 1px;
+    vertical-align: middle;
+}
+
+.createDialog .ATSelectLabel .clearManuallySelectedType:hover,
+.createDialog .ATSelectLabel .clearAutoSelectedType:hover {
+    background: lightgrey;
+    cursor: pointer;
+}
+
+.createDialog .ATSelectLabel.selectTypeWaiting .selectTypeWaiting,
+.createDialog .ATSelectLabel.noAutodetectTypePossible .noAutodetectTypePossible,
+.createDialog .ATSelectLabel.clearManuallySelectedType .clearManuallySelectedType,
+.createDialog .ATSelectLabel.clearAutoSelectedType .clearAutoSelectedType {
+    display: inline-block;
+}
+

@@ -27,7 +27,7 @@ dojo.require("dijit.form.Button");
 dojo.require("dojox.grid.DataGrid");
 dojo.require("dojo.data.ItemFileWriteStore");
 dojo.require("dijit.form.Button");
-dojo.require("folio.util.Dialog");
+dojo.require("folio.util.dialog");
 dojo.require("dijit.TitlePane");
 
 dojo.require("rforms.view.SortedStore");

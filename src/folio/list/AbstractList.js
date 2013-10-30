@@ -1,35 +1,18 @@
-/* global dojo, dijit */
+/*global define, __confolio*/
+define([
+    "dojo/_base/declare",
+    "dojo/_base/lang",
+    "dojo/_base/event",
+    "dojo/on",
+    "dojo/dom-class",
+    "dojo/keys",
+    "folio/list/operations",
+    "folio/list/Remove",
+    "folio/security/RightsDialog",
+    "folio/comment/CommentDialog"
+], function(declare, lang, event, on, domClass, keys, operations, Remove, ShareDialog, CommentDialog) {
 
-/*
- * Copyright (c) 2007-2010
- *
- * This file is part of Confolio.
- *
- * Confolio is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Confolio is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
- */
-
-dojo.provide("folio.list.AbstractList");
-dojo.require("dijit.Menu");
-dojo.require("dijit._Widget");
-dojo.require("dijit._Templated");
-dojo.require("dijit.layout._LayoutWidget");
-dojo.require("folio.data.Entry");
-dojo.require("folio.list.Remove");
-dojo.require("folio.comment.CommentDialog");
-dojo.require("folio.list.operations");
-
-dojo.declare("folio.list.AbstractList", null, {
+return declare(null, {
 	//=================================================== 
 	// Public Attributes 
 	//===================================================
@@ -48,7 +31,17 @@ dojo.declare("folio.list.AbstractList", null, {
 			this.showList(this.list);
 		}
 	},
-	getSelectedEntry: function() {
+    listenForKeyEvents: function() {
+        this._keyEventConnector = on(dojo.doc, "keypress", lang.hitch(this, this.handleKeyPress));
+    },
+    stopListenForKeyEvents: function() {
+        if (this._keyEventConnector) {
+            this._keyEventConnector.remove();
+            delete this._keyEventConnector;
+        }
+    },
+
+    getSelectedEntry: function() {
 		if (this.selectedIndex != -1) {
 			return this.listChildren[this.selectedIndex];
 		}
@@ -90,24 +83,22 @@ dojo.declare("folio.list.AbstractList", null, {
 		}
 	},
 	
-	handleEvent: function(index, event) {
+	handleEvent: function(index, ev) {
 		//Do not handle events when a link (or icon inside of a link) was clicked.
-		if (this.selectedIndex === index && (event.target.nodeName === "A" || dojo.hasClass(event.target, "iconCls") || dojo.hasClass(event.target, "external") || dojo.hasClass(event.target, "download"))) {
+		if (this.selectedIndex === index && (ev.target.nodeName === "A" || domClass.contains(ev.target, "iconCls") || domClass.contains(ev.target, "external") || domClass.contains(ev.target, "download"))) {
 			__confolio.ignoreUnloadDialog();
-			event.stopPropagation();
+			ev.stopPropagation();
 			return;
 		}
-		var action = this.extractActionFromEvent(event);
+		var action = this.extractActionFromEvent(ev);
 		if (action != null) {
-			this._handleAction(action, index, event);
-//			event.stopPropagation();
-//			return;			
+			this._handleAction(action, index, ev);
 		}
 
 		if (this.selectedIndex != index) {
 			this.changeFocus(index);
 		}
-		dojo.stopEvent(event);
+		event.stop(ev);
 	},
 	
 	handleKeyPress: function(event) {
@@ -117,28 +108,25 @@ dojo.declare("folio.list.AbstractList", null, {
 		if (this._focused && this.list) {
 			if (this._renameEditor) {
 				switch (event.keyCode) {
-					case dojo.keys.ESCAPE:
+					case keys.ESCAPE:
 						this._abort_rename();
-						dojo.stopEvent(event);
+						event.stop(event);
 						break;
-					case dojo.keys.ENTER:
+					case keys.ENTER:
 						this._do_rename();
-						dojo.stopEvent(event);
+						event.stop(event);
 						break;
 				}
 				return;
 			}
-			if (event.keyCode == dojo.keys.BACKSPACE) {
+			if (event.keyCode == keys.BACKSPACE) {
 				var refs = this.list.getReferrents();
 				if (refs.length > 0) {
 					this.application.openEntry(refs[0]);
-//					var eInfo = folio.data.normalizeEntryInfo();
-//					window.location = __confolio.viewMap.getHashUrl("default", {"context": eInfo.contextId, "entry": eInfo.entryId});
 				} else {
 					this.application.openEntry(this.list.getContext().getUri()+"/entry/_systemEntries");
-//					window.location = __confolio.viewMap.getHashUrl("default", {"context": this.list.getContext().getId(), "entry": "_systemEntries"});
 				}
-				dojo.stopEvent(event);
+				event.stop(event);
 				return;
 			}
 
@@ -147,59 +135,59 @@ dojo.declare("folio.list.AbstractList", null, {
 				return;
 			}
 			switch (event.keyCode) {
-				case dojo.keys.RIGHT_ARROW:
-				case dojo.keys.DOWN_ARROW:
+				case keys.RIGHT_ARROW:
+				case keys.DOWN_ARROW:
 					if (this.selectedIndex == -1) {
 						this.changeFocus(0);
 					} else if (this.selectedIndex < maxIndex){
 						this.changeFocus(this.selectedIndex+1);
 					}
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
-				case dojo.keys.LEFT_ARROW:
-				case dojo.keys.UP_ARROW:
+				case keys.LEFT_ARROW:
+				case keys.UP_ARROW:
 					if (this.selectedIndex > 0) {
 						this.changeFocus(this.selectedIndex -1);
 					} else if (this.selectedIndex == -1){
 						this.changeFocus(maxIndex);
 					}
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
-				case dojo.keys.ESCAPE:
+				case keys.ESCAPE:
 					this.changeFocus(-1);
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
-				case dojo.keys.ENTER:
+				case keys.ENTER:
 					if (this.selectedIndex != -1) {
 						this.openChild(this.selectedIndex);
 					}
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
-				case dojo.keys.DELETE:
+				case keys.DELETE:
 					if (this.selectedIndex != -1) {
 						this._handle_remove(this.listChildren[this.selectedIndex], this.selectedIndex, event);
 					}
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
-				case dojo.keys.F2:
+				case keys.F2:
 					if (this.selectedIndex != -1) {
 						this.renameFocused();
 					}
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
 			}
 			switch (event.charCode) {				
 				case 101: //letter e for edit
 					this._handleAction("edit", this.selectedIndex, event);
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
 				case 97: //letter a for administer
 					this._handleAction("admin", this.selectedIndex, event);
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
 				case 99: //letter c for comment
 					this._handleAction("comment", this.selectedIndex, event);
-					dojo.stopEvent(event);
+					event.stop(event);
 					break;
 			}
 		}
@@ -219,7 +207,6 @@ dojo.declare("folio.list.AbstractList", null, {
 		this.focusedEntry(entry);
 		if (dontPublish !== true && this.publishFocusEvents) {
 			this.application.publish("showEntry", {entry: entry, list: list});
-//			window.location = __confolio.viewMap.getHashUrl("default", {"context": entry.getContext().getId(), "entry": entry.getId(), "list": this.list.getId()});
 		}
 	},
 	renameFocused: function(select) {
@@ -253,7 +240,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================		
-	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new"],
+	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "rights", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new"],
 	_handleAction: function(action, index, event) {
 		var entry;
 		if (index == -1) {
@@ -285,7 +272,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			return;
 		}
 		console.log("CommentClicked");
-		var comment = new folio.comment.CommentDialog({
+		var comment = new CommentDialog({
 			entry: entry,
 			application: this.application
 		});
@@ -306,20 +293,30 @@ dojo.declare("folio.list.AbstractList", null, {
 		console.log("AdminClicked");
 		entry.setRefreshNeeded();
 		this.application.publish("entryAdmin", {entry: entry});
-		/*dojo.requireLocalization("folio", "list");
-		var rb = dojo.i18n.getLocalization("folio", "list"); 
-		folio.create.showACLDialog(this.application, entry, rb.admin);*/
 	},
+    _handle_rights: function(entry, index, event) {
+        if(!entry.possibleToAdmin()){
+            return;
+        }
+
+        var d = new ShareDialog({
+            entry: entry,
+            onHide: lang.hitch(this, this.listenForKeyEvents)
+        });
+        d.startup();
+        this.stopListenForKeyEvents();
+        d.show();
+    },
 	_handle_remove: function(entry, index, event) {
 	    if((index == -1 && (!entry.possibleToAdmin() || folio.data.getChildCount(entry) == 0)) //Need childcount for _trash?
 				|| (index>-1 && !((this.list.isMetadataModifiable() && this.list.isResourceModifiable() || this.list.getContext().getId() =="_search") && entry.possibleToAdmin()))){
 			return;
 		}
 		console.log("Remove Clicked");
-		var remove = new folio.list.Remove({});
+		var remove = new Remove({});
 		var haveAccessToThrash = true;
 		entry.getContext().loadEntryFromId("_trash", {limit: 0},
-		 dojo.hitch(this, function(trashEntry){
+		 lang.hitch(this, function(trashEntry){
 		 	var trashAccess = false;
 			if(trashEntry){
 				trashAccess = (trashEntry.isResourceModifiable() && trashEntry.isMetadataModifiable()) || trashEntry.possibleToAdmin();
@@ -332,7 +329,7 @@ dojo.declare("folio.list.AbstractList", null, {
 			   accessToThrash: trashAccess
 			   });
 		 }),
-		 dojo.hitch(this, function(){
+		 lang.hitch(this, function(){
 			remove.show({
 			   entry: entry,
 			   parent: this.list,
@@ -373,7 +370,7 @@ dojo.declare("folio.list.AbstractList", null, {
 				var entryObj = folio.data.normalizeEntryInfo(listsWithEntry[0]);
 				entryObj.refreshMe = true;
 	            entry.getContext().getStore().loadEntry(entryObj, {limit: this.application.getCommunicator().getDefaultLimit()},
-				   dojo.hitch(this,function(result){
+				   lang.hitch(this,function(result){
 				   	this.application.setClipboard({
 						entry:entry,
 						operation: "cut",
@@ -381,7 +378,7 @@ dojo.declare("folio.list.AbstractList", null, {
 						index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit()
 					});
 				   }),
-				   dojo.hitch(this,function(){
+				   lang.hitch(this,function(){
 				   	this.application.message("Could not find the folder the item was located in");
 				   })); //TODO: In case of a failure of loading
 			} else if (listsWithEntry.length > 1){
@@ -413,7 +410,7 @@ dojo.declare("folio.list.AbstractList", null, {
 	},
 	_handle_add: function(entry, index, event) {
 		console.log("AddClicked");
-		var d = new dojo.Deferred();
+		//var d = new dojo.Deferred();
 		var application = this.application;
 		var home = application.getUser().homecontext;
 		var contextURI = application.repository+home;
@@ -437,11 +434,11 @@ dojo.declare("folio.list.AbstractList", null, {
 			 * the contacts-list
 			 */
 			var updateEntry = function(entry) {
-				folio.data.getList(contacts, dojo.hitch(this, function(list) {
+				folio.data.getList(contacts, lang.hitch(this, function(list) {
 					list.entry.setRefreshNeeded();
 					var clickedNode=event.originalTarget;
-					if(clickedNode && !dojo.hasClass(clickedNode,"disabledEntryButton")){
-						dojo.addClass(clickedNode,"disabledEntryButton");
+					if(clickedNode && !domClass.contains(clickedNode,"disabledEntryButton")){
+						domClass.add(clickedNode,"disabledEntryButton");
 					}
 					this.application.message(this.resourceBundle.addedToContactsMessage);
 				}));
@@ -462,9 +459,10 @@ dojo.declare("folio.list.AbstractList", null, {
 					builtinType: builtinTypeString,//entry.getBuiltinType(),
 					'cached-external-metadata': entry.getLocationType() === folio.data.LocationType.LOCAL ? entry.getLocalMetadataUri(): entry.getExternalMetadataUri(),
 					resource: entry.getResourceUri()}};
-			contacts.getContext().createEntry(linkEntry, dojo.hitch(this, updateEntry), dojo.hitch(d, d.errback));
+			contacts.getContext().createEntry(linkEntry, lang.hitch(this, updateEntry));//lang.hitch(d, d.errback));
 		};
 		
-		application.getStore().getContext(contextURI).loadEntryFromId("_contacts", {}, dojo.hitch(this, entryLoaded), dojo.hitch(d, d.errback));
+		application.getStore().getContext(contextURI).loadEntryFromId("_contacts", {}, lang.hitch(this, entryLoaded));//, lang.hitch(d, d.errback));
 	}
+});
 });

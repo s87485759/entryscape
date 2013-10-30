@@ -19,6 +19,17 @@
 
 define({
 	root : {
-		"createTypeLabel" : "Type"
+        "fileLabel": "File",
+        "addressLabel": "Address",
+        "nameLabel": "Name",
+        "createTypeLabel" : "Type",
+		"selectTypeWaiting" : "No type autodetected or manually selected yet.",
+        "artifactTypeRequest": "You must chose a type below.",
+        "clearManuallySelectedType": "Clear manually selected type",
+        "clearAutoSelectedType": "clear autodetected type",
+        "noAutodetectTypePossible": "Autodetect failed, select manually instead.",
+        "addressIsInvalid": "The provided webaddress is not valid.",
+        "missingAddress": "Please provide a valid webaddress.",
+        "missingLabel": "Please provide a name"
 	}
 });

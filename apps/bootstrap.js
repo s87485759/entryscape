@@ -143,6 +143,7 @@ __confolio.start = function(loadIndicatorId, splashId){
 	            "dojo/_base/fx",
 	            "dojo/_base/window",
 	            "dojo/Deferred",
+                "dojo/promise/all",
 	            "folio/Application",
 	         	"se/uu/ull/site/ViewMap",
 	     		"folio/security/LoginDialog",
@@ -153,7 +154,7 @@ __confolio.start = function(loadIndicatorId, splashId){
 	//If a controller is specified, load it
 	__confolio.config.viewMap.controller && deps.push(__confolio.config.viewMap.controller);
 	
-	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, Application, ViewMap, LoginDialog, Dialog, cookie, Manager) {
+	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, all, Application, ViewMap, LoginDialog, Dialog, cookie, Manager) {
 		var scamPath = __confolio.config["scamPath"] || "scam";
 /*		cookie("scamSimpleLogin", null, {
 			path: "/"+scamPath+"/",
@@ -173,7 +174,7 @@ __confolio.start = function(loadIndicatorId, splashId){
 		}
 		//asynhronous loading of definitions. Use getDefinitions with a callback.
 		var definitionsPath = (__confolio.config["definitionsPath"] || "definitions") + ".json";
-		__confolio.config.definitionsPromise = request.get(definitionsPath, {
+		var def = request.get(definitionsPath, {
 			handleAs: "json",
 			headers: {"Accept": "application/json",
 					  "Content-type": "application/json; charset=UTF-8"}
@@ -185,8 +186,20 @@ __confolio.start = function(loadIndicatorId, splashId){
 			function() {
 				alert("Error in configuration, cannot load the definitions from "+ definitionsPath);
 			});
-		
-		
+        var bdef = request.get("./baseDefinitions.json", {
+            handleAs: "json",
+            headers: {"Accept": "application/json",
+                "Content-type": "application/json; charset=UTF-8"}
+        }).then(
+            function(data) {
+                __confolio.config["baseDefinitions"] = data;
+                return data;
+            },
+            function() {
+                alert("Error in configuration, cannot load base definitions from ./baseDefinitions.json");
+            });
+        __confolio.config.definitionsPromise = all({definitions: def, baseDefinitions: bdef});
+
 		__confolio.application = new folio.Application({
 			dataDir: "../data/",
 			repository: window.location.protocol + "//" + window.location.host + "/" + scamPath + "/"

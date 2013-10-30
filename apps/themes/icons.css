@@ -8,7 +8,12 @@
 	height: 24px;
 }
 
-.entryScape .icon, .entryScape .icon24 {
+.entryScape .icon64 {
+    width: 64px;
+    height: 64px;
+}
+
+.entryScape .icon, .entryScape .icon24, .entryScape .icon64 {
 	display: inline-block;
 	*display: inline;
     zoom:1;
@@ -21,20 +26,22 @@
     cursor: pointer;
 }
 
-.entryScape .icon.inactive, .entryScape .icon24.inactive {
+.entryScape .icon.inactive, .entryScape .icon24.inactive, .entryScape .icon64.inactive {
     opacity:0.14;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=14)";
     filter:alpha(opacity=14);
 }
 
-.entryScape .icon.disabled, .entryScape .icon24.disabled {
+.entryScape .icon.disabled, .entryScape .icon24.disabled, .entryScape .icon64.disabled {
     opacity:0.24 !important;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=24)" !important;
     filter:alpha(opacity=24) !important;
     cursor: auto !important;
 }
 
-.entryScape .icon:hover, .entryScape .iconWrapper:hover .icon, .entryScape .icon24:hover, .entryScape .iconWrapper:hover .icon24 {
+.entryScape .icon:hover, .entryScape .iconWrapper:hover .icon,
+.entryScape .icon24:hover, .entryScape .iconWrapper:hover .icon24,
+.entryScape .icon64:hover, .entryScape .iconWrapper:hover .icon64 {
     opacity:1;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=100)";
     filter:alpha(opacity=100);
@@ -76,6 +83,10 @@
     background-image: url(icons/oxygen/24x24/editdelete.png);
 }
 
+.delete.icon {
+    background-image: url(icons/oxygen/16x16/editdelete.png);
+}
+
 .toolDelete.icon24 {
     background-image: url(icons/own/24x24/delete-tool.png);
 }
@@ -104,6 +115,14 @@
 	background-image: url(icons/dkit/24x24/folder.png);
 }
 
+.entryScape .artifact.icon24 {
+    background-image: url(icons/realistik/24x24/blockdevice.png);
+}
+
+.entryScape .artifact.icon64 {
+    background-image: url(icons/realistik/64x64/blockdevice.png);
+}
+
 .entryScape .settings.icon {
     background-image: url(icons/mattebasic/16x16/tool.png);
 }
@@ -126,6 +145,10 @@
 
 .entryScape .link.icon24 {
     background-image: url(icons/oxygen/24x24/link_center.png);
+}
+
+.entryScape .link.icon64 {
+    background-image: url(icons/oxygen/64x64/link_center.png);
 }
 
 .entryScape .bookmark.icon {
@@ -155,6 +178,10 @@
 
 .entryScape .icon24.upload {
     background-image: url(icons/own/24x24/upload.png);
+}
+
+.entryScape .icon64.upload {
+    background-image: url(icons/own/upload.png);
 }
 
 .entryScape .icon.upload {
@@ -218,4 +245,13 @@
 	background-repeat: no-repeat;
 	height: 16px;
 	width: 16px;
+}
+
+.entryScape .removeIcon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABuwAAAbsBOuzj4gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIXSURBVDiNpZM9aBNxGMafN80Rm49ekktS83H5IMHSUjscFcGCtQg1iRA1OAtOgmBHiVvq1EEIFB0c0r0IpVwWFx0MOIggaIci2FaTq2LtqW1MyeV6f6cLZ9pF+oz/931+PC8Pf2KM4SSyncjdD1ghkt7cvvV9leNy/YurHJf78OB+c4VIOhawTCT5J8denRkdC0aLWfkZUdYyy4Wz03I8GIyevjJdX7ZAegANWEpOnncdNLcRS47aw/lLtSpRvkJ0zXn5Qk0cmbC3txrIzOadGrBk+uwWQGmt/rKWHD9nB7MhEE7ZNy625F3DoNlExqY2FAw4Hfj24r2uASXTR9YWnhJlh0eickzMcIbGYPO6ccAMODsGHIkItt6+7irvPhbuMPb8WAAALBJlI5lhORKMcocagRwO6KyDr8qn7s6XX4U5i/mfE0x1AGhaF/r6OvSfbRCAAZ8TzHMKnf7l/gQLRFkxIcjj+x0OagttvxsEYFBtAX431jyD3cbnnULJkqLXwjxRTkxF5KmWzglqCy7Biyc8zxZ5L3MFfBDUFqb+HHJiOi4v8PzVIwAWDz2eGfJyod3fcAf8qHh5Q9hUir7N5s0KzxvuoIDQDxUzniGOF8VHvdiMMTDGUAakaiK2p0hnWTmd0ueA6+bsLlCcT6d0RZpg1URsrwxI5qwHMCEPM9GNe8AN67sJqedz21YzY+xojf+rE//Gv3sS6xhM1kjhAAAAAElFTkSuQmCC);
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    background-repeat: no-repeat;
 }

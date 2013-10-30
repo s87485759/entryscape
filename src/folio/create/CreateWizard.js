@@ -108,7 +108,7 @@ dojo.declare("folio.create.CreateWizard", [dijit._Widget, dijit._Templated], {
 			this.apPlain = new folio.editor.RFormsEditorPlain({}, node);
 			var md = new rdfjson.Graph(dojo.clone(this.co.metadata));
 			this.application.getItemStore(dojo.hitch(this, function(itemStore) {
-				var ap = this.application.getConfig().getDefaultMP();
+				var ap = this.application.getConfig().getDefaultTemplate();
 				this.apPlain.show(md, null, resourceURI, itemStore.detectTemplate(md, resourceURI, ap.items));
 			}));
 		}));

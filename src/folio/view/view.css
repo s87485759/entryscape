@@ -1,0 +1,83 @@
+/* ---------Generic View stuff-----------*/
+.confolio .viewOutline {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 0px;
+    width: 200px;
+    padding: 10px 0px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.confolio .viewCenter {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 210px;
+    right: 0px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.confolio .viewTop {
+    position: absolute;
+    top: 18px;
+    left: 190px;
+    right: 0px;
+    padding: 6px 16px 6px 40px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.confolio .viewBottom {
+    position: absolute;
+    bottom: 10px;
+    left: 190px;
+    right: 0px;
+    padding: 6px 16px 6px 40px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+
+/* -------- Help View--------------*/
+.confolio.help .viewCenter {
+    top: 64px;
+    right: 10px;
+}
+
+.confolio.help .viewTop {
+    font-size: 20px;
+    height: 24px;
+}
+
+/* -------- Slides View -----------*/
+.confolio.slides .viewCenter,
+.confolio.slides .viewBottom {
+    left: 0px;
+}
+
+.slides .infoBox {
+    font-size: 20px;
+}
+
+.slides .slideControls {
+    float: right;
+}
+
+/* ---------LDBrowser view --------------*/
+.confolio .viewOutline {
+    width: 50%;
+    padding: 10px;
+}
+
+.confolio.ldbrowser .viewCenter,
+.confolio.ldbrowser .viewBottom {
+    left: 50%;
+    padding-left: 10px;
+}

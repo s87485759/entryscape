@@ -224,7 +224,7 @@ dojo.declare("folio.editor.EntryAdminEditor", [dijit._Widget, dijit._Templated],
 			resUri = resUri + "?mimeType=" + this.changeFileMimeType.get('value');
 		}
 		this.changeFileMessageArea.set('content', this.resourceBundle.replacingFile);
-		contextForEntry.communicator.putFile(resUri, this.fileUploadChange.fileInput,
+		contextForEntry.communicator.putFile(resUri, this.fileUploadChange.fileInput, null,
 		   dojo.hitch(this,function(){
 			   this.entry.refresh();
 			   var self = this;

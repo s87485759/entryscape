@@ -29,6 +29,11 @@ dojo.require("folio.create.CreateWizard");
 dojo.require("folio.editor.RFormsEditorDialog");
 dojo.require("folio.editor.EntryAdminEditor");
 dojo.require("folio.navigation.Breadcrumbs");
+dojo.require("folio.create.Create");
+dojo.require("folio.create.Upload");
+dojo.require("folio.create.LinkTo");
+
+
 
 dojo.declare("folio.apps.TFolio", [dijit._Widget, dijit._Templated], {
 	templatePath: dojo.moduleUrl("folio.apps", "TFolioTemplate.html"),

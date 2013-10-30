@@ -127,7 +127,7 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 		this.inherited("startup", arguments);
 		this.detailsLayoutDijit.startup();
 //		dojo.style(this.contentAreaDijit.getSplitter("top").domNode, "display", "none");
-		dojo.connect(this.contentViewDijit, "show", this, function() {
+		dojo.connect(this.contentViewDijit, "contentUpdated", this, function() {
 			/*if (this.contentViewDijit.showing) {
 				dojo.style(this.contentViewDijit.domNode, "display", "");
 				dojo.style(this.contentAreaDijit.getSplitter("top").domNode, "display", "");
@@ -144,6 +144,7 @@ dojo.declare("folio.entry.Details", [dijit.layout._LayoutWidget, dijit._Template
 					dojo.style(this.imgPreviewNode, "display", "none");					
 				}
 			}*/
+
 			this.editContentButtonDijit.set("disabled", !this.contentViewDijit.isContentEditable()); 
 			this.contentAreaDijit.resize();
             this.resize();
@@ -364,7 +365,7 @@ folio.entry.Details.show = function(node, entry) {
     var bb = __confolio.application.getBoundingBox();
     var width = Math.floor((bb.w < 600 ? bb.w: 600 ) * 0.70),
         height = Math.floor((bb.h < 700 ? bb.h: 700) * 0.70);
-    folio.util.launchToolKitDialog(node, function(innerNode, onReady) {
+    folio.util.dialog.launchToolKitDialog(node, function(innerNode, onReady) {
         dojo.style(innerNode, {
             width: width+"px",
             height: height +"px",

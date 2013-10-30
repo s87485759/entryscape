@@ -100,7 +100,7 @@ dojo.declare("folio.comment.CommentDialog", [dijit._Widget, dijit._Templated], {
 			this.graph.create(this.resourceURI, commentStyle["property"], {value: this.entry.getUri(), "type": "uri"});
 			this.graph.create(this.resourceURI, folio.data.RDFSchema.TYPE, {value: commentStyle["class"], "type": "uri"});
 
-			var template = itemStore.detectTemplate(this.graph, this.resourceURI, config.getMPForType(commentStyle["class"]).items);
+			var template = itemStore.detectTemplate(this.graph, this.resourceURI, config.getTemplateForApplicationType(commentStyle["class"]).items);
 			var langs = config.getMPLanguages();
 			var binding = rforms.model.Engine.match(this.graph, this.resourceURI, template);
 			var node = dojo.create("div");

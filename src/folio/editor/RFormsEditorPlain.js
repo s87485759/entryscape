@@ -48,8 +48,8 @@ dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
 			var config = this.application.getConfig();
 			var langs = config.getMPLanguages();
 			if (template == null) {
-				var mp = config.getMPForLocalMD(entry);
-				template = itemStore.detectTemplate(this.graph, uri, (mp != null && mp.items != null ? mp.items : null));				
+				var mpItems = config.getTemplate(entry, "local");
+				template = itemStore.detectTemplate(this.graph, uri, mpItems);
 			}
 			var binding = rforms.model.Engine.match(this.graph, uri, template);
 			if (!this.includeLevel) {

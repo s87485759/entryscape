@@ -1,32 +1,16 @@
-/*
- * Copyright (c) 2007-2010
- *
- * This file is part of Confolio.
- *
- * Confolio is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Confolio is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
- */
+/*global define, __confolio*/
+define([
+    "dojo/_base/declare",
+    "dojo/_base/lang",
+    "dojo/_base/connect",
+    "dojo/_base/array",
+    "dijit/Dialog",
+    "folio/ApplicationView"
+], function (declare, lang, connect, array, Dialog, ApplicationView) {
 
-dojo.provide("folio.util.Message");
-dojo.require("dijit._Widget");
-dojo.require("dijit._Templated");
-dojo.require("folio.Application");
-dojo.require("dijit.Dialog");
-
-dojo.declare("folio.util.MessageDialog", [dijit.Dialog, folio.ApplicationView], {
-	constructor: function() {
-	},
-	startup: function() {
+    return declare([Dialog, ApplicationView], {
+    startup: function() {
+        this.inherited("startup", arguments);
 		this.titleNode.innerHTML = "Message";
 		this.localize();
 	},
@@ -53,8 +37,10 @@ dojo.declare("folio.util.MessageDialog", [dijit.Dialog, folio.ApplicationView], 
 		}		
 	},
 	localize: function() {
-		dojo.requireLocalization("folio", "message");
-		this.resourceBundle = dojo.i18n.getLocalization("folio", "message"); 
-		this.set(this.resourceBundle);
+        require(["dojo/i18n!folio/nls/message"], lang.hitch(this, function(bundle) {
+            this.resourceBundle = bundle;
+            this.set(this.resourceBundle);
+        }));
 	}
+});
 });

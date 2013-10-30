@@ -46,8 +46,8 @@ dojo.declare("folio.editor.RFormsLabelEditor", [dijit._Widget], {
 		dojo.addClass(this.domNode, "labelEditor");
 		this.textBox = new dijit.form.TextBox({trim: true}, dojo.create("div", null, this.domNode));
 		this.application.getItemStore(dojo.hitch(this, function(itemStore){
-			var mp = this.application.getConfig().getMPForLocalMD(this.entry);
-			var template = itemStore.createTemplateFromChildren([mp.label]);
+			var mpLabel = this.application.getConfig().getLabelTemplate(this.entry, "local");
+			var template = itemStore.createTemplateFromChildren([mpLabel]);
 			this.entry.setRefreshNeeded();
 			this.entry.refresh(dojo.hitch(this, function() {
 				this._valueBinding = folio.data.getLabelRForms(this.application.getConfig(), itemStore, this.entry, true);

@@ -19,7 +19,7 @@
 
 dojo.provide("folio.admin.ACLTab");
 dojo.require("folio.admin.TabContent");
-dojo.require("folio.util.Dialog");
+dojo.require("folio.util.dialog");
 dojo.require("folio.Application");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");

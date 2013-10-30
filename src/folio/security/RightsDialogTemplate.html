@@ -1,0 +1,25 @@
+<div class="confolio share">
+    <div class="ownersBlock distinctBackground">
+        <div class="ownersBlockLabel" data-dojo-attach-point="i18n">ownerNote</div>
+        <div data-dojo-attach-point="owners"></div>
+    </div>
+
+    <div class="portfolioDefaultBlock distinctBackground">
+        <div data-dojo-attach-point="overriddenCheck,i18n" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_overrideChange">overrideContextButtonTextOverride,overrideContextButtonTextDefault</div>
+        <label data-dojo-attach-point="i18n">headLabelTextDefault,headLabelTextSpecify</label>
+    </div>
+    <div class="shareBlockWrapper">
+        <div class="shareBlock" data-dojo-attach-point="shareBlock"></div>
+    </div>
+    <div class="addPrincipalsBlock distinctBackground">
+        <div class="searchPrincipals">
+            <label data-dojo-attach-point="i18n">principalSearchLabel</label>
+            <div data-dojo-type="dijit/form/TextBox" data-dojo-attach-event="onChange: _addPrincipalSearchChange" data-dojo-props="intermediateChanges: true, disabled: true" data-dojo-attach-point="principalSearch"></div>
+        </div>
+        <div class="principalSearchResults" data-dojo-attach-point="searchResults" data-dojo-attach-event="click: _principalAdd"></div>
+    </div>
+    <div class="applyRecursiveBlock" style="display:none" data-dojo-attach-point="applyRecursiveBlock">
+        <div id="${id}-applyRecursive" data-dojo-attach-point="applyRecursive" data-dojo-type="dijit/form/CheckBox"></div>
+        <label for="${id}-applyRecursive" data-dojo-attach-point="i18n" data-dojo-props="disabled: true">applyRecursiveLabel</label>
+    </div>
+</div>

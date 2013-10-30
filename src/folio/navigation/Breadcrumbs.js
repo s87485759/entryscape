@@ -364,7 +364,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 					dijit.focus(innerNode);
 					onReady();
 				});
-				this.choicesDialogDijit = folio.util.launchToolKitDialog(sep, prepareDialog);				
+				this.choicesDialogDijit = folio.util.dialog.launchToolKitDialog(sep, prepareDialog);
 			}));
 		});
 		if (index > 1) {
@@ -405,7 +405,7 @@ dojo.declare("folio.navigation.Breadcrumbs", [dijit.layout._LayoutWidget, dijit.
 						dijit.focus(innerNode);
 						onReady();
 					});
-					this.choicesDialogDijit = folio.util.launchToolKitDialog(sep, prepareDialog);
+					this.choicesDialogDijit = folio.util.dialog.launchToolKitDialog(sep, prepareDialog);
 				}));
 			});
 			this.application.getStore().loadEntry(this.application.repository+"_contexts/entry/_all", {}, f, null);

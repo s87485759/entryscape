@@ -23,6 +23,7 @@ define({
 		"comment" : "Comment",
 		"edit" : "Edit",
 		"admin" : "Administer",
+        "rights": "Access rights",
 		"remove" : "Remove",
 		"rename" : "Rename",
 		"empty" : "Empty",

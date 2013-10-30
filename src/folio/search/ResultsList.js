@@ -8,10 +8,9 @@ define(["dojo/_base/declare",
     "rdfjson/converters",
     "folio/data/List",
     "folio/data/Constants",
-    "folio/util/Dialog",
     "folio/editor/RFormsPresenter",
     "dojox/xml/parser"
-], function(declare, lang, construct, on, query, Graph, converters, List, Contstants, Dialog, RFormsPresenter, xml) {
+], function(declare, lang, construct, on, query, Graph, converters, List, Contstants, RFormsPresenter, xml) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
