@@ -12,7 +12,7 @@ border-bottom-left-radius: 6px;
 .confolio.startPage .startMessage {
 	display: inline-block;
 	vertical-align: top;
-	padding: 5px 20px;
+	padding: 0px 20px;
 	height: 100%;
 }
 .confolio.startPage .startMessage h1 {
@@ -24,8 +24,9 @@ border-bottom-left-radius: 6px;
 }
 
 .confolio.startPage .startMessage .startDescription {
-	font-size: large;
+	font-size: medium;
 	margin: 5px 0px;
+    margin-top: -10px;
 }
 
 .confolio.startPage .startMiddle {
@@ -80,4 +81,13 @@ border-bottom-left-radius: 6px;
     width: 160px;
     margin-top: -30px;
 
+}
+
+.startDescription {
+    padding-left: 10em;
+}
+
+.startDescription ul {
+    list-style-type: square;
+    line-height: 1em;
 }
