@@ -16,7 +16,7 @@
 }
 
 .loginDialog table {
-    margin: 10px 10px 30px 150px;
+    margin: 10px 10px 15px 150px;
 }
 
 .loginDialog table td {
@@ -167,4 +167,52 @@
 .share .applyRecursiveBlock {
     margin-top: 10px;
     font-size: medium;
+}
+
+.openIdProviders {
+    margin-top: 10px;
+}
+
+.openIdProviders>.provider {
+    display: inline-block;
+    width: 126px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    padding: 6px;
+    margin-left: 4px;
+    margin-right: 3px;
+    height: 46px;
+    vertical-align: top;
+    position: relative;
+    text-align: center;
+}
+
+.openIdProviders>.provider:hover {
+    background: lightgrey;
+    cursor: pointer;
+}
+.openIdProviders>.provider .img-wrap {
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    width: 122px;
+    height: 40px;
+    left: 0px;
+    padding: 2px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    line-height: 0px;
+}
+
+.openIdProviders>.provider .img-wrap img {
+    max-width: 122px;
+    max-height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+
+.account .openidSignup {
+    padding: 20px;
+    -webkit-border-radius: 0px 0px 6px 6px;
+    -moz-border-radius: 0px 0px 6px 6px;
 }

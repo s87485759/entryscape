@@ -238,10 +238,10 @@ define(["dojo/_base/declare",
             }
         },
         _loginLinkClicked: function () {
-            new folio.security.LoginDialog({
+            new LoginDialog({
                 isLogoutNeeded: !(!this.user), // Whether or not this is actually a logout
                 application: this.application
-            }).show(true);
+            }).show();
         },
         _changeLocaleClicked: function () {
             /***

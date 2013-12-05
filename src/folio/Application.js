@@ -60,6 +60,10 @@ define([
             return this._messages;
         },
         setUser: function (userObj) {
+            if (userObj != null && userObj.id === "_guest") {
+                this.userObj = null;
+                return;
+            }
             this.userObj = userObj;
             if (userObj && userObj.language) {
                 this.setLocale(userObj.language);

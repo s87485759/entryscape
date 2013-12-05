@@ -78,8 +78,12 @@ define([
          */
         addStandardButtons: function (onFinish, onCancel) {
             require(["dojo/i18n!folio/nls/standardDialog"], lang.hitch(this, function (rb) {
-                this.addCancelButton(onCancel, rb);
-                this.addFinishButton(onFinish, rb);
+                if (onFinish != null) {
+                    this.addFinishButton(onFinish, rb);
+                }
+                if (onCancel != null) {
+                    this.addCancelButton(onCancel, rb);
+                }
             }));
         },
         addFinishButton: function (onFinish, rb) {

@@ -146,15 +146,15 @@ __confolio.start = function(loadIndicatorId, splashId){
                 "dojo/promise/all",
 	            "folio/Application",
 	         	"se/uu/ull/site/ViewMap",
+                "folio/security/authorize",
 	     		"folio/security/LoginDialog",
-	     		"dijit/Dialog",
-	     		"dojo/cookie"];
+	     		"dijit/Dialog"];
 	//Make sure the specified manager is loaded.
 	deps.push(__confolio.config.viewMap.manager);
 	//If a controller is specified, load it
 	__confolio.config.viewMap.controller && deps.push(__confolio.config.viewMap.controller);
 	
-	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, all, Application, ViewMap, LoginDialog, Dialog, cookie, Manager) {
+	require(deps, function(request, parser, query, dom, attr, style, fx, win, Deferred, all, Application, ViewMap, authorize, LoginDialog, Dialog, Manager) {
 		var scamPath = __confolio.config["scamPath"] || "scam";
 /*		cookie("scamSimpleLogin", null, {
 			path: "/"+scamPath+"/",
@@ -218,17 +218,20 @@ __confolio.start = function(loadIndicatorId, splashId){
 				style.set(vm, {"max-width": ""+maxw+"px"});
 			}
 		});
-		
-		var username = __confolio.config["username"] || "";
+        var username = __confolio.config["username"] || "";
 		var password = __confolio.config["password"] || "";
-		var cookieValue = dojo.cookie("scamSimpleLogin");
-		if (cookieValue != null ||__confolio.config["showLogin"] === "true") {
-			new folio.security.LoginDialog({
-				application: __confolio.application,
-				userName: username,
-				password: password
-			}).show();
-		}
+
+
+        if (__confolio.config["showLogin"] === "true") {
+            (new LoginDialog({
+                application: __confolio.application,
+                userName: username,
+                password: password
+            })).show();
+        } else {
+            authorize.loadAuthorizedUser();
+        }
+
 //		application.placeAt(dojo.body(), 0);
 //		application.startup();
 		if (!__confolio.isDebug() && __confolio.config["unloadDialog"] === "true") {

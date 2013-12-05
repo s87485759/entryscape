@@ -1,29 +1,34 @@
 <div class="loginDialog">
     <div class="logo"></div>
-    <form dojoType="dijit.form.Form" dojoAttachPoint="loginForm">
+    <form data-dojo-type="dijit/form/Form" data-dojo-attach-point="loginForm">
         <table>
             <tr>
                 <td colspan="2">
-                    <span dojoType="dijit.layout.ContentPane" dojoAttachPoint="loginStatus" style="font-weight: bold;"></span>
+                    <span data-dojo-attach-point="loginStatus" style="font-weight: bold;"></span>
                 </td>
             </tr>
             <tr>
-                <td><label for="${id}_userInput" dojoType="dijit._Widget" dojoAttachPoint="userLabel"></label>&nbsp;</td>
-                <td><input dojoType="dijit.form.TextBox" dojoAttachPoint="userInput" id="${id}_userInput" size="20" type="input" tabindex="1"/></td>
+                <td><label for="${id}_userInput" data-dojo-attach-point="i18n">user</label>&nbsp;</td>
+                <td><input data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="userInput" id="${id}_userInput" size="20" type="input" tabindex="1"/></td>
             </tr>
             <tr>
-                <td><label for="${id}_passwordInput" dojoType="dijit._Widget" dojoAttachPoint="passwordLabel"></label>&nbsp;</td>
-				<td><input dojoType="dijit.form.TextBox" dojoAttachPoint="passwordInput" id="${id}_passwordInput" size="20" type="password" tabindex="2"/></td>
+                <td><label for="${id}_passwordInput" data-dojo-attach-point="i18n">password</label>&nbsp;</td>
+				<td><input data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="passwordInput" id="${id}_passwordInput" size="20" type="password" tabindex="2"/></td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right;">
-                    <input dojoType="dijit.form.CheckBox" data-dojo-attach-point="staySignedIn" id="${id}_staySignedIn" checked="true"/>
-                    <label for="${id}_staySignedIn" data-dojo-attach-point="staySignedInLabelNode" style="margin: 0px 1.5em 0px 0.3em"></label>
-                    <input dojoType="dijit.form.Button" dojoAttachPoint="loginButton" type="submit" tabindex="3"/>
+                    <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="staySignedIn" id="${id}_staySignedIn" checked="true"/>
+                    <label for="${id}_staySignedIn" data-dojo-attach-point="i18n" style="margin: 0px 1.5em 0px 0.3em">staySignedInLabel</label>
+                    <input data-dojo-type="dijit/form/Button" data-dojo-attach-point="i18n,loginButton" type="submit" tabindex="3" data-dojo-props="label: 'logIn'"/>
                 </td>
             </tr>
         </table>
     </form>
-    <div style="margin-top: .5em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserWarning"></div>
-    <ul style="margin-top: 0em; display: none;" dojoType="dijit._Widget" dojoAttachPoint="browserList"></ul>
+    <div style="margin-top: .5em; display: none;" data-dojo-attach-point="browserWarning"></div>
+    <ul style="margin-top: 0em; display: none;" data-dojo-attach-point="browserList"></ul>
+    <div>
+        <label data-dojo-attach-point="i18n">openIdLoginLabel</label>
+        <div class="openIdProviders" data-dojo-attach-point="providers"></div>
+    </div>
+    <a data-dojo-attach-point="i18n,signuplink">signup</a>
 </div>

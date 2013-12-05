@@ -12,7 +12,7 @@ __confolio.addConfig({
 "possibleToCommentEntry": "true",
 "helpUrl": "http://www.confolio.org/wiki/OrganicEdunet",
 "aboutUrl": "../info/about-my.html",
-"scamPath": "scam",   /*This is default, can be left out*/
+"scamPath": "store",   /*This is default, can be left out*/
 "definitionsPath": "definitions",
 "startButtons": "true",
 "theme": "default",
@@ -38,6 +38,7 @@ supportedLanguageMap: {
                 {"name": "signup", "class": "folio/view/Signup"},
                 {"name": "slides", "class": "folio/view/Slides"},
                 {"name": "ldbrowser", "class": "folio/view/LDBrowser"},
+                {"name": "account", "class": "folio/security/Account"},
                 {"name": "help", "class": "folio/view/Help", "constructorParams": {"initialHelpPage": "intro"}}
             ]}
 });

@@ -5,12 +5,13 @@ define([
     "dojo/_base/event",
     "dojo/on",
     "dojo/dom-class",
+    "dojo/query",
     "dojo/keys",
     "folio/list/operations",
     "folio/list/Remove",
     "folio/security/RightsDialog",
     "folio/comment/CommentDialog"
-], function(declare, lang, event, on, domClass, keys, operations, Remove, ShareDialog, CommentDialog) {
+], function(declare, lang, event, on, domClass, query, keys, operations, Remove, ShareDialog, CommentDialog) {
 
 return declare(null, {
 	//=================================================== 
@@ -32,7 +33,8 @@ return declare(null, {
 		}
 	},
     listenForKeyEvents: function() {
-        this._keyEventConnector = on(dojo.doc, "keypress", lang.hitch(this, this.handleKeyPress));
+        this._keyEventConnector = on(query(".siteMap", dojo.doc), "keyup", lang.hitch(this, this.handleKeyPress));
+
     },
     stopListenForKeyEvents: function() {
         if (this._keyEventConnector) {
@@ -69,7 +71,7 @@ return declare(null, {
 	showPage: function(page) {
 		this.showList(this.list, page);
 	},
-	openChild: function(index, event) {
+	openChild: function(index, ev) {
 		var entry = this.listChildren[index];
 		this.application.getHrefLinkLike(entry, function(hrefObj) {
 			if (hrefObj.blankTarget) {
@@ -78,8 +80,8 @@ return declare(null, {
 				window.location = hrefObj.href;
 			}
 		});
-		if (event) {
-			event.stopPropagation();
+		if (ev) {
+			event.stop(ev);
 		}
 	},
 	
@@ -101,94 +103,94 @@ return declare(null, {
 		event.stop(ev);
 	},
 	
-	handleKeyPress: function(event) {
-		if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) {
+	handleKeyPress: function(ev) {
+		if (ev.ctrlKey || ev.shiftKey || ev.altKey || ev.metaKey) {
 			return;
 		}
-		if (this._focused && this.list) {
+		if (this.list) {
 			if (this._renameEditor) {
-				switch (event.keyCode) {
+				switch (ev.keyCode) {
 					case keys.ESCAPE:
 						this._abort_rename();
-						event.stop(event);
+						event.stop(ev);
 						break;
 					case keys.ENTER:
 						this._do_rename();
-						event.stop(event);
+						event.stop(ev);
 						break;
 				}
-				return;
-			}
-			if (event.keyCode == keys.BACKSPACE) {
-				var refs = this.list.getReferrents();
-				if (refs.length > 0) {
-					this.application.openEntry(refs[0]);
-				} else {
-					this.application.openEntry(this.list.getContext().getUri()+"/entry/_systemEntries");
-				}
-				event.stop(event);
 				return;
 			}
 
 			var maxIndex = this.listChildren.length-1;
-			if (maxIndex == -1) {
-				return;
-			}
-			switch (event.keyCode) {
-				case keys.RIGHT_ARROW:
+			switch (ev.keyCode) {
 				case keys.DOWN_ARROW:
+                    if (maxIndex === -1) {
+                        return;
+                    }
 					if (this.selectedIndex == -1) {
 						this.changeFocus(0);
 					} else if (this.selectedIndex < maxIndex){
 						this.changeFocus(this.selectedIndex+1);
 					}
-					event.stop(event);
+					event.stop(ev);
 					break;
-				case keys.LEFT_ARROW:
 				case keys.UP_ARROW:
+                    if (maxIndex === -1) {
+                        return;
+                    }
 					if (this.selectedIndex > 0) {
 						this.changeFocus(this.selectedIndex -1);
 					} else if (this.selectedIndex == -1){
 						this.changeFocus(maxIndex);
 					}
-					event.stop(event);
+					event.stop(ev);
 					break;
-				case keys.ESCAPE:
+                case keys.LEFT_ARROW:
+                case keys.BACKSPACE:
+                    var refs = this.list.getReferrents();
+                    if (refs.length > 0) {
+                        this.application.openEntry(refs[0]);
+                    } else {
+                        this.application.openEntry(this.list.getContext().getUri()+"/entry/_systemEntries");
+                    }
+                    event.stop(ev);
+                    return;
+                case keys.ESCAPE:
 					this.changeFocus(-1);
-					event.stop(event);
+					event.stop(ev);
 					break;
-				case keys.ENTER:
+                case keys.RIGHT_ARROW:
+                case keys.ENTER:
 					if (this.selectedIndex != -1) {
 						this.openChild(this.selectedIndex);
 					}
-					event.stop(event);
+					event.stop(ev);
 					break;
 				case keys.DELETE:
 					if (this.selectedIndex != -1) {
-						this._handle_remove(this.listChildren[this.selectedIndex], this.selectedIndex, event);
+						this._handle_remove(this.listChildren[this.selectedIndex], this.selectedIndex, ev);
 					}
-					event.stop(event);
+					event.stop(ev);
 					break;
 				case keys.F2:
 					if (this.selectedIndex != -1) {
 						this.renameFocused();
 					}
-					event.stop(event);
+					event.stop(ev);
 					break;
-			}
-			switch (event.charCode) {				
-				case 101: //letter e for edit
-					this._handleAction("edit", this.selectedIndex, event);
-					event.stop(event);
-					break;
-				case 97: //letter a for administer
-					this._handleAction("admin", this.selectedIndex, event);
-					event.stop(event);
-					break;
-				case 99: //letter c for comment
-					this._handleAction("comment", this.selectedIndex, event);
-					event.stop(event);
-					break;
+                case 69: //The letter e for edit.
+                    this._handleAction("edit", this.selectedIndex, ev);
+                    event.stop(ev);
+                    break;
+                case 65: //The letter a for administer
+                    this._handleAction("admin", this.selectedIndex, ev);
+                    event.stop(ev);
+                    break;
+                case 67: //The letter c for comment
+                    this._handleAction("comment", this.selectedIndex, ev);
+                    event.stop(ev);
+                    break;
 			}
 		}
 	},
@@ -216,7 +218,7 @@ return declare(null, {
 	//=================================================== 
 	// Abstract methods 
 	//===================================================
-	extractActionFromEvent: function(event) {
+	extractActionFromEvent: function(ev) {
 		//Override
 	},
 	isFocus: function (entry) {
@@ -241,33 +243,33 @@ return declare(null, {
 	// Private methods 
 	//===================================================		
 	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "rights", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new"],
-	_handleAction: function(action, index, event) {
+	_handleAction: function(action, index, ev) {
 		var entry;
 		if (index == -1) {
 			entry = this.list;
 		} else {
 			entry = this.listChildren[index];
 		}
-		this["_handle_"+action](entry, index, event);		
+		this["_handle_"+action](entry, index, ev);
 	},
-	_handle_rename: function(entry, index, event) {
+	_handle_rename: function(entry, index, ev) {
 		//Implement me
 	},
-	_handle_menu: function(entry, index, event) {
+	_handle_menu: function(entry, index, ev) {
 		console.log("MenuClicked");
-		this.showMenu(entry, index, event);
+		this.showMenu(entry, index, ev);
 	},
-	_handle_openfolder: function(entry, index, event) {
+	_handle_openfolder: function(entry, index, ev) {
 		var refs = entry.getReferrents();
 		if (refs.length > 0) {
 			this.application.openEntry(entry.getUri(), "default", refs[0]);			
 		}
 	},
-	_handle_details: function(entry, index, event) {
+	_handle_details: function(entry, index, ev) {
 		console.log("DetailsClicked");
-		this.showDetails(event.target, entry);
+		this.showDetails(ev.target, entry);
 	},
-	_handle_comment: function(entry, index, event) {	
+	_handle_comment: function(entry, index, ev) {
 		if(entry instanceof folio.data.SystemEntry){
 			return;
 		}
@@ -278,7 +280,7 @@ return declare(null, {
 		});
 		comment.show();
 	},
-	_handle_edit: function(entry, index, event) {
+	_handle_edit: function(entry, index, ev) {
 		if(!entry.isMetadataModifiable()){
 			return;
 		}
@@ -286,7 +288,7 @@ return declare(null, {
 		entry.setRefreshNeeded();
 		this.application.publish("showMDEditor", {entry: entry});
 	},
-	_handle_admin: function(entry, index, event) {
+	_handle_admin: function(entry, index, ev) {
 	    if(!entry.possibleToAdmin()){
 			return;
 		}
@@ -294,7 +296,7 @@ return declare(null, {
 		entry.setRefreshNeeded();
 		this.application.publish("entryAdmin", {entry: entry});
 	},
-    _handle_rights: function(entry, index, event) {
+    _handle_rights: function(entry, index, ev) {
         if(!entry.possibleToAdmin()){
             return;
         }
@@ -307,7 +309,7 @@ return declare(null, {
         this.stopListenForKeyEvents();
         d.show();
     },
-	_handle_remove: function(entry, index, event) {
+	_handle_remove: function(entry, index, ev) {
 	    if((index == -1 && (!entry.possibleToAdmin() || folio.data.getChildCount(entry) == 0)) //Need childcount for _trash?
 				|| (index>-1 && !((this.list.isMetadataModifiable() && this.list.isResourceModifiable() || this.list.getContext().getId() =="_search") && entry.possibleToAdmin()))){
 			return;
@@ -340,7 +342,7 @@ return declare(null, {
 			})
 		);
 	},
-	_handle_copy: function(entry, index, event) {
+	_handle_copy: function(entry, index, ev) {
 	    if(!(entry.isMetadataAccessible() && entry.isResourceAccessible())){
 			return;
 		}
@@ -350,7 +352,7 @@ return declare(null, {
 			operation: "copy"
 		});
 	},
-	_handle_cut: function(entry, index, event) {
+	_handle_cut: function(entry, index, ev) {
         if(!entry.possibleToAdmin() || 
 		    entry instanceof folio.data.SystemEntry){  //Should not be possible to move system-entries
                 return;
@@ -395,7 +397,7 @@ return declare(null, {
                 index: index + this.currentPage*this.application.getCommunicator().getDefaultLimit()
         });
 	},
-	_handle_paste: function(entry, index, event) {
+	_handle_paste: function(entry, index, ev) {
 		if (index == -1) {
 			console.log("HeaderPasteClicked");
 			if (!this.isPasteDisabled) {
@@ -408,7 +410,7 @@ return declare(null, {
 			}
 		}
 	},
-	_handle_add: function(entry, index, event) {
+	_handle_add: function(entry, index, ev) {
 		console.log("AddClicked");
 		//var d = new dojo.Deferred();
 		var application = this.application;
@@ -436,7 +438,7 @@ return declare(null, {
 			var updateEntry = function(entry) {
 				folio.data.getList(contacts, lang.hitch(this, function(list) {
 					list.entry.setRefreshNeeded();
-					var clickedNode=event.originalTarget;
+					var clickedNode=ev.originalTarget;
 					if(clickedNode && !domClass.contains(clickedNode,"disabledEntryButton")){
 						domClass.add(clickedNode,"disabledEntryButton");
 					}

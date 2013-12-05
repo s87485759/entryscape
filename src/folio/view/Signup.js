@@ -32,7 +32,7 @@ dojo.declare("folio.apps.Signup", [dijit._Widget, dijit._Templated], {
 	//===================================================
 	// Inherited Attributes
 	//===================================================
-	templatePath: dojo.moduleUrl("folio.apps", "SignupTemplate.html"),
+	templatePath: dojo.moduleUrl("folio.apps", "AccountTemplate.html"),
     widgetsInTemplate: true,
 
 	//===================================================

@@ -1,4 +1,3 @@
-
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
@@ -166,8 +165,8 @@ define(["dojo/_base/declare",
                 usersAC = {entryId: "_users", uri: principalBase+"_users"};
                 list.push(usersAC);
             }
-            this._renderCustomRow(guestAC, true, this.NLS.acl.public, false);
-            this._renderCustomRow(usersAC, false, this.NLS.acl.users, false);
+            this._renderCustomRow(guestAC, true, this.NLS.acl["public"], false);
+            this._renderCustomRow(usersAC, false, this.NLS.acl["users"], false);
             //Actually do the rendering of guest and users.
         },
 

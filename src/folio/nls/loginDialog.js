@@ -32,7 +32,10 @@ define({
 		"warning" : "Warning: ",
 		"warningText" : "Your browser has not been tested with this version of EntryScape. While EntryScape will probably work, there may be some issues. The following browsers have been tested:",
 		"andHigher" : "%s and higher",
-        "staySignedInLabel": "Stay signed in"
+        "staySignedInLabel": "Stay signed in",
+        "openIdLoginLabel": "Or, sign in with an existing identity:",
+        "signup": "If you do not have an account, sign up now!",
+        "signupInfo": "You can create an account by reusing an existing identity from one of the following services:"
 	},
     "sv": true
 });

@@ -1,53 +1,42 @@
-/*global dojo, dijit, folio*/
-/*
- * Copyright (c) 2007-2010
- *
- * This file is part of Confolio.
- *
- * Confolio is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Confolio is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
- */
+/*global define, __confolio*/
+define([
+    "dojo/_base/declare",
+    "dojo/_base/lang",
+    "dojo/_base/array",
+    "dojo/_base/connect",
+    "dojo/on",
+    "dojo/dom",
+    "dojo/dom-class",
+    "dojo/dom-style",
+    "dojo/dom-attr",
+    "dojo/dom-construct",
+    "dojo/keys",
+    "folio/util/Widget",
+    "dijit/layout/StackContainer",
+    "dijit/layout/ContentPane",
+    "dijit/form/TextBox",
+    "folio/list/SearchList",
+    "folio/util/utils",
+    "dojo/text!./StartTemplate.html"
+], function (declare, lang, array, connect, on, dom, domClass, style, attr, construct, keys,
+             Widget, StackContainer, ContentPane, TextBox, SearchList, utils, template) {
 
-dojo.provide("folio.start.Start");
-dojo.require("dijit._Widget");
-dojo.require("dijit.layout.StackContainer");
-dojo.require("dijit.layout.ContentPane");
-dojo.require("dijit._Templated");
-dojo.require("dijit.form.TextBox");
-dojo.require("folio.list.SearchList");
-dojo.require("folio.editor.RFormsPresenter");
-dojo.require("folio.util.utils");
 
 
 /**
  * Shows profile information, group membership, access to portfolios and folders, and latest material.
  * The profile information includes username, home portfolio and user profile metadata.
  */
-dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
+return declare([Widget], {
 	//===================================================
 	// Public Attributes
 	//===================================================
-	twoColumn: true,
 
 	//===================================================
 	// Inherited Attributes
 	//===================================================
-	templatePath: dojo.moduleUrl("folio.start", "StartTemplate.html"),
-    widgetsInTemplate: true,
-	
-	//===================================================
-	// I18n attributes
-	//===================================================
+	nls: ["start"],
+    templateString: template,
 
 	//===================================================
 	// Easter egg attribute
@@ -66,16 +55,12 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 		this.inherited("postCreate", arguments);
 		this.application = __confolio.application;		
 
-		dojo.connect(this.communitiesButtonNode, "onclick", this, this._showCommunities);
-		dojo.connect(this.peopleButtonNode, "onclick", this, this._showPeople);
-		dojo.connect(this.recentButtonNode, "onclick", this, this._showRecent);
-		dojo.connect(this.searchButtonNode, "onclick", this, this._update);
-		dojo.connect(this.searchNode, "onkeyup", this, this._delayedUpdate);
-
-
-		dojo.subscribe("/confolio/localeChange", dojo.hitch(this, this._localize));
-		dojo.subscribe("/confolio/userChange", dojo.hitch(this, this._userChange));
-		this._localize();
+		on(this.communitiesButtonNode, "click", lang.hitch(this, this._showCommunities));
+		on(this.peopleButtonNode, "click", lang.hitch(this, this._showPeople));
+		on(this.recentButtonNode, "click", lang.hitch(this, this._showRecent));
+		on(this.searchButtonNode, "click", lang.hitch(this, this._update));
+		on(this.searchNode, "keyup", lang.hitch(this, this._delayedUpdate));
+        attr.set(this.logo, "src", this.application.getConfig().getIcon("logo"))
 	},
 
 	/**
@@ -92,35 +77,33 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 		} 
 	},
 
-	//===================================================
-	// Private methods
-	//===================================================
-	_userChange: function() {
+	userChange: function() {
 	},
-	_localize: function() {
-/*		dojo.requireLocalization("folio", "profile");
-		this.resourceBundle = dojo.i18n.getLocalization("folio", "profile"); 
-		this.set(this.resourceBundle);*/
+	localeChange: function() {
+        this._updateSearchPlaceHolder();
 	},
-	
-	_showCommunities: function() {
-		dojo.removeClass(this.peopleButtonNode, "selected");
-		dojo.removeClass(this.recentButtonNode, "selected");
-		dojo.addClass(this.communitiesButtonNode, "selected");
-		dojo.style(this.peopleNode, "display", "none");
-		dojo.style(this.recentNode, "display", "none");
-		dojo.style(this.communitiesNode, "display", "");
-		dojo.style(this.searchArea, "display", "");
-		dojo.attr(this.searchNode, "placeholder", "seach for communities");
-		
-		this._currentTab = "Communities";
+
+    //===================================================
+    // Private methods
+    //===================================================
+
+    _showCommunities: function() {
+        this._currentTab = "Communities";
+		domClass.remove(this.peopleButtonNode, "selected");
+		domClass.remove(this.recentButtonNode, "selected");
+		domClass.add(this.communitiesButtonNode, "selected");
+		style.set(this.peopleNode, "display", "none");
+		style.set(this.recentNode, "display", "none");
+		style.set(this.communitiesNode, "display", "");
+		style.set(this.searchArea, "display", "");
+        this._updateSearchPlaceHolder();
 		this._currentSearchTerm = ""; //making sure new searchterm  goes through as "" != null.
-		dojo.attr(this.searchNode, "value", "");
+		attr.set(this.searchNode, "value", "");
 		this._update();
 	},
 	
 	_delayedUpdate: function(event) {
-		if (event.keyCode === dojo.keys.ENTER) {
+		if (event.keyCode === keys.ENTER) {
 			this._update();
 			return;
 		}
@@ -130,7 +113,7 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 		if (this._timerLock) {
 			this._queuedTimer = true;
 		} else {
-			this._timer = setTimeout(dojo.hitch(this, this._update), 200);
+			this._timer = setTimeout(lang.hitch(this, this._update), 200);
 		}
 	},
 	_lockTimer: function() {
@@ -139,14 +122,14 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 	_unlockTimer: function() {
 		this._timerLock = false;
 		if (this._queuedTimer) {
-			this._timer = setTimeout(dojo.hitch(this, this._update), 200);
+			this._timer = setTimeout(lang.hitch(this, this._update), 200);
 			this._queuedTimer = false;
 		}
 	},
 
 	_update: function() {
 		this._lockTimer();
-		var searchTerm = dojo.attr(this.searchNode, "value");
+		var searchTerm = attr.get(this.searchNode, "value");
 		if (searchTerm === "" || searchTerm === null || searchTerm.length <3) {
 			searchTerm = null;
 		} else {
@@ -161,15 +144,15 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 	},
 	
 	_updateCommunities: function() {
-		dojo.attr(this.communitiesNode, "innerHTML", "");
+		attr.set(this.communitiesNode, "innerHTML", "");
 		var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
 		
 		searchcontext.search({term: this._currentSearchTerm, locationType: ["Local"], builtinType: ["Group"], queryType: "solr",
-			onSuccess: dojo.hitch(this, function(entryResult) {
-				folio.data.getList(entryResult, dojo.hitch(this, function(list) {
-					list.getPage(0, 50, dojo.hitch(this, function(children) {
+			onSuccess: lang.hitch(this, function(entryResult) {
+				folio.data.getList(entryResult, lang.hitch(this, function(list) {
+					list.getPage(0, 50, lang.hitch(this, function(children) {
 						var acceptCount = 0;
-						dojo.forEach(children, function(child) {
+						array.forEach(children, function(child) {
 							if (acceptCount < 20 && child.readAccessToMetadata) {
 								this._createCommunityCard(child);
 								acceptCount++;
@@ -179,64 +162,74 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 					}));
 				}));
 			}),
-			onError: dojo.hitch(this, function(error) {
+			onError: lang.hitch(this, function(error) {
 			})
 		});
 	},
 	
 	_createCommunityCard: function(groupEntry) {
-		var groupDiv = dojo.create("div", {"class": "card distinctBackground"}, this.communitiesNode);
-		var imgWrap = dojo.create("div", {"class": "principalPicture"}, groupDiv);
+		var groupDiv = construct.create("div", {"class": "card distinctBackground"}, this.communitiesNode);
+		var imgWrap = construct.create("div", {"class": "principalPicture"}, groupDiv);
 		if (this.cookieMonster) {
-			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
+			construct.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 		} else {
 			var imageUrl = folio.data.getFromMD(groupEntry, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("group");
-			dojo.create("img", {src: imageUrl}, imgWrap);
+			construct.create("img", {src: imageUrl}, imgWrap);
 		}
 		var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
-		dojo.create("span", {"innerHTML": name}, groupDiv);
+		construct.create("span", {"innerHTML": name}, groupDiv);
 
-		var navIcons = dojo.create("div", {"class": "navIcons"}, groupDiv);
-		dojo.connect(groupDiv, "onclick", this, dojo.hitch(this, function(event) {
-			if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+		var navIcons = construct.create("div", {"class": "navIcons"}, groupDiv);
+		on(groupDiv, "click", this, lang.hitch(this, function(event) {
+			if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
 				this.application.openEntry(groupEntry, "profile");
 			}
 		}));
 		
-		dojo.create("a", {"class": "icon24 home", href: this.application.getHref(groupEntry, "profile")}, navIcons);
+		construct.create("a", {"class": "icon24 home", href: this.application.getHref(groupEntry, "profile")}, navIcons);
 		var hc = groupEntry.getHomeContext();
 		if (hc) {
 			var hcid = hc.substr(hc.lastIndexOf("/")+1);
-			dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+			construct.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
 		} else {
-			dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);
+			construct.create("span", {"class": "icon24 folder disabled"}, navIcons);
 		}
 	},
 	_showPeople: function() {
-		dojo.removeClass(this.recentButtonNode, "selected");
-		dojo.removeClass(this.communitiesButtonNode, "selected");
-		dojo.addClass(this.peopleButtonNode, "selected");
-		dojo.style(this.recentNode, "display", "none");
-		dojo.style(this.communitiesNode, "display", "none");
-		dojo.style(this.peopleNode, "display", "");
-		dojo.style(this.searchArea, "display", "");
-		dojo.attr(this.searchNode, "placeholder", "seach for people");
-
-		this._currentTab = "People";
+        this._currentTab = "People";
+		domClass.remove(this.recentButtonNode, "selected");
+		domClass.remove(this.communitiesButtonNode, "selected");
+		domClass.add(this.peopleButtonNode, "selected");
+		style.set(this.recentNode, "display", "none");
+		style.set(this.communitiesNode, "display", "none");
+		style.set(this.peopleNode, "display", "");
+		style.set(this.searchArea, "display", "");
+        this._updateSearchPlaceHolder();
 		this._currentSearchTerm = ""; //making sure new searchterm  goes through as "" != null.
-		dojo.attr(this.searchNode, "value", "");
+		attr.set(this.searchNode, "value", "");
 		this._update();
 	},
+
+    _updateSearchPlaceHolder: function() {
+        switch(this._currentTab) {
+            case "Communities":
+                attr.set(this.searchNode, "placeholder", this.NLS.start.searchCommunities);
+                break;
+            case "People":
+                attr.set(this.searchNode, "placeholder", this.NLS.start.searchPeople);
+                break;
+        }
+    },
 	
 	_updatePeople: function() {
-		dojo.attr(this.peopleNode, "innerHTML", "");
+		attr.set(this.peopleNode, "innerHTML", "");
 		var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
 		searchcontext.search({term: this._currentSearchTerm, locationType: ["Local"], builtinType: ["User"], queryType: "solr",
-			onSuccess: dojo.hitch(this, function(entryResult) {
-				folio.data.getList(entryResult, dojo.hitch(this, function(list) {
-					list.getPage(0, 50, dojo.hitch(this, function(children) {
+			onSuccess: lang.hitch(this, function(entryResult) {
+				folio.data.getList(entryResult, lang.hitch(this, function(list) {
+					list.getPage(0, 50, lang.hitch(this, function(children) {
 						var acceptCount = 0;
-						dojo.forEach(children, function(child) {
+						array.forEach(children, function(child) {
 							if (acceptCount < 20 && child.readAccessToMetadata) {
 								this._createPeopleCard(child);
 								acceptCount++;
@@ -246,48 +239,48 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 					}));
 				}));
 			}),
-			onError: dojo.hitch(this, function(error) {
+			onError: lang.hitch(this, function(error) {
 			})
 		});
 	},
 	_createPeopleCard: function(personEntry) {
-		var userDiv = dojo.create("div", {"class": "card distinctBackground"}, this.peopleNode);
-		var imgWrap = dojo.create("div", {"class": "principalPicture"}, userDiv);
+		var userDiv = construct.create("div", {"class": "card distinctBackground"}, this.peopleNode);
+		var imgWrap = construct.create("div", {"class": "principalPicture"}, userDiv);
 		if (this.cookieMonster) {
-			dojo.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
+			construct.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
 		} else {
-            dojo.create("img", {src: this.application.getConfig().getIcon("user")}, imgWrap);
+            construct.create("img", {src: this.application.getConfig().getIcon("user")}, imgWrap);
             var imageUrl = folio.data.getFromMD(personEntry, folio.data.FOAFSchema.IMAGE);
             if (imageUrl) {
-                folio.util.utils.lazyLoadImage(imgWrap, imageUrl);
+                utils.lazyLoadImage(imgWrap, imageUrl);
             }
 		}
 		var name = folio.data.getLabelRaw(personEntry) || personEntry.name || personEntry.getId();
-		dojo.create("span", {"innerHTML": name}, userDiv);
-		var navIcons = dojo.create("div", {"class": "navIcons"}, userDiv);
-		dojo.connect(userDiv, "onclick", this, dojo.hitch(this, function(event) {
-			if (navIcons == null || !dojo.isDescendant(event.target, navIcons)) {
+		construct.create("span", {"innerHTML": name}, userDiv);
+		var navIcons = construct.create("div", {"class": "navIcons"}, userDiv);
+		on(userDiv, "click", this, lang.hitch(this, function(event) {
+			if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
 				this.application.openEntry(personEntry, "profile");
 			}
 		}));
-		dojo.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
+		construct.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
 		var hc = personEntry.getHomeContext();
 		if (hc) {
 			var hcid = hc.substr(hc.lastIndexOf("/")+1);
-			dojo.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
+			construct.create("a", {"class": "icon24 folder", href: this.application.getHref(this.application.getRepository()+hcid+"/entry/_top", "default")}, navIcons);
 		} else {
-			dojo.create("span", {"class": "icon24 folder disabled"}, navIcons);			
+			construct.create("span", {"class": "icon24 folder disabled"}, navIcons);
 		}
 	},
 		
 	_showRecent: function() {
-		dojo.removeClass(this.communitiesButtonNode, "selected");
-		dojo.removeClass(this.peopleButtonNode, "selected");
-		dojo.addClass(this.recentButtonNode, "selected");
-		dojo.style(this.communitiesNode, "display", "none");
-		dojo.style(this.peopleNode, "display", "none");
-		dojo.style(this.recentNode, "display", "");
-		dojo.style(this.searchArea, "display", "none");
+		domClass.remove(this.communitiesButtonNode, "selected");
+		domClass.remove(this.peopleButtonNode, "selected");
+		domClass.add(this.recentButtonNode, "selected");
+		style.set(this.communitiesNode, "display", "none");
+		style.set(this.peopleNode, "display", "none");
+		style.set(this.recentNode, "display", "");
+		style.set(this.searchArea, "display", "none");
 
 		this._showingRecent = true;
 
@@ -299,4 +292,5 @@ dojo.declare("folio.start.Start", [dijit._Widget, dijit._Templated], {
 			queryType: "solr"
 		});
 	}
+});
 });

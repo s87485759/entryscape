@@ -40,15 +40,24 @@ define([
 			return url;
 		},
 		
-		GET: function(uri, onLoad, onError) {
+		GET: function(uri) {
 			return request.get(uri, communicator.insertAuthArgs({
 				preventCache: true,
 				handleAs: "json",
 				headers: headers
 			}));
 		},
-		
-		/**
+
+        POST: function(uri, data) {
+            return request.post(uri, communicator.insertAuthArgs({
+                preventCache: true,
+                data: data,
+                handleAs: "json",
+                headers: headers
+            }));
+        },
+
+        /**
 		 * @return a promise on which you can call .then on.
 		 */
 		PUT: function(uri, data, modDate) {

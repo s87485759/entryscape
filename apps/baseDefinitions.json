@@ -9,7 +9,10 @@
         "user_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame.png"},
         "group_picture_frame": {"base": "themes/icons/oxygen/", "filename": "picture_frame_users.png"},
         "pushpin": {"base": "themes/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
-        "pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true}
+        "pushpin_pressed": {"base": "themes/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true},
+        "logo": {"base": "themes/icons/own/", "filename": "entryscape.png"},
+        "openid-google": {"base": "themes/icons/logo/", "filename": "google.png"},
+        "openid-yahoo": {"base": "themes/icons/logo/", "filename": "yahoo.png"}
     },
 
     "languages": {

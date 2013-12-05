@@ -1,28 +1,26 @@
 <div style="overflow: hidden" class="confolio startPage">
 	<div class="startHeader distinctBackground">
 		<div class="startMessage">
-			<h1>Welcome to EntryScape</h1>
-			<p class="startDescription" dojoAttachPoint="startDescriptionNode">
-			A place to manage and view your files and web content. You decide if you need to organize things into folders and provide more information than labels. Engage by joining communities who share your interests.
-			Keep things private or share with people you know, with specific communities or with the entire world. 
-			</p>
+            <img data-dojo-attach-point="logo"/>
+			<h1 data-dojo-attach-point="i18n">welcomeHeader</h1>
+			<p class="startDescription" data-dojo-attach-point="i18n">welcomeMessage</p>
 		</div>
 	</div>
 	<div class="startMiddle">
 		<div style="position:relative;height: 100%">
 			<div class="startTabButtons">
-				<div dojoAttachPoint="searchArea" class="searchArea">
-					<input type="text" dojoAttachPoint="searchNode"></input>
-					<span dojoAttachPoint="searchButtonNode" class="icon search"></span>
+				<div data-dojo-attach-point="searchArea" class="searchArea">
+					<input type="text" data-dojo-attach-point="searchNode"/>
+					<span data-dojo-attach-point="searchButtonNode" class="icon search"></span>
 				</div>
-				<button dojoAttachPoint="communitiesButtonNode" class="selected">Communities</button>
-				<button dojoAttachPoint="peopleButtonNode">People</button>
-				<button dojoAttachPoint="recentButtonNode">Recent material</button>
+				<button data-dojo-attach-point="i18n,communitiesButtonNode" class="selected">communitiesTab</button>
+				<button data-dojo-attach-point="i18n,peopleButtonNode">peopleTab</button>
+				<button data-dojo-attach-point="i18n,recentButtonNode">recentMaterialTab</button>
 			</div>
-			<div class="startContent" dojoAttachPoint="communitiesNode"></div>
-			<div class="startContent" style="display: none" dojoAttachPoint="peopleNode"></div>
-			<div class="startContent" style="display: none" dojoAttachPoint="recentNode">
-				<div dojoType="folio.list.SearchList" dojoAttachPoint="recentSearchList"></div>
+			<div class="startContent" data-dojo-attach-point="communitiesNode"></div>
+			<div class="startContent" style="display: none" data-dojo-attach-point="peopleNode"></div>
+			<div class="startContent" style="display: none" data-dojo-attach-point="recentNode">
+				<div data-dojo-type="folio/list/SearchList" data-dojo-attach-point="recentSearchList"></div>
 			</div>
 		</div>
 	</div>
