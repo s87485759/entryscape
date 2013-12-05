@@ -452,7 +452,7 @@ folio.data._normalizeEntryInfo = function(entryInfo) {
 	//entryInfo.entryUri = entryInfo.base+entryInfo.contextId+"/entry/"+entryInfo.entryId;
 	//In case the entry-URI is a direct Context-URI the different parts 
 	//ends up wrong and for that reason the first "if" is needed.
-	if (entryInfo.base && entryInfo.base === "http://") {
+	if (entryInfo.base && (entryInfo.base === "http://" || entryInfo.base === "https://")) {
 		var lastBasePart; //The last part is lost (i.e. "/scam/ in the default setting)
 		var arrContext;
 		if (entryInfo.uri) {
