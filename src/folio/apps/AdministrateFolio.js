@@ -54,6 +54,8 @@ dojo.require("folio.admin.NewUser");
 dojo.require("folio.admin.FilteredSelection");
 dojo.require("folio.create.ACL");
 
+dojo.require("folio.security.LoginDialog");
+
 dojo.declare("folio.apps.AdministrateFolio",[dijit.layout._LayoutWidget, dijit._Templated,  dijit._Templated], {
 	templatePath: dojo.moduleUrl("folio.apps", "AdministrateFolioTemplate.html"),
 	templateString: "",

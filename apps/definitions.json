@@ -4,7 +4,8 @@
     "namespaces": {
         "dct": "http://purl.org/dc/dcmitype/",
         "esc": "http://entryscape.org/terms/",
-        "est": "http://entrystore.org/terms"
+        "est": "http://entrystore.org/terms/",
+        "sos": "http://data.socialstyrelsen.se/terms/"
     },
 
     "defaults": {
@@ -137,6 +138,26 @@
                     "advanced": true
                 },
                 {
+                    "uri": "sos:Recommendation",
+                    "label": {"en": "Rekommendation"},
+                    "icon": {"base": "themes/icons/temp/", "filename": "recommended.png"},
+                    "template": ["sos:Recommendation"],
+                    "artifact": true,
+                    "file": false,
+                    "link": false,
+                    "advanced": true
+                },
+                {
+                    "uri": "sos:ConditionInformation",
+                    "label": {"en": "Diagnos information"},
+                    "icon": {"base": "themes/icons/temp/", "filename": "asclepius.png"},
+                    "template": ["sos:ConditionInformation"],
+                    "artifact": true,
+                    "file": false,
+                    "link": false,
+                    "advanced": true
+                },
+                {
                     "uri": "est:Pipeline",
                     "label": {"en": "Pipeline"},
                     "icon": {"base": "themes/icons/oxygen/", "filename": "filter.png", "16x16": true, "64x64": true},
@@ -187,6 +208,7 @@
         "rforms/kulturnav.json",
         "rforms/foaf.json",
         "rforms/Review.json",
-        "rforms/transform.json"
+        "rforms/transform.json",
+        "rforms/fmb.json"
     ]
 }

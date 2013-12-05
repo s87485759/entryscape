@@ -200,7 +200,7 @@ __confolio.start = function(loadIndicatorId, splashId){
             });
         __confolio.config.definitionsPromise = all({definitions: def, baseDefinitions: bdef});
 
-		__confolio.application = new folio.Application({
+		__confolio.application = new Application({
 			dataDir: "../data/",
 			repository: window.location.protocol + "//" + window.location.host + "/" + scamPath + "/"
 		});

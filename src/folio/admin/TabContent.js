@@ -19,6 +19,7 @@
 
 dojo.provide("folio.admin.TabContent");
 dojo.require("folio.Application");
+dojo.require("folio.ApplicationView");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
 

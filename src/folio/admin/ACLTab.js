@@ -24,7 +24,7 @@ dojo.require("folio.Application");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
 
-dojo.declare("folio.admin.ACLTab", [folio.util.ButtonsBelow, folio.admin.TabContent], {
+dojo.declare("folio.admin.ACLTab", [folio.util.dialog.ButtonsBelow, folio.admin.TabContent], {
 	postCreate: function() {
 		this.containerNode = this.domNode; //Neccessary for ff3.5 bug.
 		this.inherited("postCreate", arguments);

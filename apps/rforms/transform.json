@@ -1,0 +1,125 @@
+{
+  "templates": [
+    {
+      "type": "text",
+      "id": "tf:transformType",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://entrystore.org/terms/transformType",
+      "label": {
+        "en": "Transform type"
+      },
+      "description": {
+        "en": "A string indicating the type of transform, e.g. 'tarql'."
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://entrystore.org/terms/transformPriority",
+      "label": {
+        "en": "Transform priority"
+      },
+      "description": {
+        "en": "The priority is used to order transforms in a pipeline."
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "tf:transformPriority",
+      "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    {
+      "type": "group",
+      "id": "tf:transform",
+      "nodetype": "RESOURCE",
+      "property": "http://entrystore.org/terms/transform",
+      "constraints": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://entrystore.org/terms/Transform"
+      },
+      "label": {
+        "": "Transform"
+      },
+      "description": {},
+      "cardinality": {
+        "min": 1,
+        "pref": 1
+      },
+      "content": [
+        {
+          "id": "tf:transformType"
+        },
+        {
+          "id": "tf:transformPriority"
+        },
+        {
+          "id": "tr:transformArgument"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://entrystore.org/terms/transformArgument",
+      "label": {
+        "en": "Transform argument"
+      },
+      "description": {
+        "en": "The content here depends on what is expected for each type of transform, e.g. a tarql transform expects a modified SPARQL query appropriate for the task."
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "id": "tr:transformArgument",
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "group",
+      "id": "tr:Pipeline",
+      "nodetype": "RESOURCE",
+      "constraints": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://entrystore.org/terms/Pipeline"
+      },
+      "label": {
+        "en": "Pipeline"
+      },
+      "description": {
+        "en": "A pipeline consists of one or several transforms, the priority is used to order them into a sequence. Remember that the first needs to tranform from a datasource to a graph while the subsequent transforms translate from graph to graph."
+      },
+      "content": [
+        {
+          "id": "tr:transformToEntry"
+        },
+        {
+          "id": "tf:transform"
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "id": "tr:transformToEntry",
+      "nodetype": "URI",
+      "property": "http://entrystore.org/terms/transformToEntry",
+      "label": {
+        "en": "Optional target entry"
+      },
+      "description": {
+        "": "If a target entry is given, the graph created by the pipeline will be stored in the given entrys (the resource of the entry must be a graph)."
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      }
+    }
+  ]
+}

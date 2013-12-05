@@ -42,6 +42,8 @@ define([
         }
     });
 
+    exports.ButtonsBelow = ButtonsBelow;
+
     exports.Dialog = declare(Dialog, {
         startup: function () {
             this.inherited("startup", arguments);

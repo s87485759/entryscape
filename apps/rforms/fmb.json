@@ -1,0 +1,911 @@
+{
+  "templates": [
+    {
+      "type": "group",
+      "id": "sos:Recommendation",
+      "nodetype": "RESOURCE",
+      "label": {
+        "sv": "Beslutsrekommendation"
+      },
+      "description": {},
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      },
+      "content": [
+        {
+          "id": "sos:condition"
+        },
+        {
+          "id": "sos:qualityOfEvidence"
+        },
+        {
+          "type": "group",
+          "nodetype": "RESOURCE",
+          "label": {
+            "sv": "Rekommendation"
+          },
+          "content": [
+            {
+              "id": "sos:recommendation"
+            },
+            {
+              "id": "sos:rehabilitationTreatment"
+            },
+            {
+              "id": "sos:degreeOfSickLeave"
+            },
+            {
+              "id": "sos:sickLeaveTime"
+            },
+            {
+              "id": "sos:normalSickLeaveTime"
+            },
+            {
+              "id": "sos:degreeOfSickLeaveConsecutivePeriod"
+            },
+            {
+              "id": "sos:sickLeaveTimeConsecutivePeriod"
+            },
+            {
+              "id": "sos:typeOfSickLeave"
+            }
+          ],
+          "styles": [
+            "expandable"
+          ]
+        },
+        {
+          "type": "group",
+          "description": {},
+          "label": {
+            "sv": "Villkor åtgärder"
+          },
+          "content": [
+            {
+              "id": "sos:plannedTreatment"
+            },
+            {
+              "id": "sos:ongoingTreatment"
+            },
+            {
+              "id": "sos:finishedTreatment"
+            }
+          ],
+          "styles": [
+            "expandable"
+          ],
+          "cardinality": {
+            "min": 1,
+            "pref": 1,
+            "max": 1
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "sv": "Ytterligare villkor"
+          },
+          "content": [
+            {
+              "id": "sos:sex"
+            },
+            {
+              "id": "sos:worktask"
+            },
+            {
+              "id": "sos:workAbility"
+            },
+            {
+              "id": "sos:severity"
+            },
+            {
+              "id": "sos:progression"
+            },
+            {
+              "id": "sos:medicalFactor"
+            },
+            {
+              "id": "sos:lateral"
+            },
+            {
+              "id": "sos:functioning"
+            },
+            {
+              "id": "sos:frequency"
+            },
+            {
+              "id": "sos:concurrentCondition"
+            },
+            {
+              "id": "sos:disability"
+            }
+          ],
+          "styles": [
+            "expandable"
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "sv": "Administration"
+          },
+          "content": [
+            {
+              "id": "sos:activated"
+            },
+            {
+              "id": "sos:deactivated"
+            },
+            {
+              "id": "sos:replaces"
+            }
+          ],
+          "styles": [
+            "expandable"
+          ]
+        },
+        {
+          "id": "sos:source"
+        }
+      ],
+      "styles": [
+        "nonCompact"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "sos:prognosisInfo",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/prognosisInfo",
+      "label": {
+        "sv": "Prognos"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "choice",
+      "id": "sos:sex",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/sex",
+      "styles": [
+        "verticalRadioButtons"
+      ],
+      "choices": [
+        {
+          "value": "female",
+          "label": {
+            "sv": "Kvinna"
+          }
+        },
+        {
+          "value": "male",
+          "label": {
+            "sv": "Man"
+          }
+        }
+      ],
+      "label": {
+        "": "Kön"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:medicalFactor",
+      "nodetype": "LANGUAGE_LITERAL",
+      "label": {
+        "sv": "Medicinsk faktor"
+      },
+      "property": "http://data.socialstyrelsen.se/terms/medicalFactor",
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:worktask",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/worktask",
+      "label": {
+        "sv": "Arbetsuppgifter"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "choices": [
+        {
+          "value": "light",
+          "label": {
+            "sv": "Lätt arbete"
+          }
+        },
+        {
+          "value": "heavy",
+          "label": {
+            "sv": "Tungt arbete eller skiftarbete"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
+    },
+    {
+      "type": "choice",
+      "id": "sos:disability",
+      "nodetype": "RESOURCE",
+      "property": "http://data.socialstyrelsen.se/terms/disability",
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "label": {
+        "sv": "Funktionsnedsättning"
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:functioning",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/functioning",
+      "label": {
+        "sv": "Aktivitetsbegränsning"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:plannedTreatment",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/plannedTreatment",
+      "label": {
+        "sv": "Planerad åtgärd"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:ongoingTreatment",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/ongoingTreatment",
+      "label": {
+        "sv": "Pågående åtgärd"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:finishedTreatment",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/finishedTreatment",
+      "label": {
+        "sv": "Avslutad åtgärd"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:condition",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/condition",
+      "label": {
+        "sv": "Diagnos"
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "id": "sos:severity",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/severity",
+      "label": {
+        "sv": "Svårighetsgrad"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/progression",
+      "label": {
+        "sv": "Sjukdomsförlopp"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:progression"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/lateral",
+      "label": {
+        "sv": "Lateralitet"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:lateral"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/frequency",
+      "label": {
+        "sv": "Frekvens"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:frequency"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/concurrentCondition",
+      "label": {
+        "sv": "Samsjuklighet"
+      },
+      "id": "sos:concurrentCondition",
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/rehabilitationTreatment",
+      "label": {
+        "sv": "Rehabiliteringsåtgärd"
+      },
+      "id": "sos:rehabilitationTreatment",
+      "choices": [
+        {
+          "value": "workAdaption",
+          "label": {
+            "sv": "Arbetsanpassning"
+          }
+        },
+        {
+          "value": "physicalActivity",
+          "label": {
+            "sv": "Fysisk aktivitet"
+          },
+          "description": {}
+        },
+        {
+          "value": "discussChangeOfWorkTasks",
+          "label": {
+            "sv": "Diskutera ändrade arbetsuppgifter"
+          },
+          "description": {}
+        },
+        {
+          "value": "intensivePhysicalTherapy",
+          "label": {
+            "sv": "Intensiv sjukgymnastik"
+          }
+        }
+      ],
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "choice",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/degreeOfSickLeave",
+      "label": {
+        "sv": "Sjukskrivningsgrad"
+      },
+      "id": "sos:degreeOfSickLeave",
+      "choices": [
+        {
+          "value": "100",
+          "label": {
+            "": "100%"
+          }
+        },
+        {
+          "value": "75",
+          "label": {
+            "": "75%"
+          },
+          "description": {}
+        },
+        {
+          "value": "25%",
+          "label": {
+            "": "25%"
+          },
+          "description": {}
+        },
+        {
+          "value": "0",
+          "label": {
+            "": "0%"
+          },
+          "description": {}
+        },
+        {
+          "value": "0-25",
+          "label": {
+            "": "0-25%"
+          }
+        },
+        {
+          "value": "0-50",
+          "label": {
+            "": "0-50%"
+          }
+        },
+        {
+          "value": "0-75",
+          "label": {
+            "": "0-75%"
+          }
+        },
+        {
+          "value": "0-100",
+          "label": {
+            "": "0-100%"
+          }
+        },
+        {
+          "value": "25-50",
+          "label": {
+            "": "25-50%"
+          },
+          "description": {}
+        },
+        {
+          "value": "25-75",
+          "label": {
+            "": "25-75%"
+          }
+        },
+        {
+          "value": "25-100",
+          "label": {
+            "": "25-100%"
+          }
+        },
+        {
+          "value": "50-75",
+          "label": {
+            "": "50-75%"
+          }
+        },
+        {
+          "value": "75-100",
+          "label": {
+            "": "75-100%"
+          }
+        }
+      ],
+      "styles": [],
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "text",
+      "id": "sos:sickLeaveTime",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/sickLeaveTime",
+      "label": {
+        "sv": "Sjukskrivningstid"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/normalSickLeaveTime",
+      "label": {
+        "sv": "Normal sjukskrivningstid"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+      "id": "sos:normalSickLeaveTime"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/degreeOfSickLeaveConsecutivePeriod",
+      "label": {
+        "sv": "Sjukskrivningsgrad efterföljande period"
+      },
+      "id": "sos:degreeOfSickLeaveConsecutivePeriod",
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/sickLeaveTime",
+      "label": {
+        "sv": "Sjukskrivningstid efterföljande period"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+      "id": "sos:sickLeaveTimeConsecutivePeriod"
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/typeOfSickLeave",
+      "label": {
+        "sv": "Sjukskrivningstyp"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:typeOfSickLeave"
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/workAbility",
+      "label": {
+        "sv": "Arbetsförmåga"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:workAbility"
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/symptomInfo",
+      "label": {
+        "sv": "Symptom"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:symptomInfo"
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/treatmentInfo",
+      "label": {
+        "sv": "Behandling"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:treatmentInfo"
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/qualityOfEvidence",
+      "label": {
+        "sv": "Evidensgrad"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:qualityOfEvidence",
+      "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/activated",
+      "label": {
+        "sv": "Aktiverad"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [],
+      "datatype": "http://www.w3.org/2001/XMLSchema#date",
+      "id": "sos:activated",
+      "description": {}
+    },
+    {
+      "type": "text",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/deactivated",
+      "label": {
+        "sv": "Inaktiverad"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [],
+      "datatype": "http://www.w3.org/2001/XMLSchema#date",
+      "description": {},
+      "id": "sos:deactivated"
+    },
+    {
+      "type": "choice",
+      "nodetype": "URI",
+      "property": "http://data.socialstyrelsen.se/terms/replaces",
+      "label": {
+        "sv": "Ersätter"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:replaces"
+    },
+    {
+      "type": "choice",
+      "nodetype": "URI",
+      "property": "http://data.socialstyrelsen.se/terms/source",
+      "label": {
+        "sv": "Källa"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "id": "sos:source"
+    },
+    {
+      "type": "group",
+      "id": "sos:ConditionInformation",
+      "label": {
+        "sv": "Diagnosinformation"
+      },
+      "content": [
+        {
+          "id": "sos:forCondition"
+        },
+        {
+          "id": "sos:relatedFunctioning"
+        },
+        {
+          "id": "sos:relatedDisability"
+        },
+        {
+          "id": "sos:symptomInfo"
+        },
+        {
+          "id": "sos:prognosisInfo"
+        },
+        {
+          "id": "sos:treatmentInfo"
+        },
+        {
+          "id": "sos:functioningInfo"
+        },
+        {
+          "id": "sos:recommendationInfo"
+        },
+        {
+          "id": "sos:rehabilitationTreatmentInfo"
+        },
+        {
+          "id": "sos:disabilityInfo"
+        }
+      ],
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      }
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/forCondition",
+      "label": {
+        "sv": "Diagnos"
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1
+      },
+      "id": "sos:forCondition"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/relatedFunctioning",
+      "label": {
+        "sv": "Relaterad aktivitetsbegränsning"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "id": "sos:relatedFunctioning"
+    },
+    {
+      "type": "choice",
+      "nodetype": "RESOURCE",
+      "property": "http://data.socialstyrelsen.se/terms/relatedDisability",
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "label": {
+        "sv": "Relaterad funktionsnedsättning"
+      },
+      "id": "sos:relatedDisability"
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/functioningInfo",
+      "label": {
+        "sv": "Aktivitetsbegränsning"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:functioningInfo",
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/functioningInfo",
+      "label": {
+        "sv": "Rekommendation sjukskrivning"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:recommendationInfo",
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/rehabilitationTreatmentInfo",
+      "label": {
+        "sv": "Rehabiliteringsåtgärd"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:rehabilitationTreatmentInfo",
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/disabilityInfo",
+      "label": {
+        "sv": "Funktionsnedsättning"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "id": "sos:disabilityInfo",
+      "styles": [
+        "multiline"
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/recommendation",
+      "label": {
+        "sv": "Rekommendation"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:recommendation"
+    }
+  ]
+}
