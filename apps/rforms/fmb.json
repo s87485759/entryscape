@@ -249,7 +249,7 @@
     {
       "type": "choice",
       "id": "sos:disability",
-      "nodetype": "RESOURCE",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/disability",
       "cardinality": {
         "min": 0,
@@ -257,7 +257,63 @@
       },
       "label": {
         "sv": "Funktionsnedsättning"
-      }
+      },
+      "choices": [
+        {
+          "value": "b164",
+          "label": {
+            "": "Högre kognitiva funktioner  "
+          }
+        },
+        {
+          "value": "b710",
+          "label": {
+            "": "Funktioner för rörlighet i leder"
+          }
+        },
+        {
+          "value": "b730",
+          "label": {
+            "": "Muskelkraftfunktioner"
+          }
+        },
+        {
+          "value": "b280 ",
+          "label": {
+            "": "Smärtförnimmelse"
+          }
+        },
+        {
+          "value": "b535",
+          "label": {
+            "": "Förnimmelser förenade med matsmältningssystemet"
+          }
+        },
+        {
+          "value": "b140",
+          "label": {
+            "": "Uppmärksamhetsfunktioner"
+          }
+        },
+        {
+          "value": "b164 ",
+          "label": {
+            "": "Högre kognitiva funktioner"
+          }
+        },
+        {
+          "value": "b134",
+          "label": {
+            "": "Sömnfunktioner"
+          }
+        },
+        {
+          "value": "b4108",
+          "label": {
+            "": "Andra specificerade hjärtfunktioner"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
@@ -391,7 +447,33 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "F43.0",
+          "label": {
+            "": "Akut stressreaktion"
+          }
+        },
+        {
+          "value": "F32.9",
+          "label": {
+            "": "Ospecificerad depressiv episod"
+          }
+        },
+        {
+          "value": "F51.8",
+          "label": {
+            "": "Andra specificerade icke organiska sömnstörningar"
+          }
+        },
+        {
+          "value": "I97.2",
+          "label": {
+            "": "Lymfödem efter mastektomi"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
@@ -409,16 +491,16 @@
           }
         },
         {
-          "value": "physicalActivity",
+          "value": "discussChangeOfWorkTasks",
           "label": {
-            "sv": "Fysisk aktivitet"
+            "sv": "Diskutera ändrade arbetsuppgifter"
           },
           "description": {}
         },
         {
-          "value": "discussChangeOfWorkTasks",
+          "value": "physicalActivity",
           "label": {
-            "sv": "Diskutera ändrade arbetsuppgifter"
+            "sv": "Fysisk aktivitet"
           },
           "description": {}
         },
@@ -444,31 +526,17 @@
       "id": "sos:degreeOfSickLeave",
       "choices": [
         {
-          "value": "100",
-          "label": {
-            "": "100%"
-          }
-        },
-        {
-          "value": "75",
-          "label": {
-            "": "75%"
-          },
-          "description": {}
-        },
-        {
-          "value": "25%",
-          "label": {
-            "": "25%"
-          },
-          "description": {}
-        },
-        {
           "value": "0",
           "label": {
             "": "0%"
           },
           "description": {}
+        },
+        {
+          "value": "0-100",
+          "label": {
+            "": "0-100%"
+          }
         },
         {
           "value": "0-25",
@@ -489,9 +557,22 @@
           }
         },
         {
-          "value": "0-100",
+          "value": "100",
           "label": {
-            "": "0-100%"
+            "": "100%"
+          }
+        },
+        {
+          "value": "25%",
+          "label": {
+            "": "25%"
+          },
+          "description": {}
+        },
+        {
+          "value": "25-100",
+          "label": {
+            "": "25-100%"
           }
         },
         {
@@ -508,16 +589,17 @@
           }
         },
         {
-          "value": "25-100",
-          "label": {
-            "": "25-100%"
-          }
-        },
-        {
           "value": "50-75",
           "label": {
             "": "50-75%"
           }
+        },
+        {
+          "value": "75",
+          "label": {
+            "": "75%"
+          },
+          "description": {}
         },
         {
           "value": "75-100",
