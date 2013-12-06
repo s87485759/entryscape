@@ -213,7 +213,15 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "graviditet",
+          "label": {
+            "": "Graviditet"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
@@ -339,12 +347,26 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "cellgifter",
+          "label": {
+            "": "Cellgifter"
+          }
+        },
+        {
+          "value": "operation",
+          "label": {
+            "": "Operation"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
       "id": "sos:ongoingTreatment",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/ongoingTreatment",
       "label": {
         "sv": "Pågående åtgärd"
@@ -352,12 +374,32 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "läkemedelsbehandling",
+          "label": {
+            "": "Läkemedelsbehandling"
+          }
+        },
+        {
+          "value": "sjukgymnastik",
+          "label": {
+            "": "Sjukgymnastik"
+          }
+        },
+        {
+          "value": "gips",
+          "label": {
+            "": "Gips"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
       "id": "sos:finishedTreatment",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/finishedTreatment",
       "label": {
         "sv": "Avslutad åtgärd"
@@ -365,7 +407,36 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "operation",
+          "label": {
+            "": "Operation"
+          }
+        },
+        {
+          "value": "cellgifter",
+          "label": {
+            "": "Cellgifter"
+          }
+        },
+        {
+          "value": "KBT",
+          "label": {
+            "": "KBT"
+          }
+        },
+        {
+          "value": "ECT",
+          "label": {
+            "": "ECT"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
     },
     {
       "type": "choice",
@@ -383,7 +454,7 @@
     {
       "type": "choice",
       "id": "sos:severity",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/severity",
       "label": {
         "sv": "Svårighetsgrad"
@@ -392,7 +463,30 @@
         "min": 0,
         "pref": 1,
         "max": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "light",
+          "label": {
+            "": "Lätt"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "": "Måttlig"
+          }
+        },
+        {
+          "value": "hard",
+          "label": {
+            "": "Svår"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
     },
     {
       "type": "choice",
@@ -406,7 +500,24 @@
         "pref": 1,
         "max": 1
       },
-      "id": "sos:progression"
+      "id": "sos:progression",
+      "choices": [
+        {
+          "value": "nyinsjuknad",
+          "label": {
+            "": "Nyinsjuknad"
+          }
+        },
+        {
+          "value": "etablerad",
+          "label": {
+            "": "Etablerad"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
     },
     {
       "type": "choice",
@@ -420,7 +531,24 @@
         "pref": 1,
         "max": 1
       },
-      "id": "sos:lateral"
+      "id": "sos:lateral",
+      "choices": [
+        {
+          "value": "left",
+          "label": {
+            "": "Vänstersidig"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "": "Högersidig"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
     },
     {
       "type": "choice",
@@ -434,7 +562,30 @@
         "pref": 1,
         "max": 1
       },
-      "id": "sos:frequency"
+      "id": "sos:frequency",
+      "choices": [
+        {
+          "value": "dagligen",
+          "label": {
+            "": "Varje dag"
+          }
+        },
+        {
+          "value": "veckovis",
+          "label": {
+            "": "Varje vecka"
+          }
+        },
+        {
+          "value": "månad",
+          "label": {
+            "": "Varje månad"
+          }
+        }
+      ],
+      "styles": [
+        "verticalRadioButtons"
+      ]
     },
     {
       "type": "choice",
