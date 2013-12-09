@@ -532,7 +532,87 @@
       "cardinality": {
         "min": 1,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "C50",
+          "label": {
+            "sv": "Malign tumör i bröstkörtel"
+          },
+          "description": {
+            "sv": "Innefattar:\nBindväv i bröstkörtel\nUtesluter:\nHuden över bröstkörteln (C43.5, C44.5)"
+          }
+        },
+        {
+          "value": "I21",
+          "label": {
+            "": "Akut hjärtinfarkt"
+          }
+        },
+        {
+          "value": "M05",
+          "label": {
+            "sv": "Seropositiv reumatoid artrit"
+          },
+          "description": {
+            "sv": "Utesluter:\nJuvenil reumatoid artrit (M08.-)\nPelvospondylit (M45)\nReumatisk feber (I00-I01)"
+          }
+        },
+        {
+          "value": "M06",
+          "label": {
+            "sv": "Annan reumatoid artrit"
+          }
+        },
+        {
+          "value": "S52",
+          "label": {
+            "sv": "Fraktur på underarm"
+          },
+          "description": {
+            "sv": "Utesluter:\nFraktur på handleds- och handnivå (S62.-)"
+          }
+        },
+        {
+          "value": "I83",
+          "label": {
+            "sv": "Varicer (åderbråck) i nedre extremiteterna"
+          }
+        },
+        {
+          "value": "I20",
+          "label": {
+            "sv": "Anginösa bröstsmärtor (kärlkramp i bröstet)"
+          }
+        },
+        {
+          "value": "I22",
+          "label": {
+            "sv": "Reinfarkt (återinsjuknande i akut hjärtinfarkt)"
+          }
+        },
+        {
+          "value": "I23",
+          "label": {
+            "": "Vissa komplikationer till akut hjärtinfarkt"
+          }
+        },
+        {
+          "value": "I24",
+          "label": {
+            "": "Andra akuta ischemiska hjärtsjukdomar"
+          }
+        },
+        {
+          "value": "I25",
+          "label": {
+            "": "Kronisk ischemisk hjärtsjukdom"
+          }
+        }
+      ],
+      "styles": [
+        "tree"
+      ]
     },
     {
       "type": "choice",
@@ -1333,7 +1413,54 @@
       "id": "soc:narrowCondition",
       "description": {
         "sv": "Beskriv en mer specifik diagnos genom att välja en eller flera koder från SNOMED-CT."
-      }
+      },
+      "choices": [
+        {
+          "value": "93796005",
+          "label": {
+            "sv": "Primär malign tumör i bröst hos kvinna"
+          }
+        },
+        {
+          "value": "414545008",
+          "label": {
+            "sv": "Ischemisk kranskärlsjukdom"
+          }
+        },
+        {
+          "value": "57054005",
+          "label": {
+            "sv": "Akut hjärtinfarkt"
+          }
+        },
+        {
+          "value": "414545008 | ischemisk hjärtsjukdom | :",
+          "label": {
+            "": "Ischemisk hjärtsjukdom"
+          }
+        },
+        {
+          "value": "69896004",
+          "label": {
+            "": "Reumatoid artrit"
+          }
+        },
+        {
+          "value": "263199001",
+          "label": {
+            "sv": "Fraktur på distal del av radius"
+          }
+        },
+        {
+          "value": "72866009",
+          "label": {
+            "": "Varicer i ben"
+          }
+        }
+      ],
+      "styles": [
+        "tree"
+      ]
     }
   ]
 }
