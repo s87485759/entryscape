@@ -18,6 +18,9 @@
           "id": "sos:condition"
         },
         {
+          "id": "soc:narrowCondition"
+        },
+        {
           "id": "sos:qualityOfEvidence"
         },
         {
@@ -216,7 +219,7 @@
       },
       "choices": [
         {
-          "value": "graviditet",
+          "value": "pregnancy",
           "label": {
             "": "Graviditet"
           }
@@ -238,13 +241,13 @@
       },
       "choices": [
         {
-          "value": "light",
+          "value": "lightWork",
           "label": {
             "sv": "Lätt arbete"
           }
         },
         {
-          "value": "heavy",
+          "value": "heavyWork",
           "label": {
             "sv": "Tungt arbete eller skiftarbete"
           }
@@ -268,15 +271,27 @@
       },
       "choices": [
         {
-          "value": "b164",
+          "value": "b4108",
           "label": {
-            "": "Högre kognitiva funktioner  "
+            "": "Andra specificerade hjärtfunktioner"
           }
         },
         {
           "value": "b710",
           "label": {
             "": "Funktioner för rörlighet i leder"
+          }
+        },
+        {
+          "value": "b535",
+          "label": {
+            "": "Förnimmelser förenade med matsmältningssystemet"
+          }
+        },
+        {
+          "value": "b164 ",
+          "label": {
+            "": "Högre kognitiva funktioner"
           }
         },
         {
@@ -292,9 +307,9 @@
           }
         },
         {
-          "value": "b535",
+          "value": "b134",
           "label": {
-            "": "Förnimmelser förenade med matsmältningssystemet"
+            "": "Sömnfunktioner"
           }
         },
         {
@@ -302,31 +317,13 @@
           "label": {
             "": "Uppmärksamhetsfunktioner"
           }
-        },
-        {
-          "value": "b164 ",
-          "label": {
-            "": "Högre kognitiva funktioner"
-          }
-        },
-        {
-          "value": "b134",
-          "label": {
-            "": "Sömnfunktioner"
-          }
-        },
-        {
-          "value": "b4108",
-          "label": {
-            "": "Andra specificerade hjärtfunktioner"
-          }
         }
       ]
     },
     {
       "type": "choice",
       "id": "sos:functioning",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/functioning",
       "label": {
         "sv": "Aktivitetsbegränsning"
@@ -334,7 +331,93 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "d177",
+          "label": {
+            "": "Att fatta beslut"
+          }
+        },
+        {
+          "value": "d220",
+          "label": {
+            "": "Att företa mångfaldiga uppgifter "
+          }
+        },
+        {
+          "value": "d240",
+          "label": {
+            "": "Att hantera stress och andra psykologiska krav"
+          }
+        },
+        {
+          "value": "d399",
+          "label": {
+            "": "Kommunikation, ospecificerad"
+          }
+        },
+        {
+          "value": "d720",
+          "label": {
+            "": "Sammansatta mellanmänskliga interaktioner"
+          }
+        },
+        {
+          "value": "D430",
+          "label": {
+            "": "Att lyfta och bära föremål"
+          }
+        },
+        {
+          "value": "D440",
+          "label": {
+            "": "Handens finmotorisk användning"
+          }
+        },
+        {
+          "value": "d445",
+          "label": {
+            "": "Användning av hand och arm"
+          }
+        },
+        {
+          "value": "d160",
+          "label": {
+            "": "Att fokusera uppmärksamhet"
+          }
+        },
+        {
+          "value": "d220 ",
+          "label": {
+            "": "Begränsad fysisk uthållighet"
+          }
+        },
+        {
+          "value": "d24",
+          "label": {
+            "": "Begränsad tolerans för stress"
+          }
+        },
+        {
+          "value": "d430",
+          "label": {
+            "": "Begränsad förmåga att lyfta och bära"
+          }
+        },
+        {
+          "value": "d440",
+          "label": {
+            "": "Begränsad finmotorisk förmåga, greppförmåga"
+          }
+        },
+        {
+          "value": "d445 ",
+          "label": {
+            "": "Begränsad förmåga att räcka fram, dra och knuffa"
+          }
+        }
+      ]
     },
     {
       "type": "choice",
@@ -350,7 +433,7 @@
       },
       "choices": [
         {
-          "value": "cellgifter",
+          "value": "cellToxins",
           "label": {
             "": "Cellgifter"
           }
@@ -377,21 +460,21 @@
       },
       "choices": [
         {
-          "value": "läkemedelsbehandling",
+          "value": "plaster",
+          "label": {
+            "": "Gips"
+          }
+        },
+        {
+          "value": "drugTreatment",
           "label": {
             "": "Läkemedelsbehandling"
           }
         },
         {
-          "value": "sjukgymnastik",
+          "value": "physiotherapy",
           "label": {
             "": "Sjukgymnastik"
-          }
-        },
-        {
-          "value": "gips",
-          "label": {
-            "": "Gips"
           }
         }
       ]
@@ -410,27 +493,27 @@
       },
       "choices": [
         {
-          "value": "operation",
-          "label": {
-            "": "Operation"
-          }
-        },
-        {
-          "value": "cellgifter",
+          "value": "cellToxins",
           "label": {
             "": "Cellgifter"
           }
         },
         {
-          "value": "KBT",
+          "value": "electroconvulsiveTherapy",
           "label": {
-            "": "KBT"
+            "": "Elektrokonvulsiv behandling (ECT)"
           }
         },
         {
-          "value": "ECT",
+          "value": "cognitiveBehavioralTherapy",
           "label": {
-            "": "ECT"
+            "": "Kognitiv betendeterapi (KBT)"
+          }
+        },
+        {
+          "value": "operation",
+          "label": {
+            "": "Operation"
           }
         }
       ],
@@ -503,15 +586,15 @@
       "id": "sos:progression",
       "choices": [
         {
-          "value": "nyinsjuknad",
+          "value": "established",
           "label": {
-            "": "Nyinsjuknad"
+            "": "Etablerad"
           }
         },
         {
-          "value": "etablerad",
+          "value": "newlyContracted",
           "label": {
-            "": "Etablerad"
+            "": "Nyinsjuknad"
           }
         }
       ],
@@ -534,15 +617,15 @@
       "id": "sos:lateral",
       "choices": [
         {
-          "value": "left",
+          "value": "rightSided",
           "label": {
-            "": "Vänstersidig"
+            "": "Högersidig"
           }
         },
         {
-          "value": "right",
+          "value": "leftSided",
           "label": {
-            "": "Högersidig"
+            "": "Vänstersidig"
           }
         }
       ],
@@ -565,21 +648,21 @@
       "id": "sos:frequency",
       "choices": [
         {
-          "value": "dagligen",
+          "value": "daily",
           "label": {
             "": "Varje dag"
           }
         },
         {
-          "value": "veckovis",
+          "value": "monthly",
           "label": {
-            "": "Varje vecka"
+            "": "Varje månad"
           }
         },
         {
-          "value": "månad",
+          "value": "weekly",
           "label": {
-            "": "Varje månad"
+            "": "Varje vecka"
           }
         }
       ],
@@ -607,12 +690,6 @@
           }
         },
         {
-          "value": "F32.9",
-          "label": {
-            "": "Ospecificerad depressiv episod"
-          }
-        },
-        {
           "value": "F51.8",
           "label": {
             "": "Andra specificerade icke organiska sömnstörningar"
@@ -622,6 +699,12 @@
           "value": "I97.2",
           "label": {
             "": "Lymfödem efter mastektomi"
+          }
+        },
+        {
+          "value": "F32.9",
+          "label": {
+            "": "Ospecificerad depressiv episod"
           }
         }
       ]
@@ -740,6 +823,12 @@
           }
         },
         {
+          "value": "50-100",
+          "label": {
+            "": "50-100%"
+          }
+        },
+        {
           "value": "50-75",
           "label": {
             "": "50-75%"
@@ -798,7 +887,7 @@
     },
     {
       "type": "choice",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "PLAIN_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/degreeOfSickLeaveConsecutivePeriod",
       "label": {
         "sv": "Sjukskrivningsgrad efterföljande period"
@@ -808,7 +897,97 @@
         "min": 0,
         "pref": 1,
         "max": 1
-      }
+      },
+      "choices": [
+        {
+          "value": "0",
+          "label": {
+            "": "0%"
+          },
+          "description": {}
+        },
+        {
+          "value": "0-100",
+          "label": {
+            "": "0-100%"
+          }
+        },
+        {
+          "value": "0-25",
+          "label": {
+            "": "0-25%"
+          }
+        },
+        {
+          "value": "0-50",
+          "label": {
+            "": "0-50%"
+          }
+        },
+        {
+          "value": "0-75",
+          "label": {
+            "": "0-75%"
+          }
+        },
+        {
+          "value": "100",
+          "label": {
+            "": "100%"
+          }
+        },
+        {
+          "value": "25%",
+          "label": {
+            "": "25%"
+          },
+          "description": {}
+        },
+        {
+          "value": "25-100",
+          "label": {
+            "": "25-100%"
+          }
+        },
+        {
+          "value": "25-50",
+          "label": {
+            "": "25-50%"
+          },
+          "description": {}
+        },
+        {
+          "value": "25-75",
+          "label": {
+            "": "25-75%"
+          }
+        },
+        {
+          "value": "50-100",
+          "label": {
+            "": "50-100%"
+          }
+        },
+        {
+          "value": "50-75",
+          "label": {
+            "": "50-75%"
+          }
+        },
+        {
+          "value": "75",
+          "label": {
+            "": "75%"
+          },
+          "description": {}
+        },
+        {
+          "value": "75-100",
+          "label": {
+            "": "75-100%"
+          }
+        }
+      ]
     },
     {
       "type": "text",
@@ -1139,6 +1318,22 @@
         "multiline"
       ],
       "id": "sos:recommendation"
+    },
+    {
+      "type": "choice",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/narrowCondition",
+      "label": {
+        "sv": "Specifik diagnos"
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1
+      },
+      "id": "soc:narrowCondition",
+      "description": {
+        "sv": "Beskriv en mer specifik diagnos genom att välja en eller flera koder från SNOMED-CT."
+      }
     }
   ]
 }
