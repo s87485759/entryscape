@@ -24,6 +24,12 @@
           "id": "sos:qualityOfEvidence"
         },
         {
+          "id": "sos:disability"
+        },
+        {
+          "id": "sos:functioning"
+        },
+        {
           "type": "group",
           "nodetype": "RESOURCE",
           "label": {
@@ -37,27 +43,60 @@
               "id": "sos:rehabilitationTreatment"
             },
             {
-              "id": "sos:degreeOfSickLeave"
-            },
-            {
-              "id": "sos:sickLeaveTime"
-            },
-            {
               "id": "sos:normalSickLeaveTime"
             },
             {
-              "id": "sos:degreeOfSickLeaveConsecutivePeriod"
+              "type": "group",
+              "label": {
+                "sv": "Sjukskrivning"
+              },
+              "content": [
+                {
+                  "id": "sos:degreeOfSickLeave"
+                },
+                {
+                  "id": "sos:sickLeaveTime"
+                },
+                {
+                  "id": "sos:typeOfSickLeave"
+                }
+              ],
+              "cardinality": {
+                "min": 1,
+                "pref": 1,
+                "max": 1
+              }
             },
             {
-              "id": "sos:sickLeaveTimeConsecutivePeriod"
-            },
-            {
-              "id": "sos:typeOfSickLeave"
+              "type": "group",
+              "label": {
+                "sv": "Sjukskrivning efterföljande period"
+              },
+              "cardinality": {
+                "min": 1,
+                "pref": 1,
+                "max": 1
+              },
+              "content": [
+                {
+                  "id": "sos:degreeOfSickLeaveConsecutivePeriod"
+                },
+                {
+                  "id": "sos:sickLeaveTimeConsecutivePeriod"
+                },
+                {
+                  "id": "sos:typeOfSickLeaveConsecutivePeriod"
+                }
+              ]
             }
           ],
           "styles": [
             "expandable"
-          ]
+          ],
+          "cardinality": {
+            "min": 1,
+            "pref": 1
+          }
         },
         {
           "type": "group",
@@ -107,22 +146,13 @@
               "id": "sos:progression"
             },
             {
-              "id": "sos:medicalFactor"
-            },
-            {
               "id": "sos:lateral"
-            },
-            {
-              "id": "sos:functioning"
             },
             {
               "id": "sos:frequency"
             },
             {
-              "id": "sos:concurrentCondition"
-            },
-            {
-              "id": "sos:disability"
+              "id": "sos:healthRelatedCondition"
             }
           ],
           "styles": [
@@ -334,9 +364,21 @@
       },
       "choices": [
         {
+          "value": "d445",
+          "label": {
+            "": "Användning av hand och arm"
+          }
+        },
+        {
           "value": "d177",
           "label": {
             "": "Att fatta beslut"
+          }
+        },
+        {
+          "value": "d160",
+          "label": {
+            "": "Att fokusera uppmärksamhet"
           }
         },
         {
@@ -352,57 +394,9 @@
           }
         },
         {
-          "value": "d399",
-          "label": {
-            "": "Kommunikation, ospecificerad"
-          }
-        },
-        {
-          "value": "d720",
-          "label": {
-            "": "Sammansatta mellanmänskliga interaktioner"
-          }
-        },
-        {
           "value": "D430",
           "label": {
             "": "Att lyfta och bära föremål"
-          }
-        },
-        {
-          "value": "D440",
-          "label": {
-            "": "Handens finmotorisk användning"
-          }
-        },
-        {
-          "value": "d445",
-          "label": {
-            "": "Användning av hand och arm"
-          }
-        },
-        {
-          "value": "d160",
-          "label": {
-            "": "Att fokusera uppmärksamhet"
-          }
-        },
-        {
-          "value": "d220 ",
-          "label": {
-            "": "Begränsad fysisk uthållighet"
-          }
-        },
-        {
-          "value": "d24",
-          "label": {
-            "": "Begränsad tolerans för stress"
-          }
-        },
-        {
-          "value": "d430",
-          "label": {
-            "": "Begränsad förmåga att lyfta och bära"
           }
         },
         {
@@ -412,9 +406,45 @@
           }
         },
         {
+          "value": "d220 ",
+          "label": {
+            "": "Begränsad fysisk uthållighet"
+          }
+        },
+        {
+          "value": "d430",
+          "label": {
+            "": "Begränsad förmåga att lyfta och bära"
+          }
+        },
+        {
           "value": "d445 ",
           "label": {
             "": "Begränsad förmåga att räcka fram, dra och knuffa"
+          }
+        },
+        {
+          "value": "d24",
+          "label": {
+            "": "Begränsad tolerans för stress"
+          }
+        },
+        {
+          "value": "D440",
+          "label": {
+            "": "Handens finmotorisk användning"
+          }
+        },
+        {
+          "value": "d399",
+          "label": {
+            "": "Kommunikation, ospecificerad"
+          }
+        },
+        {
+          "value": "d720",
+          "label": {
+            "": "Sammansatta mellanmänskliga interaktioner"
           }
         }
       ]
@@ -444,6 +474,9 @@
             "": "Operation"
           }
         }
+      ],
+      "styles": [
+        "tree"
       ]
     },
     {
@@ -477,6 +510,9 @@
             "": "Sjukgymnastik"
           }
         }
+      ],
+      "styles": [
+        "tree"
       ]
     },
     {
@@ -518,7 +554,8 @@
         }
       ],
       "styles": [
-        "verticalRadioButtons"
+        "verticalRadioButtons",
+        "tree"
       ]
     },
     {
@@ -527,7 +564,7 @@
       "nodetype": "LANGUAGE_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/condition",
       "label": {
-        "sv": "Diagnos"
+        "sv": "Diagnos (enl. ICD-10)"
       },
       "cardinality": {
         "min": 1,
@@ -535,27 +572,21 @@
       },
       "choices": [
         {
-          "value": "C50",
-          "label": {
-            "sv": "Malign tumör i bröstkörtel"
-          },
-          "description": {
-            "sv": "Innefattar:\nBindväv i bröstkörtel\nUtesluter:\nHuden över bröstkörteln (C43.5, C44.5)"
-          }
-        },
-        {
           "value": "I21",
           "label": {
             "": "Akut hjärtinfarkt"
           }
         },
         {
-          "value": "M05",
+          "value": "I24",
           "label": {
-            "sv": "Seropositiv reumatoid artrit"
-          },
-          "description": {
-            "sv": "Utesluter:\nJuvenil reumatoid artrit (M08.-)\nPelvospondylit (M45)\nReumatisk feber (I00-I01)"
+            "": "Andra akuta ischemiska hjärtsjukdomar"
+          }
+        },
+        {
+          "value": "I20",
+          "label": {
+            "sv": "Anginösa bröstsmärtor (kärlkramp i bröstet)"
           }
         },
         {
@@ -574,15 +605,18 @@
           }
         },
         {
-          "value": "I83",
+          "value": "I25",
           "label": {
-            "sv": "Varicer (åderbråck) i nedre extremiteterna"
+            "": "Kronisk ischemisk hjärtsjukdom"
           }
         },
         {
-          "value": "I20",
+          "value": "C50",
           "label": {
-            "sv": "Anginösa bröstsmärtor (kärlkramp i bröstet)"
+            "sv": "Malign tumör i bröstkörtel"
+          },
+          "description": {
+            "sv": "Innefattar:\nBindväv i bröstkörtel\nUtesluter:\nHuden över bröstkörteln (C43.5, C44.5)"
           }
         },
         {
@@ -592,27 +626,31 @@
           }
         },
         {
+          "value": "M05",
+          "label": {
+            "sv": "Seropositiv reumatoid artrit"
+          },
+          "description": {
+            "sv": "Utesluter:\nJuvenil reumatoid artrit (M08.-)\nPelvospondylit (M45)\nReumatisk feber (I00-I01)"
+          }
+        },
+        {
+          "value": "I83",
+          "label": {
+            "sv": "Varicer (åderbråck) i nedre extremiteterna"
+          }
+        },
+        {
           "value": "I23",
           "label": {
             "": "Vissa komplikationer till akut hjärtinfarkt"
-          }
-        },
-        {
-          "value": "I24",
-          "label": {
-            "": "Andra akuta ischemiska hjärtsjukdomar"
-          }
-        },
-        {
-          "value": "I25",
-          "label": {
-            "": "Kronisk ischemisk hjärtsjukdom"
           }
         }
       ],
       "styles": [
         "tree"
-      ]
+      ],
+      "description": {}
     },
     {
       "type": "choice",
@@ -753,11 +791,11 @@
     {
       "type": "choice",
       "nodetype": "LANGUAGE_LITERAL",
-      "property": "http://data.socialstyrelsen.se/terms/concurrentCondition",
+      "property": "http://data.socialstyrelsen.se/terms/healthRelatedCondition",
       "label": {
-        "sv": "Samsjuklighet"
+        "sv": "Hälsorelaterat tillstånd"
       },
-      "id": "sos:concurrentCondition",
+      "id": "sos:healthRelatedCondition",
       "cardinality": {
         "min": 0,
         "pref": 1
@@ -776,6 +814,12 @@
           }
         },
         {
+          "value": "pregnancy",
+          "label": {
+            "sv": "Graviditet"
+          }
+        },
+        {
           "value": "I97.2",
           "label": {
             "": "Lymfödem efter mastektomi"
@@ -787,6 +831,9 @@
             "": "Ospecificerad depressiv episod"
           }
         }
+      ],
+      "styles": [
+        "tree"
       ]
     },
     {
@@ -970,7 +1017,7 @@
       "nodetype": "PLAIN_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/degreeOfSickLeaveConsecutivePeriod",
       "label": {
-        "sv": "Sjukskrivningsgrad efterföljande period"
+        "sv": "Sjukskrivningsgrad"
       },
       "id": "sos:degreeOfSickLeaveConsecutivePeriod",
       "cardinality": {
@@ -1074,7 +1121,7 @@
       "nodetype": "DATATYPE_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/sickLeaveTime",
       "label": {
-        "sv": "Sjukskrivningstid efterföljande period"
+        "sv": "Sjukskrivningstid"
       },
       "cardinality": {
         "min": 0,
@@ -1404,7 +1451,7 @@
       "nodetype": "LANGUAGE_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/narrowCondition",
       "label": {
-        "sv": "Specifik diagnos"
+        "sv": "Specifik diagnos (enl. SNOMED-CT)"
       },
       "cardinality": {
         "min": 1,
@@ -1416,21 +1463,15 @@
       },
       "choices": [
         {
-          "value": "93796005",
-          "label": {
-            "sv": "Primär malign tumör i bröst hos kvinna"
-          }
-        },
-        {
-          "value": "414545008",
-          "label": {
-            "sv": "Ischemisk kranskärlsjukdom"
-          }
-        },
-        {
           "value": "57054005",
           "label": {
             "sv": "Akut hjärtinfarkt"
+          }
+        },
+        {
+          "value": "263199001",
+          "label": {
+            "sv": "Fraktur på distal del av radius"
           }
         },
         {
@@ -1440,15 +1481,33 @@
           }
         },
         {
-          "value": "69896004",
+          "value": "414545008",
           "label": {
-            "": "Reumatoid artrit"
+            "sv": "Ischemisk kranskärlsjukdom"
           }
         },
         {
-          "value": "263199001",
+          "value": "24700007",
           "label": {
-            "sv": "Fraktur på distal del av radius"
+            "sv": "Multipel skleros"
+          }
+        },
+        {
+          "value": "93796005",
+          "label": {
+            "sv": "Primär malign tumör i bröst hos kvinna"
+          }
+        },
+        {
+          "value": "303350001",
+          "label": {
+            "sv": "Pågående episod "
+          }
+        },
+        {
+          "value": "69896004",
+          "label": {
+            "": "Reumatoid artrit"
           }
         },
         {
@@ -1461,6 +1520,23 @@
       "styles": [
         "tree"
       ]
+    },
+    {
+      "type": "text",
+      "nodetype": "LANGUAGE_LITERAL",
+      "property": "http://data.socialstyrelsen.se/terms/typeOfSickLeaveConsecutivePeriod",
+      "label": {
+        "sv": "Sjukskrivningstyp"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "sos:typeOfSickLeaveConsecutivePeriod"
     }
   ]
 }
