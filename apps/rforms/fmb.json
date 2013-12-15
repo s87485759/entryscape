@@ -463,15 +463,27 @@
       },
       "choices": [
         {
-          "value": "cellToxins",
+          "value": "79089001",
           "label": {
-            "": "Cellgifter"
+            "sv": "Rehabilitering efter fraktur"
           }
         },
         {
-          "value": "operation",
+          "value": "309448001",
           "label": {
-            "": "Operation"
+            "sv": "Hormonmanipulation"
+          }
+        },
+        {
+          "value": "64644003",
+          "label": {
+            "": "Cancerimmunterapi"
+          }
+        },
+        {
+          "value": "394895009",
+          "label": {
+            "sv": "Postoperativ cytostatikabehandling"
           }
         }
       ],
@@ -493,21 +505,21 @@
       },
       "choices": [
         {
-          "value": "plaster",
+          "value": "385798007",
           "label": {
-            "": "Gips"
+            "sv": "Strålbehandling"
           }
         },
         {
-          "value": "drugTreatment",
+          "value": "373283003",
           "label": {
-            "": "Läkemedelsbehandling"
+            "sv": "Antiinflammatoriskt läkemedel"
           }
         },
         {
-          "value": "physiotherapy",
+          "value": "133859009",
           "label": {
-            "": "Sjukgymnastik"
+            "": "Fixering och immobilisering"
           }
         }
       ],
@@ -529,27 +541,39 @@
       },
       "choices": [
         {
-          "value": "cellToxins",
+          "value": "35482003",
           "label": {
-            "": "Cellgifter"
+            "": "Partiell mastektomi med axillär lymfadenektomi"
           }
         },
         {
-          "value": "electroconvulsiveTherapy",
+          "value": "384723003",
           "label": {
-            "": "Elektrokonvulsiv behandling (ECT)"
+            "": "Radikal mastektomi"
           }
         },
         {
-          "value": "cognitiveBehavioralTherapy",
+          "value": "447168009",
           "label": {
-            "": "Kognitiv betendeterapi (KBT)"
+            "sv": "Mastektomi och axillär utrymning"
           }
         },
         {
-          "value": "operation",
+          "value": "367336001",
           "label": {
-            "": "Operation"
+            "sv": "Cytostatikabehandling"
+          }
+        },
+        {
+          "value": "275227003",
+          "label": {
+            "sv": "Myokardiell revaskularisering"
+          }
+        },
+        {
+          "value": "309814006",
+          "label": {
+            "sv": "Aortokoronar bypassoperation"
           }
         }
       ],
@@ -667,26 +691,35 @@
       },
       "choices": [
         {
-          "value": "light",
+          "value": "255604002",
           "label": {
-            "": "Lätt"
+            "sv": "Lindrig"
+          },
+          "description": {
+            "sv": "Vid mindre besvär eller låg sjukdomsaktivitet"
           }
         },
         {
-          "value": "medium",
+          "value": "371924009",
           "label": {
-            "": "Måttlig"
+            "sv": "Medelsvår till svår"
+          },
+          "description": {
+            "sv": "Omfattande utbredning"
           }
         },
         {
-          "value": "hard",
+          "value": "24484000",
           "label": {
-            "": "Svår"
+            "sv": "Svår"
+          },
+          "description": {
+            "sv": "Vid stora besvär och hög sjukdomsaktivitet"
           }
         }
       ],
       "styles": [
-        "verticalRadioButtons"
+        "tree"
       ]
     },
     {
@@ -704,20 +737,20 @@
       "id": "sos:progression",
       "choices": [
         {
-          "value": "established",
+          "value": "255217005",
           "label": {
-            "": "Etablerad"
+            "sv": "Första episoden"
           }
         },
         {
-          "value": "newlyContracted",
+          "value": "303350001",
           "label": {
-            "": "Nyinsjuknad"
+            "sv": "Pågående episod"
           }
         }
       ],
       "styles": [
-        "verticalRadioButtons"
+        "tree"
       ]
     },
     {
@@ -735,15 +768,15 @@
       "id": "sos:lateral",
       "choices": [
         {
-          "value": "rightSided",
+          "value": "dominant",
           "label": {
-            "": "Högersidig"
+            "sv": "Dominant sida"
           }
         },
         {
-          "value": "leftSided",
+          "value": "nonDominant",
           "label": {
-            "": "Vänstersidig"
+            "sv": "Icke dominant sida"
           }
         }
       ],
@@ -814,7 +847,7 @@
           }
         },
         {
-          "value": "pregnancy",
+          "value": "289908002",
           "label": {
             "sv": "Graviditet"
           }
@@ -829,6 +862,40 @@
           "value": "F32.9",
           "label": {
             "": "Ospecificerad depressiv episod"
+          }
+        },
+        {
+          "value": "84114007",
+          "label": {
+            "sv": "Hjärtsvikt"
+          }
+        },
+        {
+          "value": "314116003",
+          "label": {
+            "sv": "Kvarvarande kärlkramp (postinfarktangina)"
+          },
+          "description": {}
+        },
+        {
+          "value": "44808001",
+          "label": {
+            "sv": "Rytmrubbningar"
+          },
+          "description": {
+            "sv": "Retledningsrubbning i hjärtat "
+          }
+        },
+        {
+          "value": "49971008",
+          "label": {
+            "sv": "Oro (ängslan)"
+          }
+        },
+        {
+          "value": "366979004",
+          "label": {
+            "sv": "Nedstämdhet"
           }
         }
       ],
@@ -1451,7 +1518,7 @@
       "nodetype": "LANGUAGE_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/narrowCondition",
       "label": {
-        "sv": "Specifik diagnos (enl. SNOMED-CT)"
+        "sv": "Specifik diagnosinformation"
       },
       "cardinality": {
         "min": 1,
@@ -1481,12 +1548,6 @@
           }
         },
         {
-          "value": "414545008",
-          "label": {
-            "sv": "Ischemisk kranskärlsjukdom"
-          }
-        },
-        {
           "value": "24700007",
           "label": {
             "sv": "Multipel skleros"
@@ -1496,12 +1557,6 @@
           "value": "93796005",
           "label": {
             "sv": "Primär malign tumör i bröst hos kvinna"
-          }
-        },
-        {
-          "value": "303350001",
-          "label": {
-            "sv": "Pågående episod "
           }
         },
         {
