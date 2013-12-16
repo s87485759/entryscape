@@ -18,16 +18,13 @@
           "id": "sos:condition"
         },
         {
-          "id": "soc:narrowCondition"
+          "id": "sos:narrowCondition"
+        },
+        {
+          "id": "soc:narrowCondition1"
         },
         {
           "id": "sos:qualityOfEvidence"
-        },
-        {
-          "id": "sos:disability"
-        },
-        {
-          "id": "sos:functioning"
         },
         {
           "type": "group",
@@ -297,7 +294,7 @@
         "pref": 1
       },
       "label": {
-        "sv": "Funktionsnedsättning"
+        "sv": "Relaterad funktionsnedsättning"
       },
       "choices": [
         {
@@ -356,7 +353,7 @@
       "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/functioning",
       "label": {
-        "sv": "Aktivitetsbegränsning"
+        "sv": "Relaterad aktivitetsbegränsning"
       },
       "cardinality": {
         "min": 0,
@@ -1356,10 +1353,10 @@
           "id": "sos:forCondition"
         },
         {
-          "id": "sos:relatedFunctioning"
+          "id": "sos:functioning"
         },
         {
-          "id": "sos:relatedDisability"
+          "id": "sos:disability"
         },
         {
           "id": "sos:symptomInfo"
@@ -1369,18 +1366,6 @@
         },
         {
           "id": "sos:treatmentInfo"
-        },
-        {
-          "id": "sos:functioningInfo"
-        },
-        {
-          "id": "sos:recommendationInfo"
-        },
-        {
-          "id": "sos:rehabilitationTreatmentInfo"
-        },
-        {
-          "id": "sos:disabilityInfo"
         }
       ],
       "cardinality": {
@@ -1524,7 +1509,7 @@
         "min": 1,
         "pref": 1
       },
-      "id": "soc:narrowCondition",
+      "id": "soc:narrowCondition1",
       "description": {
         "sv": "Beskriv en mer specifik diagnos genom att välja en eller flera koder från SNOMED-CT."
       },
@@ -1592,6 +1577,47 @@
         "multiline"
       ],
       "id": "sos:typeOfSickLeaveConsecutivePeriod"
+    },
+    {
+      "type": "group",
+      "id": "sos:narrowCondition",
+      "label": {
+        "sv": "Specifik diagnosinformation"
+      },
+      "property": "http://data.socialstyrelsen.se/terms/narrowCondition",
+      "description": {
+        "sv": "Beskriv en mer specifik diagnos genom att välja en eller flera koder från SNOMED-CT."
+      },
+      "content": [
+        {
+          "id": "sos:label"
+        },
+        {
+          "id": "sos:code"
+        }
+      ],
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      }
+    },
+    {
+      "type": "text",
+      "id": "sos:code",
+      "label": {
+        "sv": "Kod"
+      },
+      "property": "http://data.socialstyrelsen.se/terms/code",
+      "nodetype": "ONLY_LITERAL"
+    },
+    {
+      "type": "text",
+      "label": {
+        "sv": "Beskrivning"
+      },
+      "property": "http://data.socialstyrelsen.se/terms/label",
+      "nodetype": "PLAIN_LITERAL",
+      "id": "sos:label"
     }
   ]
 }
