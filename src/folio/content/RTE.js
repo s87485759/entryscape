@@ -28,7 +28,7 @@ dojo.require("dojox.editor.plugins.FindReplace");
 dojo.extend(dojox.editor.plugins.Save, {save: function(content) {
 // Set the default header to post as a body of text/html.
     var headers = {
-            "Content-Type": "text/html"
+            "Content-Type": "text/html+snippet"
     };
     if(this.url){
             var putArgs = {
