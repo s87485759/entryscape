@@ -401,12 +401,12 @@ return declare(null, {
 		if (index == -1) {
 			console.log("HeaderPasteClicked");
 			if (!this.isPasteDisabled) {
-                folio.list.operations.pasteInto(this.list);
+                operations.pasteInto(this.list);
 			}
 		} else {
 			console.log("ItemPasteClicked");
 			if (!this.isPasteIntoDisabled && entry.isResourceModifiable()) {
-                folio.list.operations.pasteInto(entry);
+                operations.pasteInto(entry);
 			}
 		}
 	},
