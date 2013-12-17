@@ -89,20 +89,20 @@ define(["dojo/_base/declare",
                 switch (this.mode) {
                     case "artifact":
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
-                        obj.params = {representationType: "namedresource",
+                        obj.params = {informationResource: false,
                             locationType: "local",
                             builtinType: "none"};
                         break;
                     case "upload":
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
-                        obj.params = {representationType: "informationresource",
+                        obj.params = {informationResource: true,
                             locationType: "local",
                             builtinType: "none"};
                         obj.fileInput = this.fileinput.fileInput;
                         break;
                     case "link":
                         newId = this.url.get("value");
-                        obj.params = {representationType: "informationresource",
+                        obj.params = {informationResource: true,
                             locationType: "link",
                             builtinType: "none",
                             resource: encodeURIComponent(newId)
