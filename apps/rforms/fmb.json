@@ -18,7 +18,7 @@
           "id": "sos:condition"
         },
         {
-          "id": "sos:narrowCondition"
+          "id": "sos:specificCondition"
         },
         {
           "id": "sos:qualityOfEvidence"
@@ -89,7 +89,8 @@
           ],
           "cardinality": {
             "min": 1,
-            "pref": 1
+            "pref": 1,
+            "max": 1
           }
         },
         {
@@ -128,7 +129,7 @@
               "id": "sos:sex"
             },
             {
-              "id": "sos:worktask"
+              "id": "sos:workTask"
             },
             {
               "id": "sos:workAbility"
@@ -151,7 +152,12 @@
           ],
           "styles": [
             "expandable"
-          ]
+          ],
+          "cardinality": {
+            "min": 1,
+            "pref": 1,
+            "max": 1
+          }
         },
         {
           "type": "group",
@@ -171,7 +177,12 @@
           ],
           "styles": [
             "expandable"
-          ]
+          ],
+          "cardinality": {
+            "min": 1,
+            "pref": 1,
+            "max": 1
+          }
         },
         {
           "id": "sos:source"
@@ -252,9 +263,9 @@
     },
     {
       "type": "choice",
-      "id": "sos:worktask",
+      "id": "sos:workTask",
       "nodetype": "ONLY_LITERAL",
-      "property": "http://data.socialstyrelsen.se/terms/worktask",
+      "property": "http://data.socialstyrelsen.se/terms/workTask",
       "label": {
         "sv": "Arbetsuppgifter"
       },
@@ -284,7 +295,7 @@
     {
       "type": "choice",
       "id": "sos:disability",
-      "nodetype": "ONLY_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/disability",
       "cardinality": {
         "min": 0,
@@ -295,59 +306,62 @@
       },
       "choices": [
         {
-          "value": "b4108",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b4108",
           "label": {
             "": "Andra specificerade hjärtfunktioner"
           }
         },
         {
-          "value": "b710",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b710",
           "label": {
             "": "Funktioner för rörlighet i leder"
           }
         },
         {
-          "value": "b535",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b535",
           "label": {
             "": "Förnimmelser förenade med matsmältningssystemet"
           }
         },
         {
-          "value": "b164 ",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b164 ",
           "label": {
             "": "Högre kognitiva funktioner"
           }
         },
         {
-          "value": "b730",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b730",
           "label": {
             "": "Muskelkraftfunktioner"
           }
         },
         {
-          "value": "b280 ",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b280 ",
           "label": {
             "": "Smärtförnimmelse"
           }
         },
         {
-          "value": "b134",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b134",
           "label": {
             "": "Sömnfunktioner"
           }
         },
         {
-          "value": "b140",
+          "value": "http://data.socialstyrelsen.se/terms/icf/b140",
           "label": {
             "": "Uppmärksamhetsfunktioner"
           }
         }
+      ],
+      "styles": [
+        "tree"
       ]
     },
     {
       "type": "choice",
       "id": "sos:functioning",
-      "nodetype": "ONLY_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/functioning",
       "label": {
         "sv": "Relaterad aktivitetsbegränsning"
@@ -358,95 +372,111 @@
       },
       "choices": [
         {
-          "value": "d445",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d445",
           "label": {
             "": "Användning av hand och arm"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d177",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d177",
           "label": {
             "": "Att fatta beslut"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d160",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d160",
           "label": {
             "": "Att fokusera uppmärksamhet"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d220",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d220",
           "label": {
             "": "Att företa mångfaldiga uppgifter "
-          }
+          },
+          "top": true
         },
         {
-          "value": "d240",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d240",
           "label": {
             "": "Att hantera stress och andra psykologiska krav"
-          }
+          },
+          "top": true
         },
         {
-          "value": "D430",
+          "value": "http://data.socialstyrelsen.se/terms/icf/D430",
           "label": {
             "": "Att lyfta och bära föremål"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d440",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d440",
           "label": {
             "": "Begränsad finmotorisk förmåga, greppförmåga"
           }
         },
         {
-          "value": "d220 ",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d220 ",
           "label": {
             "": "Begränsad fysisk uthållighet"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d430",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d430",
           "label": {
             "": "Begränsad förmåga att lyfta och bära"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d445 ",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d445 ",
           "label": {
             "": "Begränsad förmåga att räcka fram, dra och knuffa"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d24",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d24",
           "label": {
             "": "Begränsad tolerans för stress"
-          }
+          },
+          "top": true
         },
         {
-          "value": "D440",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d440",
           "label": {
             "": "Handens finmotorisk användning"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d399",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d399",
           "label": {
             "": "Kommunikation, ospecificerad"
-          }
+          },
+          "top": true
         },
         {
-          "value": "d720",
+          "value": "http://data.socialstyrelsen.se/terms/icf/d720",
           "label": {
             "": "Sammansatta mellanmänskliga interaktioner"
-          }
+          },
+          "top": true
         }
+      ],
+      "styles": [
+        "tree"
       ]
     },
     {
       "type": "choice",
       "id": "sos:plannedTreatment",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/plannedTreatment",
       "label": {
         "sv": "Planerad åtgärd"
@@ -457,27 +487,27 @@
       },
       "choices": [
         {
-          "value": "79089001",
-          "label": {
-            "sv": "Rehabilitering efter fraktur"
-          }
-        },
-        {
-          "value": "309448001",
-          "label": {
-            "sv": "Hormonmanipulation"
-          }
-        },
-        {
-          "value": "64644003",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/64644003",
           "label": {
             "": "Cancerimmunterapi"
           }
         },
         {
-          "value": "394895009",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/309448001",
+          "label": {
+            "sv": "Hormonmanipulation"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/394895009",
           "label": {
             "sv": "Postoperativ cytostatikabehandling"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/79089001",
+          "label": {
+            "sv": "Rehabilitering efter fraktur"
           }
         }
       ],
@@ -488,7 +518,7 @@
     {
       "type": "choice",
       "id": "sos:ongoingTreatment",
-      "nodetype": "ONLY_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/ongoingTreatment",
       "label": {
         "sv": "Pågående åtgärd"
@@ -499,21 +529,21 @@
       },
       "choices": [
         {
-          "value": "385798007",
-          "label": {
-            "sv": "Strålbehandling"
-          }
-        },
-        {
-          "value": "373283003",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/373283003",
           "label": {
             "sv": "Antiinflammatoriskt läkemedel"
           }
         },
         {
-          "value": "133859009",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/133859009",
           "label": {
             "": "Fixering och immobilisering"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/385798007",
+          "label": {
+            "sv": "Strålbehandling"
           }
         }
       ],
@@ -524,7 +554,7 @@
     {
       "type": "choice",
       "id": "sos:finishedTreatment",
-      "nodetype": "ONLY_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/finishedTreatment",
       "label": {
         "sv": "Avslutad åtgärd"
@@ -535,39 +565,39 @@
       },
       "choices": [
         {
-          "value": "35482003",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/309814006",
           "label": {
-            "": "Partiell mastektomi med axillär lymfadenektomi"
+            "sv": "Aortokoronar bypassoperation"
           }
         },
         {
-          "value": "384723003",
-          "label": {
-            "": "Radikal mastektomi"
-          }
-        },
-        {
-          "value": "447168009",
-          "label": {
-            "sv": "Mastektomi och axillär utrymning"
-          }
-        },
-        {
-          "value": "367336001",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/367336001",
           "label": {
             "sv": "Cytostatikabehandling"
           }
         },
         {
-          "value": "275227003",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/447168009",
+          "label": {
+            "sv": "Mastektomi och axillär utrymning"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/275227003",
           "label": {
             "sv": "Myokardiell revaskularisering"
           }
         },
         {
-          "value": "309814006",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/35482003",
           "label": {
-            "sv": "Aortokoronar bypassoperation"
+            "": "Partiell mastektomi med axillär lymfadenektomi"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/384723003",
+          "label": {
+            "": "Radikal mastektomi"
           }
         }
       ],
@@ -579,7 +609,7 @@
     {
       "type": "choice",
       "id": "sos:condition",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/condition",
       "label": {
         "sv": "Diagnos (enl. ICD-10)"
@@ -590,31 +620,31 @@
       },
       "choices": [
         {
-          "value": "I21",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I21",
           "label": {
             "": "Akut hjärtinfarkt"
           }
         },
         {
-          "value": "I24",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I24",
           "label": {
             "": "Andra akuta ischemiska hjärtsjukdomar"
           }
         },
         {
-          "value": "I20",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I20",
           "label": {
             "sv": "Anginösa bröstsmärtor (kärlkramp i bröstet)"
           }
         },
         {
-          "value": "M06",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/M06",
           "label": {
             "sv": "Annan reumatoid artrit"
           }
         },
         {
-          "value": "S52",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/S52",
           "label": {
             "sv": "Fraktur på underarm"
           },
@@ -623,13 +653,13 @@
           }
         },
         {
-          "value": "I25",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I25",
           "label": {
             "": "Kronisk ischemisk hjärtsjukdom"
           }
         },
         {
-          "value": "C50",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/C50",
           "label": {
             "sv": "Malign tumör i bröstkörtel"
           },
@@ -638,13 +668,13 @@
           }
         },
         {
-          "value": "I22",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I22",
           "label": {
             "sv": "Reinfarkt (återinsjuknande i akut hjärtinfarkt)"
           }
         },
         {
-          "value": "M05",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/M05",
           "label": {
             "sv": "Seropositiv reumatoid artrit"
           },
@@ -653,13 +683,13 @@
           }
         },
         {
-          "value": "I83",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I83",
           "label": {
             "sv": "Varicer (åderbråck) i nedre extremiteterna"
           }
         },
         {
-          "value": "I23",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I23",
           "label": {
             "": "Vissa komplikationer till akut hjärtinfarkt"
           }
@@ -673,7 +703,7 @@
     {
       "type": "choice",
       "id": "sos:severity",
-      "nodetype": "ONLY_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/severity",
       "label": {
         "sv": "Svårighetsgrad"
@@ -685,7 +715,7 @@
       },
       "choices": [
         {
-          "value": "255604002",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/255604002",
           "label": {
             "sv": "Lindrig"
           },
@@ -694,7 +724,7 @@
           }
         },
         {
-          "value": "371924009",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/371924009",
           "label": {
             "sv": "Medelsvår till svår"
           },
@@ -703,7 +733,7 @@
           }
         },
         {
-          "value": "24484000",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/24484000",
           "label": {
             "sv": "Svår"
           },
@@ -718,7 +748,7 @@
     },
     {
       "type": "choice",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/progression",
       "label": {
         "sv": "Sjukdomsförlopp"
@@ -731,13 +761,13 @@
       "id": "sos:progression",
       "choices": [
         {
-          "value": "255217005",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/255217005",
           "label": {
             "sv": "Första episoden"
           }
         },
         {
-          "value": "303350001",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/303350001",
           "label": {
             "sv": "Pågående episod"
           }
@@ -817,7 +847,7 @@
     },
     {
       "type": "choice",
-      "nodetype": "LANGUAGE_LITERAL",
+      "nodetype": "URI",
       "property": "http://data.socialstyrelsen.se/terms/healthRelatedCondition",
       "label": {
         "sv": "Hälsorelaterat tillstånd"
@@ -829,67 +859,67 @@
       },
       "choices": [
         {
-          "value": "F43.0",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/F43.0",
           "label": {
             "": "Akut stressreaktion"
           }
         },
         {
-          "value": "F51.8",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/F51.8",
           "label": {
             "": "Andra specificerade icke organiska sömnstörningar"
           }
         },
         {
-          "value": "289908002",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/289908002",
           "label": {
             "sv": "Graviditet"
           }
         },
         {
-          "value": "I97.2",
-          "label": {
-            "": "Lymfödem efter mastektomi"
-          }
-        },
-        {
-          "value": "F32.9",
-          "label": {
-            "": "Ospecificerad depressiv episod"
-          }
-        },
-        {
-          "value": "84114007",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/84114007",
           "label": {
             "sv": "Hjärtsvikt"
           }
         },
         {
-          "value": "314116003",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/314116003",
           "label": {
             "sv": "Kvarvarande kärlkramp (postinfarktangina)"
           },
           "description": {}
         },
         {
-          "value": "44808001",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/I97.2",
           "label": {
-            "sv": "Rytmrubbningar"
-          },
-          "description": {
-            "sv": "Retledningsrubbning i hjärtat "
+            "": "Lymfödem efter mastektomi"
           }
         },
         {
-          "value": "49971008",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/366979004",
+          "label": {
+            "sv": "Nedstämdhet"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/49971008",
           "label": {
             "sv": "Oro (ängslan)"
           }
         },
         {
-          "value": "366979004",
+          "value": "http://data.socialstyrelsen.se/terms/icd10/F32.9",
           "label": {
-            "sv": "Nedstämdhet"
+            "": "Ospecificerad depressiv episod"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/44808001",
+          "label": {
+            "sv": "Rytmrubbningar"
+          },
+          "description": {
+            "sv": "Retledningsrubbning i hjärtat "
           }
         }
       ],
@@ -985,7 +1015,7 @@
           }
         },
         {
-          "value": "25%",
+          "value": "25",
           "label": {
             "": "25%"
           },
@@ -1125,7 +1155,7 @@
           }
         },
         {
-          "value": "25%",
+          "value": "25",
           "label": {
             "": "25%"
           },
@@ -1180,7 +1210,7 @@
     {
       "type": "text",
       "nodetype": "DATATYPE_LITERAL",
-      "property": "http://data.socialstyrelsen.se/terms/sickLeaveTime",
+      "property": "http://data.socialstyrelsen.se/terms/sickLeaveTimeConsecutivePeriod",
       "label": {
         "sv": "Sjukskrivningstid"
       },
@@ -1347,7 +1377,7 @@
       },
       "content": [
         {
-          "id": "sos:forCondition"
+          "id": "sos:condition"
         },
         {
           "id": "sos:functioning"
@@ -1370,19 +1400,6 @@
         "pref": 1,
         "max": 1
       }
-    },
-    {
-      "type": "choice",
-      "nodetype": "LANGUAGE_LITERAL",
-      "property": "http://data.socialstyrelsen.se/terms/forCondition",
-      "label": {
-        "sv": "Diagnos"
-      },
-      "cardinality": {
-        "min": 1,
-        "pref": 1
-      },
-      "id": "sos:forCondition"
     },
     {
       "type": "choice",
@@ -1512,43 +1529,43 @@
       },
       "choices": [
         {
-          "value": "57054005",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/57054005",
           "label": {
             "sv": "Akut hjärtinfarkt"
           }
         },
         {
-          "value": "263199001",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/263199001",
           "label": {
             "sv": "Fraktur på distal del av radius"
           }
         },
         {
-          "value": "414545008 | ischemisk hjärtsjukdom | :",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/414545008",
           "label": {
             "": "Ischemisk hjärtsjukdom"
           }
         },
         {
-          "value": "24700007",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/24700007",
           "label": {
             "sv": "Multipel skleros"
           }
         },
         {
-          "value": "93796005",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/93796005",
           "label": {
             "sv": "Primär malign tumör i bröst hos kvinna"
           }
         },
         {
-          "value": "69896004",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/69896004",
           "label": {
             "": "Reumatoid artrit"
           }
         },
         {
-          "value": "72866009",
+          "value": "http://data.socialstyrelsen.se/terms/snomed/72866009",
           "label": {
             "": "Varicer i ben"
           }
@@ -1577,11 +1594,11 @@
     },
     {
       "type": "group",
-      "id": "sos:narrowCondition",
+      "id": "sos:specificCondition",
       "label": {
         "sv": "Specifik diagnosinformation"
       },
-      "property": "http://data.socialstyrelsen.se/terms/narrowCondition",
+      "property": "http://data.socialstyrelsen.se/terms/specificCondition",
       "description": {
         "sv": "Beskriv en mer specifik diagnos genom att välja en eller flera koder från SNOMED-CT."
       },
@@ -1596,16 +1613,22 @@
       "cardinality": {
         "min": 0,
         "pref": 1
-      }
+      },
+      "nodetype": "BLANK"
     },
     {
       "type": "text",
       "id": "sos:code",
       "label": {
-        "sv": "Kod"
+        "sv": "Kod(er) enl. Snowmed-CT"
       },
       "property": "http://data.socialstyrelsen.se/terms/code",
-      "nodetype": "ONLY_LITERAL"
+      "nodetype": "ONLY_LITERAL",
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      }
     },
     {
       "type": "text",
@@ -1614,7 +1637,12 @@
       },
       "property": "http://data.socialstyrelsen.se/terms/label",
       "nodetype": "PLAIN_LITERAL",
-      "id": "sos:label"
+      "id": "sos:label",
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      }
     }
   ]
 }
