@@ -5,6 +5,7 @@ define([
 
     var setUser = function(data) {
         var application = __confolio.application;
+        application.getStore().clearCache();
         application.setUser(typeof data.id !== "undefined" && data.user !== "_guest" ? data : null);
     };
 
