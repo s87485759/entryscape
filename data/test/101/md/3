@@ -1,6 +1,0 @@
-{"@id": "test:data/3", 
- "dc:title": "Crete", 
- "dc:description": "A nice picture from Crete", 
- "dc:format": "image/jpeg",
- "dc:extent": 51175
-}

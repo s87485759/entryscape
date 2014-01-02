@@ -1,8 +1,0 @@
-{"@id": "test:md/4", 
- "dc:created": "20080430", 
- "dc:modified": "20080430", 
- "*sc:referredIn": "test:data/1",
- "*sc:referenceType": "sc:Link",
- "*dc:creator": "pr:3",
- "*sc:read": "pr:2"
-}

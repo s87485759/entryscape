@@ -1,7 +1,0 @@
-{"@id": "test:md/1", 
-  "*sc:builtinType": "sc:List", 
-  "dc:created": "20080430", 
-  "dc:modified": "20080430",
-  "*dc:creator": "pr:3",
-  "*sc:read": "pr:2"
-}

@@ -1,5 +1,0 @@
-{"@id": "test2:data/47", 
- "foaf:name": "Hannes Ebner",
- "dc:description": "A nice fellow", 
- "*rdf:type": "foaf:Person"
-}

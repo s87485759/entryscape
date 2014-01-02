@@ -1,5 +1,0 @@
-{"@id": "test:data/2",
-     "dc:title": {"@value": "Folder 2", "@language": "en"},
-     "dc:description": {"@value": "A sub folder", "@language": "en"}, 
-     "dc:subject": "people"
-}

@@ -9,7 +9,7 @@ define([
     "dijit/tree/ObjectStoreModel",
     "folio/util/Widget",
     "dojo/text!./HelpTemplate.html",
-    "../info/help/manifest.js" //Ignore error, it is correct
+    "./info/help/manifest.js" //Ignore error, it is correct
 ], function(lang, declare, attr, Memory, ContentPane, BorderContainer, Tree, ObjectStoreModel, Widget, template, manifest) {
     return declare(Widget, {
         templateString: template,
@@ -108,7 +108,7 @@ define([
             }
 
             //Open content
-            this.contentDijit.set("href", "../info/help/"+item.id+".html");
+            this.contentDijit.set("href", "info/help/"+item.id+".html");
         }
     });
 });

@@ -1,6 +1,0 @@
-{"@id": "test:data/5", 
- "foaf:name": "Matthias Palmer",
- "*foaf:knows": "test:data/5",
- "dc:description": "A nice fellow", 
- "*rdf:type": "foaf:Person"
-}

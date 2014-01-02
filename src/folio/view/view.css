@@ -71,7 +71,7 @@
 }
 
 /* ---------LDBrowser view --------------*/
-.confolio .viewOutline {
+.confolio.ldbrowser .viewOutline {
     width: 50%;
     padding: 10px;
 }
