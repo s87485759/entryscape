@@ -166,11 +166,11 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 	},
 	handleEvent: function(index, event) {
 		//If clicking on the same row when rename editor is open, do nothing as it is only about moving the cursor.
-		if (this._renameEditor && event && event.target && this.selectedIndex > 0 
+		if (this._renameEditor && event && event.target && this.selectedIndex >= 0
 				&& dojo.isDescendant(event.target, this.listNodes[this.selectedIndex])) {
 			return;
 		}
-		this._do_rename();
+		this._abort_rename();
 		this.inherited("handleEvent", arguments);
 	},
 	changeFocus: function(index, dontPublish) {
@@ -386,7 +386,11 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 				this._insertIcon(child, childNode, hrefObj);
 				//Capture doubleclicks
 				if (refresh !== true) {
-					dojo.connect(childNode, "dblclick", dojo.hitch(this, function() {
+					dojo.connect(childNode, "dblclick", dojo.hitch(this, function(ev) {
+                        if (this._renameEditor && ev && ev.target && this.selectedIndex >= 0
+                            && dojo.isDescendant(ev.target, this.listNodes[this.selectedIndex])) {
+                            return;
+                        }
 						if (hrefObj.blankTarget) {
 							window.open(hrefObj.href, "_blank");
 						} else {
