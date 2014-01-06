@@ -1,21 +1,13 @@
 <div style="overflow: hidden" class="confolio">
-	<div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="bc" region="center" gutters="false" class="confolioPanel">
-		<div dojoType="dijit.layout.BorderContainer" gutters="false" region="center" class="mainPanel">
-			<div dojoType="folio.navigation.Breadcrumbs" region="top"></div>
-			<div dojoType="folio.tree.Tree" region="center" dojoAttachPoint="treeDijit">
-				<!-- Set listed folder view -->
-				<div dojoType="folio.list.ListView" detailsLink="true"></div>
-			</div>
-		</div>
-	</div>
-  <div dojoType="folio.create.CreateWizardDialog"></div>
-  <div dojoType="folio.editor.RFormsEditorDialog"></div>
-  <div dojoType="folio.util.MessageDialog"></div>
-  <div dojoType="folio.editor.EntryAdminEditorDialog"></div>
-  <div dojoType="dojox.widget.Toaster" 
-		positionDirection="br-left" duration="0" 
-		messageTopic="dialogMessages"></div>
-	<div dojoType="dojox.widget.Toaster" 
-		separator="&lt;hr&gt;" positionDirection="bl-up" 
-		messageTopic="notifyMessages"></div>
+    <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-attach-point="bc" data-dojo-props="region:'center',gutters:false" class="confolioPanel">
+        <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false,region:'center'" class="mainPanel">
+            <div data-dojo-type="folio/navigation/Breadcrumbs" data-dojo-props="region:'top'"></div>
+            <div data-dojo-type="folio/tree/Tree" data-dojo-props="region:'center'" data-dojo-attach-point="treeDijit">
+                <div data-dojo-type="folio/list/ListView" data-dojo-props="detailsLink:true" data-dojo-attach-point="listView"></div>
+            </div>
+        </div>
+    </div>
+    <div data-dojo-type="folio/editor/RFormsEditorDialog"></div>
+    <div data-dojo-type="folio/util/Message"></div>
+    <div data-dojo-type="folio.editor.EntryAdminEditorDialog"></div>
 </div>
