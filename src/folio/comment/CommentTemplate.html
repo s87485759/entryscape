@@ -1,18 +1,19 @@
-<div "style="width: 100%;">
-	<div class="metaRow distinctBackground">
-		<div class="metaPane">
-			<div dojoType="folio.editor.RFormsPresenter" dojoAttachPoint="presenterDijit" compact="true"></div>
-		</div>
-		<div class="adminPane" style="width:300px">
-			<div>
-				<span dojoAttachPoint="creatorNode"></span>
-			</div>
-			<div>
-				<span dojoAttachPoint="timeNode"></span>
-			</div>
-		</div>
-	</div>
-	<div class="textRow distinctBackground" dojoAttachPoint="contentNode">
-		<div dojoType="folio.content.ContentViewSwitcher" style="height: 50%" region="top" splitter="true" class="contentViewSwitcher" dojoAttachPoint="contentViewDijit"></div>
-	</div>
+<div style="width: 100%;">
+    <div class="metaRow distinctBackground">
+        <div class="metaPane">
+            <div data-dojo-type="folio/editor/RFormsPresenter" data-dojo-attach-point="presenterDijit" data-dojo-props="compact:true"></div>
+        </div>
+        <div class="adminPane" style="width:300px">
+            <div>
+                <span data-dojo-attach-point="creatorNode"></span>
+            </div>
+            <div>
+                <span data-dojo-attach-point="timeNode"></span>
+            </div>
+        </div>
+    </div>
+    <div class="textRow distinctBackground" data-dojo-attach-point="contentNode">
+        <div data-dojo-type="folio/content/ContentViewSwitcher" style="height: 50%" data-dojo-props="region:'top',splitter:true"
+             class="contentViewSwitcher" data-dojo-attach-point="contentViewDijit"></div>
+    </div>
 </div>

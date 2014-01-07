@@ -1,21 +1,22 @@
 <div>
-	<div dojoType="dijit.Dialog" dojoAttachPoint="popupDijit">
-		<div dojoAttachPoint="bc" dojoType="dijit.layout.BorderContainer" gutters="false" class="commentPane">
-			<div dojoType="dijit.layout.ContentPane" region="center">
-				<div dojoAttachPoint="commentsNode"></div>
+	<div data-dojo-type="dijit/Dialog" data-dojo-attach-point="popupDijit">
+		<div data-dojo-attach-point="bc" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false" class="commentPane">
+			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+				<div data-dojo-attach-point="commentsNode"></div>
 			</div>
-			<div dojoType="dijit.layout.BorderContainer" gutters="false" region="bottom" style="height:180px" splitter="true">
-			    <div dojoType="dijit.layout.ContentPane" region="left" splitter="true" style="width: 360px" dojoAttachPoint="mdEditorContainer" class="distinctBackground"></div>
-    			<div dojoType="dijit.layout.ContentPane" region="center">
-					<div dojoType="dijit.Editor"
-						dojoAttachPoint="contentEditorDijit" 
-						plugins="['bold', 'italic', 'underline', 'strikethrough', 'insertOrderedList', 'insertUnorderedList','createLink', 'insertImage','formatBlock', 'foreColor', 'hiliteColor']"></div>
+			<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false,region:'bottom',splitter:true" style="height:180px">
+			    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left',splitter:true" style="width: 360px"
+                     data-dojo-attach-point="mdEditorContainer" class="distinctBackground"></div>
+    			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+					<div data-dojo-type="dijit/Editor"
+                        data-dojo-props="plugins: ['bold', 'italic', 'underline', 'strikethrough', 'insertOrderedList', 'insertUnorderedList','createLink', 'insertImage','formatBlock', 'foreColor', 'hiliteColor']"
+						data-dojo-attach-point="contentEditorDijit"></div>
 				</div>
-				<div dojoType="dijit.layout.ContentPane" style="height: 2em;" region="bottom">
-					<div jsId="jsErrorArea" dojoType="dijit.layout.ContentPane" style="color:red"></div>
-					<div style="float:right" dojoAttachPoint="buttonArea">
-						<div dojoType="dojox.form.BusyButton" dojoAttachEvent="onClick: onPost" dojoAttachPoint="postDijit"></div>
-						<div dojoType="dijit.form.Button" dojoAttachEvent="onClick: hide" dojoAttachPoint="cancelDijit"></div>
+				<div data-dojo-type="dijit/layout/ContentPane" style="height: 2.5em;" data-dojo-props="region:'bottom'">
+					<div data-dojo-attach-point="jsErrorArea" data-dojo-type="dijit/layout/ContentPane" style="color:red;display:inline-block"></div>
+					<div style="float:right" data-dojo-attach-point="buttonArea">
+						<div data-dojo-type="dojox/form/BusyButton" data-dojo-attach-event="onClick: onPost" data-dojo-attach-point="i18n,postDijit">finishButtonLabel</div>
+						<div data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick: hide" data-dojo-attach-point="i18n,cancelDijit">cancelButtonLabel</div>
 					</div>
 				</div>
 			</div>
