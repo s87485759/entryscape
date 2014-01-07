@@ -15,13 +15,12 @@ define([
     "dijit/form/FilteringSelect",
     "dijit/form/RadioButton",
     "dojo/store/Memory",
-    "folio/create/TypeDefaults",
     "folio/list/SearchList",
     "folio/security/LoginDialog",
     "rdfjson/Graph",
     "dojo/text!./AccountTabTemplate.html"
 ], function (declare, lang, connect, domClass, style, construct, attr, Widget,
-             TextBox, Textarea, BusyButton, Uploader, FilteringSelect, RadioButton, Memory, TypeDefaults, SearchList, LoginDialog, Graph, template) {
+             TextBox, Textarea, BusyButton, Uploader, FilteringSelect, RadioButton, Memory, SearchList, LoginDialog, Graph, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
