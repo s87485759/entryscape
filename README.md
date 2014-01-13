@@ -11,12 +11,12 @@ EntryScape is also known as "Confolio" from earlier projects.
 ##Getting started
 ###1. Check out the EntryScape code
 
-    git clone https://matthiaspalmer@bitbucket.org/metasolutions/entryscape.git
+    git clone git@bitbucket.org:metasolutions/entryscape.git
 
 ###2. Download the latest dojo
 
-    cd trunk/lib
-    ./dojo_INSTALL.sh
+    cd lib
+    ./INSTALL-dojo.sh
 
 ###3. Configure the main application
 You configure the application by providing a `config.js` file:
