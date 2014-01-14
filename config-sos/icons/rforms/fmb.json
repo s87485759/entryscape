@@ -25,6 +25,49 @@
         },
         {
           "type": "group",
+          "label": {
+            "sv": "Villkor"
+          },
+          "content": [
+            {
+              "id": "sos:sex"
+            },
+            {
+              "id": "sos:workTask"
+            },
+            {
+              "id": "sos:workAbility"
+            },
+            {
+              "id": "sos:severity"
+            },
+            {
+              "id": "sos:lateral"
+            },
+            {
+              "id": "sos:frequency"
+            },
+            {
+              "id": "sos:healthRelatedCondition"
+            },
+            {
+              "id": "sos:treatment"
+            },
+            {
+              "id": "sos:progression"
+            }
+          ],
+          "styles": [
+            "expandable"
+          ],
+          "cardinality": {
+            "min": 1,
+            "pref": 1,
+            "max": 1
+          }
+        },
+        {
+          "type": "group",
           "nodetype": "RESOURCE",
           "label": {
             "sv": "Rekommendation"
@@ -82,72 +125,6 @@
                   "id": "sos:typeOfSickLeaveConsecutivePeriod"
                 }
               ]
-            }
-          ],
-          "styles": [
-            "expandable"
-          ],
-          "cardinality": {
-            "min": 1,
-            "pref": 1,
-            "max": 1
-          }
-        },
-        {
-          "type": "group",
-          "description": {},
-          "label": {
-            "sv": "Villkor åtgärder"
-          },
-          "content": [
-            {
-              "id": "sos:plannedTreatment"
-            },
-            {
-              "id": "sos:ongoingTreatment"
-            },
-            {
-              "id": "sos:finishedTreatment"
-            }
-          ],
-          "styles": [
-            "expandable"
-          ],
-          "cardinality": {
-            "min": 1,
-            "pref": 1,
-            "max": 1
-          }
-        },
-        {
-          "type": "group",
-          "label": {
-            "sv": "Ytterligare villkor"
-          },
-          "content": [
-            {
-              "id": "sos:sex"
-            },
-            {
-              "id": "sos:workTask"
-            },
-            {
-              "id": "sos:workAbility"
-            },
-            {
-              "id": "sos:severity"
-            },
-            {
-              "id": "sos:progression"
-            },
-            {
-              "id": "sos:lateral"
-            },
-            {
-              "id": "sos:frequency"
-            },
-            {
-              "id": "sos:healthRelatedCondition"
             }
           ],
           "styles": [
@@ -475,53 +452,11 @@
     },
     {
       "type": "choice",
-      "id": "sos:plannedTreatment",
+      "id": "sos:code-treatment",
       "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/plannedTreatment",
+      "property": "http://data.socialstyrelsen.se/terms/code",
       "label": {
-        "sv": "Planerad åtgärd"
-      },
-      "cardinality": {
-        "min": 0,
-        "pref": 1
-      },
-      "choices": [
-        {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/64644003",
-          "label": {
-            "": "Cancerimmunterapi"
-          }
-        },
-        {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/309448001",
-          "label": {
-            "sv": "Hormonmanipulation"
-          }
-        },
-        {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/394895009",
-          "label": {
-            "sv": "Postoperativ cytostatikabehandling"
-          }
-        },
-        {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/79089001",
-          "label": {
-            "sv": "Rehabilitering efter fraktur"
-          }
-        }
-      ],
-      "styles": [
-        "tree"
-      ]
-    },
-    {
-      "type": "choice",
-      "id": "sos:ongoingTreatment",
-      "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/ongoingTreatment",
-      "label": {
-        "sv": "Pågående åtgärd"
+        "sv": "Kod enl. SNOMED-CT"
       },
       "cardinality": {
         "min": 0,
@@ -535,45 +470,33 @@
           }
         },
         {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/133859009",
-          "label": {
-            "": "Fixering och immobilisering"
-          }
-        },
-        {
-          "value": "http://data.socialstyrelsen.se/terms/snomed/385798007",
-          "label": {
-            "sv": "Strålbehandling"
-          }
-        }
-      ],
-      "styles": [
-        "tree"
-      ]
-    },
-    {
-      "type": "choice",
-      "id": "sos:finishedTreatment",
-      "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/finishedTreatment",
-      "label": {
-        "sv": "Avslutad åtgärd"
-      },
-      "cardinality": {
-        "min": 0,
-        "pref": 1
-      },
-      "choices": [
-        {
           "value": "http://data.socialstyrelsen.se/terms/snomed/309814006",
           "label": {
             "sv": "Aortokoronar bypassoperation"
           }
         },
         {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/64644003",
+          "label": {
+            "": "Cancerimmunterapi"
+          }
+        },
+        {
           "value": "http://data.socialstyrelsen.se/terms/snomed/367336001",
           "label": {
             "sv": "Cytostatikabehandling"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/133859009",
+          "label": {
+            "": "Fixering och immobilisering"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/309448001",
+          "label": {
+            "sv": "Hormonmanipulation"
           }
         },
         {
@@ -595,14 +518,31 @@
           }
         },
         {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/394895009",
+          "label": {
+            "sv": "Postoperativ cytostatikabehandling"
+          }
+        },
+        {
           "value": "http://data.socialstyrelsen.se/terms/snomed/384723003",
           "label": {
             "": "Radikal mastektomi"
           }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/79089001",
+          "label": {
+            "sv": "Rehabilitering efter fraktur"
+          }
+        },
+        {
+          "value": "http://data.socialstyrelsen.se/terms/snomed/385798007",
+          "label": {
+            "sv": "Strålbehandling"
+          }
         }
       ],
       "styles": [
-        "verticalRadioButtons",
         "tree"
       ]
     },
@@ -702,11 +642,11 @@
     },
     {
       "type": "choice",
-      "id": "sos:severity",
+      "id": "sos:code-severity",
       "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/severity",
+      "property": "http://data.socialstyrelsen.se/terms/code",
       "label": {
-        "sv": "Svårighetsgrad"
+        "sv": "Kod enl. SNOMED-CT"
       },
       "cardinality": {
         "min": 0,
@@ -749,7 +689,7 @@
     {
       "type": "choice",
       "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/progression",
+      "property": "http://data.socialstyrelsen.se/terms/code",
       "label": {
         "sv": "Sjukdomsförlopp"
       },
@@ -758,7 +698,7 @@
         "pref": 1,
         "max": 1
       },
-      "id": "sos:progression",
+      "id": "sos:code-progression",
       "choices": [
         {
           "value": "http://data.socialstyrelsen.se/terms/snomed/255217005",
@@ -848,11 +788,11 @@
     {
       "type": "choice",
       "nodetype": "URI",
-      "property": "http://data.socialstyrelsen.se/terms/healthRelatedCondition",
+      "property": "http://data.socialstyrelsen.se/terms/code",
       "label": {
-        "sv": "Hälsorelaterat tillstånd"
+        "sv": "Kod enl. SNOMED-CT"
       },
-      "id": "sos:healthRelatedCondition",
+      "id": "sos:code-healthRelatedCondition",
       "cardinality": {
         "min": 0,
         "pref": 1
@@ -1076,7 +1016,7 @@
     {
       "type": "text",
       "id": "sos:sickLeaveTime",
-      "nodetype": "DATATYPE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/sickLeaveTime",
       "label": {
         "sv": "Sjukskrivningstid"
@@ -1086,11 +1026,14 @@
         "pref": 1,
         "max": 1
       },
-      "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+      "pattern": "\\d*[dmy]",
+      "description": {
+        "sv": "Ange sjukskrivningstid i dagar månader eller år, till exempel 3d, 3m eller 3y (förkortningen är för day, month och year)."
+      }
     },
     {
       "type": "text",
-      "nodetype": "DATATYPE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/normalSickLeaveTime",
       "label": {
         "sv": "Normal sjukskrivningstid"
@@ -1100,8 +1043,8 @@
         "pref": 1,
         "max": 1
       },
-      "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-      "id": "sos:normalSickLeaveTime"
+      "id": "sos:normalSickLeaveTime",
+      "pattern": "\\d*[dmy]"
     },
     {
       "type": "choice",
@@ -1209,7 +1152,7 @@
     },
     {
       "type": "text",
-      "nodetype": "DATATYPE_LITERAL",
+      "nodetype": "ONLY_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/sickLeaveTimeConsecutivePeriod",
       "label": {
         "sv": "Sjukskrivningstid"
@@ -1219,8 +1162,11 @@
         "pref": 1,
         "max": 1
       },
-      "datatype": "http://www.w3.org/2001/XMLSchema#integer",
-      "id": "sos:sickLeaveTimeConsecutivePeriod"
+      "id": "sos:sickLeaveTimeConsecutivePeriod",
+      "pattern": "\\d*[dmy]",
+      "description": {
+        "sv": "Ange sjukskrivningstid i dagar månader eller år, till exempel 3d, 3m eller 3y (förkortningen är för day, month och year)."
+      }
     },
     {
       "type": "text",
@@ -1500,7 +1446,7 @@
       "nodetype": "LANGUAGE_LITERAL",
       "property": "http://data.socialstyrelsen.se/terms/recommendation",
       "label": {
-        "sv": "Rekommendation"
+        "sv": "Generella villkor"
       },
       "cardinality": {
         "min": 0,
@@ -1607,7 +1553,7 @@
           "id": "sos:label"
         },
         {
-          "id": "sos:code"
+          "id": "sos:codes"
         }
       ],
       "cardinality": {
@@ -1618,11 +1564,11 @@
     },
     {
       "type": "text",
-      "id": "sos:code",
+      "id": "sos:codes",
       "label": {
         "sv": "Kod(er) enl. Snowmed-CT"
       },
-      "property": "http://data.socialstyrelsen.se/terms/code",
+      "property": "http://data.socialstyrelsen.se/terms/codes",
       "nodetype": "ONLY_LITERAL",
       "cardinality": {
         "min": 1,
@@ -1643,6 +1589,88 @@
         "pref": 1,
         "max": 1
       }
+    },
+    {
+      "type": "group",
+      "id": "sos:treatment",
+      "property": "http://data.socialstyrelsen.se/terms/treatment",
+      "label": {
+        "sv": "Åtgärd"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "content": [
+        {
+          "id": "sos:label"
+        },
+        {
+          "id": "sos:code-treatment"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "sos:progression",
+      "property": "http://data.socialstyrelsen.se/terms/progression",
+      "label": {
+        "sv": "Sjukdomsförlopp"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "content": [
+        {
+          "id": "sos:label"
+        },
+        {
+          "id": "sos:code-progression"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "sos:severity",
+      "property": "http://data.socialstyrelsen.se/terms/severity",
+      "label": {
+        "sv": "Svårighetsgrad"
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "content": [
+        {
+          "id": "sos:label"
+        },
+        {
+          "id": "sos:code-severity"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "sos:healthRelatedCondition",
+      "label": {
+        "sv": "Hälsorelaterat tillstånd"
+      },
+      "property": "http://data.socialstyrelsen.se/terms/healthRelatedCondition",
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "content": [
+        {
+          "id": "sos:label"
+        },
+        {
+          "id": "sos:code-healthRelatedCondition"
+        }
+      ]
     }
   ]
 }

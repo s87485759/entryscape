@@ -1,12 +1,77 @@
-{
+define({
     "localizedTo": ["en", "sv"],
     "inputLanguages": ["en", "sv", "de", "fr", "es", "no"],
+
+    "specialIcons": {
+        "link": {"base": "resources/icons/oxygen/", "filename": "link.png"},
+        "RSS":  {"base": "resources/icons/oxygen/", "filename": "RSS.png", "16x16": true},
+        "portfolio": {"base": "resources/icons/oxygen/", "filename": "book.png"},
+        "folder": {"base": "resources/icons/oxygen/", "filename": "folder.png"},
+        "user": {"base": "resources/icons/oxygen/", "filename": "user.png", "16x16": true},
+        "group": {"base": "resources/icons/oxygen/", "filename": "users2.png", "16x16": true},
+        "user_picture_frame": {"base": "resources/icons/oxygen/", "filename": "picture_frame.png"},
+        "group_picture_frame": {"base": "resources/icons/oxygen/", "filename": "picture_frame_users.png"},
+        "pushpin": {"base": "resources/icons/oxygen/", "filename": "pushpin.png", "22x22": true},
+        "pushpin_pressed": {"base": "resources/icons/oxygen/", "filename": "pushpin-pressed.png", "22x22": true},
+        "logo": {"base": "resources/icons/logo/", "filename": "entryscape.png"},
+        "openid-google": {"base": "resources/icons/logo/", "filename": "google.png"},
+        "openid-yahoo": {"base": "resources/icons/logo/", "filename": "yahoo.png"}
+    },
+
+    "languages": {
+        "":{"label": "Language"},
+        "en": {"en": "English", "sv": "Engelska", "de": "English", "fr": "Anglais", "es": "Inglés", "it": "Inglese", "gr": "Αγγλικά"},
+        "et": {"et":"Eesti", "sv": "Estländska", "en": "Estonian"},
+        "de": {"de":"Deutsch", "en": "German", "sv": "Tyska", "fr": "Allemand", "es": "Alemán", "it": "Tedesco", "gr": "ερμανικά"},
+        "el": {"el":"Ελληνικά", "en": "Greek", "sv": "Grekiska"},
+        "hu": {"hu":"Magyar", "en": "Hungarian", "sv": "Ungerska"},
+        "no-nb": {"no-nb":"Norsk (bokmål)"},
+        "ro": {"ro":"Română", "en": "Romanian", "sv": "Svenska"},
+        "fr": {"en":"French", "sv":"Franska"},
+        "ru": {"ru":"Русский", "en": "Russian", "sv": "Ryska"},
+        "es": {"es":"Español", "en": "Spanish", "sv": "Spanska", "de": "Spanich", "fr": "Espagnol", "it": "Spagnolo", "gr": "Ισπανικά"},
+        "sv": {"sv": "Svenska", "en": "Swedish", "de": "Swedish", "fr": "Suédois", "es": "Sueco", "it": "Svedese", "gr": "Σουηδικά"}
+    },
+
+    "mimeTypes": {
+        "application/x-shockwave-flash": {"en": "Application: Flash"},
+        "application/x-silverlight": {"en": "Application: Silverlight"},
+        "application/rar": {"en": "Archive: RAR"},
+        "application/x-tar-gz": {"en": "Archive: TGZ"},
+        "application/zip": {"en": "Archive: ZIP"},
+        "audio/mpeg": {"en": "Audio: MP3"},
+        "audio/ogg": {"en": "Audio: OGG"},
+        "text/html": {"en": "Document: HTML"},
+        "text/html+snippet": {"en": "Document: HTML Snippet"},
+        "application/pdf": {"en": "Document: PDF"},
+        "text/plain": {"en": "Document: Plain Text"},
+        "application/rtf": {"en": "Document: RTF"},
+        "application/atom+xml": {"en": "Feed: Atom"},
+        "application/rss+xml": {"en": "Feed: RSS"},
+        "image/bmp": {"en": "Image: BMP"},
+        "image/gif": {"en": "Image: GIF"},
+        "image/jpeg": {"en": "Image: JPEG"},
+        "image/svg+xml": {"en": "Image: SVG"},
+        "image/png": {"en": "Image: PNG"},
+        "application/msexcel": {"en": "Microsoft Excel"},
+        "application/mspowerpoint": {"en": "Microsoft PowerPoint"},
+        "application/msword": {"en": "Microsoft Word"},
+        "application/vnd.oasis.opendocument.graphics": {"en": "OpenOffice.org Graphics"},
+        "application/vnd.oasis.opendocument.presentation": {"en": "OpenOffice.org Presentation"},
+        "application/vnd.oasis.opendocument.spreadsheet": {"en": "OpenOffice.org Spreadsheet"},
+        "application/vnd.oasis.opendocument.text": {"en": "OpenOffice.org Text"},
+        "video/msvideo": {"en": "Video: AVI"},
+        "video/mpeg": {"en": "Video: MPEG"},
+        "video/mp4": {"en": "Video: MP4"},
+        "video/ogg": {"en": "Video: OGG"},
+        "video/quicktime": {"en": "Video: Quicktime"},
+        "video/x-ms-wmv": {"en": "Video: WMV"}
+    },
+
     "namespaces": {
         "dct": "http://purl.org/dc/dcmitype/",
         "esc": "http://entryscape.org/terms/",
-        "est": "http://entrystore.org/terms/",
-        "sos": "http://data.socialstyrelsen.se/terms/",
-        "dct": "http://purl.org/dc/terms/"
+        "rev": "http://purl.org/stuff/rev#"
     },
 
     "defaults": {
@@ -14,7 +79,6 @@
         "template": ["entryscape:dcterms-medium"],
         "labelTemplate": "dcterms:title"
     },
-
 
     "applictionTypeSets": [
         {
@@ -117,58 +181,18 @@
                     "advanced": true
                 },
                 {
-                    "uri": "http://purl.org/stuff/rev#Review",
+                    "uri": "rev:Review",
                     "label": {"en": "Review"},
                     "icon": {"base": "resources/icons/dkit/", "filename": "chat_bubble.png", "16x16": true},
                     "template": ["http://purl.org/stuff/rev#Review"],
                     "advanced": true
                 },
                 {
-                    "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-                    "label": {"en": "Concept"},
-                    "icon": {"base": "resources/icons/own/", "filename": "concept.png", "16x16": true, "24x24": true, "32x32": true},
-                    "template": ["skos:Concept"],
-                    "labelTemplate": "skos:prefLabel",
-                    "artifact": true,
-                    "file": false,
-                    "link": false,
-                    "advanced": true
-                },
-                {
-                    "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-                    "label": {"en": "Concept collection"},
-                    "icon": {"base": "resources/icons/freeware/", "filename": "dictionary.png", "16x16": true},
-                    "template": ["skos:ConceptScheme"],
-                    "artifact": true,
-                    "file": false,
-                    "link": false,
-                    "advanced": true
-                },
-                {
-                    "uri": "sos:Recommendation",
-                    "label": {"en": "Rekommendation"},
-                    "icon": {"base": "resources/icons/temp/", "filename": "recommended.png"},
-                    "template": ["sos:Recommendation"],
-                    "artifact": true,
-                    "file": false,
-                    "link": false,
-                    "advanced": true
-                },
-                {
-                    "uri": "sos:ConditionInformation",
-                    "label": {"en": "Diagnos information"},
-                    "icon": {"base": "resources/icons/temp/", "filename": "asclepius.png"},
-                    "template": ["sos:ConditionInformation"],
-                    "artifact": true,
-                    "file": false,
-                    "link": false,
-                    "advanced": true
-                },
-                {
-                    "uri": "est:Pipeline",
+                    "uri": "esc:Pipeline",
                     "label": {"en": "Pipeline"},
                     "icon": {"base": "resources/icons/oxygen/", "filename": "filter.png", "16x16": true, "64x64": true},
                     "template": ["tr:Pipeline"],
+                    "artifact": true,
                     "advanced": true
                 }
             ]
@@ -208,14 +232,10 @@
 
     "templateSources": [
         "resources/rforms/EntryScape.json",
-        "resources/rforms/SOCH.json",
-        "resources/rforms/SKOS.json",
         "resources/rforms/dcterms.json",
         "resources/rforms/dc.json",
-        "resources/rforms/kulturnav.json",
         "resources/rforms/foaf.json",
         "resources/rforms/Review.json",
-        "resources/rforms/transform.json",
-        "resources/rforms/fmb.json"
+        "resources/rforms/transform.json"
     ]
-}
+})

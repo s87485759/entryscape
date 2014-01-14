@@ -291,13 +291,13 @@ define([
             lang.mixin(this, params);
             this.itemStoreDeferred = new Deferred();
             this.configDeferred = new Deferred();
-            __confolio.config.definitionsPromise.then(lang.hitch(this, function (results) {
+            __confolio.config.definitionsPromise.then(lang.hitch(this, function (definitions) {
                 this.config = new Config(__confolio.config);
                 this.configDeferred.resolve(this.config);
 
                 this.itemStore = new ItemStore();
-                if (results.definitions.templateSources != null) {
-                    this.itemStore.populate(results.definitions.templateSources, lang.hitch(this, function () {
+                if (definitions.templateSources != null) {
+                    this.itemStore.populate(definitions.templateSources, lang.hitch(this, function () {
                         this.itemStoreDeferred.resolve(this.itemStore);
                     }));
                 } else {

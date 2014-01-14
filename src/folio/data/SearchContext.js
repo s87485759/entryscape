@@ -53,13 +53,13 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		entryInfo.resourceURI = base+"_search/resource/"+parameters.term;
 		
 		if(parameters.locationType){
-		   var lt = "&locationtype=" + parameters.locationType.join(",");	
+		   var lt = "&entrytype=" + parameters.locationType.join(",");
 		} else {
 			lt = "";
 		}
 		
 		if(parameters.builtinType){
-			var bt = "&builtintype=" + parameters.builtinType.join(",");
+			var bt = "&resourcetype=" + parameters.builtinType.join(",");
 		} else {
 			bt = "";
 		}
@@ -81,7 +81,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 				if(parameters.locationType.length > 1){
 					var locTypesToAdd = "(";
 					for(i in parameters.locationType){
-						locTypesToAdd += "locationType:"+parameters.locationType[i];
+						locTypesToAdd += "entryType:"+parameters.locationType[i];
 						if(i < parameters.locationType.length-1){
 							locTypesToAdd += "+OR+";
 						}
@@ -90,7 +90,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 					searchURI += (hasTerm ? "+AND+" : "")+locTypesToAdd;
 					hasTerm = true;
 				} else if(parameters.locationType.length === 1){
-				    searchURI += (hasTerm ? "+AND+" : "") +"locationType:"+parameters.locationType[0];
+				    searchURI += (hasTerm ? "+AND+" : "") +"entryType:"+parameters.locationType[0];
 					hasTerm = true;
 				}
 			}
@@ -98,7 +98,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 				if(parameters.builtinType.length > 1){
 					var buiTypesToAdd = "(";
 					for(i in parameters.builtinType){
-						buiTypesToAdd += "builtinType:"+parameters.builtinType[i];
+						buiTypesToAdd += "resourceType:"+parameters.builtinType[i];
 						if(i < parameters.builtinType.length-1){
 							buiTypesToAdd += "+OR+";
 						}
@@ -107,7 +107,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 					searchURI += (hasTerm ? "+AND+" : "")+buiTypesToAdd;
 					hasTerm = true;
 				} else if(parameters.builtinType.length === 1){
-				    searchURI += (hasTerm ? "+AND+" : "") + "builtinType:"+parameters.builtinType[0];
+				    searchURI += (hasTerm ? "+AND+" : "") + "resourceType:"+parameters.builtinType[0];
 					hasTerm = true;
 				}
 			}

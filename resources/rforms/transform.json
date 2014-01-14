@@ -9,7 +9,7 @@
         "en": "Transform type"
       },
       "description": {
-        "en": "A string indicating the type of transform, e.g. 'tarql'."
+        "en": "A string indicating the type of transform, e.g. 'tabular'."
       },
       "cardinality": {
         "min": 1,
@@ -66,18 +66,19 @@
     {
       "type": "text",
       "nodetype": "ONLY_LITERAL",
-      "property": "http://entrystore.org/terms/transformArgument",
+      "property": "http://entrystore.org/terms/transformArgumentKey",
       "label": {
-        "en": "Transform argument"
+        "en": "Key"
       },
       "description": {
-        "en": "The content here depends on what is expected for each type of transform, e.g. a tarql transform expects a modified SPARQL query appropriate for the task."
+        "en": "This is the transform argument key, examples include 'tarqlstring' for the tabular transformType and 'baseuri' and 'dataset' for the pcaxis transformType."
       },
       "cardinality": {
-        "min": 0,
-        "pref": 1
+        "min": 1,
+        "pref": 1,
+        "max": 1
       },
-      "id": "tr:transformArgument",
+      "id": "tr:transformArgumentKey",
       "styles": [
         "multiline"
       ]
@@ -97,7 +98,7 @@
       },
       "content": [
         {
-          "id": "tr:transformToEntry"
+          "id": "tr:pipelineToEntry"
         },
         {
           "id": "tf:transform"
@@ -106,9 +107,9 @@
     },
     {
       "type": "choice",
-      "id": "tr:transformToEntry",
+      "id": "tr:pipelineToEntry",
       "nodetype": "URI",
-      "property": "http://entrystore.org/terms/transformToEntry",
+      "property": "http://entrystore.org/terms/pipelineToEntry",
       "label": {
         "en": "Optional target entry"
       },
@@ -120,6 +121,49 @@
         "pref": 1,
         "max": 1
       }
+    },
+    {
+      "type": "group",
+      "id": "tr:transformArgument",
+      "property": "http://entrystore.org/terms/transformArgument",
+      "label": {
+        "en": "Transform argument"
+      },
+      "description": {
+        "en": "Each transform argument is a key value pair, available keys and the formatting used in the value is dependent of each transformType, you have to check the documentation externally for each transformType."
+      },
+      "cardinality": {
+        "min": 0,
+        "pref": 1
+      },
+      "content": [
+        {
+          "id": "tr:transformArgumentKey"
+        },
+        {
+          "id": "tr:transformArgumentValue"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "nodetype": "ONLY_LITERAL",
+      "property": "http://entrystore.org/terms/transformArgumentValue",
+      "label": {
+        "en": "Value"
+      },
+      "description": {
+        "en": "This is the transform argument value, for example, when the key is 'tarqlstring' the value is a tarql expression as a string (which is a modified SPARQL construct query that references a spreadsheet rather than a graph)."
+      },
+      "cardinality": {
+        "min": 1,
+        "pref": 1,
+        "max": 1
+      },
+      "styles": [
+        "multiline"
+      ],
+      "id": "tr:transformArgumentValue"
     }
   ]
 }

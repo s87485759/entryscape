@@ -17,7 +17,6 @@ define(["dojo/_base/declare",
     "folio/util/Widget",
     "dijit/form/TextBox",
     "dijit/form/FilteringSelect",
-    "folio/editor/ResourceEditor",
     "folio/security/LoginDialog",
     "folio/ApplicationView",
     "dojo/fx",
@@ -25,7 +24,7 @@ define(["dojo/_base/declare",
     "dojox/widget/Toaster",
     "dojo/text!./NavigationBarTemplate.html"
 ], function (declare, lang, kernel, on, aspect, query, array, win, domClass, style, construct, attr, keys, event, Memory,
-             Widget, TextBox, FilteringSelect, ResourceEditor, LoginDialog, ApplicationView, fx, easing, Toaster, template) {
+             Widget, TextBox, FilteringSelect, LoginDialog, ApplicationView, fx, easing, Toaster, template) {
 
     return declare([Widget, ApplicationView], {
         //===================================================

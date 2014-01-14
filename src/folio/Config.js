@@ -38,7 +38,7 @@ define([
          */
         getIcon: function (keyOrEntry, resolution) {
             if (lang.isString(keyOrEntry)) {
-                return this.getIconInResolution(this.baseDefinitions.specialIcons[keyOrEntry], resolution);
+                return this.getIconInResolution(this.definitions.specialIcons[keyOrEntry], resolution);
             } else {
                 return this.getIconInResolution(this._getAttr(keyOrEntry, "icon"), resolution);
             }
@@ -51,7 +51,7 @@ define([
         },
 
         /**
-         * Uses the definitions part of the config to look up a suitable
+         * Uses the definitions part of the config-example to look up a suitable
          * Metadata form template for presenting the metadata of the given entry.
          * A Metadata form template consists of an array of id/properties to use,
          * typically they should be used as a basis for constructing an rforms Template.
@@ -75,7 +75,7 @@ define([
         },
 
         /**
-         * Uses the definitions part of the config to look up the default
+         * Uses the definitions part of the config-example to look up the default
          * MetadataProfile for presenting the local metadata.
          *
          * @return {Object} the default MetadataProfile given in the definitions-file.
