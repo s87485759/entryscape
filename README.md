@@ -21,8 +21,9 @@ EntryScape is also known as "Confolio" from earlier projects.
 ###3. Configure the main application
 You configure the application by providing a `config.js` file:
 
-    cd apps
-    cp config-default.js config.js
+    mkdir config
+    cd config
+    cp ../config-example/config.js config.js
 
 And then edit the config file to your liking.
 

@@ -260,7 +260,7 @@ __confolio.failedLoadingConfig = function() {
 	document.write("<div style='font-size: x-large;margin: 2em;'><h1>No configuration file choosen.</h1><p>By default EntryScape loads the config/config.js configuration file. "+
         "The recommendation is to make a copy of config-example/config.js, and modify it to suit your needs.</p>"+
         "<p>You can also experiment (or just easily switch between different configurations) by appending ?config=example to the index.html, " +
-        "see <a href='../../index.html?config=example'>here how this would look like</a>.<br>"+
+        "see <a href='index.html?config=example'>here how this would look like</a>.<br>"+
         "That is, if you provide a config name of 'foo' the config file loaded will be 'config-foo/config.js'.</p>"+
 	"<p>See <a href='../../README.md'>README</a> for more information on how to deploy EntryScape.</p></div>");
 };
