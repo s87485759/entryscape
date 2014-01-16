@@ -39,7 +39,8 @@ Since EntryStore is deployed in tomcat we recommend you to deploy EntryScape in 
         docBase="/path/to/entryscape/root/"
         debug="2"
         privileged="true"
-        reloadable="true">
+        reloadable="true"
+        allowLinking="true">
     </Context>
 
 ###5. Point your browser to your installation:

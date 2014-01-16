@@ -40,8 +40,6 @@ define({
     ],
 
     "+templateSources": [
-        "resources/rforms/SOCH.json",
-        "resources/rforms/SKOS.json",
-        "resources/rforms/kulturnav.json"
+        "config-example/rforms/SKOS.json"
     ]
 })

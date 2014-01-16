@@ -2,3 +2,6 @@
 /lib/dojo-src/*
 .idea
 *~
+/config*
+!/config-example/*
+*
