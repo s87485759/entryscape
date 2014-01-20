@@ -17,7 +17,7 @@ define({
                 {
                     "uri": "skos:Concept",
                     "label": {"en": "Concept"},
-                    "icon": {"base": "resources/icons/own/", "filename": "concept.png", "16x16": true, "24x24": true, "32x32": true},
+                    "icon": {"base": "config-example/icons/own/", "filename": "concept.png", "16x16": true, "24x24": true, "32x32": true},
                     "template": ["skos:Concept"],
                     "labelTemplate": "skos:prefLabel",
                     "artifact": true,
@@ -28,7 +28,7 @@ define({
                 {
                     "uri": "skos:ConceptScheme",
                     "label": {"en": "Concept collection"},
-                    "icon": {"base": "resources/icons/freeware/", "filename": "dictionary.png", "16x16": true},
+                    "icon": {"base": "config-example/icons/freeware/", "filename": "dictionary.png", "16x16": true},
                     "template": ["skos:ConceptScheme"],
                     "artifact": true,
                     "file": false,
