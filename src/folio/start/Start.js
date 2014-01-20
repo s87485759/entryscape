@@ -224,7 +224,7 @@ return declare([Widget], {
 	_updatePeople: function() {
 		attr.set(this.peopleNode, "innerHTML", "");
 		var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
-		searchcontext.search({term: this._currentSearchTerm, entryType: ["Local"], resourectype: ["User"], queryType: "solr",
+		searchcontext.search({term: this._currentSearchTerm, entryType: ["Local"], resourcetype: ["User"], queryType: "solr",
 			onSuccess: lang.hitch(this, function(entryResult) {
 				folio.data.getList(entryResult, lang.hitch(this, function(list) {
 					list.getPage(0, 50, lang.hitch(this, function(children) {
