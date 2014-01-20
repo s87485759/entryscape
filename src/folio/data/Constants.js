@@ -111,16 +111,20 @@ folio.data.BuiltinType = {
 	SYSTEM_CONTEXT: 2,
 	USER: 3,
 	GROUP: 4,
-	LIST: 5,
-	RESULT_LIST: 6,
-    PIPELINE: 7,
-	NONE: 8
+    GRAPH: 5,
+    PIPELINE: 6,
+	LIST: 7,
+	RESULT_LIST: 8,
+    PIPELINE: 9,
+	NONE: 10
 };
 folio.data.BuiltinTypeSchema = {
 	CONTEXT: folio.data.SCAMBaseUri+"Context",
 	SYSTEM_CONTEXT: folio.data.SCAMBaseUri+"SystemContext",
 	USER: folio.data.SCAMBaseUri+"User",
 	GROUP: folio.data.SCAMBaseUri+"Group",
+    GRAPH: folio.data.SCAMBaseUri+"Graph",
+    PIPELINE: folio.data.SCAMBaseUri+"Pipeline",
 	LIST: folio.data.SCAMBaseUri+"List",
 	RESULT_LIST: folio.data.SCAMBaseUri+"ResultList",
     PIPELINE: folio.data.SCAMBaseUri+"Pipeline",

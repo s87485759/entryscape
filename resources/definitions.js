@@ -222,7 +222,8 @@ define({
             "icon": {"base": "resources/icons/oxygen/", "filename": "users2.png"}
         },
         "LIST": {"icon": {"base": "resources/icons/oxygen/", "filename": "folder.png"}},
-        "RESULT_LIST": {"icon": {"base": "resources/icons/oxygen/", "filename": "find.png"}}
+        "RESULT_LIST": {"icon": {"base": "resources/icons/oxygen/", "filename": "find.png"}},
+        "GRAPH": {"icon": {"base": "resources/icons/w3c/", "filename": "rdf_flyer.png", "16x16": true, "64x64": true}}
     },
     "mediaTypes": {
         "video": 		{"icon": {"base": "resources/icons/oxygen/", "filename": "video.png", "16x16": true, "22x22": true, "32x32": true}},
