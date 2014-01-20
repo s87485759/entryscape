@@ -193,7 +193,17 @@ define({
                     "icon": {"base": "resources/icons/oxygen/", "filename": "filter.png", "16x16": true, "64x64": true},
                     "template": ["tr:Pipeline"],
                     "artifact": true,
-                    "advanced": true
+                    "advanced": true,
+                    "resourceType": "Pipeline"
+                },
+                {
+                    "uri": "esc:Graph",
+                    "label": {"en": "Graph"},
+                    "icon": {"base": "resources/icons/w3c/", "filename": "rdf_flyer.png", "16x16": true, "64x64": true},
+                    "artifact": true,
+                    "informationresource": true,
+                    "advanced": true,
+                    "resourceType": "Graph"
                 }
             ]
         }
