@@ -114,9 +114,9 @@ define(["dojo/_base/declare",
                                             this.application.publish("childrenChanged", {entry: this.list, source: this});
                                         }
                                         if (data.result.length > 1) {
-                                            alert("Convert succeeded, "+ data.result.length+" entries created");
+                                            alert("Conversion succeeded, "+ data.result.length+" entries created");
                                         } else {
-                                            alert("Convert succeeded!");
+                                            alert("Conversion succeeded!");
                                         }
                                     }
                             ));
