@@ -107,7 +107,7 @@ dojo.declare("folio.admin.NewUser", [dijit._Widget, dijit._Templated, folio.admi
 			parentList: this.entry,
 			metadata: metadata.exportRDFJSON(),
 			resource: {"name": this.userNameField.get("value"),"password": this.passwordField.get("value")}, 
-			params: {locationType: "local", builtinType: "User", representationType: "informationresource"}
+			params: {entrytype: "local", resourcetype: "User", representationType: "informationresource"}
 		};
 		if (this.createHomePortfolioCheckBox.get("checked")) {
 			
@@ -127,7 +127,7 @@ dojo.declare("folio.admin.NewUser", [dijit._Widget, dijit._Templated, folio.admi
 					parentList: this.folderSelect.getSelectedFolder(),
 					metadata: portfolioMetadata.exportRDFJSON(), 
 					resource: portfolioResourceObj, 
-					params: {locationType: "local", builtinType: "Context", representationType: "informationresource"}
+					params: {entrytype: "local", resourcetype: "Context", representationType: "informationresource"}
 				};
 //			console.log("creating home portfolio in ");
 //			console.log(this.folderSelect.getSelectedFolder().getContext());

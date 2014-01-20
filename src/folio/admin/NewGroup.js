@@ -71,7 +71,7 @@ dojo.declare("folio.admin.NewGroup", [dijit._Widget, dijit._Templated, folio.adm
 			parentList: this.entry,
 			metadata: helperObj.metadata.exportRDFJSON(), 
 			resource: {"children":[]}, 
-			params: {locationType: "local", builtinType: "Group", representationType: "informationresource"}
+			params: {entrytype: "local", resourcetype: "Group", representationType: "informationresource"}
 		};
 		this.application.getCommunicator().createEntry(args).then(
 			dojo.hitch(this, function(entry) {

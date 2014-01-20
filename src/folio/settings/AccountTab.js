@@ -345,8 +345,8 @@ define([
                     hc.createEntry({
                         metadata: md.exportRDFJSON(),
                         params: {representationType: "informationresource",
-                            locationType: "local",
-                            builtinType: "none",
+                            entryType: "local",
+                            resourceType: "none",
                             id: "_profilePicture"}
                     }, pp, fail);
                 }

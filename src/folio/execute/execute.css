@@ -1,0 +1,42 @@
+/* -------Convert Dialog--------------*/
+.convert {
+    width: 600px;
+}
+
+.convert .searchBlock {
+    padding: 7px 5px 7px 10px;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    font-size: medium;
+}
+
+.convert .pipelinesBlockWrapper {
+    height: 155px;
+    overflow-y: auto;
+}
+
+.convert .pipelinesBlock {
+    width: 580px;
+    padding: 10px;
+}
+
+.convert .pipeline {
+    padding: 7px 5px 7px 7px;
+    -webkit-borde-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.convert .pipelinesBlock .pipelineLabel {
+    font-weight: bold;
+}
+
+.convert .pipelinesBlock .pipelineExecute {
+    float: right;
+}
+
+.convert .pipeline:hover {
+    background: lightyellow;
+}

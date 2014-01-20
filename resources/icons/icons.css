@@ -55,6 +55,10 @@
     background-image: url(dkit/24x24/search.png);
 }
 
+.entryScape .redo.icon {
+    background-image: url(oxygen/16x16/redo.png);
+}
+
 .entryScape .home.icon {
 	background-image: url(dkit/16x16/home.png);
 }

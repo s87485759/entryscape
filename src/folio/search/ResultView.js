@@ -230,9 +230,9 @@ define(["dojo/_base/declare",
                                     listURI: context.getBase()+context.getId()+"/entry/_top",
                                     resource: encodeURIComponent(entry.getResourceUri()),
                                     "cached-external-metadata": encodeURIComponent(entry.getExternalMetadataUri()),
-                                    informationResource: false,
-                                    locationType: "linkreference",
-                                    builtinType: "none"
+                                    informationresource: false,
+                                    entryType: "linkreference",
+                                    resourceType: "none"
                                 }
                             },
                             function(newEntry) {

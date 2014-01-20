@@ -93,7 +93,7 @@ define([
         if(cb.entry.getLocationType() == folio.data.LocationType.REFERENCE){
             linkEntry.params = {
                 representationType: "informationresource",
-                locationType: "reference",
+                entrytype: "reference",
                 "cached-external-metadata": cb.entry.getExternalMetadataUri(),
                 resource: cb.entry.getResourceUri()
             };
@@ -101,26 +101,26 @@ define([
             linkEntry.metadata = cb.entry.getLocalMetadata().exportRDFJSON();
             linkEntry.params = {
                 representationType: "informationresource",
-                locationType: "linkreference",
+                entrytype: "linkreference",
                 "cached-external-metadata": cb.entry.getExternalMetadataUri(),
                 resource: cb.entry.getResourceUri()
             };
         } else {
             linkEntry.params = {
                 representationType: "informationresource",
-                locationType: "reference",
+                entrytype: "reference",
                 "cached-external-metadata": cb.entry.getLocalMetadataUri(),
                 resource: cb.entry.getResourceUri()
             };
         }
         if (folio.data.isGroup(cb.entry)) {
-            linkEntry.params.builtinType = "group";
+            linkEntry.params.resourcetype = "group";
         } else if (folio.data.isUser(cb.entry)) {
-            linkEntry.params.builtinType = "user";
+            linkEntry.params.resourcetype = "user";
         } else if (folio.data.isListLike(cb.entry)) {
-            linkEntry.params.builtinType = "list";
+            linkEntry.params.resourcetype = "list";
         }  else if (folio.data.isContext(cb.entry)) {
-            linkEntry.params.builtinType = "context";
+            linkEntry.params.resourcetype = "context";
         }
         var updateEntry = function() {
             folio.data.getList(folder, function(list) {
@@ -159,7 +159,7 @@ define([
     exports.copyInContext = function(folder) {
         var cb = __confolio.application.getClipboard();
         if (folio.data.isList(cb.entry)) { //& !folio.data.isLinkLike(cb.entry)) {
-            //All lists should be created as reference regardless of the locationType of the original entry as the external MD is referred to in a correct way
+            //All lists should be created as reference regardless of the entryType of the original entry as the external MD is referred to in a correct way
             exports.createReference(folder);
             return;
         }
@@ -266,8 +266,8 @@ define([
                 parentList: inFolder,
                 metadata: md,
                 info: helpObj.info.exportRDFJSON(),
-                params: {locationType: "local",
-                    builtinType: "none"}};
+                params: {entryType: "local",
+                    resourceType: "none"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports}); //Operations as source, not optimal.
@@ -294,8 +294,8 @@ define([
                 context: contextToUse,
                 parentList: inFolder,
                 metadata: md,
-                params: {locationType: "local",
-                    builtinType: "list"}};
+                params: {entryType: "local",
+                    resourceType: "list"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports});

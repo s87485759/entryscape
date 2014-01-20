@@ -275,7 +275,7 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		dojo.attr(this.foldersNode, "innerHTML", "");
 		this.accessToContexts = [];
 		var context = this.application.getStore().getContext(this.application.repository+"_search");
-		context.search({term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+")", locationType: ["Local"], builtinType: ["Context", "List"], sort: "modified+desc", queryType: "solr",
+		context.search({term: "(resource.rw:"+this.entryUri+"+OR+admin:"+this.entryUri+")", entryType: ["Local"], resourceType: ["Context", "List"], sort: "modified+desc", queryType: "solr",
 			onSuccess: dojo.hitch(this, function(entryResult) {
 				folio.data.getList(entryResult, dojo.hitch(this, function(list) {
 					list.getPage(0, 50, dojo.hitch(this, function(children) {
@@ -388,8 +388,8 @@ dojo.declare("folio.profile.Profile", [dijit._Widget, dijit._Templated], {
 		if (term != null) {
 			this.recentSearchList.show({
 				term: term,
-				builtinType: ["None"],
-				locationType: ["Local", "Link"],
+				resourceType: ["None"],
+				entryType: ["Local", "Link"],
 				sort: "modified+desc",
 				queryType: "solr"
 			});

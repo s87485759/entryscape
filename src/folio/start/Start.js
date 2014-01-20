@@ -147,7 +147,7 @@ return declare([Widget], {
 		attr.set(this.communitiesNode, "innerHTML", "");
 		var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
 		
-		searchcontext.search({term: this._currentSearchTerm, locationType: ["Local"], builtinType: ["Group"], queryType: "solr",
+		searchcontext.search({term: this._currentSearchTerm, entryType: ["Local"], resourceType: ["Group"], queryType: "solr",
 			onSuccess: lang.hitch(this, function(entryResult) {
 				folio.data.getList(entryResult, lang.hitch(this, function(list) {
 					list.getPage(0, 50, lang.hitch(this, function(children) {
@@ -224,7 +224,7 @@ return declare([Widget], {
 	_updatePeople: function() {
 		attr.set(this.peopleNode, "innerHTML", "");
 		var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
-		searchcontext.search({term: this._currentSearchTerm, locationType: ["Local"], builtinType: ["User"], queryType: "solr",
+		searchcontext.search({term: this._currentSearchTerm, entryType: ["Local"], resourectype: ["User"], queryType: "solr",
 			onSuccess: lang.hitch(this, function(entryResult) {
 				folio.data.getList(entryResult, lang.hitch(this, function(list) {
 					list.getPage(0, 50, lang.hitch(this, function(children) {
@@ -286,8 +286,8 @@ return declare([Widget], {
 
 		//TODO: Perhaps also add Link_Reference to the query.
 		this.recentSearchList.show({
-			builtinType: ["None"],
-			locationType: ["Local", "Link"],
+			resourceType: ["None"],
+			entryType: ["Local", "Link"],
 			sort: "modified+desc",
 			queryType: "solr"
 		});

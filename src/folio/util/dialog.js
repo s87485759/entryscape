@@ -133,7 +133,23 @@ define([
                 require(["dojo/i18n!folio/nls/standardDialog"], f);
             }
         },
-        /*
+        addDoneButton: function (onDone, rb) {
+            var f = lang.hitch(this, function (bundle) {
+                this.doneButton = new Button({label: bundle.doneButtonLabel, onClick: lang.hitch(this, function () {
+                    this.hide();
+                    if (onDone) {
+                        onDone();
+                    }
+                })});
+                this.buttonsBelow.addButton(this.doneButton);
+            });
+
+            if (rb != null) {
+                f(rb);
+            } else {
+                require(["dojo/i18n!folio/nls/standardDialog"], f);
+            }
+        },        /*
          * Call this method to launch the dialog.
          */
         show: function (widget, title) {

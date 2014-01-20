@@ -19,10 +19,6 @@
 
 define({
 	root : {
-		"cancelButtonLabel" : "Cancel",
-		"nextButtonLabel" : "Next",
-		"finishButtonLabel" : "OK",
-        "doneButtonLabel": "Done",
-		"busyButtonLabel" : "Sending..."
+		"pipelineSearchLabel" : "Search pipeline"
 	}
 });
