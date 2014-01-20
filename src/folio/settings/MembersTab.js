@@ -104,7 +104,7 @@ define([
             style.set(this._loadingMessage, "display", "");
 
             var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
-            var params = {locationType: ["Local"], builtinType: ["User"], queryType: "solr"};
+            var params = {entryType: ["Local"], resourceType: ["User"], queryType: "solr"};
             if (this._currentSearchTerm != null && this._currentSearchTerm != "") {
                 params.term = "title:"+this._currentSearchTerm;
             }

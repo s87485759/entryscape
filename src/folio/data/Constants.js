@@ -113,7 +113,8 @@ folio.data.BuiltinType = {
 	GROUP: 4,
 	LIST: 5,
 	RESULT_LIST: 6,
-	NONE: 7
+    PIPELINE: 7,
+	NONE: 8
 };
 folio.data.BuiltinTypeSchema = {
 	CONTEXT: folio.data.SCAMBaseUri+"Context",
@@ -122,6 +123,7 @@ folio.data.BuiltinTypeSchema = {
 	GROUP: folio.data.SCAMBaseUri+"Group",
 	LIST: folio.data.SCAMBaseUri+"List",
 	RESULT_LIST: folio.data.SCAMBaseUri+"ResultList",
+    PIPELINE: folio.data.SCAMBaseUri+"Pipeline",
 	NONE: folio.data.SCAMBaseUri+"None"
 };
 

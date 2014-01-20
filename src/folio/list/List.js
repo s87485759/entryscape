@@ -516,6 +516,8 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 			o.push({action: "paste", enabled: cb != null && cb.entry != null && child.isResourceModifiable(), label: this.resourceBundle.pasteInto});
 		}
 
+        o.push({action: "convert", enabled: true, label: this.resourceBundle.convert});
+
 		//add to contacts is possible, remains to check if user is already in contacts (requires asynchrous call).
 		if (child.getBuiltinType() == folio.data.BuiltinType.USER && this.user && this.user.homecontext) {
 		    var homeContext = this.application.getStore().getContext(this.application.repository+this.user.homecontext);

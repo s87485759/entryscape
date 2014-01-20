@@ -98,7 +98,10 @@
       },
       "content": [
         {
-          "id": "tr:pipelineToEntry"
+          "id": "tr:transformDetectDestination"
+        },
+        {
+          "id": "tr:transformDestination"
         },
         {
           "id": "tf:transform"
@@ -107,9 +110,9 @@
     },
     {
       "type": "choice",
-      "id": "tr:pipelineToEntry",
+      "id": "tr:transformDestination",
       "nodetype": "URI",
-      "property": "http://entrystore.org/terms/pipelineToEntry",
+      "property": "http://entrystore.org/terms/transformDestination",
       "label": {
         "en": "Optional target entry"
       },
@@ -164,6 +167,41 @@
         "multiline"
       ],
       "id": "tr:transformArgumentValue"
+    },
+    {
+      "type": "choice",
+      "id": "tr:transformDetectDestination",
+      "nodetype": "DATATYPE_LITERAL",
+      "property": "http://entrystore.org/terms/transformDetectDestination",
+      "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+      "choices": [
+        {
+          "value": "false",
+          "label": {
+            "en": "False"
+          }
+        },
+        {
+          "value": "true",
+          "label": {
+            "en": "True"
+          }
+        }
+      ],
+      "styles": [
+        "horizontalRadioButtons"
+      ],
+      "cardinality": {
+        "min": 0,
+        "pref": 1,
+        "max": 1
+      },
+      "label": {
+        "en": "Detect entry destinations from RDF"
+      },
+      "description": {
+        "": "False by default."
+      }
     }
   ]
 }

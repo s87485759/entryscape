@@ -81,30 +81,33 @@ define(["dojo/_base/declare",
         _finish: function(callback) {
             this.application.getItemStore(dojo.hitch(this, function(itemStore){
                 var at = this._currentATList[this._selectedATIdx].uri;
+                var rt = this._currentATList[this._selectedATIdx].resourceType;
+                var ir = this._currentATList[this._selectedATIdx].informationresource;
                 var label = this.label.get("value");
                 var obj = {
                     parentList: this.list
                 };
                 var newId;
+
                 switch (this.mode) {
                     case "artifact":
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
-                        obj.params = {informationResource: false,
-                            locationType: "local",
-                            builtinType: "none"};
+                        obj.params = {informationresource: false,
+                            entrytype: "local",
+                            resourcetype: "none"};
                         break;
                     case "upload":
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
-                        obj.params = {informationResource: true,
-                            locationType: "local",
-                            builtinType: "none"};
+                        obj.params = {informationresource: true,
+                            entrytype: "local",
+                            resourcetype: "none"};
                         obj.fileInput = this.fileinput.fileInput;
                         break;
                     case "link":
                         newId = this.url.get("value");
-                        obj.params = {informationResource: true,
-                            locationType: "link",
-                            builtinType: "none",
+                        obj.params = {informationresource: true,
+                            entrytype: "link",
+                            resourcetype: "none",
                             resource: encodeURIComponent(newId)
                         };
                         break
@@ -117,6 +120,12 @@ define(["dojo/_base/declare",
                 var binding = Engine.findFirstValueBinding(rootBinding, true);
                 binding.setValue(label);
 
+                if (rt != null && rt != "") {
+                    obj.params.resourcetype = rt;
+                    if (ir === true || ir === false) {
+                        obj.params.informationresource = ir;
+                    }
+                }
                 if (at != null && at != "") {
                     graph.create(newId, folio.data.RDFSchema.TYPE, at);
                 }

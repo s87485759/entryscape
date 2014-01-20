@@ -113,7 +113,7 @@ define([
 		 *          If sort is given as a non emtpy object the following attributes are taken into account:
 		 *      sortBy - the attribute instructs which metadata field to sort the children by, that is title, created, modified, or size.
 		 *      lang - if sort is title and the title is provided in several languages a prioritized language can be given.
-		 *      prio - allows specific builtintypes to be prioritized (e.g. show up in the top of the list).
+		 *      prio - allows specific resourcetypes to be prioritized (e.g. show up in the top of the list).
 		 *      descending - if true the children are shown in descending order.
 		 *  @return a Promise that you can call .then on.
 		 */
@@ -175,14 +175,14 @@ define([
 				uri = uri+arg+"="+args.params[arg]+"&";
 			}
 			if (args.parentList) {
-				uri = uri+"listURI="+args.parentList.getResourceUri()+"&";			
+				uri = uri+"list="+args.parentList.getResourceUri()+"&";
 			}
 			uri = uri.slice(0,-1);
 			
 			var xhrArgs = {
 				headers: headers
 			};
-			if (args.metadata || args.info || args.resource || args.cachedExternalMetadata || args.informationResource === false) {
+			if (args.metadata || args.info || args.resource || args.cachedExternalMetadata || args.informationresource === false) {
 				var postData = {};
 				if (args.metadata) {
 					postData.metadata = args.metadata;
@@ -196,8 +196,8 @@ define([
 				if (args.cachedExternalMetadata) {
 					postData["cached-external-metadata"] = args.cachedExternalMetadata;
 				}
-                if (args.informationResource === false) {
-                    postData["informationResource"] =  "false";
+                if (args.informationresource === false) {
+                    postData["informationresource"] =  "false";
                 }
 				xhrArgs.data = json.stringify(postData);
 			}

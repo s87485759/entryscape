@@ -10,8 +10,9 @@ define([
     "folio/list/operations",
     "folio/list/Remove",
     "folio/security/RightsDialog",
+    "folio/execute/ConvertDialog",
     "folio/comment/CommentDialog"
-], function(declare, lang, event, on, domClass, query, keys, operations, Remove, ShareDialog, CommentDialog) {
+], function(declare, lang, event, on, domClass, query, keys, operations, Remove, ShareDialog, ConvertDialog, CommentDialog) {
 
 return declare(null, {
 	//=================================================== 
@@ -242,7 +243,7 @@ return declare(null, {
 	//=================================================== 
 	// Private methods 
 	//===================================================		
-	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "rights", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new"],
+	_acceptedActions: ["details", "comment", "openfolder", "edit", "admin", "rights", "remove", "copy", "cut", "paste", "add", "menu", "rename", "new", "convert"],
 	_handleAction: function(action, index, ev) {
 		var entry;
 		if (index == -1) {
@@ -309,7 +310,21 @@ return declare(null, {
         this.stopListenForKeyEvents();
         d.show();
     },
-	_handle_remove: function(entry, index, ev) {
+    _handle_convert: function(entry, index, ev) {
+        entry.getContext().getOwnEntry(lang.hitch(this, function(contextEntry) {
+            if(contextEntry.possibleToAdmin()) {
+                var d = new ConvertDialog({
+                    entry: entry,
+                    list: this.list,
+                    onHide: lang.hitch(this, this.listenForKeyEvents)
+                });
+                d.startup();
+                this.stopListenForKeyEvents();
+                d.show();
+            }
+        }));
+    },
+    _handle_remove: function(entry, index, ev) {
 	    if((index == -1 && (!entry.possibleToAdmin() || folio.data.getChildCount(entry) == 0)) //Need childcount for _trash?
 				|| (index>-1 && !((this.list.isMetadataModifiable() && this.list.isResourceModifiable() || this.list.getContext().getId() =="_search") && entry.possibleToAdmin()))){
 			return;
@@ -457,8 +472,8 @@ return declare(null, {
 				parentList: contacts,
 				params: {
 					representationType: "informationresource",
-					locationType: "reference",
-					builtinType: builtinTypeString,//entry.getBuiltinType(),
+					entrytype: "reference",
+					resourcetype: builtinTypeString,//entry.getBuiltinType(),
 					'cached-external-metadata': entry.getLocationType() === folio.data.LocationType.LOCAL ? entry.getLocalMetadataUri(): entry.getExternalMetadataUri(),
 					resource: entry.getResourceUri()}};
 			contacts.getContext().createEntry(linkEntry, lang.hitch(this, updateEntry));//lang.hitch(d, d.errback));

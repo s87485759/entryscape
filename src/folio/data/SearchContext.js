@@ -35,7 +35,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		if (entry) {
 			onEntry(entry);
 		} else {
-			this.search({term: entryInfo.entryId, limit: params.limit, onSuccess: onEntry, onError: onError, queryType:params.queryType, locationType: ["local", "link"]});
+			this.search({term: entryInfo.entryId, limit: params.limit, onSuccess: onEntry, onError: onError, queryType:params.queryType, entryType: ["local", "link"]});
 		}
 	},
 	/*
@@ -43,8 +43,8 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 	 * 		onSuccess: callback,     // called with an resultList entry as argument.
 	 * 		onError: callback,       //dojo standardized errBack function
 	 * 		inContext: "contextId"   //if not specified search is performed in all contexts.
-	 *      locationType: ["local", "link", ...]         //any set of locationTypes to include in search.
-	 *      builtinType: ["list", "user", ...] //which builtintypes to include in search (not supported yet).
+	 *      entryType: ["local", "link", ...]         //any set of entryType to include in search.
+	 *      resourceType: ["list", "user", ...] //which resourceTypes to include in search (not supported yet).
 	 *  }
 	 */
 	search: function(parameters) {
@@ -52,14 +52,14 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 		var entryInfo = folio.data.normalizeEntryInfo({entryId: parameters.term || "any", contextId: "_search", base: base});
 		entryInfo.resourceURI = base+"_search/resource/"+parameters.term;
 		
-		if(parameters.locationType){
-		   var lt = "&entrytype=" + parameters.locationType.join(",");
+		if(parameters.entryType){
+		   var lt = "&entryType=" + parameters.entryType.join(",");
 		} else {
 			lt = "";
 		}
 		
-		if(parameters.builtinType){
-			var bt = "&resourcetype=" + parameters.builtinType.join(",");
+		if(parameters.resourceType){
+			var bt = "&resourceType=" + parameters.resourceType.join(",");
 		} else {
 			bt = "";
 		}
@@ -77,37 +77,37 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 					searchURI+=parameters.term;
 				}
 			}
-			if(parameters.locationType){
-				if(parameters.locationType.length > 1){
+			if(parameters.entryType){
+				if(parameters.entryType.length > 1){
 					var locTypesToAdd = "(";
-					for(i in parameters.locationType){
-						locTypesToAdd += "entryType:"+parameters.locationType[i];
-						if(i < parameters.locationType.length-1){
+					for(i in parameters.entryType){
+						locTypesToAdd += "entryType:"+parameters.entryType[i];
+						if(i < parameters.entryType.length-1){
 							locTypesToAdd += "+OR+";
 						}
 					}
 					locTypesToAdd += ")";
 					searchURI += (hasTerm ? "+AND+" : "")+locTypesToAdd;
 					hasTerm = true;
-				} else if(parameters.locationType.length === 1){
-				    searchURI += (hasTerm ? "+AND+" : "") +"entryType:"+parameters.locationType[0];
+				} else if(parameters.entryType.length === 1){
+				    searchURI += (hasTerm ? "+AND+" : "") +"entryType:"+parameters.entryType[0];
 					hasTerm = true;
 				}
 			}
-			if(parameters.builtinType){
-				if(parameters.builtinType.length > 1){
+			if(parameters.resourceType){
+				if(parameters.resourceType.length > 1){
 					var buiTypesToAdd = "(";
-					for(i in parameters.builtinType){
-						buiTypesToAdd += "resourceType:"+parameters.builtinType[i];
-						if(i < parameters.builtinType.length-1){
+					for(i in parameters.resourceType){
+						buiTypesToAdd += "resourceType:"+parameters.resourceType[i];
+						if(i < parameters.resourceType.length-1){
 							buiTypesToAdd += "+OR+";
 						}
 					}
 					buiTypesToAdd += ")";
 					searchURI += (hasTerm ? "+AND+" : "")+buiTypesToAdd;
 					hasTerm = true;
-				} else if(parameters.builtinType.length === 1){
-				    searchURI += (hasTerm ? "+AND+" : "") + "resourceType:"+parameters.builtinType[0];
+				} else if(parameters.resourceType.length === 1){
+				    searchURI += (hasTerm ? "+AND+" : "") + "resourceType:"+parameters.resourceType[0];
 					hasTerm = true;
 				}
 			}
@@ -141,8 +141,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 				}
 				searchURI += (hasTerm ? "+AND+NOT+" : "NOT")+excludeFolders;
 				hasTerm = true;
-			}
-			else if(parameters.context){ //Search on both folders and contexts would in some cases be inconsistent,
+			} else if(parameters.context){ //Search on both folders and contexts would in some cases be inconsistent,
 		                                   // the folder search is in those cases prioritized
 				//TODO: Perhaps make support for several contexts?
 				searchURI += (hasTerm ? "+AND+" : "")+"context:"+base.replace(/:/g, "\\%3A")+parameters.context;

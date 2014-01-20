@@ -119,8 +119,8 @@ dojo.declare("folio.search.EuropeanaSearchList", folio.data.AbstractList, {
 																resource: encodeURIComponent(resourceUri),
 															 	"cached-external-metadata": encodeURIComponent(ent.getExternalMetadataUri()),
 															 	representationType: "informationresource",
-															 	locationType: "reference",
-															 	builtinType: "none"															 
+															 	entryType: "reference",
+															 	resourceType: "none"
 															 }
 												}, 
 												function() {

@@ -32,6 +32,7 @@ define({
 		"paste" : "Paste",
 		"pasteInto" : "Paste into",
 		"add" : "Add",
+        "convert": "Convert",
 		"modified" : "Modified",
 		"items" : "Items",
 		"addedToContactsMessage" : "This person was added to your contacts.\n",
