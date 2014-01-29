@@ -94,7 +94,7 @@ dojo.declare("folio.search.LocalSearch", [dijit._Widget, dijit._Templated], {
 	//===================================================
 	getSearchDetails: function() {
 		return {
-			resourceType: this._getBuiltinTypes(),
+			graphType: this._getBuiltinTypes(),
 			entryType: this._getLocationTypes(),
 			context: this._getContext(),
 			sort: this._getSortOrder(),
@@ -131,7 +131,7 @@ dojo.declare("folio.search.LocalSearch", [dijit._Widget, dijit._Templated], {
 			this.set(this.resourceBundle);
 		
 			var context = this.application.getStore().getContext(this.application.repository+"_search");
-			context.search({entryType: ["Local"], resourceType: ["Context"], sort: "modified+desc", queryType: "solr", onSuccess: dojo.hitch(this, function(entryResult) {
+			context.search({entryType: ["Local"], graphType: ["Context"], sort: "modified+desc", queryType: "solr", onSuccess: dojo.hitch(this, function(entryResult) {
 				folio.data.getAllChildren(entryResult, dojo.hitch(this, function(children) {
 					var contextsArray = dojo.map(children, function(child) {
 						return {"label": folio.data.getLabelRaw(child) || child.alias || child.getId(), id: child.getId()};

@@ -473,7 +473,7 @@ return declare(null, {
 				params: {
 					representationType: "informationresource",
 					entrytype: "reference",
-					resourcetype: builtinTypeString,//entry.getBuiltinType(),
+					graphtype: builtinTypeString,//entry.getBuiltinType(),
 					'cached-external-metadata': entry.getLocationType() === folio.data.LocationType.LOCAL ? entry.getLocalMetadataUri(): entry.getExternalMetadataUri(),
 					resource: entry.getResourceUri()}};
 			contacts.getContext().createEntry(linkEntry, lang.hitch(this, updateEntry));//lang.hitch(d, d.errback));

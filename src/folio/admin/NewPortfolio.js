@@ -76,7 +76,7 @@ dojo.declare("folio.admin.NewPortfolio", [dijit._Widget, dijit._Templated, folio
 			parentList: this.entry,
 			metadata: metadata.exportRDFJSON(),
 			resource: resourceObj, 
-			params: {entrytype: "local", resourcetype: "Context", representationType: "informationresource"}
+			params: {entrytype: "local", graphtype: "Context", representationType: "informationresource"}
 		};
 		this.application.getCommunicator().createEntry(args).then(
 			dojo.hitch(this, function(entry) {

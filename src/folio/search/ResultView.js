@@ -232,7 +232,7 @@ define(["dojo/_base/declare",
                                     "cached-external-metadata": encodeURIComponent(entry.getExternalMetadataUri()),
                                     informationresource: false,
                                     entryType: "linkreference",
-                                    resourceType: "none"
+                                    graphType: "none"
                                 }
                             },
                             function(newEntry) {

@@ -81,7 +81,7 @@ define(["dojo/_base/declare",
         _finish: function(callback) {
             this.application.getItemStore(dojo.hitch(this, function(itemStore){
                 var at = this._currentATList[this._selectedATIdx].uri;
-                var rt = this._currentATList[this._selectedATIdx].resourceType;
+                var rt = this._currentATList[this._selectedATIdx].graphType;
                 var ir = this._currentATList[this._selectedATIdx].informationresource;
                 var label = this.label.get("value");
                 var obj = {
@@ -94,20 +94,20 @@ define(["dojo/_base/declare",
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
                         obj.params = {informationresource: false,
                             entrytype: "local",
-                            resourcetype: "none"};
+                            graphtype: "none"};
                         break;
                     case "upload":
                         newId = this.context.getBase() + this.context.getId()+"/resource/_newId";
                         obj.params = {informationresource: true,
                             entrytype: "local",
-                            resourcetype: "none"};
+                            graphtype: "none"};
                         obj.fileInput = this.fileinput.fileInput;
                         break;
                     case "link":
                         newId = this.url.get("value");
                         obj.params = {informationresource: true,
                             entrytype: "link",
-                            resourcetype: "none",
+                            graphtype: "none",
                             resource: encodeURIComponent(newId)
                         };
                         break
@@ -121,7 +121,7 @@ define(["dojo/_base/declare",
                 binding.setValue(label);
 
                 if (rt != null && rt != "") {
-                    obj.params.resourcetype = rt;
+                    obj.params.graphtype = rt;
                     if (ir === true || ir === false) {
                         obj.params.informationresource = ir;
                     }

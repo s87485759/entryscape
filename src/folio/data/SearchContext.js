@@ -44,7 +44,7 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 	 * 		onError: callback,       //dojo standardized errBack function
 	 * 		inContext: "contextId"   //if not specified search is performed in all contexts.
 	 *      entryType: ["local", "link", ...]         //any set of entryType to include in search.
-	 *      resourceType: ["list", "user", ...] //which resourceTypes to include in search (not supported yet).
+	 *      graphType: ["list", "user", ...] //which graphTypes to include in search (not supported yet).
 	 *  }
 	 */
 	search: function(parameters) {
@@ -58,8 +58,8 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 			lt = "";
 		}
 		
-		if(parameters.resourceType){
-			var bt = "&resourceType=" + parameters.resourceType.join(",");
+		if(parameters.graphType){
+			var bt = "&graphType=" + parameters.graphType.join(",");
 		} else {
 			bt = "";
 		}
@@ -94,20 +94,20 @@ dojo.declare("folio.data.SearchContext", folio.data.Context, {
 					hasTerm = true;
 				}
 			}
-			if(parameters.resourceType){
-				if(parameters.resourceType.length > 1){
+			if(parameters.graphType){
+				if(parameters.graphType.length > 1){
 					var buiTypesToAdd = "(";
-					for(i in parameters.resourceType){
-						buiTypesToAdd += "resourceType:"+parameters.resourceType[i];
-						if(i < parameters.resourceType.length-1){
+					for(i in parameters.graphType){
+						buiTypesToAdd += "graphType:"+parameters.graphType[i];
+						if(i < parameters.graphType.length-1){
 							buiTypesToAdd += "+OR+";
 						}
 					}
 					buiTypesToAdd += ")";
 					searchURI += (hasTerm ? "+AND+" : "")+buiTypesToAdd;
 					hasTerm = true;
-				} else if(parameters.resourceType.length === 1){
-				    searchURI += (hasTerm ? "+AND+" : "") + "resourceType:"+parameters.resourceType[0];
+				} else if(parameters.graphType.length === 1){
+				    searchURI += (hasTerm ? "+AND+" : "") + "graphType:"+parameters.graphType[0];
 					hasTerm = true;
 				}
 			}

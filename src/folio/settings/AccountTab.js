@@ -346,7 +346,7 @@ define([
                         metadata: md.exportRDFJSON(),
                         params: {representationType: "informationresource",
                             entryType: "local",
-                            resourceType: "none",
+                            graphType: "none",
                             id: "_profilePicture"}
                     }, pp, fail);
                 }

@@ -194,7 +194,7 @@ define({
                     "template": ["tr:Pipeline"],
                     "artifact": true,
                     "advanced": true,
-                    "resourceType": "Pipeline"
+                    "graphType": "Pipeline"
                 },
                 {
                     "uri": "esc:Graph",
@@ -203,7 +203,7 @@ define({
                     "artifact": true,
                     "informationresource": true,
                     "advanced": true,
-                    "resourceType": "Graph"
+                    "graphType": "Graph"
                 }
             ]
         }

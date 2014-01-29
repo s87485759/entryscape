@@ -114,13 +114,13 @@ define([
             };
         }
         if (folio.data.isGroup(cb.entry)) {
-            linkEntry.params.resourcetype = "group";
+            linkEntry.params.graphtype = "group";
         } else if (folio.data.isUser(cb.entry)) {
-            linkEntry.params.resourcetype = "user";
+            linkEntry.params.graphtype = "user";
         } else if (folio.data.isListLike(cb.entry)) {
-            linkEntry.params.resourcetype = "list";
+            linkEntry.params.graphtype = "list";
         }  else if (folio.data.isContext(cb.entry)) {
-            linkEntry.params.resourcetype = "context";
+            linkEntry.params.graphtype = "context";
         }
         var updateEntry = function() {
             folio.data.getList(folder, function(list) {
@@ -267,7 +267,7 @@ define([
                 metadata: md,
                 info: helpObj.info.exportRDFJSON(),
                 params: {entryType: "local",
-                    resourceType: "none"}};
+                    graphType: "none"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports}); //Operations as source, not optimal.
@@ -295,7 +295,7 @@ define([
                 parentList: inFolder,
                 metadata: md,
                 params: {entryType: "local",
-                    resourceType: "list"}};
+                    graphType: "list"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports});
