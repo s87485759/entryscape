@@ -505,7 +505,7 @@ dojo.declare("folio.list.List", [folio.list.AbstractList, dijit.layout._LayoutWi
 		if (__confolio.config["possibleToCommentEntry"] === "true") {
 			o.push({action: "comment", enabled: true, label: this.resourceBundle.comment}); //is not a system entry
 		}
-		o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});
+		//o.push({action: "admin", enabled: child.possibleToAdmin(), label: this.resourceBundle.admin});
         o.push({action: "rights", enabled: child.possibleToAdmin(), label: this.resourceBundle.rights});
 		o.push({action: "remove", enabled: (child.possibleToAdmin() && this.list.isResourceModifiable() && this.list.isMetadataModifiable), label: (isTrashFolder ? this.resourceBundle.empty : this.resourceBundle.remove)});
 		o.push({action: "copy", enabled: (child.isMetadataAccessible() && child.isResourceAccessible() && !isTrashFolder), label: this.resourceBundle.copy}); //ChildMD and Resource is accessible
