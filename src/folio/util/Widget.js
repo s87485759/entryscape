@@ -4,13 +4,12 @@ define([
     "dojo/_base/lang",
     "dojo/_base/connect",
     "dojo/_base/array",
-    "dojo/aspect",
     "dojo/dom-attr",
     "dojox/form/BusyButton",
     "dijit/_Widget",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin"
-], function(declare, lang, connect, array, aspect, attr, BusyButton, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin) {
+], function(declare, lang, connect, array, attr, BusyButton, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin) {
 
     //Patch problem in BusyButton with label missing after a click when label not provided in declaration.
     var old = BusyButton.prototype._setLabelAttr;
@@ -24,6 +23,65 @@ define([
         if (this.get("disabled") !== true) {
             this._makeBusy();
         }
+    };
+
+    var getPrototypeOf = (function() {
+        if ( typeof Object.getPrototypeOf !== "function" ) {
+            if ( typeof "test".__proto__ === "object" ) {
+                return function(object){
+                    return object.__proto__;
+                };
+            } else {
+                return function(object){
+                    // May break if the constructor has been tampered with
+                    return object.constructor.prototype;
+                };
+            }
+        } else {
+            return Object.getPrototypeOf;
+        }
+    })();
+
+    var findĹocaleOfKey = function(bundle, key) {
+        for (var k in bundle) if (key === k && bundle.hasOwnProperty(k)) {
+            return bundle.__locale || "";
+        }
+        var prot = getPrototypeOf(bundle);
+        if (prot != null) {
+            return findLocaleOfKey(prot, key);
+        }
+    }
+
+    //http://unicode.org/repos/cldr/trunk/common/supplemental/plurals.xml
+//    //According to https://developer.mozilla.org/en/docs/Localization_and_Plurals#Plural_rule_.230_.281_form.29
+    var rules = [
+        {
+            langs: "af asa ast az bem bez bg brx cgg chr ckb dv ee el eo es eu fo fur fy gsw ha haw hu jgo jmc ka kaj kcg kk kkj kl ks ksb ku ky lb lg mas mgo ml mn nah nb nd ne nn nnh no nr ny nyn om or os pap ps rm rof rwk saq seh sn so sq ss ssy st syr ta te teo tig tk tn tr ts uz ve vo vun wae xh xog",
+            rule: function(n) { return n === 1 ? 0 : 1}
+        }, {
+            langs: "bm bo dz id ig ii in ja jbo jv jw kde kea km ko lkt lo ms my nqo root sah ses sg th to vi wo yo zh",
+            rule: function(n) { return 0;}
+        }, {
+           langs: "ak bh guw ln mg nso pa ti wa",
+            rule: function(n) { return n === 0 || n === 1 ? 0 : 1}
+        }, { //Same as above, but treated separately for some reason, investigate.
+            langs: "ff fr hy kab",
+            rule: function(n) { return n === 0 || n === 1 ? 0 : 1}
+        }, { //Same as above, but treated separately for some reason, investigate.
+            langs: "am bn fa gu hi kn mr zu",
+            rule: function(n) { return n === 0 || n === 1 ? 0 : 1}
+        }, {
+            langs: "iu kw naq se sma smi smj smn sms",
+            rule: function(n) { return n === 1 ? 0 :  n === 2 ? 1 : 2}
+        }, {
+            langs: "ca de en et fi gl it ji nl sv sw ur yi",
+            rule: function(n) { return n === 1 ? 0 : 1}
+        }
+    ];
+
+
+    var getPluralsRule = function(locale) {
+
     };
 
     return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -67,12 +125,18 @@ define([
         ready: function() {
         },
 
+        getPlurals: function(bundle, key, nr) {
+            var l =  findĹocaleOfKey(bundle, key);
+            var val = bundle[key];
+            return getPluralsRule(l)(val);
+        },
+
         postCreate: function() {
             this.inherited("postCreate", arguments);
             this.application = __confolio.application;
             if (!this._nls) {
                 this._nls = array.map(this.nls, function(bundle) {
-                    return "dojo/i18n!folio/nls/"+bundle;
+                    return "folio/util/i18n!folio/nls/"+bundle;
                 });
             }
 
