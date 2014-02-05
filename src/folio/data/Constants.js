@@ -19,7 +19,7 @@
 
 dojo.provide("folio.data.Constants");
 
-folio.data.SCAMBaseUri = "http://scam.sf.net/schema#";
+folio.data.SCAMBaseUri = "http://entrystore.org/terms/";
 folio.data.RDFBaseUri = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 folio.data.RDFSBaseUri = "http://www.w3.org/2000/01/rdf-schema#";
 folio.data.DCBaseUri = "http://purl.org/dc/elements/1.1/";
