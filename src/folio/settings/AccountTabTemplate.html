@@ -57,7 +57,8 @@
         <div class="passwordRow">
             <label for="${id}-vnpw" data-dojo-attach-point="i18n">verifyNewPassword</label>
             <input type="password" class="passwordInput" id="${id}-vnpw" data-dojo-attach-point="verifyNewPasswordDijit" data-dojo-type="dijit/form/TextBox"/>
-            <div class="passwordMismatch" data-dojo-attach-point="i18n" style="display: none;">mismatchPassword</div>
+            <div class="passwordProblem" data-dojo-attach-point="i18n,passwordMismatchNode" style="display: none;">mismatchPassword</div>
+            <div class="passwordProblem" data-dojo-attach-point="i18n,passwordTooShortNode" style="display: none;">tooShortPassword</div>
         </div>
         <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="i18n,passwordSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
     </div>

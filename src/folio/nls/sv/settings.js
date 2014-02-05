@@ -56,6 +56,7 @@ define({
     "newPassword" : "Nytt lösenord",
     "verifyNewPassword" : "Verifiera nytt lösenord",
     "mismatchPassword" : "Var vänlig verifiera nytt lösenord genom att upprepa det korrekt!",
+    "tooShortPassword": "Lösenordet måste innehålle åtta eller fler bokstäver!",
     "languageLabel" : "Föredraget språk",
     "changeSettingsButtonLabel" : "Ändra inställningar"
     /*"msgCurrentUsername": "Nuvarande användarnamn är ",
