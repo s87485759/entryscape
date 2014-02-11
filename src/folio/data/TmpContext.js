@@ -54,12 +54,12 @@ dojo.declare("folio.data.TmpContext", folio.data.Context, {
 	//===================================================
 	// Private methods
 	//===================================================
-	_createEntry: function(resourceUri, resourceType, entryType) {
+	_createEntry: function(resourceUri, graphType, entryType) {
 		var entry = this._createPlainEntry();
 		entry.resourceURI = resourceUri || this.getBase()+"_tmp/resource/"+entry.getId();
 		entry.info.create(entry.getUri(), folio.data.SCAMSchema.RESOURCE, {"type":"uri", "value": resourceUri});
 		
-		entry.info.create(resourceUri, folio.data.RDFSchema.TYPE, {"type": "uri", "value": resourceType});
+		entry.info.create(resourceUri, folio.data.RDFSchema.TYPE, {"type": "uri", "value": graphType});
 		entry.info.create(resourceUri, folio.data.RDFSchema.TYPE, {"type": "uri", "value": entryType});
 		folio.data._excavateTypes(entry);
 		return entry;

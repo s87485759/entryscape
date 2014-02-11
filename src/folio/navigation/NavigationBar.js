@@ -5,9 +5,7 @@ define(["dojo/_base/declare",
     "dojo/on",
     "dojo/aspect",
     "dojo/query",
-    "dojo/_base/array",
     "dojo/_base/window",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
@@ -15,16 +13,11 @@ define(["dojo/_base/declare",
     "dojo/_base/event",
     "dojo/store/Memory",
     "folio/util/Widget",
-    "dijit/form/TextBox",
-    "dijit/form/FilteringSelect",
     "folio/security/LoginDialog",
     "folio/ApplicationView",
-    "dojo/fx",
-    "dojo/fx/easing",
-    "dojox/widget/Toaster",
     "dojo/text!./NavigationBarTemplate.html"
-], function (declare, lang, kernel, on, aspect, query, array, win, domClass, style, construct, attr, keys, event, Memory,
-             Widget, TextBox, FilteringSelect, LoginDialog, ApplicationView, fx, easing, Toaster, template) {
+], function (declare, lang, kernel, on, aspect, query, win, style, construct, attr, keys, event, Memory,
+             Widget, LoginDialog, ApplicationView, template) {
 
     return declare([Widget, ApplicationView], {
         //===================================================

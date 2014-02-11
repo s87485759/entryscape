@@ -92,7 +92,7 @@ define([
                     info: this.helpObj.info.exportRDFJSON(),
                     params: {entrytype: "local",
                             informationresource: true,
-                            resourcetype: "none"}};
+                            graphtype: "none"}};
             var onError = lang.hitch(this, function() {
                 //TODO Message.
                 this.postDijit.cancel();
@@ -158,7 +158,7 @@ define([
         send: function(){
             var home = this.application.getUser().homecontext;
             var contextUri = this.application.repository+home;
-            var finalUri = contextUri+"?entrytype=local&resourcetype=string&list="+contextUri+"/resource/_comments";
+            var finalUri = contextUri+"?entrytype=local&graphtype=string&list="+contextUri+"/resource/_comments";
 
             var data = {
                 "metadata": {"sc:commentsOn": {"@id": this.entry.getUri()}},

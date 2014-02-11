@@ -2,25 +2,16 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/dom-class",
     "dojo/dom-style",
-    "dojo/dom-construct",
     "dojo/dom-attr",
     "folio/util/Widget",
-    "dijit/form/TextBox",
-    "dijit/form/Textarea",
-    "dojox/form/BusyButton",
     "dojox/form/Uploader",
-    "dijit/form/FilteringSelect",
-    "dijit/form/RadioButton",
     "dojo/store/Memory",
-    "folio/list/SearchList",
-    "folio/security/LoginDialog",
     "rdfjson/Graph",
     "dojo/text!./AccountTabTemplate.html"
-], function (declare, lang, connect, domClass, style, construct, attr, Widget,
-             TextBox, Textarea, BusyButton, Uploader, FilteringSelect, RadioButton, Memory, SearchList, LoginDialog, Graph, template) {
+], function (declare, lang, domClass, style, attr, Widget,
+             Uploader, Memory, Graph, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
@@ -346,7 +337,7 @@ define([
                         metadata: md.exportRDFJSON(),
                         params: {representationType: "informationresource",
                             entryType: "local",
-                            resourceType: "none",
+                            graphType: "none",
                             id: "_profilePicture"}
                     }, pp, fail);
                 }
@@ -411,15 +402,16 @@ define([
             var newUserData = {password: this.newPasswordDijit.get("value")};
             this.application.getCommunicator().PUT(this.entry.getResourceUri(), newUserData).then(
                 lang.hitch(this, function (data) {
-                    var loginDialog = new LoginDialog({
-                        application: this.application
-                    });
-                    loginDialog.setAuthentication(this.entry.getResource().name, newUserData.password);
-                    loginDialog.destroyRecursive();
-                    this.newPasswordDijit.set("value", "");
-                    this.verifyNewPasswordDijit.set("value", "");
-                    this.passwordSaveButton.cancel();
-                    this.passwordSaveButton.set("disabled", true);
+// No need to authenticate again since existing cookie is still valid (does not contain the password, only a token that is still valid)
+//                    authorize.unAuthorizeUser().then(lang.hitch(this, function() {
+//                        authorize.cookieAuth(this.user.user, newUserData.password).then(lang.hitch(this, function() {
+                            this.newPasswordDijit.set("value", "");
+                            this.verifyNewPasswordDijit.set("value", "");
+                            this.passwordSaveButton.cancel();
+                            this.passwordSaveButton.set("disabled", true);
+                            this._updatePasswordSaveButton();
+//                        }));
+//                    }));
                 }),
                 dojo.hitch(this, function (mesg) {
                     this.passwordSaveButton.cancel();
@@ -429,15 +421,19 @@ define([
         _updatePasswordSaveButton: function () {
             var np = this.newPasswordDijit.get("value");
             var vnp = this.verifyNewPasswordDijit.get("value");
+            style.set(this.passwordMismatchNode, "display", "none");
+            style.set(this.passwordTooShortNode, "display", "none");
+            this.passwordSaveButton.set("disabled", true);
+
             if (np.length === 0 && vnp.length === 0) {
-                this.passwordSaveButton.set("disabled", true);
-                style.set(this.passwordMismatchNode, "display", "none");
+                return;
+            }
+            if (np.length < 8) {
+                style.set(this.passwordTooShortNode, "display", "");
             } else if (np !== vnp) {
-                this.passwordSaveButton.set("disabled", true);
                 style.set(this.passwordMismatchNode, "display", "");
             } else {
                 this.passwordSaveButton.set("disabled", false);
-                style.set(this.passwordMismatchNode, "display", "none");
             }
         }
     });

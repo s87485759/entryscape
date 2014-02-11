@@ -78,7 +78,7 @@ define(["dojo/_base/declare",
                 this.searchFor = this.pipelineSearch.get("value");
 
                 var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
-                var params = {entryType: ["Local"], resourceType: ["Pipeline"], queryType: "solr"};
+                var params = {entryType: ["Local"], graphType: ["Pipeline"], queryType: "solr"};
                 params.term = "title:"+this.searchFor;
                 params.onSuccess = lang.hitch(this, function(entryResult) {
                     folio.data.getList(entryResult, lang.hitch(this, this._showResults));
@@ -114,9 +114,9 @@ define(["dojo/_base/declare",
                                             this.application.publish("childrenChanged", {entry: this.list, source: this});
                                         }
                                         if (data.result.length > 1) {
-                                            alert("Convert succeeded, "+ data.result.length+" entries created");
+                                            alert("Conversion succeeded, "+ data.result.length+" entries created");
                                         } else {
-                                            alert("Convert succeeded!");
+                                            alert("Conversion succeeded!");
                                         }
                                     }
                             ));

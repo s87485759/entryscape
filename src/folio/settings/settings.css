@@ -65,7 +65,7 @@
 	display: inline-block;
 }
 
-.confolio.settings .passwordMismatch {
+.confolio.settings .passwordProblem {
 	color: red;
 	display: inline-block;
 	margin-left: 2em;

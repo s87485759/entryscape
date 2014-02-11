@@ -1,25 +1,18 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/_base/array",
     "dojo/has",
-    "dojo/_base/sniff",
     "dojo/on",
-    "dojo/aspect",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/string",
-    "dijit/form/Form",
-    "dijit/form/Button",
     "folio/util/Widget",
-    "folio/util/dialog",
     "./authorize",
     "dojo/text!./LoginDialogTemplate.html"
-], function (declare, lang, connect, array, has, sniff, on, aspect, domClass, style, construct, attr, string,
-             Form, Button, Widget, dialog, authorize, template) {
+], function (declare, lang, array, has, on, style, construct, attr, string,
+             Widget, authorize, template) {
 
 //    dojo.require("dojo.string");
 
@@ -189,7 +182,16 @@ define(["dojo/_base/declare",
             attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
 
             // Configure the communicator to authenticate every request
-            authorize.cookieAuth(userName, password).then(lang.hitch(this.dialog, this.dialog.hide));
+            authorize.cookieAuth(userName, password).then(
+                lang.hitch(this.dialog, this.dialog.hide),
+                lang.hitch(this, function() {
+                    this.userInput.set("disabled", false);
+                    this.passwordInput.set("disabled", false);
+                    this.loginButton.set("disabled", false);
+                    this.status = "invalidLogin";
+                    attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                })
+            );
         },
 
         setUser: function(data) {

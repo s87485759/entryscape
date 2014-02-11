@@ -120,7 +120,7 @@ dojo.declare("folio.search.EuropeanaSearchList", folio.data.AbstractList, {
 															 	"cached-external-metadata": encodeURIComponent(ent.getExternalMetadataUri()),
 															 	representationType: "informationresource",
 															 	entryType: "reference",
-															 	resourceType: "none"
+															 	graphType: "none"
 															 }
 												}, 
 												function() {

@@ -58,6 +58,7 @@ define({
         "newPassword" : "New password",
         "verifyNewPassword" : "Verify new password",
         "mismatchPassword" : "Please verify the new password by repeating it correctly!",
+        "tooShortPassword": "Passwords need to be eight characters or longer.",
         "languageLabel" : "Preferred language",
         "changeSettingsButtonLabel" : "Change settings"
 /*        "cancelButtonLabel" : "Cancel",

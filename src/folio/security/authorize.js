@@ -20,6 +20,7 @@ define([
             exports.loadAuthorizedUser,
             function(mesg) {
                 setUser({message: mesg});
+                throw(mesg);
             }
         );
     };
