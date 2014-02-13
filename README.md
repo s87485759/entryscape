@@ -19,13 +19,8 @@ EntryScape is also known as "Confolio" from earlier projects.
     ./INSTALL-dojo.sh
 
 ###3. Configure the main application
-You configure the application by providing a `config.js` file:
 
-    mkdir config
-    cd config
-    cp ../config-example/config.js config.js
-
-And then edit the config file to your liking.
+You configure the application by providing a `config`-folder. You can either use `config-example` without changes (by copying it to `config`), or base your own configuration on it.
 
 ###4. Deploy EntryScape
 You need to deploy EntryScape in parallel to [EntryStore](https://bitbucket.org/metasolutions/entrystore) so it can do
