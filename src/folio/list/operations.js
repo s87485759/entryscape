@@ -266,8 +266,8 @@ define([
                 parentList: inFolder,
                 metadata: md,
                 info: helpObj.info.exportRDFJSON(),
-                params: {entryType: "local",
-                    graphType: "none"}};
+                params: {entrytype: "local",
+                    graphtype: "none"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports}); //Operations as source, not optimal.
@@ -294,8 +294,8 @@ define([
                 context: contextToUse,
                 parentList: inFolder,
                 metadata: md,
-                params: {entryType: "local",
-                    graphType: "list"}};
+                params: {entrytype: "local",
+                    graphtype: "list"}};
             contextToUse.createEntry(args, function(newEntry) {
                 inFolder.setRefreshNeeded();
                 __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports});

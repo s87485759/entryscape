@@ -141,6 +141,7 @@ define([
                 this._getFromAT(entry, attr, atFrom) ||
                 this._getFromGT(entry, attr) ||
                 this._getFromET(entry, attr) ||
+                this._getFromMT(entry, attr) ||
                 this._getDefaults(attr);
         },
 
@@ -200,6 +201,9 @@ define([
                 return value != null && value[attr] != null
             }
             var mt = entry.getMimeType();
+            if (mt == null) {
+                return;
+            }
             var val = this._MTIdx[mt];
             if (valid(val)) {
                 return val[attr];
