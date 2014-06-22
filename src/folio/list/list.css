@@ -185,7 +185,7 @@
 }
 
 .listView .listEntry .disabledTitleCls {
-	color: gray;
+/*	color: gray;  */
 }
 
 .listView .listEntry .expandCls{

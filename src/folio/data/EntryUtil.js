@@ -314,7 +314,6 @@ folio.data.getFirstFromMDThenInfo = function(entry, property) {
 	if (ei) {
 		return ei.findFirstValue(entry.getResourceUri(), property);		
 	}
-	return false;
 };
 	
 folio.data.isReference = function(entry) { //If LinkReference or Reference
