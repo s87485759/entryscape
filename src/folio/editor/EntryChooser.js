@@ -6,10 +6,10 @@ define(["dojo/_base/declare",
 	"dojo/dom-class", 
 	"dojo/dom-construct",
 	"dijit/focus",
-	"rforms/view/Chooser",
+	"rdforms/view/Chooser",
 	"dijit/form/TextBox",
 	"folio/list/SearchList",
-	"rforms/model/system"], 
+	"rdforms/model/system"],
 function(declare, lang, on, aspect, domClass, construct, focusUtil, Chooser, TextBox, SearchList, system) {
 
 

@@ -53,7 +53,7 @@
 /* Generic approach for themes*/
 .confolio.search.column1 .groupHeader,
 .distinctBackground {
-	background: #EEE;
+	background: #EEE !important;
 }
 
 .rforms.rformsEditor .rformsTopLevel {

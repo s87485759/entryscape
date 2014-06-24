@@ -15,7 +15,7 @@
 @import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/FindReplace.css";
 @import "../../../lib/dojo-src/dojox/widget/Toaster/Toaster.css";
 
-@import "../../rforms/view/resources/rforms.css";
+@import "../../../libs/rdforms/view/resources/rdforms.css";
 
 @import "../create/create.css";
 @import "../list/list.css";
@@ -263,6 +263,10 @@ a:hover, .link:hover {
 
 .claro .confolio .dijitContentPane {
     padding: 0px;
+}
+
+.claro .dijitSplitContainer-child, .claro .dijitBorderContainer-child {
+    border-width: 0px !important;
 }
 
 /* Insert content of arrow button here explicity or button will not be shown in Opera

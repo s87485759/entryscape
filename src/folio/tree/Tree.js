@@ -214,6 +214,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 	},
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
+        this.pinnedTreeDijit.set("gutters", false);
 		dojo.style(this.floatingTreeNode, "opacity","0.90");
 		dojo.style(this.floatingTreeNode, "left", "-400px");
 		var config = this.application.getConfig();

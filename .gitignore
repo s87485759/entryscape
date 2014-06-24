@@ -1,5 +1,6 @@
 /lib/dojo/*
 /lib/dojo-src/*
+/libs/*
 .idea
 *~
 /config*

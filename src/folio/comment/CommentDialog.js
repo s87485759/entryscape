@@ -16,8 +16,8 @@ define([
     "folio/comment/Comment",
     "dojox/form/BusyButton",
     "rdfjson/Graph",
-    "rforms/model/Engine",
-    "rforms/view/Editor",
+    "rdforms/model/Engine",
+    "rdforms/view/Editor",
     "dojo/text!./CommentDialogTemplate.html"
 ], function (declare, lang, array, winUtil, win, domClass, style, construct, attr, xhr,
              Dialog, focusUtil, Widget, Comment, BusyButton, Graph, Engine, Editor, template) {

@@ -19,11 +19,10 @@
 
 dojo.provide("folio.editor.RFormsLabelEditor");
 dojo.require("dijit._Widget");
-dojo.require("rforms.model.Engine");
-dojo.require("rforms.model.Binding");
-dojo.require("rforms.template.ItemStore");
-dojo.require("rforms.template.Template");
-dojo.require("rforms.template.Text");
+dojo.require("rdforms.model.Engine");
+dojo.require("rdforms.model.Binding");
+dojo.require("rdforms.template.ItemStore");
+dojo.require("rdforms.template.Text");
 dojo.require("dijit.form.TextBox");
 
 dojo.declare("folio.editor.RFormsLabelEditor", [dijit._Widget], {

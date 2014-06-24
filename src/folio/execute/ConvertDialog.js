@@ -19,7 +19,7 @@ define(["dojo/_base/declare",
     "folio/util/dialog",
     "dojox/form/FileInput",
     "rdfjson/Graph",
-    "rforms/model/Engine",
+    "rdforms/model/Engine",
     "dojo/text!./ConvertDialogTemplate.html"
 ], function (declare, lang, connect, array, json, on, domClass, style, construct, attr, fx, corefx, easing, Select,
              Button, TextBox, Widget, dialog, FileInput, Graph, Engine, template) {

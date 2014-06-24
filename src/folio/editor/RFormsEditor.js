@@ -21,7 +21,7 @@ dojo.provide("folio.editor.RFormsEditor");
 dojo.require("folio.search.ChoiceSearch");
 dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.Application");
-dojo.require("rforms.view.Editor");
+dojo.require("rdforms.view.Editor");
 
 dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Templated], {
 	compact: true,
@@ -97,9 +97,9 @@ dojo.declare("folio.editor.RFormsEditor", [dijit.layout._LayoutWidget, dijit._Te
 				template = itemStore.detectTemplate(graph, entry.getResourceUri(), explicitPlusMp);
 			}
 //			var template = itemStore.createTemplateFromChildren([folio.data.DCTermsSchema.TITLE,folio.data.DCTermsSchema.DESCRIPTION]);
-			var binding = rforms.model.Engine.match(this.graph, entry.getResourceUri(), template);
+			var binding = rdforms.model.Engine.match(this.graph, entry.getResourceUri(), template);
 			var includeLevel = this.optional ? "optional" : this.recommended ? "recommended" : "mandatory";
-			this.editor = new rforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: includeLevel, compact: this.compact}, dojo.create("div", null, this.rformsEditorNode));			
+			this.editor = new rdforms.view.Editor({template: template, languages: langs, binding: binding, includeLevel: includeLevel, compact: this.compact}, dojo.create("div", null, this.rformsEditorNode));
 		}));
 	},
 	editStateColorChange: function() {

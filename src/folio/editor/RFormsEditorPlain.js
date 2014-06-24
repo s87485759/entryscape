@@ -20,8 +20,8 @@
 dojo.provide("folio.editor.RFormsEditorPlain");
 dojo.require("folio.search.ChoiceSearch");
 dojo.require("dijit._Widget");
-dojo.require("rforms.model.Engine");
-dojo.require("rforms.view.Editor");
+dojo.require("rdforms.model.Engine");
+dojo.require("rdforms.view.Editor");
 
 dojo.declare("folio.editor.RFormsEditorPlain", [dijit._Widget], {
 	includeLevel: "mandatory",

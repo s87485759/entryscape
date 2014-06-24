@@ -7,8 +7,8 @@ define(["dojo/_base/declare",
     "dijit/Dialog",
     "folio/util/Widget",
     "folio/search/Search",
-	"rforms/model/system",
-    "rforms/utils",
+	"rdforms/model/system",
+    "rdforms/utils",
     "dojo/text!./ChoiceSearchTemplate.html"
 ], function(declare, lang, aspect, style, attr, Dialog, Widget, Search, system, rutils, template) {
 

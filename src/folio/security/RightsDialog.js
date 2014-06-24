@@ -17,7 +17,7 @@ define(["dojo/_base/declare",
     "folio/util/dialog",
     "dojox/form/FileInput",
     "rdfjson/Graph",
-    "rforms/model/Engine",
+    "rdforms/model/Engine",
     "dojo/text!./RightsDialogTemplate.html"
 ], function (declare, lang, connect, array, on, domClass, style, construct, attr, fx, corefx, easing, Select,
              Button, Widget, dialog, FileInput, Graph, Engine, template) {

@@ -19,7 +19,7 @@
 
 dojo.provide("folio.data.EntryUtil");
 dojo.require("folio.data.List");
-dojo.require("rforms.model.Engine");
+dojo.require("rdforms.model.Engine");
 
 folio.data.extractEntryInfo = function(entry) {
 	entry.localMetadataUri = entry.entryInfo.base+entry.entryInfo.contextId+"/metadata/"+entry.entryInfo.entryId;
@@ -153,8 +153,8 @@ folio.data.getLabelRForms = function(config, itemStore, entry, createIfMissing) 
 	}
 	var template = itemStore.createTemplateFromChildren([mp]);
 	var graph = new rdfjson.Graph(entry.getLocalMetadata().exportRDFJSON());
-	var rootBinding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
-	return rforms.model.Engine.findFirstValueBinding(rootBinding, createIfMissing);
+	var rootBinding = rdforms.model.Engine.match(graph, entry.getResourceUri(), template);
+	return rdforms.model.Engine.findFirstValueBinding(rootBinding, createIfMissing);
 }
 
 folio.data.getLabelRaw = function(entry) {

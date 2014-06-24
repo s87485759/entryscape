@@ -61,7 +61,16 @@ __confolio.initDojo = function(){
 	};
 	
 	var libs = ["dojo/dojo.js"]; 
-	var jsPath = __confolio.isBuild() ? "target/" : "lib/dojo/";
+	var jsPath;
+    if (__confolio.isBuild()) {
+        jsPath = "target/";
+    } else {
+        jsPath = "libs/";
+        dojoConfig.packages = [
+            {name: "folio", location: "../../src/folio" },
+            {name: "se", location: "../../src/se" }
+        ];
+    }
 	var debugExt = __confolio.isDebug() ? ".uncompressed.js" : "";
 
 	for (var i = 0;i<libs.length;i++) {
@@ -103,13 +112,6 @@ __confolio.start = function(loadIndicatorId, splashId){
 	if(!__confolio.isBuild()){ //No splash-screen if the application is build
 		var splash = document.getElementById(splashId);
 		splash.style.display = "block";
-	}
-	if (!__confolio.isBuild()) {
-		dojo.registerModulePath("folio", "../../../src/folio");
-		dojo.registerModulePath("jdil", "../../../src/jdil");
-		dojo.registerModulePath("rdfjson", "../../../src/rdfjson");
-		dojo.registerModulePath("rforms", "../../../src/rforms");
-		dojo.registerModulePath("se", "../../../src/se");
 	}
 	var appModulePath = __confolio.config["appModulePath"];
 	var appModuleName = __confolio.config["appModuleName"];

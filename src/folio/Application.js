@@ -15,7 +15,7 @@ define([
     "folio/data/Communicator",
     "folio/data/Store",
     "folio/util/dialog",
-    "rforms/template/ItemStore"
+    "rdforms/template/ItemStore"
 ], function (kernel, declare, lang, connect, array, geom, query, win, i18n, Deferred, Config, Messages, Communicator, Store, dialog, ItemStore) {
 
     return declare(null, {

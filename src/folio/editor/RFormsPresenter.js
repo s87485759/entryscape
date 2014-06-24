@@ -20,8 +20,8 @@
 dojo.provide("folio.editor.RFormsPresenter");
 dojo.require("dijit._Widget");
 dojo.require("folio.Application");
-dojo.require("rforms.view.Presenter");
-dojo.require("rforms.model.Engine");
+dojo.require("rdforms.view.Presenter");
+dojo.require("rdforms.model.Engine");
 
 dojo.declare("folio.editor.RFormsPresenter", dijit._Widget, {
 	compact: true,
@@ -53,8 +53,8 @@ dojo.declare("folio.editor.RFormsPresenter", dijit._Widget, {
 			}
 			var template = itemStore.detectTemplate(graph, entry.getResourceUri(), mpItems);
 //			var template = itemStore.createTemplateFromChildren([folio.data.DCTermsSchema.TITLE,folio.data.DCTermsSchema.DESCRIPTION]);
-			var binding = rforms.model.Engine.match(graph, entry.getResourceUri(), template);
-			this.presenter = new rforms.view.Presenter({template: template, binding: binding, compact: this.compact}, dojo.create("div", null, this.domNode));
+			var binding = rdforms.model.Engine.match(graph, entry.getResourceUri(), template);
+			this.presenter = new rdforms.view.Presenter({template: template, binding: binding, compact: this.compact}, dojo.create("div", null, this.domNode));
 		}));
 	}
 });

@@ -26,8 +26,8 @@ dojo.require("dijit._Templated");
 dojo.require("dijit.layout._LayoutWidget");
 dojo.require("folio.util.details");
 dojo.require("folio.content.ContentViewSwitcher");
-dojo.require("rforms.model.Engine");
-dojo.require("rforms.view.Presenter");
+dojo.require("rdforms.model.Engine");
+dojo.require("rdforms.view.Presenter");
 dojo.require("folio.editor.RFormsPresenter");
 
 /**
