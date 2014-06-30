@@ -2,22 +2,16 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/on",
     "dojo/_base/array",
     "dojo/dom",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/dom-geometry",
     "folio/util/Widget",
-    "dojox/form/BusyButton",
-    "folio/editor/RFormsEditorPlain",
-    "folio/editor/RFormsPresenter",
-    "rdfjson/Graph",
     "dojo/text!./MembersTabTemplate.html"
-], function (declare, lang, connect, on, array, dom, domClass, style, construct, attr, geom, Widget, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
+], function (declare, lang, on, array, dom, domStyle, domConstruct, domAttr, domGeometry, Widget, template) {
 
     /**
      * Shows list of members, supports finding new users to add as members and remove old members.
@@ -69,8 +63,8 @@ define([
         //===================================================
         _localize: function() {},
         _listScrolling: function(args) {
-            var bb = geom.position(this._scrollBoxNode);
-            var inbb = geom.position(this._memberListNode);
+            var bb = domGeometry.position(this._scrollBoxNode);
+            var inbb = domGeometry.position(this._memberListNode);
             var left = inbb.y+inbb.h - bb.y -bb.h; //How many pixels left to scroll down to bottom.
             if (left < 180 && !this._allUsersLoaded) {
                 this._loadNextPage();
@@ -100,8 +94,8 @@ define([
             this._lastSearchTerm = this._currentSearchTerm;
             this._lastListState = this._currentListState;
             this._lastEntry = this.entry;
-            attr.set(this._memberListNode, "innerHTML", "");
-            style.set(this._loadingMessage, "display", "");
+            domAttr.set(this._memberListNode, "innerHTML", "");
+            domStyle.set(this._loadingMessage, "display", "");
 
             var searchcontext = this.application.getStore().getContext(this.application.repository+"_search");
             var params = {entryType: ["Local"], graphType: ["User"], queryType: "solr"};
@@ -129,7 +123,7 @@ define([
                 return;
             }
             this._loading = true;
-            style.set(this._loadingMessage, "display", "");
+            domStyle.set(this._loadingMessage, "display", "");
 
             this._currentList.getPage(this._currentLastPage+1, 50, lang.hitch(this, function(children) {
                 this._currentLastPage++;
@@ -141,7 +135,7 @@ define([
                         this._createPeopleCard(child);
                     }
                 }, this);
-                style.set(this._loadingMessage, "display", "none");
+                domStyle.set(this._loadingMessage, "display", "none");
                 this._loading = false;
             }));
         },
@@ -156,34 +150,34 @@ define([
             var memberCls = isMember ? isOwner ? " owner" : " member" : "";
             var userDiv;
             if (replaceNode) {
-                userDiv = construct.create("div", {"class": "card distinctBackground"+memberCls}, replaceNode, "replace");
+                userDiv = domConstruct.create("div", {"class": "card distinctBackground"+memberCls}, replaceNode, "replace");
             } else {
-                userDiv = construct.create("div", {"class": "card distinctBackground"+memberCls}, this._memberListNode);
+                userDiv = domConstruct.create("div", {"class": "card distinctBackground"+memberCls}, this._memberListNode);
             }
-            var imgWrap = construct.create("div", {"class": "principalPicture"}, userDiv);
+            var imgWrap = domConstruct.create("div", {"class": "principalPicture"}, userDiv);
             if (this.cookieMonster) {
-                construct.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
+                domConstruct.create("img", {src: "http://www.northern-pine.com/songs/images/cookie.gif", style: {"max-width": "100px"}}, imgWrap);
             } else {
                 var imageUrl = folio.data.getFromMD(personEntry, folio.data.FOAFSchema.IMAGE) || this.application.getConfig().getIcon("user");
-                construct.create("img", {src: imageUrl}, imgWrap);
+                domConstruct.create("img", {src: imageUrl}, imgWrap);
             }
             var name = folio.data.getLabelRaw(personEntry) || personEntry.name || personEntry.getId();
-            construct.create("span", {"innerHTML": name}, userDiv);
-            var navIcons = construct.create("div", {"class": "navIcons"}, userDiv);
+            domConstruct.create("span", {"innerHTML": name}, userDiv);
+            var navIcons = domConstruct.create("div", {"class": "navIcons"}, userDiv);
             on(userDiv, "onclick", lang.hitch(this, function(event) {
                 if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
                     this.application.openEntry(personEntry, "profile");
                 }
             }));
             if (isOwner) {
-                on(construct.create("span", {"class": "icon24 toolDelete"}, navIcons), "click", lang.hitch(this, this._toggleOwner, personEntry, userDiv, false));
+                on(domConstruct.create("span", {"class": "icon24 toolDelete"}, navIcons), "click", lang.hitch(this, this._toggleOwner, personEntry, userDiv, false));
             } else if (isMember) {
-                on(construct.create("span", {"class": "icon24 toolAdd"}, navIcons), "click", lang.hitch(this, this._toggleOwner, personEntry, userDiv, true));
-                on(construct.create("span", {"class": "icon24 delete"}, navIcons), "click", lang.hitch(this, this._toggleMember, personEntry, userDiv, false));
+                on(domConstruct.create("span", {"class": "icon24 toolAdd"}, navIcons), "click", lang.hitch(this, this._toggleOwner, personEntry, userDiv, true));
+                on(domConstruct.create("span", {"class": "icon24 delete"}, navIcons), "click", lang.hitch(this, this._toggleMember, personEntry, userDiv, false));
             } else {
-                on(construct.create("span", {"class": "icon24 new"}, navIcons), "click", lang.hitch(this, this._toggleMember, personEntry, userDiv, true));
+                on(domConstruct.create("span", {"class": "icon24 new"}, navIcons), "click", lang.hitch(this, this._toggleMember, personEntry, userDiv, true));
             }
-            construct.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
+            domConstruct.create("a", {"class": "icon24 home", href: this.application.getHref(personEntry, "profile")}, navIcons);
         },
         _toggleOwner: function(memberEntry, node, add) {
             var acl = lang.clone(this._principalACL), id = memberEntry.getId();
@@ -249,7 +243,7 @@ define([
                         if (this._currentListState === "allusers") {
                             this._createPeopleCard(memberEntry, node);
                         } else {
-                            construct.destroy(node);
+                            domConstruct.destroy(node);
                         }
                     }));
                 }));

@@ -3,21 +3,20 @@ define([
     "exports",
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/array",
     "dojo/dom-construct",
     "dojo/on",
     "dijit/layout/_LayoutWidget",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
-    "dijit/layout/ContentPane",
+    "dijit/layout/ContentPane", //Used in template
     "dijit/TooltipDialog",
     "dojox/form/BusyButton",
     "dijit/form/Button",
     "dijit/Dialog",
     "dijit/popup",
     "dojo/text!./ButtonsBelowTemplate.html"
-], function (exports, declare, lang, array, construct, on,
-             _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, ContentPane, TooltipDialog, BusyButton, Button, Dialog, popup, template) {
+], function (exports, declare, lang, domConstruct, on, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin,
+             ContentPane, TooltipDialog, BusyButton, Button, Dialog, popup, template) {
 
     var ButtonsBelow = declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin], {
         templateString: template,
@@ -48,7 +47,7 @@ define([
         startup: function () {
             this.inherited("startup", arguments);
             this.doLayout = true;
-            var node =  construct.create("div");
+            var node =  domConstruct.create("div");
             this.set("content", node);
             this.buttonsBelow = new ButtonsBelow({}, node);
         },
@@ -230,7 +229,7 @@ define([
                 });
             };
             if (prepareDialog) {
-                var node = construct.create("div");
+                var node = domConstruct.create("div");
                 tooltipDialog.setContent(node);
                 prepareDialog(node, function () {
                     tooltipDialog.openPopup();
@@ -285,7 +284,7 @@ define([
             }));
         };
         if (prepareDialog) {
-            var node = construct.create("div");
+            var node = domConstruct.create("div");
             tooltipDialog.setContent(node);
             prepareDialog(node, function () {
                 tooltipDialog.openPopup();

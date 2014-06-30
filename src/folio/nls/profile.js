@@ -19,15 +19,12 @@
 
 define({
 	root : {
-		"userLabel" : "User:",
-		"groupLabel" : "Group:",
-		"userNameLabel" : "Username",
-		"groupNameLabel" : "Group name",
-		"homeContextLabel" : "Home portfolio",
-		"memberOfHeader" : "Is member of the following groups",
-		"membershipHeader" : "Members of the group",
-		"rightsHeader" : "Has access to the following Portfolios and Folders",
-		"latestMaterial" : "Latest material",
-		"generalProfile" : "General"
-	}
+		"memberOfHeader" : "Communities",
+		"membershipHeader" : "Members",
+        "folderWidthAccessHeader" : "Folders",
+		"latestMaterial" : "Recent material",
+        "featuredMaterial" : "Featured meaterial",
+        "noFeaturedMaterialNode" : "No featured material to show."
+	},
+    "sv": true
 });

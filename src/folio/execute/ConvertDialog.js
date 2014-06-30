@@ -1,28 +1,17 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/_base/array",
     "dojo/json",
     "dojo/on",
-    "dojo/dom-class",
-    "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dojo/_base/fx",
-    "dojo/fx",
-    "dojo/fx/easing",
-    "dijit/form/Select",
-    "dijit/form/Button",
-    "dijit/form/TextBox",
+    "dijit/form/TextBox", //in template
     "folio/util/Widget",
     "folio/util/dialog",
-    "dojox/form/FileInput",
-    "rdfjson/Graph",
-    "rdforms/model/Engine",
     "dojo/text!./ConvertDialogTemplate.html"
-], function (declare, lang, connect, array, json, on, domClass, style, construct, attr, fx, corefx, easing, Select,
-             Button, TextBox, Widget, dialog, FileInput, Graph, Engine, template) {
+], function (declare, lang, array, json, on, domConstruct, domAttr,
+             TextBox, Widget, dialog, template) {
 
     /**
      * Show a dialog for creating all kinds of things.
@@ -95,12 +84,12 @@ define(["dojo/_base/declare",
             this._loading = true;
 
             list.getPage(0, 10, lang.hitch(this, function(children) {
-                attr.set(this.pipelineBlock, "innerHTML", "");
+                domAttr.set(this.pipelineBlock, "innerHTML", "");
                 this._searchListPrincipals = [];
                 array.forEach(children, function(child) {
-                    var row = construct.create("div", {"class": "pipeline distinctBackground"}, this.pipelineBlock);
-                    var execute = construct.create("div", {"class": "icon redo pipelineExecute"}, row);
-                    construct.create("div", {"class": "pipelineLabel", innerHTML: folio.data.getLabel(child)}, row);
+                    var row = domConstruct.create("div", {"class": "pipeline distinctBackground"}, this.pipelineBlock);
+                    var execute = domConstruct.create("div", {"class": "icon redo pipelineExecute"}, row);
+                    domConstruct.create("div", {"class": "pipelineLabel", innerHTML: folio.data.getLabel(child)}, row);
                     on(execute, "click", lang.hitch(this, function() {
                         var ans = confirm("Convert entry \""+folio.data.getLabel(this.entry)+"\" to RDF in this portfolio with help of pipeline \""+folio.data.getLabel(child)+"\"?");
                         if (ans) {

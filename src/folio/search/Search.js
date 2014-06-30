@@ -1,22 +1,17 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
-    "dojo/on",
     "dojo/aspect",
-    "dojo/_base/array",
-    "dojo/json",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/store/Memory",
     "folio/util/Widget",
-    "dijit/form/TextBox",
+    "dijit/form/TextBox", //in template
     "dijit/form/FilteringSelect",
-    "./searchProviders",
+    "./searchProviders", // ok, local config.
     "dojo/text!./SearchTemplate.html"
-], function (declare, lang, connect, on, aspect, array, json, domClass, style, construct, attr, Memory, Widget, TextBox, FilteringSelect, providers, template) {
+], function (declare, lang, aspect, domStyle, domConstruct, domAttr, Memory, Widget, TextBox, FilteringSelect, providers, template) {
 
     return declare(Widget, {
         //===================================================
@@ -58,7 +53,7 @@ define(["dojo/_base/declare",
                 store: this._alternativeStore,
                 onChange: lang.hitch(this, this._switchToSearchAlternative),
                 searchAttr: "name"
-            }, construct.create("div", null, this._searchTypeChooser));
+            }, domConstruct.create("div", null, this._searchTypeChooser));
         },
 
         /**
@@ -108,10 +103,10 @@ define(["dojo/_base/declare",
             }));
         },
         _searchResultsChanged: function (nrOfHits) {
-  //          attr.set(this.resultCountNode, "innerHTML", lang.replace(this.resourceBundle.searchResults, {nrOfHits: nrOfHits || 0}));
+  //          domAttr.set(this.resultCountNode, "innerHTML", lang.replace(this.resourceBundle.searchResults, {nrOfHits: nrOfHits || 0}));
         },
         _searchResultsSearching: function () {
-    //        attr.set(this.resultCountNode, "innerHTML", this.resourceBundle ? this.resourceBundle.searchResultsSearching : "");
+    //        domAttr.set(this.resultCountNode, "innerHTML", this.resourceBundle ? this.resourceBundle.searchResultsSearching : "");
         },
         _getSearchDetails: function () {
         },
@@ -126,20 +121,20 @@ define(["dojo/_base/declare",
             if (this._currentSearchAlternative !== alternative) {
                 //Hide previous search alternative.
                 if (this._currentSearchAlternative != null) {
-                    style.set(this._searchAlternatives[this._currentSearchAlternative].searchDetails.domNode, "display", "none");
-                    style.set(this._searchAlternatives[this._currentSearchAlternative].searchResults.domNode, "display", "none");
+                    domStyle.set(this._searchAlternatives[this._currentSearchAlternative].searchDetails.domNode, "display", "none");
+                    domStyle.set(this._searchAlternatives[this._currentSearchAlternative].searchResults.domNode, "display", "none");
                 }
                 var info = this._alternativeStore.get(alternative);
                 if (info.logo) {
-                    attr.set(this._searchTypeLogo, "src", require.toUrl("folio/search/")+info.logo);
-                    style.set(this._searchTypeLogo, "display", "");
+                    domAttr.set(this._searchTypeLogo, "src", require.toUrl("folio/search/")+info.logo);
+                    domStyle.set(this._searchTypeLogo, "display", "");
                 } else {
-                    style.set(this._searchTypeLogo, "display", "none");
+                    domStyle.set(this._searchTypeLogo, "display", "none");
                 }
                 if (info.description) {
-                    attr.set(this._searchTypeInfo, "innerHTML", info.description);
+                    domAttr.set(this._searchTypeInfo, "innerHTML", info.description);
                 } else {
-                    attr.set(this._searchTypeInfo, "innerHTML", "");
+                    domAttr.set(this._searchTypeInfo, "innerHTML", "");
                 }
 
                 if (this._searchAlternatives[alternative] == null) {
@@ -149,10 +144,10 @@ define(["dojo/_base/declare",
                     var sDClsStr = info.detailsClass;
                     var sRClsStr = info.resultsClass;
                     require([sRClsStr, sDClsStr], lang.hitch(this, function (sRCls, sDCls) {
-                        alt.searchDetails = new sDCls({}, construct.create("div", null, this._searchDetailsContainer));
+                        alt.searchDetails = new sDCls({}, domConstruct.create("div", null, this._searchDetailsContainer));
                         alt.searchDetails.startup();
                         aspect.before(alt.searchDetails, "onChange", lang.hitch(this, this._searchFormChanged));
-                        alt.searchResults = new sRCls({}, construct.create("div", null, this._searchResultsContainer));
+                        alt.searchResults = new sRCls({}, domConstruct.create("div", null, this._searchResultsContainer));
                         alt.searchResults.startup();
                         aspect.before(alt.searchResults, "onResults", lang.hitch(this, this._searchResultsChanged));
                         aspect.before(alt.searchResults, "entrySelected", lang.hitch(this, function(entry) { //Neccessary anonymous function since otherwise chainging of aspect.before does not work (multiple steps).
@@ -161,8 +156,8 @@ define(["dojo/_base/declare",
                         callback && lang.isFunction(callback) && callback();
                     }));
                 } else {
-                    style.set(this._searchAlternatives[alternative].searchDetails.domNode, "display", "");
-                    style.set(this._searchAlternatives[alternative].searchResults.domNode, "display", "");
+                    domStyle.set(this._searchAlternatives[alternative].searchDetails.domNode, "display", "");
+                    domStyle.set(this._searchAlternatives[alternative].searchResults.domNode, "display", "");
                     this._currentSearchAlternative = alternative;
                     callback && lang.isFunction(callback) && callback();
                 }

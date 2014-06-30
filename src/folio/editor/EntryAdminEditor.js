@@ -21,7 +21,8 @@ dojo.provide("folio.editor.EntryAdminEditor");
 dojo.require("dijit._Widget");
 dojo.require("dijit._Templated");
 dojo.require("dijit.layout.ContentPane");
-
+dojo.require("dijit.Dialog");
+dojo.require("folio.ApplicationView");
 dojo.require("folio.create.ACL");
 dojo.require("folio.data.util");
 

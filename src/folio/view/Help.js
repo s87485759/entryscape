@@ -10,7 +10,7 @@ define([
     "folio/util/Widget",
     "dojo/text!./HelpTemplate.html",
     "./info/help/manifest.js" //Ignore error, it is correct
-], function(lang, declare, attr, Memory, ContentPane, BorderContainer, Tree, ObjectStoreModel, Widget, template, manifest) {
+], function(lang, declare, domAttr, Memory, ContentPane, BorderContainer, Tree, ObjectStoreModel, Widget, template, manifest) {
     return declare(Widget, {
         templateString: template,
         //===================================================
@@ -101,7 +101,7 @@ define([
         //===================================================
         _show: function(item) {
             //Select in tree
-            attr.set(this.helpHeaderNode, "innerHTML", item.name);
+            domAttr.set(this.helpHeaderNode, "innerHTML", item.name);
             var arr = (this.tree._itemNodeMap || this.tree._itemNodesMap)[item.id];
             if (arr && arr.length > 0) {
                 this.tree.set("selectedItems", [item]);

@@ -1,57 +1,57 @@
 <div class="entryDetails">
-	<div dojoType="dijit.layout.BorderContainer" gutters="false" dojoAttachPoint="detailsLayoutDijit" splitter="true" design="headline" style="width: 100%;height:100%">
-		<div dojoType="dijit.layout.ContentPane" class="header thinBorder distinctBackground" region="top">
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false,splitter:true,design:'headline'" data-dojo-attach-point="detailsLayoutDijit" style="width: 100%;height:100%">
+		<div data-dojo-type="dijit/layout/ContentPane" class="header thinBorder distinctBackground" data-dojo-props="region:'top'">
 				<div>
 					<div style="float: right;">
-						<div dojoType="dijit.form.Button" display="display: none" dojoAttachPoint="editContentButtonDijit" dojoAttachEvent="onClick: _editContentClicked"></div>
-						<div dojoType="dijit.form.ComboButton" dojoAttachPoint="embedButtonDijit" label="Embed">
-							<div dojoType="dijit.Menu" toggle="fade" dojoAttachPoint="configureMenuDijit">
-		                		<div dojoType="dijit.CheckedMenuItem" checked="false" dojoAttachPoint="webpageCheckDijit">webpage</div>
-		                		<div dojoType="dijit.CheckedMenuItem" checked="true" dojoAttachPoint="pdfCheckDijit">pdf</div>
-		                		<div dojoType="dijit.CheckedMenuItem" checked="true" dojoAttachPoint="flashCheckDijit">flash</div>
-		                		<div dojoType="dijit.CheckedMenuItem" checked="true" dojoAttachPoint="imageCheckDijit">image</div>
+						<div data-dojo-type="dijit/form/Button" data-dojo-attach-point="editContentButtonDijit" data-dojo-attach-events="onClick: _editContentClicked"></div>
+						<div data-dojo-type="dijit/form/ComboButton" data-dojo-attach-point="embedButtonDijit" data-dojo-props="label:'Embed'">
+							<div data-dojo-type="dijit/Menu" data-dojo-props="toggle:'fade'" data-dojo-attach-point="configureMenuDijit">
+		                		<div data-dojo-type="dijit/CheckedMenuItem" data-dojo-props="checked:false" data-dojo-attach-point="webpageCheckDijit">webpage</div>
+		                		<div data-dojo-type="dijit/CheckedMenuItem" data-dojo-props="checked:true" data-dojo-attach-point="pdfCheckDijit">pdf</div>
+		                		<div data-dojo-type="dijit/CheckedMenuItem" data-dojo-props="checked:true" data-dojo-attach-point="flashCheckDijit">flash</div>
+		                		<div data-dojo-type="dijit/CheckedMenuItem" data-dojo-props="checked:true" data-dojo-attach-point="imageCheckDijit">image</div>
 		            		</div>
 						</div>
 					</div>
 					<span class="resourceLabel">Resource:</span>&nbsp;
-					<span dojoAttachPoint="urlNode" class="resource">&nbsp;</span>
-					<span dojoAttachPoint="rssWrapperNode" style="display: none;margin-right: 0.5em">&nbsp;<span dojoAttachPoint="rssNode"></span></span>
+					<span data-dojo-attach-point="urlNode" class="resource">&nbsp;</span>
+					<span data-dojo-attach-point="rssWrapperNode" style="display: none;margin-right: 0.5em">&nbsp;<span data-dojo-attach-point="rssNode"></span></span>
 				</div>
-				<div dojoAttachPoint="referentsNode" style="display: none" class="referents">
-					<span class="referentsLabel" dojoAttachPoint="referentsLabelNode"></span>&nbsp;
-					<span class="referentsList" dojoAttachPoint="referentsListNode"></span>
+				<div data-dojo-attach-point="referentsNode" style="display: none" class="referents">
+					<span class="referentsLabel" data-dojo-attach-point="i18n">referentsLabel</span>&nbsp;
+					<span class="referentsList" data-dojo-attach-point="referentsListNode"></span>
 				</div>
 		</div>
-		<div dojoType="dijit.layout.BorderContainer" dojoAttachPoint="contentAreaDijit" region="center" gutters="false">
-			<div dojoType="folio.content.ContentViewSwitcher" style="height: 50%" region="top" splitter="true" dojoAttachPoint="contentViewDijit"></div>
-			<div dojoType="dijit.layout.BorderContainer" region="center" gutters="false">
-				<div dojoType="dijit.layout.ContentPane" class="header thinBorder distinctBackground" region="top" style="height: auto;">
+		<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-attach-point="contentAreaDijit" data-dojo-props="region:'center',gutters:false">
+			<div data-dojo-type="folio/content/ContentViewSwitcher" style="height: 50%" data-dojo-props="region:'top',splitter:true" data-dojo-attach-point="contentViewDijit"></div>
+			<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',gutters:false">
+				<div data-dojo-type="dijit/layout/ContentPane" class="header thinBorder distinctBackground" data-dojo-props="region:'top'" style="height: auto;">
 					<div style="float: right;height: 33px">
 					</div>
 					<span class="informationLabel">Information:</span>&nbsp;
-					<span dojoAttachPoint="mdUrlNode" >&nbsp;</span>
+					<span data-dojo-attach-point="mdUrlNode" >&nbsp;</span>
 				</div>
-				<div dojoType="dijit.layout.ContentPane" region="center">
-					<img class="imgPreview" dojoAttachPoint="imgPreviewNode"></img>
-					<div dojoAttachPoint="locInfoPaneNode" class="locInfoPane">
-						<h3 dojoAttachPoint="locInformationTextNode"></h3>
-						<div dojoAttachPoint="locMDDijit" dojoType="folio.editor.RFormsPresenter"></div>
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+					<img class="imgPreview" data-dojo-attach-point="imgPreviewNode"/>
+					<div data-dojo-attach-point="locInfoPaneNode" class="locInfoPane">
+						<h3 data-dojo-attach-point="i18n">locInformationText</h3>
+						<div data-dojo-attach-point="locMDDijit" data-dojo-type="folio/editor/RFormsPresenter"></div>
 					</div>
-					<div dojoAttachPoint="extInfoPaneNode" class="extInfoPane">
-						<h3 dojoAttachPoint="extInformationTextNode"></h3>
-						<div dojoAttachPoint="extMDDijit" dojoType="folio.editor.RFormsPresenter"></div>
+					<div data-dojo-attach-point="extInfoPaneNode" class="extInfoPane">
+						<h3 data-dojo-attach-point="i18n">extInformationText</h3>
+						<div data-dojo-attach-point="extMDDijit" data-dojo-type="folio/editor/RFormsPresenter"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div dojoType="dijit.layout.ContentPane" region="bottom" class="footer thinBorder distinctBackground">
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'" class="footer thinBorder distinctBackground">
 				<div class="createdAndModifiedBlock">
-					<div><b><span dojoAttachPoint="modifiedTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="modifiedNode"></span>&nbsp;&nbsp;</div>
-					<div><b><span dojoAttachPoint="createdTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="createdNode"></span>&nbsp;&nbsp;</div>
+					<div><b><span data-dojo-attach-point="i18n">modifiedText</span>:</b>&nbsp;<span data-dojo-attach-point="modifiedNode"></span>&nbsp;&nbsp;</div>
+					<div><b><span data-dojo-attach-point="i18n">createdText</span>:</b>&nbsp;<span data-dojo-attach-point="createdNode"></span>&nbsp;&nbsp;</div>
 				</div>
 				<div>
-					<div><b><span dojoAttachPoint="creatorTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="creatorNode"></span>&nbsp;&nbsp;</div>
-					<div style="display:none"><b><span dojoAttachPoint="accessTextNode"></span>:</b>&nbsp;<span dojoAttachPoint="accessNode"></span>&nbsp;&nbsp;</div>
+					<div><b><span data-dojo-attach-point="i18n">creatorText</span>:</b>&nbsp;<span data-dojo-attach-point="creatorNode"></span>&nbsp;&nbsp;</div>
+					<div style="display:none"><b><span data-dojo-attach-point="accessTextNode">accessText</span>:</b>&nbsp;<span data-dojo-attach-point="accessNode"></span>&nbsp;&nbsp;</div>
 				</div>
 		</div>
     </div>

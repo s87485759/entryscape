@@ -17,14 +17,11 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({
-	"userLabel": "Användare:",
-	"groupLabel": "Grupp:",
-	"userNameLabel": "Användarnamn",
-	"groupNameLabel": "Gruppnamn",
-	"homeContextLabel": "Hemportfölj",
-	"memberOfHeader": "Är medlem i följande grupper",
-	"membershipHeader": "Medlemmar i gruppen",
-	"rightsHeader": "Har tillgång till följande portföljer och kataloger",
-  	"latestMaterial": "Senaste materialet"
-})
+define({
+    "memberOfHeader" : "Grupper",
+    "membershipHeader" : "Medlemmar",
+    "folderWidthAccessHeader" : "Foldrar",
+    "latestMaterial" : "Senaste materialet",
+    "featuredMaterial" : "Utvalt meaterial",
+    "noFeaturedMaterialNode" : "Inget utvalt material att visa."
+});

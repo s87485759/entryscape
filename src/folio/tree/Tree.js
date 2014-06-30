@@ -1,3 +1,238 @@
+/*global define*/
+define(["dojo/_base/declare",
+    "dojo/_base/lang",
+    "dojo/on",
+    "dojo/dom-style",
+    "dojo/dom-attr",
+    "dojo/dom-construct",
+    "dojo/dom-geometry",
+    "dojo/_base/fx",
+    "folio/ApplicationView",
+    "folio/tree/TreeModel",
+    "dijit/layout/_LayoutWidget",
+    "dijit/_TemplatedMixin",
+    "dijit/_WidgetsInTemplateMixin",
+    "dijit/layout/BorderContainer", //Used in template
+    "dijit/layout/ContentPane",
+    "dijit/Tree",
+    "dojox/html/metrics",
+    "dojo/text!./TreeTemplate.html"
+], function(declare, lang, on, domStyle, domAttr, domConstruct, domGeometry, fx, ApplicationView,
+            TreeModel, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, BorderContainer,
+            ContentPane, Tree, metrics, template) {
+
+    return declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, ApplicationView], {
+        // A very simple list view using a table where every item
+        // in the list is listed on one row.
+        //
+        context: null,
+        initialized: false,
+        showing: false,
+
+        widgetsInTemplate: true,
+        templateString: template,
+
+        getSupportedActions: function () {
+            return ["changed", "deleted", "childrenChanged", "clear", "showEntry", "userChange", "localeChange", "viewState"];
+        },
+
+        resize: function () {
+            this.inherited("resize", arguments);
+            this.pinnedTreeDijit.resize();
+            this._resizeFloatingTree();
+        },
+        handle: function (event) {
+            switch (event.action) {
+                case "changed":
+                    this.tree._onItemChange(event.entry);
+                    break;
+                case "deleted":
+                    this.tree._onItemDelete(event.entry);
+                    break;
+                case "childrenChanged":
+                    this.tree.model.getChildren(event.entry, lang.hitch(this, function (children) {
+                        this.tree._onItemChildrenChange(event.entry, children);
+                    }));
+                case "userChange":
+                    if (this.context != null) {
+                        this.initTree(this.context.getId());
+                    }
+                    break;
+                case "showEntry":
+                    var newList = event.list || event.entry;
+                    if (this.folderItem != null && newList != null && this.folderItem.getUri() === newList.getUri()) {
+                        return;
+                    }
+                    var newContext = folio.data.isContext(newList) ? newList.getId() : newList.getContext().getId();
+
+                    if (!this.tree || (this.contextId !== newContext)) {
+                        this.initTree(newContext);
+                    }
+                    this.folderItem = newList;
+                    this.expandToNode(newList, lang.hitch(this, function () {
+                        this.tree.set("selectedItems", [newList]);
+                        /*				var treeNodeArr = (this.tree._itemNodeMap || this.tree._itemNodesMap)[this.tree.model.getIdentity(newList)];
+                         if (treeNodeArr && treeNodeArr.length > 0) {
+                         this.tree.set("selectedNode", treeNodeArr[0]);
+                         //this.tree._selectNode(treeNodeArr[0]);
+                         }*/
+                    }));
+                    break;
+                case "clear":
+                    if (this.tree) {
+                        this.pinnedTreeDijit.removeChild(this.ePane);
+                        this.tree = null;
+                    }
+                    break;
+                case "localeChange":
+                    if (this.tree) {
+                        if (this.ePane) {
+                            this.pinnedTreeDijit.removeChild(this.ePane);
+                        }
+                        this.tree = null;
+                    }
+                    if (this.initialized) {
+                        this.initTree(this.context.getId());
+                    }
+                    break;
+                case "viewState":
+                    if (event.treeVisible === true) {
+                        this.showTree();
+                    } else if (event.treeVisible === false) {
+                        this.hideTree();
+                    }
+                    break;
+            }
+        },
+        showTree: function () {
+            if (this.pinned) {
+                this.floatTree();
+            }
+            this.showing = true;
+            domStyle.set(this.floatingTreeNode, "display", "");
+            this.tree.resize();
+            this._resizeFloatingTree();
+            var left = -domGeometry.getMarginBox(this.floatingTreeNode).w;
+            domStyle.set(this.floatingTreeNode, "left", left);
+            fx.animateProperty({node: this.floatingTreeNode,
+                properties: {left: 0},
+                duration: 500
+            }).play();
+        },
+        hideTree: function () {
+            if (this.pinned) {
+                this.floatTree();
+            }
+            fx.animateProperty({node: this.floatingTreeNode,
+                properties: {left: -domGeometry.getMarginBox(this.floatingTreeNode).w},
+                duration: 500,
+                onEnd: lang.hitch(this, function () {
+                    domStyle.set(this.floatingTreeNode, "display", "none");
+                })
+            }).play();
+            this.showing = false;
+        },
+        togglePinTree: function () {
+            if (this.pinned) {
+                this.floatTree();
+            } else {
+                this.pinTree();
+            }
+        },
+        floatTree: function () {
+            this.pinnedTreeDijit.removeChild(this.ePane);
+            domConstruct.place(this.movableBlockNode, this.floatingTreeNode, "first");
+            domStyle.set(this.floatingTreeNode, "display", "");
+            this.pinned = false;
+            var config = this.application.getConfig();
+            domAttr.set(this.pushpinNode, "src", config.getIcon("pushpin", "22x22"));
+            this._resizeFloatingTree();
+        },
+        pinTree: function () {
+            var width = domGeometry.getMarginBox(this.floatingTreeNode).w + metrics.getScrollbar().w;
+            this.ePane = new ContentPane({splitter: true, style: "width: " + width + "px", region: "left"});
+            this.pinnedTreeDijit.addChild(this.ePane);
+            var div = domConstruct.create("div", {"class": "pinnedNode"});
+            this.ePane.attr("content", div);
+            domConstruct.place(this.movableBlockNode, div, "first");
+            domStyle.set(this.floatingTreeNode, "display", "none");
+            this.pinned = true;
+            var config = this.application.getConfig();
+            domAttr.set(this.pushpinNode, "src", config.getIcon("pushpin_pressed", "22x22"));
+        },
+        expandToNode: function (entry, callback) {
+            var expand = lang.hitch(this, function (branch, index) {
+                if (index >= branch.length - 1) {
+                    callback();
+                    return;
+                }
+                var treeNodeArr = (this.tree._itemNodeMap || this.tree._itemNodesMap)[this.tree.model.getIdentity(branch[index])];
+                if (treeNodeArr && treeNodeArr.length > 0) {
+                    var node = treeNodeArr[0];
+                    if (node.isExpanded) {
+                        expand(branch, index + 1);
+                    } else {
+                        this.tree._expandNode(node).addCallback(function () {
+                            expand(branch, index + 1);
+                        });
+                    }
+                }
+            });
+            entry.getContext().getEntryBranch(entry, function (branch) {
+                expand(branch, 0);
+            });
+        },
+        initTree: function (contextId) {
+            this.initialized = true;
+            this.contextId = contextId;
+            this.context = this.application.getStore().getContextFor({base: this.application.getRepository(), contextId: contextId, entryId: "_top"});
+            var treeModel = new TreeModel({store: this.store, application: this.application, onlyLists: true,
+                context: this.context, root: null});
+            if (this.tree != null) {
+                this.tree.destroy();
+            }
+            this.tree = new Tree({region: "left", model: treeModel, persist: false, showRoot: false,
+                onClick: lang.hitch(this, function (entry) {
+                    if (folio.data.isLinkLike(entry)) {
+                        folio.data.getLinkedLocalEntry(entry, lang.hitch(this, function (linkedEntry) {
+                            window.location = this.application.getHref(linkedEntry);
+                        }));
+                    } else {
+                        window.location = this.application.getHref(entry);
+                    }
+//						this.application.openEntry(entry);
+                }),
+                onLoad: lang.hitch(this, this._resizeFloatingTree)
+            }, domConstruct.create("div", null, this.treeNode));
+            this.tree.startup();
+        },
+        postCreate: function () {
+            this.inherited("postCreate", arguments);
+            domStyle.set(this.floatingTreeNode, "opacity", "0.90");
+            domStyle.set(this.floatingTreeNode, "left", "-400px");
+            var config = this.application.getConfig();
+            domAttr.set(this.pushpinNode, "src", config.getIcon("pushpin", "22x22"));
+            on(this.pushpinNode, "click", lang.hitch(this, this.togglePinTree));
+        },
+        _resizeFloatingTree: function () {
+            if (this.showing === false) {
+                return;
+            }
+            var containerBox = domGeometry.getMarginBox(this.domNode);
+            domStyle.set(this.floatingTreeNode, "width", "auto");
+            var treeBox = domGeometry.getMarginBox(this.floatingTreeNode);
+
+//		if (treeBox.h > containerBox.h) {
+//			domGeometry.getMarginBox(this.floatingTreeNode, {h: containerBox.h, w: treeBox.w+metrics.getScrollbar().w});
+            domGeometry.getMarginBox(this.floatingTreeNode, {h: containerBox.h});
+//		} else {
+            //		domGeometry.getMarginBox(this.floatingTreeNode, {h: containerBox.h});
+            //}
+        }
+    });
+});
+
+
 /*
  * Copyright (c) 2007-2010
  *
@@ -15,7 +250,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 dojo.provide("folio.tree.Tree");
 dojo.require("folio.tree.TreeModel");
@@ -27,13 +262,13 @@ dojo.require("dojox.layout.ExpandoPane");
 dojo.require("dojox.html.metrics");
 
 dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, folio.ApplicationView], {
-	// A very simple list view using a table where every item 
+	// A very simple list view using a table where every item
 	// in the list is listed on one row.
 	//
 	context: null,
 	initialized: false,
 	showing: false,
-	
+
 	widgetsInTemplate: true,
 	templatePath: dojo.moduleUrl("folio.tree", "TreeTemplate.html"),
 	constructor: function(args) {
@@ -74,14 +309,9 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 			if (!this.tree || (this.contextId !== newContext)) {
 				this.initTree(newContext);
 			}
-			this.folderItem  = newList;	
+			this.folderItem  = newList;
 			this.expandToNode(newList, dojo.hitch(this, function() {
 				this.tree.set("selectedItems", [newList]);
-/*				var treeNodeArr = (this.tree._itemNodeMap || this.tree._itemNodesMap)[this.tree.model.getIdentity(newList)];
-				if (treeNodeArr && treeNodeArr.length > 0) {
-					this.tree.set("selectedNode", treeNodeArr[0]);
-					//this.tree._selectNode(treeNodeArr[0]);
-				}*/
 			}));
 			break;
 		case "clear":
@@ -103,7 +333,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 			break;
 		case "viewState":
 			if (event.treeVisible === true) {
-				this.showTree();				
+				this.showTree();
 			} else if (event.treeVisible === false) {
 				this.hideTree();
 			}
@@ -120,7 +350,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		this._resizeFloatingTree();
 		var left = -dojo.marginBox(this.floatingTreeNode).w;
 		dojo.style(this.floatingTreeNode, "left", left);
-		dojo.animateProperty({node: this.floatingTreeNode, 
+		dojo.animateProperty({node: this.floatingTreeNode,
 							  properties:  {left: 0},
 							  duration: 500
         			 }).play();
@@ -129,7 +359,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		if (this.pinned) {
 			this.floatTree();
 		}
-		dojo.animateProperty({node: this.floatingTreeNode, 
+		dojo.animateProperty({node: this.floatingTreeNode,
 							  properties:  {left: -dojo.marginBox(this.floatingTreeNode).w},
 							  duration: 500,
 							  onEnd: dojo.hitch(this, function() {
@@ -181,9 +411,9 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 					this.tree._expandNode(node).addCallback(function() {
 						expand(branch, index+1);
 					});
-				}				
+				}
 			}
-		});		
+		});
 		entry.getContext().getEntryBranch(entry, function(branch) {
 			expand(branch, 0);
 		});
@@ -192,7 +422,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 		this.initialized = true;
 		this.contextId = contextId;
 		this.context = this.application.getStore().getContextFor({base: this.application.getRepository(), contextId: contextId, entryId: "_top"});
-		var treeModel = new folio.tree.TreeModel({store: this.store, application: this.application, onlyLists: true, 
+		var treeModel = new folio.tree.TreeModel({store: this.store, application: this.application, onlyLists: true,
 			context: this.context,root: null});
 		if (this.tree != null) {
 			this.tree.destroy();
@@ -214,7 +444,6 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 	},
 	postCreate: function() {
 		this.inherited("postCreate", arguments);
-        this.pinnedTreeDijit.set("gutters", false);
 		dojo.style(this.floatingTreeNode, "opacity","0.90");
 		dojo.style(this.floatingTreeNode, "left", "-400px");
 		var config = this.application.getConfig();
@@ -224,7 +453,7 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 	_resizeFloatingTree: function() {
 		if (this.showing === false) {
 			return;
-		} 
+		}
 		var containerBox = dojo.marginBox(this.domNode);
 		dojo.style(this.floatingTreeNode, "width", "auto");
 		var treeBox = dojo.marginBox(this.floatingTreeNode);
@@ -236,4 +465,4 @@ dojo.declare("folio.tree.Tree", [dijit.layout._LayoutWidget, dijit._Templated, f
 	//		dojo.marginBox(this.floatingTreeNode, {h: containerBox.h});
 		//}
 	}
-});
+});*/

@@ -28,7 +28,7 @@ define([
 // Experimental Plugins
     "dojox/editor/plugins/NormalizeIndentOutdent",
     "dojox/editor/plugins/FindReplace"
-], function (declare, lang, domClass, construct, attr, _LayoutWidget, Editor, xhr) {
+], function (declare, lang, domClass, domConstruct, domAttr, _LayoutWidget, Editor, xhr) {
 
     lang.extend(dojox.editor.plugins.Save, {save: function(content) {
         // Set the default header to post as a body of text/html.
@@ -66,25 +66,25 @@ define([
         },
 
         buildRendering: function() {
-            this.domNode = this.srcNodeRef || construct.create("div", null);
+            this.domNode = this.srcNodeRef || domConstruct.create("div", null);
             this._setPresenter();
         },
         _setPresenter: function() {
-            attr.set(this.domNode, "innerHTML", "");
+            domAttr.set(this.domNode, "innerHTML", "");
             domClass.add(this.domNode, "contentPresentationMode");
             xhr.get(this.entry.getResourceUri(), __confolio.application.getCommunicator().insertAuthArgs({
                 handleAs: "text",
                 preventCache: true
             })).then(
                     lang.hitch(this, function(data) {
-                        this.editor = new dijit.layout.ContentPane({content: data, height: "100%"}, construct.create("div", null, this.domNode));
+                        this.editor = new dijit.layout.ContentPane({content: data, height: "100%"}, domConstruct.create("div", null, this.domNode));
                     }),
                     lang.hitch(this, function() {
-                        this.editor = new dijit.layout.ContentPane({content: "No text yet", height: "100%"}, construct.create("div", null, this.domNode));
+                        this.editor = new dijit.layout.ContentPane({content: "No text yet", height: "100%"}, domConstruct.create("div", null, this.domNode));
                     }));
         },
         _setEditor: function() {
-            attr.set(this.domNode, "innerHTML", "");
+            domAttr.set(this.domNode, "innerHTML", "");
             domClass.remove(this.domNode, "contentPresentationMode");
             var plugins = [
                 {name: 'viewSource', stripScripts: true, stripComments: true},
@@ -105,10 +105,10 @@ define([
                 preventCache: true
             })).then(
                     lang.hitch(this, function(data) {
-                        this.editor = new Editor({value: data, plugins: plugins, height: "100%"}, construct.create("div", null, construct.create("div", {}, this.domNode)));
+                        this.editor = new Editor({value: data, plugins: plugins, height: "100%"}, domConstruct.create("div", null, domConstruct.create("div", {}, this.domNode)));
                     }),
                     lang.hitch(this, function() {
-                        this.editor = new Editor({value: "", plugins: plugins, height: "100%"}, construct.create("div", null, construct.create("div", {}, this.domNode)));
+                        this.editor = new Editor({value: "", plugins: plugins, height: "100%"}, domConstruct.create("div", null, domConstruct.create("div", {}, this.domNode)));
                     }));
         },
         resize: function() {
