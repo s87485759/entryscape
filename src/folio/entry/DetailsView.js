@@ -52,17 +52,11 @@ define([
         },
 
         getSupportedActions: function () {
-            return ["changed", "deleted", "clear", "showEntry", "userChange", "localeChange"];
+            return ["changed", "deleted", "clear", "showEntry", "userChange"];
         },
 
         handle: function (event) {
             switch (event.action) {
-                case "localeChange":
-                    this._details._localize();
-                    if (this._details.entry) {
-                        this._details.update(this._details.entry);
-                    }
-                    break;
                 case "showEntry":
                     if (folio.data.isListLike(event.entry)) {
                         this._details._parentListUrl = event.entry.getUri();

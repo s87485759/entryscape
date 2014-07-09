@@ -10,6 +10,7 @@ define(["dojo/_base/declare",
     "dojo/_base/fx",
     "folio/util/NLSMixin",
     "folio/util/utils",
+    "folio/util/dialog",
     "folio/content/ContentViewSwitcher", //in template
     "folio/editor/RFormsPresenter", //in template
     "dijit/layout/BorderContainer", //in template
@@ -23,9 +24,9 @@ define(["dojo/_base/declare",
     "dijit/_WidgetsInTemplateMixin",
     "dijit/focus",
     "dojo/text!./DetailsTemplate.html"
-], function (declare, lang, aspect, array, domStyle, domAttr, domClass, domConstruct, fx, NLSMixin, utils, ContentViewSwitcher,
-             RFormsPresenter, BorderContainer, ContentPane, Menu, CheckedMenuItem, Button, ComboButton, _LayoutWidget,
-             _TemplatedMixin, _WidgetsInTemplateMixin, focusUtil, template) {
+], function (declare, lang, aspect, array, domStyle, domAttr, domClass, domConstruct, fx, NLSMixin, utils, dialog,
+             ContentViewSwitcher, RFormsPresenter, BorderContainer, ContentPane, Menu, CheckedMenuItem, Button,
+             ComboButton, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, focusUtil, template) {
 
     /**
      * Shows an entry's metadata and an embedded version of the entry's resource if possible.
@@ -102,6 +103,11 @@ define(["dojo/_base/declare",
                 //Needs to be changed, does not work in built mode.
 //			AudioPlayer.setup(dojo.moduleUrl("folio", "../../lib/audio/player.swf"), {width: 280});			
             }
+        },
+        localeChange: function() {
+          if (this.entry) {
+              this.update(this.entry);
+          }
         },
         getChildren: function () {
             return [this.detailsLayoutDijit];
@@ -348,7 +354,7 @@ define(["dojo/_base/declare",
         var bb = __confolio.application.getBoundingBox();
         var width = Math.floor((bb.w < 600 ? bb.w : 600 ) * 0.70),
             height = Math.floor((bb.h < 700 ? bb.h : 700) * 0.70);
-        folio.util.dialog.launchToolKitDialog(node, function (innerNode, onReady) {
+        dialog.launchToolKitDialog(node, function (innerNode, onReady) {
             domStyle.set(innerNode, {
                 width: width + "px",
                 height: height + "px",
@@ -358,7 +364,7 @@ define(["dojo/_base/declare",
 
             domClass.add(innerNode, "confolio");
             domClass.add(innerNode, "mainPanel");
-            var details = new folio.entry.Details({
+            var details = new Details({
                 application: __confolio.application,
                 style: {"width": "100%", "height": "100%"},
                 doFade: false

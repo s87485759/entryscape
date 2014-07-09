@@ -76,9 +76,6 @@ define(["dojo/_base/declare",
         },
         handle: function (event) {
             switch (event.action) {
-                case "localeChange":
-                    this._localize();
-                    break;
                 case "showEntry":
                     if (!event.list) { //Avoid focus events within current list.
                         this.setCurrentFolder(event.entry);
@@ -90,6 +87,7 @@ define(["dojo/_base/declare",
                     break;
                 case "deleted":
                 case "clear":
+                case "localeChange":
                 case  "userChange":
                     if (this.stack.length > 0) {
                         this.application.getStore().loadEntry(this.stack[this.stack.length - 1].getUri(),

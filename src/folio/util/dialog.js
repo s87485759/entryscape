@@ -4,6 +4,7 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/dom-construct",
+    "dojo/dom-style",
     "dojo/on",
     "dijit/layout/_LayoutWidget",
     "dijit/_TemplatedMixin",
@@ -15,7 +16,7 @@ define([
     "dijit/Dialog",
     "dijit/popup",
     "dojo/text!./ButtonsBelowTemplate.html"
-], function (exports, declare, lang, domConstruct, on, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin,
+], function (exports, declare, lang, domConstruct, domStyle, on, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin,
              ContentPane, TooltipDialog, BusyButton, Button, Dialog, popup, template) {
 
     var ButtonsBelow = declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -241,6 +242,10 @@ define([
 
     var _TooltipDialog = declare(TooltipDialog, {
         orient: function () {
+        },
+        postCreate: function() {
+            this.inherited("postCreate", arguments);
+            domStyle.set(this.connectorNode, "display", "none");
         }
     });
 

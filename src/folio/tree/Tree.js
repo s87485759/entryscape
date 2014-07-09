@@ -172,7 +172,7 @@ define(["dojo/_base/declare",
                     if (node.isExpanded) {
                         expand(branch, index + 1);
                     } else {
-                        this.tree._expandNode(node).addCallback(function () {
+                        this.tree._expandNode(node).then(function () {
                             expand(branch, index + 1);
                         });
                     }
