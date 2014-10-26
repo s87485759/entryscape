@@ -1,8 +1,6 @@
 /*----------- NavigationBar ---------------*/
 .navigationBar {
     padding-top: 3px;
-    border-bottom-style: solid;
-    border-bottom-width: 5px;
     position: relative;
 }
 
