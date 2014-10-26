@@ -47,7 +47,7 @@ define([
             return this.dialog;
         },
         getBoundingBox: function () {
-            var vm = query(".viewMap", win.body())[0];
+            var vm = query(".spaSite")[0];
             return domGeometry.position(vm);
         },
         getRepository: function () {

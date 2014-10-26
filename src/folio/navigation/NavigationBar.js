@@ -141,7 +141,7 @@ define(["dojo/_base/declare",
             this.localize();
             this._loginAdjustments();
 
-            construct.place(this.controlMenuNode, query(".viewMap", win.body())[0]);
+            construct.place(this.controlMenuNode, query(".spaSite")[0]);
             this._blurLayer = construct.create("div", {style: {top: "0px", width: "100%", height: "100%", display: "none", position: "absolute", "z-index": 5}}, document.body);
             on(this._blurLayer, "click", lang.hitch(this, this._hideControlMenu));
         },

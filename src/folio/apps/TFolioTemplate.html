@@ -1,12 +1,10 @@
-<div style="overflow: hidden;flow: hidden" class="confolio">
+<div class="tfolio">
     <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-attach-point="bc" data-dojo-props="region:'center',gutters:false" class="confolioPanel">
-        <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false,region:'center'" class="mainPanel">
-            <div data-dojo-type="folio/navigation/Breadcrumbs" data-dojo-props="region:'top'"></div>
-            <div data-dojo-type="folio/tree/Tree" data-dojo-props="region:'center'" data-dojo-attach-point="treeDijit">
-                <div data-dojo-type="folio/list/ListView" data-dojo-attach-point="listView"></div>
-            </div>
-            <div data-dojo-type="folio/entry/DetailsView" data-dojo-props="region:'right',splitter:true" data-dojo-attach-point="detailsDijit" style="width: 50%"></div>
+        <div data-dojo-type="folio/navigation/Breadcrumbs" data-dojo-props="region:'top'"></div>
+        <div data-dojo-type="folio/tree/Tree" data-dojo-props="region:'center'" data-dojo-attach-point="treeDijit">
+            <div data-dojo-type="folio/list/ListView" data-dojo-attach-point="listView"></div>
         </div>
+        <div data-dojo-type="folio/entry/DetailsView" data-dojo-props="region:'right',splitter:true" data-dojo-attach-point="detailsDijit" style="width: 50%"></div>
     </div>
     <div data-dojo-type="folio/editor/RFormsEditorDialog"></div>
     <div data-dojo-type="folio/util/Message"></div>

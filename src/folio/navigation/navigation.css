@@ -1,9 +1,10 @@
 /*----------- NavigationBar ---------------*/
 .navigationBar {
-	padding-top: 3px;
-	border-bottom-style: solid;
-	border-bottom-width: 5px;
+    padding-top: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
 }
+
 .navigationBar .logo {
 	display: block;
 	width: 240px;
@@ -409,7 +410,7 @@
 
 
 /* ================PrincipalInfo========================*/
-.confolio .principalInfo {
+.entryscape .principalInfo {
 	padding: 7px 40px 10px 40px;
 	height: 86px;
 	-webkit-border-bottom-left-radius: 6px;
@@ -420,18 +421,18 @@
 	border-bottom-right-radius: 6px;
 }
 
-.principalInfoWrapper {
+.entryscape .principalInfoWrapper {
 	position: relative;
 }
 
-.confolio .breadcrumbs .principalInfo {
+.entryscape .breadcrumbs .principalInfo {
 	padding: 7px 35px 10px 35px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
 
-.confolio .principalInfoText {
+.entryscape .principalInfoText {
 	position: absolute;
 	top: 0px;
 	left: 80px;
@@ -441,7 +442,7 @@
 	overflow: hidden;
 }
 
-.confolio .principalInfo h1 {
+.entryscape .principalInfo h1 {
 	margin: 0px;
 	padding: 0px;
 	font-size: 30px;
@@ -449,23 +450,23 @@
 	color: #333;
 }
 
-.confolio .principalInfo .icon24 {
+.entryscape .principalInfo .icon24 {
 	vertical-align: middle;
 	margin-left: 5px;
 	margin-bottom: 2px;
 }
 
-.confolio .principalInfo .icon24.home {
+.entryscape .principalInfo .icon24.home {
 	margin-left: 20px;
 }
 
-.confolio .principalInfo .principalDescription {
+.entryscape .principalInfo .principalDescription {
 	font-size: large;
 	margin: 5px 0px;
 }
 
 
-.confolio .principalInfo .contactinfo {
+.entryscape .principalInfo .contactinfo {
 	line-height: 1px;
 	font-size: 10px;
 	font-weight: normal;
@@ -473,12 +474,12 @@
 	margin-left: 10px;
 }
 
-.confolio .principalInfo .contactinfo>a {
+.entryscape .principalInfo .contactinfo>a {
 	display: block;
 	line-height: 10px;
 	color: grey;
 }
 
-.confolio .principalInfo .contactinfo>a:hover {
+.entryscape .principalInfo .contactinfo>a:hover {
 	color: black;
 }
