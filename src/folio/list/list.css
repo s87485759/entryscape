@@ -307,36 +307,36 @@
 	display: block;
 }
 
-.confolio .simpleSearchList .info {
+.entryscape .simpleSearchList .info {
 	float: right;
 	margin-right: 0.3em;
 }
 
-.confolio .simpleSearchList .bookmark {
+.entryscape .simpleSearchList .bookmark {
 	float: right;
 	margin-right: 0.3em;
 }
 
 /*--- list controls----- */
-.confolio .listControlsPane {
+.entryscape .listControlsPane {
     border-top-width: 1px;
     border-top-style: solid;
     height: 25px;
 }
-.confolio .listControls {
+.entryscape .listControls {
     height: 100%;
 }
 
-.confolio .listControls>div {
+.entryscape .listControls>div {
     display: inline-block;
     margin-left: 10px;
     padding-top: 3px;
 }
 
-.confolio .listControls .listOrderChangerWrapper {
+.entryscape .listControls .listOrderChangerWrapper {
     float: right;
     margin-right: 10px;
 }
-.confolio .listControls .listOrderChanger {
+.entryscape .listControls .listOrderChanger {
     width: 8em;
 }

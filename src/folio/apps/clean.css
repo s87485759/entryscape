@@ -1,20 +1,19 @@
-@import "../../../lib/dojo-src/dijit/themes/claro/claro.css"; /* required when dijit */
-@import "../../../lib/dojo-src/dojo/resources/dojo.css";
-@import "../../../lib/dojo-src/dojox/image/resources/image.css"; /*some problem in this css file*/
-@import "../../../lib/dojo-src/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
-@import "../../../lib/dojo-src/dojox/layout/resources/ExpandoPane.css"; 
-@import "../../../lib/dojo-src/dojox/form/resources/BusyButton.css";
-@import "../../../lib/dojo-src/dojox/form/resources/RangeSlider.css";
-@import "../../../lib/dojo-src/dojox/grid/resources/claroGrid.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Save.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Preview.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/InsertEntity.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/PageBreak.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/Breadcrumb.css";
-@import "../../../lib/dojo-src/dojox/editor/plugins/resources/css/FindReplace.css";
-@import "../../../lib/dojo-src/dojox/widget/Toaster/Toaster.css";
-
+@import "../../../libs/dijit/themes/claro/claro.css"; /* required when dijit */
+@import "../../../libs/dojo/resources/dojo.css";
+@import "../../../libs/dojox/image/resources/image.css"; /*some problem in this css file*/
+@import "../../../libs/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
+@import "../../../libs/dojox/layout/resources/ExpandoPane.css";
+@import "../../../libs/dojox/form/resources/BusyButton.css";
+@import "../../../libs/dojox/form/resources/RangeSlider.css";
+@import "../../../libs/dojox/grid/resources/claroGrid.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/Save.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/Preview.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/InsertEntity.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/PageBreak.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/Breadcrumb.css";
+@import "../../../libs/dojox/editor/plugins/resources/css/FindReplace.css";
+@import "../../../libs/dojox/widget/Toaster/Toaster.css";
 @import "../../../libs/rdforms/view/resources/rdforms.css";
 
 @import "../create/create.css";
@@ -38,12 +37,12 @@ html, body {
 	overflow-y: hidden;
 }
 
-.siteMap {
+.spaSite {
 	position: relative;
 	height: 100%;
 }
 
-.siteMap .viewControllerWrapper {
+.spaSite .spaControl {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -51,7 +50,7 @@ html, body {
 	height: 40px;
 }
 
-.siteMap .viewMapWrapper {
+.spaSite .spaViews {
 	position: absolute;
 	top: 40px;
 	left: 0px;
@@ -71,10 +70,10 @@ html, body {
 	.navigationBar .searchField {
 		width: 160px;
 	}
-	.viewMap {
+	#spaViewsNode, #spaControlNode {
 		width: auto;
 	}
-	.viewController {
+	.spaControl {
 		width: auto !important;
 		top: 0px;
 		left: 0px;
@@ -89,10 +88,10 @@ html, body {
 		padding-right: 20px;
 		padding-left: 20px;
 	}
-	.viewMap {
+	#spaViewsNode, #spaControlNode {
 		width: auto;
 	}
-	.viewController {
+	.spaControl {
 		width: auto !important;
 		top: 0px;
 		left: 0px;
@@ -103,14 +102,14 @@ html, body {
 
 /* ============ Medium displays ==================== */
 @media (max-width: 979px) and (min-width: 768px) {
-	.viewMap, .viewController {
+	#spaViewsNode, #spaControlNode {
 		width: 724px;
 		max-width: 100%;
 	}
 }
 /* ============ Medium large displays ==================== */
 @media (min-width: 980px) and (max-width: 1199px) {
-	.viewMap, .viewController {
+	#spaViewsNode, #spaControlNode {
 		width: 940px;
 		max-width: 100%;
 	}
@@ -119,33 +118,20 @@ html, body {
 
 /* ============ Large displays ======================= */
 @media (min-width: 1200px) {
-	.viewMap, .viewController {
+	#spaViewsNode, #spaControlNode {
 		width: 1170px;
 		max-width: 100%;
 	}
 }
 
-.viewMap, .viewController {
+#spaViewsNode, #spaControlNode {
 	margin-left: auto;
 	margin-right: auto;
+    height: 100%;
 }
 
-.simpleFolio {
-	width: 100%;
-	height: 100%;
-}
-
-.confolio {
-	height: 100%;
-}
-
-.mainPanel {
-	margin: 5px;
-	margin-top: 0px;
-}
-.confolioPanel {
-	width: 100%;
-	height: 100%;
+#spaViewsNode>div {
+    height: 100%;
 }
 
 .folioTreeLabelSelected {
@@ -214,17 +200,6 @@ a:hover, .link:hover {
 	margin: 0;
 }*/
 
-.annotationprofileeditor .editTab {
-	border-width: 1px;
-	border-style: solid;
-	border-left-width: 0px;
-}
-
-.annotationprofileeditor .editTabEditStateButtons {
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
 /*  Pagination */
 .pagination {
 	text-align: center;
@@ -261,7 +236,7 @@ a:hover, .link:hover {
 	overflow: auto;	
 }*/
 
-.claro .confolio .dijitContentPane {
+.claro .entryscape .dijitContentPane {
     padding: 0px;
 }
 
@@ -275,10 +250,6 @@ a:hover, .link:hover {
 	content: "▼"; vertical-align: middle;
 }*/
 
-/* Ensure proper positioning for the application (needed in Opera) */
-.confolioPanel {
-	float: left;
-}
 
 /* Tree */
 .tree .expander {
@@ -318,23 +289,23 @@ a:hover, .link:hover {
 
 /* ViewMap */
 
-.viewMap .inline {
+.spaSite .inline {
 	display: inline-block;
 }
 
-.viewMap .breadCrumbs .view {
+.spaSite .breadCrumbs .view {
 	text-decoration: underline;
 	cursor: default;
 }
-.viewMap .breadCrumbs .view.current {
+.spaSite .breadCrumbs .view.current {
 	text-decoration: none;
 }
-.viewMap .breadCrumbs .separator {
+.spaSite .breadCrumbs .separator {
 	padding-right: 0.3em;
 	padding-left: 0.3em;
 }
 
-.viewMap.widescreen {
+.spaSite.widescreen {
 	height: 100%;
 }
 
@@ -390,7 +361,7 @@ a:hover, .link:hover {
 	text-align: center;
 }
 
-.confolio .largerText.searchField {
+.entryscape .largerText.searchField {
 	color: black;
 }
 
@@ -427,46 +398,46 @@ a:hover, .link:hover {
 }
 
 /*------Help view--------------------------*/
-.confolio.help {
+.entryscape.help {
 	font-size: larger;
 }
 
-.confolio.help .helpOverview {
+.entryscape.help .helpOverview {
 	margin: 1em;
 }
 
-.confolio.help .helpContent {
+.entryscape.help .helpContent {
 	padding-left: 2em;
 	padding-right: 2em;
 }
 
 
 /*------IconTitleRow, used in start, userProfile and groupProfile-------------*/
-.confolio .iconTitleRow {
+.entryscape .iconTitleRow {
 	margin-left: 0.3em;
 	margin-bottom: 0.3em;
 }
-.confolio .iconTitleRow img {
+.entryscape .iconTitleRow img {
 	width: 24px;
 	height: auto;
 }
-.confolio .iconTitleRow a {
+.entryscape .iconTitleRow a {
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 0.6em;
 	margin-left: 0.4em;
 }
 
-.confolio .roundPane {
+.entryscape .roundPane {
 	margin: 0px;
 	padding: 20px;
 	background: white;
 }
 
-.confolio .roundPane.noLeftMargin {
+.entryscape .roundPane.noLeftMargin {
 	margin-left: 0px;
 }
-.confolio .roundHeader {
+.entryscape .roundHeader {
 	border-bottom-style: solid;
 	padding: 3px;
 	padding-left: 15px;
@@ -474,20 +445,20 @@ a:hover, .link:hover {
 	margin-top: 1em;
 }
 
-.confolio .largerText {
+.entryscape .largerText {
 	font-size:larger;	
 	font-weight: bold;
 	vertical-align: middle;
 }
 
-.confolio .invertedText {
+.entryscape .invertedText {
 }
-.confolio .roundBody {
+.entryscape .roundBody {
 	margin-left: 15px;
 	margin-right: 5px;
 }
 
-.confolio .group {
+.entryscape .group {
 	position: relative;
 	padding: 0.5em;
 	border-width: 1px;
@@ -498,7 +469,7 @@ a:hover, .link:hover {
 /*	margin-left: -0.7em;*/
 	overflow-x: auto;
 }
-.confolio .groupHeader {
+.entryscape .groupHeader {
 	position: relative;
 	display:inline;
 	z-index: 100;
@@ -592,15 +563,15 @@ a:hover, .link:hover {
 .card:hover .navIcons {
     display: block;
 }
-.confolio .card .img-wrap,
-.confolio .card .principalPicture {
+.entryscape .card .img-wrap,
+.entryscape .card .principalPicture {
     position: relative;
     vertical-align: middle;
     display: table-cell;
 }
 
 .card .img-wrap,
-.confolio .principalPicture {
+.entryscape .principalPicture {
     position: absolute;
     width: 80px;
     height: 80px;
@@ -613,14 +584,31 @@ a:hover, .link:hover {
 }
 
 .card .img-wrap img,
-.confolio .principalPicture img{
+.entryscape .principalPicture img{
     max-width: 80px;
     max-height: 80px;
     display: block;
     margin: 0 auto;
 }
 
-.confolio .card>span {
+.entryscape .card>span {
     margin-top: 5px;
     display: block;
+}
+
+/* tfolio */
+.tfolio {
+    overflow: hidden;
+    flow: hidden;
+    position: relative;
+    background: #EEE;
+}
+
+.tfolio>.confolioPanel {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: white;
 }
