@@ -23,7 +23,7 @@ define([
     "dojo/text!./CommentDialogTemplate.html"
 ], function (declare, lang, array, winUtil, win, domStyle, domConstruct, domAttr, xhr,
              Dialog, focusUtil, Widget, Comment, BusyButton, BorderContainer, ContentPane, Editor,
-             Graph, Engine, Editor, template) {
+             Graph, Engine, RDFormsEditor, template) {
 
     /**
      * Shows a dialog within which all comments for an entry are displayed.
@@ -80,7 +80,7 @@ define([
                 var binding = Engine.match(this.graph, this.resourceURI, template);
                 var node = domConstruct.create("div");
                 this.mdEditorContainer.set("content", node);
-                this.mdEditor = new Editor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
+                this.mdEditor = new RDFormsEditor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
                 this.contentEditorDijit.set("value", "");
             }));
         },

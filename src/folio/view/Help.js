@@ -8,9 +8,8 @@ define([
     "dijit/Tree",
     "dijit/tree/ObjectStoreModel",
     "folio/util/Widget",
-    "dojo/text!./HelpTemplate.html",
-    "./info/help/manifest.js" //Ignore error, it is correct
-], function(lang, declare, domAttr, Memory, ContentPane, BorderContainer, Tree, ObjectStoreModel, Widget, template, manifest) {
+    "dojo/text!./HelpTemplate.html"
+], function(lang, declare, domAttr, Memory, ContentPane, BorderContainer, Tree, ObjectStoreModel, Widget, template) {
     return declare(Widget, {
         templateString: template,
         //===================================================
@@ -30,43 +29,45 @@ define([
             this.inherited("postCreate", arguments);
 
             this.application = __confolio.application;
-            this.store = new Memory({
-                data: [{id: "root", children: manifest.outline}],
-                getChildren: function(object){
-                    return object.children || [];
-                },
-                get: function(id, parent) {
-                    if (id === "root") {
-                        return this.data[0];
-                    } else if (parent) {
-                        for (var i=0; i<parent.children.length;i++) {
-                            var item = parent.children[i];
-                            if (item.id === id) {
-                                return item;
-                            } else if (item.children) {
-                                var obj = this.get(id, item);
-                                if (obj) {
-                                    return obj;
+            require(["./info/help/manifest.js"], lang.hitch(this, function(manifest) {
+                this.store = new Memory({
+                    data: [{id: "root", children: manifest.outline}],
+                    getChildren: function(object){
+                        return object.children || [];
+                    },
+                    get: function(id, parent) {
+                        if (id === "root") {
+                            return this.data[0];
+                        } else if (parent) {
+                            for (var i=0; i<parent.children.length;i++) {
+                                var item = parent.children[i];
+                                if (item.id === id) {
+                                    return item;
+                                } else if (item.children) {
+                                    var obj = this.get(id, item);
+                                    if (obj) {
+                                        return obj;
+                                    }
                                 }
                             }
+                        } else {
+                            return this.get(id, this.data[0]);
                         }
-                    } else {
-                        return this.get(id, this.data[0]);
                     }
-                }
-            });
+                });
+                this.treeModel = new ObjectStoreModel({
+                    store: this.store,
+                    query: {id: 'root'},
+                    mayHaveChildren: function(item){
+                        return "children" in item;
+                    }
+                });
+                this.tree.set("model", this.treeModel);
+            }));
 
-            var treeModel = new ObjectStoreModel({
-                store: this.store,
-                query: {id: 'root'},
-                mayHaveChildren: function(item){
-                    return "children" in item;
-                }
-            });
 
             this.tree = new Tree({
                 showRoot: false,
-                model: treeModel,
                 onClick: dojo.hitch(this, function(item) {
                     //To provide history and bookmarkability
                     this.application.open("help", {"page": item.id});

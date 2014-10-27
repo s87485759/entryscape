@@ -105,11 +105,11 @@ define(["dojo/_base/declare",
             this.inherited("postCreate", arguments);
             if (this.showHelp) {
                 style.set(this.helpLinkSpan, "display", "");
-                attr.set(this.helpLinkNode, "href", __confolio.viewMap.getHashUrl("help", {}));
+                attr.set(this.helpLinkNode, "href", this.site.getHashUrl("help", {}));
             }
             if (this.showAbout) {
                 style.set(this.aboutLinkSpan, "display", "");
-                attr.set(this.aboutLinkNode, "href", __confolio.viewMap.getHashUrl("about", {}));
+                attr.set(this.aboutLinkNode, "href", this.site.getHashUrl("about", {}));
             }
             var config = this.application.getConfig();
             on(this.searchField, "keyUp", lang.hitch(this, function (evt) {
@@ -136,10 +136,10 @@ define(["dojo/_base/declare",
                 this.localeChanger.set("value", kernel.locale.substring(0, 2));
             }
             setTimeout(lang.hitch(this, function () {
+                this._loginAdjustments(); //delayed due to siteManager not set in application yet..
                 aspect.before(this.localeChanger, "onChange", lang.hitch(this, this._changeLocaleClicked));
             }), 100);
             this.localize();
-            this._loginAdjustments();
 
             construct.place(this.controlMenuNode, query(".navigationBar")[0]);
             this._blurLayer = construct.create("div", {style: {top: "0px", width: "100%", height: "100%", display: "none", position: "absolute", "z-index": 5}}, document.body);
