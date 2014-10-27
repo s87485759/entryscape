@@ -24,6 +24,7 @@ var profile = {
 		    include: [
 		    	"spa/init",
                 "spa/Site",
+                "folio/Application",
 				"folio/navigation/NavigationBar",
 				"folio/apps/TFolio",
 				"folio/start/Start",
