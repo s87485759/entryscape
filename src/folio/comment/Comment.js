@@ -3,12 +3,11 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/dom-attr",
-    "dojo/_base/connect",
-    "folio/editor/RFormsPresenter",
+    "folio/editor/RFormsPresenter", //in template
+    "folio/content/ContentViewSwitcher", //in template
     "folio/util/Widget",
-    "dijit/Editor",
     "dojo/text!./CommentTemplate.html"
-], function(declare, lang, attr, connect, RFormsPresenter, Widget, Editor, template) {
+], function(declare, lang, domAttr, RFormsPresenter, ContentViewSwitcher, Widget, template) {
 
     return declare(Widget, {
         templateString: template,
@@ -34,17 +33,17 @@ define([
             this.presenterDijit.show(this.entry, false);
             var cre = this.entry.getCreationDate();
             if (cre != null) {
-                attr.set(this.timeNode, "innerHTML", cre);
+                domAttr.set(this.timeNode, "innerHTML", cre);
             }
             var creator = this.entry.getCreator();
             if (creator != null) {
                 this.application.getStore().loadEntry(creator, {}, lang.hitch(this, function(ent) {
-                    attr.set(this.creatorNode, "innerHTML", folio.data.getLabel(ent));
+                    domAttr.set(this.creatorNode, "innerHTML", folio.data.getLabel(ent));
                 }),lang.hitch(this, function(mesg) {
-                    attr.set(this.creatorNode, "innerHTML", "Unknown");
+                    domAttr.set(this.creatorNode, "innerHTML", "Unknown");
                 }));
             } else {
-                attr.set(this.creatorNode, "innerHTML", "Unknown");
+                domAttr.set(this.creatorNode, "innerHTML", "Unknown");
             }
             this.contentViewDijit.show(this.entry);
         }

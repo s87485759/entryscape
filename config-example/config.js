@@ -29,7 +29,6 @@ __confolio.addConfig({
         {"name": "settings", "class": "folio/settings/Settings"},
         {"name": "search", "class": "folio/search/Search"},
         {"name": "about", "class": "folio/view/About"},
-        {"name": "signup", "class": "folio/view/Signup"},
         {"name": "slides", "class": "folio/view/Slides"},
         {"name": "ldbrowser", "class": "folio/view/LDBrowser"},
         {"name": "account", "class": "folio/security/Account"},

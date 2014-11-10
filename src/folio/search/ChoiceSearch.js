@@ -6,11 +6,11 @@ define(["dojo/_base/declare",
     "dojo/dom-attr",
     "dijit/Dialog",
     "folio/util/Widget",
-    "folio/search/Search",
-	"rforms/model/system",
-    "rforms/utils",
+    "folio/search/Search", //in template
+	"rdforms/model/system",
+    "rdforms/utils",
     "dojo/text!./ChoiceSearchTemplate.html"
-], function(declare, lang, aspect, style, attr, Dialog, Widget, Search, system, rutils, template) {
+], function(declare, lang, aspect, domStyle, domAttr, Dialog, Widget, Search, system, utils, template) {
 
     var Inner = declare(Widget, {
         templateString: template,
@@ -21,9 +21,9 @@ define(["dojo/_base/declare",
             aspect.before(this.search, "entrySelected", lang.hitch(this, this._entrySelected));
             this.originalChoice = this.binding.getChoice(); //Ok since this must be a ChoiceBinding.
             if (this.originalChoice == null) {
-                attr.set(this.originalChoiceNode, "innerHTML", "-");
+                domAttr.set(this.originalChoiceNode, "innerHTML", "-");
             } else {
-                attr.set(this.originalChoiceNode, "innerHTML", rutils.getLocalizedValue(this.originalChoice.label).value || this.originalChoice.value)
+                domAttr.set(this.originalChoiceNode, "innerHTML", utils.getLocalizedValue(this.originalChoice.label).value || this.originalChoice.value)
 
             }
 
@@ -31,7 +31,7 @@ define(["dojo/_base/declare",
                 title: "Search for resources"
             });
             this.dialog.set("content", this.domNode);
-            style.set(this.domNode, {"width": "800px", "height": "550px"});
+            domStyle.set(this.domNode, {"width": "800px", "height": "550px"});
             this.dialog.startup();
             this.dialog.show();
         },
@@ -39,7 +39,7 @@ define(["dojo/_base/declare",
         _entrySelected: function(entry) {
             this.choice = {value: entry.getResourceUri(), inlineSeeAlso: true};
             if (entry.getContext().isSearch) {
-                this.choice.label = rutils.getLocalizedMap(entry.getLocalMetadata(), entry.getResourceUri(), folio.data.DCTermsSchema.TITLE);
+                this.choice.label = utils.getLocalizedMap(entry.getLocalMetadata(), entry.getResourceUri(), folio.data.DCTermsSchema.TITLE);
                 if (!this.choice.label) {
                     this.choice.label = {"": entry.getResourceUri()};
                 }
@@ -53,7 +53,7 @@ define(["dojo/_base/declare",
                 this.choice.description = {en: folio.data.getDescription(entry)};
                 this.choice.seeAlso = entry.getUri();
             }
-            attr.set(this.newChoiceNode, "innerHTML", rutils.getLocalizedValue(this.choice.label).value || this.choice.value);
+            domAttr.set(this.newChoiceNode, "innerHTML", utils.getLocalizedValue(this.choice.label).value || this.choice.value);
             this.chooseButton.set("disabled", this.originalChoice != null && this.originalChoice.value === this.choice.value);
         },
         _cancel: function() {

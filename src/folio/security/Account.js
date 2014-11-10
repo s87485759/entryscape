@@ -1,16 +1,12 @@
 /*global define, __confolio*/
 define([
     "dojo/_base/declare",
-    "dojo/_base/lang",
     "dojo/_base/array",
-    "dojo/_base/connect",
-    "dojo/dom-class",
-    "dojo/dom-style",
     "dojo/dom-construct",
     "./authorize",
     "folio/util/Widget",
     "dojo/text!./AccountTemplate.html"
-], function (declare, lang, array, connect, domClass, style, construct, authorize, Widget, template) {
+], function (declare, array, domConstruct, authorize, Widget, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
@@ -31,8 +27,8 @@ define([
             var config = __confolio.application.getConfig();
             array.forEach(authorize.providers, function(provider) {
                 var src = __confolio.application.getRepository()+"auth/openid/"+provider.id+"/signup?redirectOnSuccess="+encodeURIComponent(window.location.href);
-                var node = construct.create("a", {"class": "provider", href: src}, this.signupProviders);
-                construct.create("img", {src: config.getIcon("openid-"+provider.id, "64x64")}, construct.create("div", {"class": "img-wrap"}, node));
+                var node = domConstruct.create("a", {"class": "provider", href: src}, this.signupProviders);
+                domConstruct.create("img", {src: config.getIcon("openid-"+provider.id, "64x64")}, domConstruct.create("div", {"class": "img-wrap"}, node));
                 //on(node, "click", lang.hitch(this, this.showOpenIdDialog, provider));
             }, this);
         },

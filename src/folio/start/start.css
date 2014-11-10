@@ -1,3 +1,7 @@
+.confolio.startPage {
+    position: relative;
+}
+
 .confolio.startPage .startHeader {
 	padding: 35px 80px 20px 80px;
 	height: 120px;

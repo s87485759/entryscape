@@ -148,7 +148,8 @@ return declare(null, {
 					event.stop(ev);
 					break;
                 case keys.LEFT_ARROW:
-                case keys.BACKSPACE:
+                case 85: // Letter u should go one level up.
+                // Note: Backspace per browser default means previous page which might coincide, but not neccessarily.
                     var refs = this.list.getReferrents();
                     if (refs.length > 0) {
                         this.application.openEntry(refs[0]);

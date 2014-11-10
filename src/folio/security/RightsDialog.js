@@ -1,26 +1,19 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/_base/array",
     "dojo/on",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dojo/_base/fx",
-    "dojo/fx",
-    "dojo/fx/easing",
     "dijit/form/Select",
-    "dijit/form/Button",
+    "dijit/form/Button", //in template
+    "dijit/form/CheckBox", //in template
     "folio/util/Widget",
     "folio/util/dialog",
-    "dojox/form/FileInput",
-    "rdfjson/Graph",
-    "rforms/model/Engine",
     "dojo/text!./RightsDialogTemplate.html"
-], function (declare, lang, connect, array, on, domClass, style, construct, attr, fx, corefx, easing, Select,
-             Button, Widget, dialog, FileInput, Graph, Engine, template) {
+], function (declare, lang, array, on, domStyle, domConstruct, domAttr, Select,
+             Button, CheckBox, Widget, dialog, template) {
 
     /**
      * Show a dialog for creating all kinds of things.
@@ -56,7 +49,7 @@ define(["dojo/_base/declare",
         postCreate: function() {
             this.inherited("postCreate", arguments);
             if (this.entry.getBuiltinType() === folio.data.BuiltinType.LIST) {
-                style.set(this.applyRecursiveBlock, "display", "");
+                domStyle.set(this.applyRecursiveBlock, "display", "");
             }
             this.entry.getContext().getOwnEntry(lang.hitch(this, function(contextEntry) {
                 this._entryACLList = folio.data.getACLList(this.entry);
@@ -131,13 +124,13 @@ define(["dojo/_base/declare",
 
         _render: function() {
             this._renderOwners();
-            attr.set(this.shareBlock, "innerHTML", "");
+            domAttr.set(this.shareBlock, "innerHTML", "");
             this._renderGuestAndUsers();
             this._renderCustom();
         },
 
         _renderOwners: function() {
-            attr.set(this.owners, "innerHTML", "");
+            domAttr.set(this.owners, "innerHTML", "");
             array.forEach(this._contextEntryACLList, lang.hitch(this, function(ac) {
                 if (ac.admin) {
                     var entry = this._entryIdx[ac.uri];
@@ -190,8 +183,8 @@ define(["dojo/_base/declare",
             this._renderCustomRow(ac, folio.data.isUser(entry), folio.data.getLabel(entry), true);
         },
         _renderCustomRow: function(ac, isUser, label, canRemove) {
-            var row = construct.create("div", null, this.shareBlock);
-            this._renderPrincipal(isUser, label, construct.create("div", {"class": "principalLabel"}, row));
+            var row = domConstruct.create("div", null, this.shareBlock);
+            this._renderPrincipal(isUser, label, domConstruct.create("div", {"class": "principalLabel"}, row));
             var access, txt;
             if (ac.admin) {
                 access = "admin";
@@ -233,12 +226,12 @@ define(["dojo/_base/declare",
                     }
                     self.dialog.setFinishButtonDisabled(false);
                 }
-                new Select({onChange: f, options: this._options, value: access}, construct.create("div", null, construct.create("div", {"class": "accessRights"}, row)));
+                new Select({onChange: f, options: this._options, value: access}, domConstruct.create("div", null, domConstruct.create("div", {"class": "accessRights"}, row)));
             } else {
-                construct.create("div", {"innerHTML": txt}, construct.create("div", {"class": "accessRights"}, row));
+                domConstruct.create("div", {"innerHTML": txt}, domConstruct.create("div", {"class": "accessRights"}, row));
             }
             if (canRemove) {
-                var node = construct.create("span", {"class": "icon delete"}, construct.create("div", {"class": "removeRow"}, row));
+                var node = domConstruct.create("span", {"class": "icon delete"}, domConstruct.create("div", {"class": "removeRow"}, row));
                 on(node, "click", lang.hitch(this, function() {
                     this._entryACLList = array.filter(this._entryACLList, function(elem) {
                         return elem !== ac;
@@ -248,30 +241,30 @@ define(["dojo/_base/declare",
                     this.dialog.setFinishButtonDisabled(false);
                 }));
             } else {
-                construct.create("span", {"class": "icon delete disabled"}, construct.create("div", {"class": "removeRow"}, row));
+                domConstruct.create("span", {"class": "icon delete disabled"}, domConstruct.create("div", {"class": "removeRow"}, row));
             }
         },
 
         _renderPrincipal: function(isUser, label, parent, underlineSubstr) {
-            var pnode = construct.create("div", {"class": "principal"}, parent);
+            var pnode = domConstruct.create("div", {"class": "principal"}, parent);
             if (isUser) {
-                construct.create("img", {"src": this.application.getConfig().getIcon("user", "16x16")}, pnode);
+                domConstruct.create("img", {"src": this.application.getConfig().getIcon("user", "16x16")}, pnode);
             } else {
-                construct.create("img", {"src": this.application.getConfig().getIcon("group", "16x16")}, pnode);
+                domConstruct.create("img", {"src": this.application.getConfig().getIcon("group", "16x16")}, pnode);
             }
             if (underlineSubstr == null || label.indexOf(underlineSubstr) === -1) {
-                construct.create("span", {"innerHTML": label}, pnode);
+                domConstruct.create("span", {"innerHTML": label}, pnode);
             } else {
                 var idx = label.indexOf(underlineSubstr);
-                construct.create("span", {"innerHTML": label.substr(0,idx)}, pnode);
-                construct.create("span", {"class": "match", "innerHTML": label.substr(idx, underlineSubstr.length)}, pnode);
-                construct.create("span", {"innerHTML": label.substr(idx+underlineSubstr.length)}, pnode);
+                domConstruct.create("span", {"innerHTML": label.substr(0,idx)}, pnode);
+                domConstruct.create("span", {"class": "match", "innerHTML": label.substr(idx, underlineSubstr.length)}, pnode);
+                domConstruct.create("span", {"innerHTML": label.substr(idx+underlineSubstr.length)}, pnode);
             }
             return pnode;
         },
         _renderAddPrincipal: function(isUser, label, parent, underlineSubstr) {
             var node = this._renderPrincipal(isUser, label, parent, underlineSubstr);
-            construct.create("span", {"class":"icon new"}, node);
+            domConstruct.create("span", {"class":"icon new"}, node);
         },
 
         _setOverride: function(to) {
@@ -294,7 +287,7 @@ define(["dojo/_base/declare",
             } else {
                 this._overridden = false;
                 this.setI18nState(1);
-                attr.set(this.searchResults, "innerHTML", "");
+                domAttr.set(this.searchResults, "innerHTML", "");
                 this.principalSearch.set("value", "");
                 this.principalSearch.set("disabled", true);
                 this.dialog && this.dialog.setFinishButtonDisabled(false);
@@ -331,7 +324,7 @@ define(["dojo/_base/declare",
             this._loading = true;
 
             list.getPage(0, 10, lang.hitch(this, function(children) {
-                attr.set(this.searchResults, "innerHTML", "");
+                domAttr.set(this.searchResults, "innerHTML", "");
                 this._searchListPrincipals = [];
                 array.forEach(children, function(child) {
                     var entryId = child.getId();

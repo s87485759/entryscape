@@ -1,18 +1,15 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "folio/util/Widget",
-    "dojox/form/BusyButton",
+    "dojox/form/BusyButton", //in template
     "folio/editor/RFormsEditorPlain",
-    "folio/editor/RFormsPresenter",
     "rdfjson/Graph",
     "dojo/text!./ProfileTabTemplate.html"
-], function (declare, lang, connect, domClass, style, construct, attr, Widget, BusyButton, RFormsEditorPlain, RFormsPresenter, Graph, template) {
+], function (declare, lang, domStyle, domConstruct, domAttr, Widget, BusyButton, RFormsEditorPlain, Graph, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
@@ -32,8 +29,8 @@ define(["dojo/_base/declare",
         showEntry: function (entry) {
             this.entry = entry;
             //Update editor
-            attr.set(this.profileEditorNode, "innerHTML", "");
-            var node = construct.create("div", null, this.profileEditorNode);
+            domAttr.set(this.profileEditorNode, "innerHTML", "");
+            var node = domConstruct.create("div", null, this.profileEditorNode);
             this.apPlain = new RFormsEditorPlain({}, node);
             this.apPlain.setIncludeLevel("optional");
             this.graph = new Graph(this.entry.getLocalMetadata().exportRDFJSON());

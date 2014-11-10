@@ -10,7 +10,7 @@ define([
     "dojo/store/Memory",
     "rdfjson/Graph",
     "dojo/text!./AccountTabTemplate.html"
-], function (declare, lang, domClass, style, attr, Widget,
+], function (declare, lang, domClass, domStyle, domAttr, Widget,
              Uploader, Memory, Graph, template) {
 
     /**
@@ -206,7 +206,7 @@ define([
             }));
         },
         _setFullName: function (firstname, lastname) {
-            attr.set(this.fullNameNode, "innerHTML", this.NLS.settings.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
+            domAttr.set(this.fullNameNode, "innerHTML", this.NLS.settings.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
         },
 
         // uiprefs = preferred language
@@ -255,11 +255,11 @@ define([
         // profile picture
         _updateProfilePicturePreview: function (pictUrl) {
             if (pictUrl !== "") {
-                attr.set(this.profilePictureNode, "src", pictUrl);
+                domAttr.set(this.profilePictureNode, "src", pictUrl);
             } else {
                 var config = this.application.getConfig();
                 var backup = folio.data.isUser(this.entry) ? "" + config.getIcon("user_picture_frame") : "" + config.getIcon("group_picture_frame");
-                attr.set(this.profilePictureNode, "src", backup);
+                domAttr.set(this.profilePictureNode, "src", backup);
             }
 
         },
@@ -421,17 +421,17 @@ define([
         _updatePasswordSaveButton: function () {
             var np = this.newPasswordDijit.get("value");
             var vnp = this.verifyNewPasswordDijit.get("value");
-            style.set(this.passwordMismatchNode, "display", "none");
-            style.set(this.passwordTooShortNode, "display", "none");
+            domStyle.set(this.passwordMismatchNode, "display", "none");
+            domStyle.set(this.passwordTooShortNode, "display", "none");
             this.passwordSaveButton.set("disabled", true);
 
             if (np.length === 0 && vnp.length === 0) {
                 return;
             }
             if (np.length < 8) {
-                style.set(this.passwordTooShortNode, "display", "");
+                domStyle.set(this.passwordTooShortNode, "display", "");
             } else if (np !== vnp) {
-                style.set(this.passwordMismatchNode, "display", "");
+                domStyle.set(this.passwordMismatchNode, "display", "");
             } else {
                 this.passwordSaveButton.set("disabled", false);
             }

@@ -30,7 +30,7 @@ dojo.require("dijit.form.Button");
 dojo.require("folio.util.dialog");
 dojo.require("dijit.TitlePane");
 
-dojo.require("rforms.view.SortedStore");
+dojo.require("rdforms.view.SortedStore");
 
 dojo.declare("folio.create.ACL", [dijit.layout._LayoutWidget, dijit._Templated], {
 	widgetsInTemplate: true,

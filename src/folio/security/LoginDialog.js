@@ -11,7 +11,7 @@ define(["dojo/_base/declare",
     "folio/util/Widget",
     "./authorize",
     "dojo/text!./LoginDialogTemplate.html"
-], function (declare, lang, array, has, on, style, construct, attr, string,
+], function (declare, lang, array, has, on, domStyle, domConstruct, domAttr, string,
              Widget, authorize, template) {
 
 //    dojo.require("dojo.string");
@@ -81,11 +81,11 @@ define(["dojo/_base/declare",
             var config = __confolio.application.getConfig();
             array.forEach(authorize.providers, function(provider) {
                 var src = __confolio.application.getRepository()+"auth/openid/"+provider.id+"?redirectOnSuccess="+encodeURIComponent(window.location.href);
-                var node = construct.create("a", {"class": "provider", href: src}, this.providers);
-                construct.create("img", {src: config.getIcon("openid-"+provider.id, "64x64")}, construct.create("div", {"class": "img-wrap"}, node));
+                var node = domConstruct.create("a", {"class": "provider", href: src}, this.providers);
+                domConstruct.create("img", {src: config.getIcon("openid-"+provider.id, "64x64")}, domConstruct.create("div", {"class": "img-wrap"}, node));
                 //on(node, "click", lang.hitch(this, this.showOpenIdDialog, provider));
             }, this);
-            var signuplink = attr.set(this.signuplink, "href", __confolio.viewMap.getHashUrl("account", {}));
+            var signuplink = domAttr.set(this.signuplink, "href", __confolio.viewMap.getHashUrl("account", {}));
             on(signuplink, "click", lang.hitch(this, this.doClose));
         },
 
@@ -129,13 +129,13 @@ define(["dojo/_base/declare",
                     }
                 }
                 if (!isTested) {
-                    style.set(this.browserWarning.domNode, "display", "block");
-                    style.set(this.browserList.domNode, "display", "block");
+                    domStyle.set(this.browserWarning.domNode, "display", "block");
+                    domStyle.set(this.browserList.domNode, "display", "block");
                 }
 
                 if (this.isLogoutNeeded) {
                     this.status = "loggedOut";
-                    attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
                     authorize.unAuthorizeUser();
                 }
             }
@@ -153,7 +153,7 @@ define(["dojo/_base/declare",
                 this.dialog.set("title", string.substitute(this.NLS.loginDialog.title, {app :__confolio.config['title']}));
             }
             if (this.status) {
-                attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
             }
             this.browserWarning.innerHTML = "<strong>" + this.NLS.loginDialog.warning + "</strong>" + this.NLS.loginDialog.warningText;
             this.browserList.innerHTML = "";
@@ -164,7 +164,7 @@ define(["dojo/_base/declare",
                     typeof browser.minValue !== "undefined") {
                     text = this.NLS.loginDialog.andHigher.replace("%s", text);
                 }
-                var item = construct.create("li", {"innerHTML": text}, this.browserList);
+                var item = domConstruct.create("li", {"innerHTML": text}, this.browserList);
             }
         },
         doLogin: function(userName, password) {
@@ -179,7 +179,7 @@ define(["dojo/_base/declare",
             this.passwordInput.set("disabled", true);
             this.loginButton.set("disabled", true);
             this.status = "loggingIn";
-            attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+            domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
 
             // Configure the communicator to authenticate every request
             authorize.cookieAuth(userName, password).then(
@@ -189,7 +189,7 @@ define(["dojo/_base/declare",
                     this.passwordInput.set("disabled", false);
                     this.loginButton.set("disabled", false);
                     this.status = "invalidLogin";
-                    attr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
                 })
             );
         },

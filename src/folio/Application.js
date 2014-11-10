@@ -15,8 +15,8 @@ define([
     "folio/data/Communicator",
     "folio/data/Store",
     "folio/util/dialog",
-    "rforms/template/ItemStore"
-], function (kernel, declare, lang, connect, array, geom, query, win, i18n, Deferred, Config, Messages, Communicator, Store, dialog, ItemStore) {
+    "rdforms/template/ItemStore"
+], function (kernel, declare, lang, connect, array, domGeometry, query, win, i18n, Deferred, Config, Messages, Communicator, Store, dialog, ItemStore) {
 
     return declare(null, {
 
@@ -47,8 +47,8 @@ define([
             return this.dialog;
         },
         getBoundingBox: function () {
-            var vm = query(".viewMap", win.body())[0];
-            return geom.position(vm);
+            var vm = query(".spaSite")[0];
+            return domGeometry.position(vm);
         },
         getRepository: function () {
             return this.repository;

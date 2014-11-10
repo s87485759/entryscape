@@ -4,7 +4,6 @@ define([
     "dojo/_base/lang",
     "dojo/on",
     "dojo/dom-geometry",
-    "dojo/_base/array",
     "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
@@ -13,7 +12,7 @@ define([
     "dojox/image/LightboxNano",
     "folio/util/utils",
     "folio/content/RTE"
-], function (declare, lang, on, domGeom, array, domClass, style, construct, attr, _LayoutWidget, LightboxNano, utils, RTE) {
+], function (declare, lang, on, domGeometry, domClass, domStyle, domConstruct, domAttr, _LayoutWidget, LightboxNano, utils, RTE) {
 
     var flashidx = 0;
 
@@ -82,7 +81,7 @@ define([
             }
             this.entry = entry;
 
-            attr.set(this.domNode, "innerHTML", "");
+            domAttr.set(this.domNode, "innerHTML", "");
             domClass.remove(this.domNode, "leftAligned");
 
             this.contentNode = null;
@@ -159,7 +158,7 @@ define([
             }
         },
         resize: function() {
-            var bb = domGeom.getContentBox(this.domNode);
+            var bb = domGeometry.getContentBox(this.domNode);
             this.resizeContent();
             if (this.contentNode) {
                 /*var cbb = dojo.marginBox(this.contentNode);
@@ -175,7 +174,7 @@ define([
     //		}), 1);
         },
         resizeContent: function() {
-            var bb = domGeom.getContentBox(this.domNode);
+            var bb = domGeometry.getContentBox(this.domNode);
             if (this.contentNode && this.doResize) {
                 var width = this.origWidth;
                 var height = this.origHeight;
@@ -188,14 +187,14 @@ define([
                         width = Math.floor(width * (bb.h / height));
                         height = bb.h;
                 }
-                style.set(this.contentNode, "width", ""+width+"px");
-                style.set(this.contentNode, "height", ""+height+"px");
-                style.set(this.contentNode, "margin", "auto");
+                domStyle.set(this.contentNode, "width", ""+width+"px");
+                domStyle.set(this.contentNode, "height", ""+height+"px");
+                domStyle.set(this.contentNode, "margin", "auto");
 
                 if (this.contentNode.height < bb.h) {
-                    style.set(this.contentNode, "marginTop", (bb.h-this.contentNode.height)/2);
+                    domStyle.set(this.contentNode, "marginTop", (bb.h-this.contentNode.height)/2);
                 } else {
-                    style.set(this.contentNode, "marginTop", 0);
+                    domStyle.set(this.contentNode, "marginTop", 0);
                 }
             }
         },
@@ -206,7 +205,7 @@ define([
         _showImage: function(url) {
             this.showing = true;
             this.doResize = true;
-            this.contentNode = construct.create("div", {"innerHTML": "Loading image..."}, this.domNode);
+            this.contentNode = domConstruct.create("div", {"innerHTML": "Loading image..."}, this.domNode);
             utils.lazyLoadImage(this.contentNode, url, lang.hitch(this, function(img) {
                 this.origWidth = img.width;
                 this.origHeight = img.height;
@@ -219,7 +218,7 @@ define([
                 new LightboxNano({href: url}, img);
                 this.resizeContent();
             }), lang.hitch(this, function() {
-                attr.set(this.contentNode, "innerHTML", "Failed loading image with address:<br>"+url);
+                domAttr.set(this.contentNode, "innerHTML", "Failed loading image with address:<br>"+url);
             }));
         },
 
@@ -237,7 +236,7 @@ define([
                 service.getParameters(url,
                     lang.hitch(this, function(param) {
                         if(param) {
-                            this.contentNode = construct.create("div", {innerHTML: param.html}, this.domNode);
+                            this.contentNode = domConstruct.create("div", {innerHTML: param.html}, this.domNode);
                         }
                     })
                 );
@@ -263,7 +262,7 @@ define([
                 this.doResize = true;
                 flashidx++;
                 var flashid = "flashplayer_"+flashidx;
-                this.contentNode = construct.create("div", {innerHTML: "<div id='"+flashid+"'></div>"}, this.domNode);
+                this.contentNode = domConstruct.create("div", {innerHTML: "<div id='"+flashid+"'></div>"}, this.domNode);
 
 
                 service.getParameters(url,
@@ -281,11 +280,11 @@ define([
                             swfArgs.attributes,
                             lang.hitch(this, function(arg1, arg2) {
                                 setTimeout(dojo.hitch(this, function() {
-                                    var bb = domGeom.getContentBox(this.domNode);
+                                    var bb = domGeometry.getContentBox(this.domNode);
                                     if (swfArgs.height < bb.h) {
-                                        style.set(this.contentNode, "marginTop", (bb.h-swfArgs)/2);
+                                        domStyle.set(this.contentNode, "marginTop", (bb.h-swfArgs)/2);
                                     } else {
-                                        style.set(this.contentNode, "marginTop", 0);
+                                        domStyle.set(this.contentNode, "marginTop", 0);
                                     }
                                     this.resize();
                                 }), 500);
@@ -300,10 +299,10 @@ define([
         },
         _contentIframe: function(entry) {
             this.showing = true;
-            this.contentNode = construct.create("iframe", {frameborder: 0, style: {width: "100%", height: "100%"}, src: entry.getResourceUri()}, this.domNode);
+            this.contentNode = domConstruct.create("iframe", {frameborder: 0, style: {width: "100%", height: "100%"}, src: entry.getResourceUri()}, this.domNode);
         },
         _showIcon: function(entry) {
-            var node = construct.create("div", {"class": "contentIcon"}, this.domNode);
+            var node = domConstruct.create("div", {"class": "contentIcon"}, this.domNode);
             var config = this.application.getConfig();
             var extIcon = false, iconSrc = config.getIcon(entry);
             if (entry.getExternalMetadata != null) {
@@ -316,9 +315,9 @@ define([
                     }
                 }
             }
-            construct.create("img", {"class": "iconCls", "src": iconSrc || ""}, node);
+            domConstruct.create("img", {"class": "iconCls", "src": iconSrc || ""}, node);
             if (folio.data.isLinkLike(entry) && !extIcon) {
-                construct.create("img", {style: {"position": "absolute", "left": 0}, "src": ""+config.getIcon("link")}, node);
+                domConstruct.create("img", {style: {"position": "absolute", "left": 0}, "src": ""+config.getIcon("link")}, node);
             }
         }
     });

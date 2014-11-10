@@ -6,7 +6,7 @@ define(["dojo/_base/declare",
     "dojo/dom-style",
     "dijit/layout/_LayoutWidget",
     "folio/list/List"
-], function (declare, lang, aspect, connect, style, _LayoutWidget, List) {
+], function (declare, lang, aspect, connect, domStyle, _LayoutWidget, List) {
 
     /**
      * Searches for entries according to the given parameters and displays
@@ -45,7 +45,7 @@ define(["dojo/_base/declare",
                     openFolderLink: true,
                     publishFocusEvents: false},
                 dojo.create("div", null, this.srcNodeRef));
-            style.set(this._list.domNode.parentNode, "height", "100%");
+            domStyle.set(this._list.domNode.parentNode, "height", "100%");
             connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
             aspect.before(this._list, "changeFocus", lang.hitch(this, function (index) {
                 if (index !== -1) {

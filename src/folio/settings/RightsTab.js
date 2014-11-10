@@ -1,17 +1,14 @@
 /*global define, __confolio*/
 define(["dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/connect",
     "dojo/_base/array",
-    "dojo/dom-class",
     "dojo/dom-style",
-    "dojo/dom-construct",
     "dojo/dom-attr",
     "folio/util/Widget",
-    "dijit/form/RadioButton", //For template
-    "dojox/form/BusyButton",  //For template
+    "dijit/form/RadioButton", //in template
+    "dojox/form/BusyButton",  //in template
     "dojo/text!./RightsTabTemplate.html"
-], function (declare, lang, connect, array, domClass, style, construct, attr, Widget, RadioButton, BusyButton, template) {
+], function (declare, lang, array, domStyle, domAttr, Widget, RadioButton, BusyButton, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
@@ -54,10 +51,10 @@ define(["dojo/_base/declare",
 
             if (folio.data.isUser(this._principal)) {
                 this.setI18nState(1);
-                style.set(this._groupMembersBlockNode, "display", "none");
+                domStyle.set(this._groupMembersBlockNode, "display", "none");
             } else {
                 this.setI18nState(2);
-                style.set(this._groupMembersBlockNode, "display", "");
+                domStyle.set(this._groupMembersBlockNode, "display", "");
             }
             //Update editor
             var id = this._principal.getId();
@@ -98,7 +95,7 @@ define(["dojo/_base/declare",
                 this.application.getStore().loadEntry(homeContextUri, {},
                     lang.hitch(this, this._setHomeContext));
             } else {
-                style.set(this._homeContextRights, "display", "none");
+                domStyle.set(this._homeContextRights, "display", "none");
             }
         },
         localize: function() {
@@ -115,16 +112,16 @@ define(["dojo/_base/declare",
                 return;
             }
             this._userUri = this.application.getRepository()+"_principals/entry/"+this._user.id;
-            style.set(this._selectHomeContext, "display", "none");
+            domStyle.set(this._selectHomeContext, "display", "none");
             if (this._user.id === "_admin") {
                 this._isAdmin = true;
-                style.set(this._selectHomeContext, "display", "");
+                domStyle.set(this._selectHomeContext, "display", "");
             } else {
                 this.application.getStore().loadEntry(this._userUri, {}, lang.hitch(this, function(entry) {
                     if (array.some(entry.getGroups(), function(uri) {
                         return uri.lastIndexOf("_admins") + 7 === uri.length;
                     })) {
-                        style.set(this._selectHomeContext, "display", "");
+                        domStyle.set(this._selectHomeContext, "display", "");
                         this._isAdmin = true;
                     }
                 }));
@@ -132,7 +129,7 @@ define(["dojo/_base/declare",
         },
 
         _setHomeContext: function(homeContext) {
-            style.set(this._homeContextRights, "display", "");
+            domStyle.set(this._homeContextRights, "display", "");
             this._homeContext = homeContext;
             this._homeContextIdDijit.set("value", this._homeContext.getId());
             this._homeContextACL = folio.data.getACLList(this._homeContext);
@@ -210,18 +207,18 @@ define(["dojo/_base/declare",
         _homeContextIdChanged: function() {
             var newid = this._homeContextIdDijit.get("value");
             var hcURI = this.application.getRepository()+"_contexts/entry/" + newid;
-            attr.set(this._homeContextLabelNode, "innerHTML", "Trying to load label for "+newid);
-            style.set(this._homeContextLabelNode, "color", "orange");
+            domAttr.set(this._homeContextLabelNode, "innerHTML", "Trying to load label for "+newid);
+            domStyle.set(this._homeContextLabelNode, "color", "orange");
             this._prospectiveHomeContext = null;
             this._saveHomeContextButton.set("disabled", true);
             this.application.getStore().loadEntry(hcURI, {}, lang.hitch(this, function(hcEntry) {
                 this._prospectiveHomeContext = hcEntry;
                 this._saveHomeContextButton.set("disabled", false);
-                attr.set(this._homeContextLabelNode, "innerHTML", folio.data.getLabel(hcEntry));
-                style.set(this._homeContextLabelNode, "color", "green");
+                domAttr.set(this._homeContextLabelNode, "innerHTML", folio.data.getLabel(hcEntry));
+                domStyle.set(this._homeContextLabelNode, "color", "green");
             }),lang.hitch(this, function() {
-                attr.set(this._homeContextLabelNode, "innerHTML", "No context found for id "+newid);
-                style.set(this._homeContextLabelNode, "color", "red");
+                domAttr.set(this._homeContextLabelNode, "innerHTML", "No context found for id "+newid);
+                domStyle.set(this._homeContextLabelNode, "color", "red");
             }));
         },
         _copyRights: function() {

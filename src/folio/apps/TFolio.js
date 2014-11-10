@@ -3,18 +3,17 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/connect",
-    "folio/list/ListView",
-    "folio/tree/Tree",
-    "folio/entry/DetailsView",
-    "folio/util/Message",
-    "dijit/layout/BorderContainer",
-    "folio/editor/RFormsEditor",
-    "folio/editor/EntryAdminEditor",
-    "folio/navigation/Breadcrumbs",
+    "folio/list/ListView", //in template
+    "folio/tree/Tree", //in template
+    "folio/entry/DetailsView", //in template
+    "folio/util/Message", //in template
+    "dijit/layout/BorderContainer", //in template
+    "folio/editor/RFormsEditor", //in template
+    "folio/navigation/Breadcrumbs", //in template
     "folio/util/Widget",
     "dojo/text!./TFolioTemplate.html"
-], function(declare, lang, connect, ListView, Tree, DetailsView, Message, BorderContainer, RFormsEditorDialog, EntryAdminEditor,
-            Bredcrumbs, Widget, template) {
+], function(declare, lang, connect, ListView, Tree, DetailsView, Message, BorderContainer, RFormsEditor,
+            Breadcrumbs, Widget, template) {
 
     return declare(Widget, {
         templateString: template,

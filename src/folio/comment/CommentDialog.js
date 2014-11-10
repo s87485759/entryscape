@@ -5,22 +5,25 @@ define([
     "dojo/_base/array",
     "dojo/window",
     "dojo/_base/window",
-    "dojo/dom-class",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
     "dojo/request/xhr",
-    "dijit/Dialog",
+    "dijit/Dialog", //in template
     "dijit/focus",
     "folio/util/Widget",
     "folio/comment/Comment",
-    "dojox/form/BusyButton",
+    "dojox/form/BusyButton", //in template
+    "dijit/layout/BorderContainer", //in template
+    "dijit/layout/ContentPane", //in template
+    "dijit/Editor", //in template
     "rdfjson/Graph",
-    "rforms/model/Engine",
-    "rforms/view/Editor",
+    "rdforms/model/Engine",
+    "rdforms/view/Editor",
     "dojo/text!./CommentDialogTemplate.html"
-], function (declare, lang, array, winUtil, win, domClass, style, construct, attr, xhr,
-             Dialog, focusUtil, Widget, Comment, BusyButton, Graph, Engine, Editor, template) {
+], function (declare, lang, array, winUtil, win, domStyle, domConstruct, domAttr, xhr,
+             Dialog, focusUtil, Widget, Comment, BusyButton, BorderContainer, ContentPane, Editor,
+             Graph, Engine, RDFormsEditor, template) {
 
     /**
      * Shows a dialog within which all comments for an entry are displayed.
@@ -75,9 +78,9 @@ define([
                 var template = itemStore.detectTemplate(this.graph, this.resourceURI, config.getTemplateForApplicationType(commentStyle["class"]));
                 var langs = config.getMPLanguages();
                 var binding = Engine.match(this.graph, this.resourceURI, template);
-                var node = construct.create("div");
+                var node = domConstruct.create("div");
                 this.mdEditorContainer.set("content", node);
-                this.mdEditor = new Editor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
+                this.mdEditor = new RDFormsEditor({template: template, languages: langs, binding: binding, includeLevel: "optional", compact: true}, node);
                 this.contentEditorDijit.set("value", "");
             }));
         },
@@ -130,7 +133,7 @@ define([
          */
         show: function() {
             var viewport = winUtil.getBox();
-            style.set(this.bc.domNode, {
+            domStyle.set(this.bc.domNode, {
                 width: Math.floor(viewport.w * 0.70)+"px",
                 height: Math.floor(viewport.h * 0.70)+"px",
                 overflow: "auto",
@@ -190,10 +193,10 @@ define([
 
 
                         var contentNode = win.doc.createTextNode(this.textArea.value);
-                        construct.place(contentNode, comment.contentArea);
+                        domConstruct.place(contentNode, comment.contentArea);
 
                         // Place the comment in the container
-                        construct.place(comment.domNode, jsComments.domNode, "first");
+                        domConstruct.place(comment.domNode, jsComments.domNode, "first");
 
                         //this.textArea.attr("value", "");
                         this.postDijit.cancel();
@@ -204,7 +207,7 @@ define([
                         //  console.error(response);
                         //	console.error("Error sending comment");
                         var errorText = win.doc.createTextNode(this.NLS.comment.sendErrorLabel);
-                        construct.place(errorText, this.jsErrorArea.domNode, "first");
+                        domConstruct.place(errorText, this.jsErrorArea.domNode, "first");
                         this.cancelDijit.set("disabled", false);
                     }));
         },
@@ -219,11 +222,11 @@ define([
             var localDate = new Date();
 
             var commentDijits = [], container = this.commentsNode;
-            attr.set(container, "innerHTML", "");
+            domAttr.set(container, "innerHTML", "");
             comments.sort(); //The entry id is incremented, later posts has higher numbers... hence this works.
             array.forEach(comments, function(comment) {
                 this.application.getStore().loadEntry(comment, {}, function(entry) {
-                    commentDijits.push(new Comment({entry:entry}, construct.create("div", null, container)));
+                    commentDijits.push(new Comment({entry:entry}, domConstruct.create("div", null, container)));
                 });
             }, this);
         }

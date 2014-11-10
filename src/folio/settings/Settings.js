@@ -3,7 +3,6 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
-    "dojo/_base/connect",
     "dojo/dom-class",
     "dojo/dom-style",
     "folio/util/Widget",
@@ -13,7 +12,7 @@ define([
     "folio/settings/MembersTab",      //In template
     "folio/settings/RightsTab",      //In template
     "dojo/text!./SettingsTemplate.html"
-], function (declare, lang, array, connect, domClass, style, Widget,
+], function (declare, lang, array, domClass, domStyle, Widget,
              AccountTab, ProfileTab, MembersTab, RightsTab, PrincipalInfo, template) {
 
     /**
@@ -60,9 +59,9 @@ define([
                 var same = this.entry && this.entry.getId() === entry.getId();
                 this.entry = entry;
                 if (folio.data.isGroup(this.entry)) {
-                    style.set(this._membersButtonNode, "display", "");
+                    domStyle.set(this._membersButtonNode, "display", "");
                 } else {
-                    style.set(this._membersButtonNode, "display", "none");
+                    domStyle.set(this._membersButtonNode, "display", "none");
                 }
                 this._switchToTab(same ? this._currentTabName : this._defaultTabName);
                 this.principalInfo.show(entry);
@@ -95,10 +94,10 @@ define([
             }
             if (this._currentTabName !== tabName) {
                 domClass.remove(this["_" + this._currentTabName + "ButtonNode"], "selected");
-                style.set(this["_" + this._currentTabName + "TabDijit"].domNode, "display", "none");
+                domStyle.set(this["_" + this._currentTabName + "TabDijit"].domNode, "display", "none");
                 this._currentTabName = tabName;
                 domClass.add(this["_" + this._currentTabName + "ButtonNode"], "selected");
-                style.set(this["_" + this._currentTabName + "TabDijit"].domNode, "display", "");
+                domStyle.set(this["_" + this._currentTabName + "TabDijit"].domNode, "display", "");
             }
             this["_" + this._currentTabName + "TabDijit"].showEntry(this.entry);
         }
