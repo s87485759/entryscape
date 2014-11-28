@@ -16,7 +16,7 @@ var profile = {
 		"rdfjson",
 		"rdforms",
         "spa",
-        {name: "folio", location: "../src/folio"},
+        {name: "folio", location: "../src"}
     ],
 
     layers: {
