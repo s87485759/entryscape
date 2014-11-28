@@ -31,7 +31,7 @@ return declare([Widget], {
 	//===================================================
 	// Inherited Attributes
 	//===================================================
-	nls: ["start"],
+	nlsBundles: ["start"],
     templateString: template,
 
 	//===================================================
@@ -209,10 +209,10 @@ return declare([Widget], {
     _updateSearchPlaceHolder: function() {
         switch(this._currentTab) {
             case "Communities":
-                domAttr.set(this.searchNode, "placeholder", this.NLS.start.searchCommunities);
+                domAttr.set(this.searchNode, "placeholder", this.NLSBundles.start.searchCommunities);
                 break;
             case "People":
-                domAttr.set(this.searchNode, "placeholder", this.NLS.start.searchPeople);
+                domAttr.set(this.searchNode, "placeholder", this.NLSBundles.start.searchPeople);
                 break;
         }
     },
