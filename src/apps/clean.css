@@ -1,20 +1,20 @@
-@import "../../../libs/dijit/themes/claro/claro.css"; /* required when dijit */
-@import "../../../libs/dojo/resources/dojo.css";
-@import "../../../libs/dojox/image/resources/image.css"; /*some problem in this css file*/
-@import "../../../libs/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
-@import "../../../libs/dojox/layout/resources/ExpandoPane.css";
-@import "../../../libs/dojox/form/resources/BusyButton.css";
-@import "../../../libs/dojox/form/resources/RangeSlider.css";
-@import "../../../libs/dojox/grid/resources/claroGrid.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/Save.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/Preview.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/InsertEntity.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/PageBreak.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/Breadcrumb.css";
-@import "../../../libs/dojox/editor/plugins/resources/css/FindReplace.css";
-@import "../../../libs/dojox/widget/Toaster/Toaster.css";
-@import "../../../libs/rdforms/view/resources/rdforms.css";
+@import "../../libs/dijit/themes/claro/claro.css"; /* required when dijit */
+@import "../../libs/dojo/resources/dojo.css";
+@import "../../libs/dojox/image/resources/image.css"; /*some problem in this css file*/
+@import "../../libs/dojox/form/resources/FileInput.css"; /*some problem in this css file*/
+@import "../../libs/dojox/layout/resources/ExpandoPane.css";
+@import "../../libs/dojox/form/resources/BusyButton.css";
+@import "../../libs/dojox/form/resources/RangeSlider.css";
+@import "../../libs/dojox/grid/resources/claroGrid.css";
+@import "../../libs/dojox/editor/plugins/resources/css/Save.css";
+@import "../../libs/dojox/editor/plugins/resources/css/Preview.css";
+@import "../../libs/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
+@import "../../libs/dojox/editor/plugins/resources/css/InsertEntity.css";
+@import "../../libs/dojox/editor/plugins/resources/css/PageBreak.css";
+@import "../../libs/dojox/editor/plugins/resources/css/Breadcrumb.css";
+@import "../../libs/dojox/editor/plugins/resources/css/FindReplace.css";
+@import "../../libs/dojox/widget/Toaster/Toaster.css";
+@import "../../libs/rdforms/view/resources/rdforms.css";
 
 @import "../create/create.css";
 @import "../list/list.css";

@@ -26,7 +26,7 @@ __confolio.initConfig = function() {
         }
         addQuery(); // let config-example from URL query override config-example file
         document.title = __confolio.config["title"];
-        addCSS((__confolio.isBuild() ? "target" : "src" ) +"/folio/apps/clean.css");
+        addCSS((__confolio.isBuild() ? "target" : "src" ) +"/apps/clean.css");
 		addCSS("resources/themes/" + (__confolio.config["theme"] || "blueish") + "/style.css");
 	};
 
@@ -67,8 +67,7 @@ __confolio.initDojo = function(){
     } else {
         jsPath = "libs/";
         dojoConfig.packages = [
-            {name: "folio", location: "../../src/folio" },
-            {name: "se", location: "../../src/se" }
+            {name: "folio", location: "../../src" }
         ];
     }
 	var debugExt = __confolio.isDebug() ? ".uncompressed.js" : "";
