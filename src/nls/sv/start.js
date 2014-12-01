@@ -18,15 +18,9 @@
  */
 
 define({
-    "welcomeMessage": "<ul><li>En plats att hantera filer, webbmaterial och mer därtill..." +
-        "<li>Engagera dig i gemenskaper som delar dina intressen.</li>" +
-        "<li>Beskriv och organsiera material i foldrar.</li>" +
-        "<li>Håll material privat eller dela med andra personer / gemenskaper / världen.</li>",
-    "welcomeHeader": "Välkommen till EntryScape!",
     "peopleTab": "Personer",
     "communitiesTab": "Gemenskaper",
     "recentMaterialTab": "Senaste material",
     "searchCommunities": "Sök efter gemenskaper",
     "searchPeople": "Sök efter personer"
-
-})
+});

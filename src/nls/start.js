@@ -26,11 +26,6 @@
 
 define({
 	root : {
-		"welcomeMessage" : "<ul><li>A place to manage and view files, web content and more... </li>" +
-            "<li>Engage by joining communities who share your interests. </li>" +
-            "<li>Describe and organize material into folders. </li>" +
-            "<li>Keep material private or share it with individuals / communitities / the world.</li></ul>",
-        "welcomeHeader" : "Welcome to EntryScape",
         "peopleTab": "People",
         "communitiesTab": "Communities",
         "recentMaterialTab": "Recent material",
