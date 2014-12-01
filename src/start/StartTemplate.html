@@ -1,27 +1,16 @@
 <div style="overflow: hidden" class="confolio startPage">
-	<div class="startHeader distinctBackground">
-		<div class="startMessage">
-            <img data-dojo-attach-point="logo"/>
-			<h1 data-dojo-attach-point="nls">welcomeHeader</h1>
-			<p class="startDescription" data-dojo-attach-point="nls">welcomeMessage</p>
-		</div>
-	</div>
 	<div class="startMiddle">
-		<div style="position:relative;height: 100%">
-			<div class="startTabButtons">
-				<div data-dojo-attach-point="searchArea" class="searchArea">
-					<input type="text" data-dojo-attach-point="searchNode"/>
-					<span data-dojo-attach-point="searchButtonNode" class="icon search"></span>
-				</div>
-				<button data-dojo-attach-point="nls,communitiesButtonNode" class="selected">communitiesTab</button>
-				<button data-dojo-attach-point="nls,peopleButtonNode">peopleTab</button>
-				<button data-dojo-attach-point="nls,recentButtonNode">recentMaterialTab</button>
-			</div>
-			<div class="startContent" data-dojo-attach-point="communitiesNode"></div>
-			<div class="startContent" style="display: none" data-dojo-attach-point="peopleNode"></div>
-			<div class="startContent" style="display: none" data-dojo-attach-point="recentNode">
-				<div data-dojo-type="folio/list/SearchList" data-dojo-attach-point="recentSearchList"></div>
-			</div>
-		</div>
-	</div>
+        <div data-dojo-attach-point="searchArea" class="searchArea">
+            <input type="text" data-dojo-attach-point="searchNode"/>
+            <span data-dojo-attach-point="searchButtonNode" class="icon search"></span>
+        </div>
+        <button data-dojo-attach-point="nls,communitiesButtonNode" class="selected">communitiesTab</button>
+        <button data-dojo-attach-point="nls,peopleButtonNode">peopleTab</button>
+        <button data-dojo-attach-point="nls,recentButtonNode">recentMaterialTab</button>
+    </div>
+    <div class="startContent" data-dojo-attach-point="communitiesNode"></div>
+    <div class="startContent" style="display: none" data-dojo-attach-point="peopleNode"></div>
+    <div class="startContent" style="display: none" data-dojo-attach-point="recentNode">
+        <div data-dojo-type="folio/list/SearchList" data-dojo-attach-point="recentSearchList"></div>
+    </div>
 </div>

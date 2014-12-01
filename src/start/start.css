@@ -2,40 +2,9 @@
     position: relative;
 }
 
-.confolio.startPage .startHeader {
-	padding: 35px 80px 20px 80px;
-	height: 120px;
-	-webkit-border-bottom-left-radius: 6px;
-	-webkit-border-bottom-right-radius: 6px;
--moz-border-bottom-right-radius: 6px;
-	-moz-border-bottom-right-radius: 6px;
-border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
-}
-
-.confolio.startPage .startMessage {
-	display: inline-block;
-	vertical-align: top;
-	padding: 0px 20px;
-	height: 100%;
-}
-.confolio.startPage .startMessage h1 {
-	margin: 0px;
-	padding: 0px;
-	font-size: 30px;
-	font-weight: bold;
-	color: #333;
-}
-
-.confolio.startPage .startMessage .startDescription {
-	font-size: medium;
-	margin: 5px 0px;
-    margin-top: -10px;
-}
-
 .confolio.startPage .startMiddle {
 	position: absolute;
-	top: 175px;
+	top: 0px;
 	left: 0px;
 	bottom:0px;
 	width: 100%;
