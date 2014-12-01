@@ -36,7 +36,7 @@ define([
             this.inherited("postCreate", arguments);
             this.application = __confolio.application;
             connect.subscribe("/confolio/localeChange", lang.hitch(this, function(obj) {
-                locale.setLocale(obj.locale);
+                locale.set(obj.locale);
             }));
             connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
 
