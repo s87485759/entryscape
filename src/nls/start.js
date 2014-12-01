@@ -31,15 +31,11 @@ define({
             "<li>Describe and organize material into folders. </li>" +
             "<li>Keep material private or share it with individuals / communitities / the world.</li></ul>",
         "welcomeHeader" : "Welcome to EntryScape",
-		"searchLabel" : "Search",
-		"latestMaterial" : "Latest material",
-		"includePortfoliosLabel" : "Portfolios",
-		"includeUsersLabel" : "Users",
-		"includeGroupsLabel" : "Groups",
         "peopleTab": "People",
         "communitiesTab": "Communities",
         "recentMaterialTab": "Recent material",
         "searchCommunities": "search for communities",
         "searchPeople": "search for people"
-	}
+	},
+    sv: true
 });
