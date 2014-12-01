@@ -73,7 +73,7 @@ define(["dojo/_base/declare",
         userName: null,
         password: null,
 
-        nls: ["loginDialog"],
+        nlsBundles: ["loginDialog"],
 
 
         postCreate: function() {
@@ -135,7 +135,7 @@ define(["dojo/_base/declare",
 
                 if (this.isLogoutNeeded) {
                     this.status = "loggedOut";
-                    domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
                     authorize.unAuthorizeUser();
                 }
             }
@@ -150,19 +150,19 @@ define(["dojo/_base/declare",
         },
         changeLocale: function() {
             if (this.dialog) {
-                this.dialog.set("title", string.substitute(this.NLS.loginDialog.title, {app :__confolio.config['title']}));
+                this.dialog.set("title", string.substitute(this.NLSBundles.loginDialog.title, {app :__confolio.config['title']}));
             }
             if (this.status) {
-                domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
             }
-            this.browserWarning.innerHTML = "<strong>" + this.NLS.loginDialog.warning + "</strong>" + this.NLS.loginDialog.warningText;
+            this.browserWarning.innerHTML = "<strong>" + this.NLSBundles.loginDialog.warning + "</strong>" + this.NLSBundles.loginDialog.warningText;
             this.browserList.innerHTML = "";
             for (var i = 0; i < browsers.length; i++) {
                 browser = browsers[i];
                 text = browser.title;
                 if (typeof browser.maxValue === "undefined" &&
                     typeof browser.minValue !== "undefined") {
-                    text = this.NLS.loginDialog.andHigher.replace("%s", text);
+                    text = this.NLSBundles.loginDialog.andHigher.replace("%s", text);
                 }
                 var item = domConstruct.create("li", {"innerHTML": text}, this.browserList);
             }
@@ -179,7 +179,7 @@ define(["dojo/_base/declare",
             this.passwordInput.set("disabled", true);
             this.loginButton.set("disabled", true);
             this.status = "loggingIn";
-            domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+            domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
 
             // Configure the communicator to authenticate every request
             authorize.cookieAuth(userName, password).then(
@@ -189,7 +189,7 @@ define(["dojo/_base/declare",
                     this.passwordInput.set("disabled", false);
                     this.loginButton.set("disabled", false);
                     this.status = "invalidLogin";
-                    domAttr.set(this.loginStatus, "innerHTML", this.NLS.loginDialog[this.status]);
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
                 })
             );
         },

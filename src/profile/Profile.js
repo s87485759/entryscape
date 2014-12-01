@@ -27,7 +27,7 @@ define(["dojo/_base/declare",
         // Public and inherited Attributes
         //===================================================
         twoColumn: true,
-        nls: ["profile"],
+        nlsBundles: ["profile"],
         templateString: template,
 
         //===================================================

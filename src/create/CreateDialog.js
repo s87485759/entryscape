@@ -36,7 +36,7 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["common", "create"],
+        nlsBundles: ["common", "create"],
         mode: "artifact",
         context: null,
         list: null,
@@ -70,9 +70,9 @@ define(["dojo/_base/declare",
         },
 
         localeChange: function() {
-           this.url.set("invalidMessage", this.NLS.create.addressIsInvalid);
-           this.url.set("placeHolder", this.NLS.create.missingAddress);
-           this.label.set("placeHolder", this.NLS.create.missingLabel);
+           this.url.set("invalidMessage", this.NLSBundles.create.addressIsInvalid);
+           this.url.set("placeHolder", this.NLSBundles.create.missingAddress);
+           this.label.set("placeHolder", this.NLSBundles.create.missingLabel);
         },
 
         //===================================================

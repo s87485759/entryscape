@@ -3,9 +3,9 @@
 	<div class="profile_left">
 		<div style="position:relative;height: 100%">
 			<div class="profile_left_buttons">
-				<button style="display: none" data-dojo-attach-point="i18n,membersButtonNode">membershipHeader</button>
-				<button style="display: none" data-dojo-attach-point="i18n,communitiesButtonNode">memberOfHeader</button>
-				<button data-dojo-attach-point="i18n,foldersButtonNode">folderWidthAccessHeader</button>
+				<button style="display: none" data-dojo-attach-point="nls,membersButtonNode">membershipHeader</button>
+				<button style="display: none" data-dojo-attach-point="nls,communitiesButtonNode">memberOfHeader</button>
+				<button data-dojo-attach-point="nls,foldersButtonNode">folderWidthAccessHeader</button>
 			</div>
 			<div class="profile_left_content" style="display: none" data-dojo-attach-point="membersNode"></div>
 			<div class="profile_left_content" style="display: none" data-dojo-attach-point="communitiesNode"></div>
@@ -15,11 +15,11 @@
 	<div class="profile_right">
 		<div style="position:relative;height:100%">
 			<div class="profile_right_buttons">
-				<button data-dojo-attach-point="i18n,featuredButtonNode">featuredMaterial</button>
-				<button data-dojo-attach-point="i18n,recentButtonNode" class="selected">latestMaterial</button>
+				<button data-dojo-attach-point="nls,featuredButtonNode">featuredMaterial</button>
+				<button data-dojo-attach-point="nls,recentButtonNode" class="selected">latestMaterial</button>
 			</div>
 			<div class="profile_right_content" style="display: none" data-dojo-attach-point="featuredNode">
-				<div data-dojo-attach-point="i18n,noFeaturedMaterialNode" style="display: none">No featured material to show.</div>
+				<div data-dojo-attach-point="nls,noFeaturedMaterialNode" style="display: none">No featured material to show.</div>
 					<div data-dojo-type="folio/list/List" data-dojo-attach-point="featuredList"
                          data-dojo-props="headLess:true,controlsLess:true,detailsLink:true,openFolderLink:true,publishFocusEvents:false"></div>
 			</div>

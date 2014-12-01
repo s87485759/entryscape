@@ -8,7 +8,7 @@ define(["dojo/_base/declare",
     "dojo/dom-class",
     "dojo/dom-construct",
     "dojo/_base/fx",
-    "folio/util/NLSMixin",
+    "di18n/NLSMixin",
     "folio/util/utils",
     "folio/util/dialog",
     "folio/content/ContentViewSwitcher", //in template
@@ -46,7 +46,8 @@ define(["dojo/_base/declare",
         doFade: false,
         singleReferrentsVisible: false,
         referrentsVisibleByDefault: false,
-        nls: ["details"],
+        nlsBundles: ["details"],
+        nlsBundleBase: "folio/nls/",
 
 
         //===================================================

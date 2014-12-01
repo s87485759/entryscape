@@ -99,7 +99,7 @@ define([
 
     return declare(Widget, {
         templateString: template,
-        nls: [],
+        nlsBundles: [],
         ITNS: "http://kulturarvsdata.se/resurser/EntityType#",
         itemTypeMap: {
             "Bearbetning/interaktiv resurs": "interactiveResource",

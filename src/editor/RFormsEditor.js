@@ -3,7 +3,7 @@ define(["dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/dom-construct",
     "dojo/date/stamp",
-    "folio/util/NLSMixin",
+    "di18n/NLSMixin",
     "rdforms/view/Editor",
     "dijit/layout/BorderContainer", //in template
     "dijit/layout/ContentPane", //in template
@@ -20,7 +20,8 @@ define(["dojo/_base/declare",
              _TemplatedMixin, _WidgetsInTemplateMixin, template) {
     return declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, NLSMixin], {
 
-        nls: ["annotationProfile"],
+        nlsBundles: ["annotationProfile"],
+        nlsBundleBase: "folio/nls/",
         compact: true,
         optional: false,
         recommended: true,
@@ -124,7 +125,7 @@ define(["dojo/_base/declare",
         doneEditing: function () {
         },
         localeChange: function() {
-            this.dialogDone.set("busyLabel", this.NLS["annotationProfile"].dialogDoneBusyLabel);
+            this.dialogDone.set("busyLabel", this.NLSBundles["annotationProfile"].dialogDoneBusyLabel);
         }
     });
 });

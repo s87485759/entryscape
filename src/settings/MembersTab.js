@@ -21,7 +21,7 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["settings"],
+        nlsBundles: ["settings"],
 
         //===================================================
         // Private Attributes

@@ -1,13 +1,12 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/dom-attr",
     "folio/util/Widget",
     "folio/editor/RFormsPresenter",
     "folio/content/ContentViewSwitcher",
     "dijit/layout/ContentPane",
     "dojo/text!./LDBrowserTemplate.html"
-], function(declare,lang, attr, Widget, RFormsPresenter, ContentViewSwitcher, ContentPane, template) {
+], function(declare,lang, Widget, RFormsPresenter, ContentViewSwitcher, ContentPane, template) {
     return declare(Widget, {
         templateString: template,
         postCreate: function() {

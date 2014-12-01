@@ -20,7 +20,7 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["annotationProfile", "common"],
+        nlsBundles: ["annotationProfile", "common"],
 
         //===================================================
         // Inherited methods
@@ -38,7 +38,7 @@ define(["dojo/_base/declare",
         },
 
         localize: function()  {
-            this.saveProfileButton.set("busyLabel", this.NLS.common.saveInProgress);
+            this.saveProfileButton.set("busyLabel", this.NLSBundles.common.saveInProgress);
         },
 
         //===================================================
@@ -51,13 +51,13 @@ define(["dojo/_base/declare",
                     this.application.publish("changed", {entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.NLS.annotationProfile.metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLSBundles.annotationProfile.metadataSaved + this.entry.getUri());
                 this.saveProfileButton.cancel();
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLSBundles.annotationProfile.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLSBundles.annotationProfile.failedSavingUnsufficientMDRights);
                 }
                 this.saveProfileButton.cancel();
             }));

@@ -14,7 +14,7 @@ define(["dojo/_base/declare",
 
     var Inner = declare(Widget, {
         templateString: template,
-        nls: ["common"],
+        nlsBundles: ["common"],
         postCreate: function() {
             this.inherited("postCreate", arguments);
             this.search.show();

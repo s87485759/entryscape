@@ -4,13 +4,14 @@ define(["dojo/_base/declare",
     "dojo/dom-construct",
     "dojo/dom-class",
     "dijit/_Widget",
-    "folio/util/NLSMixin",
+    "di18n/NLSMixin",
     "dijit/form/TextBox"
 ], function (declare, lang, domConstruct, domClass, _Widget, NLSMixin, TextBox) {
 
     return declare([_Widget, NLSMixin], {
         entry: null,
-        nls: ["annotationProfile"],
+        nlsBundles: ["annotationProfile"],
+        nlsBundleBase: "folio/nls/",
 
         constructor: function (args) {
             this.application = __confolio.application;
@@ -54,13 +55,13 @@ define(["dojo/_base/declare",
                     this.application.dispatch({action: "changed", entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.NLS["annotationProfile"].metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLSBundles["annotationProfile"].metadataSaved + this.entry.getUri());
             });
             var onError = lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().warn(this.NLS["annotationProfile"].modifiedPreviouslyOnServer);
+                    this.application.getMessages().warn(this.NLSBundles["annotationProfile"].modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().warn(this.NLS["annotationProfile"].failedSavingUnsufficientMDRights);
+                    this.application.getMessages().warn(this.NLSBundles["annotationProfile"].failedSavingUnsufficientMDRights);
                 }
             });
 

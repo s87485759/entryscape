@@ -8,18 +8,18 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="${id}_userInput" data-dojo-attach-point="i18n">user</label>&nbsp;</td>
+                <td><label for="${id}_userInput" data-dojo-attach-point="nls">user</label>&nbsp;</td>
                 <td><input data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="userInput" id="${id}_userInput" size="20" type="input" tabindex="1"/></td>
             </tr>
             <tr>
-                <td><label for="${id}_passwordInput" data-dojo-attach-point="i18n">password</label>&nbsp;</td>
+                <td><label for="${id}_passwordInput" data-dojo-attach-point="nls">password</label>&nbsp;</td>
 				<td><input data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="passwordInput" id="${id}_passwordInput" size="20" type="password" tabindex="2"/></td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right;">
                     <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="staySignedIn" id="${id}_staySignedIn" checked="true"/>
-                    <label for="${id}_staySignedIn" data-dojo-attach-point="i18n" style="margin: 0px 1.5em 0px 0.3em">staySignedInLabel</label>
-                    <input data-dojo-type="dijit/form/Button" data-dojo-attach-point="i18n,loginButton" type="submit" tabindex="3" data-dojo-props="label: 'logIn'"/>
+                    <label for="${id}_staySignedIn" data-dojo-attach-point="nls" style="margin: 0px 1.5em 0px 0.3em">staySignedInLabel</label>
+                    <input data-dojo-type="dijit/form/Button" data-dojo-attach-point="nls,loginButton" type="submit" tabindex="3" data-dojo-props="label: 'logIn'"/>
                 </td>
             </tr>
         </table>
@@ -27,8 +27,8 @@
     <div style="margin-top: .5em; display: none;" data-dojo-attach-point="browserWarning"></div>
     <ul style="margin-top: 0em; display: none;" data-dojo-attach-point="browserList"></ul>
     <div>
-        <label data-dojo-attach-point="i18n">openIdLoginLabel</label>
+        <label data-dojo-attach-point="nls">openIdLoginLabel</label>
         <div class="openIdProviders" data-dojo-attach-point="providers"></div>
     </div>
-    <a data-dojo-attach-point="i18n,signuplink">signup</a>
+    <a data-dojo-attach-point="nls,signuplink">signup</a>
 </div>

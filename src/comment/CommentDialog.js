@@ -42,7 +42,7 @@ define([
      * - Possibly solved (though not tested).
      */
     return declare(Widget, {
-        nls: ["common", "comment"],
+        nlsBundles: ["common", "comment"],
         templateString: template,
         postDijit: null,
         cancelDijit: null,
@@ -62,9 +62,9 @@ define([
         },
 
         localeChange: function() {
-            this.defaultTextAreaText = this.NLS.comment.defaultTextAreaText;
-            this.popupDijit.set("title", this.NLS.comment.commentDialogTitle + " "+ folio.data.getLabel(this.entry));
-            this.postDijit.set("busyLabel", this.NLS.comment.busyButtonLabel);
+            this.defaultTextAreaText = this.NLSBundles.comment.defaultTextAreaText;
+            this.popupDijit.set("title", this.NLSBundles.comment.commentDialogTitle + " "+ folio.data.getLabel(this.entry));
+            this.postDijit.set("busyLabel", this.NLSBundles.comment.busyButtonLabel);
         },
 
         init: function() {
@@ -206,7 +206,7 @@ define([
                         // Something went wrong! Deal with it
                         //  console.error(response);
                         //	console.error("Error sending comment");
-                        var errorText = win.doc.createTextNode(this.NLS.comment.sendErrorLabel);
+                        var errorText = win.doc.createTextNode(this.NLSBundles.comment.sendErrorLabel);
                         domConstruct.place(errorText, this.jsErrorArea.domNode, "first");
                         this.cancelDijit.set("disabled", false);
                     }));

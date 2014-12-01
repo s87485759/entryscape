@@ -19,7 +19,7 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["settings", "common"],
+        nlsBundles: ["settings", "common"],
 
         //===================================================
         // Inherited methods
@@ -99,8 +99,8 @@ define(["dojo/_base/declare",
             }
         },
         localize: function() {
-            this._savePrincipalAccessButton.set("busyLabel", this.NLS.common.saveInProgress);
-            this._savePortfolioAccessButton.set("busyLabel", this.NLS.common.saveInProgress);
+            this._savePrincipalAccessButton.set("busyLabel", this.NLSBundles.common.saveInProgress);
+            this._savePortfolioAccessButton.set("busyLabel", this.NLSBundles.common.saveInProgress);
         },
 
         //===================================================

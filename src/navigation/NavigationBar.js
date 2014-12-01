@@ -25,7 +25,7 @@ define(["dojo/_base/declare",
         //===================================================
         showHelp: true,
         showAbout: true,
-        nls: ["navigationBar", "loginDialog"],
+        nlsBundles: ["navigationBar", "loginDialog"],
 
         //===================================================
         // Inherited attributes
@@ -146,14 +146,14 @@ define(["dojo/_base/declare",
             on(this._blurLayer, "click", lang.hitch(this, this._hideControlMenu));
         },
         localize: function () {
-            attr.set(this.searchButtonNode, "title", this.NLS.navigationBar.searchLabel);
-            this.searchField.set("placeHolder", this.NLS.navigationBar.searchFieldMessage);
+            attr.set(this.searchButtonNode, "title", this.NLSBundles.navigationBar.searchLabel);
+            this.searchField.set("placeHolder", this.NLSBundles.navigationBar.searchFieldMessage);
 
             if (!this.user) {
-                this.set("userField", this.NLS.navigationBar.guestUser);
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLS.loginDialog.logIn);
+                this.set("userField", this.NLSBundles.navigationBar.guestUser);
+                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logIn);
             } else {
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLS.loginDialog.logOut);
+                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logOut);
             }
         },
         //===================================================
@@ -170,13 +170,13 @@ define(["dojo/_base/declare",
                     style.set(this.profileIconNode, "display", "");
                     style.set(this.signInIconNode, "display", "none");
                 }
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLS.loginDialog.logOut);
+                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logOut);
             } else {
                 this.userId = undefined;
-                attr.set(this.userFieldNode, "innerHTML", this.NLS.navigationBar.guestUser);
+                attr.set(this.userFieldNode, "innerHTML", this.NLSBundles.navigationBar.guestUser);
                 attr.set(this.userFieldNode, "href", "");
 
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLS.loginDialog.logIn);
+                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logIn);
                 if (this.profileIconNode) {
                     style.set(this.profileIconNode, "display", "none");
                     style.set(this.signInIconNode, "display", "");
@@ -225,7 +225,7 @@ define(["dojo/_base/declare",
             if (this.home) {
                 this.application.openEntry(this.application.repository + this.home + "/entry/_top");
             } else {
-                this.application.message(this.NLS.navigationBar.notLoggedInNoHomeMessage);
+                this.application.message(this.NLSBundles.navigationBar.notLoggedInNoHomeMessage);
             }
         },
         _loginLinkClicked: function () {

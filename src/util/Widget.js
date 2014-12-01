@@ -30,9 +30,11 @@ define([
 
     return  declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin, NLSMixin], {
         templateString: "<div></div>",
+        nlsBundleBase: "folio/nls/",
 
         postCreate: function() {
             this.inherited("postCreate", arguments);
+            this.application = __confolio.application;
             connect.subscribe("/confolio/localeChange", lang.hitch(this, function(obj) {
                 locale.setLocale(obj.locale);
             }));

@@ -28,13 +28,13 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["common", "acl"],
+        nlsBundles: ["common", "acl"],
 
         //===================================================
         // Public API
         //===================================================
         show: function() {
-            this.dialog = dialog.showStandardDialog(this, this.NLS.acl.dialogTitle, lang.hitch(this, this._finish), lang.hitch(this, this.onHide));
+            this.dialog = dialog.showStandardDialog(this, this.NLSBundles.acl.dialogTitle, lang.hitch(this, this._finish), lang.hitch(this, this.onHide));
             this.dialog.setFinishButtonDisabled(true);
         },
 
@@ -62,13 +62,13 @@ define(["dojo/_base/declare",
         },
 
         localeChange: function() {
-//           this.url.set("invalidMessage", this.NLS.create.addressIsInvalid);
+//           this.url.set("invalidMessage", this.NLSBundles.create.addressIsInvalid);
             this._options = [
-                { label: this.NLS.acl.noAccess, value: "none" },
-                { label: this.NLS.acl.canRead, value: "read" },
-                { label: this.NLS.acl.canReadMetadata, value: "mread"},
-                { label: this.NLS.acl.canWrite, value: "write" },
-                { label: this.NLS.acl.isOwner, value: "admin" }
+                { label: this.NLSBundles.acl.noAccess, value: "none" },
+                { label: this.NLSBundles.acl.canRead, value: "read" },
+                { label: this.NLSBundles.acl.canReadMetadata, value: "mread"},
+                { label: this.NLSBundles.acl.canWrite, value: "write" },
+                { label: this.NLSBundles.acl.isOwner, value: "admin" }
             ];
         },
 
@@ -158,8 +158,8 @@ define(["dojo/_base/declare",
                 usersAC = {entryId: "_users", uri: principalBase+"_users"};
                 list.push(usersAC);
             }
-            this._renderCustomRow(guestAC, true, this.NLS.acl["public"], false);
-            this._renderCustomRow(usersAC, false, this.NLS.acl["users"], false);
+            this._renderCustomRow(guestAC, true, this.NLSBundles.acl["public"], false);
+            this._renderCustomRow(usersAC, false, this.NLSBundles.acl["users"], false);
             //Actually do the rendering of guest and users.
         },
 
@@ -188,19 +188,19 @@ define(["dojo/_base/declare",
             var access, txt;
             if (ac.admin) {
                 access = "admin";
-                txt = this.NLS.acl.isOwner;
+                txt = this.NLSBundles.acl.isOwner;
             } else if (ac.rwrite) {
                 access = "write";
-                txt = this.NLS.acl.canWrite;
+                txt = this.NLSBundles.acl.canWrite;
             } else if (ac.rread) {
                 access = "read";
-                txt = this.NLS.acl.canRead;
+                txt = this.NLSBundles.acl.canRead;
             } else if (ac.mread) {
                 access = "mread";
-                txt = this.NLS.acl.canReadMetadata;
+                txt = this.NLSBundles.acl.canReadMetadata;
             } else {
                 access = "none";
-                txt = this.NLS.acl.noAccess;
+                txt = this.NLSBundles.acl.noAccess;
             }
 
             if (this._overridden) {
@@ -272,7 +272,7 @@ define(["dojo/_base/declare",
                 this._overridden = true;
                 this.setI18nState(2);
                 this.principalSearch.set("disabled", false);
-                this.principalSearch.set("placeholder", this.NLS.acl.principalSearchPlaceHolder);
+                this.principalSearch.set("placeholder", this.NLSBundles.acl.principalSearchPlaceHolder);
                 if (this._entryACLList.length == 0) {
                     array.forEach(this._contextEntryACLList, lang.hitch(this, function(ac) {
                         if (ac.rwrite) {

@@ -2,13 +2,13 @@
   <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-attach-point="bc" style="height: 100%" data-dojo-props="gutters:false">
   	 <div data-dojo-type="dijit/layout/ContentPane" class="editTabEditStateButtons" data-dojo-props="region:'top'" style="height: 1.7em;">
 		<span style="float: right;"><input type="text" name="optional" data-dojo-type="dijit/form/CheckBox"
-			data-dojo-attach-events="onChange:editStateColorChange"/>&nbsp;<span data-dojo-attach-point="i18n">colorLabel</span>&nbsp;</span>
+			data-dojo-attach-events="onChange:editStateColorChange"/>&nbsp;<span data-dojo-attach-point="nls">colorLabel</span>&nbsp;</span>
 		&nbsp;&nbsp;&nbsp;<input type="text" name="mandatory" data-dojo-props="checked:true,disabled:true"
-			data-dojo-type="dijit/form/CheckBox"/>&nbsp;<span data-dojo-attach-point="i18n" class="mandatory">mandatoryLabel</span>&nbsp;&nbsp;&nbsp;
+			data-dojo-type="dijit/form/CheckBox"/>&nbsp;<span data-dojo-attach-point="nls" class="mandatory">mandatoryLabel</span>&nbsp;&nbsp;&nbsp;
 		&nbsp;<input type="text" name="mandatory" data-dojo-props="checked:true" data-dojo-type="dijit/form/CheckBox"
-			data-dojo-attach-point="recommendedCheckBox" data-dojo-attach-event="onChange:recommendedChange"/>&nbsp;<span data-dojo-attach-point="i18n" class="recommended">recommendedLabel</span>&nbsp;&nbsp;&nbsp;
+			data-dojo-attach-point="recommendedCheckBox" data-dojo-attach-event="onChange:recommendedChange"/>&nbsp;<span data-dojo-attach-point="nls" class="recommended">recommendedLabel</span>&nbsp;&nbsp;&nbsp;
 		&nbsp;<input type="text" name="optional" data-dojo-type="dijit/form/CheckBox"
-			data-dojo-attach-point="optionalCheckBox" data-dojo-attach-event="onChange:optionalChange"/>&nbsp;<span data-dojo-attach-point="i18n" class="optional">optionalLabel</span>
+			data-dojo-attach-point="optionalCheckBox" data-dojo-attach-event="onChange:optionalChange"/>&nbsp;<span data-dojo-attach-point="nls" class="optional">optionalLabel</span>
 	</div>
  	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="shameCP" data-dojo-props="region:'center'" style='overflow: auto'>
 	   <div data-dojo-attach-point="rformsEditorNode"></div>
@@ -16,8 +16,8 @@
   	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'">
   	 	<div style="margin-top: 4px;">
 			<div style="float:right" data-dojo-attach-event="onClick: donePressed" data-dojo-type="dojox/form/BusyButton"
-                 data-dojo-props="busyLabel:''" data-dojo-attach-point="i18n,dialogDone">dialogDoneLabel</div>
-			<div style="float:right" data-dojo-attach-event="onClick: doneEditing" data-dojo-type="dijit/form/Button" data-dojo-attach-point="i18n">dialogCancelLabel</div>
+                 data-dojo-props="busyLabel:''" data-dojo-attach-point="nls,dialogDone">dialogDoneLabel</div>
+			<div style="float:right" data-dojo-attach-event="onClick: doneEditing" data-dojo-type="dijit/form/Button" data-dojo-attach-point="nls">dialogCancelLabel</div>
 			<div style="float:right;padding:5px 5px 0 0" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="warningArea"> </div>
 		</div>
   	</div>

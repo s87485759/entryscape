@@ -1,6 +1,6 @@
 <div>
     <div class="distinctBackground settingsBlock">
-        <h4 data-dojo-attach-point="i18n">name</h4>
+        <h4 data-dojo-attach-point="nls">name</h4>
         <div class="userStuff">
             <div data-dojo-attach-point="firstNameDijit" data-dojo-type="dijit/form/TextBox"></div>
             <div data-dojo-attach-point="lastNameDijit" data-dojo-type="dijit/form/TextBox"></div>
@@ -9,28 +9,28 @@
         <div class="groupStuff">
             <div class="wideInput" data-dojo-attach-point="fullNameDijit" data-dojo-type="dijit/form/TextBox"></div>
         </div>
-        <h4 data-dojo-attach-point="i18n">info</h4>
+        <h4 data-dojo-attach-point="nls">info</h4>
         <div class="wideInput" data-dojo-attach-point="infoDijit" data-dojo-type="dijit/form/Textarea"></div>
-        <h4 data-dojo-attach-point="i18n">email</h4>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="i18n,infoSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
+        <h4 data-dojo-attach-point="nls">email</h4>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,infoSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
         <div class="wideInput" data-dojo-attach-point="emailDijit" data-dojo-type="dijit/form/TextBox"></div>
     </div>
     <div class="distinctBackground settingsBlock profilepicture">
         <div class="column1">
             <div class="headingRow">
                 <input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-nppc" data-dojo-attach-point="noPictureChoiceButton">&nbsp;
-                <label for="${id}-nppc" data-dojo-attach-point="i18n">noProfilePictureLabel</label>
+                <label for="${id}-nppc" data-dojo-attach-point="nls">noProfilePictureLabel</label>
             </div>
             <div class="headingRow">
                 <input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-uppc" data-dojo-attach-point="urlPictureChoiceButton">&nbsp;
-                <label for="${id}-uppc" data-dojo-attach-point="i18n">urlProfilePictureLabel</label>
+                <label for="${id}-uppc" data-dojo-attach-point="nls">urlProfilePictureLabel</label>
             </div>
             <div class="urlProfilePicture" data-dojo-attach-point="urlProfilePictureDijit" data-dojo-type="dijit/form/TextBox"></div>
-            <div data-dojo-attach-point="i18n,urlProfilePictureTestButton" data-dojo-type="dijit/form/Button">urlProfilePictureTest</div>
+            <div data-dojo-attach-point="nls,urlProfilePictureTestButton" data-dojo-type="dijit/form/Button">urlProfilePictureTest</div>
             <div class="headingRow">
                 <input type="radio" name="profilePictureOptions" data-dojo-type="dijit/form/RadioButton" id="${id}-lppc" data-dojo-attach-point="localPictureChoiceButton">&nbsp;
-                <label class="localProfilePictureLabel" for="${id}-lppc" data-dojo-attach-point="i18n">localProfilePictureLabel</label>
-                <input data-dojo-type="dojox/form/Uploader" data-dojo-props="multiple: false, uploadOnSelect: false, label: 'localProfilePictureUpload'" data-dojo-attach-point="i18n,localProfilePictureUploadButton" name="inputFile"/>
+                <label class="localProfilePictureLabel" for="${id}-lppc" data-dojo-attach-point="nls">localProfilePictureLabel</label>
+                <input data-dojo-type="dojox/form/Uploader" data-dojo-props="multiple: false, uploadOnSelect: false, label: 'localProfilePictureUpload'" data-dojo-attach-point="nls,localProfilePictureUploadButton" name="inputFile"/>
             </div>
         </div>
         <div class="column2">
@@ -38,28 +38,28 @@
                 <img data-dojo-attach-point="profilePictureNode"/>
             </div>
         </div>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="i18n,profilePictureSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,profilePictureSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
     </div>
     <div class="distinctBackground settingsBlock userStuff">
-        <h4 data-dojo-attach-point="i18n">languageLabel</h4>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="i18n,uiprefsSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
+        <h4 data-dojo-attach-point="nls">languageLabel</h4>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,uiprefsSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
         <input data-dojo-attach-point="languageSelectDijit" data-dojo-type="dijit/form/FilteringSelect"/>
     </div>
     <div class="distinctBackground settingsBlock userStuff">
         <div class="passwordRow">
-            <label for="${id}-opw" data-dojo-attach-point="i18n">oldPassword</label>
+            <label for="${id}-opw" data-dojo-attach-point="nls">oldPassword</label>
             <input type="password" id="${id}-opw" data-dojo-attach-point="oldPasswordDijit" data-dojo-type="dijit/form/TextBox"/></br>
         </div>
         <div class="passwordRow">
-            <label for="${id}-npw" data-dojo-attach-point="i18n">newPassword</label>
+            <label for="${id}-npw" data-dojo-attach-point="nls">newPassword</label>
             <input type="password" class="passwordInput" id="${id}-npw" data-dojo-attach-point="newPasswordDijit" data-dojo-type="dijit/form/TextBox"/></br>
         </div>
         <div class="passwordRow">
-            <label for="${id}-vnpw" data-dojo-attach-point="i18n">verifyNewPassword</label>
+            <label for="${id}-vnpw" data-dojo-attach-point="nls">verifyNewPassword</label>
             <input type="password" class="passwordInput" id="${id}-vnpw" data-dojo-attach-point="verifyNewPasswordDijit" data-dojo-type="dijit/form/TextBox"/>
-            <div class="passwordProblem" data-dojo-attach-point="i18n,passwordMismatchNode" style="display: none;">mismatchPassword</div>
-            <div class="passwordProblem" data-dojo-attach-point="i18n,passwordTooShortNode" style="display: none;">tooShortPassword</div>
+            <div class="passwordProblem" data-dojo-attach-point="nls,passwordMismatchNode" style="display: none;">mismatchPassword</div>
+            <div class="passwordProblem" data-dojo-attach-point="nls,passwordTooShortNode" style="display: none;">tooShortPassword</div>
         </div>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="i18n,passwordSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,passwordSaveButton" data-dojo-props="disabled: true">saveDialogSaveLabel</div>
     </div>
 </div>
