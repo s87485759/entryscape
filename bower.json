@@ -17,7 +17,8 @@
     "rdfjson": "https://bitbucket.org/metasolutions/rdfjson.git#develop",
     "rdforms": "https://bitbucket.org/metasolutions/rdforms.git#develop",
     "spa": "https://bitbucket.org/metasolutions/spa.git#master",
-    "di18n": "https://bitbucket.org/metasolutions/di18n.git#master"
+    "di18n": "https://bitbucket.org/metasolutions/di18n.git#master",
+    "nls": "https://bitbucket.org/metasolutions/entryscape-nls.git"
   },
   "keywords": [
     "rdf",
