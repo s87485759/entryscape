@@ -158,7 +158,7 @@ define(["dojo/_base/declare",
                 var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
                 domConstruct.create("span", {"innerHTML": name}, groupDiv);
                 var navIcons = domConstruct.create("div", {"class": "navIcons"}, groupDiv);
-                on(groupDiv, "click", this, lang.hitch(this, function (event) {
+                on(groupDiv, "click", lang.hitch(this, function (event) {
                     if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
                         this.application.openEntry(groupEntry, "profile");
                     }
@@ -199,12 +199,12 @@ define(["dojo/_base/declare",
                     } else {
                         domConstruct.create("img", {src: imageDefault}, imgWrap);
                         if (imgWrap) { //If an profilepicture is available, try to load it, if it exists it will replace the default image.
-                            utils.lazyLoadImage(imgWrap, imageUrl);
+                            utils.lazyLoadImage(imgWrap, imageUrl || imageDefault);
                         }
                     }
                     domConstruct.create("span", {"innerHTML": child.n}, userDiv);
                     var navIcons = domConstruct.create("div", {"class": "navIcons"}, userDiv);
-                    on(userDiv, "click", this, lang.hitch(this, function (event) {
+                    on(userDiv, "click", lang.hitch(this, function (event) {
                         if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
                             this.application.openEntry(child.e, "profile");
                         }
