@@ -233,9 +233,9 @@
 
 /*----------- Breadcrumbs -----------*/
 .breadcrumbs {
-	border-bottom-width: 5px;
+	border-bottom-width: 6px;
 	border-bottom-style: solid;
-    min-height: 125px;
+    min-height: 80px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -410,8 +410,8 @@
 
 /* ================PrincipalInfo========================*/
 .entryscape .principalInfo {
-	padding: 7px 40px 10px 40px;
-	height: 86px;
+	padding: 7px 20px 10px 20px;
+	height: 40px;
 	-webkit-border-bottom-left-radius: 6px;
 	-webkit-border-bottom-right-radius: 6px;
 	-moz-border-bottom-left-radius: 6px;
@@ -425,7 +425,7 @@
 }
 
 .entryscape .breadcrumbs .principalInfo {
-	padding: 7px 35px 10px 35px;
+    padding: 7px 20px 10px 15px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
@@ -434,10 +434,10 @@
 .entryscape .principalInfoText {
 	position: absolute;
 	top: 0px;
-	left: 80px;
+	left: 50px;
 	vertical-align: top;
 	padding: 5px 20px;
-	height: 80px;
+	height: 40px;
 	overflow: hidden;
 }
 
@@ -481,4 +481,15 @@
 
 .entryscape .principalInfo .contactinfo>a:hover {
 	color: black;
+}
+
+.entryscape .principalInfo div.principalPicture {
+    width: 35px;
+    height: 35px;
+    margin-top: -1px;
+}
+
+.entryscape .principalInfo .principalPicture>img {
+    max-width: 35px;
+    max-height: 35px;
 }

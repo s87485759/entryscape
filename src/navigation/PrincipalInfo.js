@@ -128,7 +128,7 @@ define(["dojo/_base/declare",
             var desc = this.entry.get(folio.data.FOAFSchema.PLAN) ||
                 folio.data.getDescription(this.entry) ||
                 (this.homeContext ? folio.data.getDescription(this.homeContext) : "");
-            attr.set(this.principalDescriptionNode, "innerHTML", desc);
+            attr.set(this.domNode, "title", desc);
 
             var email = this.entry.get(folio.data.FOAFSchema.MBOX);
             if (email != null && this.application.getUser() != null) {
