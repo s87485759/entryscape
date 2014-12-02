@@ -4,7 +4,7 @@
 .entryscape .userProfile .profile_left,
 .entryscape .userProfile .profile_right {
 	position: absolute;
-	top: 110px;
+	top: 50px;
 	bottom:0px;
 	width: 50%;
 }

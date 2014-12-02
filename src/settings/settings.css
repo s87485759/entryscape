@@ -11,7 +11,7 @@
 
 .confolio.settings .settingsOutline {
 	position: absolute;
-	top: 112px;
+	top: 68px;
 	bottom: 10px;
 	left: 0px;
 	width: 150px;
@@ -47,7 +47,7 @@
 
 .confolio.settings .settingsCenter {
 	position: absolute;
-	top: 112px;
+	top: 68px;
 	bottom: 10px;
 	left: 160px;
 	right: 0px;	
