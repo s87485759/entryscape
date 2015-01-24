@@ -12,7 +12,7 @@ define([
     "folio/security/RightsDialog",
     "folio/execute/ConvertDialog",
     "folio/comment/CommentDialog"
-], function(declare, lang, event, on, domClass, query, keys, operations, Remove, ShareDialog, ConvertDialog, CommentDialog) {
+], function(declare, lang, event, on, domClass, query, keys, operations, Remove, RightsDialog, ConvertDialog, CommentDialog) {
 
 return declare(null, {
 	//=================================================== 
@@ -303,7 +303,7 @@ return declare(null, {
             return;
         }
 
-        var d = new ShareDialog({
+        var d = new RightsDialog({
             entry: entry,
             onHide: lang.hitch(this, this.listenForKeyEvents)
         });

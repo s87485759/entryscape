@@ -44,6 +44,7 @@ define(["dojo/_base/declare",
         },
         postCreate: function () {
             this.inherited("postCreate", arguments);
+            this.application = __confolio.application;
             this.initNLS();
         },
 

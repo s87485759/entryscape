@@ -18,6 +18,7 @@
                         <div class="alternativesNode">
                             <div data-dojo-attach-point="userBlock" class="userBlock">
                                 <span class="label" data-dojo-attach-point="nls">greeting</span>
+                                <span class="link user" data-dojo-attach-point="nls,guestFieldNode">guestUser</span>
                                 <a class="link user" data-dojo-attach-point="nls,userFieldNode">userField</a>
                             </div>
                             <div data-dojo-attach-point="profileLinkNodeWrapper" style="display: none">
@@ -71,7 +72,7 @@
         <span class="search icon" data-dojo-attach-point="searchButtonNode" data-dojo-attach-event="onclick:_searchClicked" style="vertical-align: middle; margin: 1px;"></span>
         <a data-dojo-attach-point="profileIconNode" class="home icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
         <a data-dojo-attach-point="folderIconNode" class="folder icon" style="vertical-align: middle; margin: 1px;display:none;"></a>
-        <button data-dojo-attach-point="signInIconNode" data-dojo-attach-event="onclick:_loginLinkClicked" class="signin" style="vertical-align: middle;">Sign in</button>
+        <button data-dojo-attach-point="nls,signInIconNode" data-dojo-attach-event="onclick:_loginLinkClicked" class="signin" style="vertical-align: middle;">logIn</button>
     </div></div>
     <div class="area3">
     </div>

@@ -22,7 +22,7 @@ define(["dojo/_base/declare",
         buildRendering: function () {
             this.inherited("buildRendering", arguments);
             this.domNode = this.srcNodeRef || domConstruct.create("div");
-            domClass.addClass(this.domNode, "labelEditor");
+            domClass.add(this.domNode, "labelEditor");
             this.textBox = new TextBox({trim: true}, domConstruct.create("div", null, this.domNode));
             this.application.getItemStore(lang.hitch(this, function (itemStore) {
                 var mpLabel = this.application.getConfig().getLabelTemplate(this.entry, "local");

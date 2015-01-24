@@ -28,6 +28,10 @@ define([
         }
     };
 
+    connect.subscribe("/confolio/localeChange", lang.hitch(this, function(obj) {
+        locale.set(obj.locale);
+    }));
+
     return  declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin, NLSMixin], {
         templateString: "<div></div>",
         nlsBundleBase: "folio/nls/",
@@ -35,9 +39,6 @@ define([
         postCreate: function() {
             this.inherited("postCreate", arguments);
             this.application = __confolio.application;
-            connect.subscribe("/confolio/localeChange", lang.hitch(this, function(obj) {
-                locale.set(obj.locale);
-            }));
             connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
 
             this.initNLS();

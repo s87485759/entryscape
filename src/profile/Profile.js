@@ -28,6 +28,7 @@ define(["dojo/_base/declare",
         //===================================================
         twoColumn: true,
         nlsBundles: ["profile"],
+        nlsBundleBase: "nls/",
         templateString: template,
 
         //===================================================
@@ -294,20 +295,26 @@ define(["dojo/_base/declare",
                         folio.data.getAllChildren(featuredE, lang.hitch(this, function (children) {
                             if (children.length > 0) {
                                 this._featuredEntry = featuredE;
-                                this._featuredDisabled = false;
-                                domClass.remove(this.featuredButtonNode, "disabled");
+                                //this._featuredDisabled = false;
+                                domStyle.set(this.noFeaturedMaterialNode, "display", "none");
+                                domStyle.set(this.featuredList.domNode, "display", "");
+                                //domClass.remove(this.featuredButtonNode, "disabled");
                                 domAttr.set(this.featuredButtonNode, "title", "");
                                 this._showFeatured();
                             } else {
-                                this._featuredDisabled = true;
-                                domClass.add(this.featuredButtonNode, "disabled");
-                                domAttr.set(this.featuredButtonNode, "title", "No featured material available");
+                                //this._featuredDisabled = true;
+                                domStyle.set(this.noFeaturedMaterialNode, "display", "");
+                                domStyle.set(this.featuredList.domNode, "display", "none");
+                                //domClass.add(this.featuredButtonNode, "disabled");
+                                //domAttr.set(this.featuredButtonNode, "title", "No featured material available");
                                 this._showRecent();
                             }
                         }));
                     }));
             } else {
-                this._featuredDisabled = true;
+                //this._featuredDisabled = true;
+                domStyle.set(this.noFeaturedMaterialNode, "display", "");
+                domStyle.set(this.featuredList.domNode, "display", "none");
                 domClass.add(this.featuredButtonNode, "disabled");
                 domAttr.set(this.featuredButtonNode, "title", "No featured material available");
                 this._showRecent();

@@ -17,7 +17,7 @@
             <input type="radio" name="members" data-dojo-type="dijit/form/RadioButton" id="${id}-membersMembers" data-dojo-attach-point="_membersMembersChoiceDijit">&nbsp;
             <label for="${id}-membersMembers" data-dojo-attach-point="nls">membersAccess</label>
         </div>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,_savePrincipalAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _savePrincipalAccess">save</div>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,_savePrincipalAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _savePrincipalAccess">saveLabel</div>
     </div>
     <div class="distinctBackground settingsBlock" data-dojo-attach-point="_homeContextRights">
         <h4 data-dojo-attach-point="nls">portfolioReadRights</h4>
@@ -27,7 +27,7 @@
         <label for="${id}-portfolioUsers" data-dojo-attach-point="nls">usersAccess</label>
         <input type="radio" name="portfolio" data-dojo-type="dijit/form/RadioButton" id="${id}-portfolioPrivate" data-dojo-attach-point="_portfolioPrivateChoiceDijit">&nbsp;
         <label for="${id}-portfolioPrivate" data-dojo-attach-point="nls">privateAccess,membersAccess</label>
-        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,_savePortfolioAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _savePortfolioAccess">save</div>
+        <div data-dojo-type="dojox/form/BusyButton" class="settingsSave" data-dojo-attach-point="nls,_savePortfolioAccessButton" data-dojo-props="disabled: true" data-dojo-attach-event="onClick: _savePortfolioAccess">saveLabel</div>
     </div>
     <div class="distinctBackground settingsBlock" data-dojo-attach-point="_selectHomeContext" style="display:none">
         <span>Home context id: </span><div data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="_homeContextIdDijit" data-dojo-attach-event="onChange: _homeContextIdChanged"></div><br>

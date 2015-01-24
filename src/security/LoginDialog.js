@@ -14,9 +14,6 @@ define(["dojo/_base/declare",
 ], function (declare, lang, array, has, on, domStyle, domConstruct, domAttr, string,
              Widget, authorize, template) {
 
-//    dojo.require("dojo.string");
-
-
     // Array containing objects representing tested browsers
     // Properties for the objects:
     //  - title: Text string shown to the user in the browser list
@@ -73,7 +70,8 @@ define(["dojo/_base/declare",
         userName: null,
         password: null,
 
-        nlsBundles: ["loginDialog"],
+        nlsBundles: ["login"],
+        nlsBundleBase: "nls/",
 
 
         postCreate: function() {
@@ -134,8 +132,8 @@ define(["dojo/_base/declare",
                 }
 
                 if (this.isLogoutNeeded) {
-                    this.status = "loggedOut";
-                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
+                    this.status = "statusLoggedOut";
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.login[this.status]);
                     authorize.unAuthorizeUser();
                 }
             }
@@ -150,19 +148,19 @@ define(["dojo/_base/declare",
         },
         changeLocale: function() {
             if (this.dialog) {
-                this.dialog.set("title", string.substitute(this.NLSBundles.loginDialog.title, {app :__confolio.config['title']}));
+                this.dialog.set("title", string.substitute(this.NLSBundles.login.title, {app :__confolio.config['title']}));
             }
             if (this.status) {
-                domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
+                domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.login[this.status]);
             }
-            this.browserWarning.innerHTML = "<strong>" + this.NLSBundles.loginDialog.warning + "</strong>" + this.NLSBundles.loginDialog.warningText;
+            this.browserWarning.innerHTML = "<strong>" + this.NLSBundles.login.warning + "</strong>" + this.NLSBundles.login.warningText;
             this.browserList.innerHTML = "";
             for (var i = 0; i < browsers.length; i++) {
                 browser = browsers[i];
                 text = browser.title;
                 if (typeof browser.maxValue === "undefined" &&
                     typeof browser.minValue !== "undefined") {
-                    text = this.NLSBundles.loginDialog.andHigher.replace("%s", text);
+                    text = this.NLSBundles.login.andHigher.replace("%s", text);
                 }
                 var item = domConstruct.create("li", {"innerHTML": text}, this.browserList);
             }
@@ -178,8 +176,8 @@ define(["dojo/_base/declare",
             this.userInput.set("disabled", true);
             this.passwordInput.set("disabled", true);
             this.loginButton.set("disabled", true);
-            this.status = "loggingIn";
-            domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
+            this.status = "statusLoggingIn";
+            domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.login[this.status]);
 
             // Configure the communicator to authenticate every request
             authorize.cookieAuth(userName, password).then(
@@ -188,8 +186,8 @@ define(["dojo/_base/declare",
                     this.userInput.set("disabled", false);
                     this.passwordInput.set("disabled", false);
                     this.loginButton.set("disabled", false);
-                    this.status = "invalidLogin";
-                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.loginDialog[this.status]);
+                    this.status = "statusInvalidLogin";
+                    domAttr.set(this.loginStatus, "innerHTML", this.NLSBundles.login[this.status]);
                 })
             );
         },
@@ -200,7 +198,7 @@ define(["dojo/_base/declare",
             if (this.isLoggingOut) {
                 this.application.setUser(null);
                 this.isLoggingOut = false;
-                this.status = "loggedOut";
+                this.status = "statusLoggedOut";
 
                 w.userInput.set("disabled", false);
                 w.passwordInput.set("disabled", false);
@@ -209,7 +207,7 @@ define(["dojo/_base/declare",
                 w.userInput.focus();
             } else if (typeof data.message !== "undefined") {
                 this.setHttpBasicAuth("_guest", "");
-                this.status = "invalidLogin";
+                this.status = "statusInvalidLogin";
 
                 w.passwordInput.set("value", "");
                 w.userInput.set("disabled", false);

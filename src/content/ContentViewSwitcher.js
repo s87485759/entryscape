@@ -10,13 +10,14 @@ define([
     "dojo/dom-attr",
     "dijit/layout/_LayoutWidget",
     "dojox/image/LightboxNano",
+    "di18n/NLSMixin",
     "folio/util/utils",
     "folio/content/RTE"
-], function (declare, lang, on, domGeometry, domClass, domStyle, domConstruct, domAttr, _LayoutWidget, LightboxNano, utils, RTE) {
+], function (declare, lang, on, domGeometry, domClass, domStyle, domConstruct, domAttr, _LayoutWidget, LightboxNano, NLSMixin, utils, RTE) {
 
     var flashidx = 0;
 
-    return declare(_LayoutWidget, {
+    return declare([_LayoutWidget, NLSMixin], {
         //===================================================
         // Public Attributes
         //===================================================
@@ -29,8 +30,10 @@ define([
         flashInline: true,
         imgInline: true,
         pdfInline: true,
-
         contentNode: null,
+        nlsBundles: ["details"],
+        nlsBundleBase: "nls/",
+
 
         //===================================================
         // Public Methods
@@ -64,6 +67,10 @@ define([
                     window.open(evt.target.href, "_blank");
                 }
             });
+        },
+        postCreate: function() {
+            this.inherited("postCreate", arguments);
+            this.initNLS();
         },
         show: function(entry) {
             if (this._showTimer) {
@@ -205,7 +212,7 @@ define([
         _showImage: function(url) {
             this.showing = true;
             this.doResize = true;
-            this.contentNode = domConstruct.create("div", {"innerHTML": "Loading image..."}, this.domNode);
+            this.contentNode = domConstruct.create("div", {"innerHTML": this.NLSBundles.details.loadingImage}, this.domNode);
             utils.lazyLoadImage(this.contentNode, url, lang.hitch(this, function(img) {
                 this.origWidth = img.width;
                 this.origHeight = img.height;
@@ -218,7 +225,8 @@ define([
                 new LightboxNano({href: url}, img);
                 this.resizeContent();
             }), lang.hitch(this, function() {
-                domAttr.set(this.contentNode, "innerHTML", "Failed loading image with address:<br>"+url);
+                domStyle.set(this.contentNode, {width: "auto", "margin-top": "1em"});
+                domAttr.set(this.contentNode, "innerHTML", lang.replace(this.NLSBundles.details.failedLoadingImage, {url:url}));
             }));
         },
 

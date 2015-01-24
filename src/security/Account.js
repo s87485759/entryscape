@@ -17,7 +17,8 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nlsBundles: ["loginDialog"],
+        nlsBundles: ["login"],
+        nlsBundleBase: "nls/",
 
         //===================================================
         // Inherited methods

@@ -5,7 +5,6 @@ define(["dojo/_base/declare",
     "dojo/on",
     "dojo/aspect",
     "dojo/query",
-    "dojo/_base/window",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
@@ -15,9 +14,10 @@ define(["dojo/_base/declare",
     "folio/util/Widget",
     "folio/security/LoginDialog",
     "folio/ApplicationView",
+    "di18n/locale",
     "dojo/text!./NavigationBarTemplate.html"
-], function (declare, lang, kernel, on, aspect, query, win, style, construct, attr, keys, event, Memory,
-             Widget, LoginDialog, ApplicationView, template) {
+], function (declare, lang, kernel, on, aspect, query, domStyle, domConstruct, domAttr, keys, event, Memory,
+             Widget, LoginDialog, ApplicationView, locale, template) {
 
     return declare([Widget, ApplicationView], {
         //===================================================
@@ -25,26 +25,9 @@ define(["dojo/_base/declare",
         //===================================================
         showHelp: true,
         showAbout: true,
-        nlsBundles: ["navigationBar", "loginDialog"],
-
-        //===================================================
-        // Inherited attributes
-        //===================================================
+        nlsBundles: ["navigation"],
+        nlsBundleBase: "nls/",
         templateString: template,
-        //===================================================
-        // I18n attributes
-        //===================================================
-        aboutLink: "",
-        noAbout: "",
-        helpLink: "",
-        noHelp: "",
-        greeting: "",
-        userField: "",
-        homeLink: "",
-        contextLabel: "",
-        searchLabel: "",
-        searchFieldMessage: "",
-        changeUserDialogTitle: "",
 
         //===================================================
         // Inherited methods
@@ -53,7 +36,7 @@ define(["dojo/_base/declare",
             this.list = args.list;
         },
         getSupportedActions: function () {
-            return ["showContext", "showEntry", "entryChange", "localeChange", "userChange"];
+            return ["showContext", "showEntry", "entryChange", "userChange"];
         },
         handle: function (event) {
             this._hideControlMenu();
@@ -77,11 +60,11 @@ define(["dojo/_base/declare",
                     if (event.entry.getResourceUri() == event.entry.getResourceUri()) {
                         var res = event.entry.getResource();
                         this.user = res.name;
-                        attr.set(this.userField, "innerHTML", this.user);
+                        domAttr.set(this.userField, "innerHTML", this.user);
                         this.application.setUser(res);
                     }
                     break;
-                case "localeChange":
+/*                case "localeChange":
                     var loc = kernel.locale;
                     if (!this.supportedLanguageMap.hasOwnProperty(loc) &&
                         this.supportedLanguageMap.hasOwnProperty(loc.slice(0, 2))) {
@@ -91,7 +74,7 @@ define(["dojo/_base/declare",
                     this.localeChanger.set("value", loc);
                     this.localeChanger.ignoreChange = false;
                     this.localize();
-                    break;
+                    break;*/
                 case "userChange":
                     delete this.userEntry;
                     this._loginAdjustments();
@@ -104,12 +87,12 @@ define(["dojo/_base/declare",
         postCreate: function () {
             this.inherited("postCreate", arguments);
             if (this.showHelp) {
-                style.set(this.helpLinkSpan, "display", "");
-                attr.set(this.helpLinkNode, "href", this.site.getHashUrl("help", {}));
+                domStyle.set(this.helpLinkSpan, "display", "");
+                domAttr.set(this.helpLinkNode, "href", this.site.getHashUrl("help", {}));
             }
             if (this.showAbout) {
-                style.set(this.aboutLinkSpan, "display", "");
-                attr.set(this.aboutLinkNode, "href", this.site.getHashUrl("about", {}));
+                domStyle.set(this.aboutLinkSpan, "display", "");
+                domAttr.set(this.aboutLinkNode, "href", this.site.getHashUrl("about", {}));
             }
             var config = this.application.getConfig();
             on(this.searchField, "keyUp", lang.hitch(this, function (evt) {
@@ -137,23 +120,32 @@ define(["dojo/_base/declare",
             }
             setTimeout(lang.hitch(this, function () {
                 this._loginAdjustments(); //delayed due to siteManager not set in application yet..
-                aspect.before(this.localeChanger, "onChange", lang.hitch(this, this._changeLocaleClicked));
+                aspect.before(this.localeChanger, "onChange", lang.hitch(this, this._onLocaleChangerChange));
             }), 100);
-            this.localize();
+            //this.localize();
 
-            construct.place(this.controlMenuNode, query(".navigationBar")[0]);
-            this._blurLayer = construct.create("div", {style: {top: "0px", width: "100%", height: "100%", display: "none", position: "absolute", "z-index": 5}}, document.body);
+            domConstruct.place(this.controlMenuNode, query(".navigationBar")[0]);
+            this._blurLayer = domConstruct.create("div", {style: {
+                top: "0px",
+                width: "100%",
+                height: "100%",
+                display: "none",
+                position: "absolute",
+                "z-index": 5}}, document.body);
             on(this._blurLayer, "click", lang.hitch(this, this._hideControlMenu));
         },
-        localize: function () {
-            attr.set(this.searchButtonNode, "title", this.NLSBundles.navigationBar.searchLabel);
-            this.searchField.set("placeHolder", this.NLSBundles.navigationBar.searchFieldMessage);
+        localeChange: function () {
+            if (kernel.locale !== this.localeChanger.get("value")) {
+                this.localeChanger.set("value", kernel.locale);
+            }
+            domAttr.set(this.searchButtonNode, "title", this.NLSBundles.navigation.searchLabel);
+            this.searchField.set("placeHolder", this.NLSBundles.navigation.searchFieldMessage);
 
             if (!this.user) {
-                this.set("userField", this.NLSBundles.navigationBar.guestUser);
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logIn);
+                this.set("userField", this.NLSBundles.navigation.guestUser);
+                domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logIn);
             } else {
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logOut);
+                domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logOut);
             }
         },
         //===================================================
@@ -163,51 +155,53 @@ define(["dojo/_base/declare",
             this.user = this.application.getUser();
             if (this.user) {
                 this.userId = this.user.id;
-                attr.set(this.userFieldNode, "innerHTML", this.user.user);
-                attr.set(this.userFieldNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
+                domStyle.set(this.guestFieldNode, "display", "none");
+                domStyle.set(this.userFieldNode, "display", "");
+                domAttr.set(this.userFieldNode, "innerHTML", this.user.user);
+                domAttr.set(this.userFieldNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
                 if (this.profileIconNode) {
-                    attr.set(this.profileIconNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
-                    style.set(this.profileIconNode, "display", "");
-                    style.set(this.signInIconNode, "display", "none");
+                    domAttr.set(this.profileIconNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
+                    domStyle.set(this.profileIconNode, "display", "");
+                    domStyle.set(this.signInIconNode, "display", "none");
                 }
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logOut);
+                domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logOut);
             } else {
-                this.userId = undefined;
-                attr.set(this.userFieldNode, "innerHTML", this.NLSBundles.navigationBar.guestUser);
-                attr.set(this.userFieldNode, "href", "");
+                delete this.userId;
+                domStyle.set(this.guestFieldNode, "display", "");
+                domStyle.set(this.userFieldNode, "display", "none");
 
-                attr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.loginDialog.logIn);
+                domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logIn);
                 if (this.profileIconNode) {
-                    style.set(this.profileIconNode, "display", "none");
-                    style.set(this.signInIconNode, "display", "");
+                    domStyle.set(this.profileIconNode, "display", "none");
+                    domStyle.set(this.signInIconNode, "display", "");
                 }
                 if (this.folderIconNode) {
-                    style.set(this.folderIconNode, "display", "none");
+                    domStyle.set(this.folderIconNode, "display", "none");
                 }
                 this.home = undefined;
             }
             if (this.user) {
-                style.set(this.profileLinkNodeWrapper, "display", "");
-                attr.set(this.profileLinkNode, "href", this.application.getHref(this.application.getRepository() + "_principals/resource/" + this.user.id, "profile"));
+                domStyle.set(this.profileLinkNodeWrapper, "display", "");
+                domAttr.set(this.profileLinkNode, "href", this.application.getHref(this.application.getRepository() + "_principals/resource/" + this.user.id, "profile"));
             } else {
-                style.set(this.profileLinkNodeWrapper, "display", "none");
+                domStyle.set(this.profileLinkNodeWrapper, "display", "none");
             }
 
             if (this.user && this.user.homecontext) {
                 this.home = this.user.homecontext;
-                style.set(this.homeLinkNodeWrapper, "display", "");
-                style.set(this.settingsLinkNodeWrapper, "display", "");
-                attr.set(this.settingsNode, "href", this.application.getHref(this.application.getRepository() + "_principals/resource/" + this.user.id, "settings"));
-                attr.set(this.homeLinkNode, "href", this.application.getHref(this.application.getRepository() + this.user.homecontext + "/resource/_top", "default"));
+                domStyle.set(this.homeLinkNodeWrapper, "display", "");
+                domStyle.set(this.settingsLinkNodeWrapper, "display", "");
+                domAttr.set(this.settingsNode, "href", this.application.getHref(this.application.getRepository() + "_principals/resource/" + this.user.id, "settings"));
+                domAttr.set(this.homeLinkNode, "href", this.application.getHref(this.application.getRepository() + this.user.homecontext + "/resource/_top", "default"));
                 if (this.folderIconNode) {
-                    attr.set(this.folderIconNode, "href", this.application.getHref(this.application.getRepository() + this.user.homecontext + "/resource/_top", "default"));
-                    style.set(this.folderIconNode, "display", "");
+                    domAttr.set(this.folderIconNode, "href", this.application.getHref(this.application.getRepository() + this.user.homecontext + "/resource/_top", "default"));
+                    domStyle.set(this.folderIconNode, "display", "");
                 }
             } else {
-                style.set(this.homeLinkNodeWrapper, "display", "none");
-                style.set(this.settingsLinkNodeWrapper, "display", "none");
+                domStyle.set(this.homeLinkNodeWrapper, "display", "none");
+                domStyle.set(this.settingsLinkNodeWrapper, "display", "none");
                 if (this.folderIconNode) {
-                    style.set(this.folderIconNode, "display", "none");
+                    domStyle.set(this.folderIconNode, "display", "none");
                 }
             }
         },
@@ -225,7 +219,7 @@ define(["dojo/_base/declare",
             if (this.home) {
                 this.application.openEntry(this.application.repository + this.home + "/entry/_top");
             } else {
-                this.application.message(this.NLSBundles.navigationBar.notLoggedInNoHomeMessage);
+                this.application.message(this.NLSBundles.navigation.notLoggedInNoHomeMessage);
             }
         },
         _loginLinkClicked: function () {
@@ -234,14 +228,17 @@ define(["dojo/_base/declare",
                 application: this.application
             }).show();
         },
-        _changeLocaleClicked: function () {
+        _onLocaleChangerChange: function () {
             /***
              *** This method belongs to the FilteringSelect in NavigationBarTemplate, remove when done.
              ***/
             if (this.application) {
                 //window.alert("NavigationBar.changeLocaleClicked: " + dijit.byId("localeChanger").getValue());
                 if (!this.localeChanger.ignoreChange && this.localeChanger.get("value") != "no_select") {
-                    this.application.setLocale(this.localeChanger.get("value"));
+                    var nl = this.localeChanger.get("value");
+                    if (nl !== kernel.locale) {
+                        locale.set(nl);
+                    }
                 }
             }
         },
@@ -254,25 +251,25 @@ define(["dojo/_base/declare",
             }
         },
         _hideControlMenu: function () {
-            style.set(this.controlMenuNode, "display", "none");
-            style.set(this._blurLayer, "display", "none");
+            domStyle.set(this.controlMenuNode, "display", "none");
+            domStyle.set(this._blurLayer, "display", "none");
             this._controlMenuOpen = false;
         },
         _showControlMenu: function () {
             this._showProfilePicture();
-            style.set(this.controlMenuNode, "display", "");
-            style.set(this._blurLayer, "display", "");
+            domStyle.set(this.controlMenuNode, "display", "");
+            domStyle.set(this._blurLayer, "display", "");
             this._controlMenuOpen = true;
             dijit.focus(this.controlMenuNode);
         },
         _showProfilePicture: function () {
             var f = lang.hitch(this, function (entry) {
                 this.userEntry = entry;
-                attr.set(this.profilePictureNode, "innerHTML", "");
+                domAttr.set(this.profilePictureNode, "innerHTML", "");
                 var imageUrl = folio.data.getFromMD(entry, folio.data.FOAFSchema.IMAGE);
                 var config = this.application.getConfig();
                 var backup = folio.data.isUser(entry) ? "" + config.getIcon("user_picture_frame") : "" + config.getIcon("group_picture_frame");
-                construct.create("img", {src: imageUrl || backup, style: {width: "100px"}}, this.profilePictureNode);
+                domConstruct.create("img", {src: imageUrl || backup, style: {width: "100px"}}, this.profilePictureNode);
             });
             if (this.userEntry) {
                 f(this.userEntry);
