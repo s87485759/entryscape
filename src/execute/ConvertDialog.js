@@ -27,7 +27,7 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["common", "execute"],
+        nlsBundles: ["common", "execute"],
 
         //===================================================
         // Public API

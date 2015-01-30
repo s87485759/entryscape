@@ -4,7 +4,7 @@ define(["dojo/_base/declare",
     "dojo/aspect",
     "dojo/dom-construct",
     "dojo/dom-style",
-    "folio/util/NLSMixin",
+    "di18n/NLSMixin",
     "folio/editor/RFormsEditor",
     "folio/editor/RFormsPresenter",
     "folio/ApplicationView",
@@ -14,7 +14,8 @@ define(["dojo/_base/declare",
 
     return declare([_Widget, NLSMixin, ApplicationView], {
 
-        nls: ["editor"],
+        nlsBundles: ["editor"],
+        nlsBundleBase: "nls/",
         localeChange: function () {
             this.setTitle();
         },
@@ -32,9 +33,9 @@ define(["dojo/_base/declare",
 
         setTitle: function() {
             if (this.isReference) {
-                this.dialog.set("title", this.NLS["editor"].externalAndLocalMDEditorTitle);
+                this.dialog.set("title", this.NLSBundles.editor.externalAndLocalMDEditorTitle);
             } else {
-                this.dialog.set("title", this.NLS["editor"].LocalMDEditorTitle);
+                this.dialog.set("title", this.NLSBundles.editor.LocalMDEditorTitle);
             }
         },
         getSupportedActions: function () {

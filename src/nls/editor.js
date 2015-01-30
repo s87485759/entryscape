@@ -20,6 +20,16 @@
 define({
 	root : {
 		"externalAndLocalMDEditorTitle" : "External information (left side, read only). &nbsp;&nbsp;&nbsp;Local information (right side, editable).",
-		"LocalMDEditorTitle" : "Edit local information"
-	}
+		"LocalMDEditorTitle" : "Edit local information",
+        "mandatoryLabel" : "Mandatory",
+        "recommendedLabel" : "Recommended",
+        "colorLabel" : "Color labels",
+        "optionalLabel" : "Optional",
+        "dialogCancelLabel" : "Cancel",
+        "dialogDoneLabel" : "Done",
+        "dialogDoneBusyLabel" : "Saving",
+        "failedSavingUnsufficientMDRights" : "You do not have sufficient rights to save the metadata.",
+        "modifiedPreviouslyOnServer" : "ERROR: The resource has been changed on the server, your changes have NOT been saved.",
+        "metadataSaved" : "Information has been saved for resource "
+    }
 });

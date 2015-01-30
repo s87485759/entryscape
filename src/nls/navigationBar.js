@@ -46,5 +46,6 @@ define({
 		"searchTermFiveCharsMessage" : "Please enter a search term with at least 3 characters.",
 		"searchFailedMessage" : "Search failed.",
 		"languageLabel" : "Language"
-	}
+	},
+    sv: true
 });

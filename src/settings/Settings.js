@@ -12,8 +12,8 @@ define([
     "folio/settings/MembersTab",      //In template
     "folio/settings/RightsTab",      //In template
     "dojo/text!./SettingsTemplate.html"
-], function (declare, lang, array, domClass, domStyle, Widget,
-             AccountTab, ProfileTab, MembersTab, RightsTab, PrincipalInfo, template) {
+], function (declare, lang, array, domClass, domStyle, Widget, PrincipalInfo,
+             AccountTab, ProfileTab, MembersTab, RightsTab, template) {
 
     /**
      * Shows profile information, group membership, access to portfolios and folders, and latest material.
@@ -24,7 +24,8 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["settings"],
+        nlsBundles: ["settings"],
+        nlsBundleBase: "nls/",
 
         //===================================================
         // Private attributes

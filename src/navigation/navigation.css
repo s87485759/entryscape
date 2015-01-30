@@ -82,7 +82,7 @@
 	margin-left: 0.7em;
 }
 
-.navigationBar .link:hover {
+.navigationBar a.link:hover {
 	cursor: pointer;
 	text-decoration: underline;
 }
@@ -168,9 +168,6 @@
 	height: auto;
 }
 
-.controlMenu .userBlock .label{
-	display:none;
-}
 .controlMenu .userBlock {
 	padding-bottom: 7px;
 }
@@ -216,6 +213,13 @@
 .controlMenu a.link {
 	text-decoration: none;
 }
+
+.controlMenu span.link:hover,
+.controlMenu a.link {
+    text-decoration: none;
+    cursor: default;
+}
+
 .controlMenu a.link:hover {
 	text-decoration: underline;
 }
@@ -357,7 +361,7 @@
 }
 
 .breadcrumbs .crumb .label.select {
-	border-right: 1x solid black;
+	border-right: 1px solid black;
 }
 
 .breadcrumbs .contextSelect {

@@ -8,16 +8,13 @@ define(["dojo/_base/declare",
     "dojo/dom-style",
     "dojo/dom-construct",
     "dojo/dom-attr",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin",
+    "folio/util/Widget",
     "dijit/form/FilteringSelect",
     "dojo/store/Memory",
     "dojo/text!./ListControlsTemplate.html"
-], function(declare, lang, connect, topic, query, domClass, style, construct, attr,
-            _Widget, _TemplatedMixin, _WidgetsInTemplateMixin, FilteringSelect, Memory, template) {
+], function(declare, lang, connect, topic, query, domClass, style, construct, attr, Widget, FilteringSelect, Memory, template) {
 
-return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+return declare([Widget], {
     templateString: template,
 	bigSep: "&nbsp;&nbsp;&nbsp;",
 	smallSep: "&nbsp;",
@@ -27,23 +24,18 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 	end: ">>",
 	maybeMore: "&hellip;",
     order: "title",
+    nlsBundles: ["list"],
+    nlsBundleBase: "nls/",
 
-    postCreate: function() {
-        this.inherited("postCreate", arguments);
-        connect.subscribe("/confolio/localeChange", lang.hitch(this, this.localize));
-        this.application = __confolio.application;
-        this.localize();
-    },
-    localize: function() {
-        dojo.requireLocalization("folio", "list");
-        this.resourceBundle = dojo.i18n.getLocalization("folio", "list");
-        attr.set(this.sortLabelNode, "innerHTML", this.resourceBundle.sortLabel);
+
+    localeChange: function() {
+        attr.set(this.sortLabelNode, "innerHTML", this.NLSBundles.list.sortLabel);
         this.orderChanger.set("store", new Memory({
-            data: [{id:"none", label: this.resourceBundle.sortByNone},
-                {id:"title", label: this.resourceBundle.sortByTitle},
-                {id:"titleD", label: this.resourceBundle.sortByTitleReverse},
-                {id:"modified", label: this.resourceBundle.sortByModified},
-                {id:"modifiedD", label: this.resourceBundle.sortByModifiedReverse}]
+            data: [{id:"none", label: this.NLSBundles.list.sortByNone},
+                {id:"title", label: this.NLSBundles.list.sortByTitle},
+                {id:"titleD", label: this.NLSBundles.list.sortByTitleReverse},
+                {id:"modified", label: this.NLSBundles.list.sortByModified},
+                {id:"modifiedD", label: this.NLSBundles.list.sortByModifiedReverse}]
         }));
         this.orderChanger.set("value", this.order);
     },
@@ -53,8 +45,13 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
     },
 	update: function(list, atPage) {
         attr.set(this.itemCountNode, "innerHTML", "");
-        var nr = folio.data.getChildCount(this.listGUI.list);
-        var childCount = this.resourceBundle.items+":&nbsp;"+(nr != undefined ? nr : "?");
+        if (list == null) {
+            style.set(this.pagination, "display", "none");
+            return;
+        }
+
+        var nr = folio.data.getChildCount(list.entry);
+        var childCount = this.NLSBundles.list.items+":&nbsp;"+(nr != undefined ? nr : "?");
         dojo.create("span", {"class": "sortCls", style: {"verticalAlign": "middle", "margin-right": "1em"}, "innerHTML": childCount}, this.itemCountNode);
 
         this.atPage = atPage;
@@ -95,7 +92,7 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 			return;
 		}
 		this.list = null;
-		this.listGUI.showPage(0);
+		this.listGUI.list.showPage(0);
 	},
 	pagPrev: function(e) {
 		e.stopPropagation();
@@ -103,13 +100,13 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 			return;
 		}
 		this.list = null;
-		this.listGUI.showPage(this.atPage-1);
+		this.listGUI.list.showPage(this.atPage-1);
 	},
 	pagPages: function(e) {
 		e.stopPropagation();
 		if (domClass.contains(e.target.parentNode, "pagPages") && e.target.tagName == "SPAN") {
 			this.list = null;
-			this.listGUI.showPage(parseInt(e.target.innerHTML)-1);
+			this.listGUI.list.showPage(parseInt(e.target.innerHTML)-1);
 		}
 	},
 	pagNext: function(e) {
@@ -118,7 +115,7 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 			return;
 		}
 		this.list = null;
-		this.listGUI.showPage(this.atPage+1);
+		this.listGUI.list.showPage(this.atPage+1);
 	},
 	pagEnd: function(e) {
 		e.stopPropagation();
@@ -127,7 +124,7 @@ return declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 		}
 		var i = this.list.getNumberOfPages()-1;
 		this.list = null;
-		this.listGUI.showPage(i);
+		this.listGUI.list.showPage(i);
 	},
     _orderChange: function() {
         if (this.order == this.orderChanger.get("value")) {

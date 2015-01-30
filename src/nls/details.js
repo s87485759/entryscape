@@ -19,17 +19,18 @@
 
 define({
 	root : {
-		"extInformationText" : "Original information",
+        "resourceLabel": "Resource:",
+        "informationLabel": "Information:",
+        "extInformationText" : "Original information",
 		"locInformationText" : "Provided information",
 		"creatorText" : "Creator",
 		"accessText" : "Access",
 		"publicAccess": "Public",
-		"restrictedAccess": "Restricted",
+		"sharedAccess": "Shared",
 		"privateAccess": "Private",
-		"licenseText": "License",
 		"modifiedText" : "Modified",
 		"createdText" : "Created",
-		"referentsLabel" : "In folders:",
-		"internalRefLabel" : "Refers to entry that occurs in"
-	}
+		"referentsLabel" : "In folders:"
+	},
+    sv: true
 });

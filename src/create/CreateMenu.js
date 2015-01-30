@@ -13,40 +13,43 @@ define([
     "dojo/dom-attr",
     "dojo/_base/fx",
     "dojo/NodeList-fx",
-    "dijit/_Widget",
-    "dijit/_TemplatedMixin",
+    "folio/util/Widget",
     "folio/list/operations",
     "folio/create/CreateDialog",
     "dojo/text!./CreateMenuTemplate.html"
-], function(declare, lang, connect, mouse, win, domgeom, topic, query, domClass, style, construct, attr, fx, nlfx,
-            _Widget, _TemplatedMixin, operations, CreateDialog, template) {
+], function(declare, lang, connect, mouse, win, domgeom, topic, query, domClass, style, construct, domAttr, fx, nlfx,
+            Widget, operations, CreateDialog, template) {
 
-    return declare([_Widget, _TemplatedMixin], {
+    return declare([Widget], {
         templateString: template,
+        nlsBundles: ["create"],
         list: null,
+        listUI: null,
         postCreate: function() {
             this.inherited("postCreate", arguments);
-            this.moveMeToTop = construct.place(this.moveMeToTop, win.body());
-            this.moveMeToTopB = construct.place(this.moveMeToTopB, win.body());
+            construct.place(this.moveMeToTop, win.body());
+            construct.place(this.moveMeToTopB, win.body());
             this.connect(this.moveMeToTopB , "onclick", this.hide);
             this.connect(this.moveMeToTop, mouse.leave, this.hide);
             var application = __confolio.application;
             query(".text", this.moveMeToTop).on("click", lang.hitch(this, function() {
-                this.hide();
-                operations.createText(this.list.list, lang.hitch(this.list, this.list.focusAndRename));
+                this.hide(lang.hitch(this, function(){
+                    operations.createText(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
+                }));
             }));
             query(".folder", this.moveMeToTop).on("click", lang.hitch(this, function() {
-                this.hide();
-                operations.createFolder(this.list.list, lang.hitch(this.list, this.list.focusAndRename));
+                this.hide(lang.hitch(this, function() {
+                    operations.createFolder(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
+                }));
             }));
             var launch = function(mode)  {
                 this.hide();
-                this.list.stopListenForKeyEvents();
+                this.listUI.events.stopListenForKeyEvents();
                 var d = new CreateDialog({
-                    context: this.list.list.getContext(),
-                    list: this.list.list,
+                    context: this.list.listEntry.getContext(),
+                    list: this.list.listEntry,
                     mode: mode,
-                    onHide: lang.hitch(this.list, this.list.listenForKeyEvents)
+                    onHide: lang.hitch(this.listUI.events, this.listUI.events.listenForKeyEvents)
                 });
                 d.startup();
                 d.show();
@@ -56,6 +59,13 @@ define([
             query(".artifact", this.moveMeToTop).on("click", lang.hitch(this, launch, "artifact"));
 // Old ways of launching create dialog
 // application.publish("showCreateWizard", {type: "upload", entry: this.list.list, onFinish: onDone, onCancel: onDone});
+        },
+        localeChange: function() {
+            domAttr.set(this.createText, "title", this.NLSBundles.create.createText);
+            domAttr.set(this.createFolder, "title", this.NLSBundles.create.createFolder);
+            domAttr.set(this.uploadFile, "title", this.NLSBundles.create.uploadFile);
+            domAttr.set(this.createLink, "title", this.NLSBundles.create.createLink);
+            domAttr.set(this.createArtifact, "title", this.NLSBundles.create.createArtifact);
         },
         initState: function() {
             style.set(this.moveMeToTop, {
@@ -92,7 +102,7 @@ define([
                 })
             }).play();
         },
-        hide: function() {
+        hide: function(callback) {
             var pos = domgeom.position(this.domNode);
             var woff = 14;
             var hoff = 0;
@@ -115,6 +125,9 @@ define([
                     onEnd: lang.hitch(this, function() {
                         style.set(this.moveMeToTop, "display", "none");
                         style.set(this.moveMeToTopB, "display", "none");
+                        if (lang.isFunction(callback)) {
+                            callback();
+                        }
                     })
                 }).play();
             })}).play();

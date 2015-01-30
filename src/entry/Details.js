@@ -8,7 +8,7 @@ define(["dojo/_base/declare",
     "dojo/dom-class",
     "dojo/dom-construct",
     "dojo/_base/fx",
-    "folio/util/NLSMixin",
+    "di18n/NLSMixin",
     "folio/util/utils",
     "folio/util/dialog",
     "folio/content/ContentViewSwitcher", //in template
@@ -46,7 +46,8 @@ define(["dojo/_base/declare",
         doFade: false,
         singleReferrentsVisible: false,
         referrentsVisibleByDefault: false,
-        nls: ["details"],
+        nlsBundles: ["details"],
+        nlsBundleBase: "nls/",
 
 
         //===================================================
@@ -105,9 +106,11 @@ define(["dojo/_base/declare",
             }
         },
         localeChange: function() {
-          if (this.entry) {
-              this.update(this.entry);
-          }
+            if (this.entry) {
+                this.update(this.entry);
+            }
+            this.embedButtonDijit.set("label", this.NLSBundles.details.embed);
+            this._editContentLabel();
         },
         getChildren: function () {
             return [this.detailsLayoutDijit];
@@ -248,10 +251,10 @@ define(["dojo/_base/declare",
                 this.application.getStore().loadEntry(creator, {}, lang.hitch(this, function (ent) {
                     domAttr.set(this.creatorNode, "innerHTML", folio.data.getLabel(ent));
                 }), lang.hitch(this, function (mesg) {
-                    domAttr.set(this.creatorNode, "innerHTML", "Unknown");
+                    domAttr.set(this.creatorNode, "innerHTML", this.NLSBundles.details.unknown);
                 }));
             } else {
-                domAttr.set(this.creatorNode, "innerHTML", "Unknown");
+                domAttr.set(this.creatorNode, "innerHTML", this.NLSBundles.details.unknown);
             }
 
             if (folio.data.isListLike(entry)) {
@@ -341,10 +344,13 @@ define(["dojo/_base/declare",
         },
         _editContentClicked: function () {
             this.contentViewDijit.toggleEditMode();
+            this._editContentLabel();
+        },
+        _editContentLabel: function() {
             if (this.contentViewDijit.inEditMode()) {
-                this.editContentButtonDijit.set("label", "Present");
+                this.editContentButtonDijit.set("label", this.NLSBundles.details.present);
             } else {
-                this.editContentButtonDijit.set("label", "Edit");
+                this.editContentButtonDijit.set("label", this.NLSBundles.details.edit);
             }
         }
     });
@@ -375,7 +381,7 @@ define(["dojo/_base/declare",
             } else if (folio.data.isContext(entry)) {
                 details._parentListUrl = entry.getContext().getBaseURI() + entry.getId() + "/entry/_systemEntries";
             }
-            details.editContentButtonDijit.set("label", "Edit");
+            details.editContentButtonDijit.set("label", this.NLSBundles.details.edit);
             details.update(entry);
             details.contentViewDijit.show(entry);
             //Make sure that someDijit is finished rendering, or at least has some realistic size before making the following calls.

@@ -31,10 +31,11 @@ return declare([Widget], {
 	//===================================================
 	// Inherited Attributes
 	//===================================================
-	nls: ["start"],
+	nlsBundles: ["start"],
     templateString: template,
+    nlsBundleBase: "nls/",
 
-	//===================================================
+    //===================================================
 	// Easter egg attribute
 	//===================================================
 	cookieMonster: window.location.href.indexOf("cookieMonster=true") !== -1,
@@ -56,7 +57,7 @@ return declare([Widget], {
 		on(this.recentButtonNode, "click", lang.hitch(this, this._showRecent));
 		on(this.searchButtonNode, "click", lang.hitch(this, this._update));
 		on(this.searchNode, "keyup", lang.hitch(this, this._delayedUpdate));
-        domAttr.set(this.logo, "src", this.application.getConfig().getIcon("logo"))
+//        domAttr.set(this.logo, "src", this.application.getConfig().getIcon("logo"))
 	},
 
 	/**
@@ -176,7 +177,7 @@ return declare([Widget], {
 		domConstruct.create("span", {"innerHTML": name}, groupDiv);
 
 		var navIcons = domConstruct.create("div", {"class": "navIcons"}, groupDiv);
-		on(groupDiv, "click", this, lang.hitch(this, function(event) {
+		on(groupDiv, "click", lang.hitch(this, function(event) {
 			if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
 				this.application.openEntry(groupEntry, "profile");
 			}
@@ -209,10 +210,10 @@ return declare([Widget], {
     _updateSearchPlaceHolder: function() {
         switch(this._currentTab) {
             case "Communities":
-                domAttr.set(this.searchNode, "placeholder", this.NLS.start.searchCommunities);
+                domAttr.set(this.searchNode, "placeholder", this.NLSBundles.start.searchCommunities);
                 break;
             case "People":
-                domAttr.set(this.searchNode, "placeholder", this.NLS.start.searchPeople);
+                domAttr.set(this.searchNode, "placeholder", this.NLSBundles.start.searchPeople);
                 break;
         }
     },
@@ -254,7 +255,7 @@ return declare([Widget], {
 		var name = folio.data.getLabelRaw(personEntry) || personEntry.name || personEntry.getId();
 		domConstruct.create("span", {"innerHTML": name}, userDiv);
 		var navIcons = domConstruct.create("div", {"class": "navIcons"}, userDiv);
-		on(userDiv, "click", this, lang.hitch(this, function(event) {
+		on(userDiv, "click", lang.hitch(this, function(event) {
 			if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
 				this.application.openEntry(personEntry, "profile");
 			}

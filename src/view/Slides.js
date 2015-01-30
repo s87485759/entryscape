@@ -6,7 +6,7 @@ define([
     "folio/content/ContentViewSwitcher",
     "dijit/layout/ContentPane",
     "dojo/text!./SlidesTemplate.html"
-], function(declare,lang, attr, Widget, ContentViewSwitcher, ContentPane, template) {
+], function(declare,lang, domAttr, Widget, ContentViewSwitcher, ContentPane, template) {
     return declare(Widget, {
         templateString: template,
         postCreate: function() {
@@ -45,7 +45,7 @@ define([
         _show: function(entry) {
             var entry = this.children[this.index];
             this.content.show(entry);
-            attr.set(this.info, "innerHTML", folio.data.getLabel(entry));
+            domAttr.set(this.info, "innerHTML", folio.data.getLabel(entry));
             this.cp.resize();
         }
     });

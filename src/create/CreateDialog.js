@@ -18,7 +18,7 @@ define(["dojo/_base/declare",
     "rdfjson/Graph",
     "rdforms/model/Engine",
     "dojo/text!./CreateDialogTemplate.html"
-], function (declare, lang, connect, array, on, domClass, style, construct, attr, fx, corefx, easing,
+], function (declare, lang, connect, array, on, domClass, style, construct, domAttr, fx, corefx, easing,
              ValidationTextBox, Widget, dialog, FileInput, Graph, Engine, template) {
 
 
@@ -36,7 +36,7 @@ define(["dojo/_base/declare",
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["common", "create"],
+        nlsBundles: ["create"],
         mode: "artifact",
         context: null,
         list: null,
@@ -45,7 +45,7 @@ define(["dojo/_base/declare",
         // Public API
         //===================================================
         show: function() {
-            this.dialog = dialog.showStandardDialog(this, "Create", lang.hitch(this, this._finish), lang.hitch(this, this.onHide));
+            this.dialog = dialog.showStandardDialog(this, this.NLSBundles.create.createDialogHeader, lang.hitch(this, this._finish), lang.hitch(this, this.onHide));
             this.dialog.setFinishButtonDisabled(true);
         },
 
@@ -58,7 +58,6 @@ define(["dojo/_base/declare",
 
 
         postCreate: function() {
-            this.inherited("postCreate", arguments);
             this.url.set("pattern", folio.data.uriRegexpStr);
             on(this.artifact, "click", lang.hitch(this, this._switchTo_upload));
             on(this.upload, "click", lang.hitch(this, this._switchTo_link));
@@ -66,13 +65,18 @@ define(["dojo/_base/declare",
             this.fileinput = new FI({}, this.fileinput);
             this.fileinput.startup();
             on(this.fileinput.fileInput,"change", lang.hitch(this, this._checkFileInput));
+            this.inherited("postCreate", arguments);
             this["_switchTo_"+this.mode]();
         },
 
         localeChange: function() {
-           this.url.set("invalidMessage", this.NLS.create.addressIsInvalid);
-           this.url.set("placeHolder", this.NLS.create.missingAddress);
-           this.label.set("placeHolder", this.NLS.create.missingLabel);
+            this.url.set("invalidMessage", this.NLSBundles.create.addressIsInvalid);
+            this.url.set("placeHolder", this.NLSBundles.create.missingAddress);
+            this.label.set("placeHolder", this.NLSBundles.create.missingLabel);
+            domAttr.set(this.artifact, "title", this.NLSBundles.create.createArtifact);
+            domAttr.set(this.link, "title", this.NLSBundles.create.createLink);
+            domAttr.set(this.upload, "title", this.NLSBundles.create.uploadFile);
+            this.fileinput.setLabel(this.NLSBundles.create.browseLabel);
         },
 
         //===================================================

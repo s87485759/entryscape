@@ -17,7 +17,7 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["search"],
+        nlsBundles: ["search"],
 
         //===================================================
         // Public Hooks
@@ -71,9 +71,9 @@ define([
                     identifier: "id",
                     label: "label",
                     items: [
-                        {label: this.NLS["search"].sortBestMatch, id: "score"},
-                        {label: this.NLS["search"].sortTitle, id: "title"},
-                        {label: this.NLS["search"].sortModified, id: "modified"}
+                        {label: this.NLSBundles["search"].sortBestMatch, id: "score"},
+                        {label: this.NLSBundles["search"].sortTitle, id: "title"},
+                        {label: this.NLSBundles["search"].sortModified, id: "modified"}
                     ]
                 }
             });

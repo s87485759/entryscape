@@ -17,8 +17,10 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"welcomeMessage": "Platformen som ger dig snabb och enkel tillgång personliga och delade portföljer från varhelst du befinner dig. Ladda upp filer, länka till material på webben som videos, foton, föreläsningar eller skapa material direkt i din portfölj. Organisera sen ditt material i kataloger och om du så behöver kan du beskriva det med hjälp av etablerade metadata standarder.",
-  "welcomeHeader": "Välkommen till Confolio!",
-  "searchLabel": "Sök efter portföljer",
-  "latestMaterial": "Senaste materialet"
-})
+define({
+    "peopleTab": "Personer",
+    "communitiesTab": "Gemenskaper",
+    "recentMaterialTab": "Senaste material",
+    "searchCommunities": "Sök efter gemenskaper",
+    "searchPeople": "Sök efter personer"
+});

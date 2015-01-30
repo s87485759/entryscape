@@ -12,7 +12,7 @@ define(["dojo/_base/declare",
     "folio/util/Widget",
     "folio/navigation/PrincipalInfo", //in template
     "folio/list/SearchList", //in template
-    "folio/list/List", //in template
+    "folio/list/ListUI", //in template
     "folio/util/utils",
     "dojo/text!./ProfileTemplate.html"
 ], function (declare, lang, on, array, connect, dom, domStyle, domClass, domConstruct, domAttr, Widget,
@@ -27,7 +27,8 @@ define(["dojo/_base/declare",
         // Public and inherited Attributes
         //===================================================
         twoColumn: true,
-        nls: ["profile"],
+        nlsBundles: ["profile"],
+        nlsBundleBase: "nls/",
         templateString: template,
 
         //===================================================
@@ -113,7 +114,7 @@ define(["dojo/_base/declare",
         // Private methods
         //===================================================
         userChange: function () {
-            this.featuredList.use = this.user;
+            this.featuredList.user = this.user;
 
             if (this.lastParams && this.entry) {
                 this.entry.setRefreshNeeded();
@@ -158,7 +159,7 @@ define(["dojo/_base/declare",
                 var name = folio.data.getLabelRaw(groupEntry) || groupEntry.name || groupEntry.getId();
                 domConstruct.create("span", {"innerHTML": name}, groupDiv);
                 var navIcons = domConstruct.create("div", {"class": "navIcons"}, groupDiv);
-                on(groupDiv, "click", this, lang.hitch(this, function (event) {
+                on(groupDiv, "click", lang.hitch(this, function (event) {
                     if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
                         this.application.openEntry(groupEntry, "profile");
                     }
@@ -199,12 +200,12 @@ define(["dojo/_base/declare",
                     } else {
                         domConstruct.create("img", {src: imageDefault}, imgWrap);
                         if (imgWrap) { //If an profilepicture is available, try to load it, if it exists it will replace the default image.
-                            utils.lazyLoadImage(imgWrap, imageUrl);
+                            utils.lazyLoadImage(imgWrap, imageUrl || imageDefault);
                         }
                     }
                     domConstruct.create("span", {"innerHTML": child.n}, userDiv);
                     var navIcons = domConstruct.create("div", {"class": "navIcons"}, userDiv);
-                    on(userDiv, "click", this, lang.hitch(this, function (event) {
+                    on(userDiv, "click", lang.hitch(this, function (event) {
                         if (navIcons == null || !dom.isDescendant(event.target, navIcons)) {
                             this.application.openEntry(child.e, "profile");
                         }
@@ -294,20 +295,26 @@ define(["dojo/_base/declare",
                         folio.data.getAllChildren(featuredE, lang.hitch(this, function (children) {
                             if (children.length > 0) {
                                 this._featuredEntry = featuredE;
-                                this._featuredDisabled = false;
-                                domClass.remove(this.featuredButtonNode, "disabled");
+                                //this._featuredDisabled = false;
+                                domStyle.set(this.noFeaturedMaterialNode, "display", "none");
+                                domStyle.set(this.featuredList.domNode, "display", "");
+                                //domClass.remove(this.featuredButtonNode, "disabled");
                                 domAttr.set(this.featuredButtonNode, "title", "");
                                 this._showFeatured();
                             } else {
-                                this._featuredDisabled = true;
-                                domClass.add(this.featuredButtonNode, "disabled");
-                                domAttr.set(this.featuredButtonNode, "title", "No featured material available");
+                                //this._featuredDisabled = true;
+                                domStyle.set(this.noFeaturedMaterialNode, "display", "");
+                                domStyle.set(this.featuredList.domNode, "display", "none");
+                                //domClass.add(this.featuredButtonNode, "disabled");
+                                //domAttr.set(this.featuredButtonNode, "title", "No featured material available");
                                 this._showRecent();
                             }
                         }));
                     }));
             } else {
-                this._featuredDisabled = true;
+                //this._featuredDisabled = true;
+                domStyle.set(this.noFeaturedMaterialNode, "display", "");
+                domStyle.set(this.featuredList.domNode, "display", "none");
                 domClass.add(this.featuredButtonNode, "disabled");
                 domAttr.set(this.featuredButtonNode, "title", "No featured material available");
                 this._showRecent();
@@ -326,7 +333,7 @@ define(["dojo/_base/declare",
                 return;
             }
             this._currFeaturedEntry = this._featuredEntry;
-            this.featuredList.showList(this._featuredEntry);
+            this.featuredList.list.showList(this._featuredEntry);
         },
 
         _showRecent: function () {

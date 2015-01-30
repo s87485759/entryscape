@@ -16,6 +16,7 @@ var profile = {
 		"rdfjson",
 		"rdforms",
         "spa",
+        "di18n",
         {name: "folio", location: "../src"}
     ],
 

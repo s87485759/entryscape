@@ -5,8 +5,8 @@ define(["dojo/_base/declare",
     "dojo/_base/connect",
     "dojo/dom-style",
     "dijit/layout/_LayoutWidget",
-    "folio/list/List"
-], function (declare, lang, aspect, connect, domStyle, _LayoutWidget, List) {
+    "folio/list/ListUI"
+], function (declare, lang, aspect, connect, domStyle, _LayoutWidget, ListUI) {
 
     /**
      * Searches for entries according to the given parameters and displays
@@ -36,30 +36,30 @@ define(["dojo/_base/declare",
         buildRendering: function () {
             this.domNode = this.srcNodeRef;
             this.application = __confolio.application;
-            this._list = new List(
+            this._listUI = new ListUI(
                 {application: this.application,
                     user: this.application.getUser(),
                     headLess: true,
                     controlsLess: true,
                     detailsLink: true,
                     openFolderLink: true,
-                    publishFocusEvents: false},
+                    publishSelectEvents: false},
                 dojo.create("div", null, this.srcNodeRef));
-            domStyle.set(this._list.domNode.parentNode, "height", "100%");
+            this._list = this._listUI.list;
+            domStyle.set(this._listUI.domNode.parentNode, "height", "100%");
             connect.subscribe("/confolio/userChange", lang.hitch(this, this._userChange));
-            aspect.before(this._list, "changeFocus", lang.hitch(this, function (index) {
-                if (index !== -1) {
-                    this.entrySelected(this._list.listChildren[index]);
-                }
+            aspect.after(this._list, "setSelectedByIndex", lang.hitch(this, function () {
+                var entry = this._list.getSelectedEntry();
+                this.entrySelected(entry);
             }));
         },
         getChildren: function () {
-            return [this._list];
+            return [this._listUI];
         },
         resize: function (size) {
             this.inherited("resize", arguments);
-            if (this._list != null) {
-                this._list.resize();
+            if (this._listUI != null) {
+                this._listUI.resize();
             }
         },
 
@@ -67,7 +67,7 @@ define(["dojo/_base/declare",
         // Private methods
         //===================================================
         _userChange: function () {
-            this._list.user = this.application.getUser();
+            this._listUI.user = this.application.getUser();
         },
         _show: function (params, page, callback) {
             if (params === null) {

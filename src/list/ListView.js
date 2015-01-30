@@ -3,9 +3,9 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "folio/ApplicationView",
-    "folio/list/List",
+    "folio/list/ListUI",
     "dijit/_Widget"
-], function (declare, lang, ApplicationView, List, _Widget) {
+], function (declare, lang, ApplicationView, ListUI, _Widget) {
 
     return declare([_Widget, ApplicationView], {
         //===================================================
@@ -38,9 +38,11 @@ define([
         constructor: function () {
         },
         buildRendering: function () {
-            this._list = new List(
+            this._listUI = new ListUI(
                 {application: this.application, iconMode: this.iconMode, includeDetailsButton: this.includeDetailsButton, detailsLink: this.detailsLink},
                 this.srcNodeRef);
+            this._list = this._listUI.list;
+            this._listUI.events.listenForKeyEvents();
         },
 
         getSupportedActions: function () {
@@ -49,12 +51,12 @@ define([
         },
 
         handle: function (event) {
-            this._list.user = this.application.getUser();
-            if (event.list != null && event.list === this._list.list) {
-                this._list.focus(event.list, event.entry);
+            this._listUI.user = this.application.getUser();
+            if (event.list != null && event.list === this._list.listEntry) {
+                this._list.select(event.list, event.entry);
                 return;
             }
-            if (event.action !== "childrenChanged" && event.action !== "changed" && event.list == null && event.entry != null && this._list.list != null && this._list.list.getUri() === event.entry.getUri()) {
+            if (event.action !== "childrenChanged" && event.action !== "changed" && event.list == null && event.entry != null && this._list.listEntry != null && this._list.listEntry.getUri() === event.entry.getUri()) {
                 return;
             }
 
@@ -68,26 +70,26 @@ define([
                     }
                     break;
                 case "changed":
-                    this._list.refresh(event.entry);
+                    this._listUI.refresh(event.entry);
                     break;
                 case "userChange":
                     //Make more precise.
-                    if (this._list.list) {
-                        this.application.getStore().loadEntry(this._list.list.getUri(), {limit: 0, sort: null},
+                    if (this._list.listEntry) {
+                        this.application.getStore().loadEntry(this._list.listEntry.getUri(), {limit: 0, sort: null},
                             dojo.hitch(this._list, this._list.showList));
-                        dijit.focus(this._list.domNode);
+                        dijit.focus(this._listUI.domNode);
                     }
                     break;
                 case "localeChange":
                     this._list.localize();
                 case "orderChange":
-                    if (this._list.list) {
-                        this._list.showList(this._list.list);
+                    if (this._list.listEntry) {
+                        this._list.showList(this._list.listEntry);
                     }
                     break;
                 case "showEntry":
                     if (event.list) {
-                        this._list.focus(event.list, event.entry);
+                        this._list.select(event.list, event.entry);
                     } else {
                         if (folio.data.isListLike(newList)) {
                             this._list.showList(newList);
@@ -98,7 +100,7 @@ define([
                     }
                     break;
                 case "childrenChanged":
-                    if (this._list.list.getUri() === newList.getUri()) {
+                    if (this._list.listEntry.getUri() === newList.getUri()) {
                         this._list.showList(newList);
                     }
                     break;

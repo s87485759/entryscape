@@ -16,7 +16,9 @@
     "store": "https://bitbucket.org/metasolutions/entrystore.js.git#develop",
     "rdfjson": "https://bitbucket.org/metasolutions/rdfjson.git#develop",
     "rdforms": "https://bitbucket.org/metasolutions/rdforms.git#develop",
-    "spa": "https://bitbucket.org/metasolutions/spa.git#master"
+    "spa": "https://bitbucket.org/metasolutions/spa.git#master",
+    "di18n": "https://bitbucket.org/metasolutions/di18n.git#master",
+    "nls": "https://bitbucket.org/metasolutions/entryscape-nls.git"
   },
   "keywords": [
     "rdf",
@@ -31,9 +33,5 @@
   "ignore": [
     "node_modules",
     "bower_components"
-  ],
-  "resolutions": {
-      "dojo": "1.10.0",
-      "dijit": "1.10.0"
-  }
+  ]
 }

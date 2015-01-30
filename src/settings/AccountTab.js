@@ -22,7 +22,8 @@ define([
         // Inherited Attributes
         //===================================================
         templateString: template,
-        nls: ["annotationProfile", "settings"],
+        nlsBundles: ["settings"],
+        nlsBundleBase: "nls/",
 
         //===================================================
         // Inherited methods
@@ -84,10 +85,10 @@ define([
         },
 
         localize: function() {
-            this.infoSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
-            this.uiprefsSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
-            this.profilePictureSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
-            this.passwordSaveButton.set("busyLabel", this.NLS.annotationProfile.dialogDoneBusyLabel);
+            this.infoSaveButton.set("busyLabel", this.NLSBundles.settings.saveBusyLabel);
+            this.uiprefsSaveButton.set("busyLabel", this.NLSBundles.settings.saveBusyLabel);
+            this.profilePictureSaveButton.set("busyLabel", this.NLSBundles.settings.saveBusyLabel);
+            this.passwordSaveButton.set("busyLabel", this.NLSBundles.settings.saveBusyLabel);
         },
 
         // ============AccountTab==================
@@ -193,20 +194,20 @@ define([
                     this.application.publish("changed", {entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.NLS.annotationProfile.metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLSBundles.settings.metadataSaved + this.entry.getUri());
                 this.infoSaveButton.cancel();
                 this.infoSaveButton.set("disabled", true);
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLSBundles.settings.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLSBundles.settings.failedSavingUnsufficientMDRights);
                 }
                 this.infoSaveButton.cancel();
             }));
         },
         _setFullName: function (firstname, lastname) {
-            domAttr.set(this.fullNameNode, "innerHTML", this.NLS.settings.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
+            domAttr.set(this.fullNameNode, "innerHTML", this.NLSBundles.settings.displayedName + "&nbsp;&nbsp;<span>" + (firstname || "") + " " + (lastname || "") + "</span>");
         },
 
         // uiprefs = preferred language
@@ -390,9 +391,9 @@ define([
                 }));
             }), lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().message(this.NLS.annotationProfile.modifiedPreviouslyOnServer);
+                    this.application.getMessages().message(this.NLSBundles.settings.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().message(this.NLS.annotationProfile.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().message(this.NLSBundles.settings.failedSavingUnsufficientMDRights);
                 }
                 this.profilePictureSaveButton.cancel();
             }));

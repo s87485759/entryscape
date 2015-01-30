@@ -43,8 +43,6 @@ define({
     "displayedName" : "Namn som kommer visas",
     "email" : "Email",
     "info" : "Information",
-/*    "accountLabel" : "Konto",
-    "profileLabel" : "Profil",*/
     "noProfilePictureLabel" : "Ingen profilbild",
     "urlProfilePictureLabel" : "Webadress till profilbild",
     "localProfilePictureLabel" : "Ladda upp profil bild",
@@ -59,9 +57,4 @@ define({
     "tooShortPassword": "Lösenordet måste innehålle åtta eller fler bokstäver!",
     "languageLabel" : "Föredraget språk",
     "changeSettingsButtonLabel" : "Ändra inställningar"
-    /*"msgCurrentUsername": "Nuvarande användarnamn är ",
-    "msgPwdNoMatch": "Lösenorden matchar inte, var god försök igen",
-    "passwordLength": "Lösenordet måste vara minst 8 tecken långt",
-    "msgUserChangeSuccess": "Användarnamn ändrad. Var god ladda om browsern för att logga in igen.",
-    "msgUserChangeFailure": "Användarnamn ej ändrad på grund av: "*/
 });
