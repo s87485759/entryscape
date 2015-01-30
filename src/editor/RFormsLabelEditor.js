@@ -10,8 +10,8 @@ define(["dojo/_base/declare",
 
     return declare([_Widget, NLSMixin], {
         entry: null,
-        nlsBundles: ["annotationProfile"],
-        nlsBundleBase: "folio/nls/",
+        nlsBundles: ["editor"],
+        nlsBundleBase: "nls/",
 
         constructor: function (args) {
             this.application = __confolio.application;
@@ -21,6 +21,7 @@ define(["dojo/_base/declare",
 
         buildRendering: function () {
             this.inherited("buildRendering", arguments);
+            this.initNLS();
             this.domNode = this.srcNodeRef || domConstruct.create("div");
             domClass.add(this.domNode, "labelEditor");
             this.textBox = new TextBox({trim: true}, domConstruct.create("div", null, this.domNode));
@@ -55,13 +56,13 @@ define(["dojo/_base/declare",
                     this.application.dispatch({action: "changed", entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.NLSBundles["annotationProfile"].metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLSBundles.editor.metadataSaved + this.entry.getUri());
             });
             var onError = lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().warn(this.NLSBundles["annotationProfile"].modifiedPreviouslyOnServer);
+                    this.application.getMessages().warn(this.NLSBundles.editor.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().warn(this.NLSBundles["annotationProfile"].failedSavingUnsufficientMDRights);
+                    this.application.getMessages().warn(this.NLSBundles.editor.failedSavingUnsufficientMDRights);
                 }
             });
 

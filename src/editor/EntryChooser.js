@@ -19,7 +19,8 @@ function(declare, lang, on, aspect, domClass, domConstruct, focusUtil, Chooser, 
             domClass.add(search.domNode, "searchField");
             focusUtil.focus(search.focusNode);
             var results = new SearchList({}, domConstruct.create("div", null, this.selectionNode));
-            aspect.after(results._list, "focusedEntry", lang.hitch(this, function(entry) {
+            aspect.after(results._list, "setSelectedByIndex", lang.hitch(this, function() {
+                var entry = results._list.getSelectedEntry();
                 this._selectChoice({value: entry.getUri(), label: {en: folio.data.getLabel(entry)}, description: {en: folio.data.getDescription(entry)}});
             }));
             var t;

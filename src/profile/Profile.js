@@ -12,7 +12,7 @@ define(["dojo/_base/declare",
     "folio/util/Widget",
     "folio/navigation/PrincipalInfo", //in template
     "folio/list/SearchList", //in template
-    "folio/list/List", //in template
+    "folio/list/ListUI", //in template
     "folio/util/utils",
     "dojo/text!./ProfileTemplate.html"
 ], function (declare, lang, on, array, connect, dom, domStyle, domClass, domConstruct, domAttr, Widget,
@@ -114,7 +114,7 @@ define(["dojo/_base/declare",
         // Private methods
         //===================================================
         userChange: function () {
-            this.featuredList.use = this.user;
+            this.featuredList.user = this.user;
 
             if (this.lastParams && this.entry) {
                 this.entry.setRefreshNeeded();
@@ -333,7 +333,7 @@ define(["dojo/_base/declare",
                 return;
             }
             this._currFeaturedEntry = this._featuredEntry;
-            this.featuredList.showList(this._featuredEntry);
+            this.featuredList.list.showList(this._featuredEntry);
         },
 
         _showRecent: function () {

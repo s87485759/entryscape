@@ -17,5 +17,24 @@
  * along with Confolio. If not, see <http://www.gnu.org/licenses/>.
  */
 
-({"createTypeLabel": "Typ"
-})
+define({
+    "createDialogHeader": "Skapa och lägg till ett entry i den nuvarande foldern.",
+    "fileLabel": "Fil",
+    "browseLabel": "Utforska ...",
+    "addressLabel": "Adress",
+    "nameLabel": "Namn",
+    "createTypeLabel" : "Typ",
+    "selectTypeWaiting" : "Ingen typ automatiskt detekterad eller satt för hand ännu.",
+    "artifactTypeRequest": "Du måste välja en av typerna nedan.",
+    "clearManuallySelectedType": "Rensa bort den för hand satta typen.",
+    "clearAutoSelectedType": "Rensa bort automatisk detekterad typ.",
+    "noAutodetectTypePossible": "Automatisk detektering misslyckades, sätt typen för hand istället.",
+    "addressIsInvalid": "Det angivna värdet är inte en korrekt formaterad webbadress.",
+    "missingAddress": "Var god ange en webbadress",
+    "missingLabel": "Var god ange ett namn",
+    "createArtifact": "Skapa en artifakt",
+    "createLink": "Skapa en länk",
+    "uploadFile": "Ladda upp en fil",
+    "createText": "Skapa ett text dokument",
+    "createFolder": "Skapa en folder"
+});

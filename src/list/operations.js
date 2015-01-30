@@ -7,14 +7,11 @@ define([
     var exports = {};
     var resourceBundle;
 
-    var localize = function() {
-        dojo.requireLocalization("folio", "editBar");
-        resourceBundle = dojo.i18n.getLocalization("folio", "editBar");
-    };
-    localize();
-
-    connect.subscribe("/confolio/localeChange", localize);
-
+    connect.subscribe("/di18n/localeChange", function() {
+        require(["di18n/i18n!nls/list"], function(bundle) {
+            resourceBundle = bundle;
+        });
+    });
 
     exports.isPasteForbidden = function(folder, callback) {
         var cb = __confolio.application.getClipboard();
@@ -221,7 +218,7 @@ define([
                     __confolio.application.setClipboard(null);
                     __confolio.application.publish("childrenChanged", {entry: folder, source: null}); //TODO check if null causes problem
                     __confolio.application.publish("childrenChanged", {entry: cb.from, source: null}); //TODO check if null causes problem
-                    __confolio.application.getMessages().message("Paste suceeded");
+                    __confolio.application.getMessages().message(resourceBundle.pasteSucceeded);
                 }, function() {
                         __confolio.application.getMessages().error(resourceBundle.pasteFailed);
 //						this.__confolio.application.message(this.resourceBundle.pasteFailed); //This one says:"Paste failed"
@@ -239,10 +236,10 @@ define([
     };
 
     exports.listCreateText = function(list, inFolder) {
-        exports.createText(inFolder, lang.hitch(list, list.focusAndRename));
+        exports.createText(inFolder, lang.hitch(list, list.selectAndRename));
     };
     exports.listCreateFolder = function(list, inFolder) {
-        exports.createFolder(inFolder, lang.hitch(list, list.focusAndRename));
+        exports.createFolder(inFolder, lang.hitch(list, list.selectAndRename));
     };
 
 

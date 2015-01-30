@@ -20,20 +20,11 @@ define(["dojo/_base/declare",
              _TemplatedMixin, _WidgetsInTemplateMixin, template) {
     return declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin, NLSMixin], {
 
-        nlsBundles: ["annotationProfile"],
-        nlsBundleBase: "folio/nls/",
+        nlsBundles: ["editor"],
+        nlsBundleBase: "nls/",
         compact: true,
         optional: false,
         recommended: true,
-
-        /*
-        dialogTitle: "",
-        dialogCancelLabel: "",
-        dialogDoneLabel: "",
-        dialogDoneBusyLabel: "",
-        dataLabel: "",
-        */
-
         templateString: template,
 
         resize: function (arg) {
@@ -103,16 +94,16 @@ define(["dojo/_base/declare",
                     this.application.dispatch({action: "changed", entry: entry, source: this});
                     this.application.getStore().updateReferencesTo(entry);
                 }));
-                this.application.getMessages().message(this.metadataSaved + this.entry.getUri());
+                this.application.getMessages().message(this.NLSBundles.editor.metadataSaved + this.entry.getUri());
                 delete this.entry;
                 this.dialogDone.cancel();
                 this.doneEditing();
             });
             var onError = lang.hitch(this, function (message) {
                 if (message.status === 412) {
-                    this.application.getMessages().warn(this.modifiedPreviouslyOnServer);
+                    this.application.getMessages().warn(this.NLSBundles.editor.modifiedPreviouslyOnServer);
                 } else {
-                    this.application.getMessages().warn(this.failedSavingUnsufficientMDRights);
+                    this.application.getMessages().warn(this.NLSBundles.editor.failedSavingUnsufficientMDRights);
                 }
                 this.dialogDone.cancel();
             });
@@ -126,7 +117,7 @@ define(["dojo/_base/declare",
         doneEditing: function () {
         },
         localeChange: function() {
-            this.dialogDone.set("busyLabel", this.NLSBundles["annotationProfile"].dialogDoneBusyLabel);
+            this.dialogDone.set("busyLabel", this.NLSBundles.editor.dialogDoneBusyLabel);
         }
     });
 });

@@ -19,6 +19,8 @@ define([
 ], function (exports, declare, lang, domConstruct, domStyle, on, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin,
              ContentPane, TooltipDialog, BusyButton, Button, Dialog, popup, template) {
 
+    var NLSDependency = "di18n/i18n!nls/standardDialog";
+
     var ButtonsBelow = declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin], {
         templateString: template,
         addButton: function (button) {
@@ -79,7 +81,7 @@ define([
          * This is achieved by calling the done function.
          */
         addStandardButtons: function (onFinish, onCancel) {
-            require(["dojo/i18n!folio/nls/standardDialog"], lang.hitch(this, function (rb) {
+            require([NLSDependency], lang.hitch(this, function (rb) {
                 if (onFinish != null) {
                     this.addFinishButton(onFinish, rb);
                 }
@@ -110,7 +112,7 @@ define([
             if (rb != null) {
                 f(rb);
             } else {
-                require(["dojo/i18n!folio/nls/standardDialog"], f);
+                require([NLSDependency], f);
             }
         },
         setFinishButtonDisabled: function(disabled) {
@@ -130,7 +132,7 @@ define([
             if (rb != null) {
                 f(rb);
             } else {
-                require(["dojo/i18n!folio/nls/standardDialog"], f);
+                require([NLSDependency], f);
             }
         },
         addDoneButton: function (onDone, rb) {
@@ -147,7 +149,7 @@ define([
             if (rb != null) {
                 f(rb);
             } else {
-                require(["dojo/i18n!folio/nls/standardDialog"], f);
+                require([NLSDependency], f);
             }
         },        /*
          * Call this method to launch the dialog.

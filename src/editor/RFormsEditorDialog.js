@@ -15,7 +15,7 @@ define(["dojo/_base/declare",
     return declare([_Widget, NLSMixin, ApplicationView], {
 
         nlsBundles: ["editor"],
-        nlsBundleBase: "folio/nls/",
+        nlsBundleBase: "nls/",
         localeChange: function () {
             this.setTitle();
         },

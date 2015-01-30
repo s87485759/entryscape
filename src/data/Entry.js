@@ -249,7 +249,7 @@ dojo.declare("folio.data.Entry", null, {
 					list.getResource(dojo.hitch(this, function(res) {
 						this.context.communicator.PUT(
 								this.getResourceUri(), 
-								{resource: res}, 
+								res,
 								dojo.date.stamp.fromISOString(this.getModificationDate()).toUTCString())
 							.then(onSuccess, onError);
 					}));
