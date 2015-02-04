@@ -284,7 +284,7 @@ define(["dojo/_base/declare",
                 this.createMenu = new CreateMenu({list: this.list, listUI: this}, domConstruct.create("div", {}, listControls));
                 this.connect(newicon, "mouseover", lang.hitch(this.createMenu, this.createMenu.show));
             } else {
-                newicon = domConstruct.create("span", {"class": "new icon24 operation disabled", title: this.NLSBundles.list.insuffientRightsToCreate}, listControls);
+                newicon = domConstruct.create("span", {"class": "new icon24 operation disabled", title: this.NLSBundles.list.insufficientRightsToCreate}, listControls);
             }
 
             this._insertRefreshButton(domConstruct.create("span", {"class": "refresh icon24"}, listControls));
@@ -373,23 +373,6 @@ define(["dojo/_base/declare",
             domConstruct.create("img", {"class": "iconCls", "src": config.getIcon(child, "16x16")}, childNode);
             if (folio.data.isLinkLike(child)) {
                 domConstruct.create("img", {"class": "iconCls", style: {"position": "absolute", "left": "5px"}, "src": "" + config.getIcon("link", "16x16")}, childNode);
-            }
-        },
-        _insertModifiedDate: function (child, childNode) {
-            var mod = child.getModificationDate() || child.getCreationDate();
-            mod = mod ? mod.slice(0, 10) : "";
-            domConstruct.create("div", {
-                "class": "modCls",
-                "innerHTML": "<span class=\"modified\">" + this.NLSBundles.list.modified + "</span>:&nbsp;" + mod
-            }, childNode);
-        },
-        _insertChildCountIfList: function (child, childNode) {
-            if (folio.data.isListLike(child)) {
-                var nr = folio.data.getChildCount(child);
-                domConstruct.create("div", {
-                    "class": "modCls",
-                    "innerHTML": "<span class=\"modified\">" + this.NLSBundles.list.items + "</span>:&nbsp;" + (nr != undefined ? nr : "?") + "&nbsp;&nbsp;&nbsp;"
-                }, childNode);
             }
         },
         _insertTitle: function (child, childNode, noDownload, hrefObj) {

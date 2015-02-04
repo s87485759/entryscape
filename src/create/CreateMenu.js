@@ -14,11 +14,11 @@ define([
     "dojo/_base/fx",
     "dojo/NodeList-fx",
     "folio/util/Widget",
-    "folio/list/operations",
+    "rdfjson/Graph",
     "folio/create/CreateDialog",
     "dojo/text!./CreateMenuTemplate.html"
 ], function(declare, lang, connect, mouse, win, domgeom, topic, query, domClass, style, construct, domAttr, fx, nlfx,
-            Widget, operations, CreateDialog, template) {
+            Widget, Graph, CreateDialog, template) {
 
     return declare([Widget], {
         templateString: template,
@@ -34,12 +34,12 @@ define([
             var application = __confolio.application;
             query(".text", this.moveMeToTop).on("click", lang.hitch(this, function() {
                 this.hide(lang.hitch(this, function(){
-                    operations.createText(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
+                    this._createText(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
                 }));
             }));
             query(".folder", this.moveMeToTop).on("click", lang.hitch(this, function() {
                 this.hide(lang.hitch(this, function() {
-                    operations.createFolder(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
+                    this._createFolder(this.list.listEntry, lang.hitch(this.listUI, this.listUI.selectAndRename));
                 }));
             }));
             var launch = function(mode)  {
@@ -131,6 +131,88 @@ define([
                     })
                 }).play();
             })}).play();
+        },
+
+        getEntryOrReferencedEntry: function(entry, onComplete) {
+            if (folio.data.isReference(entry)) {
+                folio.data.getLinkedLocalEntry(entry, onComplete);
+            } else {
+                onComplete(entry);
+            }
+        },
+
+        /**
+         * @param {folio.data.Entry} inFolder where the new entry will be added.
+         * @param {function(folio.data.Entry)} callback will be called with the newly created text entry.
+         */
+        _createText: function(inFolder, callback) {
+            var self = this;
+            this.getEntryOrReferencedEntry(inFolder, function () {
+                var mdGraph = new Graph();
+                var contextToUse = inFolder.getContext();
+                mdGraph.create(contextToUse.getBase() + contextToUse.getId() + "/resource/_newId",
+                    folio.data.DCTermsSchema.TITLE,
+                    {"type": "literal", "value": "New Text"}, true);
+                var md = mdGraph.exportRDFJSON();
+
+                var helpObj = folio.data.createNewEntryHelperObj(inFolder.getContext());
+                folio.data.addMimeType(helpObj.info, helpObj.resURI, "text/html+snippet");
+                var args = {
+                    context: contextToUse,
+                    parentList: inFolder,
+                    metadata: md,
+                    info: helpObj.info.exportRDFJSON(),
+                    params: {
+                        entrytype: "local",
+                        graphtype: "none"
+                    }
+                };
+                contextToUse.createEntry(args, function (newEntry) {
+                    inFolder.setRefreshNeeded();
+                    __confolio.application.publish("childrenChanged", {entry: inFolder, source: self}); //Operations as source, not optimal.
+                    callback(newEntry);
+                }, function (mesg) {
+                    __confolio.application.publish("message", {
+                        message: self.NLSBundles.create.unableToCreateTextErrorMessage,
+                        source: self
+                    });
+                });
+            });
+        },
+
+        /**
+         * @param {folio.data.Entry} inFolder where the new entry will be added.
+         * @param {function(folio.data.Entry)} callback will be called with the newly created text entry.
+         */
+        _createFolder: function(inFolder, callback) {
+            var self = this;
+            this.getEntryOrReferencedEntry(inFolder, function () {
+                var mdGraph = new rdfjson.Graph();
+                var contextToUse = inFolder.getContext();
+                mdGraph.create(contextToUse.getBase() + contextToUse.getId() + "/resource/_newId",
+                    folio.data.DCTermsSchema.TITLE,
+                    {"type": "literal", "value": "New folder"}, true);
+                var md = mdGraph.exportRDFJSON();
+                var args = {
+                    context: contextToUse,
+                    parentList: inFolder,
+                    metadata: md,
+                    params: {
+                        entrytype: "local",
+                        graphtype: "list"
+                    }
+                };
+                contextToUse.createEntry(args, function (newEntry) {
+                    inFolder.setRefreshNeeded();
+                    __confolio.application.publish("childrenChanged", {entry: inFolder, source: self});
+                    callback(newEntry);
+                }, function (mesg) {
+                    __confolio.application.publish("message", {
+                        message: self.NLSBundles.create.unableToCreateFolderErrorMessage,
+                        source: self
+                    });
+                });
+            });
         }
     });
 });

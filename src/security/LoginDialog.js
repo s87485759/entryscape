@@ -127,8 +127,8 @@ define(["dojo/_base/declare",
                     }
                 }
                 if (!isTested) {
-                    domStyle.set(this.browserWarning.domNode, "display", "block");
-                    domStyle.set(this.browserList.domNode, "display", "block");
+                    domStyle.set(this.browserWarning, "display", "block");
+                    domStyle.set(this.browserList, "display", "block");
                 }
 
                 if (this.isLogoutNeeded) {

@@ -197,7 +197,7 @@ define([
                         // Since the paste failed, remove the entry from the cached list object
                         //  so that is in the same state as before the attempted paste
                         list.removeEntry(list.getSize() - 1);
-                        __confolio.application.message(resourceBundle.pasteFailedWhenCopying); //This one says:"Paste failed when making the copy"
+                        __confolio.application.message(resourceBundle.pasteFailed); //This one says:"Paste failed when making the copy"
                     }
                 });
             });
@@ -223,82 +223,6 @@ define([
                         __confolio.application.getMessages().error(resourceBundle.pasteFailed);
 //						this.__confolio.application.message(this.resourceBundle.pasteFailed); //This one says:"Paste failed"
                 });
-            });
-        });
-    };
-
-    exports.getEntryOrReferencedEntry = function(entry, onComplete) {
-        if (folio.data.isReference(entry)) {
-            folio.data.getLinkedLocalEntry(entry, onComplete);
-        } else {
-            onComplete(entry);
-        }
-    };
-
-    exports.listCreateText = function(list, inFolder) {
-        exports.createText(inFolder, lang.hitch(list, list.selectAndRename));
-    };
-    exports.listCreateFolder = function(list, inFolder) {
-        exports.createFolder(inFolder, lang.hitch(list, list.selectAndRename));
-    };
-
-
-    /**
-     * @param {folio.data.Entry} inFolder where the new entry will be added.
-     * @param {function(folio.data.Entry)} callback will be called with the newly created text entry.
-     */
-    exports.createText = function(inFolder, callback) {
-        exports.getEntryOrReferencedEntry(inFolder, function() {
-            var mdGraph = new Graph();
-            var contextToUse = inFolder.getContext();
-            mdGraph.create(contextToUse.getBase() + contextToUse.getId()+"/resource/_newId",
-                folio.data.DCTermsSchema.TITLE,
-                {"type":"literal","value":"New Text"}, true);
-            var md = mdGraph.exportRDFJSON();
-
-            var helpObj = folio.data.createNewEntryHelperObj(inFolder.getContext());
-            folio.data.addMimeType(helpObj.info, helpObj.resURI, "text/html+snippet");
-            var args = {
-                context: contextToUse,
-                parentList: inFolder,
-                metadata: md,
-                info: helpObj.info.exportRDFJSON(),
-                params: {entrytype: "local",
-                    graphtype: "none"}};
-            contextToUse.createEntry(args, function(newEntry) {
-                inFolder.setRefreshNeeded();
-                __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports}); //Operations as source, not optimal.
-                callback(newEntry);
-            }, function(mesg) {
-                __confolio.application.publish("message", {message: resourceBundle.unableToCreateFolderErrorMessage, source: exports});  //Set the operations as source.
-            });
-        });
-    };
-
-    /**
-     * @param {folio.data.Entry} inFolder where the new entry will be added.
-     * @param {function(folio.data.Entry)} callback will be called with the newly created text entry.
-     */
-    exports.createFolder = function(inFolder, callback) {
-        exports.getEntryOrReferencedEntry(inFolder, function() {
-            var mdGraph = new rdfjson.Graph();
-            var contextToUse = inFolder.getContext();
-            mdGraph.create(contextToUse.getBase() + contextToUse.getId()+"/resource/_newId",
-                folio.data.DCTermsSchema.TITLE,
-                {"type":"literal","value":"New folder"}, true);
-            var md = mdGraph.exportRDFJSON();
-            var args = {
-                context: contextToUse,
-                parentList: inFolder,
-                metadata: md,
-                params: {entrytype: "local",
-                    graphtype: "list"}};
-            contextToUse.createEntry(args, function(newEntry) {
-                inFolder.setRefreshNeeded();
-                __confolio.application.publish("childrenChanged", {entry: inFolder, source: exports});
-                callback(newEntry);
-            }, function(mesg) {
-                __confolio.application.publish("message", {message: resourceBundle.unableToCreateFolderErrorMessage, source: exports});
             });
         });
     };

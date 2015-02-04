@@ -56,7 +56,7 @@ define(["dojo/_base/declare",
                     this.context = event.entry.getContext().getId();
                     this.setActiveFolder(event.entry.getContext().getUri() + '/resource/_top');
                     break;
-                case "change":
+                /*case "change":
                     if (event.entry.getResourceUri() == event.entry.getResourceUri()) {
                         var res = event.entry.getResource();
                         this.user = res.name;
@@ -64,7 +64,7 @@ define(["dojo/_base/declare",
                         this.application.setUser(res);
                     }
                     break;
-/*                case "localeChange":
+                case "localeChange":
                     var loc = kernel.locale;
                     if (!this.supportedLanguageMap.hasOwnProperty(loc) &&
                         this.supportedLanguageMap.hasOwnProperty(loc.slice(0, 2))) {
@@ -147,6 +147,7 @@ define(["dojo/_base/declare",
             } else {
                 domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logOut);
             }
+            this._loginAdjustments();
         },
         //===================================================
         // Private methods
@@ -155,20 +156,21 @@ define(["dojo/_base/declare",
             this.user = this.application.getUser();
             if (this.user) {
                 this.userId = this.user.id;
-                domStyle.set(this.guestFieldNode, "display", "none");
-                domStyle.set(this.userFieldNode, "display", "");
-                domAttr.set(this.userFieldNode, "innerHTML", this.user.user);
-                domAttr.set(this.userFieldNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
+                var href = this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile");
+                var usr = "<a class=\"link user\" href=\""+href+"\">"+this.user.user+"</a>";
+                var greet = lang.replace(this.NLSBundles.navigation.greeting, {"user": usr});
+                domAttr.set(this.greetingNode, "innerHTML", greet);
                 if (this.profileIconNode) {
-                    domAttr.set(this.profileIconNode, "href", this.application.getHref(this.application.getRepository() + "_principals/entry/" + this.userId, "profile")); //this.user.user
+                    domAttr.set(this.profileIconNode, "href", href); //this.user.user
                     domStyle.set(this.profileIconNode, "display", "");
                     domStyle.set(this.signInIconNode, "display", "none");
                 }
                 domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logOut);
             } else {
                 delete this.userId;
-                domStyle.set(this.guestFieldNode, "display", "");
-                domStyle.set(this.userFieldNode, "display", "none");
+                var usr = "<span class=\"link user\">"+this.NLSBundles.navigation.guestUser+"</span>";
+                var greet = lang.replace(this.NLSBundles.navigation.greeting, {"user": usr});
+                domAttr.set(this.greetingNode, "innerHTML", greet);
 
                 domAttr.set(this.loginStatusNodeLabel, "innerHTML", this.NLSBundles.navigation.logIn);
                 if (this.profileIconNode) {
@@ -218,8 +220,6 @@ define(["dojo/_base/declare",
         _homeClicked: function () {
             if (this.home) {
                 this.application.openEntry(this.application.repository + this.home + "/entry/_top");
-            } else {
-                this.application.message(this.NLSBundles.navigation.notLoggedInNoHomeMessage);
             }
         },
         _loginLinkClicked: function () {
