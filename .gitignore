@@ -4,3 +4,4 @@
 *~
 /config*
 !/config-example/*
+*.iml
