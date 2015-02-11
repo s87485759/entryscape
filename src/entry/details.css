@@ -1,0 +1,239 @@
+/* Old details, phase out (just remove it?)*/
+.details {
+	margin: 0px;
+	padding: 0px;
+}
+
+.details .uglyFix {
+	overflow: inherit;
+}
+
+.details .top, .details .center, .details .bottom  {
+	margin: 0px;
+}
+
+.details .resourceSpace {
+	width: 50%;
+	overflow: hidden;
+}
+.details .url {
+	white-space: nowrap;
+	white-space:nowrap;
+}
+
+.details .center img,
+.details .top .resource img {
+	vertical-align: middle;
+}
+
+.details .top .resource {
+	white-space: nowrap;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	min-width: 10em;
+	padding-left: 2px;
+	padding-right: 2px;
+	vertical-align: middle;
+}
+.details .top .url {
+	overflow: hidden;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.details .resourceSpace {
+	bottom: 0px;
+	position: absolute;
+}
+
+.details .center .extInfoPane > div:FIRST-CHILD, 
+.details .center .locInfoPane > div:FIRST-CHILD {
+	border-bottom-width: 1px;
+}
+
+.details .title{
+	font-weight: bold;
+}
+
+.details .top .icon  img {
+	width:50px;
+	height:50px;
+}
+.details .top .license  img {
+	width:16px;
+	padding-right: 1px;
+}
+
+/* Set textcontent in details AccordionContainer */
+.details .containedText p{
+	margin: 5px
+}
+
+.details .tooltipmenu {
+	margin: 10px;
+	border: 3px;
+}
+
+.overView {
+	margin: 7px;
+}
+
+/*
+.tundra .dijitTextArea {
+	padding-left: 0px;
+	padding-right: 0px;
+} */
+
+
+/* Hide first level in shame forms */
+.shameRoot > tbody > .shameGroupHead {
+	display: none;
+}
+.shameRoot > tbody > tr > .shameIndent {
+	padding: inherit;
+}
+
+.details .shameDiv {
+	height: 100%;
+	overflow: auto;
+}
+
+.details .center .bottom {
+	width: 100%;
+	white-space: nowrap;
+	border-top-width: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+	vertical-align: middle;
+	font-size: x-small;
+}
+
+
+/* Entry/Details */
+
+.entryDetails .footer {
+	font-size:x-small;
+	white-space:nowrap;
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding-top: 2px;
+	padding-left: 2px;
+    height: 25px;
+}
+
+.entryDetails .header {
+	font-size:x-small;
+	border-bottom-style: solid;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	padding-left: 2px;
+	height: 33px;
+}
+
+.entryDetails .header img {
+	vertical-align:middle;
+}
+
+.entryDetails .resizableContent {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.contentViewSwitcher {
+	text-align: center;
+}
+
+.contentViewSwitcher.leftAligned {
+	text-align: left;
+}
+
+.contentViewSwitcher .contentPresentationMode{
+    padding: 8px;
+}
+
+
+.contentViewSwitcher .contentIcon {
+	width: 128px;
+	position: relative;
+	left: 50%;
+	margin-left: -64px;
+}
+
+.entryDetails .extInfoPane>h3,
+.entryDetails .locInfoPane>h3 {
+	display: none;
+	margin-left: 0.3em;
+}
+
+.entryDetails .linkReference .extInfoPane>h3,
+.entryDetails .linkReference .locInfoPane>h3 {
+	display: block;
+}
+
+.entryDetails .linkReference .extInfoPane>div,
+.entryDetails .linkReference .locInfoPane>div {
+/*	margin-left: 1em;  
+ * Ignored since it looks better without with rforms. */
+}
+
+.entryDetails .locInfoPane h3{
+	margin-top: 0;
+}
+
+.entryDetails .imgPreview {
+	float: right;
+	margin-right: 0.5em;
+}
+
+.entryDetails .referentsImg {
+	float:left;
+	margin-left: 3px;
+	margin-right: 5px;
+}
+
+.entryDetails .referentsSeparator {
+	margin-left: 24px;
+	margin-right: 24px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	margin-top: 12px;
+	padding-top: 5px;	
+}
+
+.entryDetails .resource, 
+.entryDetails .referentsList a {
+	font-weight: bold;
+    display: inline-block;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.referentsList a {
+	text-decoration: underline;
+	color: grey;
+	cursor: default;
+	text-decoration: none;
+}
+
+.referentsList a.clickable{
+	text-decoration: underline;
+	color: black;
+	cursor: pointer;
+}
+
+
+
+.entryDetails .createdAndModifiedBlock {
+	float: right;
+	display: table;
+}
+
+.entryDetails .createdAndModifiedBlock>div {
+	display: table-row;
+}
+
+.entryDetails .createdAndModifiedBlock>div>* {
+	display: table-cell;
+}

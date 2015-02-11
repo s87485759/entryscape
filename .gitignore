@@ -1,7 +1,9 @@
 /lib/dojo/*
 /lib/dojo-src/*
+/libs/*
 .idea
 *~
 /config*
 !/config-example/*
 *.iml
+/target

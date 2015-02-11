@@ -1,0 +1,25 @@
+<div>
+	<div data-dojo-type="dijit/Dialog" data-dojo-attach-point="popupDijit">
+		<div data-dojo-attach-point="bc" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false" class="commentPane">
+			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+				<div data-dojo-attach-point="commentsNode"></div>
+			</div>
+			<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false,region:'bottom',splitter:true" style="height:180px">
+			    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left',splitter:true" style="width: 360px"
+                     data-dojo-attach-point="mdEditorContainer" class="distinctBackground"></div>
+    			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+					<div data-dojo-type="dijit/Editor"
+                        data-dojo-props="plugins: ['bold', 'italic', 'underline', 'strikethrough', 'insertOrderedList', 'insertUnorderedList','createLink', 'insertImage','formatBlock', 'foreColor', 'hiliteColor']"
+						data-dojo-attach-point="contentEditorDijit"></div>
+				</div>
+				<div data-dojo-type="dijit/layout/ContentPane" style="height: 2.5em;" data-dojo-props="region:'bottom'">
+					<div data-dojo-attach-point="jsErrorArea" data-dojo-type="dijit/layout/ContentPane" style="color:red;display:inline-block"></div>
+					<div style="float:right" data-dojo-attach-point="buttonArea">
+						<div data-dojo-type="dojox/form/BusyButton" data-dojo-attach-event="onClick: onPost" data-dojo-attach-point="nls,postDijit">finishButtonLabel</div>
+						<div data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick: hide" data-dojo-attach-point="nls,cancelDijit">cancelButtonLabel</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div style="overflow: hidden" class="confolio slides">
+    <div class="viewCenter">
+        <div style="position:relative;height: 100%;overflow-y: auto">
+            <div data-dojo-type="dijit/layout/ContentPane" style="height: 100%" data-dojo-attach-point="cp">
+                <div data-dojo-type="folio/content/ContentViewSwitcher" data-dojo-attach-point="content"></div>
+            </div>
+        </div>
+    </div>
+    <div class="viewBottom distinctBackground">
+        <div class="slideControls">
+            <div data-dojo-attach-point="nls" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_prevClicked">prev</div>
+            <div data-dojo-attach-point="nls" data-dojo-type="dijit/form/Button" data-dojo-attach-event="onClick:_nextClicked">next</div>
+        </div>
+        <div data-dojo-attach-point="info" class="infoBox"></div>
+    </div>
+</div>

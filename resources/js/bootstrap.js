@@ -26,7 +26,7 @@ __confolio.initConfig = function() {
         }
         addQuery(); // let config-example from URL query override config-example file
         document.title = __confolio.config["title"];
-        addCSS((__confolio.isBuild() ? "target" : "src" ) +"/folio/apps/clean.css");
+        addCSS((__confolio.isBuild() ? "target" : "src" ) +"/apps/clean.css");
 		addCSS("resources/themes/" + (__confolio.config["theme"] || "blueish") + "/style.css");
 	};
 
@@ -61,7 +61,15 @@ __confolio.initDojo = function(){
 	};
 	
 	var libs = ["dojo/dojo.js"]; 
-	var jsPath = __confolio.isBuild() ? "target/" : "lib/dojo/";
+	var jsPath;
+    if (__confolio.isBuild()) {
+        jsPath = "target/";
+    } else {
+        jsPath = "libs/";
+        dojoConfig.packages = [
+            {name: "folio", location: "../../src" }
+        ];
+    }
 	var debugExt = __confolio.isDebug() ? ".uncompressed.js" : "";
 
 	for (var i = 0;i<libs.length;i++) {
@@ -104,28 +112,11 @@ __confolio.start = function(loadIndicatorId, splashId){
 		var splash = document.getElementById(splashId);
 		splash.style.display = "block";
 	}
-	if (!__confolio.isBuild()) {
-		dojo.registerModulePath("folio", "../../../src/folio");
-		dojo.registerModulePath("jdil", "../../../src/jdil");
-		dojo.registerModulePath("rdfjson", "../../../src/rdfjson");
-		dojo.registerModulePath("rforms", "../../../src/rforms");
-		dojo.registerModulePath("se", "../../../src/se");
-	}
 	var appModulePath = __confolio.config["appModulePath"];
 	var appModuleName = __confolio.config["appModuleName"];
 	if(appModuleName && appModulePath){
 		dojo.registerModulePath(appModuleName, appModulePath);
 	}
-
-    var viewMap = {
-        manager: __confolio.config.viewManager || "se/uu/ull/site/FullscreenViewStack",
-        controller: __confolio.config.viewController || "folio/navigation/NavigationBar",
-        startView: __confolio.config.startView || "default",
-        views: __confolio.config.views || [{
-            "name": "default",
-            "class": "folio.apps.TFolio"
-        }]
-    }
 
 	var deps = [
         "dojo/_base/lang",
@@ -138,16 +129,16 @@ __confolio.start = function(loadIndicatorId, splashId){
         "dojo/_base/window",
         "dojo/Deferred",
         "folio/Application",
-        "se/uu/ull/site/ViewMap",
+        "spa/init",
         "folio/security/authorize",
         "folio/security/LoginDialog",
         "dijit/Dialog"];
     //Make sure the specified manager is loaded.
-	deps.push(viewMap.manager);
+//	deps.push(viewMap.manager);
 	//If a controller is specified, load it
-	viewMap.controller && deps.push(viewMap.controller);
+//	viewMap.controller && deps.push(viewMap.controller);
 	
-	require(deps, function(lang, parser, query, dom, attr, style, fx, win, Deferred, Application, ViewMap, authorize, LoginDialog, Dialog, Manager) {
+	require(deps, function(lang, parser, query, dom, attr, style, fx, win, Deferred, Application, init, authorize, LoginDialog, Dialog, Manager) {
 		var storePath = __confolio.config["storePath"] || "store";
 		var loadedIndicator = dojo.byId(loadIndicatorId);
 		attr.set(loadedIndicator, "innerHTML", "&nbsp;Building application");
@@ -194,8 +185,23 @@ __confolio.start = function(loadIndicatorId, splashId){
 		});
 		
 		__confolio.application.getConfig(function() {
-			__confolio.viewMap = Manager.create(viewMap, dojo.create("div", null, win.body()));
-			var vm = query(".viewMap", win.body())[0];
+            var c = __confolio.config;
+            c.siteClass = c.siteClass || "spa/Site";
+            c.controlClass = c.controllerClass || "folio/navigation/NavigationBar";
+            c.viewsNode = query("#spaViewsNode")[0];
+            c.controlNode = query("#spaControlNode")[0];
+            c.startView = c.startView || "default";
+            c.views = c.views || [{
+                "name": "default",
+                "class": "folio/apps/TFolio"
+            }];
+
+            init(c, function(site) {
+                __confolio.viewMap = site;
+            })
+
+//            __confolio.viewMap = Manager.create(viewMap, dojo.create("div", null, win.body()));
+			var vm = query(".spaSite")[0];
 			style.set(vm, {"position": "relative", "margin-left": "auto", "margin-right": "auto"});
 			if (__confolio.config.minwidth != null) {
 				var minw = parseInt(__confolio.config.minwidth);

@@ -1,0 +1,37 @@
+{
+  "name": "EntryScape",
+  "version": "4.1.3",
+  "authors": [
+    "Matthias Palmér <matthias@metasolutions.se>"
+  ],
+  "description": "EntryScape is an application for handling resources and their metadata. Technically it is a single page application that relies on the REST services provided by EntryStore.",
+  "moduleType": [
+    "amd"
+  ],
+  "dependencies": {
+    "dojo": "1.10.1",
+    "dijit": "1.10.1",
+    "dojox": "1.10.1",
+    "util": "dojo-util#1.10.1",
+    "store": "https://bitbucket.org/metasolutions/entrystore.js.git#develop",
+    "rdfjson": "https://bitbucket.org/metasolutions/rdfjson.git#develop",
+    "rdforms": "https://bitbucket.org/metasolutions/rdforms.git#develop",
+    "spa": "https://bitbucket.org/metasolutions/spa.git#master",
+    "di18n": "https://bitbucket.org/metasolutions/di18n.git#master",
+    "nls": "https://bitbucket.org/metasolutions/entryscape-nls.git"
+  },
+  "keywords": [
+    "rdf",
+    "linked data",
+    "personal portfolio",
+    "groupware",
+    "rem3"
+  ],
+  "license": "GPL",
+  "homepage": "http://entryscape.com",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ]
+}

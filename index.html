@@ -19,18 +19,22 @@
 	</script-->
   </head>
 
-  <body class="claro entryScape">
+  <body class="claro entryscape">
 	<div id="javascriptRequired" style="margin-left: auto; margin-right: auto;">
 		<h1>Error: JavaScript Not Enabled</h1>
 		<p>EntryScape requires a modern web browser with JavaScript enabled.</p>
 	</div>
-	<div id="splash" style="display: none">
+    <div id="splash" style="display: none">
 		<div class="loadingIcon"></div>
 		<h1>Loading EntryScape</h1>
 		<div style="width: 20em; height: 2.5ex; margin-top: 3em; margin-left: auto; margin-right:auto; border: 1px solid black; overflow: hidden"><div style="background: lightblue; height: 2.5ex;width: 0%; text-align: left; overflow: visible;" id="loadedIndicator"></div></div>
 	</div>
-	<script type="text/javascript">
-		document.getElementById("javascriptRequired").style.display = "none";
+    <div class="spaSite spaFullscreen entryscape">
+        <div class="spaControl"><div id="spaControlNode"></div></div>
+        <div class="spaViews"><div id="spaViewsNode"></div></div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("javascriptRequired").style.display = "none";
 	</script>
 	<script type="text/javascript">
 		__confolio.initConfig();

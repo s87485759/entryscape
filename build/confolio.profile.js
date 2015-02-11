@@ -1,6 +1,6 @@
 var profile = {
 	platform: 'browser',
-    basePath: '../src/',
+    basePath: '../libs/',
     releaseDir: '../target',
     action: 'release',
     cssOptimize: 'comments',
@@ -10,34 +10,36 @@ var profile = {
     stripConsole: 'all',
     selectorEngine: 'acme',
     packages:[
-        {name: "dojo", location: "../lib/dojo-src/dojo"},
-        {name: "dijit", location: "../lib/dojo-src/dijit"},
-        {name: "dojox", location: "../lib/dojo-src/dojox"},
+        "dojo",
+        "dijit",
+        "dojox",
 		"rdfjson",
-		"rforms",
-		"folio",
-		"se"
+		"rdforms",
+        "spa",
+        "di18n",
+        {name: "folio", location: "../src"}
     ],
 
     layers: {
 		'dojo/dojo': {
 		    include: [
-		    	"se/uu/ull/site/FullscreenViewStack",
+		    	"spa/init",
+                "spa/Site",
+                "folio/Application",
 				"folio/navigation/NavigationBar",
 				"folio/apps/TFolio",
-				"folio/apps/StartPage",
 				"folio/start/Start",
 				"folio/profile/Profile",
                 "folio/settings/Settings",
-				"folio/apps/Help",
-				"folio/apps/About",
+				"folio/view/Help",
+				"folio/view/About",
 				"folio/apps/TFolio",
+                "folio/security/Account",
 				"folio/security/LoginDialog",
                 "folio/search/Search",
 				"dijit/Dialog",
 				"dojo/back",
-				"dojo/cookie",
-				"folio/apps/Signup"],
+				"dojo/cookie"],
 			boot: true,
 			customBase: true
 		}

@@ -1,0 +1,19 @@
+<div style="overflow: hidden" class="confolio settings">
+	<div class="settingsTop distinctBackground" data-dojo-type="folio/navigation/PrincipalInfo" data-dojo-attach-point="principalInfo" data-dojo-props="view: 'settings'"></div>
+	<div class="settingsOutline distinctBackground">
+		<ul>
+			<li class="selected" data-dojo-attach-point="nls,_accountButtonNode">generalTabLabel</li>
+			<li data-dojo-attach-point="nls,_profileButtonNode">profileTabLabel</li>
+            <li style="display: none" data-dojo-attach-point="nls,_membersButtonNode">membersTabLabel</li>
+            <li data-dojo-attach-point="nls,_rightsButtonNode">rightsTabLabel</li>
+		</ul>
+	</div>
+	<div class="settingsCenter">
+		<div style="position:relative;height: 100%">
+			<div class="settingsContent accountContainer" data-dojo-attach-point="_accountTabDijit" data-dojo-type="folio/settings/AccountTab"></div>
+			<div class="settingsContent container" style="display: none" data-dojo-attach-point="_profileTabDijit" data-dojo-type="folio/settings/ProfileTab"></div>
+            <div class="settingsContent container" style="display: none" data-dojo-attach-point="_membersTabDijit" data-dojo-type="folio/settings/MembersTab"></div>
+            <div class="settingsContent container" style="display: none" data-dojo-attach-point="_rightsTabDijit" data-dojo-type="folio/settings/RightsTab"></div>
+		</div>
+	</div>
+</div>

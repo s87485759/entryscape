@@ -1,0 +1,499 @@
+/*----------- NavigationBar ---------------*/
+.navigationBar {
+    padding-top: 3px;
+    position: relative;
+}
+
+.navigationBar .logo {
+	display: block;
+	width: 240px;
+	height: 60px;
+}
+
+.navigationBar .appName {
+	position: absolute;
+    font-size: x-large;
+    left: 50px;
+    top: 6px;
+}
+
+.navigationBar .appSentence {
+	position: absolute;
+	left: 85px;
+	top: 40px;
+    display: none;
+}
+
+.navigationBar .area1 {
+	position: absolute;
+	top: 10px;
+    right: 40px;
+}
+
+.navigationBar .area2 {
+    display: block;
+	position: absolute;
+	bottom: 11px;
+	right: 1em;
+}
+
+.navigationBar .control {
+   display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.navigationBar .logo {
+	margin-left: 5px;
+    height: 32px;
+    width: 220px;
+}
+
+
+.navigationBar .area3 {
+	position: absolute;
+	bottom: 4px;
+	left: 240px;
+}
+
+.navigationBar .searchField {
+	width:200px;
+	font-size: larger;
+	vertical-align: middle;
+}
+
+.navigationBar .link.user {
+	font-style: italic;
+	margin-left: 0px;
+}
+
+.navigationBar .contextLabel {
+	margin-left: 1em;
+}
+
+.navigationBar .link {
+	text-decoration: none;	
+}
+
+.navigationBar .link,
+.navigationBar span.block{
+	margin-right: 0.7em;
+	margin-left: 0.7em;
+}
+
+.navigationBar a.link:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+
+.navigationBar .area1 .signin {
+    background: transparent;
+    color: white;
+    border-style: none;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 0px 0px 10px;
+    border-radius: 2px;
+}
+.navigationBar .area1 .signin:hover {
+    background: grey;
+    cursor: pointer;
+}
+
+/*-----------ControlMenu-------------------*/
+
+.controlMenu {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    z-index: 200;
+    overflow: hidden;
+    height: auto;
+    width:340px
+}
+.controlMenu .controlMenuWheel {
+    position: absolute;
+    right: 0px;
+    height: 39px;
+    width: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: white;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #759DC0;
+}
+
+.controlMenu .controlMenuWheel .control {
+    margin-left: 1px;
+}
+
+.controlMenu .cosmetic {
+    position: absolute;
+    right: 5px;
+    width: 31px;
+    height: 6px;
+    top: 39px;
+    background: white;
+}
+.controlMenu .controlMenuWheel>div.distinctThickBorder {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    height: 39px;
+}
+.controlMenu .controlMenuBody {
+    margin-top: 39px;
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #759DC0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.controlMenu .controlMenuBody div.distinctThickBorder {
+    border-style: solid;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+	padding: 7px 10px;
+	overflow: hidden;
+	height: auto;
+}
+
+.controlMenu .userBlock {
+	padding-bottom: 7px;
+}
+.controlMenu .imageAndAlternativesBlock {
+	display: table;
+	width: 100%;
+	border-collapse:collapse;  
+	border-bottom-style: solid;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.controlMenu .imageAndAlternativesBlock>div {
+	display: table-row;
+}
+.controlMenu .profileImgNode {
+	display: table-cell;
+	width: 100px;
+	padding-right:10px;
+	border-right-style: solid;
+}
+.controlMenu .alternativesNode {
+	display: table-cell;
+	vertical-align: top;
+	padding-left:10px;
+    padding-bottom: 5px;
+}
+
+.controlMenu .alternativesNode>div {
+    margin-bottom: 3px;
+}
+.controlMenu .alternativesNode .icon {
+    margin-right: 10px;
+    vertical-align: middle
+}
+.controlMenu .menuloginLink .icon {
+    margin-right: 5px;
+    vertical-align: middle
+}
+.controlMenu .signinAndLanguage {
+    padding-top: 6px;
+}
+
+.controlMenu a.link {
+	text-decoration: none;
+}
+
+.controlMenu span.link:hover,
+.controlMenu a.link {
+    text-decoration: none;
+    cursor: default;
+}
+
+.controlMenu a.link:hover {
+	text-decoration: underline;
+}
+
+.controlMenu .user{
+	font-weight: bold;
+}
+.controlMenu .languageBlock {
+	float:right;
+    margin-right: 3px;
+}
+.controlMenu .menuloginLink {
+    margin-left: 3px;
+}
+
+/*----------- Breadcrumbs -----------*/
+.breadcrumbs {
+	border-bottom-width: 6px;
+	border-bottom-style: solid;
+    min-height: 80px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.breadcrumbs .ownerBar {
+	padding: 0.3em;
+	font-size: large;
+	min-height: 1em;
+}
+
+.breadcrumbs .ownerBar .icon {
+	vertical-align: middle;
+	margin: 0px;
+}
+
+.breadcrumbs .ownerBar .icon.home {
+	margin-left: 10px;
+}
+
+.breadcrumbs .bcNode {
+	padding-left: 0.5em;
+}
+
+.breadcrumbs .bicon {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=65)";
+    filter:alpha(opacity=65);
+    zoom:1;
+    cursor: pointer;
+    padding-right: 0.2em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    margin-top: 1px;
+}
+
+.breadcrumbs .crumb>* {
+    display: inline-block;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    vertical-align: middle;
+}
+
+.breadcrumbs .crumb {
+	margin-left: 6px;
+	float: left;
+	display: inline-block;
+}
+
+.breadcrumbs .crumb span {
+	vertical-align: middle;
+}
+
+.breadcrumbs .crumb span.icon {
+	margin-left: 0.4em;
+	margin-right: 0.3em;
+}
+
+.breadcrumbs .crumb .label,
+.breadcrumbs .crumb .choices{
+	border-width: 2px;
+	border-style: outset;
+	padding-left: 2px;
+	padding-right: 2px;
+	cursor: pointer;
+}
+.breadcrumbs .crumb .choices {
+	margin-right: 6px;
+}
+
+.breadcrumbs .crumb .choices.pressed {
+	border-style: inset;
+	cursor: auto;
+}
+
+.breadcrumbs .crumb .choices .choiceslabel {
+	font-size: xx-small;
+}
+.breadcrumbs .listMode {
+	border-width: 2px;
+	border-style: outset;
+	cursor: pointer;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.breadcrumbs .listMode.CLI {
+	float:right;
+	margin-right: 0.3em;
+}
+.breadcrumbs .crumb .label.selected,
+.breadcrumbs .listMode.selected {
+	border-style: inset;
+	cursor: auto;
+}
+
+.breadcrumbs .crumb.trail a,
+.breadcrumbs .crumb.trail .menu {
+    opacity:0.35;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=35)";
+    filter:alpha(opacity=35);
+}
+
+.breadcrumbs .crumb.trail:hover a,
+.breadcrumbs .crumb.trail:hover .menu{
+    opacity:1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=100)";
+    filter:alpha(opacity=100);
+}
+
+.breadcrumbs .crumb .label.select {
+	border-right: 1px solid black;
+}
+
+.breadcrumbs .contextSelect {
+	width: 8em;
+}
+.breadcrumbs>.bcNode>* {
+	vertical-align: middle;
+}
+
+.breadcrumbsChoicesDialog div.choice:hover {
+	color: white;
+	background: blue;
+}
+
+.breadcrumbs .iconSeparator {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 1px;
+	margin-left:0.3em;
+	margin-right: 0.3em;
+	height: 16px;
+	background-repeat: no-repeat;
+}
+
+.breadcrumbs .crumbSeparatorRectangular {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 7px;
+	height: 23px;
+	background-repeat: no-repeat;
+}
+
+.breadcrumbs .crumbSeparatorArrow {
+	display: inline-block;
+	*display: inline;
+    zoom:1;
+	width: 14px;
+	height: 22px;
+	background-repeat: no-repeat;
+}
+.breadcrumbs .crumbSeparatorArrow div{
+	width: 14px;
+	height: 22px;
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAWCAYAAADwza0nAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sMHRcCDh9J3n8AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA5klEQVQ4y4XUPy4EQBQH4PFviaxEJWrFRmwlCofgAAoair3AHkOj3FqEaBSOIUJHFEqJSoEIhU+zmsnbeS+ZZjJf3mRmflNwiFKNdXxoVBkv6Af4KIPwgG6ALzIIlwHs4jGDMAjwFr4z+IXNAA8zCE9YquAUrjMI50HXFbxkEPYCvIvfDL5hLcAnGYQbzFVwHnfTpV2zpZSZaq5TSllsdXxHL9jqWbbVgwDtZ6c6yhITwXssVKiD29YD+MRG0O04e3JRqHf+L30SPA3QKl5bsXrGcgCvWkH+wXaABtnXMQxQf5zNifUHJJwjXOWzlD4AAAAASUVORK5CYII=);
+}
+
+
+/* ================PrincipalInfo========================*/
+.entryscape .principalInfo {
+	padding: 7px 20px 10px 20px;
+	height: 40px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-bottom-left-radius: 6px;
+	-moz-border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.entryscape .principalInfoWrapper {
+	position: relative;
+}
+
+.entryscape .breadcrumbs .principalInfo {
+    padding: 7px 20px 10px 15px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.entryscape .principalInfoText {
+	position: absolute;
+	top: 0px;
+	left: 50px;
+	vertical-align: top;
+	padding: 5px 20px;
+	height: 40px;
+	overflow: hidden;
+}
+
+.entryscape .principalInfo h1 {
+	margin: 0px;
+	padding: 0px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #333;
+}
+
+.entryscape .principalInfo .icon24 {
+	vertical-align: middle;
+	margin-left: 5px;
+	margin-bottom: 2px;
+}
+
+.entryscape .principalInfo .icon24.home {
+	margin-left: 20px;
+}
+
+.entryscape .principalInfo .principalDescription {
+	font-size: large;
+	margin: 5px 0px;
+}
+
+
+.entryscape .principalInfo .contactinfo {
+	line-height: 1px;
+	font-size: 10px;
+	font-weight: normal;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.entryscape .principalInfo .contactinfo>a {
+	display: block;
+	line-height: 10px;
+	color: grey;
+}
+
+.entryscape .principalInfo .contactinfo>a:hover {
+	color: black;
+}
+
+.entryscape .principalInfo div.principalPicture {
+    width: 35px;
+    height: 35px;
+    margin-top: -1px;
+}
+
+.entryscape .principalInfo .principalPicture>img {
+    max-width: 35px;
+    max-height: 35px;
+}

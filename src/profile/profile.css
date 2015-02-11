@@ -1,0 +1,52 @@
+.entryscape .userProfile {
+    position: relative;
+}
+.entryscape .userProfile .profile_left,
+.entryscape .userProfile .profile_right {
+	position: absolute;
+	top: 50px;
+	bottom:0px;
+	width: 50%;
+}
+.entryscape .userProfile .profile_left {left: 0px;}
+.entryscape .userProfile .profile_right {right: 0px;}
+
+.entryscape .userProfile .profile_left .profile_left_content,
+.entryscape .userProfile .profile_right .profile_right_content {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow-y: auto;
+}
+
+.entryscape .userProfile button {
+	border-width: 0px;
+	text-decoration: none;
+	padding: 10px 15px 10px;
+	text-shadow: 0 1px 0 white;
+	margin: 30px 10px 10px 0px;
+	color: #555;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.entryscape .userProfile button:hover {
+	color: black;
+}
+
+.entryscape .userProfile button.selected:hover {
+	color: #555;
+}
+
+.entryscape .userProfile button.selected {
+	background-color: #E5E5E5;
+	-webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+	box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+}
+
+.entryscape .userProfile .noFeatured {
+    margin: 1em;
+}

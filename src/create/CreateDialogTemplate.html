@@ -1,0 +1,29 @@
+<div class="confolio createDialog artifactState">
+    <div data-dojo-attach-point="category" class="category distinctThickBorder">
+        <div class="icon64 artifact notLink notUpload" data-dojo-attach-point="artifact"></div>
+        <div class="icon64 upload notArtifact notLink" data-dojo-attach-point="upload"></div>
+        <div class="icon64 link notArtifact notUpload" data-dojo-attach-point="link"></div>
+    </div>
+    <div class="inputArea">
+        <div class="row notArtifact notUpload">
+            <label for="${id}_address" data-dojo-attach-point="nls">addressLabel</label>
+            <div><div id="${id}_address" data-dojo-attach-point="url" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="onChange: _addressCheck" data-dojo-props="intermediateChanges: true, required: true"></div></div>
+        </div>
+        <div class="row notArtifact notLink">
+            <label for="${id}_fileinput" data-dojo-attach-point="nls">fileLabel</label>
+            <div><div id="${id}_fileinput" data-dojo-attach-point="fileinput"></div></div>
+        </div>
+        <div class="row">
+            <label for="${id}_label" data-dojo-attach-point="nls">nameLabel</label>
+            <div><div id="${id}_label" data-dojo-attach-point="label" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="onChange: _checkReady" data-dojo-props="intermediateChanges: true, required:true"></div></div>
+        </div>
+    </div>
+    <div class="ATSelectLabel selectTypeWaiting" data-dojo-attach-point="typeSelectBlock"><span class="createTypeLabel" data-dojo-attach-point="nls">createTypeLabel</span>
+        <span class="selectTypeWaiting">(<span data-dojo-attach-point="nls">artifactTypeRequest,selectTypeWaiting</span>)</span>
+        <span class="noAutodetectTypePossible">(<span data-dojo-attach-point="nls">noAutodetectTypePossible</span>)</span>
+        <span class="clearManuallySelectedType entryScape_selected distinctThinBorder" data-dojo-attach-event="click: _resetTypeSelection"><span data-dojo-attach-point="nls">clearManuallySelectedType</span><span class="icon delete"></span></span>
+        <span class="clearAutoSelectedType entryScape_selected distinctThinBorder" data-dojo-attach-event="click: _resetTypeSelection"><span data-dojo-attach-point="nls">clearAutoSelectedType</span><span class="icon delete"></span></span>
+    </div>
+    <div data-dojo-attach-point="types" class="types"></div>
+    <div data-dojo-attach-point="tags" class="tags"></div>
+</div>

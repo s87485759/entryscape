@@ -1,0 +1,55 @@
+<div class="searchDetails" style="margin-top:-2.2em">
+
+	<div class="groupHeader distinctBackground"><span data-dojo-attach-point="nls">searchInLabel</span>:</div>
+	<div class="group thinBorder">
+			<div data-dojo-type="dijit/form/RadioButton" id="${id}_all" data-dojo-attach-point="allPortfoliosDijit" name="${id}_inPortfolio" data-dojo-attach-event="onChange:_searchFormChangedRadio" checked="true"></div>
+			<label for="${id}_all" data-dojo-attach-point="nls">allPortfoliosLabel</label><br>
+			<span data-dojo-attach-point="myPortfolioRowNode" style="display: none;">
+			<div data-dojo-type="dijit/form/RadioButton" id="${id}_my" data-dojo-attach-point="myPortfolioDijit" name="${id}_inPortfolio" data-dojo-attach-event="onChange:_searchFormChangedRadio"></div>
+			<label for="${id}_my" data-dojo-attach-point="nls">myPortfolioLabel</label><br></span>
+			<div data-dojo-type="dijit/form/RadioButton" id="${id}_specific" data-dojo-attach-point="specificPortfolioDijit" name="${id}_inPortfolio" data-dojo-attach-event="onChange:_searchFormChangedRadio"></div>
+			<label for="${id}_specific" data-dojo-attach-point="nls">specificPortfolioLabel</label>:&nbsp;&nbsp;
+			<select data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="searchAttr:'label',disabled:true, autocomplete:true" data-dojo-attach-event="onChange:onChange"
+			style="width: 10em;font-size: smaller;vertical-align: middle;" data-dojo-attach-point="specficPortfolioChangerDijit" id="${id}_portfolioChanger"></select><br>
+	</div>
+	<div>
+		<div class="groupHeader distinctBackground"><span data-dojo-attach-point="nls">includeLTLabel</span>:</div>
+		<div class="group thinBorder">
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_lt_local" data-dojo-attach-point="includeLTLocalDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_lt_local" data-dojo-attach-point="nls">includeLTLocalLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_lt_link" data-dojo-attach-point="includeLTLinkDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_lt_link" data-dojo-attach-point="nls">includeLTLinkLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_lt_reference" data-dojo-attach-point="includeLTReferenceDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_lt_reference" data-dojo-attach-point="nls">includeLTReferenceLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_lt_linkreference" data-dojo-attach-point="includeLTLinkReferenceDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_lt_linkreference" data-dojo-attach-point="nls">includeLTLinkReferenceLabel</label><br>
+		</div>
+		
+		<div class="groupHeader distinctBackground"><span data-dojo-attach-point="nls">includeBTLabel</span>:</div>
+		<div class="group thinBorder">
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_context" data-dojo-attach-point="includeBTContextDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_bt_context" data-dojo-attach-point="nls">includeBTContextLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_list" data-dojo-attach-point="includeBTListDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_bt_list" data-dojo-attach-point="nls">includeBTListLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_user" data-dojo-attach-point="includeBTUserDijit" data-dojo-attach-event="onChange:onChange" checked="false"></span>
+			<label for="${id}_bt_user" data-dojo-attach-point="nls">includeBTUserLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_group" data-dojo-attach-point="includeBTGroupDijit" data-dojo-attach-event="onChange:onChange" checked="false"></span>
+			<label for="${id}_bt_group" data-dojo-attach-point="nls">includeBTGroupLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_string" data-dojo-attach-point="includeBTStringDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_bt_string" data-dojo-attach-point="nls">includeBTStringLabel</label><br>
+			<span data-dojo-type="dijit/form/CheckBox" id="${id}_bt_none" data-dojo-attach-point="includeBTNoneDijit" data-dojo-attach-event="onChange:onChange" checked="true"></span>
+			<label for="${id}_bt_none" data-dojo-attach-point="nls">includeBTNoneLabel</label><br>
+		</div>
+	</div>
+	
+	<div class="groupHeader distinctBackground"><span data-dojo-attach-point="nls">sortByLabel</span>:</div>
+	<div class="group thinBorder">
+			<label for="${id}_sortChanger" data-dojo-attach-point="nls">sortChangerLabel</label>:&nbsp;
+			<select data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="searchAttr:'label',autocomplete:true"
+			style="width: 10em;font-size: smaller;vertical-align: middle;" data-dojo-attach-point="sortChangerDijit" id="${id}_sortChanger"></select><br>
+			<div data-dojo-type="dijit/form/RadioButton" id="${id}_ascending" data-dojo-attach-point="ascendingDijit" name="${id}_sortingOrder" data-dojo-attach-event="onChange:_searchFormChangedRadio" checked="true"></div>
+			<label for="${id}_ascending" data-dojo-attach-point="nls">ascendingLabel</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<div data-dojo-type="dijit/form/RadioButton" id="${id}_descending" data-dojo-attach-point="descendingDijit" name="${id}_sortingOrder" data-dojo-attach-event="onChange:_searchFormChangedRadio"></div>
+			<label for="${id}_descending" data-dojo-attach-point="nls">descendingLabel</label>
+	</div>
+</div>

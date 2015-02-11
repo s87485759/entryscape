@@ -1,0 +1,18 @@
+<div class="tree">
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:false" data-dojo-attach-point="pinnedTreeDijit" style="height:100%">
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center',splitter:false" style="height: 100%">
+			<div data-dojo-attach-point="containerNode" style="height: 100%">
+			</div>
+		</div>
+	</div>
+	<div style="display: none; height: 100%" data-dojo-attach-point="floatingTreeNode" class="expander thin-border">
+		<div data-dojo-attach-point="movableBlockNode" class="treeContainer">
+			<div>
+				<div>
+					<div data-dojo-attach-point="treeNode"></div>
+					<img class="pushpin" data-dojo-attach-point="pushpinNode"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
